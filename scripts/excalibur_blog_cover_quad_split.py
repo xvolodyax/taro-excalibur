@@ -611,7 +611,7 @@ def main() -> int:
         canvas_path = article_dir / canvas_path
 
     if args.demo_canvas:
-        create_demo_canvas(canvas_path, "tenant_unset")
+        create_demo_canvas(canvas_path, "taro-seichas")
         print(f"OK demo canvas={canvas_path}")
 
     if not canvas_path.is_file():
