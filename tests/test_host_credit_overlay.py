@@ -21,6 +21,7 @@ from excalibur_blog_host_credit_overlay import (  # noqa: E402
     apply_host_credit,
     decide_host_credit,
     load_credit_canon,
+    normalize_host_credit_text,
     stamp_credit_on_image,
 )
 
@@ -43,6 +44,20 @@ class HostCreditCanonTests(unittest.TestCase):
         overlays = design["host_credit_overlays"]
         self.assertEqual(overlays[0]["text"], CANON_VICTORIA_CREDIT)
         self.assertTrue(any("Виктория" in rule for rule in design["cover_rules"]))
+
+    def test_normalize_strips_wrapping_quotes(self) -> None:
+        exact = "Виктория - таролог команды «ТАРО СЕЙЧАС»"
+        self.assertEqual(normalize_host_credit_text(exact), exact)
+        self.assertEqual(
+            normalize_host_credit_text(f'"{exact}"'),
+            exact,
+        )
+        self.assertEqual(
+            normalize_host_credit_text(f"«{exact}»"),
+            exact,
+        )
+        self.assertNotIn('"', normalize_host_credit_text(f'"{exact}"'))
+        self.assertFalse(normalize_host_credit_text(f"«{exact}»").startswith("«Виктория"))
 
     def test_prompt_forbids_model_letters_and_omits_credit_string(self) -> None:
         manifest = {

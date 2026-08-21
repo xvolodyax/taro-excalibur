@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+# Exact on-image line. Guillemets only around the team name. No wrapping quotes, no URL.
 CANON_VICTORIA_CREDIT = "Виктория - таролог команды «ТАРО СЕЙЧАС»"
 
 _FONT_CANDIDATES = (
@@ -66,13 +67,29 @@ def collect_host_identity(
     return " ".join(parts)
 
 
+def normalize_host_credit_text(text: str) -> str:
+    """Force the on-image line: no wrapping quotes, no extra guillemets, no site."""
+    raw = (text or "").strip()
+    if len(raw) >= 2 and raw[0] == raw[-1] and raw[0] in {'"', "'"}:
+        raw = raw[1:-1].strip()
+    if raw.startswith("«Виктория") and raw.endswith("»") and raw.count("«") >= 2:
+        raw = raw[1:-1].strip()
+    compact = raw.replace(" ", "").replace("«", "").replace("»", "").replace('"', "")
+    canon_compact = CANON_VICTORIA_CREDIT.replace(" ", "").replace("«", "").replace("»", "")
+    if compact == canon_compact or (
+        "тарологкоманды" in compact.casefold() and "таросейчас" in compact.casefold()
+    ):
+        return CANON_VICTORIA_CREDIT
+    return raw
+
+
 def _spec_from_mapping(raw: Any) -> dict[str, Any] | None:
     if not isinstance(raw, dict):
         return None
-    text = str(raw.get("text") or "").strip()
+    text = normalize_host_credit_text(str(raw.get("text") or ""))
     if not text:
         return None
-    return raw
+    return {**raw, "text": text}
 
 
 def resolve_credit_spec(
@@ -102,8 +119,7 @@ def resolve_credit_spec(
             "style": "minimal_modern",
             "placement": "bottom_left",
         }
-    if not str(spec.get("text") or "").strip():
-        spec = {**spec, "text": CANON_VICTORIA_CREDIT}
+    spec = {**spec, "text": normalize_host_credit_text(str(spec.get("text") or "")) or CANON_VICTORIA_CREDIT}
     return spec
 
 
@@ -121,7 +137,7 @@ def decide_host_credit(
     hero = hero or {}
     slot = slot or {}
     spec = resolve_credit_spec(hero, design_code)
-    text = str(spec.get("text") or CANON_VICTORIA_CREDIT).strip()
+    text = normalize_host_credit_text(str(spec.get("text") or CANON_VICTORIA_CREDIT))
     identity = collect_host_identity(
         hero=hero, slot=slot, manifest=manifest, host_name=host_name
     )
@@ -193,7 +209,8 @@ def stamp_credit_on_image(path: Path, text: str) -> dict[str, Any]:
     """Draw a small modern credit. No banner, no plate, no URL."""
     from PIL import Image, ImageDraw
 
-    if text.strip() != CANON_VICTORIA_CREDIT and "ален" in _fold(text):
+    text = normalize_host_credit_text(text)
+    if text != CANON_VICTORIA_CREDIT and "ален" in _fold(text):
         raise ValueError("refusing to stamp Alena with a host-credit line")
 
     with Image.open(path) as src:

@@ -25,7 +25,7 @@
     "apply_when_name_matches": ["Виктория", "Victoria", "Viktoria"],
     "never_apply_when_name_matches": ["Алёна", "Алена", "Alena"],
     "apply_to": ["cover", "any_host_face"],
-    "comment": "Canon ТАРО СЕЙЧАС. Split script reads this and stamps the exact string on Victoria frames. Do not put site/URL. Do not sign Alena with this line."
+    "comment": "Canon ТАРО СЕЙЧАС. Stamp this exact line: no wrapping ASCII quotes, guillemets only around ТАРО СЕЙЧАС, spaces and hyphen as written, no site/URL. Do not sign Alena."
   },
   "reference_url_hosted": "",
   "reference_url_source": "",
