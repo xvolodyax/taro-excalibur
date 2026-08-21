@@ -49,7 +49,7 @@
 - **на обложках только Виктория.** Алёна может быть в тексте как лицо бренда; на картинки и в i2i не ставить.
 - **глаза (жёсткий маркер):** зелёные + слегка светло-карие у зрачка; не карие, не серые, не голубые.
 - **reference / lock:** `memory/cover/blog-hero.json` + `memory/cover/assets/`
-- **input_urls / канон лица:** только `memory/cover/assets/victoria-sheet.png` и `victoria-character-sheet-2k.png`. Алёну в `input_urls` не ставить. Публичный URL после заливки — только `{{SITE_BASE}}/wp-content/...` в `reference_url_hosted`. Не catbox, не localhost, секреты не писать.
+- **input_urls / канон лица:** только `memory/cover/assets/виктория.png`. Алёну в `input_urls` не ставить. Публичный URL после заливки — только `{{SITE_BASE}}/wp-content/...` в `reference_url_hosted`. Не catbox, не localhost, секреты не писать.
 - **style:** `memory/cover/cover-design-code.json` + `memory/cover/quad-style-taro-seichas.json`
 - **генерация:** Kie.ai GPT Image 2; одна billed-генерация; **2K**, холст **2×2**, резка: обложка + 2–3 inline. **1K** только если кадр один и не режется.
 - **обложка:** лицо и глаза по рефу + хук 2–6 слов (образец ритма «Пауза или конец?»). Одежда и эмоция **каждый раз новые** — реф не костюм (не копировать белый пиджак, камисоль, голубые джинсы, золотую подвеску-дерево, карты в руках).
@@ -58,7 +58,7 @@
 - **запрет:** одно белое худи на все кадры; мемные стикеры; скотч-коллаж; слово «лох»; тёмный стол, свечи, готика.
 - **`meme_caption_ru`:** пустой
 - **Дзен:** готовый файл с диска; никогда localhost / 127.0.0.1
-- **рефы лиц в git:** путей канон задан, бинарников в этом прогоне нет (`NEED_MORE_REFS` / `assets_status: need_upload`). Пока файлов нет — Cover i2i не запускать. Не выдумывать `reference_url_hosted`.
+- **рефы лиц в git:** `memory/cover/assets/виктория.png` (`status: READY`, `assets_status: present`). Не выдумывать `reference_url_hosted`.
 
 ## Scout / Wordstat
 

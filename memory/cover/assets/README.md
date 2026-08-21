@@ -2,18 +2,16 @@
 
 Реф **только Виктории** для i2i. Алёну не класть.
 
-## Сейчас: need upload
+## Сейчас: present
 
-Листов в git нет. `blog-hero.json` → `status: NEED_MORE_REFS`, `assets_status: need_upload`.
-
-Канон (когда файлы появятся):
+Канон в git:
 
 ```text
-memory/cover/assets/victoria-sheet.png
-memory/cover/assets/victoria-character-sheet-2k.png
+memory/cover/assets/виктория.png
 ```
 
-`input_urls` = эти два файла. Kie: `prefer_local_reference` + File Upload.
+`blog-hero.json` → `status: READY`, `assets_status: present`.
+`input_urls` = этот файл. Kie: `prefer_local_reference` + File Upload.
 Публичный URL после заливки — `{{SITE_BASE}}/wp-content/...`. Не catbox, не localhost.
 
 Глаза в промтах: зелёные + слегка светло-карие, даже если лист кажется карим.

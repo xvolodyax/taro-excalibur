@@ -9,7 +9,7 @@
   "skip_human_host": false,
   "allows_animal_stickers": false,
   "allowed_animal_motif": "",
-  "local_reference": "memory/cover/assets/victoria-character-sheet-2k.png",
+  "local_reference": "memory/cover/assets/виктория.png",
   "prefer_local_reference": true,
   "provider": "kie.ai",
   "model": "gpt-image-2",
@@ -21,5 +21,5 @@
   "inline_prompt_suffix": "Inline all: meaning/schema/question on WHITE; dark ink; warm accent markers; 3–6 Cyrillic labels; NO people/faces/host/memes/tape-collage/cats. Neg: empty gray boxes, gothic, candles, watermark, 9:16.",
   "ban_line": "Ban: white-hoodie lock / meme stickers / tape-torn-paper collage / word «лох» / dark table / candles / gothic / skulls / smoke / pentagrams / cat hero or cat stickers / neon-pink collage / black velvet / Drake / facepalm / pipeline stamps / EXCALIBUR badge / keyword spam / «Ключевые темы» / Latin lookalike Cyrillic.",
   "global_negative": "white hoodie lock, meme cutouts, tape collage, cat stickers, лох, candles, gothic, neon pink, pipeline watermark",
-  "assets_note": "Канон i2i только Виктория: memory/cover/assets/victoria-sheet.png и victoria-character-sheet-2k.png. Алёну не класть. Kie берёт локальный файл через prefer_local_reference / File Upload. Публичный URL не выдумывать."
+  "assets_note": "Канон i2i только Виктория: memory/cover/assets/виктория.png. Алёну не класть. Kie берёт локальный файл через prefer_local_reference / File Upload. Публичный URL не выдумывать."
 }

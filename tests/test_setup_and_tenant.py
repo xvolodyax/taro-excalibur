@@ -14,8 +14,9 @@ class SetupTenantTests(unittest.TestCase):
         self.assertTrue(status.get("complete"))
         for phase in ("cloud", "site", "author", "voice", "cta", "scout"):
             self.assertEqual(status["phases"][phase], "done", phase)
-        self.assertEqual(status["phases"]["visual"], "need_refs")
+        self.assertEqual(status["phases"]["visual"], "done")
         self.assertIn("рефы", status.get("notes", "").lower())
+        self.assertIn("виктория.png", status.get("notes", ""))
 
     def test_tenant_config_taro(self) -> None:
         tenant = json.loads((ROOT / "shared/tenant-config.json").read_text(encoding="utf-8"))

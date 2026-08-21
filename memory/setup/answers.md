@@ -47,7 +47,7 @@
 - Хуки 2–6 слов на картинке. Inline: без лица; смысл / схема / вопрос.
 - Запрет чужого коллаж-стиля: одно белое худи на все кадры, мемные стикеры, скотч-коллаж, слово «лох», тёмный стол, свечи, готика.
 - 1K только если кадр один и не режется.
-- refs (канон лица): `memory/cover/assets/victoria-sheet.png`, `victoria-character-sheet-2k.png`. Алёну в `input_urls` не ставить. Бинарники в этом Cloud-прогоне на диск не попали → `NEED_MORE_REFS`. Публичный URL после заливки только `{{SITE_BASE}}/wp-content/...`. Не catbox, не localhost.
+- refs (канон лица): `memory/cover/assets/виктория.png`. Алёну в `input_urls` не ставить. Файл в git, `READY` / `present`. Публичный URL после заливки только `{{SITE_BASE}}/wp-content/...`. Не catbox, не localhost.
 
 ## CTA
 

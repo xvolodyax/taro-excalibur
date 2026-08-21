@@ -3,27 +3,13 @@
 Cover работает в режиме `host_reference`. На обложках **только Виктория**.
 Алёну сюда не класть и в `input_urls` не ставить.
 
-Файлов лица **в git сейчас нет**. Пока их нет, Kie i2i для обложки с лицом не запускать.
-
-## Канон (положить в форк)
+Канон лица в git:
 
 ```text
-images/refs/victoria-sheet.png                # коллаж ~12 кадров, серый фон
-images/refs/victoria-character-sheet-2k.png   # лист 8 кадров CLOSE-UP / 3/4 / PROFILE / BACK
+memory/cover/assets/виктория.png
 ```
 
-После загрузки **обязательно** скопировать в:
-
-```text
-memory/cover/assets/victoria-sheet.png
-memory/cover/assets/victoria-character-sheet-2k.png
-```
-
-Это канон лица. `input_urls` в `blog-hero.json` = эти два файла.
-
-Как донести бинарники до Cloud Agent: закоммить PNG в форк на эту ветку
-или положи файлы в Google Drive с этими именами и пришли ссылку.
-Вложение в чат часто доезжает только описанием, без файла на диске.
+`input_urls` в `blog-hero.json` = этот файл.
 
 ## Что даёт реф
 

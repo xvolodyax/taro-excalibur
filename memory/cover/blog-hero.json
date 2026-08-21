@@ -1,40 +1,34 @@
 {
   "hero_id": "victoria",
-  "status": "NEED_MORE_REFS",
+  "status": "READY",
   "name_ru": "Виктория",
   "cover_mode": "host_reference",
   "default_host_id": "victoria",
   "cover_host_default": "victoria",
   "cover_hosts_allowed": ["victoria"],
-  "assets_status": "need_upload",
-  "reference_image": "memory/cover/assets/victoria-character-sheet-2k.png",
-  "reference_sheet": "memory/cover/assets/victoria-sheet.png",
-  "reference_sheet_2k": "memory/cover/assets/victoria-character-sheet-2k.png",
+  "assets_status": "present",
+  "reference_image": "memory/cover/assets/виктория.png",
+  "reference_sheet": "memory/cover/assets/виктория.png",
   "input_urls": [
-    "memory/cover/assets/victoria-sheet.png",
-    "memory/cover/assets/victoria-character-sheet-2k.png"
+    "memory/cover/assets/виктория.png"
   ],
-  "input_urls_note": "Канон лица — только эти два листа Виктории. Алёну в input_urls не ставить. Kie: prefer_local_reference + File Upload. Публичный URL после заливки — {{SITE_BASE}}/wp-content/... Не catbox, не localhost, секреты не писать.",
-  "reference_notes": "На обложках ТОЛЬКО Виктория. Алёну на картинки и в i2i не ставить. Канон лица: victoria-sheet.png (коллаж ~12 кадров, серый фон) и victoria-character-sheet-2k.png (8 кадров CLOSE-UP / 3/4 / PROFILE / BACK). Реф даёт лицо и глаза, не костюм: камисоль, голубые джинсы, белые кеды, золотую подвеску-дерево не копировать. Глаза в промтах всегда зелёные + слегка светло-карие у зрачка, даже если фото кто-то прочитает как карие. В этом Cloud-прогоне PNG вложений на диск не попали. Не выдумывать reference_url_hosted.",
+  "input_urls_note": "Канон лица — локальный лист Виктории в git. Алёну в input_urls не ставить. Kie: prefer_local_reference + File Upload. Публичный URL после заливки — {{SITE_BASE}}/wp-content/... Не catbox, не localhost, секреты не писать.",
+  "reference_notes": "На обложках ТОЛЬКО Виктория. Алёну на картинки и в i2i не ставить. Канон лица в git: memory/cover/assets/виктория.png (студийный лист, много кадров). Реф даёт лицо и глаза, не костюм: камисоль, голубые джинсы, белые кеды, золотую подвеску-дерево не копировать. Глаза в промтах всегда зелёные + слегка светло-карие у зрачка, даже если фото кто-то прочитает как карие. Не выдумывать reference_url_hosted.",
   "hosts": {
     "victoria": {
       "id": "victoria",
       "name_ru": "Виктория",
       "role": "only_cover_host",
       "when": "всегда на обложке",
-      "reference_image": "memory/cover/assets/victoria-character-sheet-2k.png",
-      "reference_sheet": "memory/cover/assets/victoria-sheet.png",
-      "reference_sheet_2k": "memory/cover/assets/victoria-character-sheet-2k.png",
+      "reference_image": "memory/cover/assets/виктория.png",
+      "reference_sheet": "memory/cover/assets/виктория.png",
       "expected_paths": [
-        "memory/cover/assets/victoria-sheet.png",
-        "memory/cover/assets/victoria-character-sheet-2k.png",
-        "images/refs/victoria-sheet.png",
-        "images/refs/victoria-character-sheet-2k.png"
+        "memory/cover/assets/виктория.png"
       ],
       "identity_lock": {
         "hair": "длинный прямой блонд, тёмные корни, пробор посередине",
         "eyes": "зелёные + слегка светло-карие у зрачка; держать даже если лист читается как карий; не серые, не голубые, не чисто карие",
-        "face": "узнаваемое лицо Виктории с канон-листов"
+        "face": "узнаваемое лицо Виктории с канон-листа"
       }
     }
   },
@@ -72,6 +66,6 @@
     "dzen_upload": "файл с диска; никогда localhost / 127.0.0.1"
   },
   "reference_url_hosted": "",
-  "reference_url_source": "local:memory/cover/assets/victoria-character-sheet-2k.png",
-  "reference_url_updated_at": null
+  "reference_url_source": "local:memory/cover/assets/виктория.png",
+  "reference_url_updated_at": "2026-08-21T15:16:00Z"
 }
