@@ -10,8 +10,23 @@
   "prompt_fragment": "",
   "cover_hook_rules": [
     "cover_hook invents Cover agent from reader_pain; no script templates",
-    "meme_caption_ru always empty unless tenant explicitly allows"
+    "meme_caption_ru always empty unless tenant explicitly allows",
+    "Victoria face lock = reference i2i only; emotion and clothes are new per topic",
+    "host credit is Pillow after split, never a Kie/GPT Image letter-draw, never a cover_hook"
   ],
+  "credit_overlay": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "style": "minimal_modern",
+    "placement": "bottom_left",
+    "no_banner": true,
+    "no_plate": true,
+    "no_url": true,
+    "never_ask_image_model": true,
+    "apply_when_name_matches": ["Виктория", "Victoria", "Viktoria"],
+    "never_apply_when_name_matches": ["Алёна", "Алена", "Alena"],
+    "apply_to": ["cover", "any_host_face"],
+    "comment": "Canon ТАРО СЕЙЧАС. Stamp this exact line: no wrapping ASCII quotes, guillemets only around ТАРО СЕЙЧАС, spaces and hyphen as written, no site/URL. Do not sign Alena."
+  },
   "reference_url_hosted": "",
   "reference_url_source": "",
   "reference_url_updated_at": null

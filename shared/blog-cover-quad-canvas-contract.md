@@ -50,6 +50,8 @@ python scripts/excalibur_blog_kie_gpt_image2_api.py \
 python scripts/excalibur_blog_quad_apply.py \
   --article-dir memory/blog/articles/<topic_id>-<slug> \
   --inject-html
+#    Split сам читает memory/cover/blog-hero.json → credit_overlay
+#    и накладывает подпись Виктории кодом (Pillow). Не просить Kie писать буквы.
 ```
 
 Legacy MCP fallback: **только если `KIE_API_KEY` отсутствует**. Тогда один вызов
@@ -72,6 +74,22 @@ Cursor MCP `gpt-image-2` (или async create/status) с `jobs[0].mcp_args`.
 ```
 
 Split-скрипт в режиме `auto` пробует белые gutters у центра, но **отклоняет** сдвиг, если полоса далеко от x=1024/y=576 или после реза нужен сильный center-crop до 16:9. Fallback — механический 50/50. Форс: `--split-mode mechanical|gutter`. Gutters только на линиях x=1024 / y=576, контент строго внутри квадранта.
+
+## Подпись Виктории (канон ТАРО СЕЙЧАС)
+
+На **каждом кадре с лицом Виктории** после генерации split/apply обязан
+наложить кодом (Pillow) ровно эту строку, без сайта и без URL:
+
+`Виктория - таролог команды «ТАРО СЕЙЧАС»`
+
+- Стиль: мелко, современно, минималистично; **без баннера и без плашки**.
+- Источник правила: `memory/cover/blog-hero.json` → `credit_overlay`
+  (дубль в `cover-design-code.json` → `host_credit_overlays`).
+- Скрипт: `scripts/excalibur_blog_host_credit_overlay.py`, вызывается из
+  `excalibur_blog_cover_quad_split.py` после `cover.png`.
+- **Запрещено** просить GPT Image / Kie нарисовать эти буквы — модель калечит текст.
+- Алёну этой строкой **не** подписывать.
+- Лицо — по рефу Виктории; эмоция и одежда новые под тему.
 
 ## Visual locks
 
@@ -97,7 +115,7 @@ Split-скрипт в режиме `auto` пробует белые gutters у �
 
 | Файл | Кто |
 |------|-----|
-| `memory/cover/blog-hero.json` | `reference_url_hosted` |
+| `memory/cover/blog-hero.json` | `reference_url_hosted` + `credit_overlay` (Виктория) |
 | `memory/cover/inline-visual-types.json` | типы inline-панелей |
 | `memory/cover/quad-style-*.json` (tenant preset) | **default** style preset |
 | `memory/cover/assets/style-refs/` | Pinterest mood refs + 16:9 moodboard |

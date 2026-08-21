@@ -95,7 +95,7 @@ inline — вторая, третья и четвёртая картинки п�
 | `shared/blog-cover-quad-canvas-contract.md` | канонический контракт |
 | `shared/kie-gpt-image-api-contract.md` | прямой async Kie API для Cursor Cloud |
 | `agents/excalibur-blog-cover.md` | agent-md (этот skill дублирует runbook) |
-| `memory/cover/blog-hero.json` | visual_lock, outfit_rule, reference_url_hosted |
+| `memory/cover/blog-hero.json` | visual_lock, outfit_rule, reference_url_hosted, **credit_overlay** |
 | `memory/cover/assets/blog-hero-reference.png` | локальный эталон лица |
 | `memory/cover/cover-design-code.json` | editorial cover + informative inline code |
 | `memory/cover/quad-style-*.json` (tenant preset из Setup Visual) | актуальный style preset |
@@ -121,6 +121,20 @@ inline — вторая, третья и четвёртая картинки п�
 **Lock:** только поля `visual_lock` / `outfit_rule` / `prompt_fragment` из `blog-hero.json` после Setup.
 **Free:** поза/ракурс/композиция по `cover_hook` и `scene_hint`.
 Если `cover_mode=illustrative` — host на cover не обязателен.
+
+### Подпись Виктории (канон, HARD)
+
+На каждом кадре с лицом Виктории (обложка и любой другой кадр с её лицом)
+после генерации **код** накладывает ровно:
+
+`Виктория - таролог команды «ТАРО СЕЙЧАС»`
+
+- Мелко, современно, минималистично; без баннера, без плашки на полкадра, без сайта/URL.
+- Делает `excalibur_blog_cover_quad_split.py` → `excalibur_blog_host_credit_overlay.py`
+  (читает `blog-hero.json` → `credit_overlay`). Не проси Kie/GPT Image писать буквы.
+- Алёну этой строкой не подписывать.
+- Лицо по рефу Виктории; эмоция и одежда новые под тему.
+- Это **не** cover-text hook и **не** `meme_caption_ru`.
 
 ### Cover `scene_hint` — короткий Host lock (B80 / INC-20260724-0837, B81 / INC-20260724-1239)
 
@@ -312,6 +326,7 @@ python scripts/excalibur_blog_quad_apply.py \
 ```
 
 Требует Pillow. Выход: cover, inline PNG, registry, inject в article.html.
+На `cover.png` с Викторией split сам ставит credit overlay из `blog-hero.json`.
 
 ### Шаг 6 — fragment
 
@@ -380,6 +395,7 @@ Visual QA **skip по умолчанию**. Cover подтверждается s
 - [ ] cover.png + 3 inline существуют
 - [ ] alt в registry для всех 4
 - [ ] ровно три inline привязаны к существующим H2 (`h2_anchor`) и injected после них
+- [ ] cover с Викторией: Pillow-подпись ровно `Виктория - таролог команды «ТАРО СЕЙЧАС»` (не Kie); Алёна без этой строки
 - [ ] cover: один hook виден на PNG; `meme_caption_ru == ""`
 - [ ] inline: без лица героя
 - [ ] cover и inline: чистый белый фон `#FFFFFF`, без бежевого/серого/grunge-фона

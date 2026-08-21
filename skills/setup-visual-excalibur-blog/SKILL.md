@@ -13,6 +13,7 @@ disable-model-invocation: true
 1. Прочитай visual-inbox + cover_mode.
 2. Скопируй assets в `memory/cover/assets/`.
 3. Заполни blog-hero.json, cover-design-code.json, quad-style-*.json.
+   Поле `credit_overlay` / правило подписи Виктории — канон, не вычищать.
 4. Обнови tenant-config cover fields.
 5. Никаких чужих дефолтных лиц/брендовых коллажей.
 6. Handoff PASS или NEED_MORE_REFS.
