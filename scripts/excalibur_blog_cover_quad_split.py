@@ -38,6 +38,7 @@ GUTTER_MAX_ASPECT_CROP_LOSS = 0.02
 SPLIT_MODES = ("auto", "mechanical", "gutter")
 
 
+from excalibur_blog_host_credit_overlay import apply_host_credit, load_credit_canon
 from excalibur_repo_paths import repo_relative
 
 
@@ -333,6 +334,9 @@ def split_canvas(
     output_size: tuple[int, int] | None,
     *,
     split_mode: str = "auto",
+    hero: dict[str, Any] | None = None,
+    design_code: dict[str, Any] | None = None,
+    cover_mode: str = "",
 ) -> dict[str, Any]:
     from PIL import Image
 
@@ -367,6 +371,15 @@ def split_canvas(
             out_name = "cover.png" if slot_key == "cover" else INLINE_FILES[slot_key]
             out_path = cover_dir / out_name
             crop.save(out_path, format="PNG", optimize=True)
+            credit = apply_host_credit(
+                out_path,
+                hero=hero,
+                design_code=design_code,
+                slot_key=slot_key,
+                slot=slot,
+                manifest=manifest,
+                cover_mode=cover_mode,
+            )
             outputs[slot_key] = {
                 "file": f"cover/{out_name}",
                 "quadrant": quadrant,
@@ -376,6 +389,7 @@ def split_canvas(
                 "aspect_ratio": "16:9",
                 "alt": slot.get("alt") or "",
                 "h2_anchor": slot.get("h2_anchor"),
+                "host_credit_overlay": credit,
             }
 
         sample_box = quadrant_boxes["top_left"]
@@ -407,6 +421,7 @@ def build_registry(article_dir: Path, manifest: dict[str, Any], split_info: dict
                 "h2_anchor": item.get("h2_anchor"),
                 "visual_type": slot_meta.get("visual_type") or ("cover_editorial_hero" if slot_key == "cover" else None),
                 "aspect_ratio": "16:9",
+                "host_credit_overlay": item.get("host_credit_overlay") or {},
             }
         )
 
@@ -658,6 +673,11 @@ def main() -> int:
         print(json.dumps(manifest, ensure_ascii=False, indent=2))
         return 0
 
+    hero, design_code = load_credit_canon(root)
+    cover_mode = str(
+        manifest.get("cover_mode") or hero.get("cover_mode") or ""
+    )
+
     try:
         split_info = split_canvas(
             canvas_path,
@@ -665,6 +685,9 @@ def main() -> int:
             manifest,
             output_size,
             split_mode=args.split_mode,
+            hero=hero,
+            design_code=design_code,
+            cover_mode=cover_mode,
         )
     except ValueError as exc:
         print(f"❌ QUAD SPLIT BLOCKER: {exc}", file=sys.stderr)

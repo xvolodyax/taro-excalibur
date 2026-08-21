@@ -65,6 +65,8 @@ python3 scripts/excalibur_blog_cover_text_gate.py --article-dir <article_dir>
 - Не придумывай английские заголовки, не смешивай языки.
 - Не запускай manifest/prompt/Kie/publish — только cover-text.json + gate.
 - Не трогай стиль, hero, scene_hint — это Cover agent.
+- Не пиши в hook/sticky строку `Виктория - таролог команды «ТАРО СЕЙЧАС»`:
+  это Pillow-оверлей после split, не надпись для Kie.
 
 ## Handoff
 

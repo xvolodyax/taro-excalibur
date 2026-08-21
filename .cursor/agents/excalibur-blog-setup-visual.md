@@ -30,8 +30,8 @@ is_background: false
 ## Пишешь
 
 1. Копируй референсы в `memory/cover/assets/` (+ `style-refs/` при необходимости)
-2. `memory/cover/blog-hero.json` — visual_lock / outfit / prompt_fragment **из того, что прислал человек**
-3. `memory/cover/cover-design-code.json` — palette, motifs, cover/inline rules, prompt blocks
+2. `memory/cover/blog-hero.json` — visual_lock / outfit / prompt_fragment **из того, что прислал человек**. Поле `credit_overlay` — канон ТАРО СЕЙЧАС, **не удалять** и не просить Kie писать эту строку.
+3. `memory/cover/cover-design-code.json` — palette, motifs, cover/inline rules, prompt blocks. Правило подписи Виктории и `host_credit_overlays` сохранить.
 4. `memory/cover/quad-style-<id>.json` — style preset тенанта
 5. Обнови `shared/tenant-config.json` → `cover_mode`, `cover_files.style_preset`
 6. Кратко обнови секцию визуала в `memory/brief/site-brief.md`
@@ -43,6 +43,7 @@ is_background: false
 - Если `illustrative` — host на cover не обязателен; зафиксируй в blog-hero
 - `meme_caption_ru` по умолчанию пуст
 - Не выдумывай reference_url на чужой CDN; локальный asset или URL тенанта
+- Кадр с Викторией: Pillow-оверлей `Виктория - таролог команды «ТАРО СЕЙЧАС»`. Алёну этой строкой не подписывать. Лицо по рефу; эмоция и одежда новые под тему.
 
 ## Handoff
 

@@ -28,6 +28,7 @@
 - **cover_mode:** см. tenant-config (`host_reference` | `illustrative` | `unset`)
 - **reference / lock:** `memory/cover/blog-hero.json` + `memory/cover/assets/`
 - **style:** `memory/cover/cover-design-code.json` + style preset из Setup Visual
+- **подпись Виктории:** после генерации кода (Pillow) на каждом кадре с её лицом ровно `Виктория - таролог команды «ТАРО СЕЙЧАС»`. Без сайта/URL, без баннера. Алёну этой строкой не подписывать. Kie буквы не пишет.
 
 ## Запреты
 

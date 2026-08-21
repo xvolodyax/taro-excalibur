@@ -109,6 +109,11 @@ Cover-агент генерирует **один** quad-холст 2×2 (Kie GPT
 8. **H2/injection:** каждый inline имеет существующий конкретный `h2_anchor`, а apply вставляет `<figure>` после него. Missing H2/anchor/injection = BLOCK.
 9. **Image path order:** если `KIE_API_KEY` задан → только `excalibur_blog_kie_gpt_image2_api.py` (`createTask` → `recordInfo`). **Запрещено** начинать с sync MCP `gpt-image-2` (часто `-32001`). MCP — только если ключа нет. Игнорируй устаревшие промпты «ONE MCP gpt-image-2».
 10. Не трогать `schema.jsonld`, не переписывать текст статьи.
+11. **Подпись Виктории (канон ТАРО СЕЙЧАС):** после split на кадре с её лицом
+    должна быть строка `Виктория - таролог команды «ТАРО СЕЙЧАС»`.
+    Накладывает `excalibur_blog_host_credit_overlay.py` из `blog-hero.json`
+    → `credit_overlay`. Не проси Kie/GPT Image писать эти буквы. Без сайта/URL,
+    без баннера. Алёну не подписывать. Лицо по рефу; эмоция и одежда новые.
 
 ---
 
@@ -345,6 +350,7 @@ summary: ...
 | `excalibur_blog_cover_quad_prompt.py`  | prompt + `--write-batch`            |
 | `excalibur_blog_quad_apply.py`         | download URL → split → inject       |
 | `excalibur_blog_cover_quad_split.py`   | split only (вызывается из apply)    |
+| `excalibur_blog_host_credit_overlay.py` | Pillow-подпись Виктории после split |
 
 
 ## Deprecated — не использовать
