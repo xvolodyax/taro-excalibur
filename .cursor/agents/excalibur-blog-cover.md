@@ -53,7 +53,7 @@ Cover-агент генерирует **один** quad-холст 2×2 (Kie GPT
 
 - `article.html` + `article.meta.json` — **готовы** (после Writer + canon stamp)
 - `memory/brief/site-brief.md` — blog_hero
-- `memory/cover/blog-hero.json` + `memory/cover/assets/victoria-face.jpg` (+ `victoria-sheet.png`)
+- `memory/cover/blog-hero.json` + `memory/cover/assets/victoria-character-sheet-2k.png` + `victoria-sheet.png`
 
 ## Выход
 

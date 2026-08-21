@@ -302,20 +302,44 @@ class CoverReferenceError(RuntimeError):
     """Neither local Victoria ref nor a git-safe hosted URL is available."""
 
 
+def local_reference_candidates(hero: dict, style: dict) -> list[str]:
+    """Victoria-only local paths. Alena and remote URLs are skipped."""
+    seen: list[str] = []
+    raw = [
+        style.get("local_reference"),
+        hero.get("reference_sheet_2k"),
+        hero.get("reference_sheet"),
+        hero.get("reference_image"),
+        *(hero.get("input_urls") or []),
+    ]
+    for item in raw:
+        value = str(item or "").strip()
+        if not value or value in seen:
+            continue
+        lowered = value.casefold()
+        if "alena" in lowered:
+            continue
+        if "://" in value:
+            continue
+        seen.append(value)
+    return seen
+
+
 def resolve_cover_reference(
     hero: dict, style: dict, root: Path
 ) -> tuple[str, bool, str]:
     """Return (batch_ref_url, prefer_local_reference, local_relpath)."""
-    local_reference = str(
-        style.get("local_reference") or hero.get("reference_image") or ""
-    ).strip()
-    host_local_ok = False
     local_path: Path | None = None
-    if local_reference:
-        local_path = Path(local_reference)
-        if not local_path.is_absolute():
-            local_path = root / local_reference
-        host_local_ok = local_path.is_file()
+    local_reference = ""
+    for candidate in local_reference_candidates(hero, style):
+        path = Path(candidate)
+        if not path.is_absolute():
+            path = root / candidate
+        if path.is_file():
+            local_path = path
+            local_reference = candidate
+            break
+    host_local_ok = local_path is not None
     cat_hero = style_is_situational_cat_hero(style)
     if (
         (cat_hero or str(hero.get("cover_mode") or "") == "host_reference")

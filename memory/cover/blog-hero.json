@@ -7,37 +7,34 @@
   "cover_host_default": "victoria",
   "cover_hosts_allowed": ["victoria"],
   "assets_status": "need_upload",
-  "reference_image": "memory/cover/assets/victoria-face.jpg",
+  "reference_image": "memory/cover/assets/victoria-character-sheet-2k.png",
   "reference_sheet": "memory/cover/assets/victoria-sheet.png",
   "reference_sheet_2k": "memory/cover/assets/victoria-character-sheet-2k.png",
   "input_urls": [
-    "memory/cover/assets/victoria-face.jpg",
     "memory/cover/assets/victoria-sheet.png",
     "memory/cover/assets/victoria-character-sheet-2k.png"
   ],
-  "input_urls_note": "Локальные файлы для Kie i2i (prefer_local_reference + File Upload). Алёну в input_urls не ставить. Публичный URL после заливки на сайт писать в reference_url_hosted как {{SITE_BASE}}/wp-content/... Не catbox, не localhost, секреты не писать.",
-  "reference_notes": "На обложках ТОЛЬКО Виктория. Алёну на картинки и в i2i не ставить (в authors-registry она лицо бренда, не реф). Реф даёт лицо и глаза, не костюм. Канон: victoria-face.jpg (крупный портрет), victoria-sheet.png (коллаж ~12 кадров, серый фон, камисоль/джинсы/подвеска-дерево на листе не копировать), victoria-character-sheet-2k.png (лист 8 кадров CLOSE-UP / 3/4 / PROFILE / BACK). Глаза в промтах: зелёные + слегка светло-карие, даже если фото кто-то прочитает как карие. В этом Cloud-прогоне бинарники вложения не попали на диск. Не выдумывать reference_url_hosted.",
+  "input_urls_note": "Канон лица — только эти два листа Виктории. Алёну в input_urls не ставить. Kie: prefer_local_reference + File Upload. Публичный URL после заливки — {{SITE_BASE}}/wp-content/... Не catbox, не localhost, секреты не писать.",
+  "reference_notes": "На обложках ТОЛЬКО Виктория. Алёну на картинки и в i2i не ставить. Канон лица: victoria-sheet.png (коллаж ~12 кадров, серый фон) и victoria-character-sheet-2k.png (8 кадров CLOSE-UP / 3/4 / PROFILE / BACK). Реф даёт лицо и глаза, не костюм: камисоль, голубые джинсы, белые кеды, золотую подвеску-дерево не копировать. Глаза в промтах всегда зелёные + слегка светло-карие у зрачка, даже если фото кто-то прочитает как карие. В этом Cloud-прогоне PNG вложений на диск не попали. Не выдумывать reference_url_hosted.",
   "hosts": {
     "victoria": {
       "id": "victoria",
       "name_ru": "Виктория",
       "role": "only_cover_host",
       "when": "всегда на обложке",
-      "reference_image": "memory/cover/assets/victoria-face.jpg",
+      "reference_image": "memory/cover/assets/victoria-character-sheet-2k.png",
       "reference_sheet": "memory/cover/assets/victoria-sheet.png",
       "reference_sheet_2k": "memory/cover/assets/victoria-character-sheet-2k.png",
       "expected_paths": [
-        "memory/cover/assets/victoria-face.jpg",
         "memory/cover/assets/victoria-sheet.png",
         "memory/cover/assets/victoria-character-sheet-2k.png",
-        "images/refs/victoria-face.jpg",
         "images/refs/victoria-sheet.png",
         "images/refs/victoria-character-sheet-2k.png"
       ],
       "identity_lock": {
         "hair": "длинный прямой блонд, тёмные корни, пробор посередине",
-        "eyes": "зелёные со слегка светло-карим вокруг зрачка; не карие, не серые, не голубые",
-        "face": "овал, узнаваемое лицо Виктории с рефа"
+        "eyes": "зелёные + слегка светло-карие у зрачка; держать даже если лист читается как карий; не серые, не голубые, не чисто карие",
+        "face": "узнаваемое лицо Виктории с канон-листов"
       }
     }
   },
@@ -48,15 +45,15 @@
   "visual_lock": {
     "identity": "только Виктория по локальному рефу; Алёну и чужие лица не копировать",
     "face": "личность с рефа; выражение НЕ копировать",
-    "eyes": "зелёные + слегка светло-карие у зрачка; жёсткий маркер двойника; не уезжать в карие/серые/голубые",
+    "eyes": "зелёные + слегка светло-карие у зрачка; жёсткий маркер двойника; даже если реф кажется карим — в промте не карие/серые/голубые",
     "expression": "эмоция КАЖДЫЙ РАЗ новая; не копировать с рефа; не одна эмоция две статьи подряд",
-    "outfit": "одежда КАЖДЫЙ РАЗ новая; не копировать костюм с рефа (ни белый пиджак, ни камисоль, ни голубые джинсы с листа); запрет одного белого худи на все кадры; не один наряд две статьи подряд",
+    "outfit": "одежда КАЖДЫЙ РАЗ новая; не копировать костюм с листа (камисоль, голубые джинсы, белые кеды, подвеска-дерево); запрет одного белого худи на все кадры; не один наряд две статьи подряд",
     "pose": "живая современная поза под хук; дневной свет; не храм и не «тайная комната»",
     "background": "светлый живой кадр, воздух, простой быт; фон панели #FFFFFF",
-    "do_not_lock_from_ref": ["outfit", "expression", "costume", "mood", "tarot_cards_in_hand", "white_blazer", "camisole", "blue_jeans", "gold_tree_pendant"]
+    "do_not_lock_from_ref": ["outfit", "expression", "costume", "mood", "tarot_cards_in_hand", "white_blazer", "camisole", "blue_jeans", "white_sneakers", "gold_tree_pendant"]
   },
-  "outfit_rule": "Одежда и эмоция КАЖДЫЙ РАЗ новые. Реф даёт лицо и глаза, не костюм. Не копировать белый пиджак, камисоль, голубые джинсы, золотую подвеску-дерево и карты в руках с рефа. Не одно белое худи на все кадры. Не одна одежда и не одна эмоция две статьи подряд.",
-  "prompt_fragment": "Victoria face LARGE left from i2i ref (identity only); GREEN eyes with slight light-brown near pupil, not brown/gray/blue; new outfit + new emotion this article; tiny topic metaphor right; Cyrillic hook 2–6 words; daylight #FFF",
+  "outfit_rule": "Одежда и эмоция КАЖДЫЙ РАЗ новые. Реф даёт лицо и глаза, не костюм. Не копировать камисоль, голубые джинсы, белые кеды, золотую подвеску-дерево с листа. Не одно белое худи на все кадры. Не одна одежда и не одна эмоция две статьи подряд.",
+  "prompt_fragment": "Victoria face LARGE left from i2i sheet (identity only); GREEN eyes with slight light-brown near pupil EVEN IF the photo reads brown, not brown/gray/blue; new outfit + new emotion this article, do not copy camisole/jeans/tree pendant; tiny topic metaphor right; Cyrillic hook 2–6 words; daylight #FFF",
   "cover_hook_rules": [
     "На обложке один хук 2–6 простых русских слов (образец ритма: «Пауза или конец?»).",
     "meme_caption_ru всегда пуст",
@@ -75,6 +72,6 @@
     "dzen_upload": "файл с диска; никогда localhost / 127.0.0.1"
   },
   "reference_url_hosted": "",
-  "reference_url_source": "local:memory/cover/assets/victoria-face.jpg",
+  "reference_url_source": "local:memory/cover/assets/victoria-character-sheet-2k.png",
   "reference_url_updated_at": null
 }

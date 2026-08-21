@@ -49,7 +49,6 @@
 
 `input_urls`:
 
-- `memory/cover/assets/victoria-face.jpg`
 - `memory/cover/assets/victoria-sheet.png` (коллаж ~12 кадров)
 - `memory/cover/assets/victoria-character-sheet-2k.png` (лист 8 кадров CLOSE-UP / 3/4 / PROFILE / BACK)
 

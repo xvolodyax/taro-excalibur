@@ -49,7 +49,7 @@
 - **на обложках только Виктория.** Алёна может быть в тексте как лицо бренда; на картинки и в i2i не ставить.
 - **глаза (жёсткий маркер):** зелёные + слегка светло-карие у зрачка; не карие, не серые, не голубые.
 - **reference / lock:** `memory/cover/blog-hero.json` + `memory/cover/assets/`
-- **input_urls / локальные файлы:** `memory/cover/assets/victoria-face.jpg`, `victoria-sheet.png` (коллаж ~12 кадров), `victoria-character-sheet-2k.png` (лист 8 кадров). Копии можно держать в `images/refs/`. Алёну в `input_urls` не ставить. Публичный URL после заливки — только `{{SITE_BASE}}/wp-content/...` в `reference_url_hosted`. Не catbox, не localhost, секреты не писать.
+- **input_urls / канон лица:** только `memory/cover/assets/victoria-sheet.png` и `victoria-character-sheet-2k.png`. Алёну в `input_urls` не ставить. Публичный URL после заливки — только `{{SITE_BASE}}/wp-content/...` в `reference_url_hosted`. Не catbox, не localhost, секреты не писать.
 - **style:** `memory/cover/cover-design-code.json` + `memory/cover/quad-style-taro-seichas.json`
 - **генерация:** Kie.ai GPT Image 2; одна billed-генерация; **2K**, холст **2×2**, резка: обложка + 2–3 inline. **1K** только если кадр один и не режется.
 - **обложка:** лицо и глаза по рефу + хук 2–6 слов (образец ритма «Пауза или конец?»). Одежда и эмоция **каждый раз новые** — реф не костюм (не копировать белый пиджак, камисоль, голубые джинсы, золотую подвеску-дерево, карты в руках).

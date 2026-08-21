@@ -26,9 +26,12 @@ class SetupVisualTaroTests(unittest.TestCase):
         self.assertEqual(hero.get("reference_url_hosted"), "")
         self.assertEqual(
             hero.get("reference_url_source"),
-            "local:memory/cover/assets/victoria-face.jpg",
+            "local:memory/cover/assets/victoria-character-sheet-2k.png",
         )
-        self.assertEqual(hero.get("reference_image"), "memory/cover/assets/victoria-face.jpg")
+        self.assertEqual(
+            hero.get("reference_image"),
+            "memory/cover/assets/victoria-character-sheet-2k.png",
+        )
         self.assertEqual(hero.get("reference_sheet"), "memory/cover/assets/victoria-sheet.png")
         self.assertEqual(
             hero.get("reference_sheet_2k"),
@@ -37,7 +40,6 @@ class SetupVisualTaroTests(unittest.TestCase):
         self.assertEqual(
             hero.get("input_urls"),
             [
-                "memory/cover/assets/victoria-face.jpg",
                 "memory/cover/assets/victoria-sheet.png",
                 "memory/cover/assets/victoria-character-sheet-2k.png",
             ],
@@ -66,7 +68,10 @@ class SetupVisualTaroTests(unittest.TestCase):
         self.assertFalse(style.get("allows_animal_stickers"))
         self.assertFalse(style.get("skip_human_host"))
         self.assertEqual(style.get("cover_hero_mode"), "host")
-        self.assertEqual(style.get("local_reference"), "memory/cover/assets/victoria-face.jpg")
+        self.assertEqual(
+            style.get("local_reference"),
+            "memory/cover/assets/victoria-character-sheet-2k.png",
+        )
         self.assertTrue(style.get("prefer_local_reference"))
         self.assertIn("GREEN", style.get("global_prompt_prefix", ""))
         self.assertIn("no Alena", style.get("global_prompt_prefix", ""))
@@ -119,10 +124,8 @@ class SetupVisualTaroTests(unittest.TestCase):
             text = (ROOT / rel).read_text(encoding="utf-8")
             self.assertNotIn("alena-face", text, rel)
             self.assertNotIn("victoria-waist", text, rel)
-            self.assertIn("victoria-face.jpg", text, rel)
             self.assertIn("victoria-sheet.png", text, rel)
-            if rel.endswith("NEED_UPLOAD.md") or "assets/README.md" in rel or rel.endswith("site-brief.md") or rel.endswith("notes.md") or rel.endswith("answers.md") or rel.endswith("images/refs/README.md"):
-                self.assertIn("victoria-character-sheet-2k.png", text, rel)
+            self.assertIn("victoria-character-sheet-2k.png", text, rel)
 
     def test_manifest_reads_tenant_style(self) -> None:
         import sys
@@ -183,6 +186,7 @@ class SetupVisualTaroTests(unittest.TestCase):
         self.assertIn("NO people/faces", prompt)
         self.assertIn("GREEN", prompt)
         self.assertIn("light-brown", prompt)
+        self.assertIn("EVEN IF", prompt)
         self.assertIn("Victoria", prompt)
         self.assertIn("no Alena", prompt)
         self.assertIn("new outfit", prompt.lower())
@@ -204,13 +208,13 @@ class SetupVisualTaroTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            face = root / "memory/cover/assets/victoria-face.jpg"
-            face.parent.mkdir(parents=True)
-            face.write_bytes(b"fake-jpg")
+            sheet = root / "memory/cover/assets/victoria-character-sheet-2k.png"
+            sheet.parent.mkdir(parents=True)
+            sheet.write_bytes(b"fake-png")
             url, prefer_local, local_rel = resolve_cover_reference(hero, style, root)
             self.assertTrue(prefer_local)
-            self.assertEqual(local_rel, "memory/cover/assets/victoria-face.jpg")
-            self.assertIn("victoria-face.jpg", url)
+            self.assertEqual(local_rel, "memory/cover/assets/victoria-character-sheet-2k.png")
+            self.assertIn("victoria-character-sheet-2k.png", url)
             self.assertIn("{{SITE_BASE}}", url)
 
 
