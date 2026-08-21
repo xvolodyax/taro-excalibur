@@ -110,7 +110,7 @@ def default_manifest(article_dir: Path, canvas_rel: str) -> dict[str, Any]:
         "topic_id": topic_id,
         "canvas_file": canvas_rel,
         "layout": "2x2",
-        "style_preset": "tenant_unset",
+        "style_preset": "taro-seichas",
         "cover_hook": "",
         "cover_hook_highlight": "",
         "slots": slots,
