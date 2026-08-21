@@ -1,19 +1,21 @@
 {
-  "status": "BLOCKER",
-  "reason": "KIE_API_KEY missing in this environment",
-  "images": "none",
-  "drew_face": false,
+  "status": "PASS",
+  "reason": "ONE Kie GPT Image 2 i2i job via prefer_local_reference + File Upload of memory/cover/assets/виктория.png; split+inject PASS. Preview only, no publish.",
+  "images": [
+    "cover/canvas-quad.png",
+    "cover/cover.png",
+    "cover/inline-01.png",
+    "cover/inline-02.png",
+    "cover/inline-03.png"
+  ],
+  "drew_face": true,
+  "host": "victoria",
   "used_stock": false,
   "called_publish": false,
   "local_reference": "memory/cover/assets/виктория.png",
-  "ready_for_kie": [
-    "cover/cover-text.json",
-    "cover/quad-manifest.json",
-    "cover/quad-mcp-batch.json",
-    "cover/quad-mcp-prompt.txt"
-  ],
-  "next_when_key_present": [
-    "python3 scripts/excalibur_blog_kie_gpt_image2_api.py --article-dir memory/blog/articles/B01-pauza-ili-konec",
-    "python3 scripts/excalibur_blog_quad_apply.py --article-dir memory/blog/articles/B01-pauza-ili-konec --inject-html"
-  ]
+  "billed_generations": 1,
+  "resolution": "2K",
+  "canvas": "2x2",
+  "task_id": "e52b639d08201559e0397cb9fb6752c6",
+  "cover_hook": "Он взял паузу или ушел"
 }
