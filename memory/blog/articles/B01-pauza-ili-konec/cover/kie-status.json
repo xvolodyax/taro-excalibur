@@ -1,0 +1,19 @@
+{
+  "status": "BLOCKER",
+  "reason": "KIE_API_KEY missing in this environment",
+  "images": "none",
+  "drew_face": false,
+  "used_stock": false,
+  "called_publish": false,
+  "local_reference": "memory/cover/assets/виктория.png",
+  "ready_for_kie": [
+    "cover/cover-text.json",
+    "cover/quad-manifest.json",
+    "cover/quad-mcp-batch.json",
+    "cover/quad-mcp-prompt.txt"
+  ],
+  "next_when_key_present": [
+    "python3 scripts/excalibur_blog_kie_gpt_image2_api.py --article-dir memory/blog/articles/B01-pauza-ili-konec",
+    "python3 scripts/excalibur_blog_quad_apply.py --article-dir memory/blog/articles/B01-pauza-ili-konec --inject-html"
+  ]
+}
