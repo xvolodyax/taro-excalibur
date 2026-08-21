@@ -1,7 +1,7 @@
 {
   "version": "1",
   "complete": true,
-  "updated_at": "2026-08-21T15:10:00Z",
+  "updated_at": "2026-08-21T16:20:00Z",
   "phases": {
     "cloud": "done",
     "site": "done",
@@ -11,9 +11,9 @@
     "cta": "done",
     "scout": "done"
   },
-  "notes": "setup_complete=true: бренд, SOUL, CTA, visual-правила заполнены, не TBD. Voice: NEED_MORE_EXAMPLES (рабочий синтез есть, живых стенограмм в репе нет). Visual: правила READY, рефы лиц в git отсутствуют (NEED_MORE_REFS). Класть: images/refs/victoria-face.jpg, victoria-waist.jpg, alena-face.jpg, alena-waist.jpg и копии в memory/cover/assets/. Связанный taro-content в git картинок не содержит. Секреты Kie/Wordstat не в репе. WP publish выключен. Дзен публикует Холл в браузере, файл с диска. Memories OFF.",
+  "notes": "setup_complete=true: бренд, SOUL, CTA, visual-правила заполнены, не TBD. Voice: NEED_MORE_EXAMPLES (рабочий синтез есть, живых стенограмм в репе нет). Visual: правила READY; рефы лиц только Виктории (Алёна не i2i). Канон путей: memory/cover/assets/victoria-face.jpg + victoria-sheet.png + victoria-character-sheet-2k.png. Глаза: зелёные + слегка светло-карие. Бинарники в git отсутствуют (NEED_MORE_REFS / need_upload). Связанный taro-content картинок не содержит. Секреты Kie/Wordstat не в репе. WP publish выключен. Дзен публикует Холл в браузере, файл с диска. Memories OFF.",
   "gaps": [
-    "face refs not in git",
+    "victoria-face.jpg, victoria-sheet.png, victoria-character-sheet-2k.png not in git",
     "KIE_API_KEY in Cursor Secrets",
     "Wordstat API key in Cursor Secrets (folderId already in tenant-config)",
     "PUBLIC_SITE_URL in Cursor Secrets if WP ever enabled"

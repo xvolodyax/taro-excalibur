@@ -32,6 +32,7 @@ class SetupTenantTests(unittest.TestCase):
         )
         self.assertTrue(tenant.get("dzen_rf_pack"))
         self.assertEqual(tenant.get("cover_mode"), "host_reference")
+        self.assertEqual(tenant.get("cover_hosts_allowed"), ["victoria"])
         self.assertFalse(tenant.get("wordpress_publish"))
         self.assertEqual(tenant.get("wordstat_folder_id"), "b1g0a71ifv910gjalmhp")
         self.assertIn("https://dzen.ru/todaytaro_bot", tenant.get("scout_signal_urls") or [])
@@ -104,6 +105,9 @@ class SetupTenantTests(unittest.TestCase):
         self.assertEqual(registry.get("status"), "READY")
         ids = {a["id"] for a in registry.get("authors") or []}
         self.assertEqual(ids, {"victoria", "alena"})
+        by_id = {a["id"]: a for a in registry.get("authors") or []}
+        self.assertTrue(by_id["victoria"].get("cover_i2i"))
+        self.assertFalse(by_id["alena"].get("cover_i2i"))
         self.assertEqual(registry.get("support", {}).get("handle"), "@OnlineKsenia")
 
     def test_publish_flag_stays_off_in_example(self) -> None:

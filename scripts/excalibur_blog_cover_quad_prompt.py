@@ -298,6 +298,58 @@ def style_is_situational_cat_hero(style: dict) -> bool:
     return motif in {"situational_cat_hero", "cat_hero"}
 
 
+class CoverReferenceError(RuntimeError):
+    """Neither local Victoria ref nor a git-safe hosted URL is available."""
+
+
+def resolve_cover_reference(
+    hero: dict, style: dict, root: Path
+) -> tuple[str, bool, str]:
+    """Return (batch_ref_url, prefer_local_reference, local_relpath)."""
+    local_reference = str(
+        style.get("local_reference") or hero.get("reference_image") or ""
+    ).strip()
+    host_local_ok = False
+    local_path: Path | None = None
+    if local_reference:
+        local_path = Path(local_reference)
+        if not local_path.is_absolute():
+            local_path = root / local_reference
+        host_local_ok = local_path.is_file()
+    cat_hero = style_is_situational_cat_hero(style)
+    if (
+        (cat_hero or str(hero.get("cover_mode") or "") == "host_reference")
+        and host_local_ok
+        and local_path is not None
+    ):
+        batch_ref_url = (
+            f"{SITE_BASE_PLACEHOLDER}/wp-content/uploads/excalibur/"
+            f"{Path(local_reference).name}"
+        )
+        return (
+            batch_ref_url,
+            True,
+            str(local_path.relative_to(root)).replace("\\", "/"),
+        )
+    ref_url = (hero.get("reference_url_hosted") or "").strip()
+    if not ref_url:
+        raise CoverReferenceError(
+            "COVER HERO BLOCKER: reference_url_hosted missing. "
+            "Run excalibur_blog_hero_reference_url.py"
+        )
+    if not validate_reference_url(ref_url):
+        raise CoverReferenceError(
+            "COVER HERO BLOCKER: reference_url_hosted invalid"
+        )
+    batch_ref_url = git_safe_reference_url(ref_url)
+    if REDACTED_LITERAL in batch_ref_url:
+        raise CoverReferenceError(
+            "COVER HERO BLOCKER: cannot derive git-safe reference_url_hosted; "
+            f"set blog-hero.json to {SITE_BASE_PLACEHOLDER}/wp-content/.../ava.jpg"
+        )
+    return batch_ref_url, False, ""
+
+
 def build_prompt(
     manifest: dict,
     style: dict,
@@ -488,42 +540,13 @@ def main() -> int:
     design_code_path = root / style.get("design_code", "memory/cover/cover-design-code.json")
     design_code = load_json(design_code_path) if design_code_path.is_file() else {}
 
-    cat_hero = style_is_situational_cat_hero(style)
-    local_reference = str(style.get("local_reference") or "").strip()
-    prefer_local_reference = False
-    if cat_hero and local_reference:
-        local_path = root / local_reference
-        if not local_path.is_file():
-            print(
-                f"❌ COVER STYLE BLOCKER: local_reference missing: {local_reference}",
-                file=sys.stderr,
-            )
-            return 1
-        # Git-safe placeholder; Kie uploads local_reference before createTask.
-        batch_ref_url = (
-            f"{SITE_BASE_PLACEHOLDER}/wp-content/uploads/excalibur/"
-            f"{Path(local_reference).name}"
+    try:
+        batch_ref_url, prefer_local_reference, local_reference = resolve_cover_reference(
+            hero, style, root
         )
-        prefer_local_reference = True
-    else:
-        ref_url = (hero.get("reference_url_hosted") or "").strip()
-        if not ref_url:
-            print(
-                "❌ COVER HERO BLOCKER: reference_url_hosted missing. Run excalibur_blog_hero_reference_url.py",
-                file=sys.stderr,
-            )
-            return 1
-        if not validate_reference_url(ref_url):
-            return 1
-        # Committed batch always uses {{SITE_BASE}}; Kie API expands at runtime.
-        batch_ref_url = git_safe_reference_url(ref_url)
-        if REDACTED_LITERAL in batch_ref_url:
-            print(
-                "❌ COVER HERO BLOCKER: cannot derive git-safe reference_url_hosted; "
-                f"set blog-hero.json to {SITE_BASE_PLACEHOLDER}/wp-content/.../ava.jpg",
-                file=sys.stderr,
-            )
-            return 1
+    except CoverReferenceError as exc:
+        print(f"❌ {exc}", file=sys.stderr)
+        return 1
 
     warn_long_scene_hints(manifest)
     prompt = build_prompt(

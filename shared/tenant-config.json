@@ -28,6 +28,7 @@
   ],
   "cover_mode": "host_reference",
   "cover_host_default": "victoria",
+  "cover_hosts_allowed": ["victoria"],
   "dzen_rf_pack": true,
   "dzen_channel": "https://dzen.ru/todaytaro_bot",
   "dzen_studio": "todaytaro_bot",

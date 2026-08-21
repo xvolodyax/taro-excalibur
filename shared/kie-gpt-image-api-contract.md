@@ -174,7 +174,7 @@ Script auto-path (default on; disable with `--no-file-upload-fallback`):
 ```text
 createTask → poll recordInfo
   → state=fail + failCode=400 / «image fetch failed»
-  → download expanded input_urls (if shell can) OR use memory/cover/assets/blog-hero-reference.png
+  → download expanded input_urls (if shell can) OR use memory/cover/assets/victoria-face.jpg
   → POST kieai.redpandaai.co/api/file-stream-upload (uploadPath=excalibur-blog/hero)
      **with User-Agent** (script default `ExcaliburBlogKieFallback/1.0`; missing UA → CF1010)
   → replace runtime input_urls with data.downloadUrl (do NOT rewrite committed batch)

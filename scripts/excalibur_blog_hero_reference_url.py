@@ -93,7 +93,7 @@ def upload_0x0(image_path: Path) -> str:
 
 
 def resolve_reference_path(root: Path, hero: dict) -> Path:
-    rel = hero.get("reference_image") or "memory/cover/assets/blog-hero-reference.png"
+    rel = hero.get("reference_image") or "memory/cover/assets/victoria-face.jpg"
     path = Path(rel)
     if not path.is_absolute():
         path = root / path

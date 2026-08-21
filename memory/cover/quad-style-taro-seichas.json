@@ -9,17 +9,17 @@
   "skip_human_host": false,
   "allows_animal_stickers": false,
   "allowed_animal_motif": "",
-  "local_reference": "",
-  "prefer_local_reference": false,
+  "local_reference": "memory/cover/assets/victoria-face.jpg",
+  "prefer_local_reference": true,
   "provider": "kie.ai",
   "model": "gpt-image-2",
   "resolution": "2K",
   "canvas": "2x2",
   "resolution_1k_only_if": "кадр один и не режется",
-  "global_prompt_prefix": "Bright daylight RU editorial, WHITE #FFFFFF, dark ink #1A1414, warm burgundy/terracotta #8B3A3A on one word only. Cover: host face LARGE left from i2i (identity only), new outfit + new emotion, tiny topic metaphor, Cyrillic hook 2–6 words. Inline: schema/question, no people. No gothic, no candles, no tape collage, no meme stickers, no white-hoodie lock, no cat hero.",
-  "cover_scene_tail": "host+face LARGE left; new outfit + new emotion; tiny topic prop right; daylight #FFF; no hoodie lock, no gothic, no candles.",
+  "global_prompt_prefix": "Bright daylight RU editorial, WHITE #FFFFFF, dark ink #1A1414, warm burgundy/terracotta #8B3A3A on one word only. Cover: Victoria face LARGE left from i2i (identity only), GREEN eyes with slight light-brown near pupil not brown/gray/blue, new outfit + new emotion, tiny topic metaphor, Cyrillic hook 2–6 words. Inline: schema/question, no people. No second woman, no Alena, no gothic, no candles, no tape collage, no meme stickers, no white-hoodie lock, no cat hero.",
+  "cover_scene_tail": "Victoria face LARGE left; green+light-brown eyes; new outfit + new emotion; tiny topic prop right; daylight #FFF; no hoodie lock, no gothic, no candles.",
   "inline_prompt_suffix": "Inline all: meaning/schema/question on WHITE; dark ink; warm accent markers; 3–6 Cyrillic labels; NO people/faces/host/memes/tape-collage/cats. Neg: empty gray boxes, gothic, candles, watermark, 9:16.",
   "ban_line": "Ban: white-hoodie lock / meme stickers / tape-torn-paper collage / word «лох» / dark table / candles / gothic / skulls / smoke / pentagrams / cat hero or cat stickers / neon-pink collage / black velvet / Drake / facepalm / pipeline stamps / EXCALIBUR badge / keyword spam / «Ключевые темы» / Latin lookalike Cyrillic.",
   "global_negative": "white hoodie lock, meme cutouts, tape collage, cat stickers, лох, candles, gothic, neon pink, pipeline watermark",
-  "assets_note": "Рефов лица в git нет. Не ставить local_reference на чужой CDN. После загрузки: images/refs + memory/cover/assets/."
+  "assets_note": "i2i только Виктория: memory/cover/assets/victoria-face.jpg, victoria-sheet.png, victoria-character-sheet-2k.png. Алёну не класть. Kie берёт локальный файл через prefer_local_reference / File Upload. Публичный URL не выдумывать."
 }
