@@ -181,11 +181,12 @@ def _load_font(size: int):
 
 
 def _region_luma(image, box: tuple[int, int, int, int]) -> float:
-    crop = image.crop(box).convert("RGB")
-    pixels = list(crop.getdata())
-    if not pixels:
+    from PIL import ImageStat
+
+    crop = image.crop(box).convert("L")
+    if crop.size[0] == 0 or crop.size[1] == 0:
         return 255.0
-    return sum((0.2126 * r + 0.7152 * g + 0.0722 * b) for r, g, b in pixels) / len(pixels)
+    return float(ImageStat.Stat(crop).mean[0])
 
 
 def stamp_credit_on_image(path: Path, text: str) -> dict[str, Any]:

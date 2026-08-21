@@ -107,11 +107,12 @@ class HostCreditStampTests(unittest.TestCase):
             self.assertTrue(result["no_banner"])
             after = path.read_bytes()
             self.assertNotEqual(before, after)
-            img = Image.open(path).convert("RGB")
+            from PIL import ImageStat
+
+            img = Image.open(path).convert("L")
             # Credit sits bottom-left; that corner must no longer be pure white.
-            region = list(img.crop((20, 620, 520, 668)).getdata())
-            dark = sum(1 for r, g, b in region if r < 80 and g < 80 and b < 80)
-            self.assertGreater(dark, 30)
+            mean = ImageStat.Stat(img.crop((20, 620, 520, 668))).mean[0]
+            self.assertLess(mean, 250)
 
     def test_apply_skips_alena_file(self) -> None:
         from PIL import Image
