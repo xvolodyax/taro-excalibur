@@ -121,6 +121,23 @@ class SetupTenantTests(unittest.TestCase):
         tenant = json.loads((ROOT / "shared/tenant-config.json").read_text(encoding="utf-8"))
         self.assertEqual(rf.get("cta_ok"), tenant.get("cta_links"))
 
+    def test_topic_focus_is_taro_not_cursor(self) -> None:
+        import sys
+
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from excalibur_blog_topic_focus import focus_check
+
+        pause = focus_check("Пауза или конец?")
+        self.assertEqual(pause["status"], "PASS", pause)
+        feels = focus_check("Что он чувствует когда молчит")
+        self.assertEqual(feels["status"], "PASS", feels)
+        cursor = focus_check("Cursor Cloud Agents automations MCP")
+        self.assertEqual(cursor["status"], "BLOCK", cursor)
+        thoughts = focus_check("Таро прочитать мысли парня")
+        self.assertEqual(thoughts["status"], "BLOCK", thoughts)
+        insta = focus_check("Таро и Instagram сторис")
+        self.assertEqual(insta["status"], "BLOCK", insta)
+
 
 if __name__ == "__main__":
     unittest.main()
