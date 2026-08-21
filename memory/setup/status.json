@@ -1,15 +1,15 @@
 {
   "version": "1",
   "complete": false,
-  "updated_at": null,
+  "updated_at": "2026-08-21T14:40:00Z",
   "phases": {
-    "cloud": "pending",
-    "site": "pending",
-    "author": "pending",
-    "voice": "pending",
+    "cloud": "done",
+    "site": "done",
+    "author": "done",
+    "voice": "done",
     "visual": "pending",
-    "cta": "pending",
-    "scout": "pending"
+    "cta": "done",
+    "scout": "done"
   },
-  "notes": "excalibur-blog-setup stamps phases to done and sets complete=true when all required phases pass."
+  "notes": "Visual rules заполнены (blog-hero, design-code, quad-style-taro-seichas, inline-types). Рефы лиц в git нет → NEED_MORE_REFS, visual не PASS. Секреты Kie/Wordstat не в репе. WP publish выключен. Дзен публикует Холл в браузере."
 }

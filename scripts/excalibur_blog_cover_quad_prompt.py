@@ -317,12 +317,18 @@ def build_prompt(
     cat_ok = style_allows_cat_stickers(style)
     cat_hero = style_is_situational_cat_hero(style)
 
+    palette = design_code.get("color_palette") or {}
+    accent_hex = str(
+        style.get("accent_primary")
+        or palette.get("accent_primary")
+        or "#8B3A3A"
+    ).strip() or "#8B3A3A"
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
     highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
+        f'paint ONLY the highlight word "{highlight}" in warm accent {accent_hex}; '
         f'hook text must match exactly — do not substitute «время»/traffic markers'
         if highlight
-        else "paint at most ONE punch word in hot-pink #FF1493"
+        else f"paint at most ONE punch word in warm accent {accent_hex}"
     )
     cover_scene = sanitize_cover_scene_hint(
         str(cover.get("scene_hint") or ""), highlight
@@ -330,11 +336,11 @@ def build_prompt(
     cover_hook_text = compact(manifest.get("cover_hook", ""), 120)
     cover_sticky = compact(str(cover.get("sticky") or ""), 48)
     sticky_lock = (
-        f" Small pink sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+        f" Small warm-accent note with EXACTLY «{cover_sticky}» in Cyrillic."
         if cover_sticky
         else ""
     )
-    # Prefer style preset locks when present (cat digital collage vs editorial).
+    # Prefer style preset locks when present (tenant design-code vs fallback).
     style_prefix = compact(
         style.get("global_prompt_prefix")
         or design_code.get("cover_panel_prompt_block")
@@ -343,11 +349,18 @@ def build_prompt(
     )
     if not style_prefix:
         style_prefix = (
-            "Dense collage RU editorial, WHITE #FFFFFF, BLACK #141821 Cyrillic ink, "
-            "hot-pink #FF1493 one accent only. Every panel: torn paper, tape, "
-            "≥2 topic stickers, sticky, ≥1 educational UI card (labels from scene_hint). "
-            "Busy collage, not sterile."
+            "RU editorial, WHITE #FFFFFF, dark ink, warm accent from design-code. "
+            "Cover: host face + short Cyrillic hook. Inline: schema/question, no people. "
+            "No tape collage, no meme stickers, no white-hoodie lock."
         )
+    tenant_ban = compact(style.get("ban_line") or "", 400)
+    tenant_tail = compact(style.get("cover_scene_tail") or "", 220)
+    tenant_inline = compact(
+        style.get("inline_prompt_suffix")
+        or design_code.get("inline_information_block")
+        or "",
+        400,
+    )
     if cat_hero:
         ban_line = (
             "Ban: ANY human face/host/bearded man/glasses portrait/white-hoodie person/"
@@ -404,11 +417,17 @@ def build_prompt(
             "expressive editorial pose; no headphones; no meme reaction."
         )
         inline_suffix = (
-            "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
-            "NO people/faces/host/meme/EXCALIBUR badge; no cover-hook duplicate. "
-            "Neg: sterile white, all-pink headline, keyword spam, watermark, logo, 9:16, "
+            "Inline all: meaning/schema/question — dark heading, 3–6 Cyrillic labels; "
+            "NO people/faces/host/meme/tape-collage/EXCALIBUR badge; no cover-hook duplicate. "
+            "Neg: sterile gray boxes, all-accent headline, keyword spam, watermark, logo, 9:16, "
             "unreadable text, extra faces."
         )
+    if tenant_ban:
+        ban_line = tenant_ban
+    if tenant_tail:
+        cover_scene_tail = tenant_tail
+    if tenant_inline:
+        inline_suffix = tenant_inline
     lines = [
         # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
         # badge on every panel (INC-20260723-1223 / user correction).
@@ -461,7 +480,7 @@ def main() -> int:
         root
         / manifest.get(
             "style_file",
-            "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
+            "memory/cover/quad-style-taro-seichas.json",
         )
     )
     types_path = root / manifest.get("inline_types_catalog", "memory/cover/inline-visual-types.json")
