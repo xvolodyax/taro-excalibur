@@ -29,6 +29,13 @@ class HostCreditCanonTests(unittest.TestCase):
     def test_living_canon_files_hold_exact_string(self) -> None:
         hero, design = load_credit_canon(ROOT)
         self.assertEqual(hero["credit_overlay"]["text"], CANON_VICTORIA_CREDIT)
+        self.assertEqual(
+            CANON_VICTORIA_CREDIT, "Виктория - таролог команды «ТАРО СЕЙЧАС»"
+        )
+        self.assertFalse(CANON_VICTORIA_CREDIT.startswith('"'))
+        self.assertFalse(CANON_VICTORIA_CREDIT.startswith("«"))
+        self.assertTrue(CANON_VICTORIA_CREDIT.endswith("«ТАРО СЕЙЧАС»"))
+        self.assertNotIn('"', CANON_VICTORIA_CREDIT)
         self.assertTrue(hero["credit_overlay"]["never_ask_image_model"])
         self.assertIn("Алёна", hero["credit_overlay"]["never_apply_when_name_matches"])
         self.assertNotIn("http", hero["credit_overlay"]["text"])
