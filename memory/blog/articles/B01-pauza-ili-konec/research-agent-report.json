@@ -1,0 +1,40 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B01",
+  "title": "Пауза или конец?",
+  "status": "PASS",
+  "verdict": "PASS",
+  "research_date": "2026-08-21",
+  "notes": "memory/blog/articles/B01-pauza-ili-konec/research-notes.md",
+  "fresh_signal": {
+    "kind": "news",
+    "title": "Пауза в отношениях: почему партнер просит время и как не потерять себя",
+    "url": "https://www.womanhit.ru/psychology/95841-2026-08-16-pauza-votnosheniyah-pochemu-partner-prosit-vremya-ikak-nepoteryat-sebya/",
+    "published": "2026-08-16",
+    "accessed_at": "2026-08-21",
+    "why_this_week": "Психологический разбор паузы vs мягкого ухода опубликован 16.08.2026; сегодня 21.08.2026. Дополнительно лента канала todaytaro_bot на дату доступа показывает посты 3–4 дня назад (закрытый кластер «он не пишет / дата рождения»), а чужие таро-Дзен 07–10.08 всё ещё крутят заголовок «пауза или конец»."
+  },
+  "supporting_fresh_channel": {
+    "kind": "channel",
+    "url": "https://dzen.ru/todaytaro_bot",
+    "accessed_at": "2026-08-21",
+    "note": "Свежие карточки канала этой недели подтверждают живой кластер, но темы «он не пишет» и «дата рождения» не жевать как B01."
+  },
+  "wordstat": "PARTIAL",
+  "wordstat_note": "MCP wordstat_get_top_requests недоступен; impressions не выдумывались. Сверка 4 фраз по публичному SERP 2026-08-21: родитель «пауза в отношениях» / «пауза или конец» плотнее синонима «вернётся ли он» и углов «написать первой» / «смотрит истории».",
+  "overlap": {
+    "source": "published-titles-only.md",
+    "published_titles_count": 0,
+    "conflict": false
+  },
+  "signal_urls_checked": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.таросейчас.рф/",
+    "https://omnivatic.com/2026/07/09/gadanie-na-otnosheniya-kak-ponyat-konets-svyazi-ili-pauza/",
+    "https://style.rbc.ru/health/69fdcf419a7947b3ab53c5eb",
+    "https://elarus.ru/blog/rasklad-konets-ili-pauza-v-otnosheniyakh-taro/"
+  ],
+  "invented_facts": false,
+  "blockers": [],
+  "incident_report": "none"
+}

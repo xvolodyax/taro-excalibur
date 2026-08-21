@@ -202,8 +202,14 @@ def require_success(response: dict[str, Any], action: str) -> None:
     raise KieApiError(f"Kie API {action} failed: code={response.get('code')} msg={msg}")
 
 
-def expand_input_urls(input_urls: list[Any]) -> list[str]:
-    """Expand {{SITE_BASE}} in batch input_urls for the live Kie API call."""
+def expand_input_urls(
+    input_urls: list[Any], *, allow_unexpanded_site_base: bool = False
+) -> list[str]:
+    """Expand {{SITE_BASE}} in batch input_urls for the live Kie API call.
+
+    When prefer_local_reference will replace input_urls via File Upload,
+    git-safe placeholders may stay until that upload (WP/PUBLIC_SITE_URL optional).
+    """
     live = resolve_public_base_from_env()
     out: list[str] = []
     for raw in input_urls:
@@ -212,12 +218,28 @@ def expand_input_urls(input_urls: list[Any]) -> list[str]:
             continue
         if SITE_BASE_PLACEHOLDER in url:
             if not live:
+                if allow_unexpanded_site_base:
+                    out.append(url)
+                    continue
                 raise KieApiError(
                     f"batch input_urls contain {SITE_BASE_PLACEHOLDER} but PUBLIC_SITE_URL/WP_SITE_URL is unset"
                 )
             url = expand_site_base(url, live)
         out.append(url)
     return out
+
+
+def assert_input_urls_ready_for_create(input_urls: list[Any]) -> None:
+    """createTask must not see git-safe {{SITE_BASE}} placeholders."""
+    leftover = [str(u) for u in input_urls if SITE_BASE_PLACEHOLDER in str(u)]
+    if leftover:
+        raise KieApiError(
+            f"input_urls still contain {SITE_BASE_PLACEHOLDER} after prefer_local_reference; "
+            "File Upload must replace them before createTask"
+        )
+    ready = [str(u).strip() for u in input_urls if str(u).strip()]
+    if not ready or not all(u.startswith("https://") for u in ready):
+        raise KieApiError("createTask input_urls must be non-empty https URLs")
 
 
 def batch_mcp_args(batch_path: Path) -> dict[str, Any]:
@@ -238,7 +260,10 @@ def batch_mcp_args(batch_path: Path) -> dict[str, Any]:
         raise KieApiError("Missing prompt in jobs[0].mcp_args")
     if not isinstance(input_urls, list) or not input_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args")
-    expanded_urls = expand_input_urls(input_urls)
+    prefer_local = bool(batch.get("prefer_local_reference"))
+    expanded_urls = expand_input_urls(
+        input_urls, allow_unexpanded_site_base=prefer_local
+    )
     if not expanded_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args after expand")
     return {
@@ -703,6 +728,7 @@ def main() -> int:
             upload_url=args.file_upload_url,
             upload_path=args.file_upload_path,
         )
+        assert_input_urls_ready_for_create(image_input.get("input_urls") or [])
 
         task_id = args.task_id.strip()
         create_response: dict[str, Any] | None = None
