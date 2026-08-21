@@ -1,16 +1,54 @@
 {
   "version": "1.0",
-  "setup_complete": false,
-  "brand_name": "",
+  "setup_complete": true,
+  "brand_name": "ТАРО СЕЙЧАС",
   "language": "ru",
-  "niche": "",
-  "content_goals": [],
-  "author_id": "",
-  "cta_required": false,
-  "cta_links": [],
-  "cover_mode": "unset",
+  "address_form": "ty",
+  "grammatical_gender": "feminine",
+  "niche": "таро для женщин 20–50; около 78% тем про отношения; доступ к голове человека, которого нельзя спросить",
+  "content_goals": [
+    "статьи в Дзен (канал todaytaro_bot)",
+    "крючок «пауза или конец» и соседние живые запросы Wordstat",
+    "CTA только бот в Макс и приложение ВК / аудиоразбор"
+  ],
+  "author_id": "victoria",
+  "cta_required": true,
+  "cta_links": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776"
+  ],
+  "cta_anchors": {
+    "https://max.ru/id531102974575_bot": ["бот в Макс"],
+    "https://vk.com/app54565776": ["приложение во ВКонтакте", "аудиоразбор"]
+  },
+  "cta_forbidden": [
+    "telegram",
+    "t.me",
+    "https://max.ru/id531102974575_biz"
+  ],
+  "cover_mode": "host_reference",
+  "cover_host_default": "victoria",
+  "cover_hosts_allowed": ["victoria"],
   "dzen_rf_pack": true,
-  "scout_signal_urls": [],
+  "dzen_channel": "https://dzen.ru/todaytaro_bot",
+  "dzen_studio": "todaytaro_bot",
+  "wordpress_publish": false,
+  "scout_signal_urls": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.таросейчас.рф/"
+  ],
+  "scout_live_angles": [
+    "пауза",
+    "что он чувствует",
+    "вернётся ли",
+    "написать первой",
+    "смотрит истории"
+  ],
+  "scout_avoid_chewing": [
+    "он не пишет",
+    "дата рождения"
+  ],
+  "wordstat_folder_id": "b1g0a71ifv910gjalmhp",
   "interlink_old_articles": false,
   "style_files": {
     "soul": "shared/SOUL.md",
@@ -20,7 +58,7 @@
   "cover_files": {
     "hero": "memory/cover/blog-hero.json",
     "design_code": "memory/cover/cover-design-code.json",
-    "style_preset": ""
+    "style_preset": "memory/cover/quad-style-taro-seichas.json"
   },
-  "comment": "Filled by excalibur-blog-setup. Pipeline agents read this file. Do not put secrets here."
+  "comment": "Filled by excalibur-blog-setup. Pipeline agents read this file. Do not put secrets here. wordstat_folder_id is a Yandex Cloud catalog id, not an API key. KIE_API_KEY and Wordstat API key stay in Cursor Secrets."
 }

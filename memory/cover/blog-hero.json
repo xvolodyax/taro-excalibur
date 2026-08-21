@@ -1,18 +1,71 @@
 {
-  "hero_id": "blog-host",
-  "status": "SETUP_REQUIRED",
-  "name_ru": "",
-  "cover_mode": "unset",
-  "reference_image": "",
-  "reference_notes": "Filled by excalibur-blog-setup-visual. No default personal face or outfit lock.",
-  "visual_lock": {},
-  "outfit_rule": "",
-  "prompt_fragment": "",
-  "cover_hook_rules": [
-    "cover_hook invents Cover agent from reader_pain; no script templates",
-    "meme_caption_ru always empty unless tenant explicitly allows"
+  "hero_id": "victoria",
+  "status": "READY",
+  "name_ru": "Виктория",
+  "cover_mode": "host_reference",
+  "default_host_id": "victoria",
+  "cover_host_default": "victoria",
+  "cover_hosts_allowed": ["victoria"],
+  "assets_status": "present",
+  "reference_image": "memory/cover/assets/виктория.png",
+  "reference_sheet": "memory/cover/assets/виктория.png",
+  "input_urls": [
+    "memory/cover/assets/виктория.png"
   ],
+  "input_urls_note": "Канон лица — локальный лист Виктории в git. Алёну в input_urls не ставить. Kie: prefer_local_reference + File Upload. Публичный URL после заливки — {{SITE_BASE}}/wp-content/... Не catbox, не localhost, секреты не писать.",
+  "reference_notes": "На обложках ТОЛЬКО Виктория. Алёну на картинки и в i2i не ставить. Канон лица в git: memory/cover/assets/виктория.png (студийный лист, много кадров). Реф даёт лицо и глаза, не костюм: камисоль, голубые джинсы, белые кеды, золотую подвеску-дерево не копировать. Глаза в промтах всегда зелёные + слегка светло-карие у зрачка, даже если фото кто-то прочитает как карие. Не выдумывать reference_url_hosted.",
+  "hosts": {
+    "victoria": {
+      "id": "victoria",
+      "name_ru": "Виктория",
+      "role": "only_cover_host",
+      "when": "всегда на обложке",
+      "reference_image": "memory/cover/assets/виктория.png",
+      "reference_sheet": "memory/cover/assets/виктория.png",
+      "expected_paths": [
+        "memory/cover/assets/виктория.png"
+      ],
+      "identity_lock": {
+        "hair": "длинный прямой блонд, тёмные корни, пробор посередине",
+        "eyes": "зелёные + слегка светло-карие у зрачка; держать даже если лист читается как карий; не серые, не голубые, не чисто карие",
+        "face": "узнаваемое лицо Виктории с канон-листа"
+      }
+    }
+  },
+  "host_selection": {
+    "default": "victoria",
+    "alena_if": "never_on_cover"
+  },
+  "visual_lock": {
+    "identity": "только Виктория по локальному рефу; Алёну и чужие лица не копировать",
+    "face": "личность с рефа; выражение НЕ копировать",
+    "eyes": "зелёные + слегка светло-карие у зрачка; жёсткий маркер двойника; даже если реф кажется карим — в промте не карие/серые/голубые",
+    "expression": "эмоция КАЖДЫЙ РАЗ новая; не копировать с рефа; не одна эмоция две статьи подряд",
+    "outfit": "одежда КАЖДЫЙ РАЗ новая; не копировать костюм с листа (камисоль, голубые джинсы, белые кеды, подвеска-дерево); запрет одного белого худи на все кадры; не один наряд две статьи подряд",
+    "pose": "живая современная поза под хук; дневной свет; не храм и не «тайная комната»",
+    "background": "светлый живой кадр, воздух, простой быт; фон панели #FFFFFF",
+    "do_not_lock_from_ref": ["outfit", "expression", "costume", "mood", "tarot_cards_in_hand", "white_blazer", "camisole", "blue_jeans", "white_sneakers", "gold_tree_pendant"]
+  },
+  "outfit_rule": "Одежда и эмоция КАЖДЫЙ РАЗ новые. Реф даёт лицо и глаза, не костюм. Не копировать камисоль, голубые джинсы, белые кеды, золотую подвеску-дерево с листа. Не одно белое худи на все кадры. Не одна одежда и не одна эмоция две статьи подряд.",
+  "prompt_fragment": "Victoria face LARGE left from i2i sheet (identity only); GREEN eyes with slight light-brown near pupil EVEN IF the photo reads brown, not brown/gray/blue; new outfit + new emotion this article, do not copy camisole/jeans/tree pendant; tiny topic metaphor right; Cyrillic hook 2–6 words; daylight #FFF",
+  "cover_hook_rules": [
+    "На обложке один хук 2–6 простых русских слов (образец ритма: «Пауза или конец?»).",
+    "meme_caption_ru всегда пуст",
+    "Без латиницы кроме имён продуктов",
+    "Не слово «лох»",
+    "cover_hook invents Cover-text / Cover из боли читательницы; не копировать образец как шаблон"
+  ],
+  "generation": {
+    "provider": "kie.ai",
+    "model": "gpt-image-2",
+    "billed_generations": 1,
+    "resolution": "2K",
+    "canvas": "2x2",
+    "split": "обложка + 2–3 inline",
+    "resolution_1k_only_if": "кадр один и не режется",
+    "dzen_upload": "файл с диска; никогда localhost / 127.0.0.1"
+  },
   "reference_url_hosted": "",
-  "reference_url_source": "",
-  "reference_url_updated_at": null
+  "reference_url_source": "local:memory/cover/assets/виктория.png",
+  "reference_url_updated_at": "2026-08-21T15:16:00Z"
 }
