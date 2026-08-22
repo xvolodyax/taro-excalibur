@@ -100,3 +100,35 @@ category: prompt
 
 ### Fixer resolution
 - pending
+
+## INC-20260822-1652-cover-gutter-bleed-redo
+status: open
+run_date: 2026-08-22
+role: excalibur-blog-cover
+topic_id: B04
+article_dir: memory/blog/articles/B04-chto-budet-etim-vecherom-v-otnosheniyah
+severity: medium
+category: qa
+
+### What went wrong
+- First B04 canvas: auto split rejected gutter (h offset 58px, crop_loss 0.13). Mechanical 50/50 left a cream jacket/table strip on `inline-02`.
+- Owner-directed full-canvas redo (one billed job) with gutters ON center 1024/576. New canvas still painted cover table below y=576; auto again rejected gutter (h offset 47.5px, crop_loss 0.136). Mechanical cut left ~18px cream bleed on `inline-02`.
+
+### How the agent recovered this run
+- One Kie redo only (task ac3b5a8dc74f0c6d062eef8dbde2c427). No second billed gen.
+- After apply+credit, Pillow filled rows 0–17 of `inline-02` with #FFFFFF. Did not regenerate one panel.
+- Inline-01/03 tops were already white. No faces on inlines.
+
+### Durable fix needed before next run
+- Prompt must keep host/table inside top-left (content must not cross y=576 / x=1024).
+- Split may need a post-cut bleed trim when mechanical fallback leaves a foreign cream band.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `scripts/excalibur_blog_cover_quad_split.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
