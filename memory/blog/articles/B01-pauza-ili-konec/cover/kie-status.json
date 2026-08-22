@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "reason": "ONE Kie GPT Image 2 i2i job via prefer_local_reference + File Upload of memory/cover/assets/виктория.png; split+inject PASS. Preview only, no publish.",
+  "images": [
+    "cover/canvas-quad.png",
+    "cover/cover.png",
+    "cover/inline-01.png",
+    "cover/inline-02.png",
+    "cover/inline-03.png"
+  ],
+  "drew_face": true,
+  "host": "victoria",
+  "used_stock": false,
+  "called_publish": false,
+  "local_reference": "memory/cover/assets/виктория.png",
+  "billed_generations": 1,
+  "resolution": "2K",
+  "canvas": "2x2",
+  "task_id": "e52b639d08201559e0397cb9fb6752c6",
+  "cover_hook": "Он взял паузу или ушел"
+}

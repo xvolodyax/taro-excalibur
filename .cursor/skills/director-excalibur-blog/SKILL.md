@@ -31,6 +31,8 @@ Scout? → research_start → Research → Title → Writer
   (`shared/SOUL.md` + `shared/soul-examples/`)
 - **Description** — тизер карточки Дзена → `description-brief.json`  
   (`shared/dzen-description-rules.md`); ≠ title ≠ opening
+- **CTA** — `shared/cta-funnel.md`: расклад → бот Макс; аудиоразбор
+  «Суть – Тень – Вектор» → приложение ВК/Макс. Не смешивать. В Дзене без Telegram.
 
 ## Preflight
 

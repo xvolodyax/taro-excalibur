@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{SITE_BASE}}/shodyatsya-li-vashi-daty-v-otnosheniyah/",
+  "url": "{{SITE_BASE}}/shodyatsya-li-vashi-daty-v-otnosheniyah/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{SITE_BASE}}/shodyatsya-li-vashi-daty-v-otnosheniyah/"
+  },
+  "headline": "Сходятся ли ваши даты и что это значит для отношений",
+  "description": "Причины противоречий в таблицах совместимости: разбор двух дат рождения помогает увидеть скрытые ритмы союза и точки напряжения в паре.",
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "inLanguage": "ru",
+  "author": {
+    "@type": "Person",
+    "name": "Виктория",
+    "givenName": "Виктория",
+    "jobTitle": "Таролог «ТАРО СЕЙЧАС»",
+    "sameAs": [
+      "https://vk.com/id1113231252"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "{{SITE_BASE}}/#organization",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}/"
+  }
+}

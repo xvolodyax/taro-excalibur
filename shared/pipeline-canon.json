@@ -11,7 +11,8 @@
     "title-brief.json",
     "published-titles-only.md",
     "shared/dzen-content-rules.md",
-    "shared/rf-blocked-entities.json"
+    "shared/rf-blocked-entities.json",
+    "shared/cta-funnel.md"
   ],
   "writer_is_final": false,
   "writer_writes_opening": true,
@@ -38,7 +39,8 @@
     "shared/article-style.md",
     "drafts/writer.html",
     "title-brief.json",
-    "research-notes.md"
+    "research-notes.md",
+    "shared/cta-funnel.md"
   ],
   "sol_forbidden_sources": [
     "memory/blog/articles/*/article.html (neighbors)",

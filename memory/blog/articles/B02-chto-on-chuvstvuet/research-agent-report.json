@@ -1,0 +1,51 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B02",
+  "title": "Что он чувствует?",
+  "status": "PASS",
+  "verdict": "PASS",
+  "research_date": "2026-08-22",
+  "notes": "memory/blog/articles/B02-chto-on-chuvstvuet/research-notes.md",
+  "fresh_signal": {
+    "kind": "channel",
+    "title": "Что он чувствует к вам , какой он вас видит , планы, действия итог !? Таро + Руны с Оксаной",
+    "url": "https://dzen.ru/a/aoU-JP5y4D2u_TUi",
+    "published": "2026-08-19",
+    "accessed_at": "2026-08-22",
+    "why_this_week": "На 22.08.2026 карточка помечена «3 дня назад» = 19.08.2026. Живая чужая лента Дзена на тот же острый запрос утра. Твин того же автора https://dzen.ru/a/aoU4PZebwTA8DfZe тоже «3 дня назад». На полке той же страницы — карточки ~17 часов / 1 день / 5 дней назад в кластере «какой я для него / любит ли / хочет ли быть»."
+  },
+  "supporting_fresh_channel": {
+    "kind": "channel",
+    "url": "https://dzen.ru/todaytaro_bot",
+    "accessed_at": "2026-08-22",
+    "note": "Канал тенанта 22.08 сверху держит B01 (14 часов назад) и закрытый кластер тишины/даты (4 дня назад). Подтверждает, что паузу/молчание жевать нельзя; ядро B02 — чувства сейчас."
+  },
+  "wordstat": "PARTIAL",
+  "wordstat_note": "MCP wordstat_get_top_requests недоступен; impressions не выдумывались. Сверка 4 фраз 22.08.2026 по публичному SERP + scout_live_angles: 1) «что он чувствует / ко мне / к вам» — самый плотный живой слой (Дзен 19.08, Rutube 11–14.08 в выдаче). 2) «вернётся ли он» жирный, но к закрытому кластеру паузы (B01). 3) «написать первой» тоньше; на сайте это пример кубика Да/Нет. 4) «смотрит истории» — сторис/DENY, героем не делать.",
+  "overlap": {
+    "source": "published-titles-only.md",
+    "published_titles_count": 4,
+    "conflict": false,
+    "avoided": [
+      "Пауза или конец? (B01)",
+      "Что делать, если он не пишет (PRE-DZEN-01)",
+      "Дата рождения в раскладе (PRE-DZEN-02)",
+      "Карты уже знают, почему он молчит (PRE-DZEN-03)"
+    ]
+  },
+  "signal_urls_checked": [
+    "https://dzen.ru/a/aoU-JP5y4D2u_TUi",
+    "https://dzen.ru/a/aoU4PZebwTA8DfZe",
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.таросейчас.рф/",
+    "https://olgaastera.com/taro-feelings.html",
+    "https://omnivatic.com/2026/05/23/rasklad-na-otnoshenie-lyubimogo-na-taro-prakticheskij-gajd/",
+    "https://radiotochki.net/blog/taro/rasklad-taro-na-mysli-chuvstva-i-deystviya-partnera-uznayte-vsyo-za-3-karty.html",
+    "https://www.woman.ru/relations/men/thread/3905787/",
+    "https://dzen.ru/a/anmN5VEk-R0St05g",
+    "https://dzen.ru/video/watch/6a815c1d8f89fb1b689ba84f"
+  ],
+  "invented_facts": false,
+  "blockers": [],
+  "incident_report": "none"
+}

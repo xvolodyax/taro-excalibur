@@ -1,0 +1,81 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B03",
+  "title": "Сходятся ли ваши даты в отношениях",
+  "status": "PASS",
+  "verdict": "PASS",
+  "research_date": "2026-08-22",
+  "notes": "memory/blog/articles/B03-shodyatsya-li-vashi-daty-v-otnosheniyah/research-notes.md",
+  "fresh_signal": {
+    "kind": "community",
+    "title": "Энергия пары по дате рождения: нумерология раскроет тайную причину встречи и финал ваших отношений",
+    "url": "https://dzen.ru/a/alDQPRFiFgp1aBIE",
+    "published": "2026-08-19",
+    "accessed_at": "2026-08-22",
+    "why_this_week": "На 22.08.2026 карточка Нины Нумеролог помечена «3 дня назад» ≈ 19.08.2026. Чужой Дзен этой недели считает число пары по двум датам и обещает ещё «финал» и срок союза — живой спрос слота 16:00, не выдуманное продолжение PRE-DZEN-02."
+  },
+  "supporting_fresh_channel": {
+    "kind": "channel",
+    "url": "https://dzen.ru/todaytaro_bot",
+    "accessed_at": "2026-08-22",
+    "note": "Лента 22.08: B01 ~19 ч назад; PRE-DZEN-01 и PRE-DZEN-02 (дата в раскладе) 4 дня назад. Канал живой, но угол «общий расклад без даты мимо» уже закрыт — B03 только совместимость двух дат пары."
+  },
+  "wordstat": "PARTIAL",
+  "wordstat_note": "MCP wordstat_get_top_requests нет; impressions Яндекса не выдумывались. Прокси Google Trends RU today 3-m, 22.08.2026: «совместимость по дате рождения» avg 43 (9–22 авг 32–49) — живой; «число судьбы» avg 5; «число жизненного пути» ~0; «нумерология любви» ~0–4; «расклад по дате рождения» ~0–3.",
+  "overlap": {
+    "source": "published-titles-only.md",
+    "published_titles_count": 5,
+    "conflict": false,
+    "avoided": [
+      "Дата рождения в раскладе таро. Вот почему общий ответ мимо (PRE-DZEN-02)",
+      "Пауза или конец? (B01)",
+      "Что он чувствует к тебе прямо сейчас (B02)",
+      "Что делать, если он не пишет (PRE-DZEN-01)",
+      "Карты уже знают, почему он молчит (PRE-DZEN-03)"
+    ]
+  },
+  "signal_urls": [
+    "https://dzen.ru/a/alDQPRFiFgp1aBIE",
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.таросейчас.рф/",
+    "https://fatebydate.ru/blog/sovmestimost-po-date-rozhdeniya/",
+    "https://dzen.ru/a/anQZGxD-CnD3g0nU",
+    "https://omnivatic.com/2026/06/24/sovmestimost-po-date-rozhdeniya-matritsa-sudby-i/",
+    "https://omnivatic.com/2026/07/17/numerologiya-po-date-sovmestimosti-rasschitat-besplatno/",
+    "https://horo.mail.ru/article/15184-uznaem-budushchee-otnoshenij-po-datam-rozhdeniya/"
+  ],
+  "signal_urls_checked": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.таросейчас.рф/",
+    "https://omnivatic.com/2026/06/24/sovmestimost-po-date-rozhdeniya-matritsa-sudby-i/",
+    "https://omnivatic.com/2026/06/19/chislo-sudby-po-date-rozhdeniya-sovmestimost-i-raschyot/",
+    "https://omnivatic.com/2026/06/08/chislo-sudby-po-date-rozhdeniya-raschyot-i-tolkovanie/",
+    "https://omnivatic.com/2026/07/17/numerologiya-po-date-sovmestimosti-rasschitat-besplatno/",
+    "https://omnivatic.com/2026/07/08/kak-pravilno-rasschitat-chislo-sudby-poshagovaya/",
+    "https://horo.mail.ru/article/15184-uznaem-budushchee-otnoshenij-po-datam-rozhdeniya/",
+    "https://dzen.ru/a/alDQPRFiFgp1aBIE",
+    "https://fatebydate.ru/blog/sovmestimost-po-date-rozhdeniya/",
+    "https://dzen.ru/a/anQZGxD-CnD3g0nU",
+    "https://taliora.ru/blog/sovmestimost-po-date-rozhdeniya-numerologiya",
+    "https://dzen.ru/a/aj2xxIrBkyT5Ylal",
+    "https://dzen.ru/a/ajip62Zb9gcrNpbx",
+    "https://dzen.ru/a/aFv4PAD_BFT56-Rt",
+    "https://vk.com/app54565776",
+    "https://max.ru/id531102974575_bot"
+  ],
+  "dead_or_gone": [
+    {
+      "url": "https://omnivatic.com/2026/06/19/chislo-sudby-po-date-rozhdeniya-sovmestimost-i-raschyot/",
+      "http": 410,
+      "accessed_at": "2026-08-22"
+    },
+    {
+      "url": "https://omnivatic.com/2026/06/08/chislo-sudby-po-date-rozhdeniya-raschyot-i-tolkovanie/",
+      "http": 410,
+      "accessed_at": "2026-08-22"
+    }
+  ],
+  "invented_facts": false,
+  "blockers": [],
+  "incident_report": "none"
+}

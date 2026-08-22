@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{SITE_BASE}}/chto-on-chuvstvuet/",
+  "url": "{{SITE_BASE}}/chto-on-chuvstvuet/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{SITE_BASE}}/chto-on-chuvstvuet/"
+  },
+  "headline": "Что он чувствует к тебе прямо сейчас",
+  "description": "Разница между чувствами мужчины и его готовностью к поступкам: как карты таро помогают увидеть скрытые причины сдержанности и сомнений.",
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "inLanguage": "ru",
+  "author": {
+    "@type": "Person",
+    "name": "Виктория",
+    "givenName": "Виктория",
+    "jobTitle": "Таролог «ТАРО СЕЙЧАС»",
+    "sameAs": [
+      "https://vk.com/id1113231252"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "{{SITE_BASE}}/#organization",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}/"
+  }
+}

@@ -29,6 +29,7 @@ class WriterEditorialContractsTest(unittest.TestCase):
                 "published-titles-only.md",
                 "shared/dzen-content-rules.md",
                 "shared/rf-blocked-entities.json",
+                "shared/cta-funnel.md",
             ],
         )
 
@@ -47,9 +48,11 @@ class WriterEditorialContractsTest(unittest.TestCase):
         self.assertIn("Core Truths", soul)
         self.assertIn("excalibur-blog-sol", soul)
         self.assertIn("Vibe", soul)
-        self.assertIn("SETUP_REQUIRED", good)
+        self.assertNotIn("SETUP_REQUIRED", good)
         self.assertIn("Calibration", good)
-        self.assertIn("SETUP_REQUIRED", src)
+        self.assertIn("Пауза или конец", good)
+        self.assertNotIn("SETUP_REQUIRED", src)
+        self.assertIn("ТАРО СЕЙЧАС", src)
         self.assertIn("битов", post.lower())
         self.assertIn("seo-робот", bad.lower())
         self.assertIn("чужой голос", bad.lower())
@@ -57,6 +60,7 @@ class WriterEditorialContractsTest(unittest.TestCase):
     def test_pipeline_canon_lists_sol_sources(self) -> None:
         canon = json.loads((ROOT / "shared/pipeline-canon.json").read_text(encoding="utf-8"))
         self.assertIn("shared/SOUL.md", canon["sol_allowed_sources"])
+        self.assertIn("shared/cta-funnel.md", canon["sol_allowed_sources"])
         self.assertIn("drafts/writer.html", canon["sol_allowed_sources"])
         self.assertTrue(canon["sol_is_final"])
         self.assertFalse(canon["writer_is_final"])
