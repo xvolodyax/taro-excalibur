@@ -15,3 +15,4 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B01 | pauza-ili-konec | Пауза или конец? | published |
 | B02 | chto-on-chuvstvuet | Что он чувствует к тебе прямо сейчас | draft_ready |
 | B03 | shodyatsya-li-vashi-daty-v-otnosheniyah | Сходятся ли ваши даты и что это значит для отношений | draft_ready |
+| B04 | chto-budet-etim-vecherom-v-otnosheniyah | Что ждёт ваши отношения этим вечером и стоит ли торопить события | draft_ready |

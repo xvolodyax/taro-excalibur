@@ -9,9 +9,10 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 
 | topic_id | slug | title | status |
 |----------|------|-------|--------|
-| PRE-DZEN-01 | on-ne-pishet | On ne pishet | published |
-| PRE-DZEN-02 | data-rozhdeniya-rasklad | Data rozhdeniya rasklad | published |
-| PRE-DZEN-03 | karty-pochemu-molchit | Karty pochemu molchit | published |
+| PRE-DZEN-01 | on-ne-pishet | Что делать, если он не пишет | published |
+| PRE-DZEN-02 | data-rozhdeniya-rasklad | Дата рождения в раскладе таро. Вот почему общий ответ мимо | published |
+| PRE-DZEN-03 | karty-pochemu-molchit | Карты уже знают, почему он молчит. Ты ещё нет | published |
 | B01 | pauza-ili-konec | Пауза или конец? | published |
 | B02 | chto-on-chuvstvuet | Что он чувствует к тебе прямо сейчас | draft_ready |
 | B03 | shodyatsya-li-vashi-daty-v-otnosheniyah | Сходятся ли ваши даты и что это значит для отношений | draft_ready |
+| B04 | chto-budet-etim-vecherom-v-otnosheniyah | Что ждёт ваши отношения этим вечером и стоит ли торопить события | draft_ready |
