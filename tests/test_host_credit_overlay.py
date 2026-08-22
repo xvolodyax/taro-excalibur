@@ -164,20 +164,28 @@ class HostCreditSplitTests(unittest.TestCase):
             manifest = default_manifest(article, "cover/canvas-quad.png")
             for key in ("cover", "inline_1", "inline_2", "inline_3"):
                 manifest["slots"][key]["alt"] = f"alt {key}"
-            info = split_canvas(
+            split_canvas(
                 canvas,
                 cover_dir,
                 manifest,
                 (1200, 675),
                 split_mode="mechanical",
-                hero={"name_ru": "Виктория", "cover_mode": "host_reference"},
-                design_code={},
-                cover_mode="host_reference",
             )
-            cover_credit = info["outputs"]["cover"]["host_credit_overlay"]
+            hero = {"name_ru": "Виктория", "cover_mode": "host_reference"}
+            cover_credit = apply_host_credit(
+                cover_dir / "cover.png",
+                hero=hero,
+                design_code={},
+                slot_key="cover",
+            )
             self.assertTrue(cover_credit.get("applied"))
             self.assertEqual(cover_credit.get("text"), CANON_VICTORIA_CREDIT)
-            inline_credit = info["outputs"]["inline_1"]["host_credit_overlay"]
+            inline_credit = apply_host_credit(
+                cover_dir / "inline-01.png",
+                hero=hero,
+                design_code={},
+                slot_key="inline_1",
+            )
             self.assertFalse(inline_credit.get("applied"))
 
 

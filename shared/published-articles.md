@@ -4,7 +4,8 @@
 Publish / Indexer обновляют по мере выхода.
 
 PRE-DZEN-* — уже выходили на Дзене `todaytaro_bot` до этого репо.
-B01 — 22.08.2026 уже на Дзене `todaytaro_bot` («14 часов назад» на момент утреннего слота).
+B01 — 22.08.2026 уже на Дзене `todaytaro_bot`.
+B02 — пакет в репо, Холл заливает руками. Publish не запускался.
 
 | date | topic_id | slug | url | status |
 |------|----------|------|-----|--------|
@@ -12,3 +13,4 @@ B01 — 22.08.2026 уже на Дзене `todaytaro_bot` («14 часов на�
 | 2026-01-01 | PRE-DZEN-02 | data-rozhdeniya-rasklad | {{SITE_BASE}}/data-rozhdeniya-rasklad/ | published |
 | 2026-01-01 | PRE-DZEN-03 | karty-pochemu-molchit | {{SITE_BASE}}/karty-pochemu-molchit/ | published |
 | 2026-08-21 | B01 | pauza-ili-konec | {{SITE_BASE}}/pauza-ili-konec/ | published |
+| 2026-08-22 | B02 | chto-on-chuvstvuet | {{SITE_BASE}}/chto-on-chuvstvuet/ | draft_ready |

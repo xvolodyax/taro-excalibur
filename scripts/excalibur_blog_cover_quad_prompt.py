@@ -512,6 +512,8 @@ def build_prompt(
         "",
         ban_line,
         "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
+        "Do not paint host credit, nameplate, tarologist byline, site or URL. "
+        "Pillow overlays the Victoria credit after split. Never ask the image model to write those letters.",
         "",
         reference_line,
         "",
