@@ -1,0 +1,64 @@
+{
+  "topic_id": "B04",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "taro-seichas",
+  "style_file": "memory/cover/quad-style-taro-seichas.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Чем закончится этот вечер",
+  "cover_hook_highlight": "вечер",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face/outfit rules = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: чем закончится этот вечер в отношениях",
+      "scene_hint": "Victoria LARGE left; NEW cream denim jacket + quiet knowing; tiny phone face-down right; small ТАРО СЕЙЧАС medallion; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "без спешки и тревоги"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Почему вечерний расклад не работает как сценарий фильма",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "BAD red X: сценарий фильма + точное расписание. GOOD green: ориентир наблюдения. Outcome: не финал вечера. #FFF. NO people/faces.",
+      "alt": "Схема: почему вечерний расклад не работает как сценарий фильма",
+      "labels": [
+        "не сценарий фильма",
+        "без точного расписания",
+        "ориентир для наблюдения",
+        "настроение в паре"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Почему не стоит торопить события и требовать ответов",
+      "visual_type": "schema_faq_ui",
+      "scene_hint": "Question: не торопить события и не требовать ответ сразу. Outcome: сбавить темп без давления. #FFF. NO people/faces.",
+      "alt": "Схема: почему не стоит торопить события и требовать ответов",
+      "labels": [
+        "не требовать ответ сразу",
+        "сбавить темп в общении",
+        "без поспешных выводов",
+        "без лишнего давления"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Как спокойно прожить ближайшие часы",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "L→R: силы → вечер дома → равновесие → мягкость. Outcome: спокойные часы без тревоги. #FFF. NO people/faces.",
+      "alt": "Схема: как спокойно прожить ближайшие часы",
+      "labels": [
+        "восстановление своих сил",
+        "спокойный вечер дома",
+        "душевное равновесие",
+        "сохранить мягкость"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

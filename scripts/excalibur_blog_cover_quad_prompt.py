@@ -111,7 +111,7 @@ def inline_panel_prompt(slot: dict, types_catalog: dict) -> str:
         exact = ", ".join(f"«{x}»" for x in labels)
         base += (
             f" TEXT LOCK: render ONLY these exact Russian strings on this panel: "
-            f"{exact}. Every letter in Cyrillic, exactly as written. "
+            f"{exact}. Exact Cyrillic as written. "
             "No other words, no English, no invented headlines."
         )
     return base
