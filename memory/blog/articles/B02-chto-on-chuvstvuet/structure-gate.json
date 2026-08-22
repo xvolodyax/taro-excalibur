@@ -1,0 +1,46 @@
+{
+  "gate": "structure",
+  "status": "FAIL",
+  "article_dir": "memory/blog/articles/B02-chto-on-chuvstvuet",
+  "checks": [
+    {
+      "name": "pipeline_canon",
+      "ok": true,
+      "detail": "exit=0"
+    },
+    {
+      "name": "research_agent_report",
+      "ok": true,
+      "detail": "status=PASS"
+    },
+    {
+      "name": "link_verify",
+      "ok": false,
+      "detail": "existing verdict=None"
+    },
+    {
+      "name": "html_linter",
+      "ok": true,
+      "detail": "exit=0"
+    },
+    {
+      "name": "community_cta",
+      "ok": true,
+      "detail": "exit=0"
+    },
+    {
+      "name": "opening_meta",
+      "ok": true,
+      "detail": "exit=0"
+    },
+    {
+      "name": "description",
+      "ok": true,
+      "detail": "exit=0"
+    }
+  ],
+  "failed": [
+    "link_verify"
+  ],
+  "note": "Structural/links/HTML only — does not rewrite prose."
+}
