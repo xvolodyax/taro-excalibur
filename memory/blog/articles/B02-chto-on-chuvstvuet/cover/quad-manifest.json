@@ -1,0 +1,64 @@
+{
+  "topic_id": "B02",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "taro-seichas",
+  "style_file": "memory/cover/quad-style-taro-seichas.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Что он чувствует на самом деле",
+  "cover_hook_highlight": "чувствует",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face/outfit rules = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: что он чувствует на самом деле",
+      "scene_hint": "Victoria LARGE left; green+light-brown eyes; dusty-rose blouse + focused curiosity; tiny feeling/step cards right; daylight #FFF",
+      "meme_caption_ru": "",
+      "sticky": ""
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Три слоя: мысли, чувства и действия",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "3-layer workflow L→R: мысли и расчеты → скрытые чувства → реальные шаги. Outcome: три разных слоя. WHITE #FFF. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема трёх слоёв: мысли, скрытые чувства и реальные шаги",
+      "labels": [
+        "мысли и расчеты",
+        "скрытые чувства",
+        "реальные шаги",
+        "три разных слоя"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Почему общие карточки не дают ответа",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "GOOD vs BAD cards. GOOD green: твоя личная история. BAD red X: общий шаблон + иллюзия ответа. Outcome: без пустых обещаний. WHITE #FFF. NO people/faces/emoji/silhouettes.",
+      "alt": "Сравнение общего шаблона и личной истории вместо иллюзии ответа",
+      "labels": [
+        "общий шаблон",
+        "твоя личная история",
+        "иллюзия ответа",
+        "без пустых обещаний"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Поведение не всегда отражает чувства",
+      "visual_type": "infographic_card",
+      "scene_hint": "Fact card: сдержанность не пустота. Markers: внутренний выбор; поступки и эмоции; глубина вместо спешки. WHITE #FFF. NO people/faces/emoji/silhouettes.",
+      "alt": "Карточка: сдержанность не значит пустоту — внутренний выбор и поступки",
+      "labels": [
+        "сдержанность не пустота",
+        "внутренний выбор",
+        "поступки и эмоции",
+        "глубина вместо спешки"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
