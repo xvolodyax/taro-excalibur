@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "article_dir": "memory/blog/articles/B02-chto-on-chuvstvuet",
+  "schema_path": "memory/blog/articles/B02-chto-on-chuvstvuet/schema.jsonld",
+  "has_site_base_placeholder": true,
+  "errors": [],
+  "warnings": []
+}

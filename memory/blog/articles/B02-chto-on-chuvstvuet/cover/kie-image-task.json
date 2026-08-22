@@ -1,0 +1,17 @@
+{
+  "task_id": "15827ccbcc782a66f0312bc9dd1a9eee",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B02-chto-on-chuvstvuet/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1787386602,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}

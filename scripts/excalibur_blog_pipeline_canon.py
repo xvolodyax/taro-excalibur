@@ -209,15 +209,7 @@ def stamp_article(article_dir: Path, root: Path) -> None:
             meta["meta_ab"].setdefault("title_aeo", h1)
         # Always sync SEO desc slots from Description agent (distinct teaser).
         for key in ("description_seo", "description_ctr", "description_aeo"):
-            cur = str(meta["meta_ab"].get(key) or "").strip()
-            if (
-                not cur
-                or description_clones_opening(cur, body)
-                or (h1 and description_near_title(cur, h1))
-            ):
-                meta["meta_ab"][key] = description
-            else:
-                meta["meta_ab"].setdefault(key, description)
+            meta["meta_ab"][key] = description
     meta.setdefault(
         "theme_blocks",
         {"faq": "skip", "quiz": "skip", "side_stickers": "skip"},

@@ -41,6 +41,7 @@ Scout? → research_start → Research → Title → Writer
 Writer = смысл (`drafts/writer.html`).  
 Sol = финальный слог (`article.html`) по SOUL + soul-examples.  
 Description = Дзен/RSS карточка (`description-brief.json`) ≠ title ≠ opening.  
+CTA = `shared/cta-funnel.md`: расклад → бот Макс; «Суть – Тень – Вектор» → приложение.  
 Не возвращать Voice/Thesis/Critic и прочий старый рой.
 
 ## Алгоритм
