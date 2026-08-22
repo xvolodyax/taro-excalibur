@@ -1,0 +1,125 @@
+{
+  "agent": "excalibur-blog",
+  "date_context": {
+    "timezone": "Europe/Moscow",
+    "today_iso": "2026-08-22",
+    "today_ru": "22.08.2026",
+    "year": 2026,
+    "month": 8,
+    "month_name_ru": "август",
+    "weekday_ru": "суббота"
+  },
+  "topic": {
+    "topic_id": "B04",
+    "title": "Что будет этим вечером в отношениях",
+    "h1": "Что будет этим вечером в отношениях",
+    "slug": "chto-budet-etim-vecherom-v-otnosheniyah",
+    "primary_query": "Что будет этим вечером в отношениях",
+    "priority": "P0"
+  },
+  "searches": [
+    {
+      "query_id": "primary_fresh",
+      "query": "Что будет этим вечером в отношениях 2026",
+      "purpose": "актуальный SERP",
+      "result_count": 0,
+      "results": [],
+      "searched_at": "2026-08-22"
+    },
+    {
+      "query_id": "title_fresh",
+      "query": "Что будет этим вечером в отношениях 2026",
+      "purpose": "SERP по человеческому title",
+      "result_count": 0,
+      "results": [],
+      "searched_at": "2026-08-22"
+    },
+    {
+      "query_id": "official_docs",
+      "query": "Что будет этим вечером в отношениях official docs 2026",
+      "purpose": "официальные docs",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Россия. Что будет в отношениях? Гадание 2026",
+          "url": "https://www.youtube.com/watch?v=JGpfLZk3RvI",
+          "snippet": ""
+        },
+        {
+          "title": "Цели в отношениях «Relationship Goals» озвученный трейлер, 2026",
+          "url": "https://rutube.ru/video/f27c7a56d4965a4995491f2a3a12b34e/",
+          "snippet": "Расклад на картах Россия.Что будет в отношениях? Гадание 2026."
+        },
+        {
+          "title": "Любовный гороскоп на 22 августа 2026: самый точный прогноз для женщин и ...",
+          "url": "https://horo.mail.ru/article/love-daily-horoscope/",
+          "snippet": "Смотрите видео онлайн «Цели в отношениях «Relationship Goals» озвученный трейлер, 2026» на канале «КиноФлешка» в хорошем качестве и бесплатно, опубликованное 5 февраля 2026 года в 8:08, длительностью 00:02:37, на видеохостинге RUTUBE."
+        },
+        {
+          "title": "Что будет с отношениями в 2026 году: какие тренды изменят наши ...",
+          "url": "https://www.tut-news.ru/psihologiya/chto-budet-s-otnosheniyami-v-2026-godu-kakie-trendy-izmenyat-nashi-predstavleniya-o",
+          "snippet": "Самый точный любовный прогноз на сегодня для женщин и мужчин всех знаков зодиака. Рассказываем, что ожидает вас в любви и отношениях по гороскопу 22 августа 2026 года."
+        },
+        {
+          "title": "Что несет 2026 год в отношениях? 2026 год в любви и отношениях — это ...",
+          "url": "https://www.facebook.com/reel/4165289437115850/",
+          "snippet": "То, что еще вчера казалось немыслимым или маргинальным, сегодня превращается в новую норму, заставляя нас по-новому смотреть на брак, верность и саму природу близости, сообщает корреспондент ТУТ НОВОСТИ."
+        },
+        {
+          "title": "Security Council | UN Meetings Coverage and Press Releases",
+          "url": "https://press.un.org/en/security-council",
+          "snippet": "Если хотите понять, что в две тысячи двадцать шестой год несет именно вам в теме отношений, можете написать мне на личные прогнозы и также прокомментируете откликается ли вам тема две ..."
+        }
+      ],
+      "searched_at": "2026-08-22"
+    },
+    {
+      "query_id": "github_evidence",
+      "query": "site:github.com Что будет этим вечером в отношениях 2026",
+      "purpose": "GitHub evidence",
+      "result_count": 0,
+      "results": [],
+      "searched_at": "2026-08-22"
+    },
+    {
+      "query_id": "community_experience",
+      "query": "Что будет этим вечером в отношениях forum problems опыт 2026",
+      "purpose": "форумы и живые проблемы",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Проблемы в отношениях",
+          "url": "https://www.b17.ru/forum/topic.php?id=633970",
+          "snippet": ""
+        },
+        {
+          "title": "Гадание «Что ждет меня сегодня вечером?» онлайн на Таро",
+          "url": "https://astralika.com/taro/chto-zhdet-menya-segodnya-vecherom/",
+          "snippet": "Ваш прошлый негативный опыт разрушает вас и ваши новые отношения. Действительно, парень может не выдержать."
+        },
+        {
+          "title": "Какие события в личных отношениях могут произойти в ближайшее время ...",
+          "url": "https://forum.astrologics.ru/topic/35493-kakie-sobitija-v-lichnih-otnoshenijah-mogut-proizoiti-v-blizhaishee-vremja/",
+          "snippet": "Что ожидает грядущим вечером в отношениях с любимым человеком. Карты расскажут, как пройдёт первое свидание, покажут перспективы, возможности для творчества и самореализации. Вы узнаете, как можно наилучшим образом проявить себя, что можно сделать для расслабления."
+        },
+        {
+          "title": "Реалии поиска отношений в 2026 году или мне кажется?",
+          "url": "https://www.woman.ru/relations/men/thread-realii-poiska-otnosheniy-v-2026-godu-ili-mne-kazhetsya-id6428494/",
+          "snippet": "Если у вас отношения есть на данном этапе и в них есть проблемы, то они либо стабилизируются, либо завершаться."
+        },
+        {
+          "title": "Психология отношений в 2026: почему близость стала сложнее",
+          "url": "https://niidpo.ru/blog/psihologiya-otnoshenij-v-2026-godu",
+          "snippet": "Скажите, мне одной кажется, или искать пару стало слишком сложно? Я начинаю знакомиться с парнями и ужасаюсь. Единицы из них хотят в целом чего-то серьезного, и то потом оказывается что они на..."
+        },
+        {
+          "title": "Проблема в отношениях",
+          "url": "https://www.b17.ru/forum/topic.php?id=633897",
+          "snippet": "Сравниваем опасные вызовы и положительные тенденции 2026 года, а также даем практические советы о том, как восстановить близость в паре."
+        }
+      ],
+      "searched_at": "2026-08-22"
+    }
+  ],
+  "errors": []
+}

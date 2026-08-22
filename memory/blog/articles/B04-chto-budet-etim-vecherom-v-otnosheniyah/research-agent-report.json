@@ -1,0 +1,100 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B04",
+  "title": "Что будет этим вечером в отношениях",
+  "status": "PASS",
+  "verdict": "PASS",
+  "research_date": "2026-08-22",
+  "notes": "memory/blog/articles/B04-chto-budet-etim-vecherom-v-otnosheniyah/research-notes.md",
+  "fresh_signal": {
+    "kind": "news",
+    "title": "Гороскоп на 22 августа по картам Таро: Козерогу — не занижать ценность достижений, Рыбам — не делать выводов, пока не открылись все детали",
+    "url": "https://mixnews.lv/goroskop/2026/08/21/goroskop-na-22-avgusta-po-kartam-taro-kozerogu-ne-zanizhat-tsennost-svoih-dostizheniy-rybam-ne-delat-vyvodov-poka-ne-otkrylis-vse-detali/",
+    "published": "2026-08-21",
+    "accessed_at": "2026-08-22",
+    "why_this_week": "21.08.2026 вышел таро-прогноз на субботу 22.08: день без ускорения всего; в отношениях легче говорить о сложном; у Рака вечер дома, у Рыб — не делать выводов и к вечеру ситуация может проясниться сама. Живой вечерний сигнал слота 20:00, не выдуманное продолжение B01–B03. В статью не переносить как гороскоп по знакам (Дзен news rules)."
+  },
+  "supporting_fresh_news": [
+    {
+      "kind": "news",
+      "title": "Близнецам — Восьмёрка Жезлов и ускорение событий: таро-прогноз на 22 августа",
+      "url": "https://fakty.ua/ru/477306-bliznecam-vosmerka-zhezlov-i-uskorenie-sobytij-lvam---solnce-i-horoshie-novosti-taro-prognoz-na-22-avgusta",
+      "published": "2026-08-21T20:03",
+      "accessed_at": "2026-08-22",
+      "note": "Тот же зачин (slovofraza.com). Близнецы: к вечеру замедлиться и обдумать день. Рак: вечер для дома."
+    },
+    {
+      "kind": "news",
+      "title": "Гороскоп на 22 августа 2026 по картам Таро: все знаки Зодиака",
+      "url": "https://cursorinfo.co.il/horoscope/goroskop-na-22-avgusta-2026-po-kartam-taro-vse-znaki-zodiaka/",
+      "published": "2026-08-22T00:06",
+      "accessed_at": "2026-08-22",
+      "note": "Синдикат того же каркаса. Вечер: Близнецы снизить темп; Рак дома; Скорпион тишина; Рыбы скрытое прояснится. Не писать 12 знаков."
+    },
+    {
+      "kind": "community",
+      "title": "Таро-прогноз на 21 августа: укрепляйте достигнутое и запаситесь терпением",
+      "url": "https://dzen.ru/a/aof621_t_ztBqF2k",
+      "published": "2026-08-21",
+      "accessed_at": "2026-08-22",
+      "note": "Карточка WomanHit «вчера» на 22.08. Вечер — восстановление; паре тихий вечер без обязательной программы."
+    }
+  ],
+  "supporting_fresh_channel": {
+    "kind": "channel",
+    "url": "https://dzen.ru/todaytaro_bot",
+    "accessed_at": "2026-08-22",
+    "note": "Лента 22.08 открылась: B03 ~2 ч назад; B01 ~22 ч; PRE-DZEN-01 4 дня; PRE-DZEN-02/03 5 дней. Канал живой, вечернего угла нет. Тела article.html не читались."
+  },
+  "wordstat": "SKIP",
+  "wordstat_note": "MCP wordstat_get_top_requests в этом окне не вызывался (распоряжение Директора: wordstat=SKIP). Impressions Яндекса не выдумывались. Угол живой по смыслу субботы 22.08, слот 20:00: внешние прогнозы про вечернее замедление / дом / «не делать выводов, пока не открылись детали» + рынок «что будет вечером» как отдельный расклад.",
+  "overlap": {
+    "source": "published-titles-only.md",
+    "published_titles_count": 6,
+    "conflict": false,
+    "avoided": [
+      "Пауза или конец? (B01)",
+      "Что он чувствует к тебе прямо сейчас (B02)",
+      "Сходятся ли ваши даты и что это значит для отношений (B03)",
+      "Дата рождения в раскладе таро. Вот почему общий ответ мимо (PRE-DZEN-02)",
+      "Что делать, если он не пишет (PRE-DZEN-01)",
+      "Карты уже знают, почему он молчит (PRE-DZEN-03)"
+    ]
+  },
+  "signal_urls": [
+    "https://mixnews.lv/goroskop/2026/08/21/goroskop-na-22-avgusta-po-kartam-taro-kozerogu-ne-zanizhat-tsennost-svoih-dostizheniy-rybam-ne-delat-vyvodov-poka-ne-otkrylis-vse-detali/",
+    "https://fakty.ua/ru/477306-bliznecam-vosmerka-zhezlov-i-uskorenie-sobytij-lvam---solnce-i-horoshie-novosti-taro-prognoz-na-22-avgusta",
+    "https://dzen.ru/a/amIs1jXzOUzTlQJI",
+    "https://dzen.ru/a/amJIuzRgISluSL1e",
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.таросейчас.рф/"
+  ],
+  "signal_urls_checked": [
+    "https://mixnews.lv/goroskop/2026/08/21/goroskop-na-22-avgusta-po-kartam-taro-kozerogu-ne-zanizhat-tsennost-svoih-dostizheniy-rybam-ne-delat-vyvodov-poka-ne-otkrylis-vse-detali/",
+    "https://fakty.ua/ru/477306-bliznecam-vosmerka-zhezlov-i-uskorenie-sobytij-lvam---solnce-i-horoshie-novosti-taro-prognoz-na-22-avgusta",
+    "https://cursorinfo.co.il/horoscope/goroskop-na-22-avgusta-2026-po-kartam-taro-vse-znaki-zodiaka/",
+    "https://iz.com.ua/komu-karty-taro-obiczyayut-vazhlyvi-zminy-22-serpnya-2026-roku/",
+    "https://dzen.ru/a/aof621_t_ztBqF2k",
+    "https://dzen.ru/a/amIs1jXzOUzTlQJI",
+    "https://dzen.ru/a/amJIuzRgISluSL1e",
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.таросейчас.рф/",
+    "https://fate-whisper.ru/karta-dnya-taro",
+    "https://astralika.com/taro/chto-zhdet-menya-segodnya-vecherom/",
+    "https://gadanie.online/na-taro/na-vecher",
+    "https://xcards.ru/tarot/evening/",
+    "https://vk.com/app54565776",
+    "https://max.ru/id531102974575_bot"
+  ],
+  "dead_or_gone": [
+    {
+      "url": "https://xcards.ru/tarot/evening/",
+      "http": "timeout",
+      "accessed_at": "2026-08-22"
+    }
+  ],
+  "invented_facts": false,
+  "dzen_news_constraint": "Гороскопы как тип новости запрещены. Сигнал 22.08 использовать как фон вечера, не как 12 знаков.",
+  "blockers": [],
+  "incident_report": "none"
+}
