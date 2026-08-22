@@ -1,0 +1,64 @@
+{
+  "topic_id": "B01",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "taro-seichas",
+  "style_file": "memory/cover/quad-style-taro-seichas.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Он взял паузу или ушел",
+  "cover_hook_highlight": "ушел",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face/outfit rules = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: он взял паузу или уже ушел",
+      "scene_hint": "Victoria LARGE left; green+light-brown eyes; new rust knit + calm resolve; tiny silent phone right; daylight #FFF",
+      "meme_caption_ru": "",
+      "sticky": "без иллюзий и домыслов"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Что на самом деле значит пауза: психология и правила",
+      "visual_type": "infographic_card",
+      "scene_hint": "Fact card: mature pause needs 4 locks. Outcome: без срока = разрыв. WHITE #FFF. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема правил здоровой паузы: цель, срок, формат связи и честность",
+      "labels": [
+        "понятная цель",
+        "четкий срок",
+        "формат связи",
+        "честные правила"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Поведение и ловушки: на что обращать внимание",
+      "visual_type": "checklist_board",
+      "scene_hint": "Trap checklist: look at deeds not promises. Outcome: жизнь не на стоп. WHITE #FFF. NO people/faces/emoji/silhouettes.",
+      "alt": "Чеклист ловушек тишины: смотреть на поступки и не замирать в ожидании",
+      "labels": [
+        "реальные поступки",
+        "не писать каждый день",
+        "не вызывать ревность",
+        "не замирать в ожидании"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Как таро смотрит на развилку: живой ресурс против закрытого цикла",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "GOOD vs BAD fork. GOOD green: живой ресурс + перестройка. BAD red X: цикл без шагов. Mid: вынужденная пауза. WHITE #FFF. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема развилки в таро: живой ресурс союза или завершение цикла",
+      "labels": [
+        "живой ресурс союза",
+        "вынужденная пауза",
+        "плавная перестройка",
+        "завершение цикла"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

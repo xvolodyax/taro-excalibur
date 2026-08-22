@@ -466,7 +466,7 @@ def main() -> int:
         if verdict["status"] != "PASS":
             print(
                 "BLOCKER: TOPIC FOCUS BLOCKER — do NOT append topic card. "
-                "See shared/topic-focus-contract.md (Cursor/subagents/leadgen/"
+                "See shared/topic-focus-contract.md (таро/пауза/отношения/"
                 "autopost only; no PageSpeed/Metrika/Webmaster/Direct/indexing)."
             )
             return 1
@@ -548,8 +548,8 @@ def main() -> int:
                 print(f"  deny_hit: {focus['deny_hit']}")
             print(
                 "BLOCKER: off-focus query — do NOT append topic card. "
-                "Core only: Cursor/subagents/rules/skills/MCP/leadgen/autopost/Make. "
-                "Banned: PageSpeed, Metrika/GA4/Webvisor/UTM, Webmaster/GSC, Direct, indexing."
+                "Core only: таро / пауза / отношения / что чувствует / вернётся. "
+                "Banned: PageSpeed, Metrika, RF-blocked heroes, СВО, Telegram, читать мысли."
             )
             return 1
         warnings = check_overlap(args.check_query, comparable, reserved)

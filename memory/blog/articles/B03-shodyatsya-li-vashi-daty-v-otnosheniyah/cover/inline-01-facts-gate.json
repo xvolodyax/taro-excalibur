@@ -1,0 +1,13 @@
+{
+  "gate": "inline-01-facts",
+  "status": "PASS",
+  "date": "17.06.1995",
+  "parts_final": 2,
+  "stream_final": 11,
+  "must_differ": true,
+  "visual_check": "calendar 17.06.1995; parts circle 2; stream circle 11; right column 2 and 11",
+  "old_error_absent": "17.08.1990 / both-8 rejected",
+  "canvas": "2048x1152 restitch, cover kept, top-right replaced",
+  "quad_split": "PASS",
+  "errors": []
+}

@@ -1,0 +1,50 @@
+{
+  "topic_id": "B03",
+  "slug": "shodyatsya-li-vashi-daty-v-otnosheniyah",
+  "cover_family": "brand_collage",
+  "style_preset": "taro-seichas",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: сходятся ли ваши даты в отношениях",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-22T13:54:18+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: сходятся ли ваши даты в отношениях",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: как одна дата рождения даёт два разных числа",
+      "h2_anchor": "Как одна дата рождения даёт два разных числа",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема: почему таблицы совместимости спорят друг с другом",
+      "h2_anchor": "Почему таблицы совместимости спорят друг с другом",
+      "visual_type": "schema_faq_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Сравнение шаблонной клетки и персонального разбора дат",
+      "h2_anchor": "В чём разница между шаблонной клеткой и персональным разбором",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

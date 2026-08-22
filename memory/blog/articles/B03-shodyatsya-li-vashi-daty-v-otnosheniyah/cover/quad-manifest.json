@@ -1,0 +1,64 @@
+{
+  "topic_id": "B03",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "taro-seichas",
+  "style_file": "memory/cover/quad-style-taro-seichas.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Сходятся ли ваши даты",
+  "cover_hook_highlight": "сходятся",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face/outfit rules = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: сходятся ли ваши даты в отношениях",
+      "scene_hint": "Victoria LARGE left; green+light-brown eyes; NEW olive shirt + checking; tiny phone-notes right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "без шаблонных клеток"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Как одна дата рождения даёт два разных числа",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "L→R: дата 17.06.1995 → сложение по частям итог 2 / сплошной поток 38→11 → два разных числа 2 и 11. Не 17.08.1990. #FFF. NO people/faces.",
+      "alt": "Схема: как одна дата рождения даёт два разных числа",
+      "labels": [
+        "одна дата",
+        "два разных числа",
+        "счет по частям",
+        "сплошной поток цифр"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Почему таблицы совместимости спорят друг с другом",
+      "visual_type": "schema_faq_ui",
+      "scene_hint": "Question: таблицы спорят; девять шаблонов; общая тема союза; жизнь не в таблице. #FFF. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема: почему таблицы совместимости спорят друг с другом",
+      "labels": [
+        "таблицы спорят",
+        "девять шаблонов",
+        "общая тема союза",
+        "жизнь не в таблице"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "В чём разница между шаблонной клеткой и персональным разбором",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "BAD red X: шаблонная клетка. GOOD green: персональный разбор + скрытые ритмы. #FFF. NO people/faces/emoji/silhouettes.",
+      "alt": "Сравнение шаблонной клетки и персонального разбора дат",
+      "labels": [
+        "шаблонная клетка",
+        "персональный разбор",
+        "скрытые ритмы союза",
+        "решают живые люди"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

@@ -1,0 +1,50 @@
+{
+  "topic_id": "B01",
+  "slug": "pauza-ili-konec",
+  "cover_family": "brand_collage",
+  "style_preset": "taro-seichas",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: он взял паузу или уже ушел",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-21T16:29:16+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: он взял паузу или уже ушел",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема правил здоровой паузы: цель, срок, формат связи и честность",
+      "h2_anchor": "Что на самом деле значит пауза: психология и правила",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Чеклист ловушек тишины: смотреть на поступки и не замирать в ожидании",
+      "h2_anchor": "Поведение и ловушки: на что обращать внимание",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Схема развилки в таро: живой ресурс союза или завершение цикла",
+      "h2_anchor": "Как таро смотрит на развилку: живой ресурс против закрытого цикла",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
