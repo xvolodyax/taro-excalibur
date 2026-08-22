@@ -78,8 +78,8 @@ class HostCreditCanonTests(unittest.TestCase):
         prompt = build_prompt(manifest, {}, {}, {}, {})
         self.assertNotIn(CANON_VICTORIA_CREDIT, prompt)
         self.assertNotIn("таролог команды", prompt)
-        self.assertIn("Do not paint host credit", prompt)
-        self.assertIn("Pillow overlays", prompt)
+        self.assertIn("No host credit", prompt)
+        self.assertIn("Pillow stamps Victoria", prompt)
 
     def test_old_banner_overlay_still_absent(self) -> None:
         self.assertFalse((ROOT / "scripts/excalibur_blog_cover_text_overlay.py").exists())
