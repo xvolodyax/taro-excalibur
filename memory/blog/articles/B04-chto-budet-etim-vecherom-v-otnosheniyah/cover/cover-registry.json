@@ -1,0 +1,50 @@
+{
+  "topic_id": "B04",
+  "slug": "chto-budet-etim-vecherom-v-otnosheniyah",
+  "cover_family": "brand_collage",
+  "style_preset": "taro-seichas",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: чем закончится этот вечер в отношениях",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-22T16:43:59+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: чем закончится этот вечер в отношениях",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: почему вечерний расклад не работает как сценарий фильма",
+      "h2_anchor": "Почему вечерний расклад не работает как сценарий фильма",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема: почему не стоит торопить события и требовать ответов",
+      "h2_anchor": "Почему не стоит торопить события и требовать ответов",
+      "visual_type": "schema_faq_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Схема: как спокойно прожить ближайшие часы",
+      "h2_anchor": "Как спокойно прожить ближайшие часы",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

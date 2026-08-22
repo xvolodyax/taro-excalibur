@@ -68,3 +68,35 @@ category: prompt
 
 ### Fixer resolution
 - pending
+
+## INC-20260822-1645-cover-textlock-budget
+status: open
+run_date: 2026-08-22
+role: excalibur-blog-cover
+topic_id: B04
+article_dir: memory/blog/articles/B04-chto-budet-etim-vecherom-v-otnosheniyah
+severity: low
+category: prompt
+
+### What went wrong
+- After INC-20260822-1325 short credit lock, B04 still hit COVER PROMPT BLOCKER at 3512 chars.
+- Cover-text labels + long H2 TEXT LOCKs ×3 blew the 3500 budget while scene_hint stayed in 80–140 / 100–220.
+
+### How the agent recovered this run
+- Kept scene_hint informative (cream denim jacket + quiet knowing; cover-text labels).
+- Compacted repeated TEXT LOCK suffix: «Every letter in Cyrillic, exactly as written.» → «Exact Cyrillic as written.»
+- Batch rebuilt at 3455 chars. Hero path reused INC-20260822-0812: prefer_local + local Victoria, no catbox.
+
+### Durable fix needed before next run
+- Keep TEXT LOCK wrapper short. Next long hook/sticky/H2 set will blow 3500 again if the essay returns.
+- `hero_reference_url.py` still needs the no-op from INC-20260822-0812.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `scripts/excalibur_blog_hero_reference_url.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
