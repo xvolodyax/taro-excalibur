@@ -1,0 +1,218 @@
+{
+  "agent": "excalibur-blog",
+  "date_context": {
+    "timezone": "Europe/Moscow",
+    "today_iso": "2026-08-22",
+    "today_ru": "22.08.2026",
+    "year": 2026,
+    "month": 8,
+    "month_name_ru": "август",
+    "weekday_ru": "суббота"
+  },
+  "topic": {
+    "topic_id": "B03",
+    "title": "Сходятся ли ваши даты в отношениях",
+    "h1": "Сходятся ли ваши даты в отношениях",
+    "slug": "shodyatsya-li-vashi-daty-v-otnosheniyah",
+    "primary_query": "Сходятся ли ваши даты в отношениях",
+    "priority": "P0"
+  },
+  "searches": [
+    {
+      "query_id": "primary_fresh",
+      "query": "Сходятся ли ваши даты в отношениях 2026",
+      "purpose": "актуальный SERP",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Гороскоп благоприятных дат для новых отношений 2026",
+          "url": "https://astrologi-runologi.ru/goroskop-blagopriyatnyh-dat-dlya-nachala-novyh-otnoshenij-2026.html",
+          "snippet": ""
+        },
+        {
+          "title": "Календарь любви и отношений на 2026 год. Благоприятные дни для ...",
+          "url": "https://365luna.com/love2026/",
+          "snippet": "Ищете любовь? Наш гороскоп благоприятных дат подскажет идеальные дни для новых отношений в 2026 году. Встречайте судьбу вовремя!"
+        },
+        {
+          "title": "Свадьба 2026: звёздные даты, когда любовь станет вечной",
+          "url": "https://astrologi-runologi.ru/svadba-2026-blagopriyatnye-daty-po-goroskopu.html",
+          "snippet": "Этот календарь поможет вам выбрать наиболее благоприятные дни для знакомств, свиданий, признаний в любви и других важных моментов в отношениях. Согласно астрологическим представлениям, романтические чувства и эмоциональное состояние людей находятся под влиянием Луны."
+        },
+        {
+          "title": "Календарь свадеб 2026: Выбираем идеальную дату. Полный гид по лунным ...",
+          "url": "https://radiotochki.net/blog/astrology/kalendar-svadeb-2026-vybiraem-idealnuyu-datu-polnyy-gid-po-lunnym-sutkam-i-aspektam-planet.html",
+          "snippet": "На самом деле, лучший день для свадьбы в 2026 году — тот, который вы выберете сами. Прислушивайтесь к своему сердцу, планируйте заранее, и ваш брак будет благословлен звездами!"
+        },
+        {
+          "title": "Благоприятные даты для свадьбы в 2026 | Астролог Громова",
+          "url": "https://astrolog-prof.ru/blagopriyatnye-daty-dlya-svadby-v-2026-godu/",
+          "snippet": "Планируете свадьбу в 2026 году? Узнайте самые благоприятные даты по лунному календарю, периоды ретроградной Венеры и влияние года Огненной Лошади на ваш брак!"
+        },
+        {
+          "title": "Полный лунный календарь благоприятных дней для свадеб на весь 2026 год ...",
+          "url": "https://www.sudba.info/polnyj-lunnyj-kalendar-blagopriyatnyx-dnej-dlya-registracii-braka-na-2026-god/",
+          "snippet": "Узнайте, в какие дни 2026 года заключить брак, чтобы ваш союз был прочным, наполненным любовью, и каких дат для оформления отношений лучше избежать."
+        }
+      ],
+      "searched_at": "2026-08-22"
+    },
+    {
+      "query_id": "title_fresh",
+      "query": "Сходятся ли ваши даты в отношениях 2026",
+      "purpose": "SERP по человеческому title",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Благоприятные даты для свадьбы в 2026 | Астролог Громова",
+          "url": "https://astrolog-prof.ru/blagopriyatnye-daty-dlya-svadby-v-2026-godu/",
+          "snippet": ""
+        },
+        {
+          "title": "Календарь любви и отношений на 2026 год. Благоприятные дни для ...",
+          "url": "https://365luna.com/love2026/",
+          "snippet": "Узнайте, в какие дни 2026 года заключить брак, чтобы ваш союз был прочным, наполненным любовью, и каких дат для оформления отношений лучше избежать."
+        },
+        {
+          "title": "Благоприятные дни 2026: календарь красивых дат для свадьбы в 2026 году ...",
+          "url": "https://ryabinahouse.ru/blog/blagopriyatnie-dni-dlya-svadby-v-2026-godu",
+          "snippet": "Этот календарь поможет вам выбрать наиболее благоприятные дни для знакомств, свиданий, признаний в любви и других важных моментов в отношениях. Согласно астрологическим представлениям, романтические чувства и эмоциональное состояние людей находятся под влиянием Луны."
+        },
+        {
+          "title": "Красивые даты свадьбы 2026, благоприятные и удачные дни",
+          "url": "https://wedwed.ru/article/den-svad-by/daty-dlya-svadby-2026-krasivye-i-udachnye-chisla-po-lunnomu-kalendaryu-i-numerologii/",
+          "snippet": "Часто самая сильная и «ваша» дата уже существует в истории ваших отношений. Это может быть не только день знакомства или помолвки, но и, например, дата, когда вы впервые съехались."
+        },
+        {
+          "title": "Свадьба в 2026: календарь красивых и благоприятных дат для брака",
+          "url": "https://media.halvacard.ru/family/daty-dlia-svadby-2026",
+          "snippet": "Свадьба 2026 — красивые даты, счастливые и благоприятные дни по лунному календарю, нумерологический расчет с примерами и расшифровкой удачных чисел для свадьбы"
+        },
+        {
+          "title": "Красивые даты для свадьбы в 2026 году: календарь и значения",
+          "url": "https://www.boyarovweddings.ru/den-svadby/krasivye-daty-dlya-svadby-2026",
+          "snippet": "Полный гид по выбору даты свадьбы в 2026. Благоприятные дни по лунному календарю, нумерологии и восточному гороскопу. Список самых красивых и зеркальных дат."
+        }
+      ],
+      "searched_at": "2026-08-22"
+    },
+    {
+      "query_id": "official_docs",
+      "query": "Сходятся ли ваши даты в отношениях official docs 2026",
+      "purpose": "официальные docs",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Гороскоп благоприятных дат для новых отношений 2026",
+          "url": "https://astrologi-runologi.ru/goroskop-blagopriyatnyh-dat-dlya-nachala-novyh-otnoshenij-2026.html",
+          "snippet": ""
+        },
+        {
+          "title": "Когда лучше знакомиться в 2026: звёздный гид к любви",
+          "url": "https://astrologi-runologi.ru/kalendar-znakomstv-2026-goda.html",
+          "snippet": "Ищете любовь? Наш гороскоп благоприятных дат подскажет идеальные дни для новых отношений в 2026 году. Встречайте судьбу вовремя!"
+        },
+        {
+          "title": "Совместимость по Дате Рождения - Калькулятор Любви Бесплатно",
+          "url": "https://www.lovecalcs.com/ru/date-of-birth-calculator",
+          "snippet": "Ниже - подборка лучших дат для первого контакта (знакомства‚ свидания‚ начало новых отношений) для каждого знака. Даты отмечены в формате дд.мм и сопровождаются кратким объяснением."
+        },
+        {
+          "title": "Правила написания даты в документах для точности и ясности",
+          "url": "https://spravturs.ru/pravo/kak-pravilno-pisat-datu-v-dokumentax",
+          "snippet": "Наш алгоритм анализирует паттерны дней рождения, разницы в возрасте и нумерологические факторы, чтобы раскрыть захватывающие выводы об отношениях."
+        },
+        {
+          "title": "Добавление даты и подписей в официальные документы Word",
+          "url": "https://gentext.ai/guides/ru/word-datirovka-podpis/",
+          "snippet": "Узнайте, как правильно оформлять дату в документах, чтобы избежать ошибок и недоразумений. Практические правила написания чисел, месяцев и форматов дат."
+        },
+        {
+          "title": "Дата совместимости по дате рождения: узнай, кто твой щёлк!",
+          "url": "https://drog-goroscop.ru/sovmestimost-po-date-rozhdeniya-kak-numerologiya-obyasnyaet-prityazhenie-mezhdu-lyudmi.html",
+          "snippet": "Добавляйте даты и подписи в Word. Оформляйте официальные документы с правильными датами и местами для подписей."
+        }
+      ],
+      "searched_at": "2026-08-22"
+    },
+    {
+      "query_id": "github_evidence",
+      "query": "site:github.com Сходятся ли ваши даты в отношениях 2026",
+      "purpose": "GitHub evidence",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "pdd-2026/icon-192.svg at main · gillescesar/pdd-2026 · GitHub",
+          "url": "https://github.com/gillescesar/pdd-2026/blob/main/icon-192.svg",
+          "snippet": ""
+        },
+        {
+          "title": "unsupervised_topic_modeling/topics/ru/17/50/100/topics at ... - GitHub",
+          "url": "https://github.com/annontopicmodel/unsupervised_topic_modeling/blob/master/topics/ru/17/50/100/topics",
+          "snippet": "Contribute to gillescesar/pdd-2026 development by creating an account on GitHub."
+        },
+        {
+          "title": "Meneveydden's gists · GitHub",
+          "url": "https://gist.github.com/Meneveydden/",
+          "snippet": "Contribute to annontopicmodel/unsupervised_topic_modeling development by creating an account on GitHub."
+        },
+        {
+          "title": "mediapipe/mediapipe/modules/face_geometry/data/canonical_face_model_uv ...",
+          "url": "https://github.com/google-ai-edge/mediapipe/blob/master/mediapipe/modules/face_geometry/data/canonical_face_model_uv_visualization.png",
+          "snippet": "Проверим данные на наличие пропусков вызовом набора методов для суммирования пропущенных значений. Пустые значения свидетельствуют, что для некоторых данных доступна не вся информация. Причины могут быть разные: скажем, не указана информация, либо же сама запись не корректна."
+        },
+        {
+          "title": "twemoji/assets/svg/1f409.svg at master · twitter/twemoji · GitHub",
+          "url": "https://github.com/twitter/twemoji/blob/master/assets/svg/1f409.svg",
+          "snippet": "Cross-platform, customizable ML solutions for live and streaming media. - google-ai-edge/mediapipe"
+        },
+        {
+          "title": "sa-guide/sa-html.html at main · AndLee11/sa-guide · GitHub",
+          "url": "https://github.com/AndLee11/sa-guide/blob/main/sa-html.html",
+          "snippet": "Contribute to twitter/twemoji development by creating an account on GitHub."
+        }
+      ],
+      "searched_at": "2026-08-22"
+    },
+    {
+      "query_id": "community_experience",
+      "query": "Сходятся ли ваши даты в отношениях forum problems опыт 2026",
+      "purpose": "форумы и живые проблемы",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Самые распространённые ошибки в отношениях по дате рождения Почему в ...",
+          "url": "https://vk.com/wall-233290748_106",
+          "snippet": ""
+        },
+        {
+          "title": "Реальный опыт. Были ли у кого-нибудь проблемы с выбором даты? • на ...",
+          "url": "https://vk.com/wall-44647041_339815",
+          "snippet": "Часто причина скрывается в привычных сценариях поведения, которые мы даже не замечаем. Если вы родились в одну из указанных дат, обратите внимание на описание своего числа."
+        },
+        {
+          "title": "Отмечаете ли вы дату отношений каждый месяц?",
+          "url": "https://www.woman.ru/relations/men/thread/6150567/",
+          "snippet": "Мы с женихом выбрали дату свадьбы в июне, подали заявление уже. А тут, оказывается, его бабушка категорически против нашей даты. Там какой-то пост, что-то ещё, в общем, совсем несчастливая дата."
+        },
+        {
+          "title": "Совместимость по дате рождения: как проверить отношения",
+          "url": "https://fatebydate.ru/blog/sovmestimost-po-date-rozhdeniya/",
+          "snippet": "Отмечаете ли вы дату отношений каждый месяц? Вы практикуете такое? Для меня подарки и ухаживания - главный язык любви, поэтому я придумала, как можно сохранить романтику в отношениях -..."
+        },
+        {
+          "title": "О чём говорят ваши даты рождения в отношениях и совместимости?",
+          "url": "https://dzen.ru/a/aFv4PAD_BFT56-Rt",
+          "snippet": "Проверка совместимости по дате рождения через несколько систем: числа жизненного пути, арканы отношений, зодиакальные пары. Совместимость партнёров — один из самых частых запросов в эзотерике. Понимание, насколько вы подходите друг другу, помогает: Важно понимать: совместимость — это не приговор."
+        },
+        {
+          "title": "Как по дате знакомства узнать будущее отношений и характер союза",
+          "url": "https://rsute.ru/1130438-kak-data-znakomstva-vliyaet-na-budushhie-otnosheniya-chto-rasskazhet-numerologiya-pary.html",
+          "snippet": "Это глубинные внутренние коды, зашифрованные в твоей дате рождения. Даже если ты не осознаёшь этого, цифровая психология уже многое знает о твоих паттернах, притяжениях и уязвимостях."
+        }
+      ],
+      "searched_at": "2026-08-22"
+    }
+  ],
+  "errors": []
+}
