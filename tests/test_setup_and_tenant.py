@@ -31,6 +31,13 @@ class SetupTenantTests(unittest.TestCase):
                 "https://vk.com/app54565776",
             ],
         )
+        funnel = tenant.get("cta_funnel") or {}
+        self.assertEqual(funnel.get("canon"), "shared/cta-funnel.md")
+        self.assertEqual(funnel["dzen"]["spread"]["href"], "https://max.ru/id531102974575_bot")
+        self.assertEqual(funnel["dzen"]["audio"]["href"], "https://vk.com/app54565776")
+        self.assertFalse(funnel["dzen"]["telegram_href"])
+        self.assertIn("аудиоразбор", funnel["bots"]["not"])
+        self.assertIn("триплет", " ".join(funnel["apps"]["not"]))
         self.assertTrue(tenant.get("dzen_rf_pack"))
         self.assertEqual(tenant.get("cover_mode"), "host_reference")
         self.assertEqual(tenant.get("cover_hosts_allowed"), ["victoria"])
@@ -54,6 +61,7 @@ class SetupTenantTests(unittest.TestCase):
         for rel in (
             "shared/SOUL.md",
             "shared/article-style.md",
+            "shared/cta-funnel.md",
             "shared/soul-examples/good-outputs.md",
             "memory/brief/site-brief.md",
             "shared/authors-registry.json",
@@ -77,8 +85,13 @@ class SetupTenantTests(unittest.TestCase):
         article_dir.mkdir(parents=True, exist_ok=True)
         try:
             (article_dir / "article.html").write_text(
-                "<p>Проверь <a href=\"https://max.ru/id531102974575_bot\">бот в Макс</a> "
-                "или <a href=\"https://vk.com/app54565776\">аудиоразбор</a>.</p>\n",
+                "<p>Открой <a href=\"https://max.ru/id531102974575_bot\">бот в Макс</a>. "
+                "Там три бесплатных расклада на три любых вопроса: голосом или текстом. "
+                "Можно взять триплет из трёх карт или кельтский крест из десяти.</p>\n"
+                "<p>Для <a href=\"https://vk.com/app54565776\">аудиоразбора</a> "
+                "«Суть – Тень – Вектор» открой "
+                "<a href=\"https://vk.com/app54565776\">приложение во ВКонтакте</a>. "
+                "Там дополнительная карта практического совета и уточняющие вопросы.</p>\n",
                 encoding="utf-8",
             )
             proc = subprocess.run(

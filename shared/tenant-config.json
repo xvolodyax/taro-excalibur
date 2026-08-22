@@ -9,7 +9,7 @@
   "content_goals": [
     "статьи в Дзен (канал todaytaro_bot)",
     "крючок «пауза или конец» и соседние живые запросы Wordstat",
-    "CTA только бот в Макс и приложение ВК / аудиоразбор"
+    "CTA: расклад → бот Макс (триплет / кельтский крест); аудиоразбор «Суть – Тень – Вектор» → приложение ВК или Макс; в Дзене без Telegram"
   ],
   "author_id": "victoria",
   "cta_required": true,
@@ -26,6 +26,48 @@
     "t.me",
     "https://max.ru/id531102974575_biz"
   ],
+  "cta_funnel": {
+    "canon": "shared/cta-funnel.md",
+    "bots": {
+      "channels": ["telegram", "max"],
+      "offer": "3 бесплатных расклада на 3 любых вопроса, голос или текст",
+      "spreads": ["триплет 3 карты", "кельтский крест 10"],
+      "not": ["аудиоразбор", "Суть – Тень – Вектор"]
+    },
+    "apps": {
+      "channels": ["telegram", "max", "vk"],
+      "offer": "аудиоразбор «Суть – Тень – Вектор» + карта практического совета + уточняющие вопросы",
+      "not": ["три бесплатных расклада", "триплет", "кельтский крест"]
+    },
+    "dzen": {
+      "telegram_href": false,
+      "telegram_mention": false,
+      "spread": {
+        "href": "https://max.ru/id531102974575_bot",
+        "anchor": "бот в Макс"
+      },
+      "audio": {
+        "href": "https://vk.com/app54565776",
+        "anchors": ["приложение во ВКонтакте", "аудиоразбор"],
+        "mention_max_app_without_href": true,
+        "max_app_href": null
+      }
+    },
+    "forbidden_mix": [
+      "хочешь Суть–Тень–Вектор — иди в бот",
+      "аудиоразбор в боте",
+      "Суть–Тень–Вектор в боте"
+    ],
+    "gate_required_mentions": [
+      "триплет",
+      "кельтск",
+      "аудиоразбор",
+      "суть-тень-вектор",
+      "голос",
+      "практический совет",
+      "уточняющ"
+    ]
+  },
   "cover_mode": "host_reference",
   "cover_host_default": "victoria",
   "cover_hosts_allowed": ["victoria"],

@@ -29,6 +29,7 @@ class WriterEditorialContractsTest(unittest.TestCase):
                 "published-titles-only.md",
                 "shared/dzen-content-rules.md",
                 "shared/rf-blocked-entities.json",
+                "shared/cta-funnel.md",
             ],
         )
 
@@ -59,6 +60,7 @@ class WriterEditorialContractsTest(unittest.TestCase):
     def test_pipeline_canon_lists_sol_sources(self) -> None:
         canon = json.loads((ROOT / "shared/pipeline-canon.json").read_text(encoding="utf-8"))
         self.assertIn("shared/SOUL.md", canon["sol_allowed_sources"])
+        self.assertIn("shared/cta-funnel.md", canon["sol_allowed_sources"])
         self.assertIn("drafts/writer.html", canon["sol_allowed_sources"])
         self.assertTrue(canon["sol_is_final"])
         self.assertFalse(canon["writer_is_final"])

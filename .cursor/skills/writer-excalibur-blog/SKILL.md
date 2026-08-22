@@ -21,6 +21,7 @@ disable-model-invocation: true
 3. `title-brief.json`
 4. `published-titles-only.md`
 5. `shared/dzen-content-rules.md` + RF (не герой Meta/…) — кратко
+6. `shared/cta-funnel.md` — бот ≠ приложение
 
 ## Не обязан читать (это зона Sol)
 
@@ -32,7 +33,7 @@ disable-model-invocation: true
 - Все факты только из research; не выдумывай.
 - Структура: открытие → несколько H2 с мыслями → практика/ограничения → CTA.
 - Без research-даты / Wordstat в открытии (Sol всё равно вычистит, но не засоряй).
-- CTA: только tenant-config.cta_links.
+- CTA: только tenant-config.cta_links + канон `shared/cta-funnel.md`. Расклад → бот Макс. Аудиоразбор «Суть – Тень – Вектор» → приложение (в Дзене ВК). Не смешивать.
 - Не читай чужие article.html / live-сайт / уже опубликованные статьи сайта / topics.
 
 ## Handoff
