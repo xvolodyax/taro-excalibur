@@ -508,7 +508,7 @@ def build_prompt(
         # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
         # badge on every panel (INC-20260723-1223 / user correction).
         style_prefix,
-        "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
+        "Canvas 2048x1152 exact 2x2; four 16:9 panels; thin white gutters ON the center (1024/576); no bleed between panels.",
         "",
         ban_line,
         "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
