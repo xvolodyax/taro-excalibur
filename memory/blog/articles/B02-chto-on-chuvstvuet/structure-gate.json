@@ -1,6 +1,6 @@
 {
   "gate": "structure",
-  "status": "FAIL",
+  "status": "PASS",
   "article_dir": "memory/blog/articles/B02-chto-on-chuvstvuet",
   "checks": [
     {
@@ -15,8 +15,8 @@
     },
     {
       "name": "link_verify",
-      "ok": false,
-      "detail": "existing verdict=None"
+      "ok": true,
+      "detail": "existing verdict=pass"
     },
     {
       "name": "html_linter",
@@ -39,8 +39,6 @@
       "detail": "exit=0"
     }
   ],
-  "failed": [
-    "link_verify"
-  ],
+  "failed": [],
   "note": "Structural/links/HTML only — does not rewrite prose."
 }
