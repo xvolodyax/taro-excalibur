@@ -1,0 +1,64 @@
+{
+  "topic_id": "B06",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "taro-seichas",
+  "style_file": "memory/cover/quad-style-taro-seichas.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Какой он в отношениях",
+  "cover_hook_highlight": "отношениях",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face/outfit rules = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: что число судьбы говорит о нём в отношениях",
+      "scene_hint": "Victoria FACE LARGE left WEARS terracotta cardigan (not still-life); calm attentive; tiny enamel pin; tiny blank notebook right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "по одной дате"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Как правильно посчитать число судьбы по дате рождения",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "4-step L→R: сложение, проверка; empty boxes; NO digits/dates; #FFF; NO people/faces/emoji/silhouettes",
+      "alt": "Схема: как сложить дату рождения слева направо и проверить",
+      "labels": [
+        "все цифры по порядку",
+        "сложение слева направо",
+        "проверка в обе стороны",
+        "мастер-числа без сжатия"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Что числа от 1 до 9 и мастер-числа говорят о его поведении в отношениях",
+      "visual_type": "infographic_card",
+      "scene_hint": "4 fact cards: чувства, тишина, стресс, границы; NO digits; #FFF; NO people/faces/emoji/silhouettes",
+      "alt": "Карточки: как темперамент проявляется в чувствах, тишине и границах",
+      "labels": [
+        "стиль проявления чувств",
+        "потребность в тишине",
+        "реакция на стресс",
+        "забота и границы"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Где расчёт не работает и какие ошибки искажают понимание",
+      "visual_type": "checklist_board",
+      "scene_hint": "Limits list: мысли, иллюзии, Форер, поступки; NO digits/dates; #FFF; NO people/faces/emoji/silhouettes",
+      "alt": "Чеклист: где расчёт числа судьбы не работает и что проверять",
+      "labels": [
+        "не чтение мыслей",
+        "без ложных иллюзий",
+        "эффект Форера",
+        "оценивай реальные поступки"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
