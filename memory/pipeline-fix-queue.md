@@ -120,3 +120,34 @@ category: prompt
 
 ### Fixer resolution
 - pending
+
+## INC-20260823-1654-cover-gutter-bleed-b07
+status: open
+run_date: 2026-08-23
+role: excalibur-blog-cover
+topic_id: B07
+article_dir: memory/blog/articles/B07-karta-dnya-napishet-li-on-segodnya-vecherom
+severity: high
+category: prompt
+
+### What went wrong
+- First billed 2K i2i: canvas 2688x1520 (not 2048x1152). Auto gutter `gutter_too_far_from_center` (h offset ~74px, v offset ~39.5px). Split fell back to mechanical_center.
+- Mechanical 50/50 cut above the painted horizontal gutter: Victoria arms + tiny phone from the cover bled into the top of inline_2. Inline then has a person — cell is not a clean 2x2.
+
+### How the agent recovered this run
+- Owner-directed full-canvas redo: one new billed gen on the same batch (not a single-panel patch, not a face beauty-redo). Redo canvas is 2048x1152.
+- Auto still rejected gutter (`gutter_too_far_from_center`, h offset ~57px). Mechanical 50/50 again bled the cover host into inline_2.
+- No third billed gen. Forced `--split-mode gutter` on the redo canvas so panels follow the painted seams; inline_2 then has no person. Pillow credit on cover.png only.
+
+### Durable fix needed before next run
+- First-try prompt must lock thin white gutters exactly on canvas center and keep all cover content inside the top-left quadrant so auto gutter can accept and mechanical 50/50 cannot slice the host into inline.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `scripts/excalibur_blog_cover_quad_split.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending

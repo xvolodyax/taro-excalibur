@@ -1,0 +1,64 @@
+{
+  "topic_id": "B07",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "taro-seichas",
+  "style_file": "memory/cover/quad-style-taro-seichas.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Напишет сам или написать первой?",
+  "cover_hook_highlight": "первой",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face/outfit rules = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Напишет ли он сегодня вечером и стоит ли написать первой",
+      "scene_hint": "Victoria FACE LARGE left i2i; WEARS sage-green satin blouse; Sunday half-smile; GREEN+light-brown eyes; tiny phone right; gold oval locket; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "без лишней тревоги"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Окно сегодняшнего вечера: как читать карту дня на контакт",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "WHITE: карта дня на вечер → арканы движения / арканы паузы / скрытое напряжение. One card. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема: как читать карту дня на вечерний контакт",
+      "labels": [
+        "карта дня на вечер",
+        "арканы движения",
+        "арканы паузы",
+        "скрытое напряжение"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Учебный пример: когда тишина в чате становится ловушкой",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "WHITE GOOD осознанный ход (green) vs BAD ловушка ожидания (red X); воскресенье вечер, тишина в чате. NO people/faces/emoji/silhouettes.",
+      "alt": "Сравнение: тишина в чате как ловушка ожидания и осознанный ход",
+      "labels": [
+        "воскресенье вечер",
+        "тишина в чате",
+        "ловушка ожидания",
+        "осознанный ход"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Написать первой: осознанный ход или слив напряжения",
+      "visual_type": "checklist_board",
+      "scene_hint": "WHITE: чеклист перед отправкой — зрелый шаг / слив тревоги / проверка баланса. NO people/faces/emoji/silhouettes.",
+      "alt": "Чеклист перед отправкой: зрелый шаг, слив тревоги и проверка баланса",
+      "labels": [
+        "чеклист перед отправкой",
+        "зрелый шаг",
+        "слив тревоги",
+        "проверка баланса"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

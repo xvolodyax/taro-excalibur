@@ -1,0 +1,50 @@
+{
+  "topic_id": "B07",
+  "slug": "karta-dnya-napishet-li-on-segodnya-vecherom",
+  "cover_family": "brand_collage",
+  "style_preset": "taro-seichas",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Напишет ли он сегодня вечером и стоит ли написать первой",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-23T16:59:03+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Напишет ли он сегодня вечером и стоит ли написать первой",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: как читать карту дня на вечерний контакт",
+      "h2_anchor": "Окно сегодняшнего вечера: как читать карту дня на контакт",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Сравнение: тишина в чате как ловушка ожидания и осознанный ход",
+      "h2_anchor": "Учебный пример: когда тишина в чате становится ловушкой",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист перед отправкой: зрелый шаг, слив тревоги и проверка баланса",
+      "h2_anchor": "Написать первой: осознанный ход или слив напряжения",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
