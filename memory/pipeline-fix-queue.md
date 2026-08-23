@@ -46,7 +46,7 @@ category: prompt
 - Extra invented subtitle under the hook. Split cells were not crooked; owner allowed canvas redo only for crooked split, not host-miss quality.
 
 ### How the agent recovered this run
-- No second billed gen (quality-redo ban). Split PASS, inject, Pillow credit. Next run must fix first-try prompt, not PNG loop.
+- First pass: no quality-redo. Director then authorized one full canvas rebuild. Second billed gen: Victoria FACE LARGE left, she WEARS the dusty-blue linen shirt; Pillow credit applied.
 
 ### Durable fix needed before next run
 - First-try cover lock: face is the large subject; the linen shirt is worn, not a folded prop that replaces the host.
@@ -56,6 +56,35 @@ category: prompt
 - `scripts/excalibur_blog_cover_quad_prompt.py`
 - `memory/cover/blog-hero.json`
 - `memory/cover/quad-style-taro-seichas.json`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
+## INC-20260823-0637-cover-gutter-still-off
+status: open
+run_date: 2026-08-23
+role: excalibur-blog-cover
+topic_id: B05
+article_dir: memory/blog/articles/B05-chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu
+severity: medium
+category: prompt
+
+### What went wrong
+- Director-approved one full 2K redo: host face is now on cover.png. Split still chose mechanical_center because auto gutter was `gutter_too_far_from_center` (h offset ~29px, v offset ~38px).
+- Mechanical 50/50 panels are complete (no bleed of face into inline). No third billed gen.
+
+### How the agent recovered this run
+- Kept mechanical split PASS. Wrote incident as directed after the one allowed redo.
+
+### Durable fix needed before next run
+- First-try prompt must lock thin white gutters exactly on 1024/576 and keep all panel content inside its quadrant so auto gutter can accept.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `scripts/excalibur_blog_cover_quad_split.py`
 
 ### Secrets
 - none recorded

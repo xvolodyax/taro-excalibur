@@ -1,11 +1,11 @@
 {
-  "task_id": "5920d8f26bc57fe813fdef10483ad0ba",
+  "task_id": "4a809dc68ec26808a79ebf324fb6b582",
   "source": "kie-api",
   "model": "gpt-image-2-image-to-image",
   "state": "success",
   "create_attempts": 1,
   "result_path": "memory/blog/articles/B05-chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu/cover/quad-mcp-result.json",
-  "updated_at_epoch": 1787466576,
+  "updated_at_epoch": 1787466943,
   "file_upload_fallback": true,
   "file_upload": {
     "source": "prefer_local_reference",
