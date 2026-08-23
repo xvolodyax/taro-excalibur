@@ -1,0 +1,148 @@
+{
+  "agent": "excalibur-blog-cover-quad-split",
+  "status": "PASS",
+  "manifest": "cover/quad-manifest.json",
+  "split": {
+    "source_canvas": "memory/blog/articles/B05-chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu/cover/canvas-quad.png",
+    "source_size_px": [
+      2048,
+      1152
+    ],
+    "panel_size_px": [
+      1024,
+      576
+    ],
+    "split_meta": {
+      "split_mode": "mechanical_center",
+      "h_gutter_px": null,
+      "v_gutter_px": null,
+      "requested_mode": "auto",
+      "fallback_reason": "gutter_too_far_from_center",
+      "rejected_gutter": {
+        "h_gutter_px": {
+          "start": 564,
+          "end": 653
+        },
+        "v_gutter_px": {
+          "start": 1022,
+          "end": 1104
+        },
+        "gutter_quality": {
+          "h_center_offset_px": 32.5,
+          "v_center_offset_px": 39.0,
+          "max_aspect_crop_loss": 0.1321,
+          "per_panel_crop_loss": {
+            "top_left": 0.0186,
+            "top_right": 0.0585,
+            "bottom_left": 0.1321,
+            "bottom_right": 0.0604
+          },
+          "reject_reason": "gutter_too_far_from_center"
+        }
+      }
+    },
+    "output_size_px": [
+      1200,
+      675
+    ],
+    "outputs": {
+      "cover": {
+        "file": "cover/cover.png",
+        "quadrant": "top_left",
+        "box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1024,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1024,
+          "bottom": 576
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Иллюстрация: что он скрывает в отношениях и скажет ли правду",
+        "h2_anchor": null
+      },
+      "inline_1": {
+        "file": "cover/inline-01.png",
+        "quadrant": "top_right",
+        "box_px": {
+          "left": 1024,
+          "top": 0,
+          "right": 2048,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 1024,
+          "top": 0,
+          "right": 2048,
+          "bottom": 576
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Схема трёх слоёв недоговорённости: внешнее поведение, скрытый мотив и готовность к диалогу",
+        "h2_anchor": "Три слоя утренней недоговорённости: слова, мотивы и готовность к диалогу"
+      },
+      "inline_2": {
+        "file": "cover/inline-02.png",
+        "quadrant": "bottom_left",
+        "box_px": {
+          "left": 0,
+          "top": 576,
+          "right": 1024,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 576,
+          "right": 1024,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Карточки учебных арканов скрытого слоя: не читать мысли и видеть причины замкнутости",
+        "h2_anchor": "Что остаётся в тени: учебные арканы скрытого слоя"
+      },
+      "inline_3": {
+        "file": "cover/inline-03.png",
+        "quadrant": "bottom_right",
+        "box_px": {
+          "left": 1024,
+          "top": 576,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 1024,
+          "top": 576,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Чеклист утренних шагов: факты вместо догадок, разговор без допроса, пространство и встречный шаг",
+        "h2_anchor": "Практика: чеклист шагов для утренней ясности"
+      }
+    }
+  },
+  "html_inject": [
+    "injected inline_1 after H2 — Три слоя утренней недоговорённости: слова, мотивы и готовность к диалогу",
+    "injected inline_2 after H2 — Что остаётся в тени: учебные арканы скрытого слоя",
+    "injected inline_3 after H2 — Практика: чеклист шагов для утренней ясности"
+  ]
+}

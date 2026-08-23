@@ -31,3 +31,34 @@ category: script
 
 ### Fixer resolution
 - pending
+
+## INC-20260823-0632-cover-host-still-life
+status: open
+run_date: 2026-08-23
+role: excalibur-blog-cover
+topic_id: B05
+article_dir: memory/blog/articles/B05-chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu
+severity: medium
+category: prompt
+
+### What went wrong
+- First billed 2K i2i kept the hook, dusty-blue linen shirt, face-down phone and enamel medallion, but painted a clothing still-life instead of Victoria face LARGE left.
+- Extra invented subtitle under the hook. Split cells were not crooked; owner allowed canvas redo only for crooked split, not host-miss quality.
+
+### How the agent recovered this run
+- No second billed gen (quality-redo ban). Split PASS, inject, Pillow credit. Next run must fix first-try prompt, not PNG loop.
+
+### Durable fix needed before next run
+- First-try cover lock: face is the large subject; the linen shirt is worn, not a folded prop that replaces the host.
+- Keep topic metaphor tiny (phone/medallion) so it cannot outrank the face.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `memory/cover/blog-hero.json`
+- `memory/cover/quad-style-taro-seichas.json`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending

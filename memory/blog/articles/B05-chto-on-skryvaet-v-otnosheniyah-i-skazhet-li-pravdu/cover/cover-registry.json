@@ -1,0 +1,50 @@
+{
+  "topic_id": "B05",
+  "slug": "chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu",
+  "cover_family": "brand_collage",
+  "style_preset": "taro-seichas",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: что он скрывает в отношениях и скажет ли правду",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-23T06:30:55+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: что он скрывает в отношениях и скажет ли правду",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема трёх слоёв недоговорённости: внешнее поведение, скрытый мотив и готовность к диалогу",
+      "h2_anchor": "Три слоя утренней недоговорённости: слова, мотивы и готовность к диалогу",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Карточки учебных арканов скрытого слоя: не читать мысли и видеть причины замкнутости",
+      "h2_anchor": "Что остаётся в тени: учебные арканы скрытого слоя",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист утренних шагов: факты вместо догадок, разговор без допроса, пространство и встречный шаг",
+      "h2_anchor": "Практика: чеклист шагов для утренней ясности",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
