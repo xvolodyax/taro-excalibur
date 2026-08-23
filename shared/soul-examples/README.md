@@ -9,4 +9,4 @@
 | `good-outputs.md` | Живые удачные фрагменты + Calibration |
 | `bad-outputs.md` | Анти-паттерны |
 
-Пока `<!-- SETUP_REQUIRED -->` в файлах — Setup не завершён.
+Тенант «ТАРО СЕЙЧАС»: файлы заполнены Setup Voice (2026-08-21).

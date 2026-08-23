@@ -1,0 +1,144 @@
+{
+  "agent": "excalibur-blog-cover-quad-split",
+  "status": "PASS",
+  "manifest": "cover/quad-manifest.json",
+  "split": {
+    "source_canvas": "memory/blog/articles/B07-karta-dnya-napishet-li-on-segodnya-vecherom/cover/canvas-quad.png",
+    "source_size_px": [
+      2048,
+      1152
+    ],
+    "panel_size_px": [
+      965,
+      610
+    ],
+    "split_meta": {
+      "split_mode": "gutter_detect",
+      "h_gutter_px": {
+        "start": 610,
+        "end": 656
+      },
+      "v_gutter_px": {
+        "start": 965,
+        "end": 1104
+      },
+      "requested_mode": "gutter",
+      "gutter_quality": {
+        "h_center_offset_px": 57.0,
+        "v_center_offset_px": 10.5,
+        "max_aspect_crop_loss": 0.1295,
+        "per_panel_crop_loss": {
+          "top_left": 0.1098,
+          "top_right": 0.1295,
+          "bottom_left": 0.086,
+          "bottom_right": 0.0657
+        },
+        "reject_reason": "gutter_too_far_from_center"
+      },
+      "quality_warn": "gutter_too_far_from_center"
+    },
+    "output_size_px": [
+      1200,
+      675
+    ],
+    "outputs": {
+      "cover": {
+        "file": "cover/cover.png",
+        "quadrant": "top_left",
+        "box_px": {
+          "left": 0,
+          "top": 33,
+          "right": 965,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 965,
+          "bottom": 610
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Напишет ли он сегодня вечером и стоит ли написать первой",
+        "h2_anchor": null
+      },
+      "inline_1": {
+        "file": "cover/inline-01.png",
+        "quadrant": "top_right",
+        "box_px": {
+          "left": 1104,
+          "top": 39,
+          "right": 2048,
+          "bottom": 570
+        },
+        "raw_box_px": {
+          "left": 1104,
+          "top": 0,
+          "right": 2048,
+          "bottom": 610
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Схема: как читать карту дня на вечерний контакт",
+        "h2_anchor": "Окно сегодняшнего вечера: как читать карту дня на контакт"
+      },
+      "inline_2": {
+        "file": "cover/inline-02.png",
+        "quadrant": "bottom_left",
+        "box_px": {
+          "left": 41,
+          "top": 656,
+          "right": 923,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 656,
+          "right": 965,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Сравнение: тишина в чате как ловушка ожидания и осознанный ход",
+        "h2_anchor": "Учебный пример: когда тишина в чате становится ловушкой"
+      },
+      "inline_3": {
+        "file": "cover/inline-03.png",
+        "quadrant": "bottom_right",
+        "box_px": {
+          "left": 1135,
+          "top": 656,
+          "right": 2017,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 1104,
+          "top": 656,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Чеклист перед отправкой: зрелый шаг, слив тревоги и проверка баланса",
+        "h2_anchor": "Написать первой: осознанный ход или слив напряжения"
+      }
+    }
+  },
+  "html_inject": [
+    "skip inline_1: already correct under H2 — Окно сегодняшнего вечера: как читать карту дня на контакт",
+    "skip inline_2: already correct under H2 — Учебный пример: когда тишина в чате становится ловушкой",
+    "skip inline_3: already correct under H2 — Написать первой: осознанный ход или слив напряжения"
+  ]
+}
