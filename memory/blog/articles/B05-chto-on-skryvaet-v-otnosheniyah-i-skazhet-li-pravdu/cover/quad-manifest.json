@@ -1,0 +1,63 @@
+{
+  "topic_id": "B05",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "taro-seichas",
+  "style_file": "memory/cover/quad-style-taro-seichas.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Что он скрывает",
+  "cover_hook_highlight": "скрывает",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face/outfit rules = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: что он скрывает в отношениях и скажет ли правду",
+      "scene_hint": "Victoria LARGE left, green+amber-pupil eyes; dusty-blue linen short-sleeve shirt; calm brow-fold; tiny face-down phone+medallion right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": ""
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Три слоя утренней недоговорённости: слова, мотивы и готовность к диалогу",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Three cards top to bottom, NO people/faces: внешнее поведение → скрытый мотив → готовность к диалогу. Outcome: факты, не страхи. No invented numbers.",
+      "alt": "Схема трёх слоёв недоговорённости: внешнее поведение, скрытый мотив и готовность к диалогу",
+      "labels": [
+        "внешнее поведение",
+        "скрытый мотив",
+        "готовность к диалогу"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Что остаётся в тени: учебные арканы скрытого слоя",
+      "visual_type": "infographic_card",
+      "scene_hint": "Educational-arcana cards, NO people/faces: учебные арканы, не читать мысли, причины замкнутости, без иллюзий. No invented numbers, no birth-date grid.",
+      "alt": "Карточки учебных арканов скрытого слоя: не читать мысли и видеть причины замкнутости",
+      "labels": [
+        "учебные арканы",
+        "не читать мысли",
+        "причины замкнутости",
+        "без иллюзий"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Практика: чеклист шагов для утренней ясности",
+      "visual_type": "checklist_board",
+      "scene_hint": "Morning checklist left to right, NO people/faces: факты вместо догадок → разговор без допроса → личное пространство → встречный шаг. No invented numbers.",
+      "alt": "Чеклист утренних шагов: факты вместо догадок, разговор без допроса, пространство и встречный шаг",
+      "labels": [
+        "факты вместо догадок",
+        "разговор без допроса",
+        "личное пространство",
+        "встречный шаг"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
