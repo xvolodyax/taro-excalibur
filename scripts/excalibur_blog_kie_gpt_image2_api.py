@@ -202,8 +202,14 @@ def require_success(response: dict[str, Any], action: str) -> None:
     raise KieApiError(f"Kie API {action} failed: code={response.get('code')} msg={msg}")
 
 
-def expand_input_urls(input_urls: list[Any]) -> list[str]:
-    """Expand {{SITE_BASE}} in batch input_urls for the live Kie API call."""
+def expand_input_urls(
+    input_urls: list[Any], *, allow_unexpanded: bool = False
+) -> list[str]:
+    """Expand {{SITE_BASE}} in batch input_urls for the live Kie API call.
+
+    When prefer_local_reference File Upload will replace input_urls before
+    createTask, keep the git-safe placeholder even if PUBLIC_SITE_URL is unset.
+    """
     live = resolve_public_base_from_env()
     out: list[str] = []
     for raw in input_urls:
@@ -211,11 +217,12 @@ def expand_input_urls(input_urls: list[Any]) -> list[str]:
         if not url:
             continue
         if SITE_BASE_PLACEHOLDER in url:
-            if not live:
+            if live:
+                url = expand_site_base(url, live)
+            elif not allow_unexpanded:
                 raise KieApiError(
                     f"batch input_urls contain {SITE_BASE_PLACEHOLDER} but PUBLIC_SITE_URL/WP_SITE_URL is unset"
                 )
-            url = expand_site_base(url, live)
         out.append(url)
     return out
 
@@ -238,7 +245,8 @@ def batch_mcp_args(batch_path: Path) -> dict[str, Any]:
         raise KieApiError("Missing prompt in jobs[0].mcp_args")
     if not isinstance(input_urls, list) or not input_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args")
-    expanded_urls = expand_input_urls(input_urls)
+    prefer_local = bool(batch.get("prefer_local_reference"))
+    expanded_urls = expand_input_urls(input_urls, allow_unexpanded=prefer_local)
     if not expanded_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args after expand")
     return {
