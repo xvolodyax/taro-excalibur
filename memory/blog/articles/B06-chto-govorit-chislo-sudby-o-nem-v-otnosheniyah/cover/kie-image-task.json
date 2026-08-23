@@ -1,0 +1,17 @@
+{
+  "task_id": "6c499f6935ab4046c4afc56bcd1663bf",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B06-chto-govorit-chislo-sudby-o-nem-v-otnosheniyah/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1787491808,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}

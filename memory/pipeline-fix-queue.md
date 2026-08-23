@@ -91,3 +91,32 @@ category: prompt
 
 ### Fixer resolution
 - pending
+
+## INC-20260823-1332-cover-gutter-mechanical-b06
+status: open
+run_date: 2026-08-23
+role: excalibur-blog-cover
+topic_id: B06
+article_dir: memory/blog/articles/B06-chto-govorit-chislo-sudby-o-nem-v-otnosheniyah
+severity: low
+category: prompt
+
+### What went wrong
+- First billed 2K i2i for B06: Victoria FACE LARGE left, terracotta cardigan worn (not still-life, not B05 dusty-blue linen). Split still chose mechanical_center: auto gutter `gutter_too_far_from_center` (h offset ~24.5px, v offset ~38.5px). Same class as INC-20260823-0637.
+- Mechanical 50/50 panels complete; face did not bleed into inline. Director-allowed full redo not used.
+
+### How the agent recovered this run
+- Kept mechanical split PASS. Pillow credit on cover only. No second billed gen.
+
+### Durable fix needed before next run
+- Same as INC-20260823-0637: first-try prompt must lock thin white gutters exactly on 1024/576 so auto gutter can accept.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `scripts/excalibur_blog_cover_quad_split.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending

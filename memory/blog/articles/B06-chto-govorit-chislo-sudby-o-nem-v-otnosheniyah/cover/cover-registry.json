@@ -1,0 +1,50 @@
+{
+  "topic_id": "B06",
+  "slug": "chto-govorit-chislo-sudby-o-nem-v-otnosheniyah",
+  "cover_family": "brand_collage",
+  "style_preset": "taro-seichas",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: что число судьбы говорит о нём в отношениях",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-23T13:31:22+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: что число судьбы говорит о нём в отношениях",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: как сложить дату рождения слева направо и проверить",
+      "h2_anchor": "Как правильно посчитать число судьбы по дате рождения",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Карточки: как темперамент проявляется в чувствах, тишине и границах",
+      "h2_anchor": "Что числа от 1 до 9 и мастер-числа говорят о его поведении в отношениях",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист: где расчёт числа судьбы не работает и что проверять",
+      "h2_anchor": "Где расчёт не работает и какие ошибки искажают понимание",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
