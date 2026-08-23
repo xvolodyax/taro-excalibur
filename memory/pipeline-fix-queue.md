@@ -1,0 +1,93 @@
+# Pipeline fix queue
+
+## INC-20260823-0630-cover-prefer-local-site-base
+status: open
+run_date: 2026-08-23
+role: excalibur-blog-cover
+topic_id: B05
+article_dir: memory/blog/articles/B05-chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu
+severity: high
+category: script
+
+### What went wrong
+- First Kie run failed before createTask: batch `input_urls` keep git-safe `{{SITE_BASE}}`, Cloud env has no `PUBLIC_SITE_URL` / `WP_SITE_URL`, and `batch_mcp_args` required live expand even when `prefer_local_reference` is true.
+- Tenant path is local Victoria PNG + File Upload. Catbox is forbidden. No billed task was created.
+
+### How the agent recovered this run
+- `expand_input_urls(..., allow_unexpanded=True)` when `prefer_local_reference` is set; File Upload still replaces `input_urls` before createTask.
+- Batch file stays git-safe (`{{SITE_BASE}}` / local path). No live host written.
+
+### Durable fix needed before next run
+- Keep the skip: prefer_local File Upload must not require a live site URL.
+- Document in Kie contract that local-ref tenants can generate without `PUBLIC_SITE_URL`.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `shared/kie-gpt-image-api-contract.md`
+- `tests/test_kie_prefer_local_site_base.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
+## INC-20260823-0632-cover-host-still-life
+status: open
+run_date: 2026-08-23
+role: excalibur-blog-cover
+topic_id: B05
+article_dir: memory/blog/articles/B05-chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu
+severity: medium
+category: prompt
+
+### What went wrong
+- First billed 2K i2i kept the hook, dusty-blue linen shirt, face-down phone and enamel medallion, but painted a clothing still-life instead of Victoria face LARGE left.
+- Extra invented subtitle under the hook. Split cells were not crooked; owner allowed canvas redo only for crooked split, not host-miss quality.
+
+### How the agent recovered this run
+- First pass: no quality-redo. Director then authorized one full canvas rebuild. Second billed gen: Victoria FACE LARGE left, she WEARS the dusty-blue linen shirt; Pillow credit applied.
+
+### Durable fix needed before next run
+- First-try cover lock: face is the large subject; the linen shirt is worn, not a folded prop that replaces the host.
+- Keep topic metaphor tiny (phone/medallion) so it cannot outrank the face.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `memory/cover/blog-hero.json`
+- `memory/cover/quad-style-taro-seichas.json`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
+## INC-20260823-0637-cover-gutter-still-off
+status: open
+run_date: 2026-08-23
+role: excalibur-blog-cover
+topic_id: B05
+article_dir: memory/blog/articles/B05-chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu
+severity: medium
+category: prompt
+
+### What went wrong
+- Director-approved one full 2K redo: host face is now on cover.png. Split still chose mechanical_center because auto gutter was `gutter_too_far_from_center` (h offset ~29px, v offset ~38px).
+- Mechanical 50/50 panels are complete (no bleed of face into inline). No third billed gen.
+
+### How the agent recovered this run
+- Kept mechanical split PASS. Wrote incident as directed after the one allowed redo.
+
+### Durable fix needed before next run
+- First-try prompt must lock thin white gutters exactly on 1024/576 and keep all panel content inside its quadrant so auto gutter can accept.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `scripts/excalibur_blog_cover_quad_split.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending

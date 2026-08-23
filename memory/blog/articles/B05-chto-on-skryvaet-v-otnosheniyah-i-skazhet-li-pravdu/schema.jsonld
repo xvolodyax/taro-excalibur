@@ -1,0 +1,110 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{SITE_BASE}}/#organization",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/",
+      "sameAs": [
+        "https://dzen.ru/todaytaro_bot"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "{{SITE_BASE}}/#victoria",
+      "name": "Виктория",
+      "givenName": "Виктория",
+      "jobTitle": "Таролог «ТАРО СЕЙЧАС»",
+      "description": "Виктория из «ТАРО СЕЙЧАС». На сайте частный таро-детектив, пятый аркан Иерофант: треугольники, скрытые мотивы, говорит прямо.",
+      "sameAs": [
+        "https://vk.com/id1113231252"
+      ],
+      "worksFor": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{SITE_BASE}}/#website",
+      "url": "{{SITE_BASE}}/",
+      "name": "ТАРО СЕЙЧАС",
+      "inLanguage": "ru-RU",
+      "publisher": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "{{SITE_BASE}}/chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu/#article",
+      "url": "{{SITE_BASE}}/chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu/",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{SITE_BASE}}/chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu/"
+      },
+      "headline": "Что он скрывает в отношениях и скажет ли правду",
+      "description": "Как отличить скрытые причины молчания от пугающих домыслов и понять, готов ли партнер к честному разговору без давления и допросов.",
+      "datePublished": "2026-08-23",
+      "dateModified": "2026-08-23",
+      "inLanguage": "ru-RU",
+      "author": {
+        "@type": "Person",
+        "@id": "{{SITE_BASE}}/#victoria",
+        "name": "Виктория",
+        "givenName": "Виктория",
+        "jobTitle": "Таролог «ТАРО СЕЙЧАС»",
+        "sameAs": [
+          "https://vk.com/id1113231252"
+        ]
+      },
+      "publisher": {
+        "@id": "{{SITE_BASE}}/#organization"
+      },
+      "isPartOf": {
+        "@id": "{{SITE_BASE}}/#website"
+      },
+      "hasPart": {
+        "@id": "{{SITE_BASE}}/chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu/#howto"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "{{SITE_BASE}}/chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu/#howto",
+      "name": "Практика: чеклист шагов для утренней ясности",
+      "description": "Чтобы утренняя тревога не переросла в разрушительную ссору, полезно опираться на простые шаги бережного общения.",
+      "inLanguage": "ru-RU",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Отделить факты от догадок",
+          "text": "Зафиксировать реальные слова и поступки, не достраивая в мыслях пугающие картины без оснований."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Использовать нейтральное я-сообщение",
+          "text": "Сказать о своих ощущениях («мне тревожно, когда вчера разговор обрывается, а утром повисает тишина»), избегая обвинений и допроса."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Различать право на личные границы и скрытность в общих делах",
+          "text": "Личные переживания требуют времени, а вопросы совместных планов и договорённостей требуют ясного обсуждения."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Дать пространство для ответа",
+          "text": "Отказаться от частых сообщений, если видно, что собеседник напряжён, и дать возможность вернуться к теме спокойно."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Оценить встречный шаг",
+          "text": "Обратить внимание на готовность слушать и идти на контакт, когда снято внешнее давление."
+        }
+      ]
+    }
+  ]
+}
