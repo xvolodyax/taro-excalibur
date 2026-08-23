@@ -1,0 +1,63 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B06",
+  "article_dir": "memory/blog/articles/B06-chto-govorit-chislo-sudby-o-nem-v-otnosheniyah",
+  "research_date": "2026-08-23",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "fresh_signal": {
+    "ok": true,
+    "week": "2026-08-17/2026-08-23",
+    "primary": {
+      "title": "Судьба выдохнет: 5 дней до конца коридора затмений — 6 знаков сбросят груз прошлого с 28 августа 2026",
+      "where": "Dzen recommendations next to https://dzen.ru/a/anLD2pgpaAzAwvvd",
+      "recency": "card stamped ~6 hours ago on 2026-08-23",
+      "why": "Live weekend community/channel traffic around destiny, dates, relationship turning points. Used as demand signal, not as horoscope product."
+    },
+    "supporting": [
+      {
+        "title": "Дзен todaytaro_bot — B03/B04/B05 published this weekend",
+        "url": "https://dzen.ru/todaytaro_bot",
+        "recency": "B03 ~22h, B04 ~19h, B05 ~4h before access on 2026-08-23",
+        "why": "Tenant demand this Sunday already spent the pair-dates slot; leftover pain is one HIS date."
+      },
+      {
+        "title": "Нумерологический прогноз на август 2026",
+        "url": "https://horo.mail.ru/article/14838-numerologicheskij-prognoz-na-avgust-2026/",
+        "recency": "current-month forecast accessed 2026-08-23",
+        "why": "August 2026 reduces to 9; personal-life frame is honest talk, not a hot-romance horoscope."
+      }
+    ]
+  },
+  "wordstat": {
+    "called": false,
+    "reason": "Director banned Wordstat for this turn"
+  },
+  "anti_dup": [
+    "B03 pair-dates compatibility",
+    "PRE-DZEN-02 date inside tarot spread",
+    "B01 pause/end",
+    "B02 what he feels",
+    "B04 tonight",
+    "B05 what he hides"
+  ],
+  "canon_calc": {
+    "method": "sum all digits of full birth date DD.MM.YYYY, reduce to 1-9; keep 11/22/33 if they appear on a reduction step",
+    "teaching_example": {
+      "date": "08.04.1993",
+      "digits": [0, 8, 0, 4, 1, 9, 9, 3],
+      "intermediate_sum": 34,
+      "result": 7,
+      "forbidden_example": "17.06.1995"
+    }
+  },
+  "notes": "research-notes.md",
+  "writer_safe_urls": [
+    "https://vk.com/app54565776",
+    "https://max.ru/id531102974575_bot"
+  ],
+  "invented_news": false,
+  "h2_outline_written": false,
+  "lead_written": false
+}

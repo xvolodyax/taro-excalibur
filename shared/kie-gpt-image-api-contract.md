@@ -174,7 +174,7 @@ Script auto-path (default on; disable with `--no-file-upload-fallback`):
 ```text
 createTask → poll recordInfo
   → state=fail + failCode=400 / «image fetch failed»
-  → download expanded input_urls (if shell can) OR use memory/cover/assets/blog-hero-reference.png
+  → download expanded input_urls (if shell can) OR use memory/cover/assets/виктория.png
   → POST kieai.redpandaai.co/api/file-stream-upload (uploadPath=excalibur-blog/hero)
      **with User-Agent** (script default `ExcaliburBlogKieFallback/1.0`; missing UA → CF1010)
   → replace runtime input_urls with data.downloadUrl (do NOT rewrite committed batch)
@@ -184,6 +184,7 @@ createTask → poll recordInfo
 Rules:
 
 - Keep `cover/quad-mcp-batch.json` git-safe (`{{SITE_BASE}}` / `{{SITE_HOST}}`); only runtime payload uses the temp `downloadUrl`.
+- When `prefer_local_reference` is true, the first createTask may File-Upload the local Victoria PNG even if `PUBLIC_SITE_URL` / `WP_SITE_URL` is unset. Do not treat missing live site URL as `KIE API BLOCKER` on that path, and do not fall back to catbox.
 - Local HTTP 200 on `ava.jpg` ≠ proof that Kie can fetch it.
 - Do **not** fall back to sync MCP `gpt-image-2` when `KIE_API_KEY` is set.
 - File Upload recreate is **once** per run (separate from `--max-create-retries` for 500).

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "article_dir": "memory/blog/articles/B06-chto-govorit-chislo-sudby-o-nem-v-otnosheniyah",
+  "cta_required": true,
+  "required": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776"
+  ],
+  "present": {
+    "https://max.ru/id531102974575_bot": true,
+    "https://vk.com/app54565776": true
+  },
+  "funnel": true,
+  "errors": []
+}
