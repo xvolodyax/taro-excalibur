@@ -111,7 +111,7 @@ def inline_panel_prompt(slot: dict, types_catalog: dict) -> str:
         exact = ", ".join(f"«{x}»" for x in labels)
         base += (
             f" TEXT LOCK: render ONLY these exact Russian strings on this panel: "
-            f"{exact}. Every letter in Cyrillic, exactly as written. "
+            f"{exact}. Exact Cyrillic as written. "
             "No other words, no English, no invented headlines."
         )
     return base
@@ -298,6 +298,82 @@ def style_is_situational_cat_hero(style: dict) -> bool:
     return motif in {"situational_cat_hero", "cat_hero"}
 
 
+class CoverReferenceError(RuntimeError):
+    """Neither local Victoria ref nor a git-safe hosted URL is available."""
+
+
+def local_reference_candidates(hero: dict, style: dict) -> list[str]:
+    """Victoria-only local paths. Alena and remote URLs are skipped."""
+    seen: list[str] = []
+    raw = [
+        style.get("local_reference"),
+        hero.get("reference_sheet_2k"),
+        hero.get("reference_sheet"),
+        hero.get("reference_image"),
+        *(hero.get("input_urls") or []),
+    ]
+    for item in raw:
+        value = str(item or "").strip()
+        if not value or value in seen:
+            continue
+        lowered = value.casefold()
+        if "alena" in lowered:
+            continue
+        if "://" in value:
+            continue
+        seen.append(value)
+    return seen
+
+
+def resolve_cover_reference(
+    hero: dict, style: dict, root: Path
+) -> tuple[str, bool, str]:
+    """Return (batch_ref_url, prefer_local_reference, local_relpath)."""
+    local_path: Path | None = None
+    local_reference = ""
+    for candidate in local_reference_candidates(hero, style):
+        path = Path(candidate)
+        if not path.is_absolute():
+            path = root / candidate
+        if path.is_file():
+            local_path = path
+            local_reference = candidate
+            break
+    host_local_ok = local_path is not None
+    cat_hero = style_is_situational_cat_hero(style)
+    if (
+        (cat_hero or str(hero.get("cover_mode") or "") == "host_reference")
+        and host_local_ok
+        and local_path is not None
+    ):
+        batch_ref_url = (
+            f"{SITE_BASE_PLACEHOLDER}/wp-content/uploads/excalibur/"
+            f"{Path(local_reference).name}"
+        )
+        return (
+            batch_ref_url,
+            True,
+            str(local_path.relative_to(root)).replace("\\", "/"),
+        )
+    ref_url = (hero.get("reference_url_hosted") or "").strip()
+    if not ref_url:
+        raise CoverReferenceError(
+            "COVER HERO BLOCKER: reference_url_hosted missing. "
+            "Run excalibur_blog_hero_reference_url.py"
+        )
+    if not validate_reference_url(ref_url):
+        raise CoverReferenceError(
+            "COVER HERO BLOCKER: reference_url_hosted invalid"
+        )
+    batch_ref_url = git_safe_reference_url(ref_url)
+    if REDACTED_LITERAL in batch_ref_url:
+        raise CoverReferenceError(
+            "COVER HERO BLOCKER: cannot derive git-safe reference_url_hosted; "
+            f"set blog-hero.json to {SITE_BASE_PLACEHOLDER}/wp-content/.../ava.jpg"
+        )
+    return batch_ref_url, False, ""
+
+
 def build_prompt(
     manifest: dict,
     style: dict,
@@ -317,12 +393,18 @@ def build_prompt(
     cat_ok = style_allows_cat_stickers(style)
     cat_hero = style_is_situational_cat_hero(style)
 
+    palette = design_code.get("color_palette") or {}
+    accent_hex = str(
+        style.get("accent_primary")
+        or palette.get("accent_primary")
+        or "#8B3A3A"
+    ).strip() or "#8B3A3A"
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
     highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
+        f'paint ONLY the highlight word "{highlight}" in warm accent {accent_hex}; '
         f'hook text must match exactly — do not substitute «время»/traffic markers'
         if highlight
-        else "paint at most ONE punch word in hot-pink #FF1493"
+        else f"paint at most ONE punch word in warm accent {accent_hex}"
     )
     cover_scene = sanitize_cover_scene_hint(
         str(cover.get("scene_hint") or ""), highlight
@@ -330,11 +412,11 @@ def build_prompt(
     cover_hook_text = compact(manifest.get("cover_hook", ""), 120)
     cover_sticky = compact(str(cover.get("sticky") or ""), 48)
     sticky_lock = (
-        f" Small pink sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+        f" Small warm-accent note with EXACTLY «{cover_sticky}» in Cyrillic."
         if cover_sticky
         else ""
     )
-    # Prefer style preset locks when present (cat digital collage vs editorial).
+    # Prefer style preset locks when present (tenant design-code vs fallback).
     style_prefix = compact(
         style.get("global_prompt_prefix")
         or design_code.get("cover_panel_prompt_block")
@@ -343,11 +425,18 @@ def build_prompt(
     )
     if not style_prefix:
         style_prefix = (
-            "Dense collage RU editorial, WHITE #FFFFFF, BLACK #141821 Cyrillic ink, "
-            "hot-pink #FF1493 one accent only. Every panel: torn paper, tape, "
-            "≥2 topic stickers, sticky, ≥1 educational UI card (labels from scene_hint). "
-            "Busy collage, not sterile."
+            "RU editorial, WHITE #FFFFFF, dark ink, warm accent from design-code. "
+            "Cover: host face + short Cyrillic hook. Inline: schema/question, no people. "
+            "No tape collage, no meme stickers, no white-hoodie lock."
         )
+    tenant_ban = compact(style.get("ban_line") or "", 400)
+    tenant_tail = compact(style.get("cover_scene_tail") or "", 220)
+    tenant_inline = compact(
+        style.get("inline_prompt_suffix")
+        or design_code.get("inline_information_block")
+        or "",
+        400,
+    )
     if cat_hero:
         ban_line = (
             "Ban: ANY human face/host/bearded man/glasses portrait/white-hoodie person/"
@@ -404,19 +493,26 @@ def build_prompt(
             "expressive editorial pose; no headphones; no meme reaction."
         )
         inline_suffix = (
-            "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
-            "NO people/faces/host/meme/EXCALIBUR badge; no cover-hook duplicate. "
-            "Neg: sterile white, all-pink headline, keyword spam, watermark, logo, 9:16, "
+            "Inline all: meaning/schema/question — dark heading, 3–6 Cyrillic labels; "
+            "NO people/faces/host/meme/tape-collage/EXCALIBUR badge; no cover-hook duplicate. "
+            "Neg: sterile gray boxes, all-accent headline, keyword spam, watermark, logo, 9:16, "
             "unreadable text, extra faces."
         )
+    if tenant_ban:
+        ban_line = tenant_ban
+    if tenant_tail:
+        cover_scene_tail = tenant_tail
+    if tenant_inline:
+        inline_suffix = tenant_inline
     lines = [
         # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
         # badge on every panel (INC-20260723-1223 / user correction).
         style_prefix,
-        "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
+        "Canvas 2048x1152 exact 2x2; four 16:9 panels; thin white gutters ON the center (1024/576); no bleed between panels.",
         "",
         ban_line,
         "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
+        "No host credit, byline, site or URL on canvas — Pillow stamps Victoria after split.",
         "",
         reference_line,
         "",
@@ -461,7 +557,7 @@ def main() -> int:
         root
         / manifest.get(
             "style_file",
-            "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
+            "memory/cover/quad-style-taro-seichas.json",
         )
     )
     types_path = root / manifest.get("inline_types_catalog", "memory/cover/inline-visual-types.json")
@@ -469,42 +565,13 @@ def main() -> int:
     design_code_path = root / style.get("design_code", "memory/cover/cover-design-code.json")
     design_code = load_json(design_code_path) if design_code_path.is_file() else {}
 
-    cat_hero = style_is_situational_cat_hero(style)
-    local_reference = str(style.get("local_reference") or "").strip()
-    prefer_local_reference = False
-    if cat_hero and local_reference:
-        local_path = root / local_reference
-        if not local_path.is_file():
-            print(
-                f"❌ COVER STYLE BLOCKER: local_reference missing: {local_reference}",
-                file=sys.stderr,
-            )
-            return 1
-        # Git-safe placeholder; Kie uploads local_reference before createTask.
-        batch_ref_url = (
-            f"{SITE_BASE_PLACEHOLDER}/wp-content/uploads/excalibur/"
-            f"{Path(local_reference).name}"
+    try:
+        batch_ref_url, prefer_local_reference, local_reference = resolve_cover_reference(
+            hero, style, root
         )
-        prefer_local_reference = True
-    else:
-        ref_url = (hero.get("reference_url_hosted") or "").strip()
-        if not ref_url:
-            print(
-                "❌ COVER HERO BLOCKER: reference_url_hosted missing. Run excalibur_blog_hero_reference_url.py",
-                file=sys.stderr,
-            )
-            return 1
-        if not validate_reference_url(ref_url):
-            return 1
-        # Committed batch always uses {{SITE_BASE}}; Kie API expands at runtime.
-        batch_ref_url = git_safe_reference_url(ref_url)
-        if REDACTED_LITERAL in batch_ref_url:
-            print(
-                "❌ COVER HERO BLOCKER: cannot derive git-safe reference_url_hosted; "
-                f"set blog-hero.json to {SITE_BASE_PLACEHOLDER}/wp-content/.../ava.jpg",
-                file=sys.stderr,
-            )
-            return 1
+    except CoverReferenceError as exc:
+        print(f"❌ {exc}", file=sys.stderr)
+        return 1
 
     warn_long_scene_hints(manifest)
     prompt = build_prompt(

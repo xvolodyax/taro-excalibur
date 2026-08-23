@@ -4,7 +4,7 @@
 Script may: pick visual_type from H2 keywords, wire slots/quadrants, preserve
 agent fields on --merge, keep meme_caption_ru empty.
 
-Script must NOT invent cover_hook, scene_hint, or alt. White hoodie / face lock
+Script must NOT invent cover_hook, scene_hint, or alt. Face / outfit rules
 live in memory/cover/blog-hero.json + style prompts, not in scene_hint boilerplate.
 """
 
@@ -32,6 +32,27 @@ DEFAULT_SLOT_MAP = {
     "inline_2": "bottom_left",
     "inline_3": "bottom_right",
 }
+DEFAULT_STYLE_FILE = "memory/cover/quad-style-taro-seichas.json"
+DEFAULT_STYLE_PRESET = "taro-seichas"
+
+
+def tenant_style_defaults(root: Path) -> tuple[str, str]:
+    """preset id + style JSON path from tenant-config.cover_files.style_preset."""
+    preset = DEFAULT_STYLE_PRESET
+    style_file = DEFAULT_STYLE_FILE
+    tenant_path = root / "shared/tenant-config.json"
+    if tenant_path.is_file():
+        try:
+            tenant = json.loads(tenant_path.read_text(encoding="utf-8"))
+            rel = str((tenant.get("cover_files") or {}).get("style_preset") or "").strip()
+            if rel:
+                style_file = rel
+                name = Path(rel).name
+                if name.startswith("quad-style-") and name.endswith(".json"):
+                    preset = name[len("quad-style-") : -len(".json")]
+        except (OSError, json.JSONDecodeError):
+            pass
+    return preset, style_file
 
 
 def project_root() -> Path:
@@ -142,14 +163,15 @@ def build_manifest(article_dir: Path, root: Path, preserve: dict | None) -> dict
         str(cover_text.get("highlight") or "").strip()
         or str((preserve or {}).get("cover_hook_highlight") or "").strip()
     )
+    style_preset, style_file = tenant_style_defaults(root)
 
     return {
         "topic_id": topic_id,
         "canvas_file": "cover/canvas-quad.png",
         "layout": "2x2",
         "pipeline": "quad_canvas_1x_image_api",
-        "style_preset": "tenant_unset",
-        "style_file": "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
+        "style_preset": style_preset,
+        "style_file": style_file,
         "blog_hero": "memory/cover/blog-hero.json",
         "inline_types_catalog": "memory/cover/inline-visual-types.json",
         "cover_hook": hook,
@@ -158,7 +180,7 @@ def build_manifest(article_dir: Path, root: Path, preserve: dict | None) -> dict
         "mcp_note": (
             "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py "
             "(KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt "
-            "before --write-batch. White hoodie lock = blog-hero.json only."
+            "before --write-batch. Face/outfit rules = blog-hero.json only."
         ),
         "slots": slots,
         "cover_keys_ru": list((preserve or {}).get("cover_keys_ru") or []),
