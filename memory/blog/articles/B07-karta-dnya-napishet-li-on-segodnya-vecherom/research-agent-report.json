@@ -1,0 +1,111 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B07",
+  "slug": "karta-dnya-napishet-li-on-segodnya-vecherom",
+  "article_dir": "memory/blog/articles/B07-karta-dnya-napishet-li-on-segodnya-vecherom",
+  "research_date": "2026-08-23",
+  "timezone": "Europe/Moscow",
+  "weekday": "воскресенье",
+  "slot": "20:00 MSK",
+  "status": "PASS",
+  "verdict": "PASS",
+  "block_reason": null,
+  "fresh_signal": {
+    "found": true,
+    "window": "2026-08-17/2026-08-23",
+    "primary": {
+      "kind": "channel_community",
+      "title": "Стоит ли писать первым?",
+      "url": "https://dzen.ru/a/amsFNJP-tkHrfkYn",
+      "publisher": "Дзен / Сайт психологов b17.ru",
+      "dated": "2026-08-22",
+      "freshness": "вчера относительно 2026-08-23",
+      "why": "живой community-разбор соседнего острого запроса «писать первой» в окне этой недели"
+    },
+    "supporting": [
+      {
+        "kind": "news",
+        "title": "Карты Таро рассказали, что ждет знаки зодиака 23 августа",
+        "url": "https://www.zakon.kz/sovety/6528997-karty-taro-rasskazali-chto-zhdet-znaki-zodiaka-23-avgusta.html",
+        "dated": "2026-08-23T09:13",
+        "why": "сегодняшняя новость: не торопить, закрыть неделю, границы, не требовать той же скорости реакции"
+      },
+      {
+        "kind": "news",
+        "title": "Таро-прогноз на неделю с 17 по 23 августа 2026 года",
+        "url": "https://horo.mail.ru/article/15163-taro-prognoz-na-nedelyu-s-17-po-23-avgusta-2026/",
+        "dated": "2026-08-17/2026-08-23",
+        "why": "карта недели Восьмёрка Мечей — клетка в своих убеждениях"
+      },
+      {
+        "kind": "channel",
+        "title": "СРОЧНЫЕ новости на пороге с 23-30 августа",
+        "url": "https://dzen.ru/a/aokS7O194WeQDHza",
+        "dated": "2026-08-22",
+        "why": "вчерашний канал: в общем фоне недели «звонок, письмо»"
+      },
+      {
+        "kind": "tenant_channel",
+        "title": "ТАРО СЕЙЧАС / todaytaro_bot",
+        "url": "https://dzen.ru/todaytaro_bot",
+        "dated": "2026-08-23",
+        "why": "лента живая; B04 уже заняла «вечер + торопить» — не копипаст"
+      },
+      {
+        "kind": "tenant_site",
+        "title": "Кубик Да/Нет, пример «Написать ли мне ему самой?»",
+        "url": "https://www.таросейчас.рф/",
+        "dated": "2026-08-23",
+        "why": "живой продуктовый угол тенанта, не выдумка"
+      }
+    ]
+  },
+  "wordstat": {
+    "called": false,
+    "reason": "Director banned"
+  },
+  "serp_script": {
+    "file": "research-serp.json",
+    "result_count": 0,
+    "error": "DuckDuckGo SSL handshake timeout",
+    "compensated_by": "WebSearch/WebFetch 2026-08-23"
+  },
+  "anti_dup": {
+    "titles_file": "published-titles-only.md",
+    "neighbor_bodies_opened": false,
+    "avoid": [
+      "PRE-DZEN-01 Что делать, если он не пишет",
+      "PRE-DZEN-03 Карты уже знают, почему он молчит",
+      "B02 Что он чувствует к тебе прямо сейчас",
+      "B04 Что ждёт ваши отношения этим вечером и стоит ли торопить события",
+      "дата рождения / число судьбы"
+    ],
+    "hero": "сегодняшний вечер / эта ночь: придёт ли сообщение; писать ли первой СЕЙЧАС"
+  },
+  "writer_safe_urls": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776",
+    "https://horo.mail.ru/article/15163-taro-prognoz-na-nedelyu-s-17-po-23-avgusta-2026/",
+    "https://www.zakon.kz/sovety/6528997-karty-taro-rasskazali-chto-zhdet-znaki-zodiaka-23-avgusta.html",
+    "https://dzen.ru/a/amsFNJP-tkHrfkYn",
+    "https://dzen.ru/a/aokS7O194WeQDHza",
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.таросейчас.рф/",
+    "https://www.basilarcana.com/tarot/questions/napishet-li-on-mne/",
+    "https://www.basilarcana.com/stoit-li-pisat-pervoy.html",
+    "https://www.basilarcana.com/academy-tarot-card-of-day.html",
+    "https://fate-whisper.ru/karta-dnya-taro",
+    "https://dzen.ru/help/ru/requirements/rules.html",
+    "https://dzen.ru/a/ak9w77q5zUfO8XYs"
+  ],
+  "invented_news": false,
+  "h2_outline_written": false,
+  "lead_written": false,
+  "action_outline_written": false,
+  "faq_written": false,
+  "scout_called": false,
+  "wordstat_folder_touched": false,
+  "rf_blocked_hero": false,
+  "telegram_in_writer_urls": false,
+  "notes": "research-notes.md"
+}
