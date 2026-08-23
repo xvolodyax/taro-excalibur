@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{SITE_BASE}}/karta-dnya-napishet-li-on-segodnya-vecherom/",
+  "url": "{{SITE_BASE}}/karta-dnya-napishet-li-on-segodnya-vecherom/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{SITE_BASE}}/karta-dnya-napishet-li-on-segodnya-vecherom/"
+  },
+  "headline": "Напишет ли он сегодня вечером и стоит ли написать первой",
+  "description": "Как карта дня помогает понять вечернее молчание мужчины, оценить шансы на сообщение и спокойно решить, делать ли первый шаг.",
+  "datePublished": "2026-08-23",
+  "dateModified": "2026-08-23",
+  "inLanguage": "ru-RU",
+  "author": {
+    "@type": "Person",
+    "name": "Виктория",
+    "givenName": "Виктория",
+    "jobTitle": "Таролог «ТАРО СЕЙЧАС»",
+    "identifier": "victoria",
+    "sameAs": [
+      "https://vk.com/id1113231252"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}/"
+  }
+}
