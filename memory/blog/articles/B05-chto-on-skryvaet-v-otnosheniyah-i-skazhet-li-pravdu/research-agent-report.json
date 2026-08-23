@@ -1,0 +1,328 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B05",
+  "title": "Что он скрывает в отношениях и скажет ли правду",
+  "slug": "chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu",
+  "article_dir": "memory/blog/articles/B05-chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu",
+  "status": "PASS",
+  "verdict": "PASS",
+  "research_date": "2026-08-23",
+  "notes": "research-notes.md",
+  "fresh_signal": {
+    "this_week": true,
+    "kind": "channel_gap + news_day + community",
+    "summary": "Утро 23.08.2026: в ленте todaytaro_bot нет угла «скрывает / скажет ли правду» (последнее — B04 вечером 22.08). Фон дня 22–23.08: честность, недоговорённость, не требовать мгновенного ответа. Community 21–22.08 прямо про скрытое и готовность сказать. Рынок запроса обновлён сегодня (AiQube 23.08).",
+    "primary_urls": [
+      "https://dzen.ru/todaytaro_bot",
+      "https://mixnews.lv/goroskop/2026/08/22/goroskop-na-23-avgusta-po-kartam-taro-teltsu-ukreplyat-to-chto-daet-nastoyaschuyu-oporu-ovnu-deystvovat-smelo-bez-neterpeniya/",
+      "https://www.unian.net/lite/astrology/goroskop-na-zavtra-po-kartam-taro-chto-zhdet-vse-znaki-zodiaka-23-avgusta-2026-goda-13477497.html",
+      "https://dzen.ru/a/aoL_fiWUwS2-MGS9",
+      "https://dzen.ru/a/aoVQt0h3w3w0VP4k",
+      "https://aiqube.ru/tarot/taro-na-nego-chto-on-skryvaet-s-rasshifrovkoy-dlya-otnosheniy"
+    ]
+  },
+  "supporting_channel": {
+    "url": "https://dzen.ru/todaytaro_bot",
+    "accessed_at": "2026-08-23",
+    "live": true,
+    "feed_seen": [
+      "B04 Что ждёт ваши отношения этим вечером и стоит ли торопить события (~12 ч, вечер 22.08)",
+      "B03 Сходятся ли ваши даты и что это значит для отношений (~15 ч)",
+      "B01 Пауза или конец? (1 день)",
+      "PRE-DZEN-01 Что делать, если он не пишет (5 дней)",
+      "PRE-DZEN-02 Дата рождения в раскладе таро (5 дней)",
+      "PRE-DZEN-03 Карты уже знают, почему он молчит (5 дней)"
+    ],
+    "bodies_read": false,
+    "gap": "угла «что он скрывает / скажет ли правду» в ленте нет"
+  },
+  "supporting_news": [
+    {
+      "url": "https://mixnews.lv/goroskop/2026/08/22/goroskop-na-23-avgusta-po-kartam-taro-teltsu-ukreplyat-to-chto-daet-nastoyaschuyu-oporu-ovnu-deystvovat-smelo-bez-neterpeniya/",
+      "published": "2026-08-22T12:58",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "фон 23.08: честность, границы, проговорить между строк; не требовать мгновенного ответа; не тащить 12 знаков"
+    },
+    {
+      "url": "https://cursorinfo.co.il/horoscope/goroskop-na-voskresene-23-avgusta-2026-goda-dlya-vseh-znakov-zodiaka/",
+      "published": "2026-08-23T07:02",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "воскресенье: простой разговор о ближайших днях и ожиданиях; не допрос"
+    },
+    {
+      "url": "https://www.unian.net/lite/astrology/goroskop-na-zavtra-po-kartam-taro-chto-zhdet-vse-znaki-zodiaka-23-avgusta-2026-goda-13477497.html",
+      "published": "2026-08-23T08:13",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "карта дня Восьмёрка Кубков; честное признание, что прежний формат не устраивает"
+    },
+    {
+      "url": "https://gadalkindom.ru/goroskop/taro-prognoz/rasklad-na-23-avgusta.html",
+      "page_title_date": "2026-08-23",
+      "meta_published": "2021-08-21",
+      "meta_modified": "2025-10-11",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "любовь: Девятка Мечей (тревога, недоговорённость). Календарная страница — не личный расклад Виктории"
+    }
+  ],
+  "supporting_community": [
+    {
+      "url": "https://dzen.ru/a/aoL_fiWUwS2-MGS9",
+      "when": "вчера ≈ 2026-08-22",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "Семёрка Мечей: скрытое ≠ обязательно измена; не говорит, потому что ждёт конфликта"
+    },
+    {
+      "url": "https://dzen.ru/a/aoVQt0h3w3w0VP4k",
+      "when": "вчера ≈ 2026-08-22",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "тайна часто = уязвимость / страх потери, не вторая семья"
+    },
+    {
+      "url": "https://dzen.ru/a/aoVQKEh3w3w0U98L",
+      "when": "2 дня назад ≈ 2026-08-21",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "скрывает страх не справиться; откровение может прийти неожиданно"
+    },
+    {
+      "url": "https://dzen.ru/a/aoLp7XOP8FRzZokK",
+      "when": "2026-08-18",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "держит внутри; ищет идеальный момент; давление закрывает рот"
+    }
+  ],
+  "supporting_market": [
+    {
+      "url": "https://aiqube.ru/tarot/taro-na-nego-chto-on-skryvaet-s-rasshifrovkoy-dlya-otnosheniy",
+      "updated": "2026-08-23",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "три слоя: сейчас / скрыто / какой шаг; обновлено сегодня"
+    },
+    {
+      "url": "https://witchport.ru/blog/o-gadanii-what-he-hides",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "не читать мысли; карты = восприятие спрашивающей"
+    },
+    {
+      "url": "https://astralika.com/taro/chto-on-skryivaet-ot-menya/",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "слоты скрывает / молчит / боится / чувствует / мешает честности"
+    },
+    {
+      "url": "https://ru.elvitarot.com/ru/blog/chto-on-skryvaet-taro/",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "учебные арканы скрытого; нельзя вытащить правду силой"
+    },
+    {
+      "url": "https://lady.pravda.ru/articles/beautiful/17587-relationship-truth-hiding/",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "приватность ≠ секрет; без допроса и слежки"
+    },
+    {
+      "url": "https://lady.pravda.ru/articles/psycho/7473-male-dishonesty-signs/",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "несостыковки; открытый вопрос, не разоблачение"
+    },
+    {
+      "url": "https://vkvideo.ru/video-136134541_456243108",
+      "published": "2026-08-08",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "SERP живой, август; ближе к мыслям, чем к «скажет ли»"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=e118aJfAjZs",
+      "accessed_at": "2026-08-23",
+      "live": true,
+      "use": "скрытое в отношениях ≠ любовница/заначка"
+    }
+  ],
+  "supporting_serp": {
+    "file": "research-serp.json",
+    "searched_at": "2026-08-23",
+    "note": "Сниппеты в research-serp.json частично перепутаны между URL. Живость проверена WebFetch 2026-08-23: witchport, lady.pravda ×2, youtube ×2, vkvideo — живые. GitHub-выдача по теме — шум, не использовать."
+  },
+  "wordstat": {
+    "status": "SKIP",
+    "reason": "MCP Wordstat в среде нет; агента Wordstat не звали; цифры Яндекса не выдумывать; impressions не ставить"
+  },
+  "overlap": {
+    "checked_file": "published-titles-only.md",
+    "article_bodies_read": false,
+    "neighbors": [
+      {
+        "topic_id": "B01",
+        "title": "Пауза или конец?",
+        "diff": "статус связи, не слой скрытого и не «скажет ли правду»"
+      },
+      {
+        "topic_id": "B02",
+        "title": "Что он чувствует к тебе прямо сейчас",
+        "diff": "чувства ≠ скрытое / правда"
+      },
+      {
+        "topic_id": "B03",
+        "title": "Сходятся ли ваши даты и что это значит для отношений",
+        "diff": "даты, не недоговорённость"
+      },
+      {
+        "topic_id": "B04",
+        "title": "Что ждёт ваши отношения этим вечером и стоит ли торопить события",
+        "diff": "вечерний исход / торопить ли; не «что скрывает»"
+      },
+      {
+        "topic_id": "PRE-DZEN-01",
+        "title": "Что делать, если он не пишет",
+        "diff": "не жевать «он не пишет»"
+      },
+      {
+        "topic_id": "PRE-DZEN-02",
+        "title": "Дата рождения в раскладе таро. Вот почему общий ответ мимо",
+        "diff": "якорь даты, не скрытое"
+      },
+      {
+        "topic_id": "PRE-DZEN-03",
+        "title": "Карты уже знают, почему он молчит. Ты ещё нет",
+        "diff": "почему молчит ≠ что скрывает и скажет ли"
+      }
+    ],
+    "clone_risk": "low_if_angle_held"
+  },
+  "signal_urls": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://mixnews.lv/goroskop/2026/08/22/goroskop-na-23-avgusta-po-kartam-taro-teltsu-ukreplyat-to-chto-daet-nastoyaschuyu-oporu-ovnu-deystvovat-smelo-bez-neterpeniya/",
+    "https://gadalkindom.ru/goroskop/taro-prognoz/rasklad-na-23-avgusta.html",
+    "https://cursorinfo.co.il/horoscope/goroskop-na-voskresene-23-avgusta-2026-goda-dlya-vseh-znakov-zodiaka/",
+    "https://www.unian.net/lite/astrology/goroskop-na-zavtra-po-kartam-taro-chto-zhdet-vse-znaki-zodiaka-23-avgusta-2026-goda-13477497.html",
+    "https://aiqube.ru/tarot/taro-na-nego-chto-on-skryvaet-s-rasshifrovkoy-dlya-otnosheniy",
+    "https://dzen.ru/a/aoLp7XOP8FRzZokK",
+    "https://dzen.ru/a/aoVQKEh3w3w0U98L",
+    "https://dzen.ru/a/aoL_fiWUwS2-MGS9",
+    "https://dzen.ru/a/aoVQt0h3w3w0VP4k",
+    "https://astralika.com/taro/chto-on-skryivaet-ot-menya/",
+    "https://witchport.ru/blog/o-gadanii-what-he-hides",
+    "https://ru.elvitarot.com/ru/blog/chto-on-skryvaet-taro/",
+    "https://lady.pravda.ru/articles/beautiful/17587-relationship-truth-hiding/",
+    "https://www.таросейчас.рф/",
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776"
+  ],
+  "signal_urls_checked": [
+    {
+      "url": "https://dzen.ru/todaytaro_bot",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://mixnews.lv/goroskop/2026/08/22/goroskop-na-23-avgusta-po-kartam-taro-teltsu-ukreplyat-to-chto-daet-nastoyaschuyu-oporu-ovnu-deystvovat-smelo-bez-neterpeniya/",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://gadalkindom.ru/goroskop/taro-prognoz/rasklad-na-23-avgusta.html",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://cursorinfo.co.il/horoscope/goroskop-na-voskresene-23-avgusta-2026-goda-dlya-vseh-znakov-zodiaka/",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://www.unian.net/lite/astrology/goroskop-na-zavtra-po-kartam-taro-chto-zhdet-vse-znaki-zodiaka-23-avgusta-2026-goda-13477497.html",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://aiqube.ru/tarot/taro-na-nego-chto-on-skryvaet-s-rasshifrovkoy-dlya-otnosheniy",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://dzen.ru/a/aoLp7XOP8FRzZokK",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://dzen.ru/a/aoVQKEh3w3w0U98L",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://dzen.ru/a/aoL_fiWUwS2-MGS9",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://dzen.ru/a/aoVQt0h3w3w0VP4k",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://astralika.com/taro/chto-on-skryivaet-ot-menya/",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://witchport.ru/blog/o-gadanii-what-he-hides",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://ru.elvitarot.com/ru/blog/chto-on-skryvaet-taro/",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://lady.pravda.ru/articles/beautiful/17587-relationship-truth-hiding/",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://lady.pravda.ru/articles/psycho/7473-male-dishonesty-signs/",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://vkvideo.ru/video-136134541_456243108",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=e118aJfAjZs",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=7ar3-KkqevY",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    },
+    {
+      "url": "https://www.таросейчас.рф/",
+      "live": true,
+      "accessed_at": "2026-08-23"
+    }
+  ],
+  "invented_facts": [],
+  "blockers": [],
+  "incident_report": "none",
+  "cta_facts_only": {
+    "spread_bot": "https://max.ru/id531102974575_bot",
+    "audio_app": "https://vk.com/app54565776",
+    "dzen_telegram": false
+  }
+}
