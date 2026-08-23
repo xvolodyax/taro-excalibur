@@ -10,6 +10,7 @@ B03 — пакет в репо, Холл заливает руками. Publish 
 B04 — вечерний пакет 22.08 20:00 в репо. Publish не запускался.
 B05 — утренний пакет 23.08 09:00 в репо. Publish не запускался.
 B06 — дневной пакет 23.08 16:00 в репо. Publish не запускался.
+B07 — вечерний пакет 23.08 20:00 в репо. Publish не запускался.
 
 | date | topic_id | slug | url | status |
 |------|----------|------|-----|--------|
@@ -22,3 +23,4 @@ B06 — дневной пакет 23.08 16:00 в репо. Publish не запу
 | 2026-08-22 | B04 | chto-budet-etim-vecherom-v-otnosheniyah | {{SITE_BASE}}/chto-budet-etim-vecherom-v-otnosheniyah/ | draft_ready |
 | 2026-08-23 | B05 | chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu | {{SITE_BASE}}/chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu/ | draft_ready |
 | 2026-08-23 | B06 | chto-govorit-chislo-sudby-o-nem-v-otnosheniyah | {{SITE_BASE}}/chto-govorit-chislo-sudby-o-nem-v-otnosheniyah/ | draft_ready |
+| 2026-08-23 | B07 | karta-dnya-napishet-li-on-segodnya-vecherom | {{SITE_BASE}}/karta-dnya-napishet-li-on-segodnya-vecherom/ | draft_ready |

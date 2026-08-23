@@ -18,3 +18,4 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B04 | chto-budet-etim-vecherom-v-otnosheniyah | Что ждёт ваши отношения этим вечером и стоит ли торопить события | draft_ready |
 | B05 | chto-on-skryvaet-v-otnosheniyah-i-skazhet-li-pravdu | Что он скрывает в отношениях и скажет ли правду | draft_ready |
 | B06 | chto-govorit-chislo-sudby-o-nem-v-otnosheniyah | Что число судьбы по дате рождения говорит о нём в отношениях | draft_ready |
+| B07 | karta-dnya-napishet-li-on-segodnya-vecherom | Напишет ли он сегодня вечером и стоит ли написать первой | draft_ready |
