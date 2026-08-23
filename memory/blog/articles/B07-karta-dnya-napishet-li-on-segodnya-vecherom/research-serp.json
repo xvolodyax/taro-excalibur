@@ -1,0 +1,74 @@
+{
+  "agent": "excalibur-blog",
+  "date_context": {
+    "timezone": "Europe/Moscow",
+    "today_iso": "2026-08-23",
+    "today_ru": "23.08.2026",
+    "year": 2026,
+    "month": 8,
+    "month_name_ru": "август",
+    "weekday_ru": "воскресенье"
+  },
+  "topic": {
+    "topic_id": "B07",
+    "title": "Карта дня: напишет ли он сегодня вечером",
+    "h1": "Карта дня: напишет ли он сегодня вечером",
+    "slug": "karta-dnya-napishet-li-on-segodnya-vecherom",
+    "primary_query": "Карта дня: напишет ли он сегодня вечером",
+    "priority": "P0"
+  },
+  "searches": [
+    {
+      "query_id": "primary_fresh",
+      "query": "Карта дня: напишет ли он сегодня вечером 2026",
+      "purpose": "актуальный SERP",
+      "result_count": 0,
+      "results": [],
+      "error": "search failed for 'Карта дня: напишет ли он сегодня вечером 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+      "searched_at": "2026-08-23"
+    },
+    {
+      "query_id": "title_fresh",
+      "query": "Карта дня: напишет ли он сегодня вечером 2026",
+      "purpose": "SERP по человеческому title",
+      "result_count": 0,
+      "results": [],
+      "error": "search failed for 'Карта дня: напишет ли он сегодня вечером 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+      "searched_at": "2026-08-23"
+    },
+    {
+      "query_id": "official_docs",
+      "query": "Карта дня: напишет ли он сегодня вечером official docs 2026",
+      "purpose": "официальные docs",
+      "result_count": 0,
+      "results": [],
+      "error": "search failed for 'Карта дня: напишет ли он сегодня вечером official docs 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+      "searched_at": "2026-08-23"
+    },
+    {
+      "query_id": "github_evidence",
+      "query": "site:github.com Карта дня: напишет ли он сегодня вечером 2026",
+      "purpose": "GitHub evidence",
+      "result_count": 0,
+      "results": [],
+      "error": "search failed for 'site:github.com Карта дня: напишет ли он сегодня вечером 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+      "searched_at": "2026-08-23"
+    },
+    {
+      "query_id": "community_experience",
+      "query": "Карта дня: напишет ли он сегодня вечером forum problems опыт 2026",
+      "purpose": "форумы и живые проблемы",
+      "result_count": 0,
+      "results": [],
+      "error": "search failed for 'Карта дня: напишет ли он сегодня вечером forum problems опыт 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+      "searched_at": "2026-08-23"
+    }
+  ],
+  "errors": [
+    "search failed for 'Карта дня: напишет ли он сегодня вечером 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+    "search failed for 'Карта дня: напишет ли он сегодня вечером 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+    "search failed for 'Карта дня: напишет ли он сегодня вечером official docs 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+    "search failed for 'site:github.com Карта дня: напишет ли он сегодня вечером 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+    "search failed for 'Карта дня: напишет ли он сегодня вечером forum problems опыт 2026': <urlopen error _ssl.c:983: The handshake operation timed out>"
+  ]
+}
