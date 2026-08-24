@@ -1,6 +1,54 @@
 {
   "registry_version": "1.0",
-  "comment": "E-E-A-T Authors Registry. Filled by excalibur-blog-setup. SETUP_REQUIRED until author block done.",
-  "status": "SETUP_REQUIRED",
-  "authors": []
+  "comment": "E-E-A-T Authors Registry. ТАРО СЕЙЧАС. Не выдумывать экспертов сверх этого списка.",
+  "status": "READY",
+  "default_author_id": "victoria",
+  "support": {
+    "name": "Ксения",
+    "handle": "@OnlineKsenia",
+    "role": "поддержка",
+    "in_articles": false,
+    "note": "Создатель сообщества на сайте. В текст Дзен-статьи не класть Telegram и не делать CTA на поддержку."
+  },
+  "authors": [
+    {
+      "id": "victoria",
+      "name": "Виктория",
+      "givenName": "Виктория",
+      "jobTitle": "Таролог «ТАРО СЕЙЧАС»",
+      "role": "единственное лицо обложек",
+      "cover_default": true,
+      "cover_i2i": true,
+      "bio_short": "Виктория из «ТАРО СЕЙЧАС». На сайте частный таро-детектив, пятый аркан Иерофант: треугольники, скрытые мотивы, говорит прямо.",
+      "bio_long": "Виктория, таролог проекта «ТАРО СЕЙЧАС» и лицо обложек по умолчанию. На официальном сайте её роль описана так: видит любовные треугольники и скрытые мотивы партнёра, говорит прямо, работает с причинно-следственными связями. Вместе с Алёной ведёт практику команды. Не обещает читать мысли. В статьях Дзена её Instagram не продвигать (РФ / Дзен DENY как герой темы).",
+      "sameAs": [
+        "https://vk.com/id1113231252"
+      ],
+      "profiles": {
+        "vk": "https://vk.com/id1113231252",
+        "instagram_handle": "@todaytaro_ru",
+        "instagram_title": "ТАРО СЕЙЧАС | Виктория",
+        "instagram_note": "Профиль есть. В статьи, CTA и schema sameAs не выносить: Instagram в hard_deny Дзен/РФ-пакета."
+      }
+    },
+    {
+      "id": "alena",
+      "name": "Алёна",
+      "givenName": "Алёна",
+      "jobTitle": "Таролог «ТАРО СЕЙЧАС»",
+      "role": "лицо бренда в тексте; на картинки и в i2i не ставить",
+      "cover_default": false,
+      "cover_i2i": false,
+      "bio_short": "Алёна из «ТАРО СЕЙЧАС». На сайте аркан Влюблённые: мягко называет то, о чём читательница уже догадывается.",
+      "bio_long": "Алёна, таролог проекта «ТАРО СЕЙЧАС». На официальном сайте: мягко раскрывает то, о чём уже догадываешься, но боишься признать; помогает увидеть правду и принять решение. В статьях может быть упомянута как лицо бренда. На обложки и inline её лицо не ставить. Telegram в текст статьи не класть: профиль только в реестре автора.",
+      "sameAs": [
+        "https://vk.ru/alenushka_love"
+      ],
+      "profiles": {
+        "vk": "https://vk.ru/alenushka_love",
+        "telegram": "https://t.me/AlenaSafonova_queen",
+        "telegram_note": "Только identity в реестре. В статьях Дзена Telegram запрещён."
+      }
+    }
+  ]
 }

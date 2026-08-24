@@ -1,16 +1,96 @@
 {
   "version": "1.0",
-  "setup_complete": false,
-  "brand_name": "",
+  "setup_complete": true,
+  "brand_name": "ТАРО СЕЙЧАС",
   "language": "ru",
-  "niche": "",
-  "content_goals": [],
-  "author_id": "",
-  "cta_required": false,
-  "cta_links": [],
-  "cover_mode": "unset",
+  "address_form": "ty",
+  "grammatical_gender": "feminine",
+  "niche": "таро для женщин 20–50; около 78% тем про отношения; доступ к голове человека, которого нельзя спросить",
+  "content_goals": [
+    "статьи в Дзен (канал todaytaro_bot)",
+    "крючок «пауза или конец» и соседние живые запросы Wordstat",
+    "CTA: расклад → бот Макс (триплет / кельтский крест); аудиоразбор «Суть – Тень – Вектор» → приложение ВК или Макс; в Дзене без Telegram"
+  ],
+  "author_id": "victoria",
+  "cta_required": true,
+  "cta_links": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776"
+  ],
+  "cta_anchors": {
+    "https://max.ru/id531102974575_bot": ["бот в Макс"],
+    "https://vk.com/app54565776": ["приложение во ВКонтакте", "аудиоразбор"]
+  },
+  "cta_forbidden": [
+    "telegram",
+    "t.me",
+    "https://max.ru/id531102974575_biz"
+  ],
+  "cta_funnel": {
+    "canon": "shared/cta-funnel.md",
+    "bots": {
+      "channels": ["telegram", "max"],
+      "offer": "3 бесплатных расклада на 3 любых вопроса, голос или текст",
+      "spreads": ["триплет 3 карты", "кельтский крест 10"],
+      "not": ["аудиоразбор", "Суть – Тень – Вектор"]
+    },
+    "apps": {
+      "channels": ["telegram", "max", "vk"],
+      "offer": "аудиоразбор «Суть – Тень – Вектор» + карта практического совета + уточняющие вопросы",
+      "not": ["три бесплатных расклада", "триплет", "кельтский крест"]
+    },
+    "dzen": {
+      "telegram_href": false,
+      "telegram_mention": false,
+      "spread": {
+        "href": "https://max.ru/id531102974575_bot",
+        "anchor": "бот в Макс"
+      },
+      "audio": {
+        "href": "https://vk.com/app54565776",
+        "anchors": ["приложение во ВКонтакте", "аудиоразбор"],
+        "mention_max_app_without_href": true,
+        "max_app_href": null
+      }
+    },
+    "forbidden_mix": [
+      "хочешь Суть–Тень–Вектор — иди в бот",
+      "аудиоразбор в боте",
+      "Суть–Тень–Вектор в боте"
+    ],
+    "gate_required_mentions": [
+      "триплет",
+      "кельтск",
+      "аудиоразбор",
+      "суть-тень-вектор",
+      "голос",
+      "практический совет",
+      "уточняющ"
+    ]
+  },
+  "cover_mode": "host_reference",
+  "cover_host_default": "victoria",
+  "cover_hosts_allowed": ["victoria"],
   "dzen_rf_pack": true,
-  "scout_signal_urls": [],
+  "dzen_channel": "https://dzen.ru/todaytaro_bot",
+  "dzen_studio": "todaytaro_bot",
+  "wordpress_publish": false,
+  "scout_signal_urls": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.таросейчас.рф/"
+  ],
+  "scout_live_angles": [
+    "пауза",
+    "что он чувствует",
+    "вернётся ли",
+    "написать первой",
+    "смотрит истории"
+  ],
+  "scout_avoid_chewing": [
+    "он не пишет",
+    "дата рождения"
+  ],
+  "wordstat_folder_id": "b1g0a71ifv910gjalmhp",
   "interlink_old_articles": false,
   "style_files": {
     "soul": "shared/SOUL.md",
@@ -20,7 +100,7 @@
   "cover_files": {
     "hero": "memory/cover/blog-hero.json",
     "design_code": "memory/cover/cover-design-code.json",
-    "style_preset": ""
+    "style_preset": "memory/cover/quad-style-taro-seichas.json"
   },
-  "comment": "Filled by excalibur-blog-setup. Pipeline agents read this file. Do not put secrets here."
+  "comment": "Filled by excalibur-blog-setup. Pipeline agents read this file. Do not put secrets here. wordstat_folder_id is a Yandex Cloud catalog id, not an API key. KIE_API_KEY and Wordstat API key stay in Cursor Secrets."
 }

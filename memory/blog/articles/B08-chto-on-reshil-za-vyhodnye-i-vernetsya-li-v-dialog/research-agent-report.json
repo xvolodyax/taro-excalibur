@@ -1,0 +1,121 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B08",
+  "article_dir": "memory/blog/articles/B08-chto-on-reshil-za-vyhodnye-i-vernetsya-li-v-dialog",
+  "research_date": "2026-08-24",
+  "timezone": "Europe/Moscow",
+  "slot": "2026-08-24T09:00:00+03:00",
+  "status": "PASS",
+  "verdict": "PASS",
+  "block_reason": null,
+  "fresh_external_signal": true,
+  "freshness_window": "this_week_or_today",
+  "wordstat": {
+    "called": false,
+    "reason": "Director banned Wordstat agent; MCP Wordstat отсутствует. Цифры Яндекса не выдумывать.",
+    "frequencies": null
+  },
+  "serp": {
+    "used_as_topic": false,
+    "note": "research-serp.json DDG уехал в производственный календарь 2026 и учебные диалоги про выходные; как тема B08 не опирались."
+  },
+  "exact_weekend_news_found": false,
+  "exact_weekend_news_note": "Точной новости «что он решил за выходные / вернётся ли после выходных в диалог» нет. Живой угол: утро понедельника 24.08.2026 + свежие недельные/дневные/community сигналы.",
+  "fresh_signals": [
+    {
+      "url": "https://amurmedia.ru/news/2582696/",
+      "accessed_at": "2026-08-24",
+      "kind": "news_weekly_tarot",
+      "date_on_page": "week 24-30.08.2026",
+      "fact": "Сигнификатор недели Звезда; в любви искренность и восстановление доверия; минус — мечты без действий."
+    },
+    {
+      "url": "https://7days.ru/astro/horoscope/taroprognoz-s-24-po-30-avgusta-odnim-sudbonosnyy-perekhod-a-drugim-karmicheskoe-vozmezdie.htm",
+      "accessed_at": "2026-08-24",
+      "kind": "news_weekly_tarot",
+      "date_on_page": "2026-08-24",
+      "fact": "Юлия Балуха: неделя 24–30.08 под арканом Мир. Расходится со Звездой AmurMedia."
+    },
+    {
+      "url": "https://www.unian.net/lite/astrology/goroskop-na-zavtra-po-kartam-taro-chto-zhdet-vse-znaki-zodiaka-24-avgusta-2026-goda-13478157.html",
+      "accessed_at": "2026-08-24",
+      "kind": "news_daily_tarot",
+      "date_on_page": "2026-08-24T07:20",
+      "fact": "Общая карта дня Тройка Кубков."
+    },
+    {
+      "url": "https://cursorinfo.co.il/horoscope/goroskop-na-24-avgusta-2026-po-kartam-taro-vse-znaki-zodiaka/",
+      "accessed_at": "2026-08-24",
+      "kind": "news_daily_tarot",
+      "date_on_page": "2026-08-24T00:11",
+      "fact": "Неделя открывается движением вперёд; в отношениях честность, разговоры без давления и без требования немедленного ответа."
+    },
+    {
+      "url": "https://cursorinfo.co.il/horoscope/goroskop-na-ponedelnik-24-avgusta-2026/",
+      "accessed_at": "2026-08-24",
+      "kind": "news_monday",
+      "date_on_page": "2026-08-24T07:00",
+      "fact": "Деловой тон недели; в отношениях не ждать, что другой сам догадается о планах."
+    },
+    {
+      "url": "https://ku66.ru/life/taro_prognoz_na_24_avgusta_2026_goda_lyubov_dengi_i_otnosheniya",
+      "accessed_at": "2026-08-24",
+      "kind": "news_daily_tarot",
+      "date_on_page": "2026-08-23T21:08",
+      "fact": "Главная карта 24.08 Колесница (расходится с Тройкой Кубков UNIAN); если человек хочет вернуться — важнее что стало другим, не обещания."
+    },
+    {
+      "url": "https://mixnews.lv/goroskop/2026/08/23/ovny-raki-devy-i-vodolei-v-goroskope-na-ponedelnik-24-avgusta/",
+      "accessed_at": "2026-08-24",
+      "kind": "news_monday_extra",
+      "date_on_page": "2026-08-23",
+      "fact": "Понедельник начинается с пачки задач, сообщений и чужих ожиданий; не реагировать на всё сразу."
+    },
+    {
+      "url": "https://horo.mail.ru/article/15305-taro-prognoz-na-nedelyu-s-24-po-30-avgusta-2026/",
+      "accessed_at": "2026-08-24",
+      "kind": "news_weekly_tarot",
+      "date_on_page": "week 24-30.08.2026",
+      "fact": "Ещё один недельный сигнификатор: Десятка Мечей."
+    },
+    {
+      "url": "https://dzen.ru/a/aoV5zkh3w3w0rhXu",
+      "accessed_at": "2026-08-24",
+      "kind": "community_this_week",
+      "date_on_page": "2026-08-20",
+      "fact": "Северин: понедельник короткое сообщение; дистанция работает только если назван срок возврата."
+    },
+    {
+      "url": "https://dzen.ru/todaytaro_bot",
+      "accessed_at": "2026-08-24",
+      "kind": "tenant_channel",
+      "date_on_page": "2026-08-24",
+      "fact": "Лента канала живая; B07 уже в слоте «сегодня вечером / написать первой» — не жевать."
+    }
+  ],
+  "supporting_not_fresh": [
+    {
+      "url": "https://ufa1.ru/text/relations/2026/08/07/76568139/",
+      "accessed_at": "2026-08-24",
+      "date_on_page": "2026-08-07",
+      "role": "method_named_pause_vs_ignore"
+    }
+  ],
+  "overlap_guard_ids": [
+    "B01",
+    "B02",
+    "B04",
+    "B07",
+    "PRE-DZEN-01",
+    "PRE-DZEN-03",
+    "B03",
+    "B06",
+    "PRE-DZEN-02",
+    "B05"
+  ],
+  "rf_deny_heroes": false,
+  "mind_reading_promise": false,
+  "telegram_in_writer_safe_urls": false,
+  "notes_path": "memory/blog/articles/B08-chto-on-reshil-za-vyhodnye-i-vernetsya-li-v-dialog/research-notes.md",
+  "incident_report": "none"
+}
