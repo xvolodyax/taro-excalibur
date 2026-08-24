@@ -1,0 +1,144 @@
+{
+  "agent": "excalibur-blog-cover-quad-split",
+  "status": "PASS",
+  "manifest": "cover/quad-manifest.json",
+  "split": {
+    "source_canvas": "memory/blog/articles/B09-chto-ego-kvadrat-pifagora-govorit-o-nem-v-otnosheniyah/cover/canvas-quad.png",
+    "source_size_px": [
+      2688,
+      1520
+    ],
+    "panel_size_px": [
+      1333,
+      758
+    ],
+    "split_meta": {
+      "split_mode": "gutter_detect",
+      "h_gutter_px": {
+        "start": 758,
+        "end": 771
+      },
+      "v_gutter_px": {
+        "start": 1333,
+        "end": 1342
+      },
+      "requested_mode": "auto",
+      "gutter_quality": {
+        "h_center_offset_px": 4.5,
+        "v_center_offset_px": 6.5,
+        "max_aspect_crop_loss": 0.0106,
+        "per_panel_crop_loss": {
+          "top_left": 0.0106,
+          "top_right": 0.0,
+          "bottom_left": 0.0,
+          "bottom_right": 0.0104
+        },
+        "reject_reason": null
+      }
+    },
+    "output_size_px": [
+      1200,
+      675
+    ],
+    "outputs": {
+      "cover": {
+        "file": "cover/cover.png",
+        "quadrant": "top_left",
+        "box_px": {
+          "left": 0,
+          "top": 4,
+          "right": 1333,
+          "bottom": 754
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1333,
+          "bottom": 758
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Виктория смотрит на светлую схему квадрата Пифагора",
+        "h2_anchor": null
+      },
+      "inline_1": {
+        "file": "cover/inline-01.png",
+        "quadrant": "top_right",
+        "box_px": {
+          "left": 1342,
+          "top": 0,
+          "right": 2688,
+          "bottom": 758
+        },
+        "raw_box_px": {
+          "left": 1342,
+          "top": 0,
+          "right": 2688,
+          "bottom": 758
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Схема: четыре рабочих числа даты 24.07.1990",
+        "h2_anchor": "Квадрат и одна цифра судьбы решают разные задачи"
+      },
+      "inline_2": {
+        "file": "cover/inline-02.png",
+        "quadrant": "bottom_left",
+        "box_px": {
+          "left": 0,
+          "top": 771,
+          "right": 1333,
+          "bottom": 1520
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 771,
+          "right": 1333,
+          "bottom": 1520
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Квадрат Пифагора 24.07.1990: сверху 11, 4, 7",
+        "math_lock": "code-drawn 3x3 after Kie placed 11/222 in wrong cells",
+        "h2_anchor": "Что ячейки говорят о нём в близости"
+      },
+      "inline_3": {
+        "file": "cover/inline-03.png",
+        "quadrant": "bottom_right",
+        "box_px": {
+          "left": 1349,
+          "top": 771,
+          "right": 2681,
+          "bottom": 1520
+        },
+        "raw_box_px": {
+          "left": 1342,
+          "top": 771,
+          "right": 2688,
+          "bottom": 1520
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Чеклист: одна дата, один метод, пустая клетка, живой вопрос",
+        "h2_anchor": "Где квадрат молчит и что делать дальше"
+      }
+    }
+  },
+  "html_inject": [
+    "skip inline_1: already correct under H2 — Квадрат и одна цифра судьбы решают разные задачи",
+    "skip inline_2: already correct under H2 — Что ячейки говорят о нём в близости",
+    "skip inline_3: already correct under H2 — Где квадрат молчит и что делать дальше"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "topic_id": "B09",
+  "slug": "chto-ego-kvadrat-pifagora-govorit-o-nem-v-otnosheniyah",
+  "cover_family": "brand_collage",
+  "style_preset": "taro-seichas",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Виктория смотрит на светлую схему квадрата Пифагора",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-24T13:17:41+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Виктория смотрит на светлую схему квадрата Пифагора",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: четыре рабочих числа даты 24.07.1990",
+      "h2_anchor": "Квадрат и одна цифра судьбы решают разные задачи",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Квадрат Пифагора 24.07.1990: сверху 11, 4, 7",
+      "h2_anchor": "Что ячейки говорят о нём в близости",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист: одна дата, один метод, пустая клетка, живой вопрос",
+      "h2_anchor": "Где квадрат молчит и что делать дальше",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

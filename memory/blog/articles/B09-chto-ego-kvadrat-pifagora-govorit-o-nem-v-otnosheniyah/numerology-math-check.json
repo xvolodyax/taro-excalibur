@@ -31,5 +31,25 @@
   ],
   "do_not_draw": "1111 in cell 1 (Calculatorov prose says 2 ones, their drawn table wrongly shows 4)",
   "verified_by_script": true,
-  "verified_at": "2026-08-24"
+  "verified_at": "2026-08-24",
+  "images": {
+    "inline_01": {
+      "file": "cover/inline-01.png",
+      "shows": ["24.07.1990", "32", "28", "10"],
+      "matches_working_numbers": true
+    },
+    "inline_02": {
+      "file": "cover/inline-02.png",
+      "source": "code_lock_after_kie_misplaced_cells",
+      "grid": [
+        ["11", "4", "7"],
+        ["222", "5", "8"],
+        ["3", "пусто", "99"]
+      ],
+      "cell_1_is_11_not_1111": true,
+      "empty_cell_6": true,
+      "matches_article_sentence": "сверху 11, 4 и 7; в середине 222, 5 и 8; снизу 3, пустая клетка и 99"
+    },
+    "cover_hook": "Пустая клетка в квадрате?"
+  }
 }
