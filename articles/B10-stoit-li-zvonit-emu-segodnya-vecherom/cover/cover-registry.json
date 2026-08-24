@@ -1,0 +1,50 @@
+{
+  "topic_id": "B10",
+  "slug": "stoit-li-zvonit-emu-segodnya-vecherom",
+  "cover_family": "brand_collage",
+  "style_preset": "taro-seichas",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Виктория с телефоном в светлом августовском вечере",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-24T16:38:53+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Виктория с телефоном в светлом августовском вечере",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: звонок и сообщение это разные вопросы вечера",
+      "h2_anchor": "Звонок и сообщение решают разные задачи",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема чтения карты дня: одна карта, срок до ночи",
+      "h2_anchor": "Как читать одну карту на «набрать или нет»",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист перед звонком: один факт, без допроса, не второй набор",
+      "h2_anchor": "Когда звонок ещё ход, а когда уже требование",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
