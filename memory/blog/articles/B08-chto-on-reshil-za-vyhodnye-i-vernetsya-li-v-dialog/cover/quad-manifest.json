@@ -1,0 +1,64 @@
+{
+  "topic_id": "B08",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "taro-seichas",
+  "style_file": "memory/cover/quad-style-taro-seichas.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Два дня тишины: вернётся ли?",
+  "cover_hook_highlight": "вернётся",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face/outfit rules = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: два дня тишины в переписке — вернётся ли он в диалог",
+      "scene_hint": "Victoria FACE LARGE left i2i; WEARS powder-lilac blouse; Monday concern; GREEN+light-brown eyes; tiny phone; gold oval medallion; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "пауза не значит разрыв"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Внутреннее решение и шаг в чат: почему их нельзя путать",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "LEFT «внутреннее решение» vs RIGHT «шаг в диалог»; «активность в сети» «разный ресурс»; мысли ≠ сообщение; NO people/faces/silhouettes",
+      "alt": "Схема: внутреннее решение и шаг в чат нельзя путать",
+      "labels": [
+        "внутреннее решение",
+        "шаг в диалог",
+        "активность в сети",
+        "разный ресурс"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Ловушка общих прогнозов: почему карты недели расходятся",
+      "visual_type": "infographic_card",
+      "scene_hint": "LEFT «общие прогнозы» vs RIGHT «личная история»; «разные карты недели» «фоновый шум»; чужая карта ≠ ваш чат; NO people/faces/silhouettes",
+      "alt": "Схема: почему общие карты недели расходятся с личной историей",
+      "labels": [
+        "общие прогнозы",
+        "разные карты недели",
+        "фоновый шум",
+        "личная история"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Практика: чеклист шагов на утро понедельника",
+      "visual_type": "checklist_board",
+      "scene_hint": "1 «опора на факты» 2 «без лишних раскладов» 3 «мысли и реальный шаг» 4 «срок до конца недели»; спокойное утро пн; NO people/faces/silhouettes",
+      "alt": "Чеклист шагов на утро понедельника после выходных без ответа",
+      "labels": [
+        "опора на факты",
+        "без лишних раскладов",
+        "мысли и реальный шаг",
+        "срок до конца недели"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
