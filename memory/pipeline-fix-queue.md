@@ -130,6 +130,7 @@ article_dir: memory/blog/articles/B07-karta-dnya-napishet-li-on-segodnya-vechero
 severity: high
 category: prompt
 
+
 ### What went wrong
 - First billed 2K i2i: canvas 2688x1520 (not 2048x1152). Auto gutter `gutter_too_far_from_center` (h offset ~74px, v offset ~39.5px). Split fell back to mechanical_center.
 - Mechanical 50/50 cut above the painted horizontal gutter: Victoria arms + tiny phone from the cover bled into the top of inline_2. Inline then has a person — cell is not a clean 2x2.
@@ -145,6 +146,36 @@ category: prompt
 ### Suggested files to inspect/change
 - `scripts/excalibur_blog_cover_quad_prompt.py`
 - `scripts/excalibur_blog_cover_quad_split.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
+## INC-20260824-0635-cover-prompt-budget-b08
+status: open
+run_date: 2026-08-24
+role: excalibur-blog-cover
+topic_id: B08
+article_dir: memory/blog/articles/B08-chto-on-reshil-za-vyhodnye-i-vernetsya-li-v-dialog
+severity: medium
+category: prompt
+
+### What went wrong
+- Cover scene_hints were already short (cover 134, inline 134–141) but `--write-batch` still failed at 3527/3500.
+- Shared headline lock still carried SaaS leftover phrases (`«время»` / traffic, `TOKEN BURN RATE`) that ate the last ~40 chars.
+
+### How the agent recovered this run
+- Reclaimed those leftover phrases in `scripts/excalibur_blog_cover_quad_prompt.py` (tenant-neutral: do not rewrite hook; forbid extra English headlines).
+- Batch rebuilt at 3475/3500; `jobs.length=1`; git-safe `{{SITE_BASE}}` + `prefer_local_reference` to `memory/cover/assets/виктория.png`.
+- Did not empty scene_hints and did not start Kie until budget PASS.
+
+### Durable fix needed before next run
+- Keep SaaS-specific example strings out of the shared cover prompt lock so tenant scene_hints (~80–140 / ~100–220) fit under 3500.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_cover_quad_prompt.py`
 
 ### Secrets
 - none recorded

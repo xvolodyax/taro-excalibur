@@ -402,7 +402,7 @@ def build_prompt(
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
     highlight_rule = (
         f'paint ONLY the highlight word "{highlight}" in warm accent {accent_hex}; '
-        f'hook text must match exactly — do not substitute «время»/traffic markers'
+        f'hook text must match exactly — do not rewrite it'
         if highlight
         else f"paint at most ONE punch word in warm accent {accent_hex}"
     )
@@ -517,7 +517,7 @@ def build_prompt(
         reference_line,
         "",
         f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
-        f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
+        f'{highlight_rule}; any other large/headline text (especially English) is FORBIDDEN.{sticky_lock} '
         "no keyword list card; "
         f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}",
         "",
