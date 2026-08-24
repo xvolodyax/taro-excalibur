@@ -1,0 +1,17 @@
+{
+  "task_id": "d0c1d8284872d54bff1d926ba5d7bf2d",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "articles/B10-stoit-li-zvonit-emu-segodnya-vecherom/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1787589503,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}

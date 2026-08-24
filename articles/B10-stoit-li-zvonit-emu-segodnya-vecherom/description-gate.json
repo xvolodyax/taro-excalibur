@@ -1,0 +1,9 @@
+{
+  "gate": "description",
+  "status": "PASS",
+  "errors": [],
+  "description": "Как отличить вечерний звонок как короткий ход от звонка, которым хочешь закрыть всю тишину разом, и что смотреть в одной карте.",
+  "title": "Стоит ли звонить ему сегодня вечером",
+  "char_count": 127,
+  "article_dir": "/workspace/articles/B10-stoit-li-zvonit-emu-segodnya-vecherom"
+}
