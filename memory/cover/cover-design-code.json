@@ -1,27 +1,87 @@
 {
-  "design_code_id": "tenant_unset",
-  "status": "SETUP_REQUIRED",
-  "label_ru": "Заполняется Setup Visual из референсов тенанта",
-  "reference_notes": "Нет дефолтного чужого бренд-коллажа. Setup Visual пишет palette, motifs, cover/inline rules.",
+  "design_code_id": "taro-seichas-daylight",
+  "status": "RULES_READY",
+  "label_ru": "ТАРО СЕЙЧАС — светлый живой кадр, лицо на обложке, схемы без людей",
+  "reference_notes": "На обложке только Виктория. Канон: memory/cover/assets/виктория.png. Глаза в промте зелёные + слегка светло-карие, даже если лист читается как карий. Алёну на картинки не ставить. Костюм с листа не копировать.",
   "cover_rules": [
-    "Один cover_hook разумной длины; meme_caption_ru по умолчанию пуст",
-    "Стиль и герой — только из blog-hero.json + этого design-code после Setup",
-    "Запрещён штамп пайплайна на PNG: «EXCALIBUR» / sword lockup"
+    "cover_mode=host_reference: на обложке ТОЛЬКО Виктория. Алёну в i2i и на PNG не ставить",
+    "Глаза: зелёные + слегка светло-карие у зрачка; не карие, не серые, не голубые",
+    "Один cover_hook 2–6 простых русских слов на картинке; образец ритма «Пауза или конец?»",
+    "Эмоция и одежда каждый раз новые; реф даёт лицо и глаза, не костюм",
+    "Один мелкий предмет/метафора темы справа или на фоне; host LARGE left",
+    "meme_caption_ru всегда пуст",
+    "Светлый дневной кадр, воздух, простой быт; не храм, не алтарь, не «тайная комната»",
+    "Надписи кириллицей; без латиницы кроме имён продуктов",
+    "Запрещён штамп пайплайна на PNG: «EXCALIBUR» / sword lockup",
+    "В Дзен грузить готовый файл с диска; никогда localhost / 127.0.0.1"
   ],
   "inline_rules": [
-    "Только информация конкретного H2",
-    "Без людей/лиц на inline, если tenant не разрешил иное",
-    "Generated UI не выдавать за реальный screenshot"
+    "Только информация конкретного H2: смысл, схема, вопрос, сравнение, шаги",
+    "Без людей и без лиц на inline",
+    "3–6 коротких кириллических labels, ясный порядок чтения",
+    "Generated UI не выдавать за реальный screenshot",
+    "Тот же светлый фон и тёплый акцент, что на обложке; не скотч-коллаж и не мемные стикеры",
+    "Пустые серые боксы / голый SaaS-слайд = blocker"
   ],
-  "visual_motifs": [],
+  "visual_motifs": [
+    "дневной свет и воздух",
+    "простой быт как метафора паузы / выбора / тишины в переписке",
+    "чистая схема или карточка вопроса",
+    "короткий кириллический хук"
+  ],
+  "forbidden_motifs": [
+    "одно белое худи на все кадры",
+    "мемные стикеры и реакционные вырезки",
+    "скотч-коллаж / torn paper как фирменный язык",
+    "слово «лох»",
+    "тёмный стол, свечи, готика, черепа, дым, пентаграммы «для атмосферы»",
+    "кот-стикер как герой или штамп",
+    "неон-розовый коллаж",
+    "чёрный бархат"
+  ],
   "color_palette": {
     "background": "#FFFFFF",
-    "ink": "#141821",
-    "accent_primary": "",
-    "usage": "Set by Setup Visual"
+    "ink": "#1A1414",
+    "accent_primary": "#8B3A3A",
+    "accent_warm": "#C45C4A",
+    "accent_dusty_rose": "#C47878",
+    "usage": "Белый воздух, тёмные чернила, тёплый акцент бордо / терракота / пыльная роза только на одно слово хука или маркер схемы. Не заливать весь заголовок акцентом. Не неон-розовый, не чёрный бархат."
   },
-  "typography_reference": "",
-  "cover_panel_prompt_block": "",
-  "inline_information_block": "",
-  "global_negative": "sterile empty white, meme reaction cutouts, pipeline name watermark, stock banner, beige gradient spam"
+  "typography_reference": "Жирная сжатая кириллица для хука обложки; простые слова. На inline — короткий рубленый текст, 3–6 labels. Без латиницы кроме имён продуктов.",
+  "cover_panel_prompt_block": "Bright daylight RU editorial, WHITE #FFFFFF, dark ink #1A1414, warm burgundy/terracotta accent #8B3A3A on ONE hook word only. Cover: Victoria face LARGE left from i2i sheet (identity only), GREEN eyes with slight light-brown near pupil EVEN IF photo reads brown, not brown/gray/blue, new outfit and new emotion this article (do not copy camisole/jeans/tree pendant), tiny topic metaphor, one Cyrillic hook 2–6 words. No second woman, no Alena, no gothic, no candles, no tape collage, no meme stickers, no white-hoodie lock.",
+  "inline_information_block": "Inline all: clean meaning/schema/question card on WHITE #FFFFFF; dark ink headings; warm accent markers; 3–6 exact Cyrillic labels; NO people/faces/host; no tape/torn-paper brand; no meme stickers; no cover-hook duplicate. Neg: sterile empty gray boxes, gothic, candles, watermark, 9:16.",
+  "global_negative": "white hoodie lock, meme reaction cutouts, tape/torn-paper collage brand, cat stickers, word лох, dark table, candles, gothic, skulls, smoke, pentagrams, neon pink collage, black velvet, pipeline watermark, beige gradient spam, localhost",
+  "generation": {
+    "provider": "kie.ai",
+    "model": "gpt-image-2",
+    "billed_generations_per_article": 1,
+    "resolution": "2K",
+    "canvas": "2x2",
+    "resolution_1k_only_if": "один кадр и без резки"
+  },
+  "host_credit_overlays": [
+    {
+      "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+      "style": "minimal_modern",
+      "placement": "bottom_left",
+      "no_banner": true,
+      "no_plate": true,
+      "no_url": true,
+      "never_ask_image_model": true,
+      "apply_when_name_matches": [
+        "Виктория",
+        "Victoria",
+        "Viktoria"
+      ],
+      "never_apply_when_name_matches": [
+        "Алёна",
+        "Алена",
+        "Alena"
+      ],
+      "apply_to": [
+        "cover",
+        "any_host_face"
+      ]
+    }
+  ]
 }

@@ -1,0 +1,50 @@
+{
+  "topic_id": "B08",
+  "slug": "chto-on-reshil-za-vyhodnye-i-vernetsya-li-v-dialog",
+  "cover_family": "brand_collage",
+  "style_preset": "taro-seichas",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: два дня тишины в переписке — вернётся ли он в диалог",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-24T06:33:29+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: два дня тишины в переписке — вернётся ли он в диалог",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: внутреннее решение и шаг в чат нельзя путать",
+      "h2_anchor": "Внутреннее решение и шаг в чат: почему их нельзя путать",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема: почему общие карты недели расходятся с личной историей",
+      "h2_anchor": "Ловушка общих прогнозов: почему карты недели расходятся",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист шагов на утро понедельника после выходных без ответа",
+      "h2_anchor": "Практика: чеклист шагов на утро понедельника",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

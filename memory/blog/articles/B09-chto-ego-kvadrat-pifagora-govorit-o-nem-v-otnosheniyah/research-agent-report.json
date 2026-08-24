@@ -1,0 +1,24 @@
+{
+  "topic_id": "B09",
+  "status": "PASS",
+  "wordstat": {
+    "called": false,
+    "api": "Yandex Cloud Search API v2 topRequests",
+    "folder_id": "b1g0a71ifv910gjalmhp",
+    "api_key_present": false,
+    "reason": "YANDEX_SEARCH_API_KEY missing in this run; frequencies not invented"
+  },
+  "topic_choice": {
+    "query_cluster": "квадрат пифагора / психоматрица",
+    "rejected": [
+      "число судьбы (B06)",
+      "совместимость двух дат (B03)",
+      "матрица судьбы / кармический хвост (другой канон)"
+    ]
+  },
+  "example": {
+    "date": "24.07.1990",
+    "working": [32, 5, 28, 10],
+    "math_verified": true
+  }
+}

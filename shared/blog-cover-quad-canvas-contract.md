@@ -21,8 +21,8 @@ Hard gate перед image API:
 
 | Панель | Роль | Герой |
 |--------|------|-------|
-| **top-left cover** | Один hook + один предмет/метафора + воздух | reference host обязателен: естественная уверенная эмоция, белое плотное худи, без наушников |
-| **3 inline** | Только информация H2: comparison table, workflow, checklist, UI explanation, fact card | людей и лиц нет |
+| **top-left cover** | Один hook 2–6 слов + один предмет/метафора + воздух | reference host обязателен при `host_reference`: лицо по `blog-hero.json`; одежда и эмоция **каждый раз новые**; без наушников. Не копировать костюм с рефа |
+| **3 inline** | Только информация H2: схема / вопрос / сравнение / шаги / факт | людей и лиц нет |
 
 ## Workflow
 
@@ -75,23 +75,15 @@ Split-скрипт в режиме `auto` пробует белые gutters у �
 
 ## Visual locks
 
+- Palette / hero / style — **только** из Setup Visual (`memory/cover/*`). Нет чужого дефолтного коллажа.
 - Background: cover и все inline-панели на чистом белом `#FFFFFF`; запрещены beige/cream/off-white, gray, gradient и grunge full-panel backgrounds.
-- Cover: **digital marketing collage** (preset
-  `tenant style preset (Setup Visual)`): один hook (**18–42
-  символа**), bold condensed Cyrillic **чёрным** `#141821`, accent
-  `#FF1493` на highlight / баннерах / sticky; cool accents `#6C4DFF` /
-  `#00C2FF` sparingly. **Герой cover = один ситуативный кот LARGE**
-  (антропоморфная/сюрреалистичная бытовая сцена под тему статьи — каждый
-  раз новая). Лица ведущего на cover **нет**. Torn paper, tape, pink
-  banners, dashed arrows. Запрещены all-pink headline и штамп
-  «EXCALIBUR BLOG» (INC-20260723-1223).
-- Удаляются Drake, facepalm, human reaction, портрет host. `meme_caption_ru`
-  = `""`. Pinterest refs — mood only, не копипаст конкретного фото.
+- Cover при `host_reference`: лицо хоста по `blog-hero.json` + один hook (**2–6 слов**, кириллица), ink и accent из `cover-design-code.json`. Одежда и эмоция **каждый раз новые** — не копировать костюм и выражение с рефа. Запрещены all-accent headline и штамп «EXCALIBUR BLOG» (INC-20260723-1223).
+- Не делать фирменным языком: одно белое худи на все кадры, мемные стикеры, скотч / torn paper, кот-герой, слово «лох», тёмный стол, свечи, готика.
+- `meme_caption_ru` = `""`.
 - Cover `scene_hint` ≈**80–140** chars:
-  `<hero_or_scene from blog-hero>; sticky «…»; banners per design-code; #FFF`
-- Inline: 3–6 labels; без людей; optional tiny cat accent.
-- `prefer_local_reference` + `cat-collage-style-plate.png` — i2i style lock
-  без лица host.
+  `<hero lock from blog-hero>; tiny topic metaphor; #FFF`
+- Inline: 3–6 labels; без людей и без лиц; смысл / схема / вопрос.
+- `reference_url_hosted` — URL тенанта или локальный asset после загрузки рефа. Чужой CDN и localhost запрещены. Пока рефа нет — Cover i2i не запускать.
 
 ## Файлы
 
@@ -100,7 +92,7 @@ Split-скрипт в режиме `auto` пробует белые gutters у �
 | `memory/cover/blog-hero.json` | `reference_url_hosted` |
 | `memory/cover/inline-visual-types.json` | типы inline-панелей |
 | `memory/cover/quad-style-*.json` (tenant preset) | **default** style preset |
-| `memory/cover/assets/style-refs/` | Pinterest mood refs + 16:9 moodboard |
+| `memory/cover/assets/style-refs/` | mood refs тенанта (не чужой plate) |
 | `cover/quad-manifest.json` | cover + inline slots |
 | `cover/quad-mcp-batch.json` | **1 job**, `input_urls`, `api_args` |
 | `cover/kie-image-task.json` | task_id/status прямого Kie API |
@@ -111,29 +103,19 @@ Split-скрипт в режиме `auto` пробует белые gutters у �
 
 ## Editorial-informative code
 
-`memory/cover/cover-design-code-cat-digital-collage.json` +
-`memory/cover/quad-style-*.json` (tenant preset)
-(legacy editorial without cats:
-legacy example name — use tenant preset):
+`memory/cover/cover-design-code.json` +
+`memory/cover/quad-style-*.json` (tenant preset из Setup Visual):
 
-- clean white base `#FFFFFF`, основной ink `#141821`, акцент accent
-  + cool violet/cyan; funny cat sticker-cutouts на cover
-- style moodboard: `memory/cover/assets/style-refs/`
-  `#FF1493` (не заливка всего текста), 16:9;
-- cover интересный за счёт композиции, масштаба и метафоры, а не gimmick/meme;
-- inline полезен только если объясняет конкретный H2: comparison table, workflow, checklist, UI explanation или fact card;
-- **inline = тот же finished collage, что cover** (torn paper/tape/sticky/pink/
-  cool accents/shadows). Не «недоделанный» каркас рядом с жирной обложкой;
+- чистый белый `#FFFFFF`, ink и accent из design-code тенанта (не чужой неон-розовый коллаж);
+- style refs: `memory/cover/assets/style-refs/` — только тенант, не чужой plate;
+- cover интересный за счёт лица, композиции и хука, а не gimmick/meme;
+- inline полезен только если объясняет конкретный H2: comparison, workflow, checklist, schema/question или fact card;
+- inline в той же палитре, что cover, но **без лиц** и без скотч-коллажа как фирменного языка;
 - все Cyrillic labels реально нарисованы; **empty gray placeholder boxes /
   unfinished wireframes = blocker**;
-- схема может быть чистой по структуре, но обязана оставаться в прежнем
-  фирменном языке: bold condensed **чёрная** Cyrillic, pink только как accent
-  marker/sticky/underline, paper/card, tape/sticky layers. Голый минималистичный
-  SaaS-slide = blocker; all-pink headline = blocker;
-- во всех inline запрещены герой, люди, лица, мемы и шутки; black+pink
-  paper/tape/sticky collage layers сохраняются как фирменный стиль;
-- `local_reference` / style plate = finished collage sample (mood quality bar),
-  не geometric color blocks.
+- голый минималистичный SaaS-slide = blocker; заголовок целиком одним accent = blocker;
+- во всех inline запрещены герой, люди, лица, мемы и шутки;
+- `local_reference` — только локальный asset тенанта после загрузки; не выдумывать URL.
 
 См. `memory/cover/inline-visual-types.json`. Выбор по keywords H2 в `excalibur_blog_quad_manifest.py`.
 

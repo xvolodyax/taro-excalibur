@@ -1,0 +1,55 @@
+{
+  "topic_id": "B09",
+  "method": "pythagorean_square_four_working_numbers",
+  "example_date": "24.07.1990",
+  "date_digits": [2, 4, 0, 7, 1, 9, 9, 0],
+  "day_month_sum": 13,
+  "year_sum": 19,
+  "working": {
+    "first": 32,
+    "second": 5,
+    "third": 28,
+    "fourth": 10,
+    "third_formula": "32 - 2 * first_digit_of_day(2) = 28"
+  },
+  "working_row_two_digits": [3, 2, 0, 5, 2, 8, 1, 0],
+  "cell_counts": {
+    "1": 2,
+    "2": 3,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 0,
+    "7": 1,
+    "8": 1,
+    "9": 2
+  },
+  "grid": [
+    ["11", "4", "7"],
+    ["222", "5", "8"],
+    ["3", "", "99"]
+  ],
+  "do_not_draw": "1111 in cell 1 (Calculatorov prose says 2 ones, their drawn table wrongly shows 4)",
+  "verified_by_script": true,
+  "verified_at": "2026-08-24",
+  "images": {
+    "inline_01": {
+      "file": "cover/inline-01.png",
+      "shows": ["24.07.1990", "32", "28", "10"],
+      "matches_working_numbers": true
+    },
+    "inline_02": {
+      "file": "cover/inline-02.png",
+      "source": "code_lock_after_kie_misplaced_cells",
+      "grid": [
+        ["11", "4", "7"],
+        ["222", "5", "8"],
+        ["3", "пусто", "99"]
+      ],
+      "cell_1_is_11_not_1111": true,
+      "empty_cell_6": true,
+      "matches_article_sentence": "сверху 11, 4 и 7; в середине 222, 5 и 8; снизу 3, пустая клетка и 99"
+    },
+    "cover_hook": "Пустая клетка в квадрате?"
+  }
+}
