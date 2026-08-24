@@ -1,0 +1,64 @@
+{
+  "topic_id": "B10",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "taro-seichas",
+  "style_file": "memory/cover/quad-style-taro-seichas.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Набрать или нет?",
+  "cover_hook_highlight": "нет",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face/outfit rules = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Виктория с телефоном в светлом августовском вечере",
+      "scene_hint": "Victoria FACE LARGE left; terracotta linen shirt, open collar; late August evening window; GREEN+hazel eyes; tiny phone; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "один вопрос"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Звонок и сообщение решают разные задачи",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Four cards: «звонок» «сообщение» «окно вечера» «разные вопросы»; NO people/faces/silhouettes",
+      "alt": "Схема: звонок и сообщение это разные вопросы вечера",
+      "labels": [
+        "звонок",
+        "сообщение",
+        "окно вечера",
+        "разные вопросы"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Как читать одну карту на «набрать или нет»",
+      "visual_type": "infographic_card",
+      "scene_hint": "Four cards: «одна карта» «срок до ночи» «зелёный свет» «стоп»; NO people/faces/silhouettes",
+      "alt": "Схема чтения карты дня: одна карта, срок до ночи",
+      "labels": [
+        "одна карта",
+        "срок до ночи",
+        "зелёный свет",
+        "стоп"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Когда звонок ещё ход, а когда уже требование",
+      "visual_type": "checklist_board",
+      "scene_hint": "1 «один факт» 2 «без допроса» 3 «тишина до утра» 4 «не второй набор»; daylight notes; NO people/faces/silhouettes",
+      "alt": "Чеклист перед звонком: один факт, без допроса, не второй набор",
+      "labels": [
+        "один факт",
+        "без допроса",
+        "тишина до утра",
+        "не второй набор"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
