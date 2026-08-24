@@ -1,0 +1,17 @@
+{
+  "task_id": "86ce11053699947f4c42fc3048da9ab9",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B08-chto-on-reshil-za-vyhodnye-i-vernetsya-li-v-dialog/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1787553191,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}
