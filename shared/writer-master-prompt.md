@@ -14,13 +14,14 @@
 3. `title-brief.json` — H1
 4. `published-titles-only.md` / `shared/published-titles.md` — только anti-dup
 5. `shared/tenant-config.json` — CTA / язык / флаги
+5b. `shared/early-act-insert.md` + `shared/cta-funnel.md` — куда ставить двери
 6. При сомнении по Дзен/РФ (если `dzen_rf_pack`): `shared/dzen-content-rules.md`,
    `shared/rf-blocked-entities.json`
 
 ## Что писать
 
 - Чистый HTML-фрагмент без `<h1>` → `drafts/writer.html`
-- Открытие + H2 с мыслями + практика/ограничения + CTA (если есть в tenant)
+- Открытие: один короткий `<p>` сцены → вставка «сразу к делу» (`shared/early-act-insert.md`: саммари, 2–3 вопроса под боль, две двери) → длинные H2 → короткий хвост без второго стенда воронки
 - Факты только из research
 - Ссылки CTA: **только** из `tenant-config.cta_links` (если пусто и
   `cta_required=false` — CTA можно не ставить)

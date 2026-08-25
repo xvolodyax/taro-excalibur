@@ -7,6 +7,8 @@
   "description_gate": "scripts/excalibur_blog_description_gate.py",
   "writer_allowed_sources": [
     "shared/writer-master-prompt.md",
+    "shared/early-act-insert.md",
+    "shared/cta-funnel.md",
     "research-notes.md",
     "title-brief.json",
     "published-titles-only.md",
@@ -36,6 +38,8 @@
     "shared/soul-examples/good-outputs.md",
     "shared/soul-examples/bad-outputs.md",
     "shared/article-style.md",
+    "shared/cta-funnel.md",
+    "shared/early-act-insert.md",
     "drafts/writer.html",
     "title-brief.json",
     "research-notes.md"
@@ -91,6 +95,12 @@
     "что такое",
     "и как"
   ],
+  "early_act_insert": {
+    "canon": "shared/early-act-insert.md",
+    "gate": "scripts/excalibur_blog_early_act_gate.py",
+    "placement": "after_first_scene_before_long_h2",
+    "heading_ok": ["Сразу к делу", "Если коротко"]
+  },
   "opening_rules": {
     "block_first": true,
     "writer_owns_opening": false,

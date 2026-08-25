@@ -1,0 +1,52 @@
+"""Early-act insert after the first scene paragraph (canon 2026-08-25)."""
+from __future__ import annotations
+
+import unittest
+
+from scripts.excalibur_blog_early_act_gate import check_html
+
+OK = """<p>Сцена: окно, листок, паузы в чате.</p>
+<h2>Сразу к делу</h2>
+<p>Ты крутишь одно лето. Число года покажет ритм. Дальше можно спросить карты.</p>
+<p>Скопируй вопрос:</p>
+<ul>
+<li>Что моё личное число года делает с этими отношениями до конца лета?</li>
+<li>В этом ритме мне ждать его шага или действовать самой?</li>
+</ul>
+<p>Открой <a href="https://vk.com/app54565776">аудиоразбор</a> в <a href="https://vk.com/app54565776">приложении во ВКонтакте</a>.</p>
+<p>Карты на эти вопросы: <a href="https://max.ru/id531102974575_bot">бот в Макс</a>.</p>
+<h2>Как посчитать</h2>
+<p>Дальше длинный разбор.</p>
+"""
+
+
+class EarlyActGateTest(unittest.TestCase):
+    def test_pass_on_canon_insert(self) -> None:
+        self.assertEqual(check_html(OK), [])
+
+    def test_rejects_missing_first_h2(self) -> None:
+        html = OK.replace("<h2>Сразу к делу</h2>", "<h2>Как посчитать</h2>", 1)
+        errors = check_html(html)
+        self.assertTrue(any("first H2" in e or "early-act" in e for e in errors))
+
+    def test_rejects_telegram(self) -> None:
+        html = OK.replace("бот в Макс", "бот в Telegram t.me/TodayTaro_bot")
+        errors = check_html(html)
+        self.assertTrue(any("Telegram" in e for e in errors))
+
+    def test_rejects_any_situation(self) -> None:
+        html = OK.replace(
+            "Что моё личное число года делает с этими отношениями до конца лета?",
+            "Загадай любую ситуацию",
+        )
+        errors = check_html(html)
+        self.assertTrue(any("ситуацию" in e for e in errors))
+
+    def test_rejects_extra_p_before_insert(self) -> None:
+        html = "<p>Сцена.</p><p>Ещё прогрев.</p>" + OK[OK.find("<h2>") :]
+        errors = check_html(html)
+        self.assertTrue(any("one short" in e or "early insert" in e for e in errors))
+
+
+if __name__ == "__main__":
+    unittest.main()

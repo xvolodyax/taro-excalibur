@@ -68,6 +68,7 @@ python3 scripts/excalibur_blog_research_start.py --topic-id <ID> --title "<short
 python3 scripts/excalibur_blog_pipeline_canon.py --article-dir <dir> --stamp
 python3 scripts/excalibur_blog_html_linter.py <dir>/article.html
 python3 scripts/excalibur_blog_opening_meta_gate.py --article-dir <dir>
+python3 scripts/excalibur_blog_early_act_gate.py --article-dir <dir>
 python3 scripts/excalibur_blog_description_gate.py --article-dir <dir>
 ```
 
