@@ -15,6 +15,7 @@ B08 — утренний пакет 24.08 09:00 в репо. Publish не зап
 B09 — дневной пакет 24.08 16:00 в репо. Publish не запускался.
 B10 — вечерний пакет 24.08 20:00 в репо. Publish не запускался.
 B11 — утренний пакет 25.08 09:00 в репо. Publish не запускался.
+B12 — дневной пакет 25.08 16:00 в репо. Publish не запускался.
 
 | date | topic_id | slug | url | status |
 |------|----------|------|-----|--------|
@@ -31,3 +32,5 @@ B11 — утренний пакет 25.08 09:00 в репо. Publish не зап
 | 2026-08-24 | B08 | chto-on-reshil-za-vyhodnye-i-vernetsya-li-v-dialog | {{SITE_BASE}}/chto-on-reshil-za-vyhodnye-i-vernetsya-li-v-dialog/ | draft_ready |
 | 2026-08-24 | B09 | chto-ego-kvadrat-pifagora-govorit-o-nem-v-otnosheniyah | {{SITE_BASE}}/chto-ego-kvadrat-pifagora-govorit-o-nem-v-otnosheniyah/ | draft_ready |
 | 2026-08-24 | B10 | stoit-li-zvonit-emu-segodnya-vecherom | {{SITE_BASE}}/stoit-li-zvonit-emu-segodnya-vecherom/ | draft_ready |
+| 2026-08-25 | B11 | on-smotrit-moi-istorii-i-molchit | {{SITE_BASE}}/on-smotrit-moi-istorii-i-molchit/ | draft_ready |
+| 2026-08-25 | B12 | lichnoe-chislo-goda-etim-letom | {{SITE_BASE}}/lichnoe-chislo-goda-etim-letom/ | draft_ready |
