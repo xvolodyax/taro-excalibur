@@ -1,0 +1,8 @@
+{
+  "gate": "opening-meta",
+  "status": "BLOCK",
+  "errors": [
+    "article.meta.json missing"
+  ],
+  "article_dir": "/workspace/articles/B13-chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom"
+}
