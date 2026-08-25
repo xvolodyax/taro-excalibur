@@ -1,7 +1,8 @@
 # Pipeline fix queue
 
 ## INC-20260825-0938-cover-brown-eyes
-status: open
+status: fixed
+fixed_at: 2026-08-25
 run_date: 2026-08-25
 role: excalibur-blog-cover
 topic_id: B11
@@ -18,6 +19,9 @@ category: identity
 - Ban `light-brown eyes` / `light-brown near the pupil` in prompts.
 - Lock: GREEN iris + faint hazel ring only, NEVER brown eyes; face toward camera.
 - Gate checklist: `eyes_not_brown`. scene_hint write-batch fails brown-iris phrasing.
+
+### Fixer resolution
+- Cover-only i2i `43c25696af59cc7b23532a2cf5194f3a`. Face to camera. Iris close-up checked against `виктория.png`. Hall must not redraw.
 
 ## INC-20260825-0917-cover-wrong-face-hall
 status: fixed
