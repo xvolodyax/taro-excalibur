@@ -59,6 +59,8 @@
       "gate": "scripts/excalibur_blog_early_act_gate.py",
       "placement": "after_first_scene_before_long_h2",
       "heading": "Сразу к делу",
+      "closer_required": true,
+      "referral_line_forbidden": "вопросы и ссылки в начале",
       "slot_lead": {
         "16:00_numerology": "vk_app_first"
       }

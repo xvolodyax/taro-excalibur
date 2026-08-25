@@ -99,7 +99,9 @@
     "canon": "shared/early-act-insert.md",
     "gate": "scripts/excalibur_blog_early_act_gate.py",
     "placement": "after_first_scene_before_long_h2",
-    "heading_ok": ["Сразу к делу", "Если коротко"]
+    "heading_ok": ["Сразу к делу", "Если коротко"],
+    "closer_required": true,
+    "referral_line_forbidden": true
   },
   "opening_rules": {
     "block_first": true,

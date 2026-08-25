@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Gate: early «сразу к делу» insert after the first scene paragraph.
+"""Gate: early «сразу к делу» insert + live closer with two doors.
 
-Canon: shared/early-act-insert.md (Vladimir, 2026-08-25).
+Canon: shared/early-act-insert.md (Vladimir, 2026-08-25 evening).
 """
 from __future__ import annotations
 
@@ -31,6 +31,13 @@ APP_HREF_RE = re.compile(
     r'|href\s*=\s*["\']https://max\.ru/id531102974575_bot\?startapp=',
     re.I,
 )
+REFERRAL_RE = re.compile(
+    r"вопросы\s+и\s+ссылки.{0,60}в\s+начале"
+    r"|ссылки\s+[-–—]?\s*в\s+начале"
+    r"|в\s+начале,?\s+сразу\s+после\s+сцен",
+    re.I | re.S,
+)
+COPY_QUESTIONS_RE = re.compile(r"скопируй\s+в\s+расклад", re.I)
 
 
 class _Scan(HTMLParser):
@@ -104,6 +111,26 @@ def check_html(html: str) -> list[str]:
         stripped = re.sub(r"<!--.*?-->", "", after_first_p, flags=re.S).lstrip()
         if not stripped.lower().startswith("<h2"):
             errors.append("early-act H2 must follow the first scene paragraph")
+
+    if REFERRAL_RE.search(html):
+        errors.append(
+            "one-line referral «вопросы и ссылки в начале» is forbidden; write a real closer"
+        )
+
+    h2_starts = list(re.finditer(r"<h2\b", html or "", flags=re.I))
+    if len(h2_starts) < 2:
+        errors.append("article needs a closer H2 after the longread, not only the early insert")
+    else:
+        last = html[h2_starts[-1].start() :]
+        if not BOT_HREF_RE.search(last):
+            errors.append("ending must include Max bot href (spread door)")
+        if not APP_HREF_RE.search(last):
+            errors.append("ending must include VK app and/or Max app href (audio door)")
+        end_ps = re.findall(r"<p\b[^>]*>.*?</p>", last, flags=re.I | re.S)
+        if len(end_ps) < 2:
+            errors.append("ending must be a real closer: at least two paragraphs with two doors")
+        if COPY_QUESTIONS_RE.search(last):
+            errors.append("ending must not copy-paste the early-act question list")
     return errors
 
 

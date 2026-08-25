@@ -1,6 +1,7 @@
 """Early-act insert after the first scene paragraph (canon 2026-08-25)."""
 from __future__ import annotations
 
+import re
 import unittest
 
 from scripts.excalibur_blog_early_act_gate import check_html
@@ -17,6 +18,9 @@ OK = """<p>Сцена: окно, листок, паузы в чате.</p>
 <p>Карты на эти вопросы: <a href="https://max.ru/id531102974575_bot">бот в Макс</a>.</p>
 <h2>Как посчитать</h2>
 <p>Дальше длинный разбор.</p>
+<h2>Когда цифра уже есть</h2>
+<p>Цифра уже есть. Чтобы услышать, как она садится в твою историю, открой <a href="https://vk.com/app54565776">аудиоразбор</a> «Суть – Тень – Вектор» в <a href="https://vk.com/app54565776">приложении во ВКонтакте</a>.</p>
+<p>Если нужны карты на этот ритм, открой <a href="https://max.ru/id531102974575_bot">бот в Макс</a>: три бесплатных расклада, триплет или кельтский крест.</p>
 """
 
 
@@ -46,6 +50,24 @@ class EarlyActGateTest(unittest.TestCase):
         html = "<p>Сцена.</p><p>Ещё прогрев.</p>" + OK[OK.find("<h2>") :]
         errors = check_html(html)
         self.assertTrue(any("one short" in e or "early insert" in e for e in errors))
+
+    def test_rejects_referral_closer(self) -> None:
+        html = OK.replace(
+            "Цифра уже есть. Чтобы услышать, как она садится в твою историю, открой",
+            "Вопросы и ссылки - в начале, сразу после сцены. Чтобы услышать, открой",
+        )
+        errors = check_html(html)
+        self.assertTrue(any("referral" in e or "в начале" in e for e in errors))
+
+    def test_rejects_missing_end_doors(self) -> None:
+        html = re.sub(
+            r"<h2>Когда цифра уже есть</h2>.*",
+            "<h2>Когда цифра уже есть</h2><p>Просто закрой вкладку.</p>",
+            OK,
+            flags=re.S,
+        )
+        errors = check_html(html)
+        self.assertTrue(any("ending must" in e for e in errors))
 
 
 if __name__ == "__main__":

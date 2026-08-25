@@ -25,6 +25,8 @@ Scout? → research_start → Research → Title → Writer(смысл)
 (`shared/SOUL.md` + `shared/soul-examples/`).  
 После первой сцены в `article.html` — вставка «сразу к делу»
 (`shared/early-act-insert.md`): саммари, готовые вопросы, две двери.
+После лонгрида — живой финал с теми же двумя дверями, не строка
+«вопросы и ссылки в начале».
 **Description** (`excalibur-blog-description`) → `description-brief.json`
 (тизер карточки Дзена / RSS; `shared/dzen-description-rules.md`).  
 ≠ title, ≠ opening. После Description — stamp `pipeline_canon` + structural
@@ -48,7 +50,8 @@ python3 scripts/excalibur_blog_research_start.py --topic-id B111 --title "…"
 - Второй автор / rewrite-loop **поверх Sol** (Sol — единственный стилевой рерайт)
 - Термин-дамп / research-брифинг в открытии финала
 - Description = title или обрезка лида (двойная карточка в Дзене)
-- Нет вставки «сразу к делу» после первой сцены / второй стенд воронки в финале
+- Нет вставки «сразу к делу» после первой сцены
+- Финал из строки «вопросы и ссылки в начале» вместо живого closer с двумя дверями
 - topics / SEO-хвосты
 - Writer/Sol читают старые article.html / live-сайт как образец
 - Publish без pipeline_canon stamp
