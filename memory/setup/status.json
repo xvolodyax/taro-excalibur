@@ -1,15 +1,20 @@
 {
   "version": "1",
-  "complete": false,
-  "updated_at": null,
+  "complete": true,
+  "updated_at": "2026-08-21T15:16:00Z",
   "phases": {
-    "cloud": "pending",
-    "site": "pending",
-    "author": "pending",
-    "voice": "pending",
-    "visual": "pending",
-    "cta": "pending",
-    "scout": "pending"
+    "cloud": "done",
+    "site": "done",
+    "author": "done",
+    "voice": "done",
+    "visual": "done",
+    "cta": "done",
+    "scout": "done"
   },
-  "notes": "excalibur-blog-setup stamps phases to done and sets complete=true when all required phases pass."
+  "notes": "setup_complete=true: бренд, SOUL, CTA, visual-правила заполнены, не TBD. Voice: NEED_MORE_EXAMPLES (рабочий синтез есть, живых стенограмм в репе нет). Visual: READY; рефы лиц только Виктории (Алёна не i2i). Канон в git: memory/cover/assets/виктория.png. Глаза: зелёные + слегка светло-карие. Секреты Kie/Wordstat не в репе. WP publish выключен. Дзен публикует Холл в браузере, файл с диска. Memories OFF.",
+  "gaps": [
+    "KIE_API_KEY in Cursor Secrets",
+    "Wordstat API key in Cursor Secrets (folderId already in tenant-config)",
+    "PUBLIC_SITE_URL in Cursor Secrets if WP ever enabled"
+  ]
 }

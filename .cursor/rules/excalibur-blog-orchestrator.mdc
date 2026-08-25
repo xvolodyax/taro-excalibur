@@ -35,7 +35,7 @@ alwaysApply: false
 3. `excalibur-blog-writer` → `drafts/writer.html` (смысл, Gemini)
 4. `excalibur-blog-sol` → `article.html` (слог SOUL + examples, Gemini)
 5. `excalibur-blog-description` → `description-brief.json` (Gemini)
-6. shell: `pipeline_canon --stamp` + opening_meta + description_gate + html_linter
+6. shell: `pipeline_canon --stamp` + opening_meta + early_act_gate + description_gate + html_linter
 7. **ПАРАЛЛЕЛЬНО** cover-text (Gemini) + schema (inherit) → cover (inherit)
 8. `excalibur-blog-indexer`
 9. `excalibur-blog-publish`
