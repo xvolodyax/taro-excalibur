@@ -1,0 +1,64 @@
+{
+  "topic_id": "B13",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "taro-seichas",
+  "style_file": "memory/cover/quad-style-taro-seichas.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Позвал в последний момент",
+  "cover_hook_highlight": "последний",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Как понять поздний вечерний зов и решить, ехать или остаться",
+      "scene_hint": "FACE LARGE left wearing dusty-olive linen shirt; EYES to camera; GREEN iris NEVER brown; composed alert; tiny phone right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "ехать или остаться?"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Почему время приглашения говорит больше самих слов",
+      "visual_type": "schema_faq_ui",
+      "scene_hint": "WHITE Q-card: late invite vs planned date. L→R «звонок в девять вечера» «окно в чужом графике» «остаточный принцип» → «удобство вместо приоритета». NO people/faces/emoji/silhouettes. No candles.",
+      "alt": "Почему время позднего приглашения говорит больше тёплых слов",
+      "labels": [
+        "звонок в девять вечера",
+        "окно в чужом графике",
+        "остаточный принцип",
+        "удобство вместо приоритета"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Разовая спонтанность или привычка делать запасным вариантом",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Two-col WHITE: GOOD «искренний порыв» green check vs BAD «привычная схема» red X. Then «запасной вариант» «твои границы». Outcome: границы важнее. NO people/faces/emoji/silhouettes. No candles.",
+      "alt": "Как отличить искренний порыв от привычки звать запасным вариантом",
+      "labels": [
+        "искренний порыв",
+        "привычная схема",
+        "запасной вариант",
+        "твои границы"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Как работает карта дня и почему она не решает за тебя",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "L→R WHITE workflow: «фокус на сутки» → «зеркало твоих чувств» → «не билет на поездку» → «выбор за тобой». Schema not screenshot. NO people/faces/emoji/silhouettes. No candles.",
+      "alt": "Как карта дня показывает чувства, но не решает ехать или остаться",
+      "labels": [
+        "фокус на сутки",
+        "зеркало твоих чувств",
+        "не билет на поездку",
+        "выбор за тобой"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

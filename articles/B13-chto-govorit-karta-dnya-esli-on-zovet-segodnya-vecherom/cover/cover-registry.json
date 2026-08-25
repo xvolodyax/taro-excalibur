@@ -1,0 +1,50 @@
+{
+  "topic_id": "B13",
+  "slug": "chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom",
+  "cover_family": "brand_collage",
+  "style_preset": "taro-seichas",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Как понять поздний вечерний зов и решить, ехать или остаться",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-25T16:55:20+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Как понять поздний вечерний зов и решить, ехать или остаться",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Почему время позднего приглашения говорит больше тёплых слов",
+      "h2_anchor": "Почему время приглашения говорит больше самих слов",
+      "visual_type": "schema_faq_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Как отличить искренний порыв от привычки звать запасным вариантом",
+      "h2_anchor": "Разовая спонтанность или привычка делать запасным вариантом",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Как карта дня показывает чувства, но не решает ехать или остаться",
+      "h2_anchor": "Как работает карта дня и почему она не решает за тебя",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

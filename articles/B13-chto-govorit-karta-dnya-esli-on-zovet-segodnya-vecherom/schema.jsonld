@@ -1,0 +1,36 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{SITE_BASE}}/chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom/",
+  "url": "{{SITE_BASE}}/chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{SITE_BASE}}/chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom/"
+  },
+  "headline": "Он зовёт в последний момент и карта дня объясняет твои сомнения",
+  "description": "Как отличить искренний порыв от роли запасного варианта и спокойно разобраться в своих чувствах, когда зовут в последний момент.",
+  "datePublished": "2026-08-25",
+  "dateModified": "2026-08-25",
+  "inLanguage": "ru-RU",
+  "image": [
+    "{{SITE_BASE}}/cover/cover.png"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Виктория",
+    "givenName": "Виктория",
+    "jobTitle": "Таролог «ТАРО СЕЙЧАС»",
+    "sameAs": [
+      "https://vk.com/id1113231252"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{SITE_BASE}}/cover/cover.png"
+    }
+  }
+}

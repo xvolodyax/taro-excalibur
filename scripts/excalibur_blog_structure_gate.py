@@ -2,7 +2,7 @@
 """Structural preflight master gate — no prose rewrite.
 
 Chains structural checks: canon, research report, links, html linter,
-content-evidence, CTA, opening-meta.
+content-evidence, CTA, early-act insert, opening-meta.
 """
 from __future__ import annotations
 
@@ -151,6 +151,20 @@ def main() -> int:
     )
     cta = _load_json(article_dir / "community-cta-gate.json")
     record("community_cta", cta_rc == 0 and _hard_ok(cta), f"exit={cta_rc}")
+
+    early_rc = run_cmd(
+        root,
+        [
+            py,
+            str(scripts / "excalibur_blog_early_act_gate.py"),
+            "--article-dir",
+            str(article_dir),
+            "-o",
+            "early-act-gate.json",
+        ],
+    )
+    early = _load_json(article_dir / "early-act-gate.json")
+    record("early_act_insert", early_rc == 0 and _hard_ok(early), f"exit={early_rc}")
 
     opening_rc = run_cmd(
         root,
