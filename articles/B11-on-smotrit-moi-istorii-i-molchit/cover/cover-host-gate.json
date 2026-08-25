@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "compared_side_by_side": true,
+  "victoria_face_visible": true,
+  "still_life_only": false,
+  "hair_match": true,
+  "eyes_match": true,
+  "eyes_not_brown": true,
+  "bone_match": true,
+  "no_face_seam": true,
+  "not_brunette": true,
+  "not_alena": true,
+  "credit_applied": true,
+  "ref_path": "memory/cover/assets/виктория.png",
+  "cover_path": "cover/cover.png",
+  "generation": {
+    "mode": "cover_only_16x9_i2i",
+    "model": "gpt-image-2-image-to-image",
+    "task_id": "43c25696af59cc7b23532a2cf5194f3a",
+    "outfit": "dusty-blue short-sleeve linen shirt",
+    "hook": "Смотрит или напишет?",
+    "inlines_kept": true,
+    "pose": "face and eyes toward camera, phone in hand"
+  },
+  "notes": [
+    "Owner rejected prior cover: irises read dark brown, bone/gaze drifted.",
+    "Director opened виктория.png and cover-only-v2-raw.png side by side, plus iris close-up.",
+    "Irises: mossy/light green with a gold-hazel ring at the pupil, not dark brown.",
+    "Face toward camera so green is readable. Oval bone, high cheekbones. Platinum/warm blonde.",
+    "Prompt no longer says light-brown near the pupil.",
+    "Pillow stamped exact credit. Hall must not redraw."
+  ]
+}

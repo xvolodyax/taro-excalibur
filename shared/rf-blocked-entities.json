@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-08-06",
+  "updated": "2026-08-21",
   "description": "RF-blocked / high-risk entities — DENY as article hero before Scout. Not legal advice; operational canon for Excalibur BLOG + Dzen.",
   "sources": [
     "https://dzen.ru/help/ru/requirements/rules.html",
@@ -93,6 +93,9 @@
     "MAX",
     "YouTube"
   ],
-  "cta_ok": [],
-  "comment_cta": "Filled from tenant-config.cta_links by Setup"
+  "cta_ok": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776"
+  ],
+  "comment_cta": "Filled from tenant-config.cta_links by Setup. No Telegram. No MAX channel id531102974575_biz."
 }

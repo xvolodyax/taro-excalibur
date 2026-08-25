@@ -1,0 +1,143 @@
+{
+  "agent": "excalibur-blog-cover-quad-split",
+  "status": "PASS",
+  "manifest": "cover/quad-manifest.json",
+  "split": {
+    "source_canvas": "articles/B11-on-smotrit-moi-istorii-i-molchit/cover/canvas-quad.png",
+    "source_size_px": [
+      2048,
+      1152
+    ],
+    "panel_size_px": [
+      1020,
+      573
+    ],
+    "split_meta": {
+      "split_mode": "gutter_detect",
+      "h_gutter_px": {
+        "start": 573,
+        "end": 581
+      },
+      "v_gutter_px": {
+        "start": 1020,
+        "end": 1025
+      },
+      "requested_mode": "auto",
+      "gutter_quality": {
+        "h_center_offset_px": 1.0,
+        "v_center_offset_px": 1.5,
+        "max_aspect_crop_loss": 0.0078,
+        "per_panel_crop_loss": {
+          "top_left": 0.0,
+          "top_right": 0.0,
+          "bottom_left": 0.0,
+          "bottom_right": 0.0078
+        },
+        "reject_reason": null
+      }
+    },
+    "output_size_px": [
+      1200,
+      675
+    ],
+    "outputs": {
+      "cover": {
+        "file": "cover/cover.png",
+        "quadrant": "top_left",
+        "box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1020,
+          "bottom": 573
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1020,
+          "bottom": 573
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Он смотрит истории, но в чате тишина",
+        "h2_anchor": null
+      },
+      "inline_1": {
+        "file": "cover/inline-01.png",
+        "quadrant": "top_right",
+        "box_px": {
+          "left": 1025,
+          "top": 0,
+          "right": 2048,
+          "bottom": 573
+        },
+        "raw_box_px": {
+          "left": 1025,
+          "top": 0,
+          "right": 2048,
+          "bottom": 573
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Почему просмотр историй не равен шагу в диалог",
+        "h2_anchor": "Почему просмотр историй не равен шагу в диалог"
+      },
+      "inline_2": {
+        "file": "cover/inline-02.png",
+        "quadrant": "bottom_left",
+        "box_px": {
+          "left": 0,
+          "top": 581,
+          "right": 1020,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 581,
+          "right": 1020,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Три позиции расклада: внимание, готовность написать, твой шаг",
+        "h2_anchor": "Как спросить карты: три ключевые позиции расклада"
+      },
+      "inline_3": {
+        "file": "cover/inline-03.png",
+        "quadrant": "bottom_right",
+        "box_px": {
+          "left": 1029,
+          "top": 581,
+          "right": 2044,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 1025,
+          "top": 581,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Как вернуть спокойствие утром после списка зрителей",
+        "h2_anchor": "Как вернуть себе спокойствие этим утром"
+      }
+    }
+  },
+  "html_inject": [
+    "injected inline_1 after H2 — Почему просмотр историй не равен шагу в диалог",
+    "injected inline_2 after H2 — Как спросить карты: три ключевые позиции расклада",
+    "injected inline_3 after H2 — Как вернуть себе спокойствие этим утром"
+  ]
+}

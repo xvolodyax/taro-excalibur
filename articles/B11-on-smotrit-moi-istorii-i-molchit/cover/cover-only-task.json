@@ -1,0 +1,17 @@
+{
+  "task_id": "f58e5ca6597658c7516df719f823175d",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "articles/B11-on-smotrit-moi-istorii-i-molchit/cover/cover-only-result.json",
+  "updated_at_epoch": 1787650141,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}

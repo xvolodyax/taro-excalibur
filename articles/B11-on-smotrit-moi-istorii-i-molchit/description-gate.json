@@ -1,0 +1,9 @@
+{
+  "gate": "description",
+  "status": "PASS",
+  "errors": [],
+  "description": "Регулярный просмотр историй в ленте не равен шагу в диалог, а простой расклад таро помогает спокойно прояснить истинные мотивы его молчания.",
+  "title": "Он смотрит твои истории и молчит",
+  "char_count": 140,
+  "article_dir": "/workspace/articles/B11-on-smotrit-moi-istorii-i-molchit"
+}

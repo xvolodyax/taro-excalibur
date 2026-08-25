@@ -78,7 +78,9 @@ python3 scripts/excalibur_blog_description_gate.py --article-dir <dir>
 ### 5 Cover-text || Schema → Cover
 В одном сообщении (параллель):  
 `Task(excalibur-blog-cover-text)` · Gemini; `Task(excalibur-blog-schema)` · inherit.  
-Потом `Task(excalibur-blog-cover)` · inherit. Cover **не** зовёт Cover-text.
+Потом `Task(excalibur-blog-cover)` · inherit. Cover **не** зовёт Cover-text.  
+Канон лица: `shared/cover-host-canon.md`. На обложке Виктория всегда в кадре.
+Натюрморт / чужое лицо / шов — не в пакет. Холл обложку не рисует.
 ### 6 Indexer → Publish
 `model: inherit`.
 ### 7 Fixer → merge → learner

@@ -1,0 +1,58 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B11",
+  "title": "Он смотрит мои истории и молчит",
+  "article_dir": "articles/B11-on-smotrit-moi-istorii-i-molchit",
+  "research_date": "2026-08-25",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "block_reason": null,
+  "fresh_signal": {
+    "ok": true,
+    "kind": "community_plus_live_serp",
+    "this_week": true,
+    "primary": {
+      "url": "https://www.woman.ru/relations/men/thread/5868977/",
+      "what": "Живая ветка: смотрит истории в первые минуты, в чате тишина. Последний ответ 18 августа 18:25.",
+      "accessed_at": "2026-08-25"
+    },
+    "supporting": [
+      {
+        "url": "https://lavrus.org/zachem-on-smotrit-vashi-storis-i-chto-eto-govorit-o-ego-interese.html",
+        "what": "Scout signal_url; страница открыта 25.08.2026",
+        "accessed_at": "2026-08-25"
+      },
+      {
+        "url": "https://vc.ru/id5436950/2316652-pochemu-on-smotrit-storis-no-ne-pishet",
+        "what": "Scout signal_url; сцена утреннего списка просмотров",
+        "accessed_at": "2026-08-25"
+      },
+      {
+        "url": "https://vk.ru/press/stories-runet-stats",
+        "what": "Официальные цифры ВК по историям (27.07.2026), проверено 25.08",
+        "accessed_at": "2026-08-25"
+      }
+    ],
+    "serp_searched_at": "2026-08-25",
+    "note": "Сигнал не выдуман и не продолжение B08–B10. Тема из scout_live_angles «смотрит истории»."
+  },
+  "wordstat": "WORDSTAT UNAVAILABLE",
+  "wordstat_probe": {
+    "endpoint": "https://searchapi.api.cloud.yandex.net/v2/wordstat/topRequests",
+    "folderId": "b1g0a71ifv910gjalmhp",
+    "http": 401,
+    "message": "IAM token or API key has to be passed in request",
+    "requestId": "d763e3b1-d60d-4390-a9a8-ac8d607fa479",
+    "secrets": "no YANDEX_* / WORDSTAT_API_KEY",
+    "frequencies": "not invented"
+  },
+  "overlap_checked": "published-titles-only.md",
+  "neighbor_bodies_opened": false,
+  "rf_dzen": {
+    "instagram_hero": false,
+    "write_istorii_not_stories": true
+  },
+  "notes_path": "articles/B11-on-smotrit-moi-istorii-i-molchit/research-notes.md",
+  "incident_report": "none"
+}

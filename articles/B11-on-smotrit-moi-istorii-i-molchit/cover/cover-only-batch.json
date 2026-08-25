@@ -1,0 +1,38 @@
+{
+  "pipeline": "cover_only_16x9_i2i",
+  "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/виктория.png",
+  "cover_hero_mode": "host",
+  "prefer_local_reference": true,
+  "local_reference": "memory/cover/assets/виктория.png",
+  "output_canvas": "cover/cover.png",
+  "note": "Identity rebuild after brown-eye miss. Keep faceless inlines. Do not split a 2x2.",
+  "jobs": [
+    {
+      "slot": "cover",
+      "tool": "gpt-image-2",
+      "api_args": {
+        "model": "gpt-image-2-image-to-image",
+        "input": {
+          "prompt": "Daylight summer-morning RU editorial, 16:9, WHITE air, ink #1A1414, accent #8B3A3A on ONE word. i2i from the attached Victoria reference: copy IDENTITY only — SAME oval face, high cheekbones, slender jaw, straight narrow nose, full pale-pink lips.\nHair: long STRAIGHT platinum/warm blonde. EYES HARD LOCK: light GREEN irises facing the camera, only a faint hazel ring at the pupil. NEVER brown eyes. NEVER dark-brown irises. Do not tilt the face down into phone-shadow — green must be readable.\nVictoria FACE visible LARGE left, face and eyes toward camera, wearing a NEW dusty-blue short-sleeve linen shirt (she wears it). Do NOT copy the white blazer, tarot cards, or tree-of-life pendant from the reference. Soft morning half-smile. She holds a tiny phone showing a blurred story-viewers list, but the phone is not the hero.\nTEXT LOCK: the ONLY large headline is EXACTLY «Смотрит или напишет?» — big bold condensed Cyrillic, black #141821; paint ONLY «напишет» in warm accent #8B3A3A. Small warm note EXACTLY «в чате тишина». No host credit, byline, site or URL — Pillow stamps later.\nBan: brown eyes, downcast hidden irises, still-life, flat-lay, brunette hair, face seam, white blazer, Alena, gothic, candles.",
+          "input_urls": [
+            "{{SITE_BASE}}/wp-content/uploads/excalibur/виктория.png"
+          ],
+          "aspect_ratio": "16:9",
+          "resolution": "2K"
+        }
+      },
+      "mcp_args": {
+        "prompt": "Daylight summer-morning RU editorial, 16:9, WHITE air, ink #1A1414, accent #8B3A3A on ONE word. i2i from the attached Victoria reference: copy IDENTITY only — SAME oval face, high cheekbones, slender jaw, straight narrow nose, full pale-pink lips.\nHair: long STRAIGHT platinum/warm blonde. EYES HARD LOCK: light GREEN irises facing the camera, only a faint hazel ring at the pupil. NEVER brown eyes. NEVER dark-brown irises. Do not tilt the face down into phone-shadow — green must be readable.\nVictoria FACE visible LARGE left, face and eyes toward camera, wearing a NEW dusty-blue short-sleeve linen shirt (she wears it). Do NOT copy the white blazer, tarot cards, or tree-of-life pendant from the reference. Soft morning half-smile. She holds a tiny phone showing a blurred story-viewers list, but the phone is not the hero.\nTEXT LOCK: the ONLY large headline is EXACTLY «Смотрит или напишет?» — big bold condensed Cyrillic, black #141821; paint ONLY «напишет» in warm accent #8B3A3A. Small warm note EXACTLY «в чате тишина». No host credit, byline, site or URL — Pillow stamps later.\nBan: brown eyes, downcast hidden irises, still-life, flat-lay, brunette hair, face seam, white blazer, Alena, gothic, candles.",
+        "input_urls": [
+          "{{SITE_BASE}}/wp-content/uploads/excalibur/виктория.png"
+        ],
+        "aspect_ratio": "16:9",
+        "resolution": "2K"
+      }
+    }
+  ],
+  "validation": {
+    "required_reference_host": "{{SITE_HOST}}",
+    "resolution": "2K"
+  }
+}

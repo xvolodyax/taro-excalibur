@@ -47,12 +47,17 @@ write scene_hint + hook
 - terminal `failCode=400` image fetch → File Upload + max 1 recreate;
 - terminal `failCode=422` sensitive → агент: один soften hook/hint + 1 recreate.
 
-**Запрещено (всегда):**
+**Запрещено (всегда) как beauty-redo:**
 
-- второй/третий/четвёртый Kie gen из‑за host miss, sticky Latin, style, «некрасиво»;
-- «глянуть PNG → переписать hint → снова Kie» (раньше так жгли B80);
+- второй/третий/четвёртый Kie gen из‑за sticky Latin, style, «некрасиво»;
+- «глянуть PNG → переписать hint → снова Kie» ради красоты (раньше так жгли B80);
 - Cover redo по Visual QA FAIL (VQ skip);
 - 4 отдельных image jobs на панели.
+
+**Identity-fail ≠ beauty-redo** (`shared/cover-host-canon.md`, B11):
+нет лица / натюрморт на cover / чужое лицо / брюнетка / шов по лицу /
+не та кость / **карие глаза вместо зелёных** — **HARD reject**. Пересобрать **весь холст**. В пакет не класть.
+Холл обложку **не** перерисовывает.
 
 Self-check **до** первого Kie (обязателен):
 
@@ -92,6 +97,7 @@ inline — вторая, третья и четвёртая картинки п�
 
 | Путь | Назначение |
 |------|------------|
+| `shared/cover-host-canon.md` | канон лица Виктории на обложке (навсегда) |
 | `shared/blog-cover-quad-canvas-contract.md` | канонический контракт |
 | `shared/kie-gpt-image-api-contract.md` | прямой async Kie API для Cursor Cloud |
 | `agents/excalibur-blog-cover.md` | agent-md (этот skill дублирует runbook) |
@@ -117,10 +123,19 @@ inline — вторая, третья и четвёртая картинки п�
 
 ## Reference host (обязательно на cover)
 
-**Lock (reference i2i):** лицо/герой — только если Setup задал reference + visual_lock.  
-**Lock:** только поля `visual_lock` / `outfit_rule` / `prompt_fragment` из `blog-hero.json` после Setup.
-**Free:** поза/ракурс/композиция по `cover_hook` и `scene_hint`.
+Читать `shared/cover-host-canon.md` **до** scene_hint.
+
+**Lock (reference i2i):** Kie GPT Image 2, реф только `виктория.png` / `victoria.png`.
+Лицо: длинные прямые светлые волосы, радужка светло-зелёная с лёгким hazel
+(NEVER brown eyes), та же кость. Лицо к камере. Не писать `light-brown eyes`.
+Не брюнетка, не двойник, не Алёна. Белый пиджак с рефа не копировать.
+**Lock:** `visual_lock` / `outfit_rule` / `prompt_fragment` из `blog-hero.json`.
+**Free:** поза/ракурс/одежда/эмоция по теме (каждый раз новые).
 Если `cover_mode=illustrative` — host на cover не обязателен.
+
+На обложке статьи при `host_reference` Виктория **всегда в кадре**.
+Натюрморт без неё — только инлайн. `scene_hint` обязан сказать
+`FACE visible LARGE left wearing [outfit]`, а не перечислять одежду как предмет стола.
 
 ### Cover `scene_hint` — короткий Host lock (B80 / INC-20260724-0837, B81 / INC-20260724-1239)
 
@@ -317,11 +332,19 @@ python scripts/excalibur_blog_quad_apply.py \
 
 `.cursor/excalibur-blog-fragments/cover.md` — шаблон в `agents/excalibur-blog-cover.md`.
 
-### Шаг 6.5 — после apply (без quality Kie)
+### Шаг 6.5 — сверка лица (обязательно) + без beauty Kie
 
-Split/inject PASS → fragment. **Не** открывай PNG чтобы запустить второй Kie.
-Visual QA skip; style/host/sticky чинятся **только** улучшением first-try
-prompt в следующем run (incident), не ретраем в текущем.
+После apply открыть **реф** `memory/cover/assets/виктория.png` и `cover/cover.png`
+**рядом**. Заполнить `cover/cover-host-gate.json` и прогнать:
+
+```bash
+python3 scripts/excalibur_blog_cover_host_gate.py --article-dir <dir>
+```
+
+Identity-fail (нет лица, натюрморт, брюнетка, шов, не та кость, Алёна) —
+пересобрать **весь** холст, в пакет не класть. Это не beauty-redo.
+Beauty/sticky/style «чуть лучше» — по-прежнему без второго Kie.
+Холл файл не подменяет.
 
 ### Sticky Cyrillic lock (INC-20260723-0858 / INC-20260723-1237)
 
