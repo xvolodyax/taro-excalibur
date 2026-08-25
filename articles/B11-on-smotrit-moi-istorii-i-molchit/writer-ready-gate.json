@@ -1,0 +1,6 @@
+{
+  "gate": "writer-ready",
+  "status": "PASS",
+  "errors": [],
+  "choice_file": "writer-ready.json"
+}
