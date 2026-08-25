@@ -31,6 +31,49 @@ _PINK_WORD_IN_SCENE = re.compile(
 )
 
 
+_STILL_LIFE_RE = re.compile(
+    r"still[\s-]?life|flat[\s-]?lay|натюрморт|flatlay",
+    re.IGNORECASE,
+)
+_COVER_NO_FACE_RE = re.compile(
+    r"\bno\s+(people|faces?|host|person)\b|без\s+(лиц|людей|ведущ)",
+    re.IGNORECASE,
+)
+_GARMENT_AS_OBJECT_RE = re.compile(
+    r"\b(blouse|shirt|jacket|blazer|dress|camisole|hoodie|рубашк\w*|пиджак)\b",
+    re.IGNORECASE,
+)
+_WEARING_RE = re.compile(r"\b(wear(?:ing|s)|dressed|надета)\b", re.IGNORECASE)
+_FACE_LOCK_RE = re.compile(r"\b(face|лицом)\b", re.IGNORECASE)
+
+
+def cover_scene_host_errors(scene: str, *, host_required: bool = True) -> list[str]:
+    """Reject still-life / faceless cover hints (B11 / cover-host-canon)."""
+    text = " ".join(str(scene or "").split())
+    if not host_required:
+        return []
+    errors: list[str] = []
+    if not text:
+        errors.append("cover.scene_hint empty — need FACE visible LARGE left wearing [outfit]")
+        return errors
+    if _STILL_LIFE_RE.search(text):
+        errors.append(
+            "cover.scene_hint looks like still-life/flat-lay — "
+            "Victoria must be FACE visible LARGE left wearing the outfit "
+            "(still-life is inline-only)"
+        )
+    if _COVER_NO_FACE_RE.search(text):
+        errors.append("cover.scene_hint forbids a face — host_reference cover needs Victoria in frame")
+    if not _FACE_LOCK_RE.search(text):
+        errors.append("cover.scene_hint must lock FACE visible (not a garment still-life)")
+    if _GARMENT_AS_OBJECT_RE.search(text) and not _WEARING_RE.search(text):
+        errors.append(
+            "cover.scene_hint names a garment without 'wearing' — "
+            "model treats clothes as table props (INC-20260825-0637)"
+        )
+    return errors
+
+
 def sanitize_cover_scene_hint(scene: str, highlight: str) -> str:
     """Rewrite conflicting pink-word directives in scene_hint to match highlight."""
     hl = (highlight or "").strip()
@@ -317,11 +360,21 @@ def local_reference_candidates(hero: dict, style: dict) -> list[str]:
         if not value or value in seen:
             continue
         lowered = value.casefold()
-        if "alena" in lowered:
+        if "alena" in lowered or "алёна" in lowered or "алена" in lowered:
             continue
         if "://" in value:
             continue
         seen.append(value)
+    # Alias victoria.png next to виктория.png when the file exists.
+    extra: list[str] = []
+    for value in seen:
+        if value.endswith("виктория.png"):
+            extra.append(value.replace("виктория.png", "victoria.png"))
+        elif value.endswith("victoria.png"):
+            extra.append(value.replace("victoria.png", "виктория.png"))
+    for value in extra:
+        if value not in seen:
+            seen.append(value)
     return seen
 
 
@@ -605,6 +658,16 @@ def main() -> int:
                 )
             if not str(slot.get("alt") or "").strip():
                 required_errors.append(f"{key}.alt empty — Cover agent must invent alt")
+        host_required = (
+            str(hero.get("cover_mode") or "").strip() == "host_reference"
+            and not style_is_situational_cat_hero(style)
+        )
+        required_errors.extend(
+            cover_scene_host_errors(
+                str(cover_slot.get("scene_hint") or ""),
+                host_required=host_required,
+            )
+        )
         if required_errors:
             print(
                 "❌ COVER MANIFEST BLOCKER: agent-owned fields are missing; "

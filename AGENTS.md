@@ -52,6 +52,8 @@ python3 scripts/excalibur_blog_research_start.py --topic-id B111 --title "…"
 - Scout/тема про RF-blocked heroes без Дзен-канона (если `dzen_rf_pack`)
 - Sol выдумывает факты, которых нет в `drafts/writer.html` / research
 - Запуск пайплайна до завершения Setup
+- Обложка без Виктории / натюрморт на cover / чужое лицо / брюнетка / шов
+  (`shared/cover-host-canon.md`). Холл обложку не перерисовывает.
 
 ## Preflight
 

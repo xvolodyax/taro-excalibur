@@ -44,6 +44,7 @@ Frontmatter обязателен целиком — см. `shared/pipeline-fragm
 Cover-агент генерирует **один** quad-холст 2×2 (Kie GPT Image 2 Image-to-Image API + reference i2i), режет на `cover.png` + 3 inline, вставляет `<figure>` в `article.html`.
 
 **Skill (читать первым):** `skills/cover-excalibur-blog/SKILL.md`  
+**Канон лица:** `shared/cover-host-canon.md`  
 **Контракт:** `shared/blog-cover-quad-canvas-contract.md`  
 **Kie API contract:** `shared/kie-gpt-image-api-contract.md`
 
