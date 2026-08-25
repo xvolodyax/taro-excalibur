@@ -58,6 +58,27 @@ def load_ledger_rows(root: Path) -> list[dict[str, str]]:
     return rows
 
 
+def titles_from_shared_titles(root: Path) -> dict[str, str]:
+    """Read already-filled Russian titles before this script rewrites the file."""
+    path = root / "shared" / "published-titles.md"
+    found: dict[str, str] = {}
+    if not path.is_file():
+        return found
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) < 3:
+            continue
+        topic_id = cells[0].strip().upper()
+        if topic_id in {"TOPIC_ID", "----------"} or not topic_id:
+            continue
+        title = cells[2].strip()
+        if title and not title.lower().startswith("title"):
+            found[topic_id] = title
+    return found
+
+
 def title_from_meta(article_dir: Path) -> str:
     meta_path = article_dir / "article.meta.json"
     if not meta_path.is_file():
@@ -104,6 +125,11 @@ def build_titles(
 ) -> list[dict[str, str]]:
     allowed = statuses or {"published", "in_progress", "draft_ready"}
     blog_dir = root / "memory" / "blog" / "articles"
+    if not blog_dir.is_dir():
+        alt = root / "articles"
+        if alt.is_dir():
+            blog_dir = alt
+    known_titles = titles_from_shared_titles(root)
     latest: dict[str, dict[str, str]] = {}
     for row in load_ledger_rows(root):
         if row["status"] not in allowed:
@@ -112,6 +138,8 @@ def build_titles(
         slug = row["slug"]
         article_dir = find_article_dir(blog_dir, topic_id, slug)
         title = title_from_meta(article_dir) if article_dir else ""
+        if not title:
+            title = known_titles.get(topic_id, "")
         if not title:
             title = humanize_slug(slug)
         latest[topic_id] = {
