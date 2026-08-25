@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "compared_side_by_side": true,
+  "victoria_face_visible": true,
+  "still_life_only": false,
+  "hair_match": true,
+  "eyes_match": true,
+  "bone_match": true,
+  "no_face_seam": true,
+  "not_brunette": true,
+  "not_alena": true,
+  "credit_applied": true,
+  "ref_path": "memory/cover/assets/виктория.png",
+  "cover_path": "cover/cover.png",
+  "generation": {
+    "mode": "cover_only_16x9_i2i",
+    "model": "gpt-image-2-image-to-image",
+    "task_id": "f58e5ca6597658c7516df719f823175d",
+    "outfit": "dusty-blue short-sleeve linen shirt",
+    "hook": "Смотрит или напишет?",
+    "inlines_kept": true
+  },
+  "notes": [
+    "Director opened виктория.png and cover-only-raw.png side by side before stamp.",
+    "Long straight light-blonde hair, green eyes with light-brown near pupil, same oval bone. Not brunette, no center-face seam.",
+    "New dusty-blue shirt, not the white blazer from the ref. Phone shows a viewers list.",
+    "Pillow stamped exact credit after gen. Hall must not redraw."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "pipeline": "cover_only_16x9_i2i",
+  "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/виктория.png",
+  "cover_hero_mode": "host",
+  "prefer_local_reference": true,
+  "local_reference": "memory/cover/assets/виктория.png",
+  "output_canvas": "cover/cover.png",
+  "note": "Cover-only identity rebuild. Keep existing faceless inlines. Do not split a 2x2.",
+  "jobs": [
+    {
+      "slot": "cover",
+      "tool": "gpt-image-2",
+      "api_args": {
+        "model": "gpt-image-2-image-to-image",
+        "input": {
+          "prompt": "Daylight summer-morning RU editorial, 16:9, WHITE #FFFFFF air, ink #1A1414, accent #8B3A3A on ONE word. i2i from the attached Victoria reference: SAME FACE and SAME BONE. Long STRAIGHT platinum-blonde hair. GREEN eyes with slight light-brown near the pupil. Not brunette, not a lookalike, not Alena, no vertical seam or split lighting down the center of the face.\nVictoria FACE visible LARGE left, wearing a NEW dusty-blue short-sleeve linen shirt (she wears it; the shirt is not a still-life object). Do NOT copy the white blazer or tarot cards from the reference. Soft morning half-smile. She looks at a phone in her hand showing a blurred story-viewers list (tiny phone, not equal to the face). Soft indoor morning light, airy beige room behind her.\nTEXT LOCK: the ONLY large headline is EXACTLY «Смотрит или напишет?» — big bold condensed Cyrillic, black #141821; paint ONLY the word «напишет» in warm accent #8B3A3A. Small warm note EXACTLY «в чате тишина». No other headline. No host credit, byline, site or URL — Pillow stamps later.\nBan: still-life, flat-lay, empty clothes on a table, brunette hair, face seam, white blazer from ref, gothic, candles, tape collage, meme stickers, Alena.",
+          "input_urls": [
+            "{{SITE_BASE}}/wp-content/uploads/excalibur/виктория.png"
+          ],
+          "aspect_ratio": "16:9",
+          "resolution": "2K"
+        }
+      },
+      "mcp_args": {
+        "prompt": "Daylight summer-morning RU editorial, 16:9, WHITE #FFFFFF air, ink #1A1414, accent #8B3A3A on ONE word. i2i from the attached Victoria reference: SAME FACE and SAME BONE. Long STRAIGHT platinum-blonde hair. GREEN eyes with slight light-brown near the pupil. Not brunette, not a lookalike, not Alena, no vertical seam or split lighting down the center of the face.\nVictoria FACE visible LARGE left, wearing a NEW dusty-blue short-sleeve linen shirt (she wears it; the shirt is not a still-life object). Do NOT copy the white blazer or tarot cards from the reference. Soft morning half-smile. She looks at a phone in her hand showing a blurred story-viewers list (tiny phone, not equal to the face). Soft indoor morning light, airy beige room behind her.\nTEXT LOCK: the ONLY large headline is EXACTLY «Смотрит или напишет?» — big bold condensed Cyrillic, black #141821; paint ONLY the word «напишет» in warm accent #8B3A3A. Small warm note EXACTLY «в чате тишина». No other headline. No host credit, byline, site or URL — Pillow stamps later.\nBan: still-life, flat-lay, empty clothes on a table, brunette hair, face seam, white blazer from ref, gothic, candles, tape collage, meme stickers, Alena.",
+        "input_urls": [
+          "{{SITE_BASE}}/wp-content/uploads/excalibur/виктория.png"
+        ],
+        "aspect_ratio": "16:9",
+        "resolution": "2K"
+      }
+    }
+  ],
+  "validation": {
+    "required_reference_host": "{{SITE_HOST}}",
+    "resolution": "2K"
+  }
+}

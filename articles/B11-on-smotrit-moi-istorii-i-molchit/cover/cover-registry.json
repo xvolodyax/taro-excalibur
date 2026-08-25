@@ -3,12 +3,13 @@
   "slug": "on-smotrit-moi-istorii-i-molchit",
   "cover_family": "brand_collage",
   "style_preset": "taro-seichas",
-  "pipeline": "quad_canvas_1x_image_api",
+  "pipeline": "cover_only_16x9_i2i_after_identity_fail",
   "file": "cover/cover.png",
   "alt": "Он смотрит истории, но в чате тишина",
   "aspect_ratio": "16:9",
-  "canvas_source": "cover/canvas-quad.png",
-  "generated_at": "2026-08-25T06:36:58+00:00",
+  "canvas_source": "cover/cover-only-raw.png",
+  "host_canon": "shared/cover-host-canon.md",
+  "generated_at": "2026-08-25T09:31:00+00:00",
   "assets": [
     {
       "role": "cover",

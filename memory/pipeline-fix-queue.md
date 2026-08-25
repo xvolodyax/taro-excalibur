@@ -71,7 +71,8 @@ commit: pending
 - fixed in cover-host-canon + write-batch still-life lock + cover-host-gate
 
 ## INC-20260825-0645-cover-kie-500
-status: open
+status: fixed
+fixed_at: 2026-08-25
 run_date: 2026-08-25
 role: excalibur-blog-cover
 topic_id: B11
@@ -91,6 +92,9 @@ category: api
 
 ### Durable fix needed before next run
 - Same approved 500×2 path: Director same-batch re-run, Cover apply-only. Do not raise Cover retries or switch to MCP.
+
+### Fixer resolution
+- Owner identity rebuild 2026-08-25: cover-only 16:9 i2i task `f58e5ca6597658c7516df719f823175d` succeeded. Face checked against `виктория.png`. Hall must not redraw.
 
 ### Suggested files to inspect/change
 - `shared/kie-gpt-image-api-contract.md`
