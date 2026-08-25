@@ -37,7 +37,7 @@ category: prompt
 - pending
 
 ## INC-20260825-1658-cover-early-cta-h2-credit-cli
-status: open
+status: fixed
 run_date: 2026-08-25
 role: excalibur-blog-cover
 topic_id: B13

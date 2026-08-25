@@ -70,5 +70,34 @@ class EarlyActGateTest(unittest.TestCase):
         self.assertTrue(any("ending must" in e for e in errors))
 
 
+class InlineH2SkipTests(unittest.TestCase):
+    def test_manifest_skips_early_act_and_closer(self) -> None:
+        from pathlib import Path
+        from tempfile import TemporaryDirectory
+
+        from scripts.excalibur_blog_quad_manifest import extract_h2_titles
+
+        html = (
+            "<p>Сцена.</p>"
+            "<h2>Сразу к делу</h2>"
+            "<h2>Почему время приглашения говорит больше самих слов</h2>"
+            "<h2>Разовая спонтанность или привычка</h2>"
+            "<h2>Как работает карта дня</h2>"
+            "<h2>Как поступить сегодня вечером и получить точный ответ</h2>"
+        )
+        with TemporaryDirectory() as tmp:
+            path = Path(tmp) / "article.html"
+            path.write_text(html, encoding="utf-8")
+            titles = extract_h2_titles(path)
+        self.assertEqual(
+            titles,
+            [
+                "Почему время приглашения говорит больше самих слов",
+                "Разовая спонтанность или привычка",
+                "Как работает карта дня",
+            ],
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

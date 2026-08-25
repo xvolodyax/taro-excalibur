@@ -286,11 +286,25 @@ def apply_host_credit(
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Stamp Victoria host credit onto a finished PNG")
-    ap.add_argument("--image", required=True, help="Path to a finished frame PNG")
+    ap.add_argument("--image", default="", help="Path to a finished frame PNG")
+    ap.add_argument(
+        "--article-dir",
+        default="",
+        help="Article folder; defaults image to cover/cover.png when --image is omitted",
+    )
     ap.add_argument("--host", default="", help="Host name on this frame (Виктория / Алёна)")
     ap.add_argument("--slot", default="cover")
     args = ap.parse_args()
-    path = Path(args.image)
+    if args.image:
+        path = Path(args.image)
+    elif args.article_dir:
+        article_dir = Path(args.article_dir)
+        path = article_dir / "cover" / "cover.png"
+        if not path.is_file():
+            path = article_dir / "cover.png"
+    else:
+        print("❌ HOST CREDIT BLOCKER: pass --image or --article-dir", file=sys.stderr)
+        return 1
     if not path.is_file():
         print(f"❌ HOST CREDIT BLOCKER: image not found: {path}", file=sys.stderr)
         return 1
