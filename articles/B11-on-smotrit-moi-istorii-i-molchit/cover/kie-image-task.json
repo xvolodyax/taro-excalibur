@@ -1,0 +1,17 @@
+{
+  "task_id": "2d6fd3fa74a1c564bd244b63a8e98129",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "articles/B11-on-smotrit-moi-istorii-i-molchit/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1787639721,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}

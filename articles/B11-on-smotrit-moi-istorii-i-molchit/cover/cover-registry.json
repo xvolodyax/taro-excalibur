@@ -1,0 +1,50 @@
+{
+  "topic_id": "B11",
+  "slug": "on-smotrit-moi-istorii-i-molchit",
+  "cover_family": "brand_collage",
+  "style_preset": "taro-seichas",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Он смотрит истории, но в чате тишина",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-25T06:36:58+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Он смотрит истории, но в чате тишина",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Почему просмотр историй не равен шагу в диалог",
+      "h2_anchor": "Почему просмотр историй не равен шагу в диалог",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Три позиции расклада: внимание, готовность написать, твой шаг",
+      "h2_anchor": "Как спросить карты: три ключевые позиции расклада",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Как вернуть спокойствие утром после списка зрителей",
+      "h2_anchor": "Как вернуть себе спокойствие этим утром",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
