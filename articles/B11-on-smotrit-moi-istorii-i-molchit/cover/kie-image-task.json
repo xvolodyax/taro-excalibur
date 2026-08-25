@@ -1,5 +1,5 @@
 {
-  "task_id": "1514a2d546bddeca2df2bef0c1391ae2",
+  "task_id": "6ecc4500b05425ce886daf9cde632108",
   "source": "kie-api",
   "model": "gpt-image-2-image-to-image",
   "state": "created",
@@ -7,14 +7,14 @@
     "code": 200,
     "msg": "success",
     "data": {
-      "taskId": "1514a2d546bddeca2df2bef0c1391ae2",
-      "recordId": "1514a2d546bddeca2df2bef0c1391ae2"
+      "taskId": "6ecc4500b05425ce886daf9cde632108",
+      "recordId": "6ecc4500b05425ce886daf9cde632108"
     }
   },
-  "create_attempt": 2,
-  "created_at_epoch": 1787640120,
+  "create_attempt": 1,
+  "created_at_epoch": 1787640351,
   "retry_of": {
-    "task_id": "feda9ecd82859254cfba59fdc6642c92",
+    "task_id": "1514a2d546bddeca2df2bef0c1391ae2",
     "failCode": "500",
     "failMsg": "Internal Error",
     "retry_kind": "server_500"

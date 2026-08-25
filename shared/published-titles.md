@@ -22,3 +22,4 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B08 | chto-on-reshil-za-vyhodnye-i-vernetsya-li-v-dialog | Что он решил за выходные и вернётся ли в диалог | draft_ready |
 | B09 | chto-ego-kvadrat-pifagora-govorit-o-nem-v-otnosheniyah | Что его квадрат Пифагора говорит о нём в отношениях | draft_ready |
 | B10 | stoit-li-zvonit-emu-segodnya-vecherom | Стоит ли звонить ему сегодня вечером | draft_ready |
+| B11 | on-smotrit-moi-istorii-i-molchit | Он смотрит твои истории и молчит | draft_ready |
