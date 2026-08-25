@@ -16,7 +16,7 @@
       "quadrant": "top_left",
       "role": "cover_editorial_hero",
       "alt": "Он смотрит истории, но в чате тишина",
-      "scene_hint": "Victoria LARGE left; green+light-brown pupil; dusty-olive blouse, no jewelry; calm morning gaze; tiny muted phone right; #FFF",
+      "scene_hint": "Victoria FACE visible LARGE left from i2i sheet wearing dusty-blue short-sleeve shirt; green+light-brown pupil; morning half-smile; tiny phone right; #FFF",
       "meme_caption_ru": "",
       "sticky": "в чате тишина"
     },
@@ -50,7 +50,7 @@
       "quadrant": "bottom_right",
       "h2_anchor": "Как вернуть себе спокойствие этим утром",
       "visual_type": "infographic_card",
-      "scene_hint": "Fact card: «спокойствие утром» «фокус на себе» «расклад без иллюзий» «ясность в голове»; top-down; итог: день свой. NO people/faces/silhouettes.",
+      "scene_hint": "Fact card: «спокойствие утром» «фокус на себе» «расклад без иллюзий» «ясность в голове»; sun/lamp only; NO head/profile. Top-down; итог: день свой.",
       "alt": "Как вернуть спокойствие утром после списка зрителей",
       "labels": [
         "спокойствие утром",
