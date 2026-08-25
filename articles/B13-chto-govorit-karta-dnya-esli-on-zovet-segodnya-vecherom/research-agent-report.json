@@ -1,0 +1,44 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B13",
+  "article_dir": "articles/B13-chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom",
+  "research_date": "2026-08-25",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "block_reason": null,
+  "fresh_signal": {
+    "ok": true,
+    "kind": "community",
+    "title": "Почему мужчина откладывает свидания и как понять, действительно ли он занят или отношения для него не в приоритете",
+    "url": "https://intrigue.dating/on-i-ona/chto-znachit-esli-mujchina-postoyanno-perenosit-vstrechi/",
+    "published": "2026-08-21",
+    "accessed_at": "2026-08-25",
+    "why_this_week": "Дата публикации 21.08.2026 внутри недели 19–25.08.2026. Сцена слота: срывает заранее назначенное и затем поздно вечером пишет увидеться прямо сейчас."
+  },
+  "supporting_live_signal": {
+    "kind": "dzen_channel",
+    "title": "Почему приглашение в последний момент обиднее, чем если бы не позвали",
+    "url": "https://dzen.ru/a/anOF2KQ-x0u6bh5C",
+    "channel": "Норма с разбором",
+    "accessed_at": "2026-08-25",
+    "note": "Страница жива и в выдаче 25.08.2026. Object-id декодируется ~2026-08-05 UTC — не выдавать как пост сегодня. Полный HTML через SSO не открылся; взяты открытые сниппеты."
+  },
+  "notes": "research-notes.md",
+  "wordstat": "skipped_by_director",
+  "serp_note": "research-serp.json 2026-08-25: калькуляторы «карта дня» — слабый сигнал, не опора статьи",
+  "overlap_checked": "published-titles-only.md",
+  "overlap_avoid": ["B04", "B07", "B10", "B11", "B12"],
+  "season_lock": "late_august_summer_2026-08-25",
+  "rf_dzen_preflight": {
+    "dzen_content_rules": true,
+    "rf_blocked_entities": true,
+    "hero_deny": "none",
+    "forbidden_heroes_kept_out": ["Instagram", "Facebook", "Telegram"]
+  },
+  "invented_news": false,
+  "h2_outline_written": false,
+  "lead_written": false,
+  "faq_written": false,
+  "action_outline_written": false
+}
