@@ -1,0 +1,37 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B12",
+  "title": "что личное число года говорит о тебе в отношениях этим летом",
+  "article_dir": "articles/B12-lichnoe-chislo-goda-etim-letom",
+  "research_date": "2026-08-25",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "block_reason": null,
+  "fresh_signal": {
+    "ok": true,
+    "kind": "live_serp_plus_seasonal_page",
+    "this_week": true,
+    "primary": {
+      "url": "https://norma-media.ru/lifestyle/numerologiya-chto-vasha-data-rozhdeniya-govorit-o-vashem-budushhem-v-2026-godu",
+      "what": "Страница жива 25.08.2026 (сайт показывает гороскоп на 26 августа). Сигнал про расчёт числа года на 2026. Метод арканов 1–22 в статью не брать.",
+      "accessed_at": "2026-08-25"
+    },
+    "supporting": [
+      {
+        "url": "https://taliora.ru/blog/chislo-mesyaca-avgust-2026",
+        "what": "Сезонный фон: август 2026 как универсальная 9.",
+        "accessed_at": "2026-08-25"
+      },
+      {
+        "url": "https://astro7.com/online-journal/ezoterica/numerologia/lichnyj-god-numerologii.html",
+        "what": "Канон расчёта личного года + значения 1–9",
+        "accessed_at": "2026-08-25"
+      }
+    ],
+    "serp_searched_at": "2026-08-25",
+    "note": "Wordstat skipped by owner. Тема не продолжение B03/B06/B09/B11."
+  },
+  "wordstat": "SKIPPED_BY_OWNER",
+  "overlap_ok": true
+}
