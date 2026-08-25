@@ -1,0 +1,17 @@
+{
+  "task_id": "6b9c6ecb87c8ea4ae3fd34b481580732",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "articles/B13-chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1787676822,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}

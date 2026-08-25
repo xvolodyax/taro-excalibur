@@ -35,3 +35,35 @@ category: prompt
 
 ### Fixer resolution
 - pending
+
+## INC-20260825-1658-cover-early-cta-h2-credit-cli
+status: open
+run_date: 2026-08-25
+role: excalibur-blog-cover
+topic_id: B13
+article_dir: articles/B13-chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom
+severity: medium
+category: script
+
+### What went wrong
+- `excalibur_blog_quad_manifest.py` wired inline_1 to the early CTA H2 «Сразу к делу» (first H2 in article.html). B13 canon skips that heading and the final CTA; inline anchors are the three mid-article H2s.
+- Director/Cover runbook called `excalibur_blog_host_credit_overlay.py --article-dir …`, but the script only accepts `--image`.
+
+### How the agent recovered this run
+- After `--merge`, remapped `h2_anchor` + visual_type to the three mid H2s and kept Cover-text labels on those slots.
+- Stamped credit with `--image cover/cover.png --host Виктория --slot cover`. Exact line: Виктория - таролог команды «ТАРО СЕЙЧАС».
+
+### Durable fix needed before next run
+- Manifest should skip early-act heading «Сразу к делу» and the closer CTA H2 when picking inline anchors.
+- Credit CLI should accept `--article-dir` (default image `cover/cover.png`) or the runbook must say `--image`.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_quad_manifest.py`
+- `scripts/excalibur_blog_host_credit_overlay.py`
+- `.cursor/skills/cover-excalibur-blog/SKILL.md`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
