@@ -20,6 +20,7 @@ category: prompt
 - Rewrote style prefix/tail/ban to GREEN iris + faint hazel ring only, NEVER brown eyes.
 - Honor `style.prefer_local_reference` + `local_reference` for host mode.
 - Tenant accent `#8B3A3A` for highlight; compact TEXT LOCK so hints stay.
+- First Kie create never started: `batch_mcp_args` required `PUBLIC_SITE_URL` to expand `{{SITE_BASE}}` even when `prefer_local_reference` would replace `input_urls` via File Upload. Skip expand when local ref is set.
 
 ### Durable fix needed before next run
 - Host-mode batch must always upload `виктория.png` via prefer_local_reference.
