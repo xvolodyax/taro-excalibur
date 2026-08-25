@@ -1,0 +1,67 @@
+{
+  "topic_id": "B12",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "taro-seichas",
+  "style_file": "memory/cover/quad-style-taro-seichas.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Посчитай свой ритм этим летом",
+  "cover_hook_highlight": "ритм",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "host_name": "Виктория",
+      "alt": "Как посчитать свой ритм этим летом",
+      "scene_hint": "FACE LARGE left: she WEARS coral peach summer blouse; EYES to camera, warm smile; GREEN iris NEVER brown; tiny number paper right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "простой расчет на 2026"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Как посчитать личное число года на 2026 год",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Light #FFF 4-step L→R, NO faces. день и месяц рождения → плюс цифры 2026 года → сложи все числа → сверни в цифру 1–9. One digit. No altar.",
+      "alt": "Схема расчета личного числа года на 2026",
+      "labels": [
+        "день и месяц рождения",
+        "плюс цифры 2026 года",
+        "сложи все числа",
+        "сверни в цифру 1–9"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Что означает твое личное число в отношениях",
+      "visual_type": "infographic_card",
+      "scene_hint": "Bright #FFF 6 chips, NO faces: старт и новые решения; спокойный темп и ожидание; открытое общение и речь; быт и проверка союза; анализ и внутренняя пауза; завершение старого круга.",
+      "alt": "Смысл личного числа года в отношениях",
+      "labels": [
+        "старт и новые решения",
+        "спокойный темп и ожидание",
+        "открытое общение и речь",
+        "быт и проверка союза",
+        "анализ и внутренняя пауза",
+        "завершение старого круга"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Куда двигаться дальше",
+      "visual_type": "tool_screenshot",
+      "scene_hint": "Light #FFF app-schema, not a screenshot, NO faces. аудиоразбор числа года; суть, тень и вектор; карта практического совета; ответы на три вопроса.",
+      "alt": "Схема, куда идти после расчета числа года",
+      "labels": [
+        "аудиоразбор числа года",
+        "суть, тень и вектор",
+        "карта практического совета",
+        "ответы на три вопроса"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
