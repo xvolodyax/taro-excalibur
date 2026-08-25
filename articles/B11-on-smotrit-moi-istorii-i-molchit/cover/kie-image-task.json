@@ -1,12 +1,25 @@
 {
-  "task_id": "2d6fd3fa74a1c564bd244b63a8e98129",
+  "task_id": "1514a2d546bddeca2df2bef0c1391ae2",
   "source": "kie-api",
   "model": "gpt-image-2-image-to-image",
-  "state": "success",
-  "create_attempts": 1,
-  "result_path": "articles/B11-on-smotrit-moi-istorii-i-molchit/cover/quad-mcp-result.json",
-  "updated_at_epoch": 1787639721,
-  "file_upload_fallback": true,
+  "state": "created",
+  "create_response": {
+    "code": 200,
+    "msg": "success",
+    "data": {
+      "taskId": "1514a2d546bddeca2df2bef0c1391ae2",
+      "recordId": "1514a2d546bddeca2df2bef0c1391ae2"
+    }
+  },
+  "create_attempt": 2,
+  "created_at_epoch": 1787640120,
+  "retry_of": {
+    "task_id": "feda9ecd82859254cfba59fdc6642c92",
+    "failCode": "500",
+    "failMsg": "Internal Error",
+    "retry_kind": "server_500"
+  },
+  "input_urls_via": "kie-file-upload",
   "file_upload": {
     "source": "prefer_local_reference",
     "upload_path": "excalibur-blog/hero",

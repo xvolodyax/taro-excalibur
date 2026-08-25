@@ -33,3 +33,35 @@ category: prompt
 
 ### Fixer resolution
 - pending
+
+## INC-20260825-0645-cover-kie-500
+status: open
+run_date: 2026-08-25
+role: excalibur-blog-cover
+topic_id: B11
+article_dir: articles/B11-on-smotrit-moi-istorii-i-molchit
+severity: blocker
+category: api
+
+### What went wrong
+- Owner-directed Hall redo: new FACE-visible batch written (`quad-mcp-batch.json` unchanged after write).
+- First createTask `feda9ecd82859254cfba59fdc6642c92` terminal failCode=500 Internal Error.
+- Script max-1 recreate `1514a2d546bddeca2df2bef0c1391ae2` also failCode=500. Retries exhausted.
+- No new canvas URL. Old still-life `cover.png` remains. Cover did not invent a third createTask.
+
+### How the agent recovered this run
+- Stopped with KIE API BLOCKER. Apply/split/credit not re-run.
+- Batch left ready for Director same-batch re-run of `excalibur_blog_kie_gpt_image2_api.py` when Kie healthy, then Cover apply-only.
+
+### Durable fix needed before next run
+- Same approved 500×2 path: Director same-batch re-run, Cover apply-only. Do not raise Cover retries or switch to MCP.
+
+### Suggested files to inspect/change
+- `shared/kie-gpt-image-api-contract.md`
+- `articles/B11-on-smotrit-moi-istorii-i-molchit/cover/quad-mcp-batch.json`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
