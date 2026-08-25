@@ -24,3 +24,4 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B10 | stoit-li-zvonit-emu-segodnya-vecherom | Стоит ли звонить ему сегодня вечером | draft_ready |
 | B11 | on-smotrit-moi-istorii-i-molchit | Он смотрит твои истории и молчит | draft_ready |
 | B12 | lichnoe-chislo-goda-etim-letom | Личное число года показывает твой ритм в отношениях | draft_ready |
+| B13 | chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom | Он зовёт в последний момент и карта дня объясняет твои сомнения | draft_ready |
