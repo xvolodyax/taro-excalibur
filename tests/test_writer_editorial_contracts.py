@@ -29,6 +29,7 @@ class WriterEditorialContractsTest(unittest.TestCase):
                 "published-titles-only.md",
                 "shared/dzen-content-rules.md",
                 "shared/rf-blocked-entities.json",
+                "shared/cta-funnel.md",
             ],
         )
 
@@ -47,9 +48,9 @@ class WriterEditorialContractsTest(unittest.TestCase):
         self.assertIn("Core Truths", soul)
         self.assertIn("excalibur-blog-sol", soul)
         self.assertIn("Vibe", soul)
-        self.assertIn("SETUP_REQUIRED", good)
+        self.assertIn("ТАРО СЕЙЧАС", good)
         self.assertIn("Calibration", good)
-        self.assertIn("SETUP_REQUIRED", src)
+        self.assertIn("ТАРО СЕЙЧАС", src)
         self.assertIn("битов", post.lower())
         self.assertIn("seo-робот", bad.lower())
         self.assertIn("чужой голос", bad.lower())

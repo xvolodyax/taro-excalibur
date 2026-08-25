@@ -14,7 +14,8 @@
 3. `title-brief.json` — H1
 4. `published-titles-only.md` / `shared/published-titles.md` — только anti-dup
 5. `shared/tenant-config.json` — CTA / язык / флаги
-6. При сомнении по Дзен/РФ (если `dzen_rf_pack`): `shared/dzen-content-rules.md`,
+6. `shared/cta-funnel.md` — канон воронки (бот ≠ приложение)
+7. При сомнении по Дзен/РФ (если `dzen_rf_pack`): `shared/dzen-content-rules.md`,
    `shared/rf-blocked-entities.json`
 
 ## Что писать
@@ -24,6 +25,11 @@
 - Факты только из research
 - Ссылки CTA: **только** из `tenant-config.cta_links` (если пусто и
   `cta_required=false` — CTA можно не ставить)
+- Воронка: расклад (триплет / кельтский крест, 3 вопроса, голос или текст) только
+  через «бот в Макс». Аудиоразбор «Суть – Тень – Вектор» + карта совета +
+  уточнения только через приложение (ВК и/или Макс с `?startapp=`). Нельзя
+  писать «хочешь Суть–Тень–Вектор — иди в бот». Один абзац — один продукт.
+  Telegram в Дзен-статье не писать.
 - По-русски (или language тенанта) ясно, без SEO-хвостов и без research-даты в лиде
 - Не обязан копировать финальный слог — Sol сделает
 
