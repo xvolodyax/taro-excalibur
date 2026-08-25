@@ -1,5 +1,24 @@
 # Pipeline fix queue
 
+## INC-20260825-0938-cover-brown-eyes
+status: open
+run_date: 2026-08-25
+role: excalibur-blog-cover
+topic_id: B11
+article_dir: articles/B11-on-smotrit-moi-istorii-i-molchit
+severity: high
+category: identity
+
+### What went wrong
+- Second B11 cover had blonde hair and the correct hook, but irises read dark brown.
+- Bone / gaze drifted from `виктория.png`. Owner compared side by side and rejected.
+- Prompt said `GREEN eyes with slight light-brown near the pupil` and the pose looked down at the phone — model painted brown irises.
+
+### Durable fix
+- Ban `light-brown eyes` / `light-brown near the pupil` in prompts.
+- Lock: GREEN iris + faint hazel ring only, NEVER brown eyes; face toward camera.
+- Gate checklist: `eyes_not_brown`. scene_hint write-batch fails brown-iris phrasing.
+
 ## INC-20260825-0917-cover-wrong-face-hall
 status: fixed
 fixed_at: 2026-08-25

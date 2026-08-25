@@ -26,6 +26,8 @@ LIVING_CANON: dict[str, tuple[str, ...]] = {
         CANON_CREDIT,
         "Kie GPT Image 2",
         "белый пиджак",
+        "NEVER brown eyes",
+        "не карие глаза",
     ),
     "shared/SOUL.md": (
         "cover-host-canon.md",
@@ -39,7 +41,8 @@ LIVING_CANON: dict[str, tuple[str, ...]] = {
         "hall_redraw",
         "identity_fail_is",
         "hard_reject_rebuild_whole_canvas",
-        "long STRAIGHT light-blonde",
+        "NEVER brown eyes",
+        "platinum/warm blonde",
     ),
     "memory/cover/cover-design-code.json": (
         "cover-host-canon.md",
@@ -70,6 +73,7 @@ CHECKLIST_TRUE = (
     "no_face_seam",
     "not_brunette",
     "not_alena",
+    "eyes_not_brown",
     "credit_applied",
 )
 CHECKLIST_FALSE = ("still_life_only",)

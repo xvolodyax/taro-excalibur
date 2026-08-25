@@ -3,11 +3,11 @@
   "status": "RULES_READY",
   "label_ru": "ТАРО СЕЙЧАС — светлый живой кадр, лицо на обложке, схемы без людей",
   "host_canon": "shared/cover-host-canon.md",
-  "reference_notes": "На обложке Виктория всегда в кадре. Реф только виктория.png / victoria.png. Длинные прямые светлые волосы, зелёные глаза слегка светло-карие, то же лицо. Не брюнетка, не двойник, не Алёна, не шов по лицу. Натюрморт без неё — только инлайн. После генерации сверка реф+кадр рядом. Обложку рисует агент; Холл не перерисовывает. Костюм с листа не копировать.",
+  "reference_notes": "На обложке Виктория всегда в кадре. Реф только виктория.png / victoria.png. Длинные прямые светлые волосы, радужка светло-зелёная с лёгким hazel (NEVER brown eyes), то же лицо. Не брюнетка, не двойник, не Алёна, не шов по лицу. Натюрморт без неё — только инлайн. После генерации сверка реф+кадр рядом. Обложку рисует агент; Холл не перерисовывает. Костюм с листа не копировать.",
   "cover_rules": [
     "cover_mode=host_reference: на обложке ТОЛЬКО Виктория, лицо видно крупно. Алёну в i2i и на PNG не ставить",
     "Реф только memory/cover/assets/виктория.png (алиас victoria.png). Не брюнетка, не двойник, не шов по лицу",
-    "Глаза: зелёные + слегка светло-карие у зрачка; не карие, не серые, не голубые",
+    "Глаза: светло-зелёная радужка, лёгкий hazel только у зрачка; NEVER brown eyes; лицо к камере",
     "Один cover_hook 2–6 простых русских слов на картинке; это композиция, не заголовок статьи; образец ритма «Пауза или конец?»",
     "Эмоция и одежда каждый раз новые; реф даёт лицо и глаза, не костюм (белый пиджак с рефа не копировать)",
     "Один мелкий предмет/метафора темы справа или на фоне; host FACE visible LARGE left wearing [outfit]",
@@ -53,7 +53,7 @@
     "usage": "Белый воздух, тёмные чернила, тёплый акцент бордо / терракота / пыльная роза только на одно слово хука или маркер схемы. Не заливать весь заголовок акцентом. Не неон-розовый, не чёрный бархат."
   },
   "typography_reference": "Жирная сжатая кириллица для хука обложки; простые слова. На inline — короткий рубленый текст, 3–6 labels. Без латиницы кроме имён продуктов.",
-  "cover_panel_prompt_block": "Bright daylight RU editorial, WHITE #FFFFFF, dark ink #1A1414, warm burgundy/terracotta accent #8B3A3A on ONE hook word only. Cover: Victoria FACE visible LARGE left from i2i sheet wearing NEW outfit (not still-life clothes, not white blazer from ref), GREEN eyes with slight light-brown near pupil EVEN IF photo reads brown, long STRAIGHT light-blonde hair, same bone, not brunette, not Alena, no face seam, new emotion this article, tiny topic metaphor, one Cyrillic hook 2–6 words. No second woman, no gothic, no candles, no tape collage, no meme stickers, no white-hoodie lock.",
+  "cover_panel_prompt_block": "Bright daylight RU editorial, WHITE #FFFFFF, dark ink #1A1414, warm burgundy/terracotta accent #8B3A3A on ONE hook word only. Cover: Victoria FACE visible LARGE left from i2i sheet wearing NEW outfit (not still-life clothes, not white blazer from ref), FACE toward camera, GREEN iris + faint hazel ring only, NEVER brown eyes, platinum/warm blonde STRAIGHT hair, same oval bone as ref, not brunette, not Alena, no face seam, new emotion this article, tiny topic metaphor, one Cyrillic hook 2–6 words. No second woman, no gothic, no candles, no tape collage, no meme stickers, no white-hoodie lock.",
   "inline_information_block": "Inline all: clean meaning/schema/question card on WHITE #FFFFFF; dark ink headings; warm accent markers; 3–6 exact Cyrillic labels; NO people/faces/host; no tape/torn-paper brand; no meme stickers; no cover-hook duplicate. Neg: sterile empty gray boxes, gothic, candles, watermark, 9:16.",
   "global_negative": "white hoodie lock, meme reaction cutouts, tape/torn-paper collage brand, cat stickers, word лох, dark table, candles, gothic, skulls, smoke, pentagrams, neon pink collage, black velvet, pipeline watermark, beige gradient spam, localhost",
   "generation": {

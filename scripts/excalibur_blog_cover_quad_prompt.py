@@ -45,6 +45,16 @@ _GARMENT_AS_OBJECT_RE = re.compile(
 )
 _WEARING_RE = re.compile(r"\b(wear(?:ing|s)|dressed|надета)\b", re.IGNORECASE)
 _FACE_LOCK_RE = re.compile(r"\b(face|лицом)\b", re.IGNORECASE)
+_GREEN_IRIS_RE = re.compile(r"\bgreen\b|зелён", re.IGNORECASE)
+_BROWN_IRIS_CAUSE_RE = re.compile(
+    r"light-brown (?:near )?(?:the )?pupil|green\+light-brown|"
+    r"slight light-brown",
+    re.IGNORECASE,
+)
+_BROWN_IRIS_AS_COLOR_RE = re.compile(
+    r"(?<!never )(?<!not )brown eyes|dark[- ]brown eyes|карие глаза",
+    re.IGNORECASE,
+)
 
 
 def cover_scene_host_errors(scene: str, *, host_required: bool = True) -> list[str]:
@@ -70,6 +80,16 @@ def cover_scene_host_errors(scene: str, *, host_required: bool = True) -> list[s
         errors.append(
             "cover.scene_hint names a garment without 'wearing' — "
             "model treats clothes as table props (INC-20260825-0637)"
+        )
+    if not _GREEN_IRIS_RE.search(text):
+        errors.append(
+            "cover.scene_hint must lock GREEN iris (B11: brown eyes = identity-fail)"
+        )
+    if _BROWN_IRIS_CAUSE_RE.search(text) or _BROWN_IRIS_AS_COLOR_RE.search(text):
+        errors.append(
+            "cover.scene_hint paints brown irises — write "
+            "'GREEN iris, faint hazel ring, NEVER brown eyes' "
+            "(INC-20260825-0938)"
         )
     return errors
 

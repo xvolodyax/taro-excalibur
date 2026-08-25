@@ -17,7 +17,7 @@
     "memory/cover/assets/виктория.png"
   ],
   "input_urls_note": "Канон лица — только виктория.png / victoria.png. Алёну в input_urls не ставить. Kie GPT Image 2: i2i, prefer_local_reference + File Upload. Публичный URL после заливки — {{SITE_BASE}}/wp-content/... Не catbox, не localhost, секреты не писать.",
-  "reference_notes": "На обложке статьи Виктория ВСЕГДА в кадре. Реф только memory/cover/assets/виктория.png (алиас victoria.png). Длинные прямые светлые волосы, зелёные глаза слегка светло-карие, то же лицо. Не брюнетка, не двойник, не Алёна. После каждой генерации открыть реф и кадр рядом: волосы/глаза/кость не те или шов по лицу — пересобрать весь холст, в пакет не класть. Натюрморт без неё — только инлайн, никогда не cover. Реф даёт лицо, не костюм: белый пиджак, карты в руках, камисоль, голубые джинсы, подвеску-дерево не копировать. Обложку рисует только агент; Холл не перерисовывает. Канон: shared/cover-host-canon.md.",
+  "reference_notes": "На обложке статьи Виктория ВСЕГДА в кадре. Реф только memory/cover/assets/виктория.png (алиас victoria.png). Длинные прямые светлые волосы, радужка светло-зелёная с лёгким hazel у зрачка, NEVER brown eyes. То же лицо. Не брюнетка, не двойник, не Алёна. Лицо к камере — не прятать глаза в телефон. После каждой генерации открыть реф и кадр рядом: волосы/глаза/кость не те или шов по лицу — пересобрать весь холст, в пакет не класть. Натюрморт без неё — только инлайн, никогда не cover. Реф даёт лицо, не костюм: белый пиджак, карты в руках, камисоль, голубые джинсы, подвеску-дерево не копировать. Обложку рисует только агент; Холл не перерисовывает. Канон: shared/cover-host-canon.md.",
   "hosts": {
     "victoria": {
       "id": "victoria",
@@ -32,7 +32,7 @@
       ],
       "identity_lock": {
         "hair": "длинные прямые светлые волосы (платиновый / светло-русый блонд); не брюнетка, не тёмно-каштановые волны",
-        "eyes": "зелёные + слегка светло-карие у зрачка; держать даже если лист читается как карий; не серые, не голубые, не чисто карие",
+        "eyes": "радужка светло-зелёная, у зрачка лёгкий hazel/ореховый ободок; НЕ карие, НЕ тёмно-карие, НЕ коричневые; лицо к камере чтобы зелёный читался",
         "face": "узнаваемое лицо Виктории с канон-листа; не двойник, не Алёна, не шов/склейка по центру лица",
         "compare_after_gen": "открыть реф и кадр рядом; mismatch или шов — пересобрать весь холст"
       }
@@ -49,7 +49,7 @@
   "visual_lock": {
     "identity": "только Виктория по локальному рефу виктория.png / victoria.png; не брюнетка, не двойник, не Алёна, не шов по лицу",
     "face": "личность с рефа; выражение НЕ копировать",
-    "eyes": "зелёные + слегка светло-карие у зрачка; жёсткий маркер двойника; даже если реф кажется карим — в промте не карие/серые/голубые",
+    "eyes": "GREEN iris + faint hazel ring only; NEVER brown / dark-brown irises (B11 miss). Face toward camera so green is readable. Do not write light-brown eyes in the prompt.",
     "expression": "эмоция КАЖДЫЙ РАЗ новая; не копировать с рефа; не одна эмоция две статьи подряд",
     "outfit": "одежда КАЖДЫЙ РАЗ новая; не копировать костюм с листа (камисоль, голубые джинсы, белые кеды, подвеска-дерево); запрет одного белого худи на все кадры; не один наряд две статьи подряд",
     "pose": "живая современная поза под хук; дневной свет; не храм и не «тайная комната»",
@@ -68,7 +68,7 @@
     ]
   },
   "outfit_rule": "Одежда и эмоция КАЖДЫЙ РАЗ новые. Реф даёт лицо и глаза, не костюм. Не копировать камисоль, голубые джинсы, белые кеды, золотую подвеску-дерево с листа. Не одно белое худи на все кадры. Не одна одежда и не одна эмоция две статьи подряд.",
-  "prompt_fragment": "Victoria FACE visible LARGE left from i2i sheet wearing NEW outfit (not still-life clothes, not white blazer from ref); GREEN eyes with slight light-brown near pupil EVEN IF the photo reads brown; long STRAIGHT light-blonde hair; same bone; not brunette, not Alena, no face seam; new emotion this article; tiny topic metaphor right; Cyrillic hook 2–6 words; daylight #FFF",
+  "prompt_fragment": "Victoria FACE visible LARGE left from i2i sheet wearing NEW outfit (not still-life clothes, not white blazer from ref); FACE toward camera; GREEN iris + faint hazel ring only, NEVER brown eyes; platinum/warm blonde STRAIGHT hair; SAME oval bone as ref; not brunette, not Alena, no face seam; new emotion this article; tiny topic metaphor right; Cyrillic hook 2–6 words; daylight #FFF",
   "cover_hook_rules": [
     "На обложке один хук 2–6 простых русских слов (образец ритма: «Пауза или конец?»).",
     "meme_caption_ru всегда пуст",

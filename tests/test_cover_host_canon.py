@@ -49,6 +49,7 @@ class ChecklistTests(unittest.TestCase):
             "no_face_seam": True,
             "not_brunette": True,
             "not_alena": True,
+            "eyes_not_brown": True,
             "credit_applied": True,
             "ref_path": "memory/cover/assets/виктория.png",
         }
@@ -65,12 +66,14 @@ class ChecklistTests(unittest.TestCase):
             "no_face_seam": True,
             "not_brunette": True,
             "not_alena": True,
+            "eyes_not_brown": False,
             "credit_applied": True,
             "ref_path": "memory/cover/assets/виктория.png",
         }
         errors = checklist_errors(data)
         self.assertTrue(any("victoria_face_visible" in e for e in errors))
         self.assertTrue(any("still_life_only" in e for e in errors))
+        self.assertTrue(any("eyes_not_brown" in e for e in errors))
 
     def test_article_dir_requires_checklist(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -84,7 +87,8 @@ class SceneHintLockTests(unittest.TestCase):
     def test_face_wearing_passes(self) -> None:
         self.assertEqual(
             cover_scene_host_errors(
-                "Victoria FACE visible LARGE left wearing dusty-blue shirt; tiny phone right"
+                "Victoria FACE visible LARGE left wearing dusty-blue shirt; "
+                "GREEN iris NEVER brown eyes; tiny phone right"
             ),
             [],
         )
@@ -102,6 +106,13 @@ class SceneHintLockTests(unittest.TestCase):
     def test_no_face_on_cover_fails(self) -> None:
         errors = cover_scene_host_errors("flat lay phone and eucalyptus; no people")
         self.assertTrue(errors)
+
+    def test_light_brown_pupil_phrase_fails(self) -> None:
+        errors = cover_scene_host_errors(
+            "Victoria FACE visible LARGE left wearing dusty-blue shirt; "
+            "GREEN eyes with slight light-brown near the pupil"
+        )
+        self.assertTrue(any("brown" in e.lower() for e in errors))
 
     def test_cat_hero_skips_lock(self) -> None:
         self.assertEqual(
