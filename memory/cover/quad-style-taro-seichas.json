@@ -16,10 +16,10 @@
   "resolution": "2K",
   "canvas": "2x2",
   "resolution_1k_only_if": "кадр один и не режется",
-  "global_prompt_prefix": "Bright daylight RU editorial, WHITE #FFFFFF, dark ink #1A1414, warm burgundy/terracotta #8B3A3A on one word only. Cover: Victoria face LARGE left from i2i sheet (identity only), GREEN eyes with slight light-brown near pupil EVEN IF photo reads brown, not brown/gray/blue, new outfit + new emotion (no camisole/jeans/tree pendant copy), tiny topic metaphor, Cyrillic hook 2–6 words. Inline: schema/question, no people. No second woman, no Alena, no gothic, no candles, no tape collage, no meme stickers, no white-hoodie lock, no cat hero.",
-  "cover_scene_tail": "Victoria face LARGE left; green+light-brown eyes; new outfit + new emotion; tiny topic prop right; daylight #FFF; no hoodie lock, no gothic, no candles.",
+  "global_prompt_prefix": "Bright daylight RU editorial, WHITE #FFFFFF, ink #1A1414, accent #8B3A3A on one word. Cover: Victoria FACE LARGE left wearing NEW clothes (not still-life, not white blazer), EYES to camera, GREEN iris + faint hazel ring only, NEVER brown eyes, platinum STRAIGHT hair, same oval bone, not brunette, not Alena, no face seam. Inline: schema, no people. No gothic, candles, tape, meme, hoodie lock.",
+  "cover_scene_tail": "no still-life; no credit/byline/URL.",
   "inline_prompt_suffix": "Inline all: meaning/schema/question on WHITE; dark ink; warm accent markers; 3–6 Cyrillic labels; NO people/faces/host/memes/tape-collage/cats. Neg: empty gray boxes, gothic, candles, watermark, 9:16.",
-  "ban_line": "Ban: white-hoodie lock / meme stickers / tape-torn-paper collage / word «лох» / dark table / candles / gothic / skulls / smoke / pentagrams / cat hero or cat stickers / neon-pink collage / black velvet / Drake / facepalm / pipeline stamps / EXCALIBUR badge / keyword spam / «Ключевые темы» / Latin lookalike Cyrillic.",
+  "ban_line": "Ban: still-life cover / brown eyes / brunette / face seam / hoodie lock / candles / gothic / dark altar / tape collage / meme / EXCALIBUR badge.",
   "global_negative": "white hoodie lock, meme cutouts, tape collage, cat stickers, лох, candles, gothic, neon pink, pipeline watermark",
   "assets_note": "Канон i2i только Виктория: memory/cover/assets/виктория.png. Алёну не класть. Kie берёт локальный файл через prefer_local_reference / File Upload. Публичный URL не выдумывать."
 }
