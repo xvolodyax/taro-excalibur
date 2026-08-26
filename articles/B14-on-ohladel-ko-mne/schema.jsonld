@@ -1,0 +1,31 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{SITE_BASE}}/on-ohladel-ko-mne/",
+  "url": "{{SITE_BASE}}/on-ohladel-ko-mne/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{SITE_BASE}}/on-ohladel-ko-mne/"
+  },
+  "headline": "Ты разберёшься в сухих ответах и поймёшь, почему он охладел",
+  "description": "Как отличить обычную усталость мужчины от потери интереса, сохранить спокойствие и не разрушить контакт давлением.",
+  "datePublished": "2026-08-26",
+  "dateModified": "2026-08-26",
+  "inLanguage": "ru-RU",
+  "author": {
+    "@type": "Person",
+    "name": "Виктория",
+    "givenName": "Виктория",
+    "jobTitle": "Таролог «ТАРО СЕЙЧАС»",
+    "description": "Виктория из «ТАРО СЕЙЧАС». На сайте частный таро-детектив, пятый аркан Иерофант: треугольники, скрытые мотивы, говорит прямо.",
+    "sameAs": [
+      "https://vk.com/id1113231252"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ТАРО СЕЙЧАС",
+    "@id": "{{SITE_BASE}}/#organization",
+    "url": "{{SITE_BASE}}"
+  }
+}
