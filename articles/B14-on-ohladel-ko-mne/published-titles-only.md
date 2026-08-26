@@ -25,3 +25,4 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B11 | on-smotrit-moi-istorii-i-molchit | Он смотрит твои истории и молчит | draft_ready |
 | B12 | lichnoe-chislo-goda-etim-letom | Личное число года показывает твой ритм в отношениях | draft_ready |
 | B13 | chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom | Он зовёт в последний момент и карта дня объясняет твои сомнения | draft_ready |
+| B14 | on-ohladel-ko-mne | Ты разберёшься в сухих ответах и поймёшь, почему он охладел | draft_ready |

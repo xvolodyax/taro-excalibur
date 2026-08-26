@@ -17,6 +17,7 @@ B10 — вечерний пакет 24.08 20:00 в репо. Publish не зап
 B11 — утренний пакет 25.08 09:00 в репо. Publish не запускался.
 B12 — дневной пакет 25.08 16:00 в репо. Publish не запускался.
 B13 — вечерний пакет 25.08 20:00 в репо. Publish не запускался.
+B14 — утренний пакет 26.08 09:00 в репо. Publish не запускался (Холл).
 
 | date | topic_id | slug | url | status |
 |------|----------|------|-----|--------|
@@ -36,3 +37,4 @@ B13 — вечерний пакет 25.08 20:00 в репо. Publish не зап
 | 2026-08-25 | B11 | on-smotrit-moi-istorii-i-molchit | {{SITE_BASE}}/on-smotrit-moi-istorii-i-molchit/ | draft_ready |
 | 2026-08-25 | B12 | lichnoe-chislo-goda-etim-letom | {{SITE_BASE}}/lichnoe-chislo-goda-etim-letom/ | draft_ready |
 | 2026-08-25 | B13 | chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom | {{SITE_BASE}}/chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom/ | draft_ready |
+| 2026-08-26 | B14 | on-ohladel-ko-mne | {{SITE_BASE}}/on-ohladel-ko-mne/ | draft_ready |
