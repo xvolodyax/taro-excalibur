@@ -1,0 +1,17 @@
+{
+  "task_id": "6848be7d636beb2867612bd7b9892012",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "articles/B14-on-ohladel-ko-mne/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1787725704,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}
