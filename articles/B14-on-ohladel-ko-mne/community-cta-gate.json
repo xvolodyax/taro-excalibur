@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "article_dir": "articles/B14-on-ohladel-ko-mne",
+  "cta_required": true,
+  "required": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776"
+  ],
+  "present": {
+    "https://max.ru/id531102974575_bot": true,
+    "https://vk.com/app54565776": true
+  },
+  "funnel": true,
+  "errors": []
+}

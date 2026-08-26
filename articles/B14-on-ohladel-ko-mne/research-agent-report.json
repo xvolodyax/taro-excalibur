@@ -1,0 +1,100 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B14",
+  "title": "Он охладел ко мне",
+  "article_dir": "articles/B14-on-ohladel-ko-mne",
+  "slot": "morning 09:00 MSK 2026-08-26 Wednesday",
+  "research_date": "2026-08-26",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "blocker": null,
+  "fresh_signal": {
+    "required": true,
+    "present": true,
+    "window": "2026-08-20/2026-08-26",
+    "this_week": [
+      {
+        "url": "https://tsn.ua/ru/lady/astrologiya/taro-prognoz-na-period-s-24-po-30-avgusta-2026-goda-ne-speshite-stavit-tochku-3153932.html",
+        "kind": "news",
+        "published": "2026-08-24T14:08",
+        "accessed_at": "2026-08-26",
+        "why": "Таро 24–30.08.2026: 5 Пентаклей как дистанция в паре без прямых слов; 8 Жезлов как сообщения/разговор; не спешить ставить точку"
+      },
+      {
+        "url": "https://dzen.ru/todaytaro_bot",
+        "kind": "channel",
+        "published": "~12h before 2026-08-26",
+        "accessed_at": "2026-08-26",
+        "why": "канал тенанта: B13 вышел ~12ч назад; сигнал слота отношений, не образец прозы"
+      },
+      {
+        "url": "https://cursorinfo.co.il/horoscope/goroskop-po-kartam-taro-na-nedelyu-s-24-po-30-avgusta-vse-znaki/",
+        "kind": "news",
+        "published": "2026-08-26 (метка «Сегодня» 15:02)",
+        "accessed_at": "2026-08-26",
+        "why": "неделя 24–30.08.2026: взаимность vs один тянет связь; осень/сентябрь в прозу не брать"
+      }
+    ]
+  },
+  "wordstat": {
+    "api": "UNAVAILABLE",
+    "reason": "нет YANDEX_* / WORDSTAT_API_KEY в Cloud Secrets",
+    "frequencies_invented": false,
+    "mode": "wordstat_live_proxy",
+    "proxy_owner": "director_serp_2026-08-26",
+    "cluster": [
+      "он охладел ко мне",
+      "почему он охладел",
+      "почему он изменился и охладел"
+    ],
+    "live_tails_serp_2026": [
+      "чего ему не хватает",
+      "боится следующего шага / обязательств",
+      "устал, оставьте в покое",
+      "есть ли соперница"
+    ]
+  },
+  "overlap_file": "published-titles-only.md",
+  "not_clone_of": [
+    "B11",
+    "B12",
+    "B13",
+    "PRE-DZEN-01",
+    "PRE-DZEN-03",
+    "poll-2026-08-24-prochital-i-molchit",
+    "post-2026-08-24-skuchaet-li-on"
+  ],
+  "topic_boundary": "контакт есть; ответы короткие и без тепла; пропало тепло, не пропал человек",
+  "forbidden_fact_checks": {
+    "mind_reading_promise": "blocked",
+    "instagram_facebook_meta_telegram_hero": "blocked",
+    "vpn": "blocked",
+    "loneliness_scare": "blocked",
+    "autumn_september_yellow_leaves": "blocked",
+    "audio_in_bot": "blocked",
+    "cta_outside_tenant_config": "blocked"
+  },
+  "cta_slot_09": {
+    "first_door": {
+      "product": "bot",
+      "url": "https://max.ru/id531102974575_bot",
+      "anchor": "бот в Макс",
+      "offer": "3 бесплатных расклада, голос или текст, триплет или кельтский крест"
+    },
+    "second_door": {
+      "product": "app",
+      "urls": [
+        "https://vk.com/app54565776",
+        "https://max.ru/id531102974575_bot?startapp=ref_9BAD4149"
+      ],
+      "offer": "аудиоразбор «Суть – Тень – Вектор», карта практического совета, уточняющие вопросы"
+    }
+  },
+  "artifacts": {
+    "research_notes": "articles/B14-on-ohladel-ko-mne/research-notes.md",
+    "research_serp": "articles/B14-on-ohladel-ko-mne/research-serp.json",
+    "scout_handoff": "articles/B14-on-ohladel-ko-mne/scout-handoff.md"
+  },
+  "incident_report": "none"
+}

@@ -1,0 +1,65 @@
+{
+  "topic_id": "B14",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "taro-seichas",
+  "style_file": "memory/cover/quad-style-taro-seichas.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Отвечает сухо: устал или охладел?",
+  "cover_hook_highlight": "охладел",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: сухие ответы — устал или охладел",
+      "scene_hint": "Host FACE LARGE left dusty-rose cardigan, gold filigree medallion; GREEN iris; quiet morning focus; tiny phone «ок» right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "не спеши с выводами"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Почему сухое «ок» ощущается тяжелее прямого конфликта",
+      "visual_type": "schema_faq_ui",
+      "scene_hint": "Question card WHITE: сухое «ок» тяжелее прямого спора; 44% сразу паникуют vs 10% видят усталость; outcome не спеши с точкой; NO people/faces/emoji/silhouettes",
+      "alt": "Схема: почему сухое «ок» ощущается тяжелее прямого спора",
+      "labels": [
+        "сухое «ок»",
+        "тяжелее прямого спора",
+        "44% сразу паникуют",
+        "10% видят усталость",
+        "не спеши с точкой"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Четыре причины, почему в ответах исчезает тепло",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Two-col table WHITE: TEMP=эмоциональный спад + скрытые обиды; COOL=страх сближения + осознанная дистанция; labels exact; warm markers; NO people/faces/emoji/silhouettes",
+      "alt": "Схема: четыре причины, почему в ответах пропадает тепло",
+      "labels": [
+        "эмоциональный спад",
+        "скрытые обиды",
+        "страх сближения",
+        "осознанная дистанция"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Почему допрос и упреки заставляют его закрыться еще сильнее",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Workflow WHITE: stop упрёки; path выдержать паузу → дать диалогу воздух → без упрёков и давления → трезво оценить факты; NO people/faces/emoji/silhouettes",
+      "alt": "Схема: почему упрёки закрывают диалог и что делать вместо допроса",
+      "labels": [
+        "выдержать паузу",
+        "дать диалогу воздух",
+        "без упрёков и давления",
+        "трезво оценить факты"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

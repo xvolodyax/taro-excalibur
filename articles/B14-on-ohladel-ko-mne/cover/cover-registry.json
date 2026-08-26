@@ -1,0 +1,50 @@
+{
+  "topic_id": "B14",
+  "slug": "on-ohladel-ko-mne",
+  "cover_family": "brand_collage",
+  "style_preset": "taro-seichas",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: сухие ответы — устал или охладел",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-26T06:29:33+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: сухие ответы — устал или охладел",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: почему сухое «ок» ощущается тяжелее прямого спора",
+      "h2_anchor": "Почему сухое «ок» ощущается тяжелее прямого конфликта",
+      "visual_type": "schema_faq_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема: четыре причины, почему в ответах пропадает тепло",
+      "h2_anchor": "Четыре причины, почему в ответах исчезает тепло",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Схема: почему упрёки закрывают диалог и что делать вместо допроса",
+      "h2_anchor": "Почему допрос и упреки заставляют его закрыться еще сильнее",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

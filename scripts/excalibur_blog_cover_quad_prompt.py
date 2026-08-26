@@ -109,11 +109,7 @@ def inline_panel_prompt(slot: dict, types_catalog: dict) -> str:
     labels = [str(x).strip() for x in (slot.get("labels") or []) if str(x).strip()]
     if labels:
         exact = ", ".join(f"«{x}»" for x in labels)
-        base += (
-            f" TEXT LOCK: render ONLY these exact Russian strings on this panel: "
-            f"{exact}. Every letter in Cyrillic, exactly as written. "
-            "No other words, no English, no invented headlines."
-        )
+        base += f" TEXT LOCK: ONLY these RU strings: {exact}."
     return base
 
 
@@ -318,11 +314,21 @@ def build_prompt(
     cat_hero = style_is_situational_cat_hero(style)
 
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
+    palette = design_code.get("color_palette") if isinstance(design_code, dict) else {}
+    accent = ""
+    if isinstance(palette, dict):
+        accent = str(palette.get("accent_primary") or "").strip()
+    if not accent:
+        accent = "#FF1493"
+    accent_label = (
+        "warm burgundy"
+        if accent.upper() not in {"#FF1493", "#FF69B4"}
+        else "hot-pink"
+    )
     highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
-        f'hook text must match exactly — do not substitute «время»/traffic markers'
+        f'ONLY highlight "{highlight}" in {accent_label} {accent}'
         if highlight
-        else "paint at most ONE punch word in hot-pink #FF1493"
+        else f"at most ONE punch word in {accent_label} {accent}"
     )
     cover_scene = sanitize_cover_scene_hint(
         str(cover.get("scene_hint") or ""), highlight
@@ -330,7 +336,7 @@ def build_prompt(
     cover_hook_text = compact(manifest.get("cover_hook", ""), 120)
     cover_sticky = compact(str(cover.get("sticky") or ""), 48)
     sticky_lock = (
-        f" Small pink sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+        f" Small paper sticky with EXACTLY «{cover_sticky}» in Cyrillic."
         if cover_sticky
         else ""
     )
@@ -391,23 +397,21 @@ def build_prompt(
             "watermark, logo, 9:16, unreadable text, extra faces."
         )
     else:
-        ban_line = (
+        ban_line = compact(style.get("ban_line") or "", 260) or (
             "Ban: memes/reaction emoji/facepalm/animals/joke captions/silhouettes/"
             "keyword spam/«Ключевые темы»/Latin lookalike Cyrillic/pipeline stamps/"
             "EXCALIBUR badge or sword."
         )
-        cover_scene_tail = (
-            "host+face; dense collage + topic object; no sterile/meme/canned EN chat filler."
+        cover_scene_tail = compact(style.get("cover_scene_tail") or "", 140) or (
+            "host FACE LARGE left wearing new outfit; tiny topic object; daylight #FFF."
         )
         reference_line = (
-            "REFERENCE FACE only top-left when cover_mode=host_reference: use blog-hero visual_lock; "
-            "expressive editorial pose; no headphones; no meme reaction."
+            "REFERENCE FACE only top-left when cover_mode=host_reference: i2i identity; "
+            "she wears new clothes; FACE to camera; no headphones; no meme reaction."
         )
-        inline_suffix = (
-            "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
-            "NO people/faces/host/meme/EXCALIBUR badge; no cover-hook duplicate. "
-            "Neg: sterile white, all-pink headline, keyword spam, watermark, logo, 9:16, "
-            "unreadable text, extra faces."
+        inline_suffix = compact(style.get("inline_prompt_suffix") or "", 240) or (
+            "Inline all: meaning/schema/question on WHITE; NO people/faces/host/meme; "
+            "no cover-hook duplicate. Neg: empty gray boxes, watermark, 9:16."
         )
     lines = [
         # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
@@ -416,13 +420,12 @@ def build_prompt(
         "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
         "",
         ban_line,
-        "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
+        "TEXT LOCK: visible text is RU Cyrillic only. Render TEXT LOCK strings exactly. No English headline, no invented words.",
         "",
         reference_line,
         "",
-        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
-        f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
-        "no keyword list card; "
+        f'Top-left COVER TEXT LOCK: ONLY large headline EXACTLY «{cover_hook_text}» — bold condensed Cyrillic #141821, '
+        f'{highlight_rule}; no other headline.{sticky_lock} '
         f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}",
         "",
         f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
@@ -433,7 +436,15 @@ def build_prompt(
     ]
     if fact_locks:
         lines.extend(["", *fact_locks])
-    return "\n".join(line for line in lines if line)
+    prompt = "\n".join(line for line in lines if line)
+    # B11: "light-brown eyes" / "brown near the pupil" paints the whole iris brown.
+    prompt = re.sub(
+        r"light-brown eyes|brown near the pupil|green\+light-brown eyes",
+        "GREEN iris + faint hazel ring only, NEVER brown eyes",
+        prompt,
+        flags=re.IGNORECASE,
+    )
+    return prompt
 
 
 def main() -> int:
@@ -472,7 +483,7 @@ def main() -> int:
     cat_hero = style_is_situational_cat_hero(style)
     local_reference = str(style.get("local_reference") or "").strip()
     prefer_local_reference = False
-    if cat_hero and local_reference:
+    if (cat_hero or style.get("prefer_local_reference") is True) and local_reference:
         local_path = root / local_reference
         if not local_path.is_file():
             print(
