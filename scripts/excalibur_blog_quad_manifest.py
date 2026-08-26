@@ -49,6 +49,14 @@ def save_json(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+SKIP_INLINE_H2_RE = re.compile(
+    r"сразу\s+к\s+делу|если\s+коротко"
+    r"|получить\s+точный\s+ответ"
+    r"|вопросы\s+и\s+ссылки",
+    re.I,
+)
+
+
 def extract_h2_titles(article_html: Path) -> list[str]:
     if not article_html.is_file():
         return []
@@ -61,6 +69,8 @@ def extract_h2_titles(article_html: Path) -> list[str]:
             continue
         if title.lower() in {"частые вопросы", "faq"}:
             break
+        if SKIP_INLINE_H2_RE.search(title):
+            continue
         titles.append(title)
     return titles
 

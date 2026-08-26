@@ -75,6 +75,23 @@ def title_from_meta(article_dir: Path) -> str:
     return ""
 
 
+def load_existing_titles(path: Path) -> dict[str, str]:
+    """Keep already-written human titles (Cyrillic) when meta is missing."""
+    titles: dict[str, str] = {}
+    if not path.is_file():
+        return titles
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.startswith("| ") or line.startswith("| topic_id") or line.startswith("|---"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) < 3:
+            continue
+        topic_id, _slug, title = cells[0], cells[1], cells[2]
+        if topic_id and title and any("А" <= ch <= "я" or ch in "Ёё" for ch in title):
+            titles[topic_id] = title
+    return titles
+
+
 def find_article_dir(blog_dir: Path, topic_id: str, slug: str) -> Path | None:
     preferred = blog_dir / f"{topic_id}-{slug}"
     if preferred.is_dir() and not is_stale_article_dirname(preferred.name):
@@ -104,6 +121,7 @@ def build_titles(
 ) -> list[dict[str, str]]:
     allowed = statuses or {"published", "in_progress", "draft_ready"}
     blog_dir = root / "memory" / "blog" / "articles"
+    existing = load_existing_titles(root / "shared" / "published-titles.md")
     latest: dict[str, dict[str, str]] = {}
     for row in load_ledger_rows(root):
         if row["status"] not in allowed:
@@ -113,7 +131,7 @@ def build_titles(
         article_dir = find_article_dir(blog_dir, topic_id, slug)
         title = title_from_meta(article_dir) if article_dir else ""
         if not title:
-            title = humanize_slug(slug)
+            title = existing.get(topic_id) or humanize_slug(slug)
         latest[topic_id] = {
             "topic_id": topic_id,
             "slug": slug,

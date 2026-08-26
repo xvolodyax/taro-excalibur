@@ -1,0 +1,218 @@
+{
+  "agent": "excalibur-blog",
+  "date_context": {
+    "timezone": "Europe/Moscow",
+    "today_iso": "2026-08-26",
+    "today_ru": "26.08.2026",
+    "year": 2026,
+    "month": 8,
+    "month_name_ru": "август",
+    "weekday_ru": "среда"
+  },
+  "topic": {
+    "topic_id": "B14",
+    "title": "Он охладел ко мне",
+    "h1": "Он охладел ко мне",
+    "slug": "on-ohladel-ko-mne",
+    "primary_query": "Он охладел ко мне",
+    "priority": "P0"
+  },
+  "searches": [
+    {
+      "query_id": "primary_fresh",
+      "query": "Он охладел ко мне 2026",
+      "purpose": "актуальный SERP",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Расклад: Недавно парень охладел ко мне, ругается... Кверент: № 1194 ...",
+          "url": "https://vk.com/wall-229741137_1464",
+          "snippet": ""
+        },
+        {
+          "title": "Почему он ко мне охладел? Гадание Таро 2026",
+          "url": "https://astrohelper.ru/gadaniya-online/pochemu-on-ko-mne-ohladel-gadanie-taro/",
+          "snippet": "+ Думаю, он опасается следующего шага, боится ошибиться, боится взять на себя обязательства и создавать семью. Он как бы говорит: \"почему так сложно, я и так устал, оставьте меня в покое\"."
+        },
+        {
+          "title": "Гадание «Почему он охладел ко мне» на таро Манара онлайн",
+          "url": "https://magya-online.ru/gadanie_taro/pochemu_on_oxladel_ko_mne",
+          "snippet": "Расклад на арканах Таро позволит понять, почему охладел любимый человек, какие чувства он испытывает на данный момент, и что стоит ждать от него в дальнейшем. Внимательно сосредоточьтесь на своем партнере, а затем нажмите на карты. Внизу будет представлена интерпретация вашего расклада."
+        },
+        {
+          "title": "Как так? Почему он охладел ко мне: Гадание онлайн 2026",
+          "url": "https://vashzodiak.ru/gadanie/gadanie-onlain-pochemu-on-ohladel-ko-mne/",
+          "snippet": "Расклад не только расскажет о том, почему он к вам охладел, но и покажет, чего ему не хватает в отношениях и чем он пытается это восполнить."
+        },
+        {
+          "title": "Почему он охладел ко мне: Гадание на картах 2026",
+          "url": "https://nepoznannogo.net/gadaniya/online/pochemu-on-ohladel-ko-mne-gadanie-na-kartah/",
+          "snippet": "Это гадание онлайн поможет понять, о чём на самом деле он думает, нет ли у вас соперницы и можно ли сделать отношения приятными, нежными, такими, как были раньше."
+        },
+        {
+          "title": "Почему он изменился и охладел ко мне: Гадание онлайн 2026",
+          "url": "https://nepoznannogo.net/gadaniya/online/pochemu-on-izmenilsya-i-ohladel-ko-mne-gadanie-na-kartah/",
+          "snippet": "Данное гадание поможет вам понять, почему загаданный мужчина к вам охладел."
+        }
+      ],
+      "searched_at": "2026-08-26"
+    },
+    {
+      "query_id": "title_fresh",
+      "query": "Он охладел ко мне 2026",
+      "purpose": "SERP по человеческому title",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Почему он ко мне охладел? Гадание Таро 2026",
+          "url": "https://astrohelper.ru/gadaniya-online/pochemu-on-ko-mne-ohladel-gadanie-taro/",
+          "snippet": ""
+        },
+        {
+          "title": "Гадание «Почему он охладел ко мне» на таро Манара онлайн",
+          "url": "https://magya-online.ru/gadanie_taro/pochemu_on_oxladel_ko_mne",
+          "snippet": "Расклад на арканах Таро позволит понять, почему охладел любимый человек, какие чувства он испытывает на данный момент, и что стоит ждать от него в дальнейшем. Внимательно сосредоточьтесь на своем партнере, а затем нажмите на карты. Внизу будет представлена интерпретация вашего расклада."
+        },
+        {
+          "title": "Как так? Почему он охладел ко мне: Гадание онлайн 2026",
+          "url": "https://vashzodiak.ru/gadanie/gadanie-onlain-pochemu-on-ohladel-ko-mne/",
+          "snippet": "Расклад не только расскажет о том, почему он к вам охладел, но и покажет, чего ему не хватает в отношениях и чем он пытается это восполнить."
+        },
+        {
+          "title": "Почему он охладел ко мне: Гадание на картах 2026",
+          "url": "https://nepoznannogo.net/gadaniya/online/pochemu-on-ohladel-ko-mne-gadanie-na-kartah/",
+          "snippet": "Это гадание онлайн поможет понять, о чём на самом деле он думает, нет ли у вас соперницы и можно ли сделать отношения приятными, нежными, такими, как были раньше."
+        },
+        {
+          "title": "Почему он охладел ко мне: гадание онлайн бесплатно",
+          "url": "https://pogadayte.ru/gadanie/taro/pochemu-on-ohladel-ko-mne.html",
+          "snippet": "Данное гадание поможет вам понять, почему загаданный мужчина к вам охладел."
+        },
+        {
+          "title": "Почему он изменился и охладел ко мне: Гадание онлайн 2026",
+          "url": "https://nepoznannogo.net/gadaniya/online/pochemu-on-izmenilsya-i-ohladel-ko-mne-gadanie-na-kartah/",
+          "snippet": "Если вы чувствуете, что мужчина отдаляется, теряет интерес к вашим отношениям, то предлагаем разобраться в ситуации с помощью онлайн гадания — почему он охладел ко мне."
+        }
+      ],
+      "searched_at": "2026-08-26"
+    },
+    {
+      "query_id": "official_docs",
+      "query": "Он охладел ко мне official docs 2026",
+      "purpose": "официальные docs",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Он охладел ко мне... - YouTube",
+          "url": "https://www.youtube.com/watch?v=PabLZ9_UUWg",
+          "snippet": ""
+        },
+        {
+          "title": "«Он охладел или мне кажется?» Иногда ко мне приходят с таким вопросом ...",
+          "url": "https://vk.com/wall445131775_53",
+          "snippet": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube."
+        },
+        {
+          "title": "После проведённой ночи он ко мне охладел. А мне наоборот, было крyто ...",
+          "url": "https://vk.com/wall-48263451_626161",
+          "snippet": "«Он охладел или мне кажется?» Иногда ко мне приходят с таким вопросом и дальше начинается классика: — «Может, я накручиваю…» — «Может, он просто устал…»"
+        },
+        {
+          "title": "Почему ко мне мой мужчина охладел? - YouTube",
+          "url": "https://www.youtube.com/watch?v=fy_5ekTDeSI",
+          "snippet": "Платил везде он, заказывал все недешевое. Предложил сходить на педикюр к его сестре, в гости к его дрyзьям. Семье представил меня как свою девyшкy."
+        },
+        {
+          "title": "About Form W-8 BEN, Certificate of Foreign Status of Beneficial Owner ...",
+          "url": "https://www.irs.gov/forms-pubs/about-form-w-8-ben",
+          "snippet": "Почему ко мне мой мужчина охладел?В этом раскладе попробуем разобраться, что происходит в ваших отношениях ..."
+        },
+        {
+          "title": "ПОЧЕМУ ОН ОХЛАДЕЛ КО МНЕ? - Rutube",
+          "url": "https://rutube.ru/video/e71b4fe36fe0573b22663de5d34c5ab8/",
+          "snippet": "Information about Form W-8 BEN, Certificate of Status of Beneficial Owner for United States Tax Withholding and Reporting (Entities), including recent updates, related forms and instructions on how to file. Submit Form W-8 BEN when requested by the withholding agent or payer."
+        }
+      ],
+      "searched_at": "2026-08-26"
+    },
+    {
+      "query_id": "github_evidence",
+      "query": "site:github.com Он охладел ко мне 2026",
+      "purpose": "GitHub evidence",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "vilbert_beta/fig/vilbert.png at master · jiasenlu/vilbert_beta",
+          "url": "https://github.com/jiasenlu/vilbert_beta/blob/master/fig/vilbert.png",
+          "snippet": ""
+        },
+        {
+          "title": "[Проблема] не слышно меня/людей в войсах дискорд #8352",
+          "url": "https://github.com/Flowseal/zapret-discord-youtube/issues/8352",
+          "snippet": "Contribute to jiasenlu/vilbert_beta development by creating an account on GitHub."
+        },
+        {
+          "title": "Как получить доступ к ChatGPT и OpenAI из России в 2026 — рабочий гайд ...",
+          "url": "https://gist.github.com/evilork/01e4a7fdd2abab9dd24ed11f02e8e6ca",
+          "snippet": "Запустите service.bat и выберите пункт Run Diagnostics, чтобы проверить на конфликтующие сервисы. Если у вас проблемы с запуском Discord, то в конце согласитесь на очистку кэша. Если не работает / перестала работать стратегия, то попробуйте другие."
+        },
+        {
+          "title": "agentic-awesome-skills/assets/buy-me-a-coffee-banner.png at main ...",
+          "url": "https://github.com/sickn33/agentic-awesome-skills/blob/main/assets/buy-me-a-coffee-banner.png",
+          "snippet": "Что если OpenAI разблокирует Россию? Маловероятно в обозримом будущем (2026-2028). Геополитические причины. Но если разблокирует - просто перестанете использовать VPN, аккаунт продолжит ..."
+        },
+        {
+          "title": "GitHub - FxEmbed/FxEmbed: Fix X/Twitter and Bluesky embeds! Use ...",
+          "url": "https://github.com/FxEmbed/FxEmbed",
+          "snippet": "AAS Core is the local, agent-first control plane for complete catalog discovery, agent-owned selection, stack validation, and planning, backed by 2,005+ agentic skills. Includes CLI, local MCP, catalog, plugins, and Workbench. - agentic-awesome-skills/assets/buy-me-a-coffee-banner.png at main · sickn33/agentic-awesome-skills."
+        },
+        {
+          "title": "unsupervised_topic_modeling/topics/ru/11/50/50/topics at master ...",
+          "url": "https://github.com/annontopicmodel/unsupervised_topic_modeling/blob/master/topics/ru/11/50/50/topics",
+          "snippet": "GitHub is where people build software. More than 150 million people use GitHub to discover, fork, and contribute to over 420 million projects."
+        }
+      ],
+      "searched_at": "2026-08-26"
+    },
+    {
+      "query_id": "community_experience",
+      "query": "Он охладел ко мне forum problems опыт 2026",
+      "purpose": "форумы и живые проблемы",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Парень охладел ко мне - 10 ответов на форуме Woman.ru (6353998)",
+          "url": "https://www.woman.ru/relations/men/thread-paren-okhladel-ko-mne-id6353998/",
+          "snippet": ""
+        },
+        {
+          "title": "Муж сказал охладел, 2 года любовница.",
+          "url": "https://www.b17.ru/forum/topic.php?id=618252",
+          "snippet": "Что делать, если я не хочу иметь семью, но парни ломятся ко мне? Что выбрать: чувства или комфорт? Нормально ли скрывать финансовые проблемы на этапе отношений? Кто кому больше нужен? Итоги..."
+        },
+        {
+          "title": "Парень охладел ко мне - Форум о любви и отношениях ️ - Психологический ...",
+          "url": "https://psyche.guru/forum/topic/181423-paren-ohladel-ko-mne/",
+          "snippet": "Столько проблем сейчас - сын только поступил в другой город, мой отец пролежал месяц в больнице с инсультом, свекровь посадили (за бухгалтерию), кроме того я очень переживаю за политическую ситуацию в нашей стране. Мы в полном стрессе, у мужа сложности и много работы, давят налоги."
+        },
+        {
+          "title": "Парень охладел в отношении ко мне",
+          "url": "https://www.b17.ru/forum/topic.php?id=526405",
+          "snippet": "Вообще он зарабатывает больше меня, но до копейки последней может все пропить и проиграть в играх, все потратит на развлечения."
+        },
+        {
+          "title": "У меня была сложная жизненная ситуация в семье, муж неожиданно охладел ...",
+          "url": "https://vk.com/wall-27991041_19262",
+          "snippet": "Сейчас дело дошло до того, что он ко мне охладел. Причиной как я поняла из наших разговоров стало то, что я не понимаю его возможностей, а он не может удовлетворить мои потребности."
+        },
+        {
+          "title": "Парень охладел - 9 ответов на форуме Woman.ru (6065227)",
+          "url": "https://www.woman.ru/relations/men/thread/6065227/",
+          "snippet": "У меня была сложная жизненная ситуация в семье, муж неожиданно охладел ко мне. Он стал меньше уделять мне времени, пропадал на работе, либо с друзьями."
+        }
+      ],
+      "searched_at": "2026-08-26"
+    }
+  ],
+  "errors": []
+}

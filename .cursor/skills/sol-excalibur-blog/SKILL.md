@@ -21,6 +21,7 @@ disable-model-invocation: true
 4. `shared/soul-examples/good-outputs.md` — живые посты + Calibration
 5. `shared/soul-examples/bad-outputs.md`
 6. `shared/article-style.md` — язык / Дзен (без мата)
+6b. `shared/early-act-insert.md` + `shared/cta-funnel.md` — вставка после первой сцены
 7. `drafts/writer.html` — смысл от Writer (**обязателен**)
 8. `title-brief.json` — H1 не ломай в SEO
 9. `research-notes.md` — только сверка фактов (не копируй research в лид)
@@ -37,6 +38,7 @@ disable-model-invocation: true
 3. Перепиши **целиком** в слог тенанта:
    - слова/ходы из good-outputs тенанта;
    - несколько битов под H2;
+   - после первого `<p>` сцены — вставка «сразу к делу» (саммари, готовые вопросы, две двери);
    - лид без research-даты и термин-дампа;
    - имя автора корпуса в тексте **не** писать;
    - Дзен: **без мата**.
