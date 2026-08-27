@@ -68,7 +68,7 @@
     "resolution": "2K"
   },
   "rebuild_rule": "Если лицо не Виктории, волосы платина/сильно светлее рефа, шов кривой, буквы кривые или кегль пляшет в одном слове — пересобрать холст 2K 2×2. Не чинить лицо, волосы и шрифт снаружи.",
-  "reference_url_hosted": "",
-  "reference_url_source": "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/assets/experts/viktoriya.jpg",
+  "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/victoria.png",
+  "reference_url_source": "local:memory/cover/assets/victoria.png",
   "reference_url_updated_at": "2026-08-27"
 }
