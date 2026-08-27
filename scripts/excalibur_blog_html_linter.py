@@ -17,11 +17,14 @@ from typing import Any
 # Whitelist tags based on excalibur contract and cover inline figure injection.
 # Keep in sync with shared/excalibur-article-writing-contract.md (body tags).
 ALLOWED_TAGS: set[str] = {
+    "h1",
     "h2",
     "h3",
     "p",
     "b",
+    "strong",
     "i",
+    "em",
     "a",
     "ul",
     "ol",
@@ -36,6 +39,8 @@ ALLOWED_TAGS: set[str] = {
     "figure",
     "img",
     "br",
+    "div",
+    "span",
 }
 
 

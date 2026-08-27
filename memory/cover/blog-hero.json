@@ -5,9 +5,9 @@
   "author_id": "victoria",
   "cover_mode": "host_reference",
   "reference_image": "memory/cover/assets/victoria.png",
-  "reference_notes": "Канон имени — victoria.png (не victoria-sheet.png). В этом checkout бинарник вложения отсутствует: не генерировать лицо и не подставлять чужой портрет. Положить owner PNG в memory/cover/assets/victoria.png тем же именем. Реф — студийный high-key портрет для lock лица; белый блейзер и карты Rider-Waite на рефе не lock одежды/реквизита.",
-  "png_on_disk": false,
-  "png_required_action": "Положить owner PNG в memory/cover/assets/victoria.png тем же именем. Cover i2i не запускать, пока файла нет.",
+  "reference_notes": "Канон имени — victoria.png (не victoria-sheet.png). Owner PNG на диске. Реф — студийный high-key портрет для lock лица; белый блейзер и карты Rider-Waite на рефе не lock одежды/реквизита. Cover i2i только с этого файла.",
+  "png_on_disk": true,
+  "png_required_action": "",
   "visual_lock": {
     "identity": "Виктория, таролог команды «ТАРО СЕЙЧАС»",
     "face_source": "owner reference victoria.png — identity lock only",
