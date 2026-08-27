@@ -1,0 +1,67 @@
+{
+  "topic_id": "B15",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Под маской безразличия прячется ревность",
+  "cover_hook_highlight": "ревность",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face/outfit lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: скрытая ревность за маской безразличия",
+      "scene_hint": "Victoria LARGE left; hair color copied exactly from reference photo, same root depth, do not lighten, no platinum; tiny mask right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "страх потери за холодом"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Два лица одного холода: почему маска безразличия обманчива",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Comparison L/R: LEFT маска безразличия + тайные проверки соцсетей + внутреннее напряжение; RIGHT истинное равнодушие + снятый фокус внимания. Read L→R. Outcome: слежка выдаёт маску. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема: чем маска безразличия отличается от настоящего равнодушия",
+      "labels": [
+        "маска безразличия",
+        "тайные проверки соцсетей",
+        "внутреннее напряжение",
+        "истинное равнодушие",
+        "снятый фокус внимания"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Ревность как страх потери, а не мерило любви",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Workflow top→down: страх оказаться замененным → уязвленное эго → глухая оборона → проекция сомнений → поиск безопасности. Outcome: ревность = страх потери, не мерило любви. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема: ревность как страх потери, а не доказательство любви",
+      "labels": [
+        "страх оказаться замененным",
+        "уязвленное эго",
+        "глухая оборона",
+        "проекция сомнений",
+        "поиск безопасности"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Где проходит грань: здоровая уязвимость против давления",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist top→down: ситуативная тревога + открытый диалог = ок; тотальный контроль + нарушение границ + требование отчетов = стоп. Outcome: диалог снимает, контроль нет. NO people/faces/emoji/silhouettes.",
+      "alt": "Чеклист: где ситуативная тревога, а где давление и контроль",
+      "labels": [
+        "ситуативная тревога",
+        "открытый диалог",
+        "тотальный контроль",
+        "нарушение границ",
+        "требование отчетов"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

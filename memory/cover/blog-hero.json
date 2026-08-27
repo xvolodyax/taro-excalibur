@@ -31,7 +31,10 @@
     "makeup": "black winged eyeliner; muted rose-mauve lipstick; professional contour; warm tan",
     "jewelry": "small sparkling stud earrings",
     "expression_rule": "new natural editorial emotion every cover; never the same stock smile",
-    "forbidden_hosts": ["Алёна", "Alyona"],
+    "forbidden_hosts": [
+      "Алёна",
+      "Alyona"
+    ],
     "forbidden_sets": [
       "dark table with candles",
       "gothic",
@@ -65,7 +68,7 @@
     "resolution": "2K"
   },
   "rebuild_rule": "Если лицо не Виктории, волосы платина/сильно светлее рефа, шов кривой, буквы кривые или кегль пляшет в одном слове — пересобрать холст 2K 2×2. Не чинить лицо, волосы и шрифт снаружи.",
-  "reference_url_hosted": "",
-  "reference_url_source": "",
-  "reference_url_updated_at": null
+  "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/victoria.png",
+  "reference_url_source": "local:memory/cover/assets/victoria.png",
+  "reference_url_updated_at": "2026-08-27T13:03:36+00:00"
 }
