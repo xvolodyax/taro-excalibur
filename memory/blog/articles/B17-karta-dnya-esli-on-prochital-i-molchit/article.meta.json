@@ -1,0 +1,47 @@
+{
+  "title": "Карта дня сверяет твои сутки, если он прочитал и молчит",
+  "h1": "Карта дня сверяет твои сутки, если он прочитал и молчит",
+  "slug": "karta-dnya-esli-on-prochital-i-molchit",
+  "topic_id": "B17",
+  "author_id": "victoria",
+  "article_mode": "B",
+  "description": "Как простая вечерняя сверка с картой дня помогает отделить факты от тревожных догадок и вернуть себе спокойствие, пока в переписке повисла тишина.",
+  "meta_ab": {
+    "title_seo": "Карта дня сверяет твои сутки, если он прочитал и молчит",
+    "title_ctr": "Карта дня сверяет твои сутки, если он прочитал и молчит",
+    "title_aeo": "Карта дня сверяет твои сутки, если он прочитал и молчит",
+    "description_seo": "Как простая вечерняя сверка с картой дня помогает отделить факты от тревожных догадок и вернуть себе спокойствие, пока в переписке повисла тишина.",
+    "description_ctr": "Как простая вечерняя сверка с картой дня помогает отделить факты от тревожных догадок и вернуть себе спокойствие, пока в переписке повисла тишина.",
+    "description_aeo": "Как простая вечерняя сверка с картой дня помогает отделить факты от тревожных догадок и вернуть себе спокойствие, пока в переписке повисла тишина."
+  },
+  "theme_blocks": {
+    "faq": "skip",
+    "quiz": "skip",
+    "side_stickers": "skip"
+  },
+  "date": "2026-08-27",
+  "pipeline_canon": "human-first-v2",
+  "editorial_swarm": false,
+  "publish_owner": "Hall",
+  "allow_pipeline_publish": false,
+  "slot": "20:00",
+  "cover_credit": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "placement": "above_image",
+    "render_in_png": false
+  },
+  "cta_dzen": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776",
+    "https://max.ru/id531102974575_bot?startapp=ref_9BAD4149"
+  ],
+  "cta_site_only": [
+    "https://t.me/TodayTaro_bot?start=id8293683394",
+    "https://t.me/TodayTaro_bot?startapp=ref_361BDE45"
+  ],
+  "funnel_variants": {
+    "dzen": "article-dzen.html",
+    "site": "article-site.html",
+    "combined_markers": "article.html"
+  }
+}

@@ -8,11 +8,15 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 прозы. Заголовки нужны только чтобы не повторить уже покрытую тему.
 
 Список собран 2026-08-27 с публичного индекса блога + указание Холла (B12/B14). Тела статей не читались.
+B15 (утро 27.08) и B16 (день 27.08) — live на сайте и в Дзене; B17 не клон.
 
 | topic_id | slug | title | status |
 |----------|------|-------|--------|
+| B16 | lichnoe-chislo-dnya-lomaet-ozhidanie-otveta | Личное число дня ломает ожидание ответа | live |
+| B15 | on-revnuet-ili-eto-ne-lyubov | Он скрывает ревность или ему действительно всё равно | live |
 | B12 | lichnoe-chislo-goda-etim-letom | Личное число года показывает твой ритм в отношениях | live |
 | B14 | on-okhladel | Он охладел | hall-anti-dup |
+| LIVE | ty-razbereshsya-v-sukhih-otvetah | Ты разберёшься в сухих ответах и поймёшь, почему он охладел | live |
 | LIVE | chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom | Он зовёт в последний момент и карта дня объясняет твои сомнения | live |
 | LIVE | on-smotrit-moi-istorii-i-molchit | Он смотрит твои истории и молчит | live |
 | LIVE | stoit-li-zvonit-emu-segodnya-vecherom | Стоит ли звонить ему сегодня вечером | live |
