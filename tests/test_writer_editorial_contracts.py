@@ -47,6 +47,8 @@ class WriterEditorialContractsTest(unittest.TestCase):
         self.assertIn("Core Truths", soul)
         self.assertIn("excalibur-blog-sol", soul)
         self.assertIn("Vibe", soul)
+        self.assertNotIn("SETUP_REQUIRED", good)
+        self.assertNotIn("SETUP_REQUIRED", src)
         self.assertIn("Calibration", good)
         self.assertIn("битов", post.lower())
         self.assertIn("seo-робот", bad.lower())

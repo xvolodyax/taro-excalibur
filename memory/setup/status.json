@@ -1,15 +1,15 @@
 {
   "version": "1",
-  "complete": false,
-  "updated_at": "2026-08-27T12:10:00Z",
+  "complete": true,
+  "updated_at": "2026-08-27T12:25:00Z",
   "phases": {
     "cloud": "done",
     "site": "done",
     "author": "done",
     "voice": "done",
-    "visual": "pending",
+    "visual": "done",
     "cta": "done",
     "scout": "done"
   },
-  "notes": "Raw tenant answers written. Waiting Setup Voice + Setup Visual PASS before stamp."
+  "notes": "Setup 1–7 closed. Voice PASS. Visual configs PASS; owner victoria.png did not land on this VM disk — Cover i2i waits for memory/cover/assets/victoria.png. Pipeline publish stays off (Hall). Memories OFF desired."
 }
