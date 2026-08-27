@@ -15,4 +15,7 @@ disable-model-invocation: true
 3. Заполни blog-hero.json, cover-design-code.json, quad-style-*.json.
 4. Обнови tenant-config cover fields.
 5. Никаких чужих дефолтных лиц/брендовых коллажей.
-6. Handoff PASS или NEED_MORE_REFS.
+6. `host_reference`: волосы только с рефа, не осветлять, не платина.
+   Промпт: `hair color copied exactly from reference photo, same root depth, do not lighten, no platinum`.
+   Identity gate: `scripts/excalibur_blog_cover_identity_gate.py`.
+7. Handoff PASS или NEED_MORE_REFS.

@@ -40,6 +40,11 @@ is_background: false
 ## Правила
 
 - Нет дефолтного «чужого» лица, худи, pink-cat бренда
+- Если `host_reference`: цвет волос **только с рефа**, не осветлять.
+  В `hair_color_lock.prompt` и Cover-промптах точно:
+  `hair color copied exactly from reference photo, same root depth, do not lighten, no platinum`.
+  Платина / ice-blonde / выцвет на 1–2 тона = blocker, пересобрать холст.
+  Gate: `scripts/excalibur_blog_cover_identity_gate.py`.
 - Если `illustrative` — host на cover не обязателен; зафиксируй в blog-hero
 - `meme_caption_ru` по умолчанию пуст
 - Не выдумывай reference_url на чужой CDN; локальный asset или URL тенанта

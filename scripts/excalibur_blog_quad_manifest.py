@@ -45,6 +45,28 @@ def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def tenant_style_paths(root: Path) -> tuple[str, str]:
+    """Read Cover style preset from tenant-config; no pink-cat default."""
+    preset_id = "tenant_unset"
+    style_file = "memory/cover/cover-design-code.json"
+    tenant_path = root / "shared/tenant-config.json"
+    if not tenant_path.is_file():
+        return preset_id, style_file
+    try:
+        tenant = load_json(tenant_path)
+    except json.JSONDecodeError:
+        return preset_id, style_file
+    configured = str((tenant.get("cover_files") or {}).get("style_preset") or "").strip()
+    if not configured:
+        return preset_id, style_file
+    stem = Path(configured).stem
+    if stem.startswith("quad-style-"):
+        preset_id = stem[len("quad-style-") :]
+    elif stem:
+        preset_id = stem
+    return preset_id, configured
+
+
 def save_json(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -143,13 +165,14 @@ def build_manifest(article_dir: Path, root: Path, preserve: dict | None) -> dict
         or str((preserve or {}).get("cover_hook_highlight") or "").strip()
     )
 
+    style_preset, style_file = tenant_style_paths(root)
     return {
         "topic_id": topic_id,
         "canvas_file": "cover/canvas-quad.png",
         "layout": "2x2",
         "pipeline": "quad_canvas_1x_image_api",
-        "style_preset": "tenant_unset",
-        "style_file": "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
+        "style_preset": style_preset,
+        "style_file": style_file,
         "blog_hero": "memory/cover/blog-hero.json",
         "inline_types_catalog": "memory/cover/inline-visual-types.json",
         "cover_hook": hook,
@@ -158,7 +181,7 @@ def build_manifest(article_dir: Path, root: Path, preserve: dict | None) -> dict
         "mcp_note": (
             "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py "
             "(KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt "
-            "before --write-batch. White hoodie lock = blog-hero.json only."
+            "before --write-batch. Face/outfit lock = blog-hero.json only."
         ),
         "slots": slots,
         "cover_keys_ru": list((preserve or {}).get("cover_keys_ru") or []),
