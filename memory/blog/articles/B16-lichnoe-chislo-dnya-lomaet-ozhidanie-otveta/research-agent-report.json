@@ -1,0 +1,59 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B16",
+  "slug": "lichnoe-chislo-dnya-lomaet-ozhidanie-otveta",
+  "title": "Личное число дня ломает ожидание ответа",
+  "research_date": "2026-08-27",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "block_reason": null,
+  "fresh_signal": {
+    "ok": true,
+    "this_week": true,
+    "summary": "27.08.2026: канал Дзена тенанта живой (пост ~2 часа). Community Дзена вчера/в выдаче «Сегодня» разобрал универсальное число 26.08.2026=8 тем же методом суммы цифр, который сегодня даёт 9 для 27.08.2026. SERP параллельно крутит личный год 2026 — берём день, не клон B12.",
+    "urls": [
+      "https://dzen.ru/todaytaro_bot",
+      "https://dzen.ru/a/ao0iUF_t_ztBxAA5",
+      "https://dzen.ru/a/ao0lEF_t_ztBxBYQ",
+      "https://kakoysegodnyaprazdnik.com/content/den-27-avgusta-2026-goda-fakty-goroskop-lyudi.html"
+    ]
+  },
+  "wordstat": {
+    "status": "skip",
+    "reason": "MCP wordstat_get_top_requests отсутствует; ключ Yandex Cloud Search API v2 не инжектнут (folder_id в tenant есть, секрета в VM нет). Impressions не выдумывались. Смежные фразы сверены только SERP."
+  },
+  "scout_signal_urls_checked": [
+    {
+      "url": "https://dzen.ru/todaytaro_bot",
+      "ok": true,
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "url": "https://www.таросейчас.рф/blog/",
+      "ok": true,
+      "accessed_at": "2026-08-27",
+      "note": "Индекс live; тела статей не читались как образец прозы"
+    },
+    {
+      "url": "https://horo.mail.ru/divination/numerology/personalnoe-chislo-dnya-mesyaca-goda/",
+      "ok": true,
+      "accessed_at": "2026-08-27"
+    },
+    {
+      "url": "https://dzen.ru/a/ajnD1WZb9gcrWifZ",
+      "ok": true,
+      "accessed_at": "2026-08-27",
+      "note": "WebFetch отдал заглушку Дзена; текст года Единицы подтверждён поисковым снимком. Контраст год≠день."
+    }
+  ],
+  "overlap": {
+    "source": "published-titles-only.md",
+    "not_clone_of": ["B12", "B14", "karta-dnya", "kvadrat-pifagora", "chislo-sudby", "shodyatsya-li-vashi-daty"]
+  },
+  "artifacts": {
+    "research_notes": "research-notes.md",
+    "report": "research-agent-report.json"
+  },
+  "incident_report": "none"
+}
