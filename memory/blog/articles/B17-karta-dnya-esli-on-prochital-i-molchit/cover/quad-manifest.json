@@ -1,0 +1,64 @@
+{
+  "topic_id": "B17",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Он прочитал и молчит",
+  "cover_hook_highlight": "молчит",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face/outfit lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: он прочитал сообщение и молчит",
+      "scene_hint": "Victoria LARGE left; hair from ref, no platinum; new dusty-rose knit, thoughtful look; tiny chat tick right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "отдели факт от догадок"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Галочка «прочитано» в переписке: где факт, а где достройка",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Сравнение: GOOD колонка «реальный факт минуты» зелёные галочки; BAD «тревожная достройка» красный крест; сверху «открытый диалог»; итог «пауза не разрыв». NO people/faces/emoji/silhouettes.",
+      "alt": "Схема: где факт прочтения, а где тревожная достройка",
+      "labels": [
+        "открытый диалог",
+        "реальный факт минуты",
+        "тревожная достройка",
+        "пауза не разрыв"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Почему карта дня — это вечерний камертон, а не чтение чужих мыслей",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Схема шагов: вечерний камертон → один точный вопрос → сверка своих суток; стрелка к итогу «опора на себя». Белые карточки, золото. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема вечерней сверки с картой дня как с камертоном",
+      "labels": [
+        "вечерний камертон",
+        "один точный вопрос",
+        "сверка своих суток",
+        "опора на себя"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Арканы паузы в традиции Райдера–Уэйта: как понимать молчание",
+      "visual_type": "infographic_card",
+      "scene_hint": "Четыре карточки-символа без лиц: Жрица и интуиция, Отшельник в уединении, Повешенный для паузы, Четвёрка Мечей отдых. Луна и фонарь, не портреты. NO people/faces/emoji/silhouettes.",
+      "alt": "Карточки арканов паузы: Жрица, Отшельник, Повешенный и Четвёрка Мечей",
+      "labels": [
+        "Жрица и интуиция",
+        "Отшельник в уединении",
+        "Повешенный для паузы",
+        "Четвёрка Мечей отдых"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

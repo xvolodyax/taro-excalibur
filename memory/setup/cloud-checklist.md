@@ -4,13 +4,15 @@
 
 | Пункт | Статус | Комментарий |
 |-------|--------|-------------|
-| Репозиторий подключён к Cursor Cloud Environment | pending | |
-| Automation Tools → **Memories = OFF** | pending | Official docs: Memories ON by default |
-| Secrets: PUBLIC_SITE_URL | pending | |
-| Secrets: FTP_HOST / FTP_USER / FTP_PASS / FTP_ROOT | pending | SFTP under FTP_* names |
-| MCP Wordstat (если нужен Scout) | pending | optional |
-| MCP WordPress blob / image API (если нужны) | pending | optional |
-| Image API key (Kie / provider) | pending | optional until Cover |
-| Yandex Metrika tokens | pending | optional Content-learner |
-| First-run automation = Setup prompt | pending | см. CLOUD-FIRST-RUN.md |
-| Daily automation = CLOUD-AUTOMATION.md (после setup) | pending | |
+| Репозиторий подключён к Cursor Cloud Environment | yes | Этот прогон = First-run Cloud Agent |
+| Automation Tools → **Memories = OFF** | desired | Владелец: Memories OFF **желательны**. Docs: ON by default. Игнорировать Automation Memory |
+| Secrets: PUBLIC_SITE_URL | yes | Публичный URL, не секрет. Значение не дублируем как «секрет» |
+| Secrets: FTP_HOST / FTP_USER / FTP_PASS / FTP_ROOT | n/a | Публикацию на сайт/Дзен делает Hall, не этот пайплайн |
+| MCP Wordstat (если нужен Scout) | yes | Ключ уже снаружи. Scout зовёт Wordstat сам, внешнего агента нет |
+| MCP WordPress blob / image API (если нужны) | n/a | Hall публикует. Image = Kie, не WP blob |
+| Image API key (Kie / provider) | yes | Kie уже в секретах снаружи. В git не класть |
+| Yandex Metrika tokens | n/a | Не запрошены; Content-learner опционален |
+| First-run automation = Setup prompt | yes | Этот прогон. Scout/Research/Publish не запускать |
+| Daily automation = CLOUD-AUTOMATION.md (после setup) | later | Включать после `setup_complete`. `EXCALIBUR_BLOG_ALLOW_PUBLISH` оставить выкл |
+
+Новых Secrets у человека не просили.

@@ -1,0 +1,41 @@
+{
+  "title": "Личное число дня ломает ожидание ответа",
+  "h1": "Личное число дня ломает ожидание ответа",
+  "slug": "lichnoe-chislo-dnya-lomaet-ozhidanie-otveta",
+  "topic_id": "B16",
+  "author_id": "victoria",
+  "article_mode": "B",
+  "description": "Как рассчитать личный ритм по дате рождения и почему несовпадение суточных цифр объясняет затянувшуюся тишину в переписке.",
+  "meta_ab": {
+    "title_seo": "Личное число дня ломает ожидание ответа",
+    "title_ctr": "Личное число дня ломает ожидание ответа",
+    "title_aeo": "Личное число дня ломает ожидание ответа",
+    "description_seo": "Как рассчитать личный ритм по дате рождения и почему несовпадение суточных цифр объясняет затянувшуюся тишину в переписке.",
+    "description_ctr": "Как рассчитать личный ритм по дате рождения и почему несовпадение суточных цифр объясняет затянувшуюся тишину в переписке.",
+    "description_aeo": "Как рассчитать личный ритм по дате рождения и почему несовпадение суточных цифр объясняет затянувшуюся тишину в переписке."
+  },
+  "theme_blocks": {
+    "faq": "skip",
+    "quiz": "skip",
+    "side_stickers": "skip"
+  },
+  "date": "2026-08-27",
+  "pipeline_canon": "human-first-v2",
+  "editorial_swarm": false,
+  "publish_owner": "Hall",
+  "allow_pipeline_publish": false,
+  "cover_credit": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "placement": "above_image",
+    "render_in_png": false
+  },
+  "cta_dzen": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776",
+    "https://max.ru/id531102974575_bot?startapp=ref_9BAD4149"
+  ],
+  "cta_site_only": [
+    "https://t.me/TodayTaro_bot?start=id8293683394",
+    "https://t.me/TodayTaro_bot?startapp=ref_361BDE45"
+  ]
+}

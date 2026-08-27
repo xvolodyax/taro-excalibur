@@ -1,0 +1,50 @@
+{
+  "topic_id": "B17",
+  "slug": "karta-dnya-esli-on-prochital-i-molchit",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: он прочитал сообщение и молчит",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-27T17:49:17+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: он прочитал сообщение и молчит",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: где факт прочтения, а где тревожная достройка",
+      "h2_anchor": "Галочка «прочитано» в переписке: где факт, а где достройка",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема вечерней сверки с картой дня как с камертоном",
+      "h2_anchor": "Почему карта дня — это вечерний камертон, а не чтение чужих мыслей",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Карточки арканов паузы: Жрица, Отшельник, Повешенный и Четвёрка Мечей",
+      "h2_anchor": "Арканы паузы в традиции Райдера–Уэйта: как понимать молчание",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

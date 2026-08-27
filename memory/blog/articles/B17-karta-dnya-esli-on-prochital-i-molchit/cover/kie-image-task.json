@@ -1,0 +1,17 @@
+{
+  "task_id": "074bf81e3b137bab8cc32169e1ca8983",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 2,
+  "result_path": "memory/blog/articles/B17-karta-dnya-esli-on-prochital-i-molchit/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1787852932,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "victoria.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}
