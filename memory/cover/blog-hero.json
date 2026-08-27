@@ -1,17 +1,53 @@
 {
-  "hero_id": "blog-host",
-  "status": "SETUP_REQUIRED",
-  "name_ru": "",
-  "cover_mode": "unset",
-  "reference_image": "",
-  "reference_notes": "Filled by excalibur-blog-setup-visual. No default personal face or outfit lock.",
-  "visual_lock": {},
-  "outfit_rule": "",
-  "prompt_fragment": "",
+  "hero_id": "victoria",
+  "status": "ok",
+  "name_ru": "Виктория",
+  "author_id": "victoria",
+  "cover_mode": "host_reference",
+  "reference_image": "memory/cover/assets/victoria.png",
+  "reference_notes": "Канон имени — victoria.png (не victoria-sheet.png). В этом checkout бинарник вложения отсутствует: не генерировать лицо и не подставлять чужой портрет. Положить owner PNG в memory/cover/assets/victoria.png тем же именем. Реф — студийный high-key портрет для lock лица; белый блейзер и карты Rider-Waite на рефе не lock одежды/реквизита.",
+  "png_on_disk": false,
+  "png_required_action": "Положить owner PNG в memory/cover/assets/victoria.png тем же именем. Cover i2i не запускать, пока файла нет.",
+  "visual_lock": {
+    "identity": "Виктория, таролог команды «ТАРО СЕЙЧАС»",
+    "face_source": "owner reference victoria.png — identity lock only",
+    "studio": "high-key studio portrait, clean white #FFFFFF, no beige/cream",
+    "hair": "long straight platinum blonde, center part, over the shoulders",
+    "eyes": "almond-shaped; green with slight light-brown / hazel near the pupil",
+    "brows": "dark brown, groomed",
+    "makeup": "black winged eyeliner; muted rose-mauve lipstick; professional contour; warm tan",
+    "jewelry": "small sparkling stud earrings",
+    "expression_rule": "new natural editorial emotion every cover; never the same stock smile",
+    "forbidden_hosts": ["Алёна", "Alyona"],
+    "forbidden_sets": [
+      "dark table with candles",
+      "gothic",
+      "pink-cat collage",
+      "default white hoodie",
+      "pipeline EXCALIBUR stamp"
+    ]
+  },
+  "outfit_rule": "Белый блейзер на рефе — только реф лица, не lock одежды. Одежда и эмоция каждый раз новые: business-chic, не худи пайплайна, не gothic. Реквизит рефа (две карты Rider-Waite) не обязателен на каждой обложке.",
+  "prompt_fragment": "Victoria host LARGE left; new outfit+emotion; tiny topic prop right; #FFF",
   "cover_hook_rules": [
-    "cover_hook invents Cover agent from reader_pain; no script templates",
-    "meme_caption_ru always empty unless tenant explicitly allows"
+    "cover_hook — 2–6 слов на кадре, не заголовок статьи; Cover-text invents from reader_pain",
+    "meme_caption_ru always empty",
+    "один хук + один мелкий предмет/метафора; host LARGE left half"
   ],
+  "cover_credit_html": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "placement": "above_image",
+    "render_in_png": false,
+    "note": "Подпись НАД картинкой кодом/HTML. Нейросеть эту строку не рисует."
+  },
+  "meme_caption_ru": "",
+  "image_provider": {
+    "vendor": "kie.ai",
+    "model": "gpt-image-2-image-to-image",
+    "mode": "i2i",
+    "resolution": "2K"
+  },
+  "rebuild_rule": "Если лицо не Виктории или шов кривой — пересобрать холст 2K 2×2, не чинить лицо снаружи.",
   "reference_url_hosted": "",
   "reference_url_source": "",
   "reference_url_updated_at": null

@@ -318,11 +318,13 @@ def build_prompt(
     cat_hero = style_is_situational_cat_hero(style)
 
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
+    palette = design_code.get("color_palette") or {}
+    accent = str(palette.get("accent_primary") or "").strip() or "#FF1493"
     highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
+        f'paint ONLY the highlight word "{highlight}" in accent {accent}; '
         f'hook text must match exactly — do not substitute «время»/traffic markers'
         if highlight
-        else "paint at most ONE punch word in hot-pink #FF1493"
+        else f"paint at most ONE punch word in accent {accent}"
     )
     cover_scene = sanitize_cover_scene_hint(
         str(cover.get("scene_hint") or ""), highlight
@@ -330,11 +332,11 @@ def build_prompt(
     cover_hook_text = compact(manifest.get("cover_hook", ""), 120)
     cover_sticky = compact(str(cover.get("sticky") or ""), 48)
     sticky_lock = (
-        f" Small pink sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+        f" Small accent sticky with EXACTLY «{cover_sticky}» in Cyrillic."
         if cover_sticky
         else ""
     )
-    # Prefer style preset locks when present (cat digital collage vs editorial).
+    # Prefer style preset locks when present (tenant design-code over leftover defaults).
     style_prefix = compact(
         style.get("global_prompt_prefix")
         or design_code.get("cover_panel_prompt_block")
@@ -343,8 +345,8 @@ def build_prompt(
     )
     if not style_prefix:
         style_prefix = (
-            "Dense collage RU editorial, WHITE #FFFFFF, BLACK #141821 Cyrillic ink, "
-            "hot-pink #FF1493 one accent only. Every panel: torn paper, tape, "
+            f"Dense collage RU editorial, WHITE #FFFFFF, BLACK #141821 Cyrillic ink, "
+            f"accent {accent} one punch only. Every panel: torn paper, tape, "
             "≥2 topic stickers, sticky, ≥1 educational UI card (labels from scene_hint). "
             "Busy collage, not sterile."
         )
@@ -457,13 +459,18 @@ def main() -> int:
 
     manifest = load_json(manifest_path)
     hero = load_json(root / manifest.get("blog_hero", "memory/cover/blog-hero.json"))
-    style = load_json(
-        root
-        / manifest.get(
-            "style_file",
-            "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
-        )
-    )
+    default_style = "memory/cover/cover-design-code.json"
+    tenant_path = root / "shared/tenant-config.json"
+    if tenant_path.is_file():
+        try:
+            configured = str(
+                (load_json(tenant_path).get("cover_files") or {}).get("style_preset") or ""
+            ).strip()
+            if configured:
+                default_style = configured
+        except json.JSONDecodeError:
+            pass
+    style = load_json(root / manifest.get("style_file", default_style))
     types_path = root / manifest.get("inline_types_catalog", "memory/cover/inline-visual-types.json")
     types_catalog = load_json(types_path) if types_path.is_file() else {"types": {}}
     design_code_path = root / style.get("design_code", "memory/cover/cover-design-code.json")

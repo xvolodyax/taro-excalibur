@@ -1,27 +1,69 @@
 {
-  "design_code_id": "tenant_unset",
-  "status": "SETUP_REQUIRED",
-  "label_ru": "Заполняется Setup Visual из референсов тенанта",
-  "reference_notes": "Нет дефолтного чужого бренд-коллажа. Setup Visual пишет palette, motifs, cover/inline rules.",
+  "design_code_id": "victoria_studio_white",
+  "status": "ok",
+  "label_ru": "ТАРО СЕЙЧАС — светлая студия Виктории, business-chic",
+  "reference_notes": "Tenant visual. Не pink-cat коллаж пайплайна, не gothic, не тёмный стол со свечами. Лицо cover = Виктория по рефу. Алёну на обложки не ставить.",
+  "cover_mode": "host_reference",
   "cover_rules": [
-    "Один cover_hook разумной длины; meme_caption_ru по умолчанию пуст",
-    "Стиль и герой — только из blog-hero.json + этого design-code после Setup",
-    "Запрещён штамп пайплайна на PNG: «EXCALIBUR» / sword lockup"
+    "cover_mode=host_reference: лицо = Виктория по memory/cover/assets/victoria.png",
+    "Хук 2–6 слов на кадре, не заголовок статьи",
+    "Холст 2K 2×2 (2048×1152), резка по белым швам; gutters только на x=1024 / y=576",
+    "Одежда и эмоция каждый раз новые; белый блейзер рефа — не lock одежды",
+    "Один hook + один мелкий предмет/метафора; host LARGE left; topic prop tiny/small",
+    "meme_caption_ru всегда пустая строка",
+    "Подпись НАД картинкой кодом, не нейросетью: «Виктория - таролог команды «ТАРО СЕЙЧАС»»",
+    "Алёну на обложки не ставить",
+    "Не тёмный стол со свечами, не gothic, не pink-cat коллаж, не белое худи-дефолт",
+    "Провайдер: Kie GPT Image 2, i2i, resolution 2K",
+    "Если лицо не Вики или шов кривой — пересобрать холст, не чинить лицо снаружи",
+    "Запрещён штамп пайплайна на PNG: EXCALIBUR / sword lockup"
   ],
   "inline_rules": [
-    "Только информация конкретного H2",
-    "Без людей/лиц на inline, если tenant не разрешил иное",
+    "Только информация конкретного H2: comparison / workflow / checklist / UI explanation / fact card",
+    "Без людей и лиц на inline",
+    "3–6 читаемых кириллических labels, ясный reading order и outcome",
+    "Тот же светлый finish, что cover: белый фон, чёрный ink, сдержанное золото/nude",
+    "Не unfinished gray boxes, не голый SaaS-slide, не pink-cat стикеры",
     "Generated UI не выдавать за реальный screenshot"
   ],
-  "visual_motifs": [],
+  "visual_motifs": [
+    "high-key white studio",
+    "business-chic paper cards",
+    "thin gold underline / one muted-gold highlight",
+    "clean white gutters",
+    "optional tiny tarot-card prop only when the H2 needs it"
+  ],
   "color_palette": {
     "background": "#FFFFFF",
     "ink": "#141821",
-    "accent_primary": "",
-    "usage": "Set by Setup Visual"
+    "accent_primary": "#C4A574",
+    "accent_secondary": "#D4B5A0",
+    "accent_gold": "#C4A574",
+    "accent_nude": "#D4B5A0",
+    "forbidden_accents": ["#FF1493", "#6C4DFF", "#00C2FF"],
+    "usage": "Чистый белый фон, не beige. Ink чёрный. Акцент — сдержанное золото/nude на одном highlight-слове или тонкой линии. Не #FF1493 cat-бренд, не gothic purple."
   },
-  "typography_reference": "",
-  "cover_panel_prompt_block": "",
-  "inline_information_block": "",
-  "global_negative": "sterile empty white, meme reaction cutouts, pipeline name watermark, stock banner, beige gradient spam"
+  "typography_reference": "Bold condensed Cyrillic, ink #141821; at most one punch word in muted gold #C4A574; never all-gold headline; never #FF1493",
+  "cover_credit_html": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "placement": "above_image",
+    "render_in_png": false
+  },
+  "meme_caption_ru": "",
+  "canvas": {
+    "layout": "2x2",
+    "size_px": [2048, 1152],
+    "resolution": "2K",
+    "gutters": "white seams at x=1024 and y=576"
+  },
+  "image_provider": {
+    "vendor": "kie.ai",
+    "model": "gpt-image-2-image-to-image",
+    "mode": "i2i",
+    "resolution": "2K"
+  },
+  "rebuild_rule": "Лицо не Виктории или кривой шов → пересобрать холст. Не чинить лицо снаружи (inpaint/crop/swap).",
+  "cover_panel_prompt_block": "Clean high-key studio editorial, WHITE #FFFFFF, BLACK #141821 Cyrillic, muted gold #C4A574 one accent only. Business-chic, not gothic, not candles, not pink-cat. Cover: Victoria face from reference LARGE left, new outfit and emotion, one 2–6 word hook, one tiny topic prop. Thin white gutters.",
+  "inline_information_block": "Inline: no people/faces; 3–6 readable Cyrillic labels; comparison/workflow/checklist/fact for that H2; same white+ink+gold finish; no pink stickers, no unfinished gray boxes.",
+  "global_negative": "dark candle table, gothic purple, pink-cat collage, #FF1493, beige gradient, white-hoodie default, Alyona, meme reaction, pipeline EXCALIBUR watermark, sterile empty white, stock banner"
 }

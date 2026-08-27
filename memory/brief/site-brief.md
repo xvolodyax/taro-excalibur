@@ -65,10 +65,15 @@
 
 - **cover_mode:** `host_reference`
 - **host:** Виктория (`author_id=victoria`). Алёну на обложки не ставить.
-- **reference / lock:** `memory/cover/blog-hero.json` + `memory/cover/assets/`
-- **style:** `memory/cover/cover-design-code.json` + style preset из Setup Visual
-- **подпись кодом:** `Виктория - таролог команды «ТАРО СЕЙЧАС»`
-- светлая студия, не тёмный стол со свечами. Kie GPT Image 2. Холст 2K 2×2, резка по белым швам. Inline без лица.
+- **reference:** `memory/cover/assets/victoria.png` (канон имени; в checkout бинарник может отсутствовать — Cover i2i не запускать без файла)
+- **lock:** `memory/cover/blog-hero.json` — платиновый блонд, прямой пробор; глаза зелёные + hazel у зрачка; тёмные брови, чёрная стрелка; mauve помада; тёплый загар. Одежда и эмоция каждый раз новые (белый блейзер рефа — не lock).
+- **style:** `memory/cover/cover-design-code.json` + `memory/cover/quad-style-victoria-studio.json`
+- **палитра:** фон `#FFFFFF`, ink `#141821`, акцент сдержанное золото/nude `#C4A574` / `#D4B5A0`. Не `#FF1493`, не gothic.
+- **подпись кодом над картинкой** (не рисовать нейросетью): `Виктория - таролог команды «ТАРО СЕЙЧАС»`
+- хук 2–6 слов на кадре, не заголовок статьи. `meme_caption_ru` всегда пуст.
+- светлая high-key студия, business-chic. Не тёмный стол со свечами, не gothic, не pink-cat коллаж.
+- Kie GPT Image 2, i2i, 2K. Холст 2×2, резка по белым швам. Inline без людей и лиц, 3–6 кириллических labels.
+- лицо не Вики или кривой шов → пересобрать холст, не чинить лицо снаружи.
 
 ## Запреты
 
