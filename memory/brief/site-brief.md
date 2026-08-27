@@ -1,37 +1,84 @@
-# Site brief — Excalibur-2-Cloud
+# Site brief — ТАРО СЕЙЧАС
 
-<!-- SETUP_REQUIRED: fills excalibur-blog-setup (блоки Site / CTA / Scout / Visual summary) -->
-
-Метаданные сайта и контент-стратегия для Cover / Scout / Publish.
+Метаданные сайта и контент-стратегия для Cover / Scout / Writer / Sol / Publish.
 Не источник prose для Writer (Writer = master prompt + research + titles-only).
 
 ## Сайт
 
-- **site_name:** _(pending setup)_
-- **site_url:** `{{SITE_BASE}}` (live URL только в Cloud Secrets / PUBLIC_SITE_URL)
+- **site_name:** ТАРО СЕЙЧАС
+- **site_url:** `https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/` (IDN: https://www.таросейчас.рф/) — публичный, не секрет
+- **blog:** `https://www.таросейчас.рф/blog/`
+- **canonical article URL в артефактах:** `{{SITE_BASE}}/<slug>/` (без `/blog/`)
 - **language:** ru
-- **niche:** _(pending setup)_
+- **niche:** таро / отношения. Ядро — женщины 20–50. Покупают не «таро», а доступ к голове человека, которого нельзя спросить. Около 78% запросов — отношения.
 
 ## Продукт и CTA
 
-См. `shared/tenant-config.json` → `cta_links`, `cta_required`.
+`cta_required: true`. Не путать **бот** и **приложение**.
+
+| Куда | Что можно обещать | Ссылка |
+|------|-------------------|--------|
+| Бот (Макс; на сайте ещё Telegram) | 3 бесплатных расклада: триплет / крест | [бот Макс](https://max.ru/id531102974575_bot) |
+| Приложение ВК | «Суть – Тень – Вектор», аудиоразбор | [приложение ВК](https://vk.com/app54565776) |
+| Приложение Макс | то же, что ВК | [приложение Макс](https://max.ru/id531102974575_bot?startapp=ref_9BAD4149) |
+| Сайт дополнительно | Telegram-бот и Telegram-приложение | [Telegram бот](https://t.me/TodayTaro_bot?start=id8293683394), [Telegram приложение](https://t.me/TodayTaro_bot?startapp=ref_361BDE45) |
+
+Обязательные `cta_links` (есть в каждой статье, в том числе для Дзена):
+
+1. https://max.ru/id531102974575_bot
+2. https://vk.com/app54565776
+3. https://max.ru/id531102974575_bot?startapp=ref_9BAD4149
+
+Сайт-only (`cta_links_site_only`, **не** в Дзен и **не** в `cta_links` гейта):
+
+- https://t.me/TodayTaro_bot?start=id8293683394
+- https://t.me/TodayTaro_bot?startapp=ref_361BDE45
+
+Правила текста:
+
+- два блока, не копипаст: после сцены «сразу к делу» (выжимка + 2–3 вопроса к картам + две двери) и свой продающий финал;
+- сырые URL в теле не светить — только гиперссылки в слова;
+- не писать «личный аудиоразбор»;
+- Дзен: без Telegram.
+
+Публикацию на сайт и в Дзен делает **Hall**, не этот пайплайн. RSS в Дзен не подключать. `EXCALIBUR_BLOG_ALLOW_PUBLISH` выкл.
 
 ## Редакция
 
-- **формат:** how-to / чеклист / comparison / troubleshooting / новость с применением
+- **формат:** живая сцена про отношения / карту / число → практика → две двери (бот / приложение)
 - **канон:** `shared/pipeline-canon.json`
-- **стиль:** `shared/article-style.md` + `shared/SOUL.md` + (если включено) `shared/dzen-content-rules.md`
+- **стиль:** `shared/article-style.md` + `shared/SOUL.md` + `shared/dzen-content-rules.md`
 - **темы:** Scout → handoff `topic_id` + короткий title; `memory/topics/` запрещена
+- **слоты (для Hall / расписания, не автопубликация пайплайна):**
+  - 09:00 — острый запрос → бот
+  - 16:00 — нумерология → приложение ВК
+  - 20:00 — карта дня → бот
+
+## Scout
+
+- signal_urls: https://dzen.ru/todaytaro_bot ; https://www.таросейчас.рф/blog/
+- Wordstat: Yandex Cloud Search API v2, folderId `b1g0a71ifv910gjalmhp` (ключ только в Secrets).
+- Внешнего агента Вордстат не звать: Scout ищет сам.
+- До Scout: прочитать `shared/dzen-content-rules.md` + `shared/rf-blocked-entities.json`.
 
 ## Главный герой визуала
 
-- **cover_mode:** см. tenant-config (`host_reference` | `illustrative` | `unset`)
+- **cover_mode:** `host_reference`
+- **host:** Виктория (`author_id=victoria`). Алёну на обложки не ставить.
 - **reference / lock:** `memory/cover/blog-hero.json` + `memory/cover/assets/`
 - **style:** `memory/cover/cover-design-code.json` + style preset из Setup Visual
+- **подпись кодом:** `Виктория - таролог команды «ТАРО СЕЙЧАС»`
+- светлая студия, не тёмный стол со свечами. Kie GPT Image 2. Холст 2K 2×2, резка по белым швам. Inline без лица.
 
 ## Запреты
 
-- VPN / обход блокировок (если `dzen_rf_pack`)
-- Выдуманные цены
-- Эмодзи в тексте статей (дефолт; Setup может ослабить)
-- Секреты и live hostname в git-артефактах (только `{{SITE_BASE}}`)
+- таргет 13–17
+- СВО / медицина
+- обещать прочитать мысли; пугать одиночеством
+- VPN / обход блокировок (`dzen_rf_pack`)
+- выдуманные цены
+- эмодзи в тексте статей
+- мат (Дзен)
+- секреты и ключи в git
+- Telegram-ссылки в материале для Дзена
+- RSS-автопостинг в Дзен

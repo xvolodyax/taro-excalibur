@@ -1,15 +1,15 @@
 {
   "version": "1",
   "complete": false,
-  "updated_at": null,
+  "updated_at": "2026-08-27T12:10:00Z",
   "phases": {
-    "cloud": "pending",
-    "site": "pending",
-    "author": "pending",
+    "cloud": "done",
+    "site": "done",
+    "author": "done",
     "voice": "pending",
     "visual": "pending",
-    "cta": "pending",
-    "scout": "pending"
+    "cta": "done",
+    "scout": "done"
   },
-  "notes": "excalibur-blog-setup stamps phases to done and sets complete=true when all required phases pass."
+  "notes": "Raw tenant answers written. Waiting Setup Voice + Setup Visual PASS before stamp."
 }
