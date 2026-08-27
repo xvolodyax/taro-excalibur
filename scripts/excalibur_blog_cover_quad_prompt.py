@@ -143,6 +143,28 @@ def typography_ban(design_code: dict) -> str:
     return compact(text or DEFAULT_TYPE_BAN, 220)
 
 
+REQUIRED_HAIR_PHRASE = (
+    "hair color copied exactly from reference photo, same root depth, "
+    "do not lighten, no platinum"
+)
+
+
+def identity_hair_prompt(hero: dict) -> str:
+    if not hero:
+        return ""
+    lock = hero.get("hair_color_lock")
+    if not isinstance(lock, dict):
+        lock = (hero.get("visual_lock") or {}).get("hair_color_lock") or {}
+    if not isinstance(lock, dict):
+        lock = {}
+    text = str(lock.get("prompt") or "").strip()
+    if text:
+        return compact(text, 160)
+    if str(hero.get("cover_mode") or "") == "host_reference":
+        return REQUIRED_HAIR_PHRASE
+    return ""
+
+
 def inline_panel_prompt(slot: dict, types_catalog: dict) -> str:
     type_id = slot.get("visual_type") or "infographic_card"
     type_def = (types_catalog.get("types") or {}).get(type_id) or {}
@@ -465,6 +487,9 @@ def build_prompt(
     if tenant_inline:
         inline_suffix = tenant_inline
     ban_line = f"{ban_line} {type_ban}"
+    hair_lock = identity_hair_prompt(hero)
+    if hair_lock:
+        reference_line = f"{reference_line} HAIR LOCK: {hair_lock}."
     lines = [
         # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
         # badge on every panel (INC-20260723-1223 / user correction).

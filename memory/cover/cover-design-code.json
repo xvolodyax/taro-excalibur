@@ -7,6 +7,7 @@
   "cover_mode": "host_reference",
   "cover_rules": [
     "cover_mode=host_reference: лицо = Виктория по memory/cover/assets/victoria.png — не кот и не без лица",
+    "Цвет волос только с рефа: светлый блонд с тёплым honey/пепельным мясом, корни темнее. Не платина, не ice-blonde, не осветлять. Промпт: hair color copied exactly from reference photo, same root depth, do not lighten, no platinum. Платина / сильно светлее рефа = blocker, пересобрать холст",
     "Хук 2–6 слов на кадре, не заголовок статьи",
     "Типографика дизайнерская, не системная. Хук = editorial display (didone / refined grotesque), буквы часть кадра, не стикер",
     "Одно ударное слово из хука — тот же шрифт, другой цвет/насыщенность (золото медальона)",
@@ -20,7 +21,7 @@
     "Алёну на обложки не ставить",
     "Не тёмный стол со свечами, не gothic, не pink-cat, не #FF1493",
     "Провайдер: Kie GPT Image 2, i2i, resolution 2K",
-    "Если лицо не Вики, шов кривой или буквы кривые — пересобрать холст, не чинить снаружи",
+    "Если лицо не Вики, волосы платина/сильно светлее рефа, шов кривой или буквы кривые — пересобрать холст, не чинить снаружи",
     "Запрещён штамп пайплайна на PNG: EXCALIBUR / sword lockup"
   ],
   "inline_rules": [
@@ -92,8 +93,8 @@
     "mode": "i2i",
     "resolution": "2K"
   },
-  "rebuild_rule": "Лицо не Виктории, кривой шов, кривые буквы или разный кегль в одном слове → пересобрать холст. Не чинить лицо/шрифт снаружи.",
-  "cover_panel_prompt_block": "High-key light studio editorial. WHITE #FFFFFF panels, ink #141821, medallion gold #C4A574, dusty summer accents. Cover hero MUST be Victoria from reference LARGE left, new outfit+emotion, not a cat, not faceless, not a white hoodie default. Hook: editorial display Cyrillic (didone or refined geometric grotesque, normal tracking) as part of the frame, not a sticker. One punch word same typeface in gold. No Arial/Roboto/Inter/Impact/Times/bold condensed/squish-bold/all-caps plaque. Thin white gutters.",
+  "rebuild_rule": "Лицо не Виктории, волосы платина/сильно светлее рефа, кривой шов, кривые буквы или разный кегль в одном слове → пересобрать холст. Не чинить лицо/волосы/шрифт снаружи.",
+  "cover_panel_prompt_block": "High-key light studio editorial. WHITE #FFFFFF panels, ink #141821, medallion gold #C4A574, dusty summer accents. Cover hero MUST be Victoria from reference LARGE left, hair color copied exactly from reference photo, same root depth, do not lighten, no platinum, new outfit+emotion, not a cat, not faceless, not a white hoodie default. Hook: editorial display Cyrillic (didone or refined geometric grotesque, normal tracking) as part of the frame, not a sticker. One punch word same typeface in gold. No Arial/Roboto/Inter/Impact/Times/bold condensed/squish-bold/all-caps plaque. Thin white gutters.",
   "inline_information_block": "Inline: no people/faces; 3–6 readable Cyrillic labels in lighter designer humanist sans; comparison/workflow/checklist/fact for that H2; white+ink+medallion gold+dusty summer; no pink stickers, no bold condensed, no all-caps plaque, no unfinished gray boxes.",
-  "global_negative": "Arial, Roboto, Inter, Impact, Times, default bold condensed, squish-bold meme, all-caps sticker plaque, crooked letters, mixed glyph sizes in one word, dark candle table, gothic purple, pink-cat collage, #FF1493, beige full-panel, white-hoodie without Victoria, cat as cover hero, faceless cover, Alyona, meme reaction, pipeline EXCALIBUR watermark"
+  "global_negative": "platinum hair, ice-blonde, white blonde, lightened roots, Arial, Roboto, Inter, Impact, Times, default bold condensed, squish-bold meme, all-caps sticker plaque, crooked letters, mixed glyph sizes in one word, dark candle table, gothic purple, pink-cat collage, #FF1493, beige full-panel, white-hoodie without Victoria, cat as cover hero, faceless cover, Alyona, meme reaction, pipeline EXCALIBUR watermark"
 }

@@ -12,7 +12,20 @@
     "identity": "Виктория, таролог команды «ТАРО СЕЙЧАС»",
     "face_source": "owner reference victoria.png — identity lock only",
     "studio": "high-key studio portrait, clean white #FFFFFF, no beige/cream",
-    "hair": "long straight platinum blonde, center part, over the shoulders",
+    "hair": "long straight light blonde with warm honey and subtle ashy mid-lengths; darker roots (dark blonde / light brown); not platinum, not ice-blonde",
+    "hair_color_lock": {
+      "from_reference_only": true,
+      "prompt": "hair color copied exactly from reference photo, same root depth, do not lighten, no platinum",
+      "look_ru": "светлый блонд с тёплым honey/пепельным мясом, корни темнее (тёмный блонд / светло-русый)",
+      "forbidden": [
+        "platinum",
+        "ice-blonde",
+        "white blonde",
+        "bleach",
+        "lighten 1-2 tones"
+      ],
+      "blocker": "Platinum / strongly lighter than the reference = rebuild the canvas."
+    },
     "eyes": "almond-shaped; green with slight light-brown / hazel near the pupil",
     "brows": "dark brown, groomed",
     "makeup": "black winged eyeliner; muted rose-mauve lipstick; professional contour; warm tan",
@@ -30,7 +43,7 @@
     ]
   },
   "outfit_rule": "Белый блейзер на рефе — только реф лица, не lock одежды. Одежда и эмоция каждый раз новые: business-chic / светлая студия. Не белое худи пайплайна без Вики. Не кот. Реквизит рефа (две карты Rider-Waite) не обязателен на каждой обложке.",
-  "prompt_fragment": "Victoria host LARGE left; new outfit+emotion; tiny topic prop right; #FFF; editorial display type in-frame",
+  "prompt_fragment": "Victoria host LARGE left; hair color copied exactly from reference photo, same root depth, do not lighten, no platinum; new outfit+emotion; tiny topic prop right; #FFF; editorial display type in-frame",
   "cover_hook_rules": [
     "cover_hook — 2–6 слов на кадре, не заголовок статьи; Cover-text invents from reader_pain",
     "hook type = editorial display (didone or refined grotesque), letters part of the frame, not a sticker",
@@ -51,7 +64,7 @@
     "mode": "i2i",
     "resolution": "2K"
   },
-  "rebuild_rule": "Если лицо не Виктории, шов кривой, буквы кривые или кегль пляшет в одном слове — пересобрать холст 2K 2×2. Не чинить лицо и шрифт снаружи.",
+  "rebuild_rule": "Если лицо не Виктории, волосы платина/сильно светлее рефа, шов кривой, буквы кривые или кегль пляшет в одном слове — пересобрать холст 2K 2×2. Не чинить лицо, волосы и шрифт снаружи.",
   "reference_url_hosted": "",
   "reference_url_source": "",
   "reference_url_updated_at": null

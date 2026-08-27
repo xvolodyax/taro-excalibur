@@ -95,6 +95,9 @@ Cover-агент генерирует **один** quad-холст 2×2 (Kie GPT
    (INC-20260724-1239: alarm+brief card → host missing).
 4. **White background lock:** cover и все inline на чистом `#FFFFFF`; без серого, gradient или grunge full-panel background.
 5. **Cover typography:** из `memory/cover/cover-design-code.json` → `typography`.
+   Цвет волос — только с рефа (`hair_color_lock`): в промпте обязательно
+   `hair color copied exactly from reference photo, same root depth, do not lighten, no platinum`.
+   Платина / ice-blonde / осветление = blocker, пересобрать холст.
    Не писать «bold condensed Cyrillic» как дефолт. Хук = editorial display
    (didone / refined grotesque), буквы часть кадра. Highlight — то же лицо,
    цвет `accent_primary`. Sticky/inline — humanist sans. Запрет: Arial, Roboto,
@@ -131,7 +134,7 @@ python scripts/excalibur_blog_quad_manifest.py --article-dir "$ARTICLE" --merge
 # 3. Write cover/quad-manifest.json yourself:
 #    cover_hook, highlight, alt and all scene_hint fields come only from your
 #    reading of article.html/research/board. No phrase library and no text gate.
-#    The only persistent visual lock is the white heavyweight hoodie.
+#    Persistent visual lock = tenant blog-hero / design-code (face + hair from ref).
 #    cover_keys_ru is metadata only — never print a keyword checklist.
 
 # 4. Промпт + batch (1 job)
@@ -144,6 +147,11 @@ python scripts/excalibur_blog_cover_quad_prompt.py --article-dir "$ARTICLE" --wr
 #    batch reference_url_hosted/input_urls = {{SITE_BASE}}/wp-content/... (not live host, not [REDACTED]),
 #    validation.required_reference_host = {{SITE_HOST}} (not live host, not [REDACTED]),
 #    resolution == 2K. Kie script expands {{SITE_BASE}} at runtime.
+
+# 4b. Identity gate (host_reference): hair phrase + no platinum look
+python3 scripts/excalibur_blog_cover_identity_gate.py --article-dir "$ARTICLE"
+#    FAIL = COVER IDENTITY BLOCKER. Платина / волосы сильно светлее рефа →
+#    пересобрать холст. Не чинить волосы снаружи. Kie не запускать без PASS.
 
 # 5. Kie async image API (PRIMARY when KIE_API_KEY set):
 #    Требует KIE_API_KEY из Cloud Secrets/env; не писать ключ в файлы/логи.
@@ -325,6 +333,7 @@ summary: ...
 | Код                | Причина                                             |
 | ------------------ | --------------------------------------------------- |
 | COVER HERO BLOCKER | нет `reference_url_hosted` или image call без `input_urls` |
+| COVER IDENTITY BLOCKER | волосы платина / ice-blonde / светлее рефа, или в промпте нет hair lock phrase; пересобрать холст |
 | KIE API BLOCKER | нет `KIE_API_KEY`, non-retryable fail, 500 retries exhausted, pre-taskId Connection reset exhausted (один retry), image-fetch File Upload fallback exhausted, sensitive 422 после одного soften+recreate, polling timeout или нет resultUrls. После 500×2 exhausted: fragment+incident с `summary`: batch ready for Director same-batch re-run — Cover **не** invent'ит третий create; Director Kie re-run → Cover apply-only (не quality-redo / не MCP) |
 | QUAD SPLIT BLOCKER | нет canvas / не 2×2 16:9 / нет alt в manifest       |
 | COVER BLOCKER      | 4 отдельных image jobs                              |
@@ -347,6 +356,7 @@ summary: ...
 | `excalibur_blog_hero_reference_url.py` | keeps `reference_url_hosted` (preferred: WordPress media URL) |
 | `excalibur_blog_quad_manifest.py`      | `cover/quad-manifest.json`          |
 | `excalibur_blog_cover_quad_prompt.py`  | prompt + `--write-batch`            |
+| `excalibur_blog_cover_identity_gate.py` | hair/face lock; PASS before Kie   |
 | `excalibur_blog_quad_apply.py`         | download URL → split → inject       |
 | `excalibur_blog_cover_quad_split.py`   | split only (вызывается из apply)    |
 

@@ -66,7 +66,7 @@
 - **cover_mode:** `host_reference`
 - **host:** Виктория (`author_id=victoria`). Алёну на обложки не ставить.
 - **reference:** `memory/cover/assets/victoria.png` (канон имени; в checkout бинарник может отсутствовать — Cover i2i не запускать без файла)
-- **lock:** `memory/cover/blog-hero.json` — платиновый блонд, прямой пробор; глаза зелёные + hazel у зрачка; тёмные брови, чёрная стрелка; mauve помада; тёплый загар. Одежда и эмоция каждый раз новые (белый блейзер рефа — не lock).
+- **lock:** `memory/cover/blog-hero.json` — светлый блонд с тёплым honey/пепельным мясом, корни темнее (не платина, не ice-blonde, не осветлять); глаза зелёные + hazel у зрачка; тёмные брови, чёрная стрелка; mauve помада; тёплый загар. Одежда и эмоция каждый раз новые (белый блейзер рефа — не lock).
 - **style:** `memory/cover/cover-design-code.json` + `memory/cover/quad-style-victoria-studio.json`
 - **палитра:** свет, золото медальона `#C4A574`, пыльные летние тона `#D4B5A0` / `#C9B089`. Фон панелей `#FFFFFF`, ink `#141821`. Не `#FF1493` cat-collage, не gothic.
 - **типографика:** дизайнерская. Хук = editorial display (didone / refined grotesque), буквы часть кадра. Highlight — то же лицо, золото. Sticky/inline — лёгкий humanist sans. Запрет: Arial, Roboto, Inter, Impact, Times, bold condensed, squish-bold, all-caps плашка.
@@ -74,7 +74,8 @@
 - хук 2–6 слов на кадре, не заголовок статьи. `meme_caption_ru` всегда пуст.
 - светлая студия. Герой = Виктория, не кот и не без лица. Не белое худи без Вики. Не тёмный стол со свечами, не gothic, не pink-cat.
 - Kie GPT Image 2, i2i, 2K. Холст 2×2, резка по белым швам. Inline без людей и лиц, 3–6 кириллических labels.
-- лицо не Вики или кривой шов → пересобрать холст, не чинить лицо снаружи.
+- лицо не Вики, волосы платина/сильно светлее рефа или кривой шов → пересобрать холст, не чинить лицо и волосы снаружи.
+- Cover prompt всегда: `hair color copied exactly from reference photo, same root depth, do not lighten, no platinum`. Gate: `scripts/excalibur_blog_cover_identity_gate.py`.
 
 ## Запреты
 

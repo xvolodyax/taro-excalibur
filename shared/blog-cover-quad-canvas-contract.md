@@ -83,6 +83,9 @@ Split-скрипт в режиме `auto` пробует белые gutters у �
   не задал иное; запрещены gray, gradient и grunge full-panel backgrounds.
 - **Герой:** из `blog-hero.json` `cover_mode`. `host_reference` = лицо рефа
   (для ТАРО СЕЙЧАС — Виктория). Не подставлять кота и не убирать лицо.
+  Цвет волос копируется с рефа (`hair_color_lock.prompt`). Платина / ice-blonde /
+  осветление = `COVER IDENTITY BLOCKER`, пересобрать холст.
+  Gate: `python3 scripts/excalibur_blog_cover_identity_gate.py --article-dir …`
 - **Хук:** editorial display из `typography.hook_prompt` (журнальный кириллический:
   high-contrast modern serif / didone **или** refined geometric grotesque,
   нормальный трекинг). Буквы часть кадра, не стикер. Одно ударное слово —
@@ -143,6 +146,7 @@ legacy example name — use tenant preset):
 ## Blockers
 
 - `❌ COVER HERO BLOCKER` — нет `reference_url_hosted` или image call без `input_urls`
+- `❌ COVER IDENTITY BLOCKER` — нет hair lock phrase в промпте, или волосы платина / ice-blonde / сильно светлее рефа. Пересобрать холст, не чинить волосы снаружи. Gate: `excalibur_blog_cover_identity_gate.py`
 - `❌ KIE API BLOCKER` — нет `KIE_API_KEY`; non-retryable createTask/recordInfo fail; retryable 500 exhausted; image-fetch File Upload exhausted; sensitive 422 после одного agent soften+recreate; или polling без URL. Первый `failCode=422` sensitive ≠ permanent blocker, пока доступен controlled rewrite. При живом `KIE_API_KEY` не уходить в MCP после 422. После 500×2 / `--max-create-retries` exhausted: Director same-batch re-run Kie script на неизменённом `quad-mcp-batch.json` + Cover apply-only (не quality-redo; B102/B104).
 - `❌ COVER MCP TIMEOUT BLOCKER` — image tool вернул повторный timeout, а status/result tool подтверждает failed/no result
 - `❌ COVER MCP ASYNC BLOCKER` — sync `gpt-image-2` обрывается по client timeout, а MCP server не даёт `task_id` и отдельный status/result tool для получения позднего URL

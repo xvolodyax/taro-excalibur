@@ -236,6 +236,15 @@ python scripts/excalibur_blog_cover_quad_prompt.py \
 
 Проверить `cover/quad-mcp-batch.json`: **jobs.length === 1**, `input_urls` не пуст.
 
+Identity gate (host_reference) до Kie:
+
+```bash
+python3 scripts/excalibur_blog_cover_identity_gate.py \
+  --article-dir memory/blog/articles/<topic_id>-<slug>
+```
+
+Без PASS — Kie не запускать (`COVER IDENTITY BLOCKER`). Платина / волосы сильно светлее рефа = пересобрать холст.
+
 Hard checks перед MCP/Kie:
 
 - batch всегда пересобран в текущем run; не использовать старый `quad-mcp-batch.json`
@@ -386,6 +395,8 @@ Visual QA **skip по умолчанию**. Cover подтверждается s
 - [ ] cover: hook + accent по design-code; dense collage по tenant rules;
   без штампа EXCALIBUR BLOG;
   без sterile host+text, без meme/reaction
+- [ ] cover identity: prompt has hair lock phrase; hair not platinum / not lighter than ref;
+  `cover-identity-gate.json` PASS
 - [ ] inline: конкретный H2, 3–6 labels, reading order/outcome, чёрные headings +
   accents + stickers/UI card layers по design-code; без людей/мемов если запрещено,
   silhouette icons; **тот же finish что cover**; **нет empty gray boxes /
@@ -402,6 +413,7 @@ Visual QA **skip по умолчанию**. Cover подтверждается s
 ## Blockers → verdict ❌
 
 - нет reference_url_hosted
+- `COVER IDENTITY BLOCKER`: в промпте нет hair lock phrase, или волосы платина / ice-blonde / сильно светлее рефа — пересобрать холст
 - image call text-only (без input_urls)
 - `KIE API BLOCKER`: нет `KIE_API_KEY`, non-retryable createTask/recordInfo fail, retryable 500 exhausted (`--max-create-retries`), pre-taskId Connection reset exhausted (один retry), image-fetch File Upload fallback exhausted/`--no-file-upload-fallback`, sensitive 422 после одного soften+recreate, polling timeout после final `recordInfo` (всё ещё non-terminal) или нет resultUrls
 - async status/result tool подтвердил failed/no result или повторный timeout уже в status/result flow
