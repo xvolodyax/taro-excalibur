@@ -5,9 +5,9 @@
   "author_id": "victoria",
   "cover_mode": "host_reference",
   "reference_image": "memory/cover/assets/victoria.png",
-  "reference_notes": "Канон имени — victoria.png (не victoria-sheet.png). В этом checkout бинарник вложения отсутствует: не генерировать лицо и не подставлять чужой портрет. Положить owner PNG в memory/cover/assets/victoria.png тем же именем. Реф — студийный high-key портрет для lock лица; белый блейзер и карты Rider-Waite на рефе не lock одежды/реквизита.",
-  "png_on_disk": false,
-  "png_required_action": "Положить owner PNG в memory/cover/assets/victoria.png тем же именем. Cover i2i не запускать, пока файла нет.",
+  "reference_notes": "Канон имени — victoria.png (не victoria-sheet.png). Owner studio PNG на диске. Реф — high-key портрет для lock лица; белый блейзер на рефе не lock одежды.",
+  "png_on_disk": true,
+  "png_required_action": "",
   "visual_lock": {
     "identity": "Виктория, таролог команды «ТАРО СЕЙЧАС»",
     "face_source": "owner reference victoria.png — identity lock only",
@@ -31,7 +31,10 @@
     "makeup": "black winged eyeliner; muted rose-mauve lipstick; professional contour; warm tan",
     "jewelry": "small sparkling stud earrings",
     "expression_rule": "new natural editorial emotion every cover; never the same stock smile",
-    "forbidden_hosts": ["Алёна", "Alyona"],
+    "forbidden_hosts": [
+      "Алёна",
+      "Alyona"
+    ],
     "forbidden_sets": [
       "dark table with candles",
       "gothic",
@@ -65,7 +68,7 @@
     "resolution": "2K"
   },
   "rebuild_rule": "Если лицо не Виктории, волосы платина/сильно светлее рефа, шов кривой, буквы кривые или кегль пляшет в одном слове — пересобрать холст 2K 2×2. Не чинить лицо, волосы и шрифт снаружи.",
-  "reference_url_hosted": "",
-  "reference_url_source": "",
-  "reference_url_updated_at": null
+  "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/victoria.png",
+  "reference_url_source": "local:memory/cover/assets/victoria.png",
+  "reference_url_updated_at": "2026-08-27"
 }

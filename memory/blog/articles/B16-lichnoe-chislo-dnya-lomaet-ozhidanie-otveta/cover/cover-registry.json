@@ -1,0 +1,50 @@
+{
+  "topic_id": "B16",
+  "slug": "lichnoe-chislo-dnya-lomaet-ozhidanie-otveta",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: суточный ритм объясняет тишину в чате",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-27T13:11:43+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: суточный ритм объясняет тишину в чате",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема трёх слоёв чисел: общий фон даты, личный день и годовой цикл",
+      "h2_anchor": "Три разных слоя чисел: почему календарь не равен твоему дню",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема расчёта персонального числа дня по дате рождения и текущей дате",
+      "h2_anchor": "Формула суток: как рассчитывается персональный день",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Схема чата: почему суточные ритмы двух людей не совпадают",
+      "h2_anchor": "Два человека в одном чате: почему не сходятся скорости",
+      "visual_type": "tool_screenshot",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
