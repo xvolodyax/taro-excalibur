@@ -1,0 +1,79 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B17",
+  "slug": "karta-dnya-esli-on-prochital-i-molchit",
+  "title": "Карта дня если он прочитал и молчит",
+  "research_date": "2026-08-27",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "block_reason": null,
+  "fresh_signal": {
+    "ok": true,
+    "this_week": true,
+    "summary": "27.08.2026: Scout-Дзен aka_RZj-i2r-ZM1A в выдаче с меткой «Вчера» (~26.08) шумит синей галочкой и вечером без ответа. Параллельно community Марка Северина 25–26.08 разбирает «в сети / прочитано ≠ вина» и первые сутки после «прочитано». Канал тенанта живой (карточки этой недели, B16 сегодня). UFA1 07.08 держит психологию «прочитано без ответа», но PASS закрывает именно недельный Дзен/community, не августовская газета одна.",
+    "urls": [
+      "https://dzen.ru/a/aka_RZj-i2r-ZM1A",
+      "https://dzen.ru/a/aovTvv_jWlrMxTKw",
+      "https://dzen.ru/a/ao0lIihD4C3glE-f",
+      "https://dzen.ru/todaytaro_bot",
+      "https://ufa1.ru/text/relations/2026/08/07/76568139/"
+    ]
+  },
+  "wordstat": {
+    "status": "skip",
+    "reason": "MCP wordstat_get_top_requests отсутствует; ключ Yandex Cloud Search API v2 не инжектнут (folder_id в tenant есть, секрета в VM нет). Impressions не выдумывались. Смежные фразы сверены только SERP/live fetch."
+  },
+  "scout_signal_urls_checked": [
+    {
+      "url": "https://ufa1.ru/text/relations/2026/08/07/76568139/",
+      "ok": true,
+      "accessed_at": "2026-08-27",
+      "note": "07.08.2026 Халфина: прочитано без ответа, неопределённость, факт≠интерпретация"
+    },
+    {
+      "url": "https://dzen.ru/a/aka_RZj-i2r-ZM1A",
+      "ok": true,
+      "accessed_at": "2026-08-27",
+      "note": "WebFetch сначала отдал заглушку Дзена; текст и метка «Вчера» подтверждены поисковым снимком + повторным дампом. Сигнал недели, тон вакуума — не рецепт."
+    },
+    {
+      "url": "https://dzen.ru/todaytaro_bot",
+      "ok": true,
+      "accessed_at": "2026-08-27",
+      "note": "Индекс/карточки; тела не как образец слога. Anti-dup LIVE evening + «он не пишет» / «карты знают почему молчит»"
+    },
+    {
+      "url": "https://www.таросейчас.рф/blog/",
+      "ok": true,
+      "accessed_at": "2026-08-27",
+      "note": "Только индекс заголовков + CTA 3 расклада / аудио в приложении"
+    }
+  ],
+  "overlap": {
+    "source": "shared/published-titles.md (article_dir published-titles-only.md table was empty at research start)",
+    "not_clone_of": [
+      "B15",
+      "B16",
+      "karta-dnya-napishet-li-on-segodnya-vecherom",
+      "on-smotrit-moi-istorii-i-molchit",
+      "chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom",
+      "karta-dnya-taro-znachenie-i-kak-traktovat-kartu-na-den",
+      "pauza-ili-konec",
+      "stoit-li-zvonit-emu-segodnya-vecherom"
+    ]
+  },
+  "cta": {
+    "slot": "20:00",
+    "primary": "bot",
+    "bot": "3 бесплатных расклада MAX",
+    "app_separate": "Суть – Тень – Вектор + аудиоразбор VK/MAX app",
+    "forbidden_phrase": "личный аудиоразбор",
+    "telegram": "site-only"
+  },
+  "artifacts": {
+    "research_notes": "research-notes.md",
+    "report": "research-agent-report.json"
+  },
+  "incident_report": "none"
+}
