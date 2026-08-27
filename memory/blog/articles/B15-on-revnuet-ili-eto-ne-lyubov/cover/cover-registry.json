@@ -1,0 +1,50 @@
+{
+  "topic_id": "B15",
+  "slug": "on-revnuet-ili-eto-ne-lyubov",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: скрытая ревность за маской безразличия",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-27T13:07:42+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: скрытая ревность за маской безразличия",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: чем маска безразличия отличается от настоящего равнодушия",
+      "h2_anchor": "Два лица одного холода: почему маска безразличия обманчива",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема: ревность как страх потери, а не доказательство любви",
+      "h2_anchor": "Ревность как страх потери, а не мерило любви",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист: где ситуативная тревога, а где давление и контроль",
+      "h2_anchor": "Где проходит грань: здоровая уязвимость против давления",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
