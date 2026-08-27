@@ -1,0 +1,58 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{SITE_BASE}}/#organization",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/"
+    },
+    {
+      "@type": "Person",
+      "@id": "{{SITE_BASE}}/#author-victoria",
+      "name": "Виктория",
+      "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+      "description": "Таролог команды «ТАРО СЕЙЧАС». Пишет живые сцены про отношения — без воды и без обещания прочитать мысли.",
+      "sameAs": [
+        "{{SITE_BASE}}/",
+        "https://dzen.ru/todaytaro_bot"
+      ],
+      "worksFor": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "{{SITE_BASE}}/lichnoe-chislo-dnya-lomaet-ozhidanie-otveta/#article",
+      "url": "{{SITE_BASE}}/lichnoe-chislo-dnya-lomaet-ozhidanie-otveta/",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{SITE_BASE}}/lichnoe-chislo-dnya-lomaet-ozhidanie-otveta/"
+      },
+      "headline": "Личное число дня ломает ожидание ответа",
+      "description": "Как рассчитать личный ритм по дате рождения и почему несовпадение суточных цифр объясняет затянувшуюся тишину в переписке.",
+      "datePublished": "2026-08-27",
+      "dateModified": "2026-08-27",
+      "inLanguage": "ru-RU",
+      "author": {
+        "@id": "{{SITE_BASE}}/#author-victoria"
+      },
+      "publisher": {
+        "@id": "{{SITE_BASE}}/#organization"
+      },
+      "isPartOf": {
+        "@id": "{{SITE_BASE}}/#website"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{SITE_BASE}}/#website",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/",
+      "inLanguage": "ru-RU",
+      "publisher": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    }
+  ]
+}
