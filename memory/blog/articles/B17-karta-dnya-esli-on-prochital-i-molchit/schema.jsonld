@@ -1,0 +1,58 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{SITE_BASE}}/#organization",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/"
+    },
+    {
+      "@type": "Person",
+      "@id": "{{SITE_BASE}}/#author-victoria",
+      "name": "Виктория",
+      "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+      "description": "Таролог команды «ТАРО СЕЙЧАС». Пишет живые сцены про отношения — без воды и без обещания прочитать мысли.",
+      "sameAs": [
+        "{{SITE_BASE}}/",
+        "https://dzen.ru/todaytaro_bot"
+      ],
+      "worksFor": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "{{SITE_BASE}}/karta-dnya-esli-on-prochital-i-molchit/#article",
+      "url": "{{SITE_BASE}}/karta-dnya-esli-on-prochital-i-molchit/",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{SITE_BASE}}/karta-dnya-esli-on-prochital-i-molchit/"
+      },
+      "headline": "Карта дня сверяет твои сутки, если он прочитал и молчит",
+      "description": "Как простая вечерняя сверка с картой дня помогает отделить факты от тревожных догадок и вернуть себе спокойствие, пока в переписке повисла тишина.",
+      "datePublished": "2026-08-27",
+      "dateModified": "2026-08-27",
+      "inLanguage": "ru-RU",
+      "author": {
+        "@id": "{{SITE_BASE}}/#author-victoria"
+      },
+      "publisher": {
+        "@id": "{{SITE_BASE}}/#organization"
+      },
+      "isPartOf": {
+        "@id": "{{SITE_BASE}}/#website"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{SITE_BASE}}/#website",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/",
+      "inLanguage": "ru-RU",
+      "publisher": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    }
+  ]
+}
