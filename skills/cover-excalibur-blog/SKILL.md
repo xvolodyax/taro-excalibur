@@ -216,7 +216,7 @@ Manifest сам подтянет `cover-text.json` (hook/highlight/sticky/labels
 Cover agent дописывает только `scene_hint` (композиция) и `alt`:
 
 - `cover_hook` — **уже готов из cover-text.json**; не переписывай текст, только проверь что подтянулся
-- `slots.*.scene_hint` и `alt` — **только ты** (композиция, не текст надписей). Cover ≈**80–140** (`Host … LARGE left half` + `tiny` topic prop); inline ≈**100–220**. Outfit lock = белое худи (`blog-hero.json`) only.
+- `slots.*.scene_hint` и `alt` — **только ты** (композиция, не текст надписей). Cover ≈**80–140** (`Host … LARGE left half` + `tiny` topic prop); inline ≈**100–220**. Outfit lock = `blog-hero.json` `outfit_rule` (не дефолтное белое худи).
 - `slots.cover.meme_caption_ru` — `""` (deprecated)
 - каждый `inline_1..3` имеет существующий `h2_anchor`; missing H2/anchor/injection = BLOCK
 

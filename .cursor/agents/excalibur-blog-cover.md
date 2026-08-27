@@ -84,22 +84,26 @@ Cover-агент генерирует **один** quad-холст 2×2 (Kie GPT
    при ошибке Kie API (500/400/422) или одном pre-taskId Connection reset
    (тот же batch; INC-20260725-1631). **Запрещено** 4 отдельных вызова.
 2. Image API/MCP **обязан** иметь `input_urls: [reference_url_hosted]` (Image to Image).
-3. **Cover (top-left):** сильная редакционная композиция с обязательным
-   reference host: то же лицо, белое плотное худи heavyweight fabric,
-   естественная уверенная эмоция, без наушников/headset/earbuds. Один hook,
-   один предмет или метафора, много воздуха. Cover `scene_hint` ≈**80–140**
-   chars; start from `memory/cover/blog-hero.json` prompt_fragment / cover_mode — **не** MUST/face essays
+3. **Cover (top-left):** сильная редакционная композиция с героем из
+   `memory/cover/blog-hero.json`. `host_reference` = лицо рефа (ТАРО: Виктория),
+   не кот и не без лица, не белое худи без Вики. Эмоция и одежда — из
+   `outfit_rule` (каждый раз новые). Один hook, один предмет или метафора,
+   много воздуха. Cover `scene_hint` ≈**80–140** chars; start from
+   `prompt_fragment` / cover_mode — **не** MUST/face essays
    (INC-20260724-0837: long essay → host missing). Topic props = **`tiny`/`small`**
    right/background — **не** equal-weight prop lists рядом с лицом
    (INC-20260724-1239: alarm+brief card → host missing).
-4. **White background lock:** cover и все inline на чистом `#FFFFFF`; без бежевого, серого, gradient или grunge full-panel background.
-5. **Cover typography:** bold condensed Cyrillic **чёрным** `#141821`;
-   accent colors — из `memory/cover/cover-design-code.json` color_palette. Не выдумывай чужой бренд-розовый.
-6. **Collage language:** paper/tape/banners/dashed — по design-code тенанта
-   arrows/topic stickers + **1–2 funny cat sticker-cutouts** (толстый белый
-   контур; mood `memory/cover/assets/style-refs/`). Запрещены Drake,
-   facepalm, human reaction cutouts и joke speech bubbles.
-   `meme_caption_ru` всегда пуст. Sterile host+text без стикеров = fail.
+4. **White background lock:** cover и все inline на чистом `#FFFFFF`; без серого, gradient или grunge full-panel background.
+5. **Cover typography:** из `memory/cover/cover-design-code.json` → `typography`.
+   Не писать «bold condensed Cyrillic» как дефолт. Хук = editorial display
+   (didone / refined grotesque), буквы часть кадра. Highlight — то же лицо,
+   цвет `accent_primary`. Sticky/inline — humanist sans. Запрет: Arial, Roboto,
+   Inter, Impact, Times, squish-bold, all-caps плашка. Кривые буквы / разный
+   кегль в одном слове = пересобрать холст.
+6. **Язык кадра:** paper/tape/banners — только если design-code тенанта так
+   сказал. Не подставлять pink-cat коллаж и котов, если `allows_animal_stickers`
+   не true. Запрещены Drake, facepalm, human reaction cutouts.
+   `meme_caption_ru` всегда пуст. Credit-подпись — кодом, не моделью.
 7. **Inline 1–3:** обязательны ровно три inline — вторая, третья и четвёртая
    картинки. Только информация конкретного H2: comparison table, workflow,
    checklist, схема интерфейса или fact card. В каждой 3–6 labels, reading

@@ -23,16 +23,20 @@
       "dark table with candles",
       "gothic",
       "pink-cat collage",
-      "default white hoodie",
+      "default white hoodie without Victoria",
+      "cat as cover hero",
+      "faceless cover",
       "pipeline EXCALIBUR stamp"
     ]
   },
-  "outfit_rule": "Белый блейзер на рефе — только реф лица, не lock одежды. Одежда и эмоция каждый раз новые: business-chic, не худи пайплайна, не gothic. Реквизит рефа (две карты Rider-Waite) не обязателен на каждой обложке.",
-  "prompt_fragment": "Victoria host LARGE left; new outfit+emotion; tiny topic prop right; #FFF",
+  "outfit_rule": "Белый блейзер на рефе — только реф лица, не lock одежды. Одежда и эмоция каждый раз новые: business-chic / светлая студия. Не белое худи пайплайна без Вики. Не кот. Реквизит рефа (две карты Rider-Waite) не обязателен на каждой обложке.",
+  "prompt_fragment": "Victoria host LARGE left; new outfit+emotion; tiny topic prop right; #FFF; editorial display type in-frame",
   "cover_hook_rules": [
     "cover_hook — 2–6 слов на кадре, не заголовок статьи; Cover-text invents from reader_pain",
+    "hook type = editorial display (didone or refined grotesque), letters part of the frame, not a sticker",
+    "highlight = one word from hook, same typeface, medallion gold — not pink, not bold condensed",
     "meme_caption_ru always empty",
-    "один хук + один мелкий предмет/метафора; host LARGE left half"
+    "один хук + один мелкий предмет/метафора; host LARGE left half; never cat; never faceless"
   ],
   "cover_credit_html": {
     "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
@@ -47,7 +51,7 @@
     "mode": "i2i",
     "resolution": "2K"
   },
-  "rebuild_rule": "Если лицо не Виктории или шов кривой — пересобрать холст 2K 2×2, не чинить лицо снаружи.",
+  "rebuild_rule": "Если лицо не Виктории, шов кривой, буквы кривые или кегль пляшет в одном слове — пересобрать холст 2K 2×2. Не чинить лицо и шрифт снаружи.",
   "reference_url_hosted": "",
   "reference_url_source": "",
   "reference_url_updated_at": null

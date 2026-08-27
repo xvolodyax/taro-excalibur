@@ -1,7 +1,8 @@
 {
   "style_id": "victoria-studio",
   "status": "ok",
-  "label_ru": "Виктория / светлая студия ТАРО СЕЙЧАС",
+  "label_ru": "Виктория / светлая студия ТАРО СЕЙЧАС / editorial type",
+  "updated": "2026-08-27",
   "cover_mode": "host_reference",
   "cover_hero_mode": "host",
   "skip_human_host": false,
@@ -20,13 +21,18 @@
     "accent_primary": "#C4A574",
     "accent_secondary": "#D4B5A0"
   },
-  "global_prompt_prefix": "Clean high-key studio editorial, WHITE #FFFFFF, BLACK #141821 Cyrillic ink, muted gold #C4A574 one accent only. Business-chic. Cover: Victoria reference face LARGE left, new outfit+emotion each time, one 2–6 word hook, one tiny topic prop. Thin white gutters at x=1024 y=576. No gothic, no candles, no pink-cat, no hoodie default, no EXCALIBUR stamp.",
-  "inline_prompt_suffix": "Inline all: white #FFFFFF, black condensed Cyrillic, muted gold accent; 3–6 readable labels; NO people/faces/host/Alyona; no cover-hook duplicate. Neg: candles, gothic, pink-cat, #FF1493, beige, unfinished gray boxes, watermark, 9:16.",
+  "typography": {
+    "hook": "editorial display Cyrillic (didone or refined geometric grotesque, normal tracking); in-frame, not sticker",
+    "secondary": "lighter designer humanist sans",
+    "forbidden": "Arial Roboto Inter Impact Times bold condensed squish-bold all-caps plaque"
+  },
+  "global_prompt_prefix": "High-key light studio. WHITE #FFFFFF, ink #141821, medallion gold #C4A574, dusty summer tones. Cover hero: Victoria reference face LARGE left, new outfit+emotion, NEVER a cat, NEVER faceless, NEVER default white hoodie. Hook type: editorial display Cyrillic (high-contrast modern serif/didone OR refined geometric grotesque, normal tracking); letters are part of the frame, not a sticker. One punch word same face, gold. Sticky/labels: light humanist sans. Ban Arial/Roboto/Inter/Impact/Times/bold condensed/squish-bold/all-caps plaque. Thin white gutters at x=1024 y=576.",
+  "inline_prompt_suffix": "Inline all: white #FFFFFF, lighter designer humanist sans Cyrillic labels (3–6), medallion gold accent only; NO people/faces/host/Alyona/cat; no cover-hook duplicate; no bold condensed; no all-caps sticker plaque. Neg: candles, gothic, pink-cat, #FF1493, Arial, Roboto, Inter, Impact, beige full-panel, unfinished gray boxes, watermark, 9:16.",
   "cover_credit_html": {
     "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
     "placement": "above_image",
     "render_in_png": false
   },
-  "rebuild_rule": "Wrong face or crooked seam → rebuild the 2K 2×2 canvas. Do not fix the face outside the canvas.",
-  "comment": "Tenant preset for Cover. Do not fall back to pink-cat collage."
+  "rebuild_rule": "Wrong face, crooked seam, crooked letters, or mixed sizes in one word → rebuild the 2K 2×2 canvas. Do not fix face or type outside the canvas.",
+  "comment": "Tenant preset. Do not fall back to pink-cat collage or bold condensed Cyrillic."
 }
