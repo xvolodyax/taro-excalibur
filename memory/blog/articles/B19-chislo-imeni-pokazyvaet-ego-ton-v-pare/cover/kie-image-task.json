@@ -1,16 +1,16 @@
 {
-  "task_id": "1afa8e1940924a9d8ce3d8f0acf9658d",
+  "task_id": "0945d70b3e30de589f91aced7c0cd9ce",
   "source": "kie-api",
   "model": "gpt-image-2-image-to-image",
   "state": "success",
   "create_attempts": 1,
   "result_path": "memory/blog/articles/B19-chislo-imeni-pokazyvaet-ego-ton-v-pare/cover/quad-mcp-result.json",
-  "updated_at_epoch": 1787914591,
+  "updated_at_epoch": 1787915636,
   "file_upload_fallback": true,
   "file_upload": {
     "source": "prefer_local_reference",
     "upload_path": "excalibur-blog/hero",
-    "local_name": "victoria-sheet.png",
+    "local_name": "victoria-sheet-front.png",
     "download_host": "tempfile.redpandaai.co",
     "cover_hero_mode": "host"
   }

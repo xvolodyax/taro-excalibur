@@ -35,6 +35,37 @@ category: script
 ### Fixer resolution
 - pending
 
+### Follow-up 2026-08-28 B19 rebuild
+- Owner miss-face rebuild used only `victoria-sheet-front.png` (312×227). File Upload `local_name` = that crop. 12-up was not uploaded.
+- Identity gate this run = `HALL_FACE_CHECK` (not PASS). Hall and Vladimir check the face.
+
+## INC-20260828-1110-cover-facelock-dup
+status: open
+run_date: 2026-08-28
+role: excalibur-blog-cover
+topic_id: B19
+article_dir: memory/blog/articles/B19-chislo-imeni-pokazyvaet-ego-ton-v-pare
+severity: medium
+category: script
+
+### What went wrong
+- After FACE LOCK opener was added as prompt line 1, `reference_line` still pasted the same opener. `--write-batch` hit 3682 / 3500 while cover/inline `scene_hint` were already in band.
+
+### How the agent recovered this run
+- Removed the duplicate opener from `reference_line`. Prompt landed at 3415. Did not empty scene_hint. One Kie after that.
+
+### Durable fix needed before next run
+- FACE LOCK opener once, first line only. Do not concatenate it into REFERENCE FACE.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260827-1305-cover-prompt-budget-victoria
 status: open
 run_date: 2026-08-27
