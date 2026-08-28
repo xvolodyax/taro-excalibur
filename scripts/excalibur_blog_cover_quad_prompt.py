@@ -152,11 +152,7 @@ def inline_panel_prompt(slot: dict, types_catalog: dict) -> str:
     labels = [str(x).strip() for x in (slot.get("labels") or []) if str(x).strip()]
     if labels:
         exact = ", ".join(f"«{x}»" for x in labels)
-        base += (
-            f" TEXT LOCK: render ONLY these exact Russian strings on this panel: "
-            f"{exact}. Every letter in Cyrillic, exactly as written. "
-            "No other words, no English, no invented headlines."
-        )
+        base += f" TEXT LOCK: {exact} only, exact Cyrillic."
     return base
 
 
@@ -360,13 +356,26 @@ def build_prompt(
     cat_ok = style_allows_cat_stickers(style)
     cat_hero = style_is_situational_cat_hero(style)
 
+    host_mode = str(hero.get("cover_mode") or style.get("cover_mode") or "") == "host_reference"
+    palette = design_code.get("color_palette") if isinstance(design_code.get("color_palette"), dict) else {}
+    accent_hex = str(
+        palette.get("accent_gold") or palette.get("accent_primary") or "#C4A574"
+    ).strip()
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
-    highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
-        f'hook text must match exactly — do not substitute «время»/traffic markers'
-        if highlight
-        else "paint at most ONE punch word in hot-pink #FF1493"
-    )
+    if host_mode:
+        highlight_rule = (
+            f'paint ONLY the highlight word "{highlight}" in medallion gold {accent_hex}; '
+            f'same editorial face as the hook'
+            if highlight
+            else f"paint at most ONE punch word in medallion gold {accent_hex}"
+        )
+    else:
+        highlight_rule = (
+            f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
+            f'hook text must match exactly — do not substitute «время»/traffic markers'
+            if highlight
+            else "paint at most ONE punch word in hot-pink #FF1493"
+        )
     cover_scene = sanitize_cover_scene_hint(
         str(cover.get("scene_hint") or ""), highlight
     )
@@ -382,7 +391,7 @@ def build_prompt(
         style.get("global_prompt_prefix")
         or design_code.get("cover_panel_prompt_block")
         or "",
-        520,
+        380 if host_mode else 520,
     )
     if not style_prefix:
         style_prefix = (
@@ -462,6 +471,56 @@ def build_prompt(
             "Neg: sterile white, all-pink headline, keyword spam, watermark, logo, 9:16, "
             "unreadable text, extra faces."
         )
+    if host_mode and not cat_hero:
+        # INC-20260827-1305: tenant prefix + eye/hair locks blow 3500; reclaim shared extras.
+        raw_neg = str(
+            style.get("global_negative")
+            or design_code.get("global_negative")
+            or (
+                "memes/reaction/animals/joke captions/silhouettes/"
+                "pipeline stamps/EXCALIBUR/platinum hair/brown eyes/grey eyes."
+            )
+        ).strip()
+        if not re.match(r"(?i)(?:ban|neg|negative)\b", raw_neg):
+            raw_neg = f"Ban: {raw_neg}"
+        ban_line = compact(raw_neg, 240)
+        cover_scene_tail = (
+            "host LARGE left; tiny topic prop right; editorial type in-frame; #FFF."
+        )
+        hair_lock = identity_hair_prompt(hero)
+        eye_lock = identity_eye_prompt(hero)
+        reference_line = (
+            f"REFERENCE FACE ONLY {CANON_FACE_NAME} top-left: "
+            f"{eye_lock}; {hair_lock}; new clothes; no headphones."
+        )
+        inline_suffix = compact(
+            style.get("inline_prompt_suffix")
+            or design_code.get("inline_information_block")
+            or inline_suffix,
+            280,
+        )
+        text_language_lock = (
+            "TEXT LANGUAGE LOCK: visible text is Russian Cyrillic only. "
+            "Render TEXT LOCK strings exactly. No English headlines."
+        )
+        cover_headline = (
+            f"Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY «{cover_hook_text}» — "
+            f"editorial display Cyrillic in-frame, ink #141821, {highlight_rule}; "
+            f"no English headline.{sticky_lock} no keyword list; "
+            f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}"
+        )
+    else:
+        text_language_lock = (
+            "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. "
+            "Renderable strings are given per panel in TEXT LOCK lines — render them exactly. "
+            "No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words."
+        )
+        cover_headline = (
+            f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
+            f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
+            "no keyword list card; "
+            f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}"
+        )
     lines = [
         # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
         # badge on every panel (INC-20260723-1223 / user correction).
@@ -469,14 +528,11 @@ def build_prompt(
         "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
         "",
         ban_line,
-        "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
+        text_language_lock,
         "",
         reference_line,
         "",
-        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
-        f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
-        "no keyword list card; "
-        f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}",
+        cover_headline,
         "",
         f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
         f"Bottom-left inline: {inline_panel_prompt(i2, types_catalog)}",

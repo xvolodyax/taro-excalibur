@@ -1,0 +1,64 @@
+{
+  "topic_id": "B19",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Имя меняет тон мужчины",
+  "cover_hook_highlight": "тон",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Как число имени задаёт привычный тон мужчины в паре",
+      "scene_hint": "Host Victoria LARGE left half from victoria-sheet.png; tiny name-number table right; new outfit; #FFF",
+      "meme_caption_ru": "",
+      "sticky": ""
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Как буквы имени превращаются в число и почему это не дата рождения",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "White workflow letters→table 1–9→digit. Labels: «буквы вместо даты», «расчёт по таблице», «визитка в общении», «стиль контакта». Outcome: имя ≠ дата. NO people/faces/emoji/silhouettes.",
+      "alt": "Как буквы имени складываются в число — это не дата рождения",
+      "labels": [
+        "буквы вместо даты",
+        "расчёт по таблице",
+        "визитка в общении",
+        "стиль контакта"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Паспорт против домашнего имени: почему Александр и Саша звучат по-разному",
+      "visual_type": "tool_screenshot",
+      "scene_hint": "Two name cards, схема: паспорт vs дом. Labels: «паспорт против дома», «Александр и Саша», «смена привычной роли», «деловая дистанция». Outcome: разные числа. NO people/faces/emoji/silhouettes.",
+      "alt": "Почему паспортное Александр и домашнее Саша дают разный тон",
+      "labels": [
+        "паспорт против дома",
+        "Александр и Саша",
+        "смена привычной роли",
+        "деловая дистанция"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Роли и тона чисел от 1 до 9 в пространстве пары",
+      "visual_type": "infographic_card",
+      "scene_hint": "Nine tone cards 1–9, each role + изнанка. Labels: «девять типов ролей», «лидер и дипломат», «дистанция и забота», «изнанка чисел». Read 1→9. NO people/faces/emoji/silhouettes.",
+      "alt": "Девять ролей и тонов чисел имени в пространстве пары",
+      "labels": [
+        "девять типов ролей",
+        "лидер и дипломат",
+        "дистанция и забота",
+        "изнанка чисел"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

@@ -1,11 +1,8 @@
 {
-  "status": "BLOCK",
+  "status": "PASS",
   "cover_mode": "host_reference",
   "required_hair_phrase": "hair color copied exactly from reference photo, same root depth, do not lighten, no platinum",
-  "errors": [
-    "canon face missing: memory/cover/assets/victoria-sheet.png — Cover i2i blocked until owner sheet is on disk",
-    "article cover prompt/batch missing — run quad prompt first"
-  ],
-  "blocker": "COVER IDENTITY BLOCKER",
+  "errors": [],
+  "blocker": null,
   "rebuild": "Wrong face vs victoria-sheet.png, wrong eyes (not green+hazel), or platinum/lighter hair → rebuild the whole 2K 2×2 canvas. Do not publish. Hall publishes."
 }

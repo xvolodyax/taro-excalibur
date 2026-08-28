@@ -31,6 +31,10 @@ category: script
 ### Fixer resolution
 - pending
 
+### Follow-up 2026-08-28 B19
+- Eye lock phrase was added after the B16 reclaim; `--write-batch` failed again at 3999/3500 with short scene_hint.
+- Reclaimed host_reference extras again (shorter TEXT LOCK / language lock / prefix compact 380; gold highlight, not pink). Exact hair + eye phrases kept.
+
 ## INC-20260827-1750-cover-site-base-env
 status: open
 run_date: 2026-08-27
