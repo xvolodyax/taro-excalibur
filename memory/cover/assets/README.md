@@ -1,8 +1,8 @@
 # Cover assets
 
-- `victoria-sheet.png` — 12-up source sheet. Never upload to Kie.
-- `victoria-sheet-front.png` — top-left frontal close-up. **Only** i2i face.
+Only identity file:
 
-Do not add `victoria.png`, `alena.png`, `character-sheet-2k.png`.
+- `viktoriaref.png` — Vladimir official frontal. Sole Kie i2i input.
 
-Hall and Vladimir check the generated face. Pipeline does not stamp PASS.
+Deleted and forbidden: `victoria-sheet.png`, `victoria-sheet-front.png`,
+`victoria-face.png`, `victoria.png`, `alena.png`.

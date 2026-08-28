@@ -4,22 +4,21 @@
   "name_ru": "Виктория",
   "author_id": "victoria",
   "cover_mode": "host_reference",
-  "reference_image": "memory/cover/assets/victoria-sheet-front.png",
-  "source_sheet": "memory/cover/assets/victoria-sheet.png",
+  "reference_image": "memory/cover/assets/viktoriaref.png",
   "sole_face_reference": true,
   "never_upload_source_sheet": true,
-  "reference_notes": "i2i ONLY victoria-sheet-front.png (top-left frontal crop). The 12-up victoria-sheet.png is source-only — never upload it to Kie. Do not i2i from victoria.png / alena.png / character-sheet-2k.",
+  "reference_notes": "i2i ONLY viktoriaref.png (Vladimir official frontal). Delete and never upload victoria-sheet.png, victoria-sheet-front.png, victoria-face.png, victoria.png, alena.png.",
   "png_on_disk": true,
-  "png_required_action": "Crop top-left frontal from the 12-up into victoria-sheet-front.png. Cover i2i that crop only.",
+  "png_required_action": "memory/cover/assets/viktoriaref.png must exist (~1.5MB). Cover stops if missing.",
   "visual_lock": {
-    "identity": "Виктория, таролог команды «ТАРО СЕЙЧАС» — та же женщина, что на кропе victoria-sheet-front.png и в Instagram-каруселях",
-    "face_source": "ONLY memory/cover/assets/victoria-sheet-front.png — i2i lock. Never upload the 12-up sheet.",
+    "identity": "Виктория — та же женщина, что на viktoriaref.png",
+    "face_source": "ONLY memory/cover/assets/viktoriaref.png — i2i lock.",
     "studio": "high-key studio portrait, clean white #FFFFFF, no beige/cream",
     "hair": "straight shoulder-length blonde balayage with middle part; dark ashy-brown / darker roots; warm honey-blonde mid-lengths and ends; not platinum, not ice-blonde",
     "hair_color_lock": {
       "from_reference_only": true,
       "prompt": "hair color copied exactly from reference photo, same root depth, do not lighten, no platinum",
-      "look_ru": "светлый блонд с тёплым honey/пепельным мясом, корни темнее (тёмный блонд / пепельно-русый)",
+      "look_ru": "тёплый honey-wheat блонд, корни темнее",
       "forbidden": [
         "platinum",
         "ice-blonde",
@@ -29,35 +28,36 @@
       ],
       "blocker": "Platinum / strongly lighter than the reference = rebuild the canvas."
     },
-    "eyes": "almond-shaped; green with a slight brown/hazel tint near the pupil — match Instagram carousels and victoria-sheet.png",
+    "eyes": "green with a slight hazel / light-brown tint; зелёные с лёгким карим",
     "eye_color_lock": {
       "from_reference_only": true,
-      "prompt": "eyes green with a slight brown/hazel tint, same as reference sheet and Instagram carousels, not brown, not grey, not a different eye color",
-      "look_ru": "зелёные с лёгким карим/hazel у зрачка, как на карусели",
+      "prompt": "green with a slight hazel / light-brown tint",
+      "look_ru": "зелёные с лёгким карим",
       "forbidden": [
         "brown eyes",
         "grey eyes",
         "gray eyes",
         "blue eyes",
-        "different eye color than the sheet"
+        "brown-only"
       ],
-      "blocker": "Eyes brown/grey/wrong color vs sheet = rebuild the whole 2x2 canvas."
+      "blocker": "Eyes brown-only/grey/blue = FAIL, rebuild the whole 2x2 canvas."
     },
     "brows": "dark blonde / light brown, groomed, natural arch",
-    "makeup": "muted dusty-rose / mauve lipstick; professional contour; warm tan; no heavy winged liner unless it matches the sheet",
-    "jewelry": "thin gold chain with circular gold medallion pendant (from sheet). Stud earrings optional.",
+    "makeup": "muted dusty-rose / mauve lipstick; professional contour; warm tan",
     "expression_rule": "new natural editorial emotion every cover; never the same stock smile",
     "forbidden_hosts": [
       "Алёна",
       "Alyona"
     ],
     "forbidden_face_files": [
+      "victoria-sheet.png",
+      "victoria-sheet-front.png",
+      "victoria-face.png",
       "victoria.png",
       "victoria_ref.jpg",
       "victoria_ref.jpeg",
       "alena.png",
-      "character-sheet-2k.png",
-      "виктория.png"
+      "character-sheet-2k.png"
     ],
     "forbidden_sets": [
       "dark table with candles",
@@ -67,12 +67,11 @@
       "cat as cover hero",
       "faceless cover",
       "pipeline EXCALIBUR stamp",
-      "i2i from the 12-up victoria-sheet.png",
-      "i2i from any face file except victoria-sheet-front.png"
+      "i2i from any file except viktoriaref.png"
     ]
   },
-  "outfit_rule": "Камисоль + джинсы на sheet — только реф лица, не lock одежды. Одежда и поза каждый раз новые: business-chic / светлая студия. Не белое худи пайплайна. Не кот.",
-  "prompt_fragment": "FACE LOCK: same woman as this cropped photo victoria-sheet-front.png, oval-to-heart, high cheekbones, green eyes with a slight hazel/light-brown mix, warm honey-wheat blonde with darker roots not platinum, new clothes and new pose (not the sheet white cami + jeans). Host LARGE left; tiny topic prop right; #FFF",
+  "outfit_rule": "Одежда и поза каждый раз новые. Не белая камисоль с рефа. Не белое худи. Не кот.",
+  "prompt_fragment": "same woman as viktoriaref.png, eyes green with a slight hazel / light-brown tint (зелёные с лёгким карим), warm honey-wheat blonde darker roots not platinum, new clothes not the white cami. Host LARGE left; tiny topic prop right; #FFF",
   "cover_hook_rules": [
     "cover_hook — 2–6 слов на кадре, не заголовок статьи; Cover-text invents from reader_pain",
     "hook type = editorial display (didone or refined grotesque), letters part of the frame, not a sticker",
@@ -93,8 +92,8 @@
     "mode": "i2i",
     "resolution": "2K"
   },
-  "rebuild_rule": "Если лицо не Виктории с кропа victoria-sheet-front.png, глаза не зелёные с лёгким hazel, волосы платина/сильно светлее рефа — пересобрать весь холст 2K 2×2. Не чинить лицо снаружи. Hall и Владимир проверяют лицо. Пайплайн не публикует.",
-  "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/victoria-sheet-front.png",
-  "reference_url_source": "local:memory/cover/assets/victoria-sheet-front.png",
+  "rebuild_rule": "Лицо не с viktoriaref.png, глаза brown-only/grey/blue — пересобрать весь холст. Hall публикует.",
+  "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/viktoriaref.png",
+  "reference_url_source": "local:memory/cover/assets/viktoriaref.png",
   "reference_url_updated_at": "2026-08-28"
 }

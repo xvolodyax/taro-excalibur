@@ -97,16 +97,15 @@ REQUIRED_HAIR_PHRASE = (
     "do not lighten, no platinum"
 )
 REQUIRED_EYE_PHRASE = (
-    "eyes green with a slight brown/hazel tint, same as reference sheet "
-    "and Instagram carousels, not brown, not grey, not a different eye color"
+    "eyes green with a slight hazel / light-brown tint "
+    "(зелёные с лёгким карим), not brown, not grey, not blue"
 )
-CANON_FACE_NAME = "victoria-sheet-front.png"
+CANON_FACE_NAME = "viktoriaref.png"
 SOURCE_SHEET_NAME = "victoria-sheet.png"
 FACE_LOCK_OPENER = (
-    "FACE LOCK: same woman as this cropped photo victoria-sheet-front.png, "
-    "oval-to-heart, high cheekbones, green eyes with a slight hazel/light-brown mix, "
-    "warm honey-wheat blonde with darker roots not platinum, "
-    "new clothes and new pose (not the sheet white cami + jeans)."
+    "same woman as viktoriaref.png, eyes green with a slight hazel / light-brown tint "
+    "(зелёные с лёгким карим), warm honey-wheat blonde darker roots not platinum, "
+    "new clothes not the white cami."
 )
 
 
@@ -499,7 +498,7 @@ def build_prompt(
         # FACE LOCK opener is already line 1 — do not paste it again here
         # (B19 / INC-20260828-1110: opener+reference dup → 3682 > 3500).
         reference_line = (
-            f"REFERENCE FACE ONLY {CANON_FACE_NAME} (frontal crop, never {SOURCE_SHEET_NAME}): "
+            f"REFERENCE FACE ONLY {CANON_FACE_NAME} (never crop, never any other face file): "
             f"{eye_lock}; {hair_lock}; new clothes; no headphones."
         )
         inline_suffix = compact(

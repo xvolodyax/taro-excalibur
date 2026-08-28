@@ -22,32 +22,32 @@ class CoverIdentityTest(unittest.TestCase):
         self.assertIn("honey", hair.lower())
         self.assertIn("root", hair.lower())
 
-    def test_sheet_png_on_disk(self) -> None:
-        path = ROOT / "memory/cover/assets/victoria-sheet.png"
+    def test_canon_face_png_on_disk(self) -> None:
+        path = ROOT / "memory/cover/assets/viktoriaref.png"
         self.assertTrue(path.is_file(), path)
-        self.assertGreater(path.stat().st_size, 100_000)
+        self.assertGreater(path.stat().st_size, 1_000_000)
         self.assertTrue(path.read_bytes()[:8].startswith(b"\x89PNG\r\n\x1a\n"))
 
-    def test_front_crop_on_disk(self) -> None:
-        path = ROOT / "memory/cover/assets/victoria-sheet-front.png"
-        self.assertTrue(path.is_file(), path)
-        self.assertTrue(path.read_bytes()[:8].startswith(b"\x89PNG\r\n\x1a\n"))
-        from PIL import Image
+    def test_old_face_files_deleted(self) -> None:
+        assets = ROOT / "memory/cover/assets"
+        for name in (
+            "victoria-sheet.png",
+            "victoria-sheet-front.png",
+            "victoria-face.png",
+        ):
+            self.assertFalse((assets / name).exists(), name)
 
-        im = Image.open(path)
-        self.assertLess(im.size[0], 400)
-        self.assertLess(im.size[1], 300)
-
-    def test_canon_face_is_victoria_sheet_only(self) -> None:
+    def test_canon_face_is_viktoriaref_only(self) -> None:
         hero = json.loads((ROOT / "memory/cover/blog-hero.json").read_text(encoding="utf-8"))
-        self.assertEqual(hero.get("reference_image"), "memory/cover/assets/victoria-sheet-front.png")
-        self.assertEqual(hero.get("source_sheet"), "memory/cover/assets/victoria-sheet.png")
-        self.assertTrue(hero.get("never_upload_source_sheet"))
+        self.assertEqual(hero.get("reference_image"), "memory/cover/assets/viktoriaref.png")
+        self.assertFalse(hero.get("source_sheet"))
         self.assertTrue(hero.get("sole_face_reference"))
         eye = ((hero.get("visual_lock") or {}).get("eye_color_lock") or {}).get("prompt") or ""
-        self.assertIn("green with a slight brown/hazel tint", eye)
-        self.assertIn("not brown, not grey", eye)
+        self.assertIn("green with a slight hazel / light-brown tint", eye)
         forbidden = {
+            "victoria-sheet.png",
+            "victoria-sheet-front.png",
+            "victoria-face.png",
             "victoria.png",
             "victoria_ref.jpg",
             "alena.png",
@@ -88,8 +88,13 @@ class CoverIdentityTest(unittest.TestCase):
             },
         }
         prompt = build_prompt(manifest, style, hero, {}, design)
-        self.assertTrue(prompt.startswith("FACE LOCK:"), prompt[:120])
-        self.assertIn("victoria-sheet-front.png", prompt)
+        self.assertTrue(
+            prompt.startswith("same woman as viktoriaref.png"),
+            prompt[:160],
+        )
+        self.assertIn("viktoriaref.png", prompt)
+        self.assertNotIn("victoria-sheet-front.png", prompt)
+        self.assertNotIn("victoria-face.png", prompt)
         self.assertIn(REQUIRED_HAIR_PHRASE, prompt)
         self.assertNotIn("platinum blonde", prompt.lower().split("no platinum")[0])
         from excalibur_blog_cover_identity_gate import validate_prompt
