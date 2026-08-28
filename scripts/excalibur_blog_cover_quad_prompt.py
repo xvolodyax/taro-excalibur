@@ -61,6 +61,12 @@ INLINE_SCENE_HINT_RAW_TARGET_MAX = 220
 SCENE_HINT_RAW_TARGET_MAX = INLINE_SCENE_HINT_RAW_TARGET_MAX
 # Minimum empty-base headroom so ≈100-char scene_hint ×4 still fits under 3500.
 MIN_EMPTY_PROMPT_HEADROOM = 500
+# Tenant style prefixes (hair + type + palette) ate the 3500 budget on B16
+# (victoria-studio). Reclaim shared extras; never empty agent scene_hint.
+STYLE_PREFIX_COMPACT = 380
+TENANT_INLINE_COMPACT = 240
+HOOK_TYPE_COMPACT = 140
+TYPE_BAN_COMPACT = 140
 _COVER_FACE_ESSAY = re.compile(
     r"\bMUST\b|\bglasses\b|\bquiff\b|\bbeard\b|\bfacial\b",
     re.IGNORECASE,
@@ -99,6 +105,72 @@ def compact(value: object, limit: int) -> str:
     return text[: limit - 1].rstrip() + "…"
 
 
+# Never fall back to pink-cat / bold-condensed defaults. Tenant design-code wins.
+DEFAULT_ACCENT_INK = "#141821"
+DEFAULT_HOOK_TYPE = (
+    "editorial display Cyrillic (high-contrast modern serif/didone OR refined "
+    "geometric grotesque, normal tracking); letters are part of the frame, not a sticker; "
+    "not Arial/Roboto/Inter/Impact/Times; not default bold condensed"
+)
+DEFAULT_SECONDARY_TYPE = (
+    "lighter designer humanist sans for sticky and inline labels, not system Arial/Roboto/Inter"
+)
+DEFAULT_TYPE_BAN = (
+    "Ban type: Arial, Roboto, Inter, Impact, Times, default bold condensed, "
+    "squish-bold meme, all-caps sticker plaque, crooked letters, mixed sizes inside one word."
+)
+
+
+def palette_accent(design_code: dict) -> str:
+    palette = design_code.get("color_palette") or {}
+    accent = str(palette.get("accent_primary") or "").strip()
+    if accent.upper() == "#FF1493":
+        accent = ""
+    return accent or DEFAULT_ACCENT_INK
+
+
+def hook_type_lock(design_code: dict) -> str:
+    ty = design_code.get("typography") or {}
+    text = str(ty.get("hook_prompt") or "").strip()
+    if "bold condensed" in text.lower():
+        text = ""
+    return compact(text or DEFAULT_HOOK_TYPE, HOOK_TYPE_COMPACT)
+
+
+def secondary_type_lock(design_code: dict) -> str:
+    ty = design_code.get("typography") or {}
+    text = str(ty.get("secondary_prompt") or "").strip()
+    return compact(text or DEFAULT_SECONDARY_TYPE, 140)
+
+
+def typography_ban(design_code: dict) -> str:
+    ty = design_code.get("typography") or {}
+    text = str(ty.get("forbidden_prompt") or "").strip()
+    return compact(text or DEFAULT_TYPE_BAN, TYPE_BAN_COMPACT)
+
+
+REQUIRED_HAIR_PHRASE = (
+    "hair color copied exactly from reference photo, same root depth, "
+    "do not lighten, no platinum"
+)
+
+
+def identity_hair_prompt(hero: dict) -> str:
+    if not hero:
+        return ""
+    lock = hero.get("hair_color_lock")
+    if not isinstance(lock, dict):
+        lock = (hero.get("visual_lock") or {}).get("hair_color_lock") or {}
+    if not isinstance(lock, dict):
+        lock = {}
+    text = str(lock.get("prompt") or "").strip()
+    if text:
+        return compact(text, 160)
+    if str(hero.get("cover_mode") or "") == "host_reference":
+        return REQUIRED_HAIR_PHRASE
+    return ""
+
+
 def inline_panel_prompt(slot: dict, types_catalog: dict) -> str:
     type_id = slot.get("visual_type") or "infographic_card"
     type_def = (types_catalog.get("types") or {}).get(type_id) or {}
@@ -109,11 +181,7 @@ def inline_panel_prompt(slot: dict, types_catalog: dict) -> str:
     labels = [str(x).strip() for x in (slot.get("labels") or []) if str(x).strip()]
     if labels:
         exact = ", ".join(f"«{x}»" for x in labels)
-        base += (
-            f" TEXT LOCK: render ONLY these exact Russian strings on this panel: "
-            f"{exact}. Every letter in Cyrillic, exactly as written. "
-            "No other words, no English, no invented headlines."
-        )
+        base += f" TEXT LOCK: {exact}. Exact RU only; no extra words."
     return base
 
 
@@ -318,11 +386,12 @@ def build_prompt(
     cat_hero = style_is_situational_cat_hero(style)
 
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
+    accent = palette_accent(design_code)
     highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
+        f'paint ONLY the highlight word "{highlight}" in accent {accent}; '
         f'hook text must match exactly — do not substitute «время»/traffic markers'
         if highlight
-        else "paint at most ONE punch word in hot-pink #FF1493"
+        else f"paint at most ONE punch word in accent {accent}"
     )
     cover_scene = sanitize_cover_scene_hint(
         str(cover.get("scene_hint") or ""), highlight
@@ -330,21 +399,29 @@ def build_prompt(
     cover_hook_text = compact(manifest.get("cover_hook", ""), 120)
     cover_sticky = compact(str(cover.get("sticky") or ""), 48)
     sticky_lock = (
-        f" Small pink sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+        f" Small secondary line EXACTLY «{cover_sticky}» in {secondary_type_lock(design_code)}."
         if cover_sticky
         else ""
     )
-    # Prefer style preset locks when present (cat digital collage vs editorial).
+    tenant_inline = compact(
+        style.get("inline_prompt_suffix")
+        or design_code.get("inline_information_block")
+        or "",
+        TENANT_INLINE_COMPACT,
+    )
+    type_ban = typography_ban(design_code)
+    hook_type = hook_type_lock(design_code)
+    # Prefer style preset locks when present (tenant design-code over leftover defaults).
     style_prefix = compact(
         style.get("global_prompt_prefix")
         or design_code.get("cover_panel_prompt_block")
         or "",
-        520,
+        STYLE_PREFIX_COMPACT,
     )
     if not style_prefix:
         style_prefix = (
-            "Dense collage RU editorial, WHITE #FFFFFF, BLACK #141821 Cyrillic ink, "
-            "hot-pink #FF1493 one accent only. Every panel: torn paper, tape, "
+            f"Dense collage RU editorial, WHITE #FFFFFF, BLACK #141821 Cyrillic ink, "
+            f"accent {accent} one punch only. Every panel: torn paper, tape, "
             "≥2 topic stickers, sticky, ≥1 educational UI card (labels from scene_hint). "
             "Busy collage, not sterile."
         )
@@ -392,23 +469,26 @@ def build_prompt(
         )
     else:
         ban_line = (
-            "Ban: memes/reaction emoji/facepalm/animals/joke captions/silhouettes/"
-            "keyword spam/«Ключевые темы»/Latin lookalike Cyrillic/pipeline stamps/"
-            "EXCALIBUR badge or sword."
+            "Ban: memes/facepalm/animals/joke captions/keyword spam/"
+            "«Ключевые темы»/EXCALIBUR stamp."
         )
         cover_scene_tail = (
-            "host+face; dense collage + topic object; no sterile/meme/canned EN chat filler."
+            "host+face LARGE left; one tiny topic object; no sterile/meme."
         )
         reference_line = (
-            "REFERENCE FACE only top-left when cover_mode=host_reference: use blog-hero visual_lock; "
-            "expressive editorial pose; no headphones; no meme reaction."
+            "REFERENCE FACE top-left host_reference: blog-hero visual_lock; "
+            "new pose; no headphones; no meme."
         )
         inline_suffix = (
-            "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
-            "NO people/faces/host/meme/EXCALIBUR badge; no cover-hook duplicate. "
-            "Neg: sterile white, all-pink headline, keyword spam, watermark, logo, 9:16, "
-            "unreadable text, extra faces."
+            "Inline all: WHITE #FFFFFF, humanist sans RU labels, gold accent; "
+            "NO people/faces/host/meme/EXCALIBUR. Neg: unfinished gray, 9:16."
         )
+    if tenant_inline:
+        inline_suffix = tenant_inline
+    ban_line = f"{ban_line} {type_ban}"
+    hair_lock = identity_hair_prompt(hero)
+    if hair_lock:
+        reference_line = f"{reference_line} HAIR LOCK: {hair_lock}."
     lines = [
         # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
         # badge on every panel (INC-20260723-1223 / user correction).
@@ -416,13 +496,13 @@ def build_prompt(
         "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
         "",
         ban_line,
-        "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
+        "TEXT LANGUAGE LOCK: visible text is RU Cyrillic only. Render TEXT LOCK strings exactly. No English headline, no invented words.",
         "",
         reference_line,
         "",
-        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
-        f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
-        "no keyword list card; "
+        f'Top-left COVER TEXT LOCK: ONLY headline «{cover_hook_text}» — {hook_type}, ink #141821, '
+        f'{highlight_rule}; no other headline.{sticky_lock} '
+        "no keyword list; "
         f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}",
         "",
         f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
@@ -457,13 +537,18 @@ def main() -> int:
 
     manifest = load_json(manifest_path)
     hero = load_json(root / manifest.get("blog_hero", "memory/cover/blog-hero.json"))
-    style = load_json(
-        root
-        / manifest.get(
-            "style_file",
-            "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
-        )
-    )
+    default_style = "memory/cover/cover-design-code.json"
+    tenant_path = root / "shared/tenant-config.json"
+    if tenant_path.is_file():
+        try:
+            configured = str(
+                (load_json(tenant_path).get("cover_files") or {}).get("style_preset") or ""
+            ).strip()
+            if configured:
+                default_style = configured
+        except json.JSONDecodeError:
+            pass
+    style = load_json(root / manifest.get("style_file", default_style))
     types_path = root / manifest.get("inline_types_catalog", "memory/cover/inline-visual-types.json")
     types_catalog = load_json(types_path) if types_path.is_file() else {"types": {}}
     design_code_path = root / style.get("design_code", "memory/cover/cover-design-code.json")

@@ -140,6 +140,7 @@ def main() -> int:
         "scripts/excalibur_blog_description_gate.py",
         "scripts/excalibur_blog_writer_ready_gate.py",
         "scripts/excalibur_blog_cover_text_gate.py",
+        "scripts/excalibur_blog_cover_identity_gate.py",
         "scripts/excalibur_blog_wp_publish.py",
         "scripts/excalibur_blog_merge_to_main.py",
         "scripts/excalibur_blog_community_cta_gate.py",
@@ -357,6 +358,22 @@ def main() -> int:
             warnings,
         )
         print("NOTE read shared/dzen-content-rules.md + rf-blocked-entities.json BEFORE Scout")
+
+    if setup_complete:
+        scripts_dir = root / "scripts"
+        if str(scripts_dir) not in sys.path:
+            sys.path.insert(0, str(scripts_dir))
+        from excalibur_blog_cover_identity_gate import run_gate
+
+        identity = run_gate(root=root, article_dir=None)
+        check(
+            identity.get("status") == "PASS",
+            "cover identity hair lock (tenant)",
+            errors,
+            warnings,
+        )
+        if identity.get("errors"):
+            print("IDENTITY: " + "; ".join(identity["errors"][:8]))
 
     print(f"SUMMARY errors={len(errors)} warnings={len(warnings)} setup_complete={setup_complete}")
     if errors:

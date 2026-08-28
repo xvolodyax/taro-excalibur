@@ -216,7 +216,7 @@ Manifest сам подтянет `cover-text.json` (hook/highlight/sticky/labels
 Cover agent дописывает только `scene_hint` (композиция) и `alt`:
 
 - `cover_hook` — **уже готов из cover-text.json**; не переписывай текст, только проверь что подтянулся
-- `slots.*.scene_hint` и `alt` — **только ты** (композиция, не текст надписей). Cover ≈**80–140** (`Host … LARGE left half` + `tiny` topic prop); inline ≈**100–220**. Outfit lock = белое худи (`blog-hero.json`) only.
+- `slots.*.scene_hint` и `alt` — **только ты** (композиция, не текст надписей). Cover ≈**80–140** (`Host … LARGE left half` + `tiny` topic prop); inline ≈**100–220**. Outfit lock = `blog-hero.json` `outfit_rule` (не дефолтное белое худи).
 - `slots.cover.meme_caption_ru` — `""` (deprecated)
 - каждый `inline_1..3` имеет существующий `h2_anchor`; missing H2/anchor/injection = BLOCK
 
@@ -235,6 +235,15 @@ python scripts/excalibur_blog_cover_quad_prompt.py \
 ```
 
 Проверить `cover/quad-mcp-batch.json`: **jobs.length === 1**, `input_urls` не пуст.
+
+Identity gate (host_reference) до Kie:
+
+```bash
+python3 scripts/excalibur_blog_cover_identity_gate.py \
+  --article-dir memory/blog/articles/<topic_id>-<slug>
+```
+
+Без PASS — Kie не запускать (`COVER IDENTITY BLOCKER`). Платина / волосы сильно светлее рефа = пересобрать холст.
 
 Hard checks перед MCP/Kie:
 
@@ -386,6 +395,8 @@ Visual QA **skip по умолчанию**. Cover подтверждается s
 - [ ] cover: hook + accent по design-code; dense collage по tenant rules;
   без штампа EXCALIBUR BLOG;
   без sterile host+text, без meme/reaction
+- [ ] cover identity: prompt has hair lock phrase; hair not platinum / not lighter than ref;
+  `cover-identity-gate.json` PASS
 - [ ] inline: конкретный H2, 3–6 labels, reading order/outcome, чёрные headings +
   accents + stickers/UI card layers по design-code; без людей/мемов если запрещено,
   silhouette icons; **тот же finish что cover**; **нет empty gray boxes /
@@ -402,6 +413,7 @@ Visual QA **skip по умолчанию**. Cover подтверждается s
 ## Blockers → verdict ❌
 
 - нет reference_url_hosted
+- `COVER IDENTITY BLOCKER`: в промпте нет hair lock phrase, или волосы платина / ice-blonde / сильно светлее рефа — пересобрать холст
 - image call text-only (без input_urls)
 - `KIE API BLOCKER`: нет `KIE_API_KEY`, non-retryable createTask/recordInfo fail, retryable 500 exhausted (`--max-create-retries`), pre-taskId Connection reset exhausted (один retry), image-fetch File Upload fallback exhausted/`--no-file-upload-fallback`, sensitive 422 после одного soften+recreate, polling timeout после final `recordInfo` (всё ещё non-terminal) или нет resultUrls
 - async status/result tool подтвердил failed/no result или повторный timeout уже в status/result flow
