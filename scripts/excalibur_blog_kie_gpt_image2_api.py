@@ -51,7 +51,7 @@ DEFAULT_POLL_INTERVAL_SECONDS = 15
 DEFAULT_MAX_WAIT_SECONDS = 900
 DEFAULT_MAX_CREATE_RETRIES = 1
 DEFAULT_RETRY_WAIT_SECONDS = 15
-DEFAULT_LOCAL_REFERENCE = "memory/cover/assets/victoria-sheet.png"
+DEFAULT_LOCAL_REFERENCE = "memory/cover/assets/victoria-sheet-front.png"
 
 
 class KieApiError(RuntimeError):
@@ -292,10 +292,11 @@ def resolve_local_reference_bytes(
     work_dir: Path,
     local_reference: str = DEFAULT_LOCAL_REFERENCE,
 ) -> tuple[Path, str]:
-    """Prefer downloaded WP media, else local victoria-sheet.png.
+    """Prefer downloaded WP media, else local victoria-sheet-front.png.
 
     Returns (path, source_label). Does not mutate committed batch files.
-    Never fall back to victoria.png / Alena / character-sheet-2k.
+    Never upload the 12-up victoria-sheet.png. Never fall back to
+    victoria.png / Alena / character-sheet-2k.
     """
     local_path = Path(local_reference)
     if not local_path.is_absolute():

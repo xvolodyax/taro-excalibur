@@ -4,5 +4,6 @@
   "required_hair_phrase": "hair color copied exactly from reference photo, same root depth, do not lighten, no platinum",
   "errors": [],
   "blocker": null,
-  "rebuild": "Wrong face vs victoria-sheet.png, wrong eyes (not green+hazel), or platinum/lighter hair → rebuild the whole 2K 2×2 canvas. Do not publish. Hall publishes."
+  "face_verdict": null,
+  "rebuild": "Wrong face vs victoria-sheet-front.png crop, wrong eyes (not green+hazel), or platinum/lighter hair → rebuild the whole 2K 2×2 canvas. Do not publish. Hall publishes."
 }

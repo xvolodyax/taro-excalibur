@@ -1,5 +1,40 @@
 # Pipeline fix queue
 
+## INC-20260828-1104-cover-12up-averaged-face
+status: open
+run_date: 2026-08-28
+role: excalibur-blog-cover
+topic_id: B19
+article_dir: memory/blog/articles/B19-chislo-imeni-pokazyvaet-ego-ton-v-pare
+severity: blocker
+category: script
+
+### What went wrong
+- Cover i2i uploaded the full 12-up `victoria-sheet.png` (1280×720). The model averaged twelve faces. Vladimir: not Vika. Same bug as Karuselka carousel.
+- Identity gate PASS on phrases/file-exists was worthless.
+
+### How the agent recovered this run
+- Crop top-left frontal close-up → `memory/cover/assets/victoria-sheet-front.png`.
+- i2i / File Upload / batch `input_urls` only that crop. Never upload the 12-up.
+- FACE LOCK opener first in the prompt. Rebuild whole 2×2.
+- Do not stamp face PASS. Hall and Vladimir check.
+
+### Durable fix needed before next run
+- Keep i2i locked to `victoria-sheet-front.png`. Treat `victoria-sheet.png` as source-only.
+- Do not restore `victoria.png` / `alena.png`.
+
+### Suggested files to inspect/change
+- `memory/cover/assets/victoria-sheet-front.png`
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `scripts/excalibur_blog_cover_identity_gate.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260827-1305-cover-prompt-budget-victoria
 status: open
 run_date: 2026-08-27

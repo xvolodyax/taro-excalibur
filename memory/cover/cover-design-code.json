@@ -6,7 +6,7 @@
   "reference_notes": "Tenant visual. Не pink-cat коллаж, не gothic, не тёмный стол со свечами, не белое худи без Вики. Герой cover = Виктория по рефу. Алёну не ставить.",
   "cover_mode": "host_reference",
   "cover_rules": [
-    "cover_mode=host_reference: лицо = Виктория ТОЛЬКО по memory/cover/assets/victoria-sheet.png — не кот и не без лица. Запрещено i2i с victoria.png / alena.png / любых других face-ref",
+    "cover_mode=host_reference: i2i ТОЛЬКО memory/cover/assets/victoria-sheet-front.png (фронтальный кроп). 12-up victoria-sheet.png не загружать в Kie. Запрещено victoria.png / alena.png",
     "Цвет волос только с рефа: светлый блонд с тёплым honey/пепельным мясом, корни темнее. Не платина, не ice-blonde, не осветлять. Промпт: hair color copied exactly from reference photo, same root depth, do not lighten, no platinum. Платина / сильно светлее рефа = blocker, пересобрать холст",
     "Хук 2–6 слов на кадре, не заголовок статьи",
     "Типографика дизайнерская, не системная. Хук = editorial display (didone / refined grotesque), буквы часть кадра, не стикер",

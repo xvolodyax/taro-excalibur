@@ -1,12 +1,8 @@
 # Cover assets
 
-Единственный face-ref тенанта «ТАРО СЕЙЧАС»:
+- `victoria-sheet.png` — 12-up source sheet. Never upload to Kie.
+- `victoria-sheet-front.png` — top-left frontal close-up. **Only** i2i face.
 
-- `victoria-sheet.png` — owner character sheet / Instagram carousel
+Do not add `victoria.png`, `alena.png`, `character-sheet-2k.png`.
 
-Cover i2i только с этого файла. Других лиц в репозитории быть не должно
-(`victoria.png`, `victoria_ref.jpg`, `alena.png`, `character-sheet-2k.png`,
-лишние sheets).
-
-Глаза: зелёные с лёгким карим/hazel, как на карусели. Не карие, не серые.
-Несовпадение лица или глаз → пересобрать весь холст 2×2. Hall публикует.
+Hall and Vladimir check the generated face. Pipeline does not stamp PASS.

@@ -30,8 +30,17 @@ REQUIRED_EYE_PHRASE = (
     "eyes green with a slight brown/hazel tint, same as reference sheet "
     "and Instagram carousels, not brown, not grey, not a different eye color"
 )
-CANON_FACE_REL = "memory/cover/assets/victoria-sheet.png"
-CANON_FACE_NAME = "victoria-sheet.png"
+CANON_FACE_REL = "memory/cover/assets/victoria-sheet-front.png"
+CANON_FACE_NAME = "victoria-sheet-front.png"
+SOURCE_SHEET_REL = "memory/cover/assets/victoria-sheet.png"
+SOURCE_SHEET_NAME = "victoria-sheet.png"
+ALLOWED_SHEET_NAMES = {CANON_FACE_NAME, SOURCE_SHEET_NAME}
+FACE_LOCK_OPENER = (
+    "FACE LOCK: same woman as this cropped photo victoria-sheet-front.png, "
+    "oval-to-heart, high cheekbones, green eyes with a slight hazel/light-brown mix, "
+    "warm honey-wheat blonde with darker roots not platinum, "
+    "new clothes and new pose (not the sheet white cami + jeans)."
+)
 FORBIDDEN_FACE_NAMES = {
     "victoria.png",
     "victoria_ref.jpg",
@@ -76,14 +85,14 @@ def _prescribes_forbidden_look(text: str) -> list[str]:
 
 
 def extra_sheet_names(root: Path) -> list[str]:
-    """Any *sheet*.png except the one canon file."""
+    """Any *sheet*.png except the 12-up source and the frontal i2i crop."""
     hits: list[str] = []
     for folder in (root / "memory" / "cover", root / "cover-refs"):
         if not folder.is_dir():
             continue
         for path in folder.rglob("*.png"):
             name = path.name.lower()
-            if "sheet" in name and name != CANON_FACE_NAME:
+            if "sheet" in name and name not in ALLOWED_SHEET_NAMES:
                 hits.append(str(path.relative_to(root)))
     return hits
 
@@ -110,7 +119,12 @@ def validate_tenant(hero: dict, *, cover_mode: str, root: Path | None = None) ->
     if ref != CANON_FACE_REL:
         errors.append(
             f"reference_image must be {CANON_FACE_REL!r} (got {ref!r}); "
-            "i2i from any other face file is forbidden"
+            "i2i from the 12-up sheet or any other face file is forbidden"
+        )
+    source = str(hero.get("source_sheet") or "").strip()
+    if source and source != SOURCE_SHEET_REL:
+        errors.append(
+            f"source_sheet must be {SOURCE_SHEET_REL!r} (got {source!r})"
         )
     if root is not None:
         for extra in forbidden_face_files(root):
@@ -169,8 +183,10 @@ def validate_prompt(prompt: str) -> list[str]:
         errors.append(f"Cover prompt missing hair lock phrase: {REQUIRED_HAIR_PHRASE!r}")
     if REQUIRED_EYE_PHRASE not in text:
         errors.append(f"Cover prompt missing eye lock phrase: {REQUIRED_EYE_PHRASE!r}")
+    if FACE_LOCK_OPENER not in text:
+        errors.append("Cover prompt must start with the cropped-photo FACE LOCK")
     if CANON_FACE_NAME not in text:
-        errors.append("Cover prompt must name victoria-sheet.png as the only face reference")
+        errors.append("Cover prompt must name victoria-sheet-front.png as the only i2i face")
     look = _strip_negation_windows(text)
     if re.search(r"\bbrown eyes\b|\bgrey eyes\b|\bgray eyes\b", look, flags=re.I):
         errors.append("Cover prompt paints forbidden eye color")
@@ -210,10 +226,34 @@ def run_gate(*, root: Path, article_dir: Path | None) -> dict:
     errors.extend(validate_tenant(hero, cover_mode=cover_mode, root=root))
     if article_dir is not None and cover_mode == "host_reference":
         canon = root / CANON_FACE_REL
+        source = root / SOURCE_SHEET_REL
+        if not source.is_file():
+            errors.append(f"source 12-up missing: {SOURCE_SHEET_REL}")
         if not canon.is_file():
             errors.append(
-                f"canon face missing: {CANON_FACE_REL} — Cover i2i blocked until owner sheet is on disk"
+                f"i2i crop missing: {CANON_FACE_REL} — crop the top-left frontal from the 12-up"
             )
+        batch_path = article_dir / "cover" / "quad-mcp-batch.json"
+        if batch_path.is_file():
+            try:
+                batch = load_json(batch_path)
+            except json.JSONDecodeError:
+                batch = {}
+            local = str(batch.get("local_reference") or "")
+            jobs = batch.get("jobs") or []
+            urls: list[str] = []
+            if jobs:
+                args = jobs[0].get("mcp_args") or jobs[0].get("api_args") or {}
+                raw = args.get("input_urls") or []
+                if isinstance(raw, list):
+                    urls = [str(u) for u in raw]
+            names = [Path(local).name] + [Path(u).name for u in urls]
+            if SOURCE_SHEET_NAME in names:
+                errors.append(
+                    "i2i uploaded the 12-up victoria-sheet.png — use victoria-sheet-front.png only"
+                )
+            if CANON_FACE_NAME not in names:
+                errors.append("i2i batch must name victoria-sheet-front.png as the only input")
     prompt = ""
     if article_dir is not None:
         prompt = collect_article_prompt(article_dir)
@@ -221,14 +261,24 @@ def run_gate(*, root: Path, article_dir: Path | None) -> dict:
             errors.append("article cover prompt/batch missing — run quad prompt first")
         else:
             errors.extend(validate_prompt(prompt))
-    status = "PASS" if not errors else "BLOCK"
+    if errors:
+        status = "BLOCK"
+    elif article_dir is not None:
+        status = "HALL_FACE_CHECK"
+    else:
+        status = "PASS"
     return {
         "status": status,
         "cover_mode": cover_mode,
         "required_hair_phrase": REQUIRED_HAIR_PHRASE,
         "errors": errors,
-        "blocker": None if status == "PASS" else "COVER IDENTITY BLOCKER",
-        "rebuild": "Wrong face vs victoria-sheet.png, wrong eyes (not green+hazel), or platinum/lighter hair → rebuild the whole 2K 2×2 canvas. Do not publish. Hall publishes.",
+        "blocker": None if status != "BLOCK" else "COVER IDENTITY BLOCKER",
+        "face_verdict": (
+            "Hall and Vladimir check the face. Pipeline does not stamp PASS."
+            if status == "HALL_FACE_CHECK"
+            else None
+        ),
+        "rebuild": "Wrong face vs victoria-sheet-front.png crop, wrong eyes (not green+hazel), or platinum/lighter hair → rebuild the whole 2K 2×2 canvas. Do not publish. Hall publishes.",
     }
 
 
@@ -260,9 +310,10 @@ def main() -> int:
     print(f"OK gate={out_path} status={verdict['status']}")
     for err in verdict["errors"]:
         print(f"  - {err}")
-    if verdict["status"] != "PASS":
+    if verdict["status"] == "BLOCK":
         print(f"❌ {verdict['blocker']}: {verdict['rebuild']}", file=sys.stderr)
-    return 0 if verdict["status"] == "PASS" else 1
+        return 1
+    return 0
 
 
 if __name__ == "__main__":

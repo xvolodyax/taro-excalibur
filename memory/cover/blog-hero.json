@@ -4,14 +4,16 @@
   "name_ru": "Виктория",
   "author_id": "victoria",
   "cover_mode": "host_reference",
-  "reference_image": "memory/cover/assets/victoria-sheet.png",
+  "reference_image": "memory/cover/assets/victoria-sheet-front.png",
+  "source_sheet": "memory/cover/assets/victoria-sheet.png",
   "sole_face_reference": true,
-  "reference_notes": "CANON LOCK 2026-08-28: единственный face-ref для всех обложек ТАРО СЕЙЧАС — victoria-sheet.png (owner character sheet / Instagram carousel). Запрещено i2i с любого другого файла. victoria.png, victoria_ref.jpg, alena.png, character-sheet-2k.png и лишние sheets удалены.",
+  "never_upload_source_sheet": true,
+  "reference_notes": "i2i ONLY victoria-sheet-front.png (top-left frontal crop). The 12-up victoria-sheet.png is source-only — never upload it to Kie. Do not i2i from victoria.png / alena.png / character-sheet-2k.",
   "png_on_disk": true,
-  "png_required_action": "Sheet on disk from Karuselka public raw (JPEG container rewrapped to PNG, same 1280×720 pixels).",
+  "png_required_action": "Crop top-left frontal from the 12-up into victoria-sheet-front.png. Cover i2i that crop only.",
   "visual_lock": {
-    "identity": "Виктория, таролог команды «ТАРО СЕЙЧАС» — та же женщина, что на victoria-sheet.png и в Instagram-каруселях",
-    "face_source": "ONLY memory/cover/assets/victoria-sheet.png — identity lock. Do not i2i from any other face file.",
+    "identity": "Виктория, таролог команды «ТАРО СЕЙЧАС» — та же женщина, что на кропе victoria-sheet-front.png и в Instagram-каруселях",
+    "face_source": "ONLY memory/cover/assets/victoria-sheet-front.png — i2i lock. Never upload the 12-up sheet.",
     "studio": "high-key studio portrait, clean white #FFFFFF, no beige/cream",
     "hair": "straight shoulder-length blonde balayage with middle part; dark ashy-brown / darker roots; warm honey-blonde mid-lengths and ends; not platinum, not ice-blonde",
     "hair_color_lock": {
@@ -65,11 +67,12 @@
       "cat as cover hero",
       "faceless cover",
       "pipeline EXCALIBUR stamp",
-      "i2i from any face file except victoria-sheet.png"
+      "i2i from the 12-up victoria-sheet.png",
+      "i2i from any face file except victoria-sheet-front.png"
     ]
   },
   "outfit_rule": "Камисоль + джинсы на sheet — только реф лица, не lock одежды. Одежда и поза каждый раз новые: business-chic / светлая студия. Не белое худи пайплайна. Не кот.",
-  "prompt_fragment": "Victoria host LARGE left from victoria-sheet.png ONLY; same woman same face same eyes; eyes green with a slight brown/hazel tint, not brown, not grey; hair color copied exactly from reference photo, same root depth, do not lighten, no platinum; new outfit+emotion; tiny topic prop right; #FFF; editorial display type in-frame",
+  "prompt_fragment": "FACE LOCK: same woman as this cropped photo victoria-sheet-front.png, oval-to-heart, high cheekbones, green eyes with a slight hazel/light-brown mix, warm honey-wheat blonde with darker roots not platinum, new clothes and new pose (not the sheet white cami + jeans). Host LARGE left; tiny topic prop right; #FFF",
   "cover_hook_rules": [
     "cover_hook — 2–6 слов на кадре, не заголовок статьи; Cover-text invents from reader_pain",
     "hook type = editorial display (didone or refined grotesque), letters part of the frame, not a sticker",
@@ -90,8 +93,8 @@
     "mode": "i2i",
     "resolution": "2K"
   },
-  "rebuild_rule": "Если лицо не Виктории с victoria-sheet.png, глаза не зелёные с лёгким hazel, волосы платина/сильно светлее рефа, шов кривой, буквы кривые — пересобрать весь холст 2K 2×2. Не чинить лицо, глаза, волосы и шрифт снаружи. Hall публикует. Пайплайн не публикует.",
-  "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/victoria-sheet.png",
-  "reference_url_source": "local:memory/cover/assets/victoria-sheet.png",
+  "rebuild_rule": "Если лицо не Виктории с кропа victoria-sheet-front.png, глаза не зелёные с лёгким hazel, волосы платина/сильно светлее рефа — пересобрать весь холст 2K 2×2. Не чинить лицо снаружи. Hall и Владимир проверяют лицо. Пайплайн не публикует.",
+  "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/victoria-sheet-front.png",
+  "reference_url_source": "local:memory/cover/assets/victoria-sheet-front.png",
   "reference_url_updated_at": "2026-08-28"
 }

@@ -10,7 +10,7 @@
   "allowed_animal_motif": "",
   "design_code": "memory/cover/cover-design-code.json",
   "blog_hero": "memory/cover/blog-hero.json",
-  "local_reference": "memory/cover/assets/victoria-sheet.png",
+  "local_reference": "memory/cover/assets/victoria-sheet-front.png",
   "prefer_local_reference": true,
   "canvas": "2048x1152",
   "resolution": "2K",
@@ -26,7 +26,7 @@
     "secondary": "lighter designer humanist sans",
     "forbidden": "Arial Roboto Inter Impact Times bold condensed squish-bold all-caps plaque"
   },
-  "global_prompt_prefix": "High-key light studio. WHITE #FFFFFF, ink #141821, medallion gold #C4A574, dusty summer tones. Cover hero: Victoria from victoria-sheet.png ONLY LARGE left, same woman same eyes, eyes green with a slight brown/hazel tint not brown not grey, hair color copied exactly from reference photo, same root depth, do not lighten, no platinum, new outfit+emotion, NEVER a cat, NEVER faceless, NEVER default white hoodie. Hook type: editorial display Cyrillic (high-contrast modern serif/didone OR refined geometric grotesque, normal tracking); letters are part of the frame, not a sticker. One punch word same face, gold. Sticky/labels: light humanist sans. Ban Arial/Roboto/Inter/Impact/Times/bold condensed/squish-bold/all-caps plaque. Thin white gutters at x=1024 y=576.",
+  "global_prompt_prefix": "High-key light studio. WHITE #FFFFFF, ink #141821, medallion gold #C4A574, dusty summer tones. Cover hero LARGE left from victoria-sheet-front.png ONLY, never the 12-up sheet. NEVER a cat, NEVER faceless, NEVER default white hoodie. Hook type: editorial display Cyrillic (high-contrast modern serif/didone OR refined geometric grotesque, normal tracking); letters are part of the frame, not a sticker. One punch word same face, gold. Sticky/labels: light humanist sans. Ban Arial/Roboto/Inter/Impact/Times/bold condensed/squish-bold/all-caps plaque. Thin white gutters at x=1024 y=576.",
   "inline_prompt_suffix": "Inline all: white #FFFFFF, lighter designer humanist sans Cyrillic labels (3–6), medallion gold accent only; NO people/faces/host/Alyona/cat; no cover-hook duplicate; no bold condensed; no all-caps sticker plaque. Neg: candles, gothic, pink-cat, #FF1493, Arial, Roboto, Inter, Impact, beige full-panel, unfinished gray boxes, watermark, 9:16.",
   "cover_credit_html": {
     "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",

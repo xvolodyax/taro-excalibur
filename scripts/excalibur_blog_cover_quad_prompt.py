@@ -100,7 +100,14 @@ REQUIRED_EYE_PHRASE = (
     "eyes green with a slight brown/hazel tint, same as reference sheet "
     "and Instagram carousels, not brown, not grey, not a different eye color"
 )
-CANON_FACE_NAME = "victoria-sheet.png"
+CANON_FACE_NAME = "victoria-sheet-front.png"
+SOURCE_SHEET_NAME = "victoria-sheet.png"
+FACE_LOCK_OPENER = (
+    "FACE LOCK: same woman as this cropped photo victoria-sheet-front.png, "
+    "oval-to-heart, high cheekbones, green eyes with a slight hazel/light-brown mix, "
+    "warm honey-wheat blonde with darker roots not platinum, "
+    "new clothes and new pose (not the sheet white cami + jeans)."
+)
 
 
 def identity_hair_prompt(hero: dict) -> str:
@@ -490,7 +497,8 @@ def build_prompt(
         hair_lock = identity_hair_prompt(hero)
         eye_lock = identity_eye_prompt(hero)
         reference_line = (
-            f"REFERENCE FACE ONLY {CANON_FACE_NAME} top-left: "
+            f"{FACE_LOCK_OPENER} "
+            f"REFERENCE FACE ONLY {CANON_FACE_NAME} (frontal crop, never {SOURCE_SHEET_NAME}): "
             f"{eye_lock}; {hair_lock}; new clothes; no headphones."
         )
         inline_suffix = compact(
@@ -521,25 +529,30 @@ def build_prompt(
             "no keyword list card; "
             f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}"
         )
-    lines = [
-        # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
-        # badge on every panel (INC-20260723-1223 / user correction).
-        style_prefix,
-        "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
-        "",
-        ban_line,
-        text_language_lock,
-        "",
-        reference_line,
-        "",
-        cover_headline,
-        "",
-        f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
-        f"Bottom-left inline: {inline_panel_prompt(i2, types_catalog)}",
-        f"Bottom-right inline: {inline_panel_prompt(i3, types_catalog)}",
-        "",
-        inline_suffix,
-    ]
+    lines = []
+    if host_mode and not cat_hero:
+        lines.append(FACE_LOCK_OPENER)
+    lines.extend(
+        [
+            # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
+            # badge on every panel (INC-20260723-1223 / user correction).
+            style_prefix,
+            "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
+            "",
+            ban_line,
+            text_language_lock,
+            "",
+            reference_line,
+            "",
+            cover_headline,
+            "",
+            f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
+            f"Bottom-left inline: {inline_panel_prompt(i2, types_catalog)}",
+            f"Bottom-right inline: {inline_panel_prompt(i3, types_catalog)}",
+            "",
+            inline_suffix,
+        ]
+    )
     if fact_locks:
         lines.extend(["", *fact_locks])
     return "\n".join(line for line in lines if line)
@@ -682,9 +695,10 @@ def main() -> int:
                 print(f"  - {err}", file=sys.stderr)
             return 1
         if str(hero.get("cover_mode") or "") == "host_reference":
-            if CANON_FACE_NAME not in batch_ref_url:
+            if CANON_FACE_NAME not in batch_ref_url or SOURCE_SHEET_NAME == Path(batch_ref_url).name:
                 print(
-                    "❌ COVER HERO BLOCKER: input_urls must be victoria-sheet.png only; "
+                    "❌ COVER HERO BLOCKER: input_urls must be "
+                    f"{CANON_FACE_NAME} only (never {SOURCE_SHEET_NAME}); "
                     f"got {batch_ref_url}",
                     file=sys.stderr,
                 )
