@@ -1,0 +1,17 @@
+{
+  "task_id": "ea6053b01ad10ae3ff5dfde880ce5abb",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B18-paren-propal-posle-blizosti/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1787899098,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "victoria.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}
