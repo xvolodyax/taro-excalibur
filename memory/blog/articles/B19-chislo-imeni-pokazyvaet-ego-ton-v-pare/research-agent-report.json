@@ -1,0 +1,30 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B19",
+  "slug": "chislo-imeni-pokazyvaet-ego-ton-v-pare",
+  "status": "PASS",
+  "verdict": "PASS",
+  "research_date": "2026-08-28",
+  "timezone": "Europe/Moscow",
+  "fresh_signal": true,
+  "fresh_signal_kind": "community_channel",
+  "fresh_signal_week": "2026-08-24/2026-08-28",
+  "fresh_signal_urls": [
+    "https://dzen.ru/a/algfiGWlVwS8zVJM",
+    "https://dzen.ru/a/amhT4NhFcWJJABnI",
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.wedding-magazine.ru/blog/kak-ponyat-chto-on-tot-samyj-sovmestimost-imen-po-numerologii",
+    "https://sovmestimost-lab.ru/names/"
+  ],
+  "fresh_signal_notes": "На доступе 2026-08-28 канал «Элина Нумеролог» показывает материал про число имени и 2026 как «Сегодня»; канал Юлии Петуховой — разбор домашнего vs рабочего имени как «2 дня назад». Scout signal_urls той же даты: колонка Wedding Magazine и калькулятор sovmestimost-lab («Алгоритм 2026 года»). Канал тенанта dzen.ru/todaytaro_bot жив на этой неделе; тела своих статей в факты не брались.",
+  "wordstat": "skip",
+  "wordstat_reason": "ключа нет — частоты не выдумывались",
+  "overlap_file": "published-titles-only.md",
+  "overlap_titles_count": 0,
+  "not_clone_of": ["B16", "B12", "B18", "chislo-sudby-po-date", "kvadrat-pifagora", "shodyatsya-daty"],
+  "notes_path": "memory/blog/articles/B19-chislo-imeni-pokazyvaet-ego-ton-v-pare/research-notes.md",
+  "block_reason": null,
+  "github_centered": false,
+  "invented_facts": false,
+  "wrote_article_scaffold": false
+}

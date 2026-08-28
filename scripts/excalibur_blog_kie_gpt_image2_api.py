@@ -51,7 +51,7 @@ DEFAULT_POLL_INTERVAL_SECONDS = 15
 DEFAULT_MAX_WAIT_SECONDS = 900
 DEFAULT_MAX_CREATE_RETRIES = 1
 DEFAULT_RETRY_WAIT_SECONDS = 15
-DEFAULT_LOCAL_REFERENCE = "memory/cover/assets/blog-hero-reference.png"
+DEFAULT_LOCAL_REFERENCE = "memory/cover/assets/viktoriaref.png"
 
 
 class KieApiError(RuntimeError):
@@ -238,7 +238,11 @@ def batch_mcp_args(batch_path: Path) -> dict[str, Any]:
         raise KieApiError("Missing prompt in jobs[0].mcp_args")
     if not isinstance(input_urls, list) or not input_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args")
-    expanded_urls = expand_input_urls(input_urls)
+    if batch.get("prefer_local_reference"):
+        # File Upload replaces these; do not require PUBLIC_SITE_URL.
+        expanded_urls = [str(u).strip() for u in input_urls if str(u).strip()]
+    else:
+        expanded_urls = expand_input_urls(input_urls)
     if not expanded_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args after expand")
     return {
@@ -288,9 +292,11 @@ def resolve_local_reference_bytes(
     work_dir: Path,
     local_reference: str = DEFAULT_LOCAL_REFERENCE,
 ) -> tuple[Path, str]:
-    """Prefer downloaded WP media, else local blog-hero-reference.png.
+    """Prefer downloaded WP media, else local viktoriaref.png.
 
     Returns (path, source_label). Does not mutate committed batch files.
+    Never upload victoria-sheet.png, victoria-sheet-front.png, or
+    victoria-face.png. Never fall back to victoria.png / Alena.
     """
     local_path = Path(local_reference)
     if not local_path.is_absolute():

@@ -1,0 +1,50 @@
+{
+  "topic_id": "B19",
+  "slug": "chislo-imeni-pokazyvaet-ego-ton-v-pare",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Как число имени задаёт привычный тон мужчины в паре",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-28T11:28:09+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Как число имени задаёт привычный тон мужчины в паре",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Как буквы имени складываются в число — это не дата рождения",
+      "h2_anchor": "Как буквы имени превращаются в число и почему это не дата рождения",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Почему паспортное Александр и домашнее Саша дают разный тон",
+      "h2_anchor": "Паспорт против домашнего имени: почему Александр и Саша звучат по-разному",
+      "visual_type": "tool_screenshot",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Девять ролей и тонов чисел имени в пространстве пары",
+      "h2_anchor": "Роли и тона чисел от 1 до 9 в пространстве пары",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

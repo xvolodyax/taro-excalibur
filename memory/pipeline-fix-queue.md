@@ -1,0 +1,254 @@
+# Pipeline fix queue
+
+## INC-20260828-1128-cover-merge-pinkcat
+status: open
+run_date: 2026-08-28
+role: excalibur-blog-cover
+topic_id: B19
+article_dir: memory/blog/articles/B19-chislo-imeni-pokazyvaet-ego-ton-v-pare
+severity: medium
+category: script
+
+### What went wrong
+- `excalibur_blog_quad_manifest.py --merge` hardcoded `style_preset=tenant_unset` and `style_file=quad-style-pink-cat-digital-collage-ru.json`, wiping tenant `victoria-studio`.
+- Cover would have written a pink-cat batch if style had not been restored before `--write-batch`.
+
+### How the agent recovered this run
+- Restored `victoria-studio` / `quad-style-victoria-studio.json` in the B19 manifest before prompt+Kie.
+- One billed Kie i2i from `viktoriaref.png` only. Did not crop or upload sheet files.
+- `--merge` now keeps existing tenant style, else `shared/tenant-config.json` `cover_files.style_preset`.
+
+### Durable fix needed before next run
+- Never reset Cover `--merge` to pink-cat when the tenant already has a style preset.
+- i2i identity file is only `memory/cover/assets/viktoriaref.png`. Crop / `victoria-sheet-front.png` / `victoria-face.png` paths are superseded.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_quad_manifest.py`
+- `shared/tenant-config.json`
+- `memory/cover/quad-style-victoria-studio.json`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
+## INC-20260828-1104-cover-12up-averaged-face
+status: open
+run_date: 2026-08-28
+role: excalibur-blog-cover
+topic_id: B19
+article_dir: memory/blog/articles/B19-chislo-imeni-pokazyvaet-ego-ton-v-pare
+severity: blocker
+category: script
+
+### What went wrong
+- Cover i2i uploaded the full 12-up `victoria-sheet.png` (1280×720). The model averaged twelve faces. Vladimir: not Vika. Same bug as Karuselka carousel.
+- Identity gate PASS on phrases/file-exists was worthless.
+
+### How the agent recovered this run
+- Crop top-left frontal close-up → `memory/cover/assets/victoria-sheet-front.png`.
+- i2i / File Upload / batch `input_urls` only that crop. Never upload the 12-up.
+- FACE LOCK opener first in the prompt. Rebuild whole 2×2.
+- Do not stamp face PASS. Hall and Vladimir check.
+
+### Durable fix needed before next run
+- Keep i2i locked to `victoria-sheet-front.png`. Treat `victoria-sheet.png` as source-only.
+- Do not restore `victoria.png` / `alena.png`.
+
+### Suggested files to inspect/change
+- `memory/cover/assets/victoria-sheet-front.png`
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `scripts/excalibur_blog_cover_identity_gate.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
+### Follow-up 2026-08-28 B19 rebuild
+- Owner miss-face rebuild used only `victoria-sheet-front.png` (312×227). File Upload `local_name` = that crop. 12-up was not uploaded.
+- Identity gate this run = `HALL_FACE_CHECK` (not PASS). Hall and Vladimir check the face.
+
+### Follow-up 2026-08-28 SUPERSEDED
+- Crop / `victoria-sheet-front.png` / `victoria-face.png` is no longer the identity path.
+- Only `memory/cover/assets/viktoriaref.png` may be uploaded to Kie. Do not crop the 12-up. Do not recreate those deleted face files.
+
+## INC-20260828-1110-cover-facelock-dup
+status: open
+run_date: 2026-08-28
+role: excalibur-blog-cover
+topic_id: B19
+article_dir: memory/blog/articles/B19-chislo-imeni-pokazyvaet-ego-ton-v-pare
+severity: medium
+category: script
+
+### What went wrong
+- After FACE LOCK opener was added as prompt line 1, `reference_line` still pasted the same opener. `--write-batch` hit 3682 / 3500 while cover/inline `scene_hint` were already in band.
+
+### How the agent recovered this run
+- Removed the duplicate opener from `reference_line`. Prompt landed at 3415. Did not empty scene_hint. One Kie after that.
+
+### Durable fix needed before next run
+- FACE LOCK opener once, first line only. Do not concatenate it into REFERENCE FACE.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
+## INC-20260827-1305-cover-prompt-budget-victoria
+status: open
+run_date: 2026-08-27
+role: excalibur-blog-cover
+topic_id: B16
+article_dir: memory/blog/articles/B16-lichnoe-chislo-dnya-lomaet-ozhidanie-otveta
+severity: medium
+category: script
+
+### What went wrong
+- Cover `--write-batch` failed `COVER PROMPT BLOCKER` at 4252 chars (max 3500) while agent `scene_hint` already sat in the 80–140 / 100–220 band.
+- Tenant `quad-style-victoria-studio.json` prefix + type/hair locks were stacked on the old Cursor-era shared ban / TEXT LANGUAGE / TOKEN BURN RATE / long inline TEXT LOCK boilerplate.
+
+### How the agent recovered this run
+- Reclaimed shared extras in `scripts/excalibur_blog_cover_quad_prompt.py` (compact caps + shorter host_reference locks). Hair lock phrase kept. Prompt landed at 3237.
+- Did not empty scene_hint.
+
+### Durable fix needed before next run
+- Keep tenant style prefix compact enough that host_reference + 4 short hints stay under 3500 without Cover emptying prose.
+- Fixer: confirm compact caps still leave `hair color copied exactly from reference photo, same root depth, do not lighten, no platinum` intact in the built prompt.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `memory/cover/quad-style-victoria-studio.json`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
+### Follow-up 2026-08-28 B19
+- Eye lock phrase was added after the B16 reclaim; `--write-batch` failed again at 3999/3500 with short scene_hint.
+- Reclaimed host_reference extras again (shorter TEXT LOCK / language lock / prefix compact 380; gold highlight, not pink). Exact hair + eye phrases kept.
+
+## INC-20260827-1750-cover-site-base-env
+status: open
+run_date: 2026-08-27
+role: excalibur-blog-cover
+topic_id: B17
+article_dir: memory/blog/articles/B17-karta-dnya-esli-on-prochital-i-molchit
+severity: medium
+category: env
+
+### What went wrong
+- First `excalibur_blog_kie_gpt_image2_api.py` call failed before createTask: batch `input_urls` keep git-safe `{{SITE_BASE}}`, but Cloud env had no `PUBLIC_SITE_URL` / `WP_SITE_URL`. Script cannot expand the placeholder.
+- Tenant `public_site_url` already exists in `shared/tenant-config.json`; Cover must not write a live host into committed batch.
+
+### How the agent recovered this run
+- Set `PUBLIC_SITE_URL` for the shell from tenant `public_site_url` (runtime only).
+- Set batch `prefer_local_reference` to `memory/cover/assets/victoria.png` (same as B16) so File Upload carries the face lock without rewriting committed `{{SITE_BASE}}` urls.
+- One billed create after that setup. No MCP fallback.
+
+### Durable fix needed before next run
+- `expand_input_urls` should fall back to tenant `public_site_url` when env is unset, still keeping artifacts as `{{SITE_BASE}}`.
+- Or Cloud Secrets must include `PUBLIC_SITE_URL` for Cover/Kie runs.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `scripts/excalibur_blog_site_base.py`
+- `shared/tenant-config.json`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
+## INC-20260828-0635-cover-site-base-env
+status: open
+run_date: 2026-08-28
+role: excalibur-blog-cover
+topic_id: B18
+article_dir: memory/blog/articles/B18-paren-propal-posle-blizosti
+severity: medium
+category: env
+
+### What went wrong
+- Same gap as INC-20260827-1750: Cloud env has no `PUBLIC_SITE_URL` / `WP_SITE_URL`, while committed batch keeps git-safe `{{SITE_BASE}}`.
+- Kie `expand_input_urls` still cannot expand without env; tenant `public_site_url` is already in `shared/tenant-config.json`.
+
+### How the agent recovered this run
+- Set `PUBLIC_SITE_URL` for the shell from tenant `public_site_url` (runtime only).
+- Set batch `prefer_local_reference` to `memory/cover/assets/victoria.png` so File Upload carries the face lock without rewriting committed `{{SITE_BASE}}` urls.
+- One billed create after that setup. No MCP fallback. Not a quality-redo.
+
+### Durable fix needed before next run
+- Same as INC-20260827-1750: `expand_input_urls` should fall back to tenant `public_site_url` when env is unset, still keeping artifacts as `{{SITE_BASE}}`.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `scripts/excalibur_blog_site_base.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
+## INC-20260828-1031-cover-victoria-sheet-missing
+status: resolved
+run_date: 2026-08-28
+role: excalibur-blog-cover
+topic_id: B19
+article_dir: memory/blog/articles/B19-chislo-imeni-pokazyvaet-ego-ton-v-pare
+severity: blocker
+category: env
+
+### What went wrong
+- CANON LOCK 2026-08-28: Cover i2i may use only `memory/cover/assets/victoria-sheet.png`.
+- That file is not on disk. `memory/cover/assets/` has README + `.gitkeep` only.
+- `blog-hero.json` already records `png_on_disk: false`.
+- Commit that locked the sheet also dropped the previous face file; no replacement PNG was added.
+- Owner rule: STOP if the sheet is missing. Do not i2i from another face. Do not invent a face.
+
+### How the agent recovered this run
+- Stopped before manifest batch / Kie createTask.
+- Did not substitute another face-ref.
+- Did not generate a face from memory.
+- Did not publish. Hall publishes.
+- Wrote Cover fragment `status: BLOCKER` and listed the missing file.
+
+### Follow-up 2026-08-28T10:40 (owner re-attach)
+- Owner re-attached the same sheet. Platform advertised `/workspace/cover-refs/victoria-sheet.png`.
+- Directory `cover-refs/` was created empty. `Read` = file not found. `inotify` 45s = no write.
+- `Task(excalibur-blog-cover)` with `file_attachments` failed: `Failed to read attachment: /workspace/cover-refs/victoria-sheet.png`.
+- Google Drive (connected): no `victoria-sheet.png`. WP `{{SITE_BASE}}/wp-content/uploads/excalibur/victoria-sheet.png` = 404.
+- Cursor agent UI download: session not logged in.
+- Still did not restore `victoria.png` / Alena / `character-sheet-2k`. Still no Kie. Text pack untouched.
+
+### Durable fix needed before next run
+- Chat-attach of PNG on this Cloud VM does **not** land a binary. Do not rely on `cover-refs/` or `image_files`.
+- Owner must put the bytes on a channel the VM can read:
+  1. `git add` + push `memory/cover/assets/victoria-sheet.png` on this branch, or
+  2. upload that exact filename to the connected Google Drive, or
+  3. bake the file into the environment snapshot.
+- Then Cover re-runs: copy once to assets (no second face file) → identity gate → `--write-batch` → one Kie i2i → split/inject.
+- Do not restore deleted alternate face files.
+
+### Suggested files to inspect/change
+- `memory/cover/assets/victoria-sheet.png`
+- `memory/cover/blog-hero.json`
+- `memory/cover/assets/README.md`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- 2026-08-28: pulled Karuselka `cursor/carousel-2026-08-28-daa5` `carusel-memory/references/victoria-sheet.png` (250844 JPEG-in-.png). Rewrapped to real PNG 1280×720 / 829343 bytes at `memory/cover/assets/victoria-sheet.png`. Chat-attach is not the source. Cover may run. No second face file.

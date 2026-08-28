@@ -1,9 +1,8 @@
 # Cover assets
 
-Сюда Setup Visual кладёт:
+Only identity file:
 
-- референс лица/героя (если `cover_mode=host_reference`)
-- moodboard / style plate
-- `style-refs/` — дополнительные референсы
+- `viktoriaref.png` — Vladimir official frontal. Sole Kie i2i input.
 
-Пока пусто — Cover не запускать.
+Deleted and forbidden: `victoria-sheet.png`, `victoria-sheet-front.png`,
+`victoria-face.png`, `victoria.png`, `alena.png`.

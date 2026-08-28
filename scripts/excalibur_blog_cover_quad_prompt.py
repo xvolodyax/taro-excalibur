@@ -92,6 +92,55 @@ def save_json(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+REQUIRED_HAIR_PHRASE = (
+    "hair color copied exactly from reference photo, same root depth, "
+    "do not lighten, no platinum"
+)
+REQUIRED_EYE_PHRASE = (
+    "eyes green with a slight hazel / light-brown tint "
+    "(зелёные с лёгким карим), not brown, not grey, not blue"
+)
+CANON_FACE_NAME = "viktoriaref.png"
+SOURCE_SHEET_NAME = "victoria-sheet.png"
+FACE_LOCK_OPENER = (
+    "same woman as viktoriaref.png, eyes green with a slight hazel / light-brown tint "
+    "(зелёные с лёгким карим), warm honey-wheat blonde darker roots not platinum, "
+    "new clothes not the white cami."
+)
+
+
+def identity_hair_prompt(hero: dict) -> str:
+    if not hero:
+        return ""
+    lock = hero.get("hair_color_lock")
+    if not isinstance(lock, dict):
+        lock = (hero.get("visual_lock") or {}).get("hair_color_lock") or {}
+    if not isinstance(lock, dict):
+        lock = {}
+    text = str(lock.get("prompt") or "").strip()
+    if text:
+        return compact(text, 160)
+    if str(hero.get("cover_mode") or "") == "host_reference":
+        return REQUIRED_HAIR_PHRASE
+    return ""
+
+
+def identity_eye_prompt(hero: dict) -> str:
+    if not hero:
+        return ""
+    lock = hero.get("eye_color_lock")
+    if not isinstance(lock, dict):
+        lock = (hero.get("visual_lock") or {}).get("eye_color_lock") or {}
+    if not isinstance(lock, dict):
+        lock = {}
+    text = str(lock.get("prompt") or "").strip()
+    if text:
+        return compact(text, 200)
+    if str(hero.get("cover_mode") or "") == "host_reference":
+        return REQUIRED_EYE_PHRASE
+    return ""
+
+
 def compact(value: object, limit: int) -> str:
     text = " ".join(str(value or "").split())
     if len(text) <= limit:
@@ -109,11 +158,7 @@ def inline_panel_prompt(slot: dict, types_catalog: dict) -> str:
     labels = [str(x).strip() for x in (slot.get("labels") or []) if str(x).strip()]
     if labels:
         exact = ", ".join(f"«{x}»" for x in labels)
-        base += (
-            f" TEXT LOCK: render ONLY these exact Russian strings on this panel: "
-            f"{exact}. Every letter in Cyrillic, exactly as written. "
-            "No other words, no English, no invented headlines."
-        )
+        base += f" TEXT LOCK: {exact} only, exact Cyrillic."
     return base
 
 
@@ -317,13 +362,26 @@ def build_prompt(
     cat_ok = style_allows_cat_stickers(style)
     cat_hero = style_is_situational_cat_hero(style)
 
+    host_mode = str(hero.get("cover_mode") or style.get("cover_mode") or "") == "host_reference"
+    palette = design_code.get("color_palette") if isinstance(design_code.get("color_palette"), dict) else {}
+    accent_hex = str(
+        palette.get("accent_gold") or palette.get("accent_primary") or "#C4A574"
+    ).strip()
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
-    highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
-        f'hook text must match exactly — do not substitute «время»/traffic markers'
-        if highlight
-        else "paint at most ONE punch word in hot-pink #FF1493"
-    )
+    if host_mode:
+        highlight_rule = (
+            f'paint ONLY the highlight word "{highlight}" in medallion gold {accent_hex}; '
+            f'same editorial face as the hook'
+            if highlight
+            else f"paint at most ONE punch word in medallion gold {accent_hex}"
+        )
+    else:
+        highlight_rule = (
+            f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
+            f'hook text must match exactly — do not substitute «время»/traffic markers'
+            if highlight
+            else "paint at most ONE punch word in hot-pink #FF1493"
+        )
     cover_scene = sanitize_cover_scene_hint(
         str(cover.get("scene_hint") or ""), highlight
     )
@@ -339,7 +397,7 @@ def build_prompt(
         style.get("global_prompt_prefix")
         or design_code.get("cover_panel_prompt_block")
         or "",
-        520,
+        380 if host_mode else 520,
     )
     if not style_prefix:
         style_prefix = (
@@ -380,9 +438,14 @@ def build_prompt(
             "host+face LARGE left; 1–2 funny cat stickers (white outline) "
             "tiny/medium right; pink banners/tape; no sterile/Drake/canned EN filler."
         )
+        hair_lock = identity_hair_prompt(hero)
+        eye_lock = identity_eye_prompt(hero)
         reference_line = (
-            "REFERENCE FACE only top-left when cover_mode=host_reference: use blog-hero visual_lock; "
-            "expressive editorial pose; no headphones; no human meme reaction."
+            f"REFERENCE FACE ONLY {CANON_FACE_NAME} top-left when cover_mode=host_reference: "
+            "same woman as the owner sheet / Instagram carousel; "
+            f"{eye_lock}; {hair_lock}; "
+            "do not i2i from victoria.png, alena.png, or any other face file; "
+            "expressive editorial pose; new clothes; no headphones; no human meme reaction."
         )
         inline_suffix = (
             "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
@@ -399,9 +462,14 @@ def build_prompt(
         cover_scene_tail = (
             "host+face; dense collage + topic object; no sterile/meme/canned EN chat filler."
         )
+        hair_lock = identity_hair_prompt(hero)
+        eye_lock = identity_eye_prompt(hero)
         reference_line = (
-            "REFERENCE FACE only top-left when cover_mode=host_reference: use blog-hero visual_lock; "
-            "expressive editorial pose; no headphones; no meme reaction."
+            f"REFERENCE FACE ONLY {CANON_FACE_NAME} top-left when cover_mode=host_reference: "
+            "same woman as the owner sheet / Instagram carousel; "
+            f"{eye_lock}; {hair_lock}; "
+            "do not i2i from victoria.png, alena.png, or any other face file; "
+            "expressive editorial pose; new clothes; no headphones; no meme reaction."
         )
         inline_suffix = (
             "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
@@ -409,28 +477,82 @@ def build_prompt(
             "Neg: sterile white, all-pink headline, keyword spam, watermark, logo, 9:16, "
             "unreadable text, extra faces."
         )
-    lines = [
-        # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
-        # badge on every panel (INC-20260723-1223 / user correction).
-        style_prefix,
-        "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
-        "",
-        ban_line,
-        "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
-        "",
-        reference_line,
-        "",
-        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
-        f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
-        "no keyword list card; "
-        f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}",
-        "",
-        f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
-        f"Bottom-left inline: {inline_panel_prompt(i2, types_catalog)}",
-        f"Bottom-right inline: {inline_panel_prompt(i3, types_catalog)}",
-        "",
-        inline_suffix,
-    ]
+    if host_mode and not cat_hero:
+        # INC-20260827-1305: tenant prefix + eye/hair locks blow 3500; reclaim shared extras.
+        raw_neg = str(
+            style.get("global_negative")
+            or design_code.get("global_negative")
+            or (
+                "memes/reaction/animals/joke captions/silhouettes/"
+                "pipeline stamps/EXCALIBUR/platinum hair/brown eyes/grey eyes."
+            )
+        ).strip()
+        if not re.match(r"(?i)(?:ban|neg|negative)\b", raw_neg):
+            raw_neg = f"Ban: {raw_neg}"
+        ban_line = compact(raw_neg, 240)
+        cover_scene_tail = (
+            "host LARGE left; tiny topic prop right; editorial type in-frame; #FFF."
+        )
+        hair_lock = identity_hair_prompt(hero)
+        eye_lock = identity_eye_prompt(hero)
+        # FACE LOCK opener is already line 1 — do not paste it again here
+        # (B19 / INC-20260828-1110: opener+reference dup → 3682 > 3500).
+        reference_line = (
+            f"REFERENCE FACE ONLY {CANON_FACE_NAME} (never crop, never any other face file): "
+            f"{eye_lock}; {hair_lock}; new clothes; no headphones."
+        )
+        inline_suffix = compact(
+            style.get("inline_prompt_suffix")
+            or design_code.get("inline_information_block")
+            or inline_suffix,
+            280,
+        )
+        text_language_lock = (
+            "TEXT LANGUAGE LOCK: visible text is Russian Cyrillic only. "
+            "Render TEXT LOCK strings exactly. No English headlines."
+        )
+        cover_headline = (
+            f"Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY «{cover_hook_text}» — "
+            f"editorial display Cyrillic in-frame, ink #141821, {highlight_rule}; "
+            f"no English headline.{sticky_lock} no keyword list; "
+            f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}"
+        )
+    else:
+        text_language_lock = (
+            "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. "
+            "Renderable strings are given per panel in TEXT LOCK lines — render them exactly. "
+            "No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words."
+        )
+        cover_headline = (
+            f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
+            f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
+            "no keyword list card; "
+            f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}"
+        )
+    lines = []
+    if host_mode and not cat_hero:
+        lines.append(FACE_LOCK_OPENER)
+    lines.extend(
+        [
+            # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
+            # badge on every panel (INC-20260723-1223 / user correction).
+            style_prefix,
+            "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
+            "",
+            ban_line,
+            text_language_lock,
+            "",
+            reference_line,
+            "",
+            cover_headline,
+            "",
+            f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
+            f"Bottom-left inline: {inline_panel_prompt(i2, types_catalog)}",
+            f"Bottom-right inline: {inline_panel_prompt(i3, types_catalog)}",
+            "",
+            inline_suffix,
+        ]
+    )
     if fact_locks:
         lines.extend(["", *fact_locks])
     return "\n".join(line for line in lines if line)
@@ -472,7 +594,32 @@ def main() -> int:
     cat_hero = style_is_situational_cat_hero(style)
     local_reference = str(style.get("local_reference") or "").strip()
     prefer_local_reference = False
-    if cat_hero and local_reference:
+    host_mode = str(hero.get("cover_mode") or style.get("cover_mode") or "") == "host_reference"
+    if host_mode:
+        local_reference = (
+            str(hero.get("reference_image") or "").strip()
+            or f"memory/cover/assets/{CANON_FACE_NAME}"
+        )
+        local_path = root / local_reference
+        if Path(local_reference).name != CANON_FACE_NAME:
+            print(
+                "❌ COVER HERO BLOCKER: local_reference must be "
+                f"{CANON_FACE_NAME}, got {local_reference}",
+                file=sys.stderr,
+            )
+            return 1
+        if not local_path.is_file():
+            print(
+                f"❌ COVER HERO BLOCKER: missing {local_path} — "
+                "do not i2i from any other face file.",
+                file=sys.stderr,
+            )
+            return 1
+        batch_ref_url = (
+            f"{SITE_BASE_PLACEHOLDER}/wp-content/uploads/excalibur/{CANON_FACE_NAME}"
+        )
+        prefer_local_reference = True
+    elif cat_hero and local_reference:
         local_path = root / local_reference
         if not local_path.is_file():
             print(
@@ -547,6 +694,23 @@ def main() -> int:
             for err in required_errors:
                 print(f"  - {err}", file=sys.stderr)
             return 1
+        if str(hero.get("cover_mode") or "") == "host_reference":
+            if CANON_FACE_NAME not in batch_ref_url or SOURCE_SHEET_NAME == Path(batch_ref_url).name:
+                print(
+                    "❌ COVER HERO BLOCKER: input_urls must be "
+                    f"{CANON_FACE_NAME} only (never {SOURCE_SHEET_NAME}); "
+                    f"got {batch_ref_url}",
+                    file=sys.stderr,
+                )
+                return 1
+            canon_disk = root / "memory/cover/assets" / CANON_FACE_NAME
+            if not canon_disk.is_file():
+                print(
+                    f"❌ COVER HERO BLOCKER: missing {canon_disk} — "
+                    "do not i2i from any other face file.",
+                    file=sys.stderr,
+                )
+                return 1
         api_input = {
             "prompt": prompt,
             "input_urls": [batch_ref_url],

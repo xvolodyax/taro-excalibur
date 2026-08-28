@@ -1,0 +1,17 @@
+{
+  "task_id": "b8037280e42dd00b8d406bda0964a906",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B19-chislo-imeni-pokazyvaet-ego-ton-v-pare/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1787916469,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "viktoriaref.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}
