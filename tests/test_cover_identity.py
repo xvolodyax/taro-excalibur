@@ -22,6 +22,12 @@ class CoverIdentityTest(unittest.TestCase):
         self.assertIn("honey", hair.lower())
         self.assertIn("root", hair.lower())
 
+    def test_sheet_png_on_disk(self) -> None:
+        path = ROOT / "memory/cover/assets/victoria-sheet.png"
+        self.assertTrue(path.is_file(), path)
+        self.assertGreater(path.stat().st_size, 100_000)
+        self.assertTrue(path.read_bytes()[:8].startswith(b"\x89PNG\r\n\x1a\n"))
+
     def test_canon_face_is_victoria_sheet_only(self) -> None:
         hero = json.loads((ROOT / "memory/cover/blog-hero.json").read_text(encoding="utf-8"))
         self.assertEqual(hero.get("reference_image"), "memory/cover/assets/victoria-sheet.png")

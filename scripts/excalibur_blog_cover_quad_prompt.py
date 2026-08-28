@@ -525,7 +525,32 @@ def main() -> int:
     cat_hero = style_is_situational_cat_hero(style)
     local_reference = str(style.get("local_reference") or "").strip()
     prefer_local_reference = False
-    if cat_hero and local_reference:
+    host_mode = str(hero.get("cover_mode") or style.get("cover_mode") or "") == "host_reference"
+    if host_mode:
+        local_reference = (
+            str(hero.get("reference_image") or "").strip()
+            or f"memory/cover/assets/{CANON_FACE_NAME}"
+        )
+        local_path = root / local_reference
+        if Path(local_reference).name != CANON_FACE_NAME:
+            print(
+                "❌ COVER HERO BLOCKER: local_reference must be "
+                f"{CANON_FACE_NAME}, got {local_reference}",
+                file=sys.stderr,
+            )
+            return 1
+        if not local_path.is_file():
+            print(
+                f"❌ COVER HERO BLOCKER: missing {local_path} — "
+                "do not i2i from any other face file.",
+                file=sys.stderr,
+            )
+            return 1
+        batch_ref_url = (
+            f"{SITE_BASE_PLACEHOLDER}/wp-content/uploads/excalibur/{CANON_FACE_NAME}"
+        )
+        prefer_local_reference = True
+    elif cat_hero and local_reference:
         local_path = root / local_reference
         if not local_path.is_file():
             print(
