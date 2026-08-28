@@ -118,9 +118,21 @@ category: env
 - Did not publish. Hall publishes.
 - Wrote Cover fragment `status: BLOCKER` and listed the missing file.
 
+### Follow-up 2026-08-28T10:40 (owner re-attach)
+- Owner re-attached the same sheet. Platform advertised `/workspace/cover-refs/victoria-sheet.png`.
+- Directory `cover-refs/` was created empty. `Read` = file not found. `inotify` 45s = no write.
+- `Task(excalibur-blog-cover)` with `file_attachments` failed: `Failed to read attachment: /workspace/cover-refs/victoria-sheet.png`.
+- Google Drive (connected): no `victoria-sheet.png`. WP `{{SITE_BASE}}/wp-content/uploads/excalibur/victoria-sheet.png` = 404.
+- Cursor agent UI download: session not logged in.
+- Still did not restore `victoria.png` / Alena / `character-sheet-2k`. Still no Kie. Text pack untouched.
+
 ### Durable fix needed before next run
-- Owner places `victoria-sheet.png` (character sheet / Instagram carousel) at `memory/cover/assets/victoria-sheet.png`.
-- Then Cover re-runs: identity gate → `--write-batch` → one Kie i2i → split/inject.
+- Chat-attach of PNG on this Cloud VM does **not** land a binary. Do not rely on `cover-refs/` or `image_files`.
+- Owner must put the bytes on a channel the VM can read:
+  1. `git add` + push `memory/cover/assets/victoria-sheet.png` on this branch, or
+  2. upload that exact filename to the connected Google Drive, or
+  3. bake the file into the environment snapshot.
+- Then Cover re-runs: copy once to assets (no second face file) → identity gate → `--write-batch` → one Kie i2i → split/inject.
 - Do not restore deleted alternate face files.
 
 ### Suggested files to inspect/change
