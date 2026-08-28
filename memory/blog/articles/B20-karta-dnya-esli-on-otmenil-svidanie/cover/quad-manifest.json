@@ -1,0 +1,64 @@
+{
+  "topic_id": "B20",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Свидание отменил: вечер снова твой",
+  "cover_hook_highlight": "твой",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face lock = viktoriaref.png only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Карта дня возвращает вечер, если он отменил свидание",
+      "scene_hint": "same woman as viktoriaref.png, eyes green with a slight hazel / light-brown tint. Host LARGE left; tiny phone «потом» right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "не додумывай за него"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Сразу к делу: как реагировать на сорванные планы и что спросить у карт",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "NO people/faces/emoji/silhouettes. 4 cards L→R: факт вместо домыслов → ход за ним → вопрос о себе → береги свой ресурс. Outcome: карты про твоё состояние, не его мотивы.",
+      "alt": "Как реагировать на отмену свидания: факт, ход за ним, вопрос о себе",
+      "labels": [
+        "факт вместо домыслов",
+        "ход за ним",
+        "вопрос о себе",
+        "береги свой ресурс"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Что на самом деле делает вечерняя карта дня",
+      "visual_type": "infographic_card",
+      "scene_hint": "NO people/faces/emoji/silhouettes. Vertical cards: компас внимания → сверка состояния → твой личный расклад ≠ массовый прогноз. Outcome: штурвал в руках, карта про твой вечер.",
+      "alt": "Что делает вечерняя карта дня: компас внимания и личный расклад",
+      "labels": [
+        "компас внимания",
+        "сверка состояния",
+        "твой личный расклад",
+        "штурвал в руках"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Как вернуть себе управление вечером и сохранить ресурс",
+      "visual_type": "checklist_board",
+      "scene_hint": "NO people/faces/emoji/silhouettes. 3 steps + card: спокойный ответ → без давления → вечер для себя; fact card расклад на ресурс. Outcome: вечер снова твой.",
+      "alt": "Как вернуть управление вечером: спокойный ответ и расклад на ресурс",
+      "labels": [
+        "спокойный ответ",
+        "без давления",
+        "вечер для себя",
+        "расклад на ресурс"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

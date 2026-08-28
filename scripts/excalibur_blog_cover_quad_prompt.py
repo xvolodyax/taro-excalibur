@@ -318,19 +318,37 @@ def build_prompt(
     cat_hero = style_is_situational_cat_hero(style)
 
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
-    highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
-        f'hook text must match exactly — do not substitute «время»/traffic markers'
-        if highlight
-        else "paint at most ONE punch word in hot-pink #FF1493"
-    )
+    cover_mode = str(
+        hero.get("cover_mode") or style.get("cover_mode") or ""
+    ).strip()
+    palette = design_code.get("color_palette") if isinstance(design_code, dict) else {}
+    accent_gold = str((palette or {}).get("accent_gold") or "#C4A574")
+    host_lock = cover_mode == "host_reference"
+    if host_lock:
+        highlight_rule = (
+            f'paint ONLY the highlight word "{highlight}" in medallion gold {accent_gold}; '
+            f'hook text must match exactly'
+            if highlight
+            else f"paint at most ONE punch word in medallion gold {accent_gold}"
+        )
+    else:
+        highlight_rule = (
+            f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
+            f'hook text must match exactly — do not substitute «время»/traffic markers'
+            if highlight
+            else "paint at most ONE punch word in hot-pink #FF1493"
+        )
     cover_scene = sanitize_cover_scene_hint(
         str(cover.get("scene_hint") or ""), highlight
     )
     cover_hook_text = compact(manifest.get("cover_hook", ""), 120)
     cover_sticky = compact(str(cover.get("sticky") or ""), 48)
     sticky_lock = (
-        f" Small pink sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+        (
+            f" Small gold dusty sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+            if host_lock
+            else f" Small pink sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+        )
         if cover_sticky
         else ""
     )
@@ -409,28 +427,76 @@ def build_prompt(
             "Neg: sterile white, all-pink headline, keyword spam, watermark, logo, 9:16, "
             "unreadable text, extra faces."
         )
-    lines = [
-        # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
-        # badge on every panel (INC-20260723-1223 / user correction).
-        style_prefix,
-        "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
-        "",
-        ban_line,
-        "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
-        "",
-        reference_line,
-        "",
-        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
-        f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
-        "no keyword list card; "
-        f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}",
-        "",
-        f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
-        f"Bottom-left inline: {inline_panel_prompt(i2, types_catalog)}",
-        f"Bottom-right inline: {inline_panel_prompt(i3, types_catalog)}",
-        "",
-        inline_suffix,
-    ]
+    if host_lock:
+        # Tenant identity-gate: prompt MUST start with this opener (viktoriaref).
+        # Reclaim shared ban/essay so opener + hair lock still fit ≤3500.
+        identity_opener = (
+            "same woman as viktoriaref.png, eyes green with a slight hazel / light-brown tint "
+            "(зелёные с лёгким карим), warm honey-wheat blonde darker roots not platinum, "
+            "new clothes not the white cami. "
+            "hair color copied exactly from reference photo, same root depth, do not lighten, no platinum."
+        )
+        style_prefix = compact(
+            style.get("global_prompt_prefix")
+            or design_code.get("cover_panel_prompt_block")
+            or style_prefix,
+            380,
+        )
+        ban_line = ""
+        cover_scene_tail = "new outfit not cami/hoodie; no headphones."
+        reference_line = (
+            "i2i ONLY viktoriaref.png; same woman same face; no Alyona; no white hoodie."
+        )
+        inline_suffix = compact(
+            style.get("inline_prompt_suffix")
+            or "Inline all: no people/faces; humanist sans; gold accent; #FFF.",
+            260,
+        )
+        text_lang = (
+            "TEXT LANGUAGE LOCK: visible text is RUSSIAN Cyrillic only. "
+            "Render TEXT LOCK strings exactly. No English headlines."
+        )
+        hook_type = "editorial display Cyrillic, ink #141821"
+        cover_text_lock = (
+            f'Top-left COVER TEXT LOCK: ONLY headline «{cover_hook_text}» — {hook_type}, '
+            f'{highlight_rule}.{sticky_lock} no keyword list; '
+            f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}"
+        )
+        lines = [
+            identity_opener,
+            style_prefix,
+            "Canvas 2048x1152 exact 2x2; four 16:9; white gutters x=1024 y=576.",
+            text_lang,
+            reference_line,
+            cover_text_lock,
+            f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
+            f"Bottom-left inline: {inline_panel_prompt(i2, types_catalog)}",
+            f"Bottom-right inline: {inline_panel_prompt(i3, types_catalog)}",
+            inline_suffix,
+        ]
+    else:
+        lines = [
+            # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
+            # badge on every panel (INC-20260723-1223 / user correction).
+            style_prefix,
+            "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
+            "",
+            ban_line,
+            "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
+            "",
+            reference_line,
+            "",
+            f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
+            f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
+            "no keyword list card; "
+            f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}",
+            "",
+            f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
+            f"Bottom-left inline: {inline_panel_prompt(i2, types_catalog)}",
+            f"Bottom-right inline: {inline_panel_prompt(i3, types_catalog)}",
+            "",
+            inline_suffix,
+        ]
     if fact_locks:
         lines.extend(["", *fact_locks])
     return "\n".join(line for line in lines if line)
@@ -471,8 +537,11 @@ def main() -> int:
 
     cat_hero = style_is_situational_cat_hero(style)
     local_reference = str(style.get("local_reference") or "").strip()
+    prefer_local_from_style = bool(style.get("prefer_local_reference"))
+    local_name = Path(local_reference).name.lower() if local_reference else ""
+    host_local_ok = local_name == "viktoriaref.png"
     prefer_local_reference = False
-    if cat_hero and local_reference:
+    if (cat_hero or prefer_local_from_style or host_local_ok) and local_reference:
         local_path = root / local_reference
         if not local_path.is_file():
             print(
