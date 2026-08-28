@@ -1,5 +1,38 @@
 # Pipeline fix queue
 
+## INC-20260828-1128-cover-merge-pinkcat
+status: open
+run_date: 2026-08-28
+role: excalibur-blog-cover
+topic_id: B19
+article_dir: memory/blog/articles/B19-chislo-imeni-pokazyvaet-ego-ton-v-pare
+severity: medium
+category: script
+
+### What went wrong
+- `excalibur_blog_quad_manifest.py --merge` hardcoded `style_preset=tenant_unset` and `style_file=quad-style-pink-cat-digital-collage-ru.json`, wiping tenant `victoria-studio`.
+- Cover would have written a pink-cat batch if style had not been restored before `--write-batch`.
+
+### How the agent recovered this run
+- Restored `victoria-studio` / `quad-style-victoria-studio.json` in the B19 manifest before prompt+Kie.
+- One billed Kie i2i from `viktoriaref.png` only. Did not crop or upload sheet files.
+- `--merge` now keeps existing tenant style, else `shared/tenant-config.json` `cover_files.style_preset`.
+
+### Durable fix needed before next run
+- Never reset Cover `--merge` to pink-cat when the tenant already has a style preset.
+- i2i identity file is only `memory/cover/assets/viktoriaref.png`. Crop / `victoria-sheet-front.png` / `victoria-face.png` paths are superseded.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_quad_manifest.py`
+- `shared/tenant-config.json`
+- `memory/cover/quad-style-victoria-studio.json`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260828-1104-cover-12up-averaged-face
 status: open
 run_date: 2026-08-28
@@ -38,6 +71,10 @@ category: script
 ### Follow-up 2026-08-28 B19 rebuild
 - Owner miss-face rebuild used only `victoria-sheet-front.png` (312×227). File Upload `local_name` = that crop. 12-up was not uploaded.
 - Identity gate this run = `HALL_FACE_CHECK` (not PASS). Hall and Vladimir check the face.
+
+### Follow-up 2026-08-28 SUPERSEDED
+- Crop / `victoria-sheet-front.png` / `victoria-face.png` is no longer the identity path.
+- Only `memory/cover/assets/viktoriaref.png` may be uploaded to Kie. Do not crop the 12-up. Do not recreate those deleted face files.
 
 ## INC-20260828-1110-cover-facelock-dup
 status: open

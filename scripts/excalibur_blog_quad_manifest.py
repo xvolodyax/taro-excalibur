@@ -49,6 +49,23 @@ def save_json(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def resolve_style_lock(root: Path, preserve: dict | None) -> tuple[str, str]:
+    """Keep tenant / existing style. Never reset --merge to pink-cat."""
+    old_preset = str((preserve or {}).get("style_preset") or "").strip()
+    old_file = str((preserve or {}).get("style_file") or "").strip()
+    if old_file and old_file != "memory/cover/quad-style-pink-cat-digital-collage-ru.json":
+        preset = old_preset if old_preset and old_preset != "tenant_unset" else Path(old_file).stem.replace("quad-style-", "")
+        return preset, old_file
+    tenant_path = root / "shared/tenant-config.json"
+    if tenant_path.is_file():
+        tenant = load_json(tenant_path)
+        style_file = str((tenant.get("cover_files") or {}).get("style_preset") or "").strip()
+        if style_file:
+            preset = Path(style_file).stem.replace("quad-style-", "")
+            return preset, style_file
+    return "tenant_unset", "memory/cover/quad-style-pink-cat-digital-collage-ru.json"
+
+
 def extract_h2_titles(article_html: Path) -> list[str]:
     if not article_html.is_file():
         return []
@@ -142,14 +159,15 @@ def build_manifest(article_dir: Path, root: Path, preserve: dict | None) -> dict
         str(cover_text.get("highlight") or "").strip()
         or str((preserve or {}).get("cover_hook_highlight") or "").strip()
     )
+    style_preset, style_file = resolve_style_lock(root, preserve)
 
     return {
         "topic_id": topic_id,
         "canvas_file": "cover/canvas-quad.png",
         "layout": "2x2",
         "pipeline": "quad_canvas_1x_image_api",
-        "style_preset": "tenant_unset",
-        "style_file": "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
+        "style_preset": style_preset,
+        "style_file": style_file,
         "blog_hero": "memory/cover/blog-hero.json",
         "inline_types_catalog": "memory/cover/inline-visual-types.json",
         "cover_hook": hook,
