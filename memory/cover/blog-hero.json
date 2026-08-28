@@ -7,8 +7,8 @@
   "reference_image": "memory/cover/assets/victoria-sheet.png",
   "sole_face_reference": true,
   "reference_notes": "CANON LOCK 2026-08-28: единственный face-ref для всех обложек ТАРО СЕЙЧАС — victoria-sheet.png (owner character sheet / Instagram carousel). Запрещено i2i с любого другого файла. victoria.png, victoria_ref.jpg, alena.png, character-sheet-2k.png и лишние sheets удалены.",
-  "png_on_disk": false,
-  "png_required_action": "Положить owner-файл victoria-sheet.png в memory/cover/assets/. Cover i2i не запускать без этого файла.",
+  "png_on_disk": true,
+  "png_required_action": "Sheet on disk from Karuselka public raw (JPEG container rewrapped to PNG, same 1280×720 pixels).",
   "visual_lock": {
     "identity": "Виктория, таролог команды «ТАРО СЕЙЧАС» — та же женщина, что на victoria-sheet.png и в Instagram-каруселях",
     "face_source": "ONLY memory/cover/assets/victoria-sheet.png — identity lock. Do not i2i from any other face file.",

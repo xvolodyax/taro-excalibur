@@ -96,7 +96,7 @@ category: env
 - pending
 
 ## INC-20260828-1031-cover-victoria-sheet-missing
-status: open
+status: resolved
 run_date: 2026-08-28
 role: excalibur-blog-cover
 topic_id: B19
@@ -144,4 +144,4 @@ category: env
 - none recorded
 
 ### Fixer resolution
-- pending
+- 2026-08-28: pulled Karuselka `cursor/carousel-2026-08-28-daa5` `carusel-memory/references/victoria-sheet.png` (250844 JPEG-in-.png). Rewrapped to real PNG 1280×720 / 829343 bytes at `memory/cover/assets/victoria-sheet.png`. Chat-attach is not the source. Cover may run. No second face file.
