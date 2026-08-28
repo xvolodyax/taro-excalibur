@@ -1,6 +1,6 @@
 {
   "registry_version": "1.0",
-  "comment": "E-E-A-T Authors Registry. Victoria is the only cover host. Do not put Alyona on article covers.",
+  "comment": "E-E-A-T Authors Registry. Victoria is the only cover host. Face-ref ONLY memory/cover/assets/victoria-sheet.png. Do not put Alyona on article covers.",
   "status": "ok",
   "default_author_id": "victoria",
   "authors": [

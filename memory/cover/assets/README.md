@@ -1,9 +1,12 @@
 # Cover assets
 
-Сюда Setup Visual кладёт:
+Единственный face-ref тенанта «ТАРО СЕЙЧАС»:
 
-- референс лица/героя (если `cover_mode=host_reference`)
-- moodboard / style plate
-- `style-refs/` — дополнительные референсы
+- `victoria-sheet.png` — owner character sheet / Instagram carousel
 
-Пока пусто — Cover не запускать.
+Cover i2i только с этого файла. Других лиц в репозитории быть не должно
+(`victoria.png`, `victoria_ref.jpg`, `alena.png`, `character-sheet-2k.png`,
+лишние sheets).
+
+Глаза: зелёные с лёгким карим/hazel, как на карусели. Не карие, не серые.
+Несовпадение лица или глаз → пересобрать весь холст 2×2. Hall публикует.

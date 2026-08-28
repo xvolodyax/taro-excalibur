@@ -65,8 +65,8 @@
 
 - **cover_mode:** `host_reference`
 - **host:** Виктория (`author_id=victoria`). Алёну на обложки не ставить.
-- **reference:** `memory/cover/assets/victoria.png` (канон имени; в checkout бинарник может отсутствовать — Cover i2i не запускать без файла)
-- **lock:** `memory/cover/blog-hero.json` — светлый блонд с тёплым honey/пепельным мясом, корни темнее (не платина, не ice-blonde, не осветлять); глаза зелёные + hazel у зрачка; тёмные брови, чёрная стрелка; mauve помада; тёплый загар. Одежда и эмоция каждый раз новые (белый блейзер рефа — не lock).
+- **reference:** `memory/cover/assets/victoria-sheet.png` — **единственный** face-ref. Удалены: `victoria.png`, `victoria_ref.jpg`, `alena.png`, `character-sheet-2k.png` и любые лишние sheets. Cover i2i только с этого файла.
+- **lock:** `memory/cover/blog-hero.json` — та же женщина, что на sheet и в Instagram-каруселях; светлый блонд с тёплым honey/пепельным мясом, корни темнее (не платина); глаза зелёные с лёгким карим/hazel (не карие, не серые). Одежда и поза каждый раз новые (камисоль+джинсы sheet — не lock одежды). Несовпадение лица/глаз → пересобрать весь 2×2, не публиковать.
 - **style:** `memory/cover/cover-design-code.json` + `memory/cover/quad-style-victoria-studio.json`
 - **палитра:** свет, золото медальона `#C4A574`, пыльные летние тона `#D4B5A0` / `#C9B089`. Фон панелей `#FFFFFF`, ink `#141821`. Не `#FF1493` cat-collage, не gothic.
 - **типографика:** дизайнерская. Хук = editorial display (didone / refined grotesque), буквы часть кадра. Highlight — то же лицо, золото. Sticky/inline — лёгкий humanist sans. Запрет: Arial, Roboto, Inter, Impact, Times, bold condensed, squish-bold, all-caps плашка.

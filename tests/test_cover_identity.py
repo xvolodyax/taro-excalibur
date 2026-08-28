@@ -22,6 +22,25 @@ class CoverIdentityTest(unittest.TestCase):
         self.assertIn("honey", hair.lower())
         self.assertIn("root", hair.lower())
 
+    def test_canon_face_is_victoria_sheet_only(self) -> None:
+        hero = json.loads((ROOT / "memory/cover/blog-hero.json").read_text(encoding="utf-8"))
+        self.assertEqual(hero.get("reference_image"), "memory/cover/assets/victoria-sheet.png")
+        self.assertTrue(hero.get("sole_face_reference"))
+        eye = ((hero.get("visual_lock") or {}).get("eye_color_lock") or {}).get("prompt") or ""
+        self.assertIn("green with a slight brown/hazel tint", eye)
+        self.assertIn("not brown, not grey", eye)
+        forbidden = {
+            "victoria.png",
+            "victoria_ref.jpg",
+            "alena.png",
+            "character-sheet-2k.png",
+        }
+        for folder in (ROOT / "memory" / "cover", ROOT / "cover-refs"):
+            if not folder.is_dir():
+                continue
+            for path in folder.rglob("*"):
+                self.assertNotIn(path.name.lower(), {n.lower() for n in forbidden})
+
     def test_tenant_gate_passes(self) -> None:
         import sys
 

@@ -92,6 +92,49 @@ def save_json(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+REQUIRED_HAIR_PHRASE = (
+    "hair color copied exactly from reference photo, same root depth, "
+    "do not lighten, no platinum"
+)
+REQUIRED_EYE_PHRASE = (
+    "eyes green with a slight brown/hazel tint, same as reference sheet "
+    "and Instagram carousels, not brown, not grey, not a different eye color"
+)
+CANON_FACE_NAME = "victoria-sheet.png"
+
+
+def identity_hair_prompt(hero: dict) -> str:
+    if not hero:
+        return ""
+    lock = hero.get("hair_color_lock")
+    if not isinstance(lock, dict):
+        lock = (hero.get("visual_lock") or {}).get("hair_color_lock") or {}
+    if not isinstance(lock, dict):
+        lock = {}
+    text = str(lock.get("prompt") or "").strip()
+    if text:
+        return compact(text, 160)
+    if str(hero.get("cover_mode") or "") == "host_reference":
+        return REQUIRED_HAIR_PHRASE
+    return ""
+
+
+def identity_eye_prompt(hero: dict) -> str:
+    if not hero:
+        return ""
+    lock = hero.get("eye_color_lock")
+    if not isinstance(lock, dict):
+        lock = (hero.get("visual_lock") or {}).get("eye_color_lock") or {}
+    if not isinstance(lock, dict):
+        lock = {}
+    text = str(lock.get("prompt") or "").strip()
+    if text:
+        return compact(text, 200)
+    if str(hero.get("cover_mode") or "") == "host_reference":
+        return REQUIRED_EYE_PHRASE
+    return ""
+
+
 def compact(value: object, limit: int) -> str:
     text = " ".join(str(value or "").split())
     if len(text) <= limit:
@@ -380,9 +423,14 @@ def build_prompt(
             "host+face LARGE left; 1–2 funny cat stickers (white outline) "
             "tiny/medium right; pink banners/tape; no sterile/Drake/canned EN filler."
         )
+        hair_lock = identity_hair_prompt(hero)
+        eye_lock = identity_eye_prompt(hero)
         reference_line = (
-            "REFERENCE FACE only top-left when cover_mode=host_reference: use blog-hero visual_lock; "
-            "expressive editorial pose; no headphones; no human meme reaction."
+            f"REFERENCE FACE ONLY {CANON_FACE_NAME} top-left when cover_mode=host_reference: "
+            "same woman as the owner sheet / Instagram carousel; "
+            f"{eye_lock}; {hair_lock}; "
+            "do not i2i from victoria.png, alena.png, or any other face file; "
+            "expressive editorial pose; new clothes; no headphones; no human meme reaction."
         )
         inline_suffix = (
             "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
@@ -399,9 +447,14 @@ def build_prompt(
         cover_scene_tail = (
             "host+face; dense collage + topic object; no sterile/meme/canned EN chat filler."
         )
+        hair_lock = identity_hair_prompt(hero)
+        eye_lock = identity_eye_prompt(hero)
         reference_line = (
-            "REFERENCE FACE only top-left when cover_mode=host_reference: use blog-hero visual_lock; "
-            "expressive editorial pose; no headphones; no meme reaction."
+            f"REFERENCE FACE ONLY {CANON_FACE_NAME} top-left when cover_mode=host_reference: "
+            "same woman as the owner sheet / Instagram carousel; "
+            f"{eye_lock}; {hair_lock}; "
+            "do not i2i from victoria.png, alena.png, or any other face file; "
+            "expressive editorial pose; new clothes; no headphones; no meme reaction."
         )
         inline_suffix = (
             "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
@@ -547,6 +600,22 @@ def main() -> int:
             for err in required_errors:
                 print(f"  - {err}", file=sys.stderr)
             return 1
+        if str(hero.get("cover_mode") or "") == "host_reference":
+            if CANON_FACE_NAME not in batch_ref_url:
+                print(
+                    "❌ COVER HERO BLOCKER: input_urls must be victoria-sheet.png only; "
+                    f"got {batch_ref_url}",
+                    file=sys.stderr,
+                )
+                return 1
+            canon_disk = root / "memory/cover/assets" / CANON_FACE_NAME
+            if not canon_disk.is_file():
+                print(
+                    f"❌ COVER HERO BLOCKER: missing {canon_disk} — "
+                    "do not i2i from any other face file.",
+                    file=sys.stderr,
+                )
+                return 1
         api_input = {
             "prompt": prompt,
             "input_urls": [batch_ref_url],

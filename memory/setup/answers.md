@@ -49,7 +49,7 @@
 ## Visual
 
 - cover_mode: `host_reference` (Виктория).
-- реф: приложенный `victoria.png` (не переименовывать в `victoria-sheet.png`). В этом VM бинарник вложения на диск не попал; Cover i2i ждёт `memory/cover/assets/victoria.png`.
+- реф: owner CANON LOCK 2026-08-28 — только `victoria-sheet.png` (character sheet / Instagram carousel). Другие face-ref удалены. Глаза зелёные с лёгким hazel. Cover i2i ждёт `memory/cover/assets/victoria-sheet.png`.
 - глаза: зелёные + слегка светло-карие.
 - волосы только с рефа: светлый блонд + honey/пепел, корни темнее. Не платина, не ice-blonde, не осветлять. Платина / сильно светлее рефа = пересобрать холст.
 - обложка: лицо по рефу; эмоция и одежда каждый раз новые. Хук 2–6 слов на кадре, не заголовок статьи.

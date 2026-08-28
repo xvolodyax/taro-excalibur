@@ -26,6 +26,20 @@ REQUIRED_HAIR_PHRASE = (
     "hair color copied exactly from reference photo, same root depth, "
     "do not lighten, no platinum"
 )
+REQUIRED_EYE_PHRASE = (
+    "eyes green with a slight brown/hazel tint, same as reference sheet "
+    "and Instagram carousels, not brown, not grey, not a different eye color"
+)
+CANON_FACE_REL = "memory/cover/assets/victoria-sheet.png"
+CANON_FACE_NAME = "victoria-sheet.png"
+FORBIDDEN_FACE_NAMES = {
+    "victoria.png",
+    "victoria_ref.jpg",
+    "victoria_ref.jpeg",
+    "alena.png",
+    "character-sheet-2k.png",
+    "виктория.png",
+}
 
 # Positive look instructions that mean the model should paint platinum/ice hair.
 FORBIDDEN_LOOK = (
@@ -61,10 +75,54 @@ def _prescribes_forbidden_look(text: str) -> list[str]:
     return hits
 
 
-def validate_tenant(hero: dict, *, cover_mode: str) -> list[str]:
+def extra_sheet_names(root: Path) -> list[str]:
+    """Any *sheet*.png except the one canon file."""
+    hits: list[str] = []
+    for folder in (root / "memory" / "cover", root / "cover-refs"):
+        if not folder.is_dir():
+            continue
+        for path in folder.rglob("*.png"):
+            name = path.name.lower()
+            if "sheet" in name and name != CANON_FACE_NAME:
+                hits.append(str(path.relative_to(root)))
+    return hits
+
+
+def forbidden_face_files(root: Path) -> list[str]:
+    hits: list[str] = []
+    for folder in (root / "memory" / "cover", root / "cover-refs"):
+        if not folder.is_dir():
+            continue
+        for path in folder.rglob("*"):
+            if not path.is_file():
+                continue
+            if path.name.lower() in {n.lower() for n in FORBIDDEN_FACE_NAMES}:
+                hits.append(str(path.relative_to(root)))
+    hits.extend(extra_sheet_names(root))
+    return sorted(set(hits))
+
+
+def validate_tenant(hero: dict, *, cover_mode: str, root: Path | None = None) -> list[str]:
     errors: list[str] = []
     if cover_mode != "host_reference":
         return errors
+    ref = str(hero.get("reference_image") or "").strip()
+    if ref != CANON_FACE_REL:
+        errors.append(
+            f"reference_image must be {CANON_FACE_REL!r} (got {ref!r}); "
+            "i2i from any other face file is forbidden"
+        )
+    if root is not None:
+        for extra in forbidden_face_files(root):
+            errors.append(f"forbidden face-ref still in repo: {extra}")
+    eye_lock = hero.get("eye_color_lock")
+    if not isinstance(eye_lock, dict):
+        eye_lock = (hero.get("visual_lock") or {}).get("eye_color_lock") or {}
+    eye_prompt = str((eye_lock or {}).get("prompt") or "").strip()
+    if REQUIRED_EYE_PHRASE not in eye_prompt:
+        errors.append(
+            f"eye_color_lock.prompt must contain exactly: {REQUIRED_EYE_PHRASE!r}"
+        )
     lock = _hair_lock(hero)
     prompt = str(lock.get("prompt") or "").strip()
     if REQUIRED_HAIR_PHRASE not in prompt:
@@ -109,7 +167,13 @@ def validate_prompt(prompt: str) -> list[str]:
     text = prompt or ""
     if REQUIRED_HAIR_PHRASE not in text:
         errors.append(f"Cover prompt missing hair lock phrase: {REQUIRED_HAIR_PHRASE!r}")
+    if REQUIRED_EYE_PHRASE not in text:
+        errors.append(f"Cover prompt missing eye lock phrase: {REQUIRED_EYE_PHRASE!r}")
+    if CANON_FACE_NAME not in text:
+        errors.append("Cover prompt must name victoria-sheet.png as the only face reference")
     look = _strip_negation_windows(text)
+    if re.search(r"\bbrown eyes\b|\bgrey eyes\b|\bgray eyes\b", look, flags=re.I):
+        errors.append("Cover prompt paints forbidden eye color")
     if re.search(r"\bplatinum blonde\b", look, flags=re.I):
         errors.append("Cover prompt instructs platinum blonde")
     for pat in _prescribes_forbidden_look(look):
@@ -143,7 +207,13 @@ def run_gate(*, root: Path, article_dir: Path | None) -> dict:
     hero = load_json(hero_path) if hero_path.is_file() else {}
     tenant = load_json(tenant_path) if tenant_path.is_file() else {}
     cover_mode = str(hero.get("cover_mode") or tenant.get("cover_mode") or "").strip()
-    errors.extend(validate_tenant(hero, cover_mode=cover_mode))
+    errors.extend(validate_tenant(hero, cover_mode=cover_mode, root=root))
+    if article_dir is not None and cover_mode == "host_reference":
+        canon = root / CANON_FACE_REL
+        if not canon.is_file():
+            errors.append(
+                f"canon face missing: {CANON_FACE_REL} — Cover i2i blocked until owner sheet is on disk"
+            )
     prompt = ""
     if article_dir is not None:
         prompt = collect_article_prompt(article_dir)
@@ -158,7 +228,7 @@ def run_gate(*, root: Path, article_dir: Path | None) -> dict:
         "required_hair_phrase": REQUIRED_HAIR_PHRASE,
         "errors": errors,
         "blocker": None if status == "PASS" else "COVER IDENTITY BLOCKER",
-        "rebuild": "Platinum / strongly lighter than reference hair → rebuild the 2K canvas. Do not fix hair outside the canvas.",
+        "rebuild": "Wrong face vs victoria-sheet.png, wrong eyes (not green+hazel), or platinum/lighter hair → rebuild the whole 2K 2×2 canvas. Do not publish. Hall publishes.",
     }
 
 

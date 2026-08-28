@@ -58,7 +58,7 @@ Writer собрал факты, аргументы и структуру. Ты (
 
 Это не слог текста. Sol сюда не смотрит за фразами. Cover / Cover-text / quad prompt читают `memory/cover/*`.
 
-- Герой обложки — **Виктория по рефу**. Не кот и не обложка без лица. Не белое худи без Вики.
+- Герой обложки — **Виктория только по `memory/cover/assets/victoria-sheet.png`**. Других face-ref нет. Не кот и не обложка без лица. Не белое худи без Вики. Глаза: зелёные с лёгким карим/hazel, как на Instagram-карусели. Несовпадение лица или глаз → пересобрать весь холст 2×2. Hall публикует.
 - Цвет волос **только с рефа**: светлый блонд с тёплым honey/пепельным мясом, корни темнее. Не платина, не ice-blonde, не осветлять. В промпте Cover: `hair color copied exactly from reference photo, same root depth, do not lighten, no platinum`. Платина / сильно светлее рефа = пересобрать холст.
 - Типографика **дизайнерская**, не системная. Запрещено в промптах: Arial, Roboto, Inter, Impact, Times, «обычный жирный», default bold condensed, squish-bold meme, all-caps плашка-наклейка.
 - Хук: editorial display, журнальный кириллический (high-contrast modern serif / didone **или** refined geometric grotesque с нормальным трекингом). Буквы — часть кадра, не стикер поверх фото.
