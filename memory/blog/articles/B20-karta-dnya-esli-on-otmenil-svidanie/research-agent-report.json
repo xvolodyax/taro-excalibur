@@ -1,0 +1,29 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B20",
+  "article_dir": "memory/blog/articles/B20-karta-dnya-esli-on-otmenil-svidanie",
+  "status": "PASS",
+  "verdict": "PASS",
+  "research_date": "2026-08-28",
+  "fresh_signal": true,
+  "fresh_signal_kind": "news_and_channel_this_week",
+  "fresh_signal_reason": "Проверены живые публикации этой недели: Stopcor карта дня 28.08.2026 (Колесница), Styler/RBC таро-гороскоп 28.08.2026, gadalkindom расклад 28.08, КУ66 25.08 про отменённую встречу на 26.08; канал Дзена todaytaro_bot обновлён сегодня (B19), вечерний слот пуст. Гипотеза опроса про платье не подтверждена и сброшена.",
+  "fresh_signal_urls": [
+    "https://life.stopcor.org/section-astrologiya/news-prognoz-taro-na-28-serpnya-2026-roku-chas-diyati-vpevnenishe-28-08-2026.html",
+    "https://ku66.ru/life/neuzheli_eto_nakonets_sluchitsya_taro_na_26_avgusta_obeshchaet_emotsionalnyj_povorot",
+    "https://styler.rbc.ua/ukr/horoscopes/taro-goroskop-28-serpnya-kim-znakam-zodiaku-1787818871.html",
+    "https://gadalkindom.ru/goroskop/taro-prognoz/rasklad-na-28-avgusta.html",
+    "https://dzen.ru/todaytaro_bot",
+    "https://intrigue.dating/on-i-ona/chto-znachit-esli-mujchina-postoyanno-perenosit-vstrechi/"
+  ],
+  "invented_signal": false,
+  "dropped_hypothesis": "channel_poll_dress_on_chair",
+  "wordstat": "PARTIAL",
+  "wordstat_note": "Нет MCP wordstat_get_top_requests и ключа Yandex Cloud Search API на шаге Research. Взят solo-саджест Scout 2026-08-28; частоты показов неизвестны.",
+  "notes_path": "research-notes.md",
+  "overlap_source": "published-titles-only.md",
+  "articles_bodies_read": false,
+  "publish_allowed": false,
+  "blockers": [],
+  "incident_report": "none"
+}
