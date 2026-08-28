@@ -1,0 +1,50 @@
+{
+  "topic_id": "B20",
+  "slug": "karta-dnya-esli-on-otmenil-svidanie",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Карта дня возвращает вечер, если он отменил свидание",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-28T17:50:27+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Карта дня возвращает вечер, если он отменил свидание",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Как реагировать на отмену свидания: факт, ход за ним, вопрос о себе",
+      "h2_anchor": "Сразу к делу: как реагировать на сорванные планы и что спросить у карт",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Что делает вечерняя карта дня: компас внимания и личный расклад",
+      "h2_anchor": "Что на самом деле делает вечерняя карта дня",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Как вернуть управление вечером: спокойный ответ и расклад на ресурс",
+      "h2_anchor": "Как вернуть себе управление вечером и сохранить ресурс",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
