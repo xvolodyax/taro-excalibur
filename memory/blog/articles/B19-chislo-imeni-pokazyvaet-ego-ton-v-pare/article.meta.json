@@ -1,0 +1,49 @@
+{
+  "title": "Число имени объясняет привычный тон мужчины в паре",
+  "h1": "Число имени объясняет привычный тон мужчины в паре",
+  "slug": "chislo-imeni-pokazyvaet-ego-ton-v-pare",
+  "topic_id": "B19",
+  "author_id": "victoria",
+  "article_mode": "B",
+  "date": "2026-08-28",
+  "slot": "16:00",
+  "slot_date": "2026-08-28",
+  "publish_owner": "Hall",
+  "allow_pipeline_publish": false,
+  "cover_credit": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "placement": "above_image",
+    "render_in_png": false
+  },
+  "cta_dzen": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776",
+    "https://max.ru/id531102974575_bot?startapp=ref_9BAD4149"
+  ],
+  "cta_site_only": [
+    "https://t.me/TodayTaro_bot?start=id8293683394",
+    "https://t.me/TodayTaro_bot?startapp=ref_361BDE45"
+  ],
+  "funnel_variants": {
+    "dzen": "article-dzen.html",
+    "site": "article-site.html",
+    "combined_markers": "article.html"
+  },
+  "cover_face_canon": "memory/cover/assets/victoria-sheet.png",
+  "description": "Как расчет букв имени показывает привычный стиль общения мужчины и почему домашние сокращения меняют его манеру вести диалог в паре.",
+  "meta_ab": {
+    "title_seo": "Число имени объясняет привычный тон мужчины в паре",
+    "title_ctr": "Число имени объясняет привычный тон мужчины в паре",
+    "title_aeo": "Число имени объясняет привычный тон мужчины в паре",
+    "description_seo": "Как расчет букв имени показывает привычный стиль общения мужчины и почему домашние сокращения меняют его манеру вести диалог в паре.",
+    "description_ctr": "Как расчет букв имени показывает привычный стиль общения мужчины и почему домашние сокращения меняют его манеру вести диалог в паре.",
+    "description_aeo": "Как расчет букв имени показывает привычный стиль общения мужчины и почему домашние сокращения меняют его манеру вести диалог в паре."
+  },
+  "theme_blocks": {
+    "faq": "skip",
+    "quiz": "skip",
+    "side_stickers": "skip"
+  },
+  "pipeline_canon": "human-first-v2",
+  "editorial_swarm": false
+}
