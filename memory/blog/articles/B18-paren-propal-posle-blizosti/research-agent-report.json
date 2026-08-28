@@ -1,0 +1,35 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B18",
+  "article_dir": "memory/blog/articles/B18-paren-propal-posle-blizosti",
+  "research_date": "2026-08-28",
+  "status": "PASS",
+  "verdict": "PASS",
+  "wordstat": "skip",
+  "wordstat_reason": "MCP wordstat_get_top_requests в VM нет; ключ Yandex Cloud Search API v2 не инжектнут; частотности не выдумывались",
+  "fresh_signal": {
+    "week_of": "2026-08-24/2026-08-28",
+    "kind": "channel + live morning query + circulating SERP/community",
+    "why_fresh": "28.08.2026 проверен живой канал тенанта dzen.ru/todaytaro_bot: карточка «прочитал и молчит» висит как пост ~10 часов назад — канал этой недели живой, вечерний слот занят. Scout handoff (signal_accessed 2026-08-28) фиксирует утренний запрос именно про гостинг сразу после близости. SERP того же дня (research-serp.json, searched_at 2026-08-28) отдаёт кластер dadanews / woman.ru / VK / Psychologies / bb.lv по «пропал после близости», не криминал. Чужие медиа крутят обрыв после ночи; это не изобретённое продолжение серии.",
+    "verified_urls": [
+      "https://dzen.ru/todaytaro_bot",
+      "https://www.таросейчас.рф/blog/",
+      "https://radio1.ru/articles/obschestvo/gosting-ili-potrebitelstvo-psiholog-obyasnila-kak-perezhit-rezkoe-ischeznovenie-partnera/",
+      "https://www.psychologies.ru/articles/kak-perestat-dumat-o-muzhchine-kotoryi-ischez-posle-seksa-4-soveta-semeinogo-psikhologa/"
+    ]
+  },
+  "excluded_false_cognates": [
+    "https://www.e1.ru/text/incidents/2026/08/22/76602432/",
+    "MVD missing-persons lists",
+    "SVO / flood missing-person news 2026-08-28"
+  ],
+  "anti_dup": [
+    "B15 jealousy/indifference",
+    "B14 cooled-off / dry replies",
+    "stories-and-silent",
+    "B17 read-and-silent / card of the day"
+  ],
+  "cta_slot": "bot",
+  "notes_path": "memory/blog/articles/B18-paren-propal-posle-blizosti/research-notes.md",
+  "incident_report": "none"
+}

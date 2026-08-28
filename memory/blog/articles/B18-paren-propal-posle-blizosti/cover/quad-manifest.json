@@ -1,0 +1,64 @@
+{
+  "topic_id": "B18",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Он пропал сразу после ночи",
+  "cover_hook_highlight": "пропал",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Face/outfit lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: он пропал сразу после ночи — дело не в тебе",
+      "scene_hint": "Victoria LARGE left; hair color copied exactly from reference photo, same root depth, do not lighten, no platinum; tiny phone right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "дело не в тебе"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Похвала после ночи не гарантирует продолжения",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Table ночь vs утро. Утро BAD red X. Labels: тишина наутро; ловушка самообвинения; похвала без продолжения; резкий обрыв связи. Outcome: слова ночи ≠ продолжение. NO people/faces/emoji/silhouettes. #FFF",
+      "alt": "Схема: похвала после ночи не гарантирует продолжения",
+      "labels": [
+        "тишина наутро",
+        "ловушка самообвинения",
+        "похвала без продолжения",
+        "резкий обрыв связи"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Кластер причин: что скрывается за гостингом",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist of reasons. Labels: страх тепла; уход без слов; эмоциональный откат; чужая незрелость. Outcome: мотивы его, не твоя вина. NO people/faces/emoji/silhouettes. #FFF",
+      "alt": "Карточка: что скрывается за гостингом после сближения",
+      "labels": [
+        "страх близости",
+        "уход без слов",
+        "эмоциональный откат",
+        "чужая незрелость"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Как вернуть ясность и определить свой следующий шаг",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Workflow L→R: вопросы к картам → триплет на мотивы → расклад в боте → опора на себя. Tiny card icon. Outcome: ясность за минуты. NO people/faces/emoji/silhouettes. #FFF",
+      "alt": "Схема: как вернуть ясность и выбрать следующий шаг",
+      "labels": [
+        "вопросы к картам",
+        "триплет на мотивы",
+        "расклад в боте",
+        "опора на себя"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

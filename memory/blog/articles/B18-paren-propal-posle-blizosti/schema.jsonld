@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{SITE_BASE}}/paren-propal-posle-blizosti/",
+  "url": "{{SITE_BASE}}/paren-propal-posle-blizosti/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{SITE_BASE}}/paren-propal-posle-blizosti/"
+  },
+  "headline": "Парень пропал после близости и перестал отвечать",
+  "description": "Почему мужчина исчезает после близости, как отделить самообвинение от чужих мотивов и о чём спросить карты для ясности.",
+  "datePublished": "2026-08-28",
+  "dateModified": "2026-08-28",
+  "inLanguage": "ru-RU",
+  "wordCount": 821,
+  "author": {
+    "@type": "Person",
+    "@id": "{{SITE_BASE}}/#victoria",
+    "name": "Виктория",
+    "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+    "description": "Таролог команды ТАРО СЕЙЧАС. Пишет про отношения без воды и без обещания прочитать мысли.",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/"
+    },
+    "sameAs": [
+      "{{SITE_BASE}}/",
+      "https://dzen.ru/todaytaro_bot"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "{{SITE_BASE}}/#organization",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}/"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "{{SITE_BASE}}/#website",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}/"
+  }
+}

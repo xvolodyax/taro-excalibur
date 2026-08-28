@@ -1,0 +1,50 @@
+{
+  "topic_id": "B18",
+  "slug": "paren-propal-posle-blizosti",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: он пропал сразу после ночи — дело не в тебе",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-28T06:38:48+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: он пропал сразу после ночи — дело не в тебе",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: похвала после ночи не гарантирует продолжения",
+      "h2_anchor": "Похвала после ночи не гарантирует продолжения",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Карточка: что скрывается за гостингом после сближения",
+      "h2_anchor": "Кластер причин: что скрывается за гостингом",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Схема: как вернуть ясность и выбрать следующий шаг",
+      "h2_anchor": "Как вернуть ясность и определить свой следующий шаг",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
