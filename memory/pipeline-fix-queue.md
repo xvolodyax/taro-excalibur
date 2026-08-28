@@ -63,3 +63,34 @@ category: env
 
 ### Fixer resolution
 - pending
+
+## INC-20260828-0635-cover-site-base-env
+status: open
+run_date: 2026-08-28
+role: excalibur-blog-cover
+topic_id: B18
+article_dir: memory/blog/articles/B18-paren-propal-posle-blizosti
+severity: medium
+category: env
+
+### What went wrong
+- Same gap as INC-20260827-1750: Cloud env has no `PUBLIC_SITE_URL` / `WP_SITE_URL`, while committed batch keeps git-safe `{{SITE_BASE}}`.
+- Kie `expand_input_urls` still cannot expand without env; tenant `public_site_url` is already in `shared/tenant-config.json`.
+
+### How the agent recovered this run
+- Set `PUBLIC_SITE_URL` for the shell from tenant `public_site_url` (runtime only).
+- Set batch `prefer_local_reference` to `memory/cover/assets/victoria.png` so File Upload carries the face lock without rewriting committed `{{SITE_BASE}}` urls.
+- One billed create after that setup. No MCP fallback. Not a quality-redo.
+
+### Durable fix needed before next run
+- Same as INC-20260827-1750: `expand_input_urls` should fall back to tenant `public_site_url` when env is unset, still keeping artifacts as `{{SITE_BASE}}`.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `scripts/excalibur_blog_site_base.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
