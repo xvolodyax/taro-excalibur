@@ -1,18 +1,99 @@
 {
-  "hero_id": "blog-host",
-  "status": "SETUP_REQUIRED",
-  "name_ru": "",
-  "cover_mode": "unset",
-  "reference_image": "",
-  "reference_notes": "Filled by excalibur-blog-setup-visual. No default personal face or outfit lock.",
-  "visual_lock": {},
-  "outfit_rule": "",
-  "prompt_fragment": "",
+  "hero_id": "victoria",
+  "status": "ok",
+  "name_ru": "Виктория",
+  "author_id": "victoria",
+  "cover_mode": "host_reference",
+  "reference_image": "memory/cover/assets/viktoriaref.png",
+  "sole_face_reference": true,
+  "never_upload_source_sheet": true,
+  "reference_notes": "i2i ONLY viktoriaref.png (Vladimir official frontal). Delete and never upload victoria-sheet.png, victoria-sheet-front.png, victoria-face.png, victoria.png, alena.png.",
+  "png_on_disk": true,
+  "png_required_action": "memory/cover/assets/viktoriaref.png must exist (~1.5MB). Cover stops if missing.",
+  "visual_lock": {
+    "identity": "Виктория — та же женщина, что на viktoriaref.png",
+    "face_source": "ONLY memory/cover/assets/viktoriaref.png — i2i lock.",
+    "studio": "high-key studio portrait, clean white #FFFFFF, no beige/cream",
+    "hair": "straight shoulder-length blonde balayage with middle part; dark ashy-brown / darker roots; warm honey-blonde mid-lengths and ends; not platinum, not ice-blonde",
+    "hair_color_lock": {
+      "from_reference_only": true,
+      "prompt": "hair color copied exactly from reference photo, same root depth, do not lighten, no platinum",
+      "look_ru": "тёплый honey-wheat блонд, корни темнее",
+      "forbidden": [
+        "platinum",
+        "ice-blonde",
+        "white blonde",
+        "bleach",
+        "lighten 1-2 tones"
+      ],
+      "blocker": "Platinum / strongly lighter than the reference = rebuild the canvas."
+    },
+    "eyes": "green with a slight hazel / light-brown tint; зелёные с лёгким карим",
+    "eye_color_lock": {
+      "from_reference_only": true,
+      "prompt": "green with a slight hazel / light-brown tint",
+      "look_ru": "зелёные с лёгким карим",
+      "forbidden": [
+        "brown eyes",
+        "grey eyes",
+        "gray eyes",
+        "blue eyes",
+        "brown-only"
+      ],
+      "blocker": "Eyes brown-only/grey/blue = FAIL, rebuild the whole 2x2 canvas."
+    },
+    "brows": "dark blonde / light brown, groomed, natural arch",
+    "makeup": "muted dusty-rose / mauve lipstick; professional contour; warm tan",
+    "expression_rule": "new natural editorial emotion every cover; never the same stock smile",
+    "forbidden_hosts": [
+      "Алёна",
+      "Alyona"
+    ],
+    "forbidden_face_files": [
+      "victoria-sheet.png",
+      "victoria-sheet-front.png",
+      "victoria-face.png",
+      "victoria.png",
+      "victoria_ref.jpg",
+      "victoria_ref.jpeg",
+      "alena.png",
+      "character-sheet-2k.png"
+    ],
+    "forbidden_sets": [
+      "dark table with candles",
+      "gothic",
+      "pink-cat collage",
+      "default white hoodie without Victoria",
+      "cat as cover hero",
+      "faceless cover",
+      "pipeline EXCALIBUR stamp",
+      "i2i from any file except viktoriaref.png"
+    ]
+  },
+  "outfit_rule": "Одежда и поза каждый раз новые. Не белая камисоль с рефа. Не белое худи. Не кот.",
+  "prompt_fragment": "same woman as viktoriaref.png, eyes green with a slight hazel / light-brown tint (зелёные с лёгким карим), warm honey-wheat blonde darker roots not platinum, new clothes not the white cami. Host LARGE left; tiny topic prop right; #FFF",
   "cover_hook_rules": [
-    "cover_hook invents Cover agent from reader_pain; no script templates",
-    "meme_caption_ru always empty unless tenant explicitly allows"
+    "cover_hook — 2–6 слов на кадре, не заголовок статьи; Cover-text invents from reader_pain",
+    "hook type = editorial display (didone or refined grotesque), letters part of the frame, not a sticker",
+    "highlight = one word from hook, same typeface, medallion gold — not pink, not bold condensed",
+    "meme_caption_ru always empty",
+    "один хук + один мелкий предмет/метафора; host LARGE left; never cat; never faceless"
   ],
-  "reference_url_hosted": "",
-  "reference_url_source": "",
-  "reference_url_updated_at": null
+  "cover_credit_html": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "placement": "above_image",
+    "render_in_png": false,
+    "note": "Подпись НАД картинкой кодом/HTML. Нейросеть эту строку не рисует."
+  },
+  "meme_caption_ru": "",
+  "image_provider": {
+    "vendor": "kie.ai",
+    "model": "gpt-image-2-image-to-image",
+    "mode": "i2i",
+    "resolution": "2K"
+  },
+  "rebuild_rule": "Лицо не с viktoriaref.png, глаза brown-only/grey/blue — пересобрать весь холст. Hall публикует.",
+  "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/viktoriaref.png",
+  "reference_url_source": "local:memory/cover/assets/viktoriaref.png",
+  "reference_url_updated_at": "2026-08-28"
 }
