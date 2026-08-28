@@ -496,8 +496,9 @@ def build_prompt(
         )
         hair_lock = identity_hair_prompt(hero)
         eye_lock = identity_eye_prompt(hero)
+        # FACE LOCK opener is already line 1 — do not paste it again here
+        # (B19 / INC-20260828-1110: opener+reference dup → 3682 > 3500).
         reference_line = (
-            f"{FACE_LOCK_OPENER} "
             f"REFERENCE FACE ONLY {CANON_FACE_NAME} (frontal crop, never {SOURCE_SHEET_NAME}): "
             f"{eye_lock}; {hair_lock}; new clothes; no headphones."
         )
