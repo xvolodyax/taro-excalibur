@@ -1,0 +1,148 @@
+{
+  "agent": "excalibur-blog-cover-quad-split",
+  "status": "PASS",
+  "manifest": "cover/quad-manifest.json",
+  "split": {
+    "source_canvas": "memory/blog/articles/B22-on-pishet-hotya-vy-uzhe-rasstalis/cover/canvas-quad.png",
+    "source_size_px": [
+      2048,
+      1152
+    ],
+    "panel_size_px": [
+      1024,
+      576
+    ],
+    "split_meta": {
+      "split_mode": "mechanical_center",
+      "h_gutter_px": null,
+      "v_gutter_px": null,
+      "requested_mode": "auto",
+      "fallback_reason": "gutter_too_far_from_center",
+      "rejected_gutter": {
+        "h_gutter_px": {
+          "start": 591,
+          "end": 652
+        },
+        "v_gutter_px": {
+          "start": 1040,
+          "end": 1104
+        },
+        "gutter_quality": {
+          "h_center_offset_px": 45.5,
+          "v_center_offset_px": 48.0,
+          "max_aspect_crop_loss": 0.1452,
+          "per_panel_crop_loss": {
+            "top_left": 0.0102,
+            "top_right": 0.1015,
+            "bottom_left": 0.1452,
+            "bottom_right": 0.0583
+          },
+          "reject_reason": "gutter_too_far_from_center"
+        }
+      }
+    },
+    "output_size_px": [
+      1200,
+      675
+    ],
+    "outputs": {
+      "cover": {
+        "file": "cover/cover.png",
+        "quadrant": "top_left",
+        "box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1024,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1024,
+          "bottom": 576
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Иллюстрация: бывший снова пишет ночью — это ещё не возврат",
+        "h2_anchor": null
+      },
+      "inline_1": {
+        "file": "cover/inline-01.png",
+        "quadrant": "top_right",
+        "box_px": {
+          "left": 1024,
+          "top": 0,
+          "right": 2048,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 1024,
+          "top": 0,
+          "right": 2048,
+          "bottom": 576
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Схема мотивов: почему сообщение после разрыва редко значит желание вернуться",
+        "h2_anchor": "Почему сообщение после разрыва редко означает желание всё вернуть"
+      },
+      "inline_2": {
+        "file": "cover/inline-02.png",
+        "quadrant": "bottom_left",
+        "box_px": {
+          "left": 0,
+          "top": 576,
+          "right": 1024,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 576,
+          "right": 1024,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Сравнение пустого сигнала и реального намерения в переписке с бывшим",
+        "h2_anchor": "Разница между пустым сигналом и реальным намерением"
+      },
+      "inline_3": {
+        "file": "cover/inline-03.png",
+        "quadrant": "bottom_right",
+        "box_px": {
+          "left": 1024,
+          "top": 576,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 1024,
+          "top": 576,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Чеклист реакции и защиты границ, когда пишет бывший",
+        "h2_anchor": "Как выбрать реакцию и защитить свои границы"
+      }
+    }
+  },
+  "html_inject": [
+    "moved inline_1 → H2 — Почему сообщение после разрыва редко означает желание всё вернуть (was under [почему сообщение после разрыва редко означает желание всё вернуть]; removed=1)",
+    "moved inline_2 → H2 — Разница между пустым сигналом и реальным намерением (was under [разница между пустым сигналом и реальным намерением]; removed=1)",
+    "moved inline_3 → H2 — Как выбрать реакцию и защитить свои границы (was under [как выбрать реакцию и защитить свои границы]; removed=1)"
+  ]
+}

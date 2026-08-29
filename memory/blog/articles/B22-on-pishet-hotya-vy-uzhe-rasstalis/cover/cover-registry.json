@@ -1,0 +1,50 @@
+{
+  "topic_id": "B22",
+  "slug": "on-pishet-hotya-vy-uzhe-rasstalis",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: бывший снова пишет ночью — это ещё не возврат",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-29T13:34:31+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: бывший снова пишет ночью — это ещё не возврат",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема мотивов: почему сообщение после разрыва редко значит желание вернуться",
+      "h2_anchor": "Почему сообщение после разрыва редко означает желание всё вернуть",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Сравнение пустого сигнала и реального намерения в переписке с бывшим",
+      "h2_anchor": "Разница между пустым сигналом и реальным намерением",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист реакции и защиты границ, когда пишет бывший",
+      "h2_anchor": "Как выбрать реакцию и защитить свои границы",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
