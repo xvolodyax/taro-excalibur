@@ -8,10 +8,11 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 прозы. Заголовки нужны только чтобы не повторить уже покрытую тему.
 
 Список собран 2026-08-29. Тела статей не читались.
-B15/B16 live; B17–B20 hall-pack. B21 утро 29.08 — не клон B17/B18/B19/B20 и не клон live-заголовков.
+B15/B16 live; B17–B21 hall-pack. B21 утро 29.08 — не клон B17/B18/B19/B20 и не клон live-заголовков.
 
 | topic_id | slug | title | status |
 |----------|------|-------|--------|
+| B21 | on-ushel-gulyat-i-ne-pozval | Он ушёл гулять с друзьями и не позвал тебя с собой | hall-pack |
 | B20 | karta-dnya-esli-on-otmenil-svidanie | Карта дня возвращает твой вечер, если он отменил свидание без новой даты | hall-pack |
 | B19 | chislo-imeni-pokazyvaet-ego-ton-v-pare | Число имени объясняет привычный тон мужчины в паре | hall-pack |
 | B18 | paren-propal-posle-blizosti | Парень пропал после близости и перестал отвечать | hall-pack |
