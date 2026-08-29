@@ -58,6 +58,10 @@ def merged_publish_env(root: Path) -> dict[str, str]:
         "FTP_PASSWORD",
         "FTP_ROOT",
         "EXCALIBUR_BLOG_ALLOW_PUBLISH",
+        "SITE_PUBLISH_TOKEN",
+        "HALL_PUBLISH_TOKEN",
+        "PUBLISH_TOKEN",
+        "TARO_SITE_TOKEN",
     }
     env = read_env_file(root / "memory/site.env.local")
     for key in keys:
@@ -141,6 +145,8 @@ def main() -> int:
         "scripts/excalibur_blog_writer_ready_gate.py",
         "scripts/excalibur_blog_cover_text_gate.py",
         "scripts/excalibur_blog_wp_publish.py",
+        "scripts/excalibur_blog_site_publish.py",
+        "shared/excalibur-site-publish-contract.md",
         "scripts/excalibur_blog_merge_to_main.py",
         "scripts/excalibur_blog_community_cta_gate.py",
     )
@@ -324,13 +330,31 @@ def main() -> int:
             warnings,
             warn=not args.publish,
         )
-        check(bool(env.get("FTP_HOST")), "SFTP host configured", errors, warnings, warn=not args.publish)
-        check(bool(env.get("FTP_USER")), "SFTP user configured", errors, warnings, warn=not args.publish)
-        check(bool(env.get("FTP_PASS")), "SFTP password configured", errors, warnings, warn=not args.publish)
+        site_token = any(
+            env.get(name)
+            for name in (
+                "SITE_PUBLISH_TOKEN",
+                "HALL_PUBLISH_TOKEN",
+                "PUBLISH_TOKEN",
+                "TARO_SITE_TOKEN",
+            )
+        )
+        check(
+            site_token,
+            "site publish token configured (SITE_PUBLISH_TOKEN / HALL_PUBLISH_TOKEN / PUBLISH_TOKEN / TARO_SITE_TOKEN)",
+            errors,
+            warnings,
+            warn=True,
+        )
+        if not site_token:
+            print("NOTE no site publish token: GATE PASS + publish SKIP «нет ключа» (do not fail)")
+        # Legacy WP/SFTP is optional; swarm publishes via site API after GATE PASS.
+        check(bool(env.get("FTP_HOST")), "SFTP host configured (legacy WP)", errors, warnings, warn=True)
+        check(bool(env.get("FTP_USER")), "SFTP user configured (legacy WP)", errors, warnings, warn=True)
+        check(bool(env.get("FTP_PASS")), "SFTP password configured (legacy WP)", errors, warnings, warn=True)
     else:
         print("NOTE skip publish secret checks until setup complete (use --publish to force)")
     if args.publish:
-        check(env.get("EXCALIBUR_BLOG_ALLOW_PUBLISH", "").lower() == "yes", "EXCALIBUR_BLOG_ALLOW_PUBLISH=yes", errors, warnings)
         check(setup_complete, "setup complete before --publish", errors, warnings)
 
     # Dzen + RF canon must be readable before Scout (when pack enabled)

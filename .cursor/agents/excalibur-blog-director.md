@@ -51,7 +51,8 @@ Description = Дзен/RSS карточка (`description-brief.json`) ≠ title
 2. Research → Title → Writer → **Sol** → **Description**
 3. shell `pipeline_canon --stamp` + opening_meta + description_gate + html_linter
 4. cover-text || schema → Cover
-5. indexer → publish
+5. indexer → publish (`excalibur_blog_site_publish.py`; ключ есть → не SKIP;
+   нет ключа → SKIP «нет ключа»; Hall не заливает; B21 live не трогать)
 6. Fixer → merge → content-learner
 
 Skill: `skills/director-excalibur-blog/SKILL.md`

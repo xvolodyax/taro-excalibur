@@ -41,7 +41,10 @@ Research (inherit) → Title (Gemini) → Writer (Gemini) → Sol (Gemini) → D
 shell после Description:
   python3 scripts/excalibur_blog_pipeline_canon.py --article-dir … --stamp
   + opening_meta / description_gate / html_linter.
-Cover-text (Gemini) || Schema (inherit) → Cover (inherit); Indexer; Publish; merge; content-learner.
+Cover-text (Gemini) || Schema (inherit) → Cover (inherit); Indexer.
+После GATE PASS: python3 scripts/excalibur_blog_site_publish.py --article-dir …
+Ключ есть → upload/approve/publish (не SKIP). Нет ключа → SKIP «нет ключа».
+Hall не заливает. B21 live не трогать. В Дзен Студию не ходить.
 ```
 
 Секреты только из Cloud Secrets.

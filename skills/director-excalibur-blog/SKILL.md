@@ -80,7 +80,10 @@ python3 scripts/excalibur_blog_description_gate.py --article-dir <dir>
 `Task(excalibur-blog-cover-text)` · Gemini; `Task(excalibur-blog-schema)` · inherit.  
 Потом `Task(excalibur-blog-cover)` · inherit. Cover **не** зовёт Cover-text.
 ### 6 Indexer → Publish
-`model: inherit`.
+`model: inherit`. После GATE PASS Publish **сам** заливает на сайт
+(`scripts/excalibur_blog_site_publish.py`): upload → approve → publish.
+Ключ есть → **не SKIP**. Нет ключа → SKIP «нет ключа», не падать.
+Hall не upload/approve/publish. B21 и B22 live не трогать. Дзен Студия — нет.
 ### 7 Fixer → merge → learner
 `model: inherit`.
 
