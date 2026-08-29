@@ -1,6 +1,8 @@
 # Blog cover quad canvas contract
 
 > **TENANT-DRIVEN:** palette/hero/style come from Setup Visual (`memory/cover/*`). No personal default brand.
+>
+> **HARD лицо Вики:** i2i только `memory/cover/assets/Виктория.png`. Не `viktoriaref.png`, не `victoria-sheet.png`, не `victoria.png`. Канон: `shared/cover-host-canon.md`.
 
 # Excalibur BLOG — Quad Canvas (1 Image API → 4 панели)
 

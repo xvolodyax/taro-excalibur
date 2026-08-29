@@ -70,6 +70,17 @@ _COVER_FACE_ESSAY = re.compile(
 _LEGACY_REFERENCE_HOST_FALLBACK = ""  # no personal default host
 MCP_RESOLUTION = "2K"
 KIE_IMAGE_MODEL = "gpt-image-2-image-to-image"
+CANON_FACE_NAME = "Виктория.png"
+CANON_FACE_REL = "memory/cover/assets/Виктория.png"
+REQUIRED_HAIR_PHRASE = (
+    "hair color copied exactly from reference photo, same root depth, "
+    "do not lighten, no platinum"
+)
+FACE_LOCK_OPENER = (
+    "same woman as Виктория.png, eyes green with a slight hazel / light-brown tint "
+    "(зелёные с лёгким карим), warm honey-wheat blonde darker roots not platinum, "
+    "new clothes not the white cami."
+)
 
 
 def required_reference_host_runtime() -> str:
@@ -287,6 +298,16 @@ def style_allows_cat_stickers(style: dict) -> bool:
     return "cat" in motif
 
 
+def is_host_reference(style: dict, hero: dict) -> bool:
+    """Tenant host i2i — not situational cat hero."""
+    mode = str(
+        (hero or {}).get("cover_mode") or (style or {}).get("cover_mode") or ""
+    ).strip()
+    if mode == "host_reference":
+        return True
+    return str((style or {}).get("cover_hero_mode") or "").strip() == "host"
+
+
 def style_is_situational_cat_hero(style: dict) -> bool:
     """Cat is the cover hero (not host+sticker cats)."""
     mode = str(style.get("cover_hero_mode") or "").strip().casefold()
@@ -316,8 +337,66 @@ def build_prompt(
     fact_locks = topic_fact_lock_lines(manifest, article_dir)
     cat_ok = style_allows_cat_stickers(style)
     cat_hero = style_is_situational_cat_hero(style)
+    host_ref = is_host_reference(style, hero) and not cat_hero
 
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
+    cover_scene = sanitize_cover_scene_hint(
+        str(cover.get("scene_hint") or ""), highlight
+    )
+    cover_hook_text = compact(manifest.get("cover_hook", ""), 120)
+    cover_sticky = compact(str(cover.get("sticky") or ""), 48)
+
+    if host_ref:
+        highlight_rule = (
+            f'paint ONLY the highlight word "{highlight}" in medallion gold #C4A574; '
+            f"same typeface as the hook"
+            if highlight
+            else "paint at most ONE punch word in medallion gold #C4A574"
+        )
+        sticky_lock = (
+            f" Small sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+            if cover_sticky
+            else ""
+        )
+        style_prefix = compact(
+            style.get("global_prompt_prefix")
+            or design_code.get("cover_panel_prompt_block")
+            or "",
+            320,
+        )
+        inline_suffix = compact(
+            style.get("inline_prompt_suffix")
+            or design_code.get("inline_information_block")
+            or (
+                "Inline all: white #FFFFFF, humanist sans Cyrillic labels (3–6), "
+                "gold accent; NO people/faces/host/cat; no cover-hook duplicate."
+            ),
+            360,
+        )
+        lines = [
+            FACE_LOCK_OPENER,
+            REQUIRED_HAIR_PHRASE + ".",
+            style_prefix,
+            "Canvas 2048x1152 exact 2x2; four 16:9 panels; thin white gutters; no bleed.",
+            "Ban: cat, faceless, white hoodie, cami copy, gothic, candles, pink-cat, "
+            "#FF1493, EXCALIBUR, platinum, people/faces on inline.",
+            "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. "
+            "Renderable strings are given per panel in TEXT LOCK lines — render them "
+            "exactly. No English headline, no Latin slogan, no invented words.",
+            f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian '
+            f'sentence: «{cover_hook_text}» — editorial display Cyrillic, ink #141821, '
+            f"{highlight_rule}; any other large/headline text is FORBIDDEN.{sticky_lock} "
+            f"no keyword list card; scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; "
+            "Host LARGE left; tiny topic prop right; #FFF.",
+            f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
+            f"Bottom-left inline: {inline_panel_prompt(i2, types_catalog)}",
+            f"Bottom-right inline: {inline_panel_prompt(i3, types_catalog)}",
+            inline_suffix,
+        ]
+        if fact_locks:
+            lines.extend(fact_locks)
+        return "\n".join(line for line in lines if line)
+
     highlight_rule = (
         f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
         f'hook text must match exactly — do not substitute «время»/traffic markers'
@@ -470,9 +549,19 @@ def main() -> int:
     design_code = load_json(design_code_path) if design_code_path.is_file() else {}
 
     cat_hero = style_is_situational_cat_hero(style)
-    local_reference = str(style.get("local_reference") or "").strip()
+    host_ref = is_host_reference(style, hero) and not cat_hero
+    local_reference = str(
+        style.get("local_reference") or hero.get("reference_image") or CANON_FACE_REL
+    ).strip()
     prefer_local_reference = False
-    if cat_hero and local_reference:
+    if host_ref and Path(local_reference).name != CANON_FACE_NAME:
+        print(
+            f"❌ COVER HERO BLOCKER: face file must be {CANON_FACE_REL} "
+            f"(got {local_reference!r}). Latin aliases are forbidden.",
+            file=sys.stderr,
+        )
+        return 1
+    if (cat_hero or host_ref) and local_reference:
         local_path = root / local_reference
         if not local_path.is_file():
             print(

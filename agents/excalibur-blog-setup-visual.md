@@ -40,6 +40,7 @@ is_background: false
 ## Правила
 
 - Нет дефолтного «чужого» лица, худи, pink-cat бренда
+- **HARD реф лица:** копируй host PNG только как `memory/cover/assets/Виктория.png` (кириллица). Не `viktoriaref.png`, не `victoria-sheet.png`, не `victoria.png`, не `victoria_ref.*`. Картинку лица не генерировать.
 - Если `illustrative` — host на cover не обязателен; зафиксируй в blog-hero
 - `meme_caption_ru` по умолчанию пуст
 - Не выдумывай reference_url на чужой CDN; локальный asset или URL тенанта

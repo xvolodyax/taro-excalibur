@@ -26,7 +26,8 @@
 ## Главный герой визуала
 
 - **cover_mode:** см. tenant-config (`host_reference` | `illustrative` | `unset`)
-- **reference / lock:** `memory/cover/blog-hero.json` + `memory/cover/assets/`
+- **reference / lock:** `memory/cover/blog-hero.json` + **только** `cover-refs/Виктория.png` = `memory/cover/assets/Виктория.png`
+- **запрещены:** `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.*`
 - **style:** `memory/cover/cover-design-code.json` + style preset из Setup Visual
 
 ## Запреты

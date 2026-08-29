@@ -8,7 +8,7 @@
   "author_id": "",
   "cta_required": false,
   "cta_links": [],
-  "cover_mode": "unset",
+  "cover_mode": "host_reference",
   "dzen_rf_pack": true,
   "scout_signal_urls": [],
   "interlink_old_articles": false,
@@ -20,7 +20,7 @@
   "cover_files": {
     "hero": "memory/cover/blog-hero.json",
     "design_code": "memory/cover/cover-design-code.json",
-    "style_preset": ""
+    "style_preset": "memory/cover/quad-style-victoria-studio.json"
   },
   "comment": "Filled by excalibur-blog-setup. Pipeline agents read this file. Do not put secrets here."
 }
