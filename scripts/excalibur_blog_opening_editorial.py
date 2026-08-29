@@ -46,10 +46,12 @@ def first_body_paragraph(html: str) -> str:
     for match in LEAD_P_RE.finditer(html or ""):
         attrs, inner = match.group(1), match.group(2)
         cls = attrs.lower()
-        if re.search(r"\b(?:seo-article__lead|excerpt|dek|lead)\b", cls):
+        if re.search(r"\b(?:seo-article__lead|excerpt|dek|lead|cover-credit)\b", cls):
             continue
         text = plain(inner)
         if not text or AUTHOR_LINE_RE.match(text):
+            continue
+        if text.casefold().startswith("виктория - таролог"):
             continue
         return text
     return ""
