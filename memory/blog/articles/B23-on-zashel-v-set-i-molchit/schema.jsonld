@@ -1,0 +1,48 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{SITE_BASE}}/on-zashel-v-set-i-molchit/",
+  "url": "{{SITE_BASE}}/on-zashel-v-set-i-molchit/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{SITE_BASE}}/on-zashel-v-set-i-molchit/"
+  },
+  "headline": "Он зашёл в сеть и молчит",
+  "description": "Как не путать статус в сети с отказом писать и перестать додумывать чужие мысли, когда значок онлайна горит без входящего сообщения.",
+  "datePublished": "2026-08-29",
+  "dateModified": "2026-08-29",
+  "inLanguage": "ru-RU",
+  "wordCount": 886,
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{SITE_BASE}}/on-zashel-v-set-i-molchit/"
+  },
+  "author": {
+    "@type": "Person",
+    "@id": "{{SITE_BASE}}/#victoria",
+    "name": "Виктория",
+    "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+    "description": "Таролог команды «ТАРО СЕЙЧАС». Пишет живые сцены про отношения — без воды и без обещания прочитать мысли.",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/"
+    },
+    "sameAs": [
+      "{{SITE_BASE}}/",
+      "https://dzen.ru/todaytaro_bot"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "{{SITE_BASE}}/#organization",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}/"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "{{SITE_BASE}}/#website",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}/"
+  }
+}
