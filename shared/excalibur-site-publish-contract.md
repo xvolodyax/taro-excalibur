@@ -69,6 +69,9 @@ cover/inline-03.png
   под H1. В tgz `article.meta.json` поле `excerpt` **пустое** (не копия
   первого `<p>`). После upload скрипт PATCH `excerpt=""`. Лид живёт только
   в теле. `description` / RSS — карточка Дзена, не dek под H1.
+- Hall-токен: upload + approve + publish. Approve **409**, пока site
+  quality не PASS. Живой чекер 100 баллов на «Возьмём:» — этот ярлык
+  **не** добавлять. PATCH excerpt Hall-токену **403**.
 
 ## После publish
 

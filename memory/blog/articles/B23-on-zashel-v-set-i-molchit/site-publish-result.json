@@ -9,7 +9,9 @@
   "cover_hero_stripped": false,
   "strip": {
     "cover_hero_removed": 0,
-    "cover_png_figures_removed": 0
+    "cover_png_figures_removed": 0,
+    "cover_credit_removed": 1,
+    "h1_removed": 1
   },
   "gate": "PASS",
   "publish": "FAIL",
@@ -25,7 +27,7 @@
     "cover/inline-02.png",
     "cover/inline-03.png"
   ],
-  "tgz_bytes": 2911762,
+  "tgz_bytes": 2911736,
   "upload_status": 201,
   "article_id": "29",
   "excerpt_clear_status": 403,
