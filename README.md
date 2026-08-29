@@ -1,7 +1,8 @@
 # Excalibur-2-Cloud
 
 Чистый агентный пайплайн блога для **Cursor Cloud**: Scout → Research →
-Title → Writer → Sol → Cover/Schema → Indexer → Publish.
+Title → Writer → Sol → Cover/Schema → Indexer → Publish
+(site API after GATE PASS; Hall не заливает).
 
 В репозитории **нет** чужого слога, лица, CTA и статей. При первом запуске
 агент **Setup** спрашивает вас и заполняет настройки.

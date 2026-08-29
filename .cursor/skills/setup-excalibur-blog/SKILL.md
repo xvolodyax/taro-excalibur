@@ -32,7 +32,7 @@ description: Первый запуск Excalibur-2-Cloud — анкета тен
 
 - Environment подключён?
 - Memories OFF?
-- Secrets (PUBLIC_SITE_URL, FTP_*, image API, MCP) — настроены? (не проси вписать значения в чат-файл)
+- Secrets (PUBLIC_SITE_URL, SITE_PUBLISH_TOKEN или HALL_PUBLISH_TOKEN / PUBLISH_TOKEN / TARO_SITE_TOKEN, image API, MCP) — настроены? (не проси вписать значения в чат-файл)
 - Понимает разницу First-run vs Daily?
 
 Phase `cloud` → `done` когда Memories OFF подтверждены и человек понимает Secrets.

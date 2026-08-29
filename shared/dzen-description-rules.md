@@ -32,8 +32,8 @@
 ```text
 description-brief.json.description
   → article.meta.json description (+ meta_ab.description_*)
-  → WP post_excerpt
-  → RSS <item><description>
+  → tgz description-brief.json (site upload)
+  → RSS <item><description> (сайт сам; Дзен Студию не открывать)
   → карточка Дзена / RSSLint
 ```
 

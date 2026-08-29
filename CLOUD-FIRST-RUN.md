@@ -24,8 +24,9 @@
 | Secret | Зачем |
 |--------|--------|
 | `PUBLIC_SITE_URL` | Live сайт; в артефактах остаётся `{{SITE_BASE}}` |
-| `FTP_HOST` / `FTP_USER` / `FTP_PASS` / `FTP_ROOT` | SFTP publish (имена FTP_*, транспорт SFTP) |
-| `EXCALIBUR_BLOG_ALLOW_PUBLISH` | `yes` только когда готовы публиковать |
+| `SITE_PUBLISH_TOKEN` (или `HALL_PUBLISH_TOKEN` / `PUBLISH_TOKEN` / `TARO_SITE_TOKEN`) | Site API upload/approve/publish после GATE PASS. Нет ключа → publish SKIP «нет ключа», не падать. Значение не в git. |
+| `FTP_HOST` / `FTP_USER` / `FTP_PASS` / `FTP_ROOT` | Legacy WP SFTP (не канон заливки) |
+| `EXCALIBUR_BLOG_ALLOW_PUBLISH` | legacy WP only |
 | Image API key (Kie / ваш провайдер) | Cover, когда Visual setup готов |
 | MCP tokens | Wordstat / WP blob — по необходимости |
 | `YANDEX_METRIKA_*` | Опционально Content-learner |
@@ -48,7 +49,7 @@
 Подключите нужные MCP в Cloud / automation tools:
 
 - Wordstat (Scout)
-- WordPress content blob (если используете MCP publish helpers)
+- Site publish идёт скриптом `excalibur_blog_site_publish.py` (не Hall, не Дзен Студия)
 - Image generation (если Cover через MCP)
 
 ## 5. Two automations

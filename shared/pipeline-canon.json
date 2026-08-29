@@ -1,6 +1,12 @@
 {
   "version": "human-first-v2",
-  "description": "Research → Title → Writer(meaning) → Sol(style) → Description(Dzen card) → Cover||Schema → Indexer → Publish",
+  "description": "Research → Title → Writer(meaning) → Sol(style) → Description(Dzen card) → Cover||Schema → Indexer → Publish(site API)",
+  "publish_script": "scripts/excalibur_blog_site_publish.py",
+  "publish_contract": "shared/excalibur-site-publish-contract.md",
+  "publish_skip_without_token": true,
+  "publish_skip_reason_no_token": "нет ключа",
+  "hall_does_not_publish": true,
+  "protected_live_topic_ids": ["B21"],
   "description_agent": "excalibur-blog-description",
   "description_output": "description-brief.json",
   "description_rules": "shared/dzen-description-rules.md",
