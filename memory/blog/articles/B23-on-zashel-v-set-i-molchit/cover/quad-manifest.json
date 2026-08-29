@@ -1,0 +1,64 @@
+{
+  "topic_id": "B23",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Зелёный статус горит без ответа",
+  "cover_hook_highlight": "ответа",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Local reference: memory/cover/assets/Виктория.png.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: зелёный статус в сети горит, а ответа нет",
+      "scene_hint": "Host LARGE left; hair color copied exactly from reference photo, same root depth, do not lighten, no platinum; new outfit+emotion; tiny green-dot phone right",
+      "meme_caption_ru": "",
+      "sticky": "верни фокус на себя"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Ловушка ложного равенства: почему «онлайн» не означает отказ писать",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Comparison: GOOD «доступ ≠ готовность» green checks; BAD «онлайн = отказ» red X. Labels: доступ к экрану, не равен готовности, пауза не отказ, без ложных домыслов. Outcome: пауза нейтральна. NO people/faces/emoji.",
+      "alt": "Схема: онлайн в мессенджере не равен отказу писать",
+      "labels": [
+        "доступ к экрану",
+        "не равен готовности",
+        "пауза не отказ",
+        "без ложных домыслов"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Что на самом деле показывает технический статус в мессенджере",
+      "visual_type": "tool_screenshot",
+      "scene_hint": "Messenger UI scheme, not screenshot. Labels: технический контакт, фоновое обновление, чужой общий чат, две галочки в диалоге. Order: ping → not your chat → two ticks. Outcome: online = server. NO people/faces/emoji.",
+      "alt": "Схема интерфейса: что на самом деле показывает статус в мессенджере",
+      "labels": [
+        "технический контакт",
+        "фоновое обновление",
+        "чужой общий чат",
+        "две галочки в диалоге"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Психология тишины: почему пауза в сети ранит сильнее обычного",
+      "visual_type": "infographic_card",
+      "scene_hint": "Fact card: 61% read chat silence as ignore. Labels: зеркало своих чувств, внутренняя опора, фокус на себе, спокойный вечер. Order: боль → факт → фокус. Outcome: тишина ≠ отвержение. NO people/faces/emoji.",
+      "alt": "Карточка: почему пауза в сети ранит сильнее обычного молчания",
+      "labels": [
+        "зеркало своих чувств",
+        "внутренняя опора",
+        "фокус на себе",
+        "спокойный вечер"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

@@ -128,19 +128,19 @@ def hook_type_lock(design_code: dict) -> str:
     text = str(ty.get("hook_prompt") or "").strip()
     if "bold condensed" in text.lower():
         text = ""
-    return compact(text or DEFAULT_HOOK_TYPE, 220)
+    return compact(text or DEFAULT_HOOK_TYPE, 100)
 
 
 def secondary_type_lock(design_code: dict) -> str:
     ty = design_code.get("typography") or {}
     text = str(ty.get("secondary_prompt") or "").strip()
-    return compact(text or DEFAULT_SECONDARY_TYPE, 140)
+    return compact(text or DEFAULT_SECONDARY_TYPE, 80)
 
 
 def typography_ban(design_code: dict) -> str:
     ty = design_code.get("typography") or {}
     text = str(ty.get("forbidden_prompt") or "").strip()
-    return compact(text or DEFAULT_TYPE_BAN, 220)
+    return compact(text or DEFAULT_TYPE_BAN, 150)
 
 
 REQUIRED_HAIR_PHRASE = (
@@ -169,17 +169,13 @@ def inline_panel_prompt(slot: dict, types_catalog: dict) -> str:
     type_id = slot.get("visual_type") or "infographic_card"
     type_def = (types_catalog.get("types") or {}).get(type_id) or {}
     label = type_def.get("label_ru", type_id)
-    h2 = compact(slot.get("h2_anchor", ""), 95)
+    h2 = compact(slot.get("h2_anchor", ""), 70)
     scene = compact(slot.get("scene_hint", ""), INLINE_SCENE_HINT_COMPACT)
     base = f"{label}; H2: «{h2}»; scene: {scene}; no host face."
     labels = [str(x).strip() for x in (slot.get("labels") or []) if str(x).strip()]
     if labels:
         exact = ", ".join(f"«{x}»" for x in labels)
-        base += (
-            f" TEXT LOCK: render ONLY these exact Russian strings on this panel: "
-            f"{exact}. Every letter in Cyrillic, exactly as written. "
-            "No other words, no English, no invented headlines."
-        )
+        base += f" TEXT LOCK: ONLY these exact Russian strings: {exact}."
     return base
 
 
@@ -386,8 +382,7 @@ def build_prompt(
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
     accent = palette_accent(design_code)
     highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in accent {accent}; '
-        f'hook text must match exactly — do not substitute «время»/traffic markers'
+        f'paint ONLY the highlight word "{highlight}" in accent {accent}'
         if highlight
         else f"paint at most ONE punch word in accent {accent}"
     )
@@ -405,7 +400,7 @@ def build_prompt(
         style.get("inline_prompt_suffix")
         or design_code.get("inline_information_block")
         or "",
-        420,
+        280,
     )
     type_ban = typography_ban(design_code)
     hook_type = hook_type_lock(design_code)
@@ -414,7 +409,7 @@ def build_prompt(
         style.get("global_prompt_prefix")
         or design_code.get("cover_panel_prompt_block")
         or "",
-        520,
+        400,
     )
     if not style_prefix:
         style_prefix = (
@@ -475,8 +470,7 @@ def build_prompt(
             "host+face; dense collage + topic object; no sterile/meme/canned EN chat filler."
         )
         reference_line = (
-            "REFERENCE FACE only top-left when cover_mode=host_reference: use blog-hero visual_lock; "
-            "expressive editorial pose; no headphones; no meme reaction."
+            "REFERENCE FACE top-left: blog-hero lock; new emotion; no headphones."
         )
         inline_suffix = (
             "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
@@ -497,13 +491,13 @@ def build_prompt(
         "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
         "",
         ban_line,
-        "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
+        "TEXT LANGUAGE LOCK: visible text is Russian Cyrillic only. Render TEXT LOCK strings exactly. No English headlines, no invented words.",
         "",
         reference_line,
         "",
-        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — {hook_type}, ink #141821, '
-        f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
-        "no keyword list card; "
+        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY «{cover_hook_text}» — {hook_type}, ink #141821, '
+        f'{highlight_rule}; no other large headline.{sticky_lock} '
+        "no keyword list; "
         f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}",
         "",
         f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
