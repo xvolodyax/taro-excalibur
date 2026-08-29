@@ -46,6 +46,35 @@ def read_env_file(path: Path) -> dict[str, str]:
     return env
 
 
+WORDSTAT_FOLDER_ENV_NAMES = (
+    "YANDEX_FOLDER_ID",
+    "WORDSTAT_FOLDER_ID",
+    "YANDEX_CLOUD_FOLDER_ID",
+    "YANDEX_WORDSTAT_FOLDER_ID",
+)
+WORDSTAT_KEY_ENV_NAMES = (
+    "YANDEX_CLOUD_SEARCH_API_KEY",
+    "YANDEX_SEARCH_API_KEY",
+    "YANDEX_WORDSTAT_API_KEY",
+    "WORDSTAT_API_KEY",
+)
+
+
+def wordstat_folder_configured(root: Path, tenant: dict) -> bool:
+    for name in WORDSTAT_FOLDER_ENV_NAMES:
+        if (os.environ.get(name) or "").strip():
+            return True
+    local = read_env_file(root / "memory/site.env.local")
+    for name in WORDSTAT_FOLDER_ENV_NAMES:
+        if (local.get(name) or "").strip():
+            return True
+    return bool(str(tenant.get("yandex_cloud_folder_id") or "").strip())
+
+
+def wordstat_key_present() -> bool:
+    return any((os.environ.get(name) or "").strip() for name in WORDSTAT_KEY_ENV_NAMES)
+
+
 def merged_publish_env(root: Path) -> dict[str, str]:
     keys = {
         "PUBLIC_SITE_URL",
@@ -316,6 +345,23 @@ def main() -> int:
         print("PRIVACY_HITS: " + "; ".join(privacy_hits[:20]))
 
     env = merged_publish_env(root)
+    has_wordstat_key = wordstat_key_present()
+    has_wordstat_folder = wordstat_folder_configured(root, tenant)
+    if has_wordstat_key or has_wordstat_folder:
+        check(
+            has_wordstat_key,
+            "Wordstat API key present in env (value not printed)",
+            errors,
+            warnings,
+            warn=True,
+        )
+        check(
+            has_wordstat_folder,
+            "Wordstat folder id configured (env or tenant; value not printed)",
+            errors,
+            warnings,
+            warn=True,
+        )
     if setup_complete or args.publish:
         check(
             bool(env.get("PUBLIC_SITE_URL") or env.get("WP_SITE_URL") or env.get("WP_HOME")),

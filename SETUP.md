@@ -13,7 +13,7 @@ Skills: `setup-excalibur-blog`, `setup-voice-excalibur-blog`, `setup-visual-exca
 | 3 voice | Стиль + примеры (ссылки/файлы/канал) | inbox → Task Voice → SOUL + examples + `article-style.md` |
 | 4 visual | Обложки, референсы | inbox → Task Visual → cover configs + assets |
 | 5 cta | Ссылки / продукт / «без ссылок» | `tenant-config.cta_*`, `rf-blocked-entities.cta_ok` |
-| 6 scout | signal_urls, Wordstat | `tenant-config.scout_signal_urls`, site-brief |
+| 6 scout | signal_urls, Wordstat | `tenant-config.scout_signal_urls`, `yandex_cloud_folder_id`, site-brief |
 | 7 stamp | Финал | `memory/setup/status.json`, `tenant-config.setup_complete=true` |
 
 ## Правила
