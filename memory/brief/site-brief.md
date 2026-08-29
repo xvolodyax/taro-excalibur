@@ -57,7 +57,7 @@
 ## Scout
 
 - signal_urls: https://dzen.ru/todaytaro_bot ; https://www.таросейчас.рф/blog/
-- Wordstat: Yandex Cloud Search API v2, folderId `b1g0a71ifv910gjalmhp` (ключ только в Secrets).
+- Wordstat: Yandex Cloud Search API v2, folderId `b1g0a71ifv910gjalmhp`. Ключ: Cloud Secret `YANDEX_CLOUD_SEARCH_API_KEY` или gitignored `memory/wordstat.env.local` (шаблон `memory/wordstat.env.local.example`). Не в git и не в чат.
 - Внешнего агента Вордстат не звать: Scout ищет сам.
 - До Scout: прочитать `shared/dzen-content-rules.md` + `shared/rf-blocked-entities.json`.
 

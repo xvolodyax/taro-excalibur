@@ -35,12 +35,16 @@ disable-model-invocation: true
      «Cloud Agents», «Make.com update» и т.п.)
 3. Короткий SERP/новостной срез: что обсуждают **сейчас**, не «очередной X MCP
    потому что были B106–B109».
-4. **Wordstat — несколько вызовов, не один.** Для сравнения интереса
-   вызывай `CallMcpTool(wordstat_get_top_requests)` **отдельными turn**,
-   по одному вызову за turn (не batch), по 2–4 смежным фразам темы
-   (родитель + синоним + угол). Смотришь частотности и топ-фразы, чтобы
-   понять, какой угол живее. `totalCount`-only = `WORDSTAT PARTIAL` с числом,
-   не выдумывай impressions.
+4. **Wordstat — несколько вызовов, не один.** Ключ только из env
+   `YANDEX_CLOUD_SEARCH_API_KEY` или gitignored `memory/wordstat.env.local`
+   (`python3 scripts/excalibur_blog_wordstat_env.py` → present/missing,
+   ключ не печатать). Если ключа нет — `WORDSTAT PARTIAL`, не blocker.
+   Для сравнения интереса вызывай `CallMcpTool(wordstat_get_top_requests)`
+   **отдельными turn**, по одному вызову за turn (не batch), по 2–4 смежным
+   фразам темы (родитель + синоним + угол). Смотришь частотности и топ-фразы,
+   чтобы понять, какой угол живее. `totalCount`-only = `WORDSTAT PARTIAL`
+   с числом, не выдумывай impressions. **Запрещено** писать ключ в handoff,
+   notes, PR, tenant-config.
 
 Wordstat — **подтверждение и расширение угла**, не SEO-магия: не берёшь
 самую жирную фразу в title как есть и не пишешь статью «под запрос».

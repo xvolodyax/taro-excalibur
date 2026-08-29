@@ -65,8 +65,11 @@
   "wordstat": {
     "provider": "yandex_cloud_search_api_v2",
     "folder_id": "b1g0a71ifv910gjalmhp",
+    "env_key": "YANDEX_CLOUD_SEARCH_API_KEY",
+    "local_file": "memory/wordstat.env.local",
+    "local_example": "memory/wordstat.env.local.example",
     "external_agent": false,
-    "note": "Ключ API только в Cloud Secrets. Scout зовёт Wordstat сам."
+    "note": "Ключ только в Cloud Secrets или gitignored local file. Не в git, не в чат, не в tenant-config."
   },
   "public_site_url": "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
   "public_site_idn": "https://www.таросейчас.рф/",

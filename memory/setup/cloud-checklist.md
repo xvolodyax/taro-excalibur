@@ -8,6 +8,7 @@
 | Automation Tools → **Memories = OFF** | pending | Official docs: Memories ON by default |
 | Secrets: PUBLIC_SITE_URL | pending | |
 | Secrets: FTP_HOST / FTP_USER / FTP_PASS / FTP_ROOT | pending | SFTP under FTP_* names |
+| Secrets: `YANDEX_CLOUD_SEARCH_API_KEY` | pending | Scout Wordstat; или local `memory/wordstat.env.local` |
 | MCP Wordstat (если нужен Scout) | pending | optional |
 | MCP WordPress blob / image API (если нужны) | pending | optional |
 | Image API key (Kie / provider) | pending | optional until Cover |

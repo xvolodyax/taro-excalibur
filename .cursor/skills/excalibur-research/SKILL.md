@@ -25,7 +25,9 @@ disable-model-invocation: true
   `wordstat_get_top_requests` — **несколько вызовов** (solo turn, один вызов
   за turn) по 2–4 смежным фразам: родитель + синоним + угол. Смотришь
   частотности и топ-фразы, чтобы понять, что интереснее. `totalCount`-only =
-  WORDSTAT PARTIAL, не blocker. Не собирай один ключ ради title.
+   `totalCount`-only = `WORDSTAT PARTIAL`, не blocker. Ключ только из env
+   `YANDEX_CLOUD_SEARCH_API_KEY` / `memory/wordstat.env.local`. Не писать ключ
+   в notes.
 
 Без свежего community/news сигнала → `research-agent-report.json` **BLOCK**
 с причиной `STALE_OR_INVENTED_SIGNAL`.
