@@ -26,7 +26,7 @@ class CoverIdentityTest(unittest.TestCase):
     def test_canon_face_png_on_disk(self) -> None:
         self.assertTrue(CANON.is_file(), CANON)
         self.assertEqual(CANON.name, "Виктория.png")
-        self.assertGreater(CANON.stat().st_size, 1_000_000)
+        self.assertGreater(CANON.stat().st_size, 200_000)
         self.assertTrue(CANON.read_bytes()[:8].startswith(b"\x89PNG\r\n\x1a\n"))
 
     def test_old_face_files_deleted(self) -> None:

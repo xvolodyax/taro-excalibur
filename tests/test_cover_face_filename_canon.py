@@ -58,6 +58,14 @@ TEXT_SUFFIXES = {
 
 
 class CoverFaceFilenameCanonTest(unittest.TestCase):
+    def test_owner_drop_matches_canon_bytes(self) -> None:
+        inbox = ROOT / "cover-refs" / CANON_NAME
+        canon = ROOT / CANON_REL
+        self.assertTrue(inbox.is_file(), inbox)
+        self.assertTrue(canon.is_file(), canon)
+        self.assertEqual(inbox.name, CANON_NAME)
+        self.assertEqual(inbox.read_bytes(), canon.read_bytes())
+
     def test_latin_files_absent(self) -> None:
         for folder in (ROOT / "memory/cover", ROOT / "cover-refs"):
             if not folder.is_dir():

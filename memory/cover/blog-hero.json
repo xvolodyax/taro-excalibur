@@ -7,9 +7,9 @@
   "reference_image": "memory/cover/assets/Виктория.png",
   "sole_face_reference": true,
   "never_upload_source_sheet": true,
-  "reference_notes": "i2i ONLY Виктория.png (кириллица, Vladimir official frontal). Delete and never upload viktoriaref.png, victoria-sheet.png, victoria-sheet-front.png, victoria-face.png, victoria.png, victoria_ref.*, alena.png, виктория.png.",
+  "reference_notes": "i2i ONLY Виктория.png (кириллица). Owner sheet lives at cover-refs/Виктория.png and memory/cover/assets/Виктория.png — same file. Delete and never upload viktoriaref.png, victoria-sheet.png, victoria-sheet-front.png, victoria-face.png, victoria.png, victoria_ref.*, alena.png, виктория.png.",
   "png_on_disk": true,
-  "png_required_action": "memory/cover/assets/Виктория.png must exist (~1.5MB). Cover stops if missing.",
+  "png_required_action": "memory/cover/assets/Виктория.png must exist. Cover stops if missing.",
   "visual_lock": {
     "identity": "Виктория — та же женщина, что на Виктория.png",
     "face_source": "ONLY memory/cover/assets/Виктория.png — i2i lock.",
