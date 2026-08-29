@@ -1,0 +1,54 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B21",
+  "title": "Он ушёл гулять и не позвал",
+  "slug": "on-ushel-gulyat-i-ne-pozval",
+  "article_dir": "memory/blog/articles/B21-on-ushel-gulyat-i-ne-pozval",
+  "research_date": "2026-08-29",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "wordstat": "OK",
+  "wordstat_status": "OK",
+  "fresh_signal": true,
+  "fresh_signal_kind": "dating_channel_and_weekend_news",
+  "block_reason": null,
+  "blockers": [],
+  "incident_report": "none",
+  "serp_contamination": {
+    "status": "discarded",
+    "note": "research-serp.json primary/title polluted by missing-child crime news. Not used."
+  },
+  "wordstat_recheck": {
+    "provider": "yandex_cloud_search_api_v2",
+    "endpoint": "https://searchapi.api.cloud.yandex.net/v2/wordstat/topRequests",
+    "accessed_at": "2026-08-29",
+    "phrases": [
+      {"phrase": "он меня не позвал", "totalCount": 3323, "top": ["он меня не позвал 3323", "хотя он меня не позвал 561", "я позвала он не пришел 387"]},
+      {"phrase": "парень гуляет с другом", "totalCount": 2426, "top": ["парень гуляет с другом 2426", "парень гуляет с друзьями 1407", "парень пошел гулять с друзьями 201"]},
+      {"phrase": "парень гуляет с друзьями", "totalCount": 1407, "top": ["парень хочет гулять с друзьями 128", "парень уходит гулять с друзьями 69", "парень гуляет ночью с друзьями 68"]},
+      {"phrase": "он гуляет без меня", "totalCount": 428, "top": ["он гуляет без меня 428"]}
+    ],
+    "matches_scout": true
+  },
+  "fresh_signal_urls": [
+    "https://ura-inform.com/obshhestvo/2026/08/29/taro-goroskop-na-29-30-avgusta-komu-karty-obeshhayut-udachu-i-vazhnye-peremeny/",
+    "https://mixnews.lv/goroskop/2026/08/28/streltsy-vodolei-kozerogi-i-devy-v-ultrakorotkom-goroskope-na-subbotu-29-avgusta-sovet/",
+    "https://mixnews.lv/goroskop/2026/08/29/rubinovaya-lenta-soberyot-plany-v-odin-uzor-kakie-znaki-tsyganskogo-goroskopa-naydut-poleznuyu-svyaz-29-avgusta-2026-goda/",
+    "https://regions.ru/sergposad/obschestvo/ljubovnyj-goroskop-na-29-avgusta-2026-teltsov-udivjat-sjurprizom-a-kozerogam-pridetsja-vykljuchit-logiku",
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.psychologies.ru/story/izvozhus-kogda-paren-ukhodit-gulyat-s-druzyami-obida-szhiraet-iznutri/"
+  ],
+  "key_facts": [
+    "Боль — не прогулка друзей, а отсутствие приглашения: «я бы, может, и не пошла, если бы позвали» (Woman.ru).",
+    "Суббота 29.08 в медиа сразу зовёт к инициативе в паре (УРА-Информ, REGIONS) и к своему вечеру без чужого сценария (Mixnews 28.08).",
+    "Приглашение в субботнем тексте 29.08 названо началом связи; без зова рана — исключение, не кафе.",
+    "Wordstat OK: «он меня не позвал» 3323; «парень гуляет с другом» 2426 > «с друзьями» 1407; «он гуляет без меня» 428; хвост «хотя он меня не позвал» 561.",
+    "Не клон B20 (сорвал свидание), LIVE поздний зов (зов есть), B18 (пропал после близости), B17 (прочитал и молчит).",
+    "Дзен 29.08 живой; в топе сосед «зовёт в последний момент». B20 — первый заголовок сайта, тела не читались.",
+    "Карты не читают мысли и не отвечают «напишет ли». Вопрос — её вечер и слепая зона.",
+    "CTA утра: бот (3 расклада триплет/крест) первой дверью; «Суть – Тень – Вектор» + аудиоразбор второй; без «личный аудиоразбор»."
+  ],
+  "notes_path": "research-notes.md",
+  "publish": false
+}

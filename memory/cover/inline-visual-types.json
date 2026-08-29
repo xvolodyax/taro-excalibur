@@ -1,12 +1,31 @@
 {
-  "status": "SETUP_REQUIRED",
-  "comment": "Inline panel type catalog. Setup Visual may extend. Cover agent picks per H2.",
-  "types": [
-    "table",
-    "workflow",
-    "checklist",
-    "ui_explanation",
-    "fact_card",
-    "comparison"
-  ]
+  "status": "ok",
+  "comment": "Inline panel catalog for ТАРО СЕЙЧАС. Cover agent picks per H2. No people/faces. 3–6 readable Cyrillic labels.",
+  "default_type": "infographic_card",
+  "types": {
+    "comparison_table_ui": {
+      "label_ru": "Сравнение",
+      "keywords": ["сравн", "или", "бот", "приложени", "разниц", "два пути", "две двер", "лучше"]
+    },
+    "workflow_diagram": {
+      "label_ru": "Схема шагов",
+      "keywords": ["как", "шаг", "сначала", "потом", "порядок", "сцена", "расклад", "карт"]
+    },
+    "checklist_board": {
+      "label_ru": "Чеклист",
+      "keywords": ["проверь", "чеклист", "список", "признак", "ловушк", "не делай"]
+    },
+    "schema_faq_ui": {
+      "label_ru": "Коротко по вопросам",
+      "keywords": ["вопрос", "faq", "часто", "ответ"]
+    },
+    "tool_screenshot": {
+      "label_ru": "Схема экрана",
+      "keywords": ["экран", "бот", "приложени", "кнопк", "чат", "интерфейс"]
+    },
+    "infographic_card": {
+      "label_ru": "Карточка факта",
+      "keywords": ["число", "цифр", "год", "карт дня", "значение", "смысл"]
+    }
+  }
 }

@@ -1,0 +1,21 @@
+{
+  "topic_id": "B21",
+  "slot": "09:00",
+  "date": "2026-08-29",
+  "publish": false,
+  "pack_path": "memory/blog/articles/B21-on-ushel-gulyat-i-ne-pozval",
+  "h1": "Он ушёл гулять с друзьями и не позвал тебя с собой",
+  "slug": "on-ushel-gulyat-i-ne-pozval",
+  "gate": "PASS",
+  "wordstat": "OK",
+  "four_files": {
+    "cover.png": true,
+    "inline-01.png": true,
+    "inline-02.png": true,
+    "inline-03.png": true
+  },
+  "site_html": "article-site.html",
+  "dzen_html": "article-dzen.html",
+  "telegram_funnel": true,
+  "dzen_published": false
+}

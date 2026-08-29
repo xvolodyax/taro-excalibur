@@ -202,8 +202,14 @@ def require_success(response: dict[str, Any], action: str) -> None:
     raise KieApiError(f"Kie API {action} failed: code={response.get('code')} msg={msg}")
 
 
-def expand_input_urls(input_urls: list[Any]) -> list[str]:
-    """Expand {{SITE_BASE}} in batch input_urls for the live Kie API call."""
+def expand_input_urls(
+    input_urls: list[Any], *, skip_site_base: bool = False
+) -> list[str]:
+    """Expand {{SITE_BASE}} in batch input_urls for the live Kie API call.
+
+    When prefer_local_reference will upload a disk PNG, skip SITE_BASE expand
+    so PUBLIC_SITE_URL is not required (INC-20260828-1750 / B20 / B21).
+    """
     live = resolve_public_base_from_env()
     out: list[str] = []
     for raw in input_urls:
@@ -211,6 +217,9 @@ def expand_input_urls(input_urls: list[Any]) -> list[str]:
         if not url:
             continue
         if SITE_BASE_PLACEHOLDER in url:
+            if skip_site_base:
+                out.append(url)
+                continue
             if not live:
                 raise KieApiError(
                     f"batch input_urls contain {SITE_BASE_PLACEHOLDER} but PUBLIC_SITE_URL/WP_SITE_URL is unset"
@@ -238,7 +247,10 @@ def batch_mcp_args(batch_path: Path) -> dict[str, Any]:
         raise KieApiError("Missing prompt in jobs[0].mcp_args")
     if not isinstance(input_urls, list) or not input_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args")
-    expanded_urls = expand_input_urls(input_urls)
+    skip_site_base = bool(
+        batch.get("prefer_local_reference") and str(batch.get("local_reference") or "").strip()
+    )
+    expanded_urls = expand_input_urls(input_urls, skip_site_base=skip_site_base)
     if not expanded_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args after expand")
     return {

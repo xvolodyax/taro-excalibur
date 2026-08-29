@@ -125,8 +125,8 @@ def build_llms_full_txt(site_name: str, articles: list[dict[str, Any]], site_bas
 def main() -> int:
     ap = argparse.ArgumentParser(description="Generate AI-friendly llms.txt and llms-full.txt")
     ap.add_argument("--blog-dir", type=Path, default=None)
-    ap.add_argument("--site-name", type=str, default="Maya AI — Excalibur BLOG")
-    ap.add_argument("--site-desc", type=str, default="Практический блог по автоматизации бизнеса на Make.com, вайбкодингу и ИИ-агентам.")
+    ap.add_argument("--site-name", type=str, default="")
+    ap.add_argument("--site-desc", type=str, default="")
     ap.add_argument(
         "--site-base",
         type=str,
@@ -146,6 +146,18 @@ def main() -> int:
     if not out_dir.is_absolute():
         out_dir = root / out_dir
 
+    tenant_path = root / "shared/tenant-config.json"
+    tenant = {}
+    if tenant_path.is_file():
+        try:
+            tenant = json.loads(tenant_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            tenant = {}
+    site_name = (args.site_name or "").strip() or str(tenant.get("brand_name") or "ТАРО СЕЙЧАС")
+    site_desc = (args.site_desc or "").strip() or str(
+        (tenant.get("niche") or "таро / отношения")
+    )
+
     site_base = (args.site_base or "").strip() or "{{SITE_BASE}}"
     if site_base == "[REDACTED]":
         print(
@@ -160,10 +172,10 @@ def main() -> int:
     # redact_site_base: full PUBLIC_SITE_URL → {{SITE_BASE}}, bare host in prose
     # (legacy article excerpts in llms-full) → {{SITE_HOST}} via env / public base.
     llms_txt = redact_site_base(
-        build_llms_txt(args.site_name, args.site_desc, articles, site_base, args.blog_path)
+        build_llms_txt(site_name, site_desc, articles, site_base, args.blog_path)
     )
     llms_full_txt = redact_site_base(
-        build_llms_full_txt(args.site_name, articles, site_base, args.blog_path)
+        build_llms_full_txt(site_name, articles, site_base, args.blog_path)
     )
 
     llms_path = out_dir / "llms.txt"

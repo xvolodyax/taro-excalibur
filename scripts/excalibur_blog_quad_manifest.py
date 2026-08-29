@@ -99,6 +99,15 @@ def build_manifest(article_dir: Path, root: Path, preserve: dict | None) -> dict
             f"article needs at least 3 real H2 anchors for inline-01..03; found {len(h2s)}"
         )
     topic_id = meta.get("topic_id") or article_dir.name.split("-")[0]
+    tenant_path = root / "shared/tenant-config.json"
+    tenant = load_json(tenant_path) if tenant_path.is_file() else {}
+    cover_files = tenant.get("cover_files") if isinstance(tenant.get("cover_files"), dict) else {}
+    style_file = str(
+        cover_files.get("style_preset") or "memory/cover/quad-style-victoria-studio.json"
+    ).strip()
+    if not style_file or "pink-cat" in style_file:
+        style_file = "memory/cover/quad-style-victoria-studio.json"
+    style_preset = Path(style_file).stem.replace("quad-style-", "") or "victoria-studio"
 
     old_cover = ((preserve or {}).get("slots") or {}).get("cover") or {}
     # cover-text.json (Cover-text agent) owns the exact Russian inscriptions.
@@ -148,8 +157,8 @@ def build_manifest(article_dir: Path, root: Path, preserve: dict | None) -> dict
         "canvas_file": "cover/canvas-quad.png",
         "layout": "2x2",
         "pipeline": "quad_canvas_1x_image_api",
-        "style_preset": "tenant_unset",
-        "style_file": "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
+        "style_preset": style_preset,
+        "style_file": style_file,
         "blog_hero": "memory/cover/blog-hero.json",
         "inline_types_catalog": "memory/cover/inline-visual-types.json",
         "cover_hook": hook,
@@ -158,7 +167,7 @@ def build_manifest(article_dir: Path, root: Path, preserve: dict | None) -> dict
         "mcp_note": (
             "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py "
             "(KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt "
-            "before --write-batch. White hoodie lock = blog-hero.json only."
+            "before --write-batch. Host lock = blog-hero.json + tenant style_preset."
         ),
         "slots": slots,
         "cover_keys_ru": list((preserve or {}).get("cover_keys_ru") or []),
