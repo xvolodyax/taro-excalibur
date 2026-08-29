@@ -1,6 +1,22 @@
 {
   "registry_version": "1.0",
-  "comment": "E-E-A-T Authors Registry. Filled by excalibur-blog-setup. SETUP_REQUIRED until author block done.",
-  "status": "SETUP_REQUIRED",
-  "authors": []
+  "comment": "E-E-A-T Authors Registry. Victoria is the only cover host. Face-ref ONLY memory/cover/assets/victoria-sheet.png. Do not put Alyona on article covers.",
+  "status": "ok",
+  "default_author_id": "victoria",
+  "authors": [
+    {
+      "id": "victoria",
+      "name": "Виктория",
+      "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+      "display_credit": "Виктория — таролог команды «ТАРО СЕЙЧАС»",
+      "cover_credit": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+      "bio_short": "Таролог команды «ТАРО СЕЙЧАС». Пишет живые сцены про отношения — без воды и без обещания прочитать мысли.",
+      "bio_long": "Виктория — таролог команды «ТАРО СЕЙЧАС». Голос блога: женский «ты», одна конкретная сцена, один чат, одна ловушка. Ядро читательниц — женщины 20–50, которые покупают не «таро», а доступ к голове человека, которого нельзя спросить. Не ставит на обложки Алёну. Не пугает одиночеством и не обещает читать мысли.",
+      "sameAs": [
+        "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
+        "https://dzen.ru/todaytaro_bot"
+      ],
+      "cover_host": true
+    }
+  ]
 }

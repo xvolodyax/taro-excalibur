@@ -93,6 +93,12 @@
     "MAX",
     "YouTube"
   ],
-  "cta_ok": [],
-  "comment_cta": "Filled from tenant-config.cta_links by Setup"
+  "cta_ok": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776",
+    "https://max.ru/id531102974575_bot?startapp=ref_9BAD4149",
+    "https://t.me/TodayTaro_bot?start=id8293683394",
+    "https://t.me/TodayTaro_bot?startapp=ref_361BDE45"
+  ],
+  "comment_cta": "Filled from tenant-config.cta_links + cta_links_site_only"
 }
