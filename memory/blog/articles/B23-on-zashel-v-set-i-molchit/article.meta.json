@@ -14,10 +14,15 @@
     "description_ctr": "Как не путать статус в сети с отказом писать и перестать додумывать чужие мысли, когда значок онлайна горит без входящего сообщения.",
     "description_aeo": "Как не путать статус в сети с отказом писать и перестать додумывать чужие мысли, когда значок онлайна горит без входящего сообщения."
   },
+  "excerpt": "",
+  "dek": "",
+  "lead": "",
+  "on_page_excerpt": false,
   "theme_blocks": {
     "faq": "skip",
     "quiz": "skip",
-    "side_stickers": "skip"
+    "side_stickers": "skip",
+    "lead": "skip"
   },
   "date": "2026-08-29",
   "pipeline_canon": "human-first-v2",

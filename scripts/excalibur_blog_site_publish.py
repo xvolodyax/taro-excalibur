@@ -20,6 +20,10 @@ from pathlib import Path
 from typing import Any, Callable
 from urllib.parse import urljoin
 
+from excalibur_blog_opening_editorial import (
+    live_double_lead_errors,
+    sanitize_site_meta,
+)
 from excalibur_blog_pipeline_canon import validate_article_canon
 from excalibur_blog_site_base import (
     SITE_BASE_PLACEHOLDER,
@@ -251,6 +255,9 @@ def build_tgz_bytes(article_dir: Path, site_html: str) -> bytes:
         for rel in TGZ_MEMBERS:
             if rel == "article.html":
                 data = site_html.encode("utf-8")
+            elif rel == "article.meta.json":
+                meta = sanitize_site_meta(load_json(article_dir / rel) if (article_dir / rel).is_file() else {})
+                data = (json.dumps(meta, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
             else:
                 data = (article_dir / rel).read_bytes()
             info = tarfile.TarInfo(name=rel)
@@ -429,6 +436,26 @@ def fetch_live(http: HttpFn, permalink: str) -> HttpResponse:
     )
 
 
+def patch_on_page_excerpt_empty(
+    http: HttpFn,
+    site_base: str,
+    token: str,
+    article_id: str,
+) -> HttpResponse:
+    """Theme prints excerpt as p.seo-article__lead. Never send first-paragraph copy."""
+    patch_url = urljoin(site_base.rstrip("/") + "/", f"api/admin/content/articles/{article_id}")
+    patch_body = json.dumps({"excerpt": "", "on_page_excerpt": False}, ensure_ascii=False).encode("utf-8")
+    resp, _ = _request_json(
+        http,
+        "PATCH",
+        patch_url,
+        token,
+        data=patch_body,
+        headers={"Content-Type": "application/json"},
+    )
+    return resp
+
+
 def run_publish(
     *,
     article_dir: Path,
@@ -438,6 +465,7 @@ def run_publish(
     dry_run: bool,
     skip_gates: bool,
     http: HttpFn,
+    resume_article_id: str = "",
 ) -> tuple[int, dict[str, Any]]:
     html_path = article_dir / "article.html"
     raw_html = html_path.read_text(encoding="utf-8") if html_path.is_file() else ""
@@ -493,6 +521,7 @@ def run_publish(
         result["publish"] = "DRY_RUN" if token else "SKIP"
         result["reason"] = "" if token else "нет ключа"
         result["dry_run"] = True
+        result["on_page_excerpt"] = ""
         write_result(article_dir, result, site_base)
         return 0, result
 
@@ -503,26 +532,41 @@ def run_publish(
         write_result(article_dir, result, site_base)
         return 0, result
 
-    upload_url = urljoin(site_base.rstrip("/") + "/", "api/admin/content/excalibur/upload")
-    body, content_type = encode_tgz_multipart(tgz)
-    upload_headers = auth_headers(token)
-    upload_headers["Content-Type"] = content_type
-    upload_resp, upload_payload = _request_json(
-        http,
-        "POST",
-        upload_url,
-        token,
-        data=body,
-        headers=upload_headers,
-        timeout=60,
-    )
-    result["upload_status"] = upload_resp.status
-    article_id = extract_article_id(upload_payload)
-    result["article_id"] = article_id
-    if upload_resp.status >= 400 or not article_id:
+    article_id = str(resume_article_id or "").strip()
+    if article_id:
+        result["article_id"] = article_id
+        result["upload_status"] = "resumed"
+        result["resumed"] = True
+    else:
+        upload_url = urljoin(site_base.rstrip("/") + "/", "api/admin/content/excalibur/upload")
+        body, content_type = encode_tgz_multipart(tgz)
+        upload_headers = auth_headers(token)
+        upload_headers["Content-Type"] = content_type
+        upload_resp, upload_payload = _request_json(
+            http,
+            "POST",
+            upload_url,
+            token,
+            data=body,
+            headers=upload_headers,
+            timeout=60,
+        )
+        result["upload_status"] = upload_resp.status
+        article_id = extract_article_id(upload_payload)
+        result["article_id"] = article_id
+        if upload_resp.status >= 400 or not article_id:
+            result["verdict"] = "fail"
+            result["publish"] = "FAIL"
+            result["reason"] = f"upload status={upload_resp.status}"
+            write_result(article_dir, result, site_base)
+            return 1, result
+
+    excerpt_resp = patch_on_page_excerpt_empty(http, site_base, token, article_id)
+    result["excerpt_clear_status"] = excerpt_resp.status
+    if excerpt_resp.status >= 400:
         result["verdict"] = "fail"
         result["publish"] = "FAIL"
-        result["reason"] = f"upload status={upload_resp.status}"
+        result["reason"] = f"excerpt clear status={excerpt_resp.status}"
         write_result(article_dir, result, site_base)
         return 1, result
 
@@ -540,7 +584,8 @@ def run_publish(
             headers={"Content-Type": "application/json"},
         )
         result[f"{action}_status"] = resp.status
-        if resp.status >= 400:
+        # 409 on approve: already in quality_review / already approved — still publish.
+        if resp.status >= 400 and not (action == "approve" and resp.status == 409):
             result["verdict"] = "fail"
             result["publish"] = "FAIL"
             result["reason"] = f"{action} status={resp.status}"
@@ -603,6 +648,22 @@ def run_publish(
         write_result(article_dir, result, site_base)
         return 1, result
 
+    lead_errors = live_double_lead_errors(live_html)
+    if lead_errors:
+        retry = patch_on_page_excerpt_empty(http, site_base, token, article_id)
+        result["excerpt_clear_retry_status"] = retry.status
+        live_resp = fetch_live(http, permalink)
+        live_html = live_resp.text()
+        lead_errors = live_double_lead_errors(live_html)
+        if lead_errors:
+            result["verdict"] = "fail"
+            result["publish"] = "FAIL"
+            result["reason"] = "double lead on live (seo-article__lead clones first p)"
+            result["live_errors"] = lead_errors
+            write_result(article_dir, result, site_base)
+            return 1, result
+        result["double_lead_cleared"] = True
+
     result["verdict"] = "pass"
     result["publish"] = "PUBLISHED"
     result["reason"] = ""
@@ -631,6 +692,11 @@ def main(argv: list[str] | None = None, http: HttpFn | None = None) -> int:
     parser.add_argument("--env-check", action="store_true")
     parser.add_argument("--site-base", default="")
     parser.add_argument("--skip-gates", action="store_true")
+    parser.add_argument(
+        "--resume-article-id",
+        default="",
+        help="Skip upload and continue approve/publish for an already uploaded article",
+    )
     args = parser.parse_args(argv)
 
     root = project_root()
@@ -661,6 +727,7 @@ def main(argv: list[str] | None = None, http: HttpFn | None = None) -> int:
             dry_run=bool(args.dry_run),
             skip_gates=bool(args.skip_gates),
             http=http or _default_http,
+            resume_article_id=str(args.resume_article_id or ""),
         )
     except Exception as exc:  # noqa: BLE001 — surface type only, never secret
         _safe_print(f"BLOCKER: site publish crashed: {type(exc).__name__}: {exc}", token)

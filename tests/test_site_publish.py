@@ -14,6 +14,10 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
+from excalibur_blog_opening_editorial import (  # noqa: E402
+    live_double_lead_errors,
+    sanitize_site_meta,
+)
 from excalibur_blog_site_publish import (  # noqa: E402
     DEFAULT_SITE_BASE,
     PROTECTED_LIVE_TOPIC_IDS,
@@ -177,6 +181,7 @@ class FakeHttp:
         self.live_after_restore = live_after_restore
         self.upload_id = upload_id
         self.seen_headers: list[dict[str, str]] = []
+        self.telegram_patched = False
 
     def __call__(
         self,
@@ -195,10 +200,12 @@ class FakeHttp:
         if "/approve" in path or path.endswith("/publish"):
             return HttpResponse(200, {}, b'{"ok":true}', url)
         if method.upper() == "PATCH" and "/articles/" in path:
+            if data and b"preserve_telegram" in data:
+                self.telegram_patched = True
             return HttpResponse(200, {}, b'{"ok":true}', url)
         if method.upper() == "GET" and "/blog/" in path:
             html = self.live_html
-            if self.live_after_restore is not None and any(c[0] == "PATCH" for c in self.calls[:-1]):
+            if self.live_after_restore is not None and getattr(self, "telegram_patched", False):
                 html = self.live_after_restore
             return HttpResponse(200, {"content-type": "text/html"}, html.encode("utf-8"), url)
         return HttpResponse(404, {}, b'{"error":"no"}', url)
@@ -268,11 +275,49 @@ class SitePublishUnitTest(unittest.TestCase):
                 member = tar.extractfile("article.html")
                 assert member is not None
                 packed = member.read().decode("utf-8")
+                meta_member = tar.extractfile("article.meta.json")
+                assert meta_member is not None
+                packed_meta = json.loads(meta_member.read().decode("utf-8"))
             self.assertNotIn("cover-hero", packed)
             self.assertIn("https://t.me/example_bot?start=ref1", packed)
             self.assertNotIn("/rasklad-taro-online/", packed)
+            self.assertEqual(packed_meta.get("excerpt"), "")
+            self.assertFalse(packed_meta.get("on_page_excerpt"))
             disk = (article_dir / "article.html").read_text(encoding="utf-8")
             self.assertIn("cover-hero", disk)
+
+    def test_sanitize_meta_clears_first_paragraph_excerpt(self) -> None:
+        dirty = {
+            "excerpt": "Многие ждут ответа сразу. Здесь другая картина вечера.",
+            "description": DESCRIPTION,
+            "theme_blocks": {"faq": "skip"},
+        }
+        clean = sanitize_site_meta(dirty)
+        self.assertEqual(clean["excerpt"], "")
+        self.assertEqual(clean["dek"], "")
+        self.assertEqual(clean["lead"], "")
+        self.assertFalse(clean["on_page_excerpt"])
+        self.assertEqual(clean["theme_blocks"]["lead"], "skip")
+        self.assertEqual(clean["description"], DESCRIPTION)
+
+    def test_live_double_lead_detects_b22_pattern(self) -> None:
+        first = (
+            "Возьмём: экран смартфона загорается ближе к полуночи: короткое «Привет, как ты?» "
+            "или дежурное «Спишь?»."
+        )
+        html = (
+            f"<h1>Он пишет, хотя вы уже расстались</h1>"
+            f'<p class="seo-article__lead">{first} Вы разъехались, не</p>'
+            f"<p>Автор: Виктория</p>"
+            f"<div class=\"seo-content\"><p>{first} Вы разъехались, не строите общих планов.</p></div>"
+        )
+        self.assertTrue(live_double_lead_errors(html))
+        clean = (
+            "<h1>Он зашёл в сеть и молчит</h1>"
+            "<p>Автор: Виктория</p>"
+            "<div class=\"seo-content\"><p>Субботний вечер, экран телефона загорается.</p></div>"
+        )
+        self.assertFalse(live_double_lead_errors(clean))
 
     def test_telegram_rewrite_detect_and_restore_local(self) -> None:
         source = _article_html(cover_hero=False)

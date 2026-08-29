@@ -21,6 +21,8 @@ is_background: false
 Слог тенанта наложит **Sol** — его вызывает **Директор** следующим шагом.
 Ты **не** вызываешь `Task(excalibur-blog-sol)` и не пишешь финальный `article.html`.
 
+**HARD (29.08):** без «Возьмём:» / «Возьмем:». Лид один раз в теле, не excerpt/dek.
+
 ## Вход
 
 - `shared/writer-master-prompt.md`

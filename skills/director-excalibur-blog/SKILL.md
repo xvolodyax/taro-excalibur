@@ -31,6 +31,8 @@ Scout? → research_start → Research → Title → Writer
   (`shared/SOUL.md` + `shared/soul-examples/`)
 - **Description** — тизер карточки Дзена → `description-brief.json`  
   (`shared/dzen-description-rules.md`); ≠ title ≠ opening
+- **HARD (29.08):** без «Возьмём:»; лид один раз в теле; excerpt под H1 пустой
+  (`p.seo-article__lead` не копирует первый абзац).
 
 ## Preflight
 

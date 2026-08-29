@@ -45,6 +45,7 @@ python3 scripts/excalibur_blog_research_start.py --topic-id B111 --title "…"
 
 - Второй автор / rewrite-loop **поверх Sol** (Sol — единственный стилевой рерайт)
 - Термин-дамп / research-брифинг в открытии финала
+- «Возьмём:» / «Возьмем:» в открытии; двойной лид (excerpt/dek = первый абзац)
 - Description = title или обрезка лида (двойная карточка в Дзене)
 - topics / SEO-хвосты
 - Writer/Sol читают старые article.html / live-сайт как образец

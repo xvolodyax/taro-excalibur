@@ -40,11 +40,14 @@ class TitleWriterAgentsTest(unittest.TestCase):
         self.assertIn("заголовок", low)
         self.assertIn("открытие", low)
         self.assertIn("SOUL.md", style)
+        self.assertIn("Возьмём:", style)
+        self.assertIn("seo-article__lead", style)
 
     def test_soul_md_present(self) -> None:
         soul = (ROOT / "shared/SOUL.md").read_text(encoding="utf-8")
         self.assertIn("Core Truths", soul)
         self.assertIn("Vibe", soul)
+        self.assertIn("Возьмём:", soul)
         self.assertTrue((ROOT / "shared/soul-examples/good-outputs.md").is_file())
         self.assertTrue((ROOT / "shared/soul-examples/bad-outputs.md").is_file())
 

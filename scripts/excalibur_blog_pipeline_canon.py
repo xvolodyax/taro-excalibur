@@ -6,9 +6,21 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from datetime import date
 from pathlib import Path
 from typing import Any
+
+_SCRIPTS = Path(__file__).resolve().parent
+if str(_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_SCRIPTS))
+
+from excalibur_blog_opening_editorial import (  # noqa: E402
+    article_html_double_lead_errors,
+    has_vozmem_label,
+    meta_on_page_excerpt_errors,
+    sanitize_site_meta,
+)
 
 
 def project_root() -> Path:
@@ -120,11 +132,20 @@ def validate_article_canon(article_dir: Path, root: Path) -> list[str]:
             errors.append(f"legacy pipeline artifact forbidden: {name}")
 
     html_path = article_dir / "article.html"
+    body_raw = ""
     if html_path.is_file():
-        body = html_path.read_text(encoding="utf-8").lower()
+        body_raw = html_path.read_text(encoding="utf-8")
+        body = body_raw.lower()
         for marker in canon.get("forbidden_body_markers") or []:
             if re.search(rf"\b{re.escape(str(marker))}\b", body):
                 errors.append(f"service English marker forbidden in article.html: {marker}")
+        opening = canon.get("opening_rules") or {}
+        if opening.get("no_vozmem_label") and has_vozmem_label(body_raw):
+            errors.append("article.html: forbidden opener Возьмём:/Возьмем:")
+        if opening.get("lead_once_in_body"):
+            errors.extend(article_html_double_lead_errors(body_raw))
+        if opening.get("on_page_excerpt_empty"):
+            errors.extend(meta_on_page_excerpt_errors(meta, body_raw))
 
     title_blob = " ".join(
         str(meta.get(key) or "")
@@ -223,8 +244,11 @@ def stamp_article(article_dir: Path, root: Path) -> None:
         {"faq": "skip", "quiz": "skip", "side_stickers": "skip"},
     )
     if isinstance(meta["theme_blocks"], dict):
-        for key in ("faq", "quiz", "side_stickers"):
+        for key in ("faq", "quiz", "side_stickers", "lead"):
             meta["theme_blocks"].setdefault(key, "skip")
+    # Theme always prints excerpt as p.seo-article__lead. Never clone first <p>.
+    cleaned = sanitize_site_meta(meta)
+    meta.update(cleaned)
     meta.setdefault(
         "date",
         str(research_ctx.get("today_iso") or meta.get("date") or date.today().isoformat()),

@@ -65,6 +65,10 @@ cover/inline-03.png
   `article.html` не обязательно менять);
 - `cover.png` только файл обложки, не вторая картинка в теле;
 - в теле ровно три врезки (`inline-01`…`03` / `data-slot="inline_1"`…).
+- **HARD (29.08):** тема всегда печатает `excerpt` как `p.seo-article__lead`
+  под H1. В tgz `article.meta.json` поле `excerpt` **пустое** (не копия
+  первого `<p>`). После upload скрипт PATCH `excerpt=""`. Лид живёт только
+  в теле. `description` / RSS — карточка Дзена, не dek под H1.
 
 ## После publish
 
