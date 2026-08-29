@@ -3,15 +3,13 @@
   "slug": "on-pishet-hotya-vy-uzhe-rasstalis",
   "article_id": "28",
   "publish_method": "site-api",
-  "hall": "director_one_shot",
+  "hall": "not_used",
   "dzen_studio": "not_used",
   "token_env": "SITE_PUBLISH_TOKEN",
   "token_configured": true,
   "site_base": "{{SITE_BASE}}",
   "cover_hero_stripped": false,
-  "strip": {
-    "cover_hero_removed": 0
-  },
+  "hook_added": true,
   "tgz_members": [
     "article.html",
     "article.meta.json",
@@ -21,51 +19,36 @@
     "cover/inline-02.png",
     "cover/inline-03.png"
   ],
-  "tgz_bytes": 2184754,
+  "tgz_bytes": 2184769,
   "permalink": "{{SITE_BASE}}/blog/on-pishet-hotya-vy-uzhe-rasstalis/",
   "live_url": "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/on-pishet-hotya-vy-uzhe-rasstalis/",
   "http": {
     "upload": 201,
-    "approve": 409,
-    "publish": 409,
-    "live_get": 404
+    "approve": 200,
+    "publish": 200,
+    "live_get": 200
   },
-  "upload_error": null,
-  "verdict": "fail",
-  "publish": "FAIL",
   "notes": [
-    "One upload, one approve, one publish. No upload retry after 201.",
-    "Dzen not used. Article not rewritten.",
-    "Site left article 28 in quality_review (score 88, warning: no concrete example).",
-    "Hall token cannot access quality/review (403). Owner 2FA admin needed to pass quality."
+    "One re-upload same slug (201), one approve (200), one publish (200).",
+    "Hall not used. Dzen not used. No cover-hero.",
+    "Live 200. Hook Возьмём present. Four t.me links remain in article body.",
+    "/rasklad-taro-online/ is one extra site chrome link, not a rewrite of t.me."
   ],
   "upload_status": 201,
-  "upload_payload_keys": [
-    "article",
-    "images",
-    "incoming_dir",
-    "package_hash",
-    "quality"
-  ],
-  "approve_status": 409,
-  "reason": "Публиковать можно только одобренную статью",
-  "approve_error": "Сначала статья должна пройти проверку качества",
-  "publish_status": 409,
-  "publish_error": "Публиковать можно только одобренную статью",
-  "publish_payload_keys": [
-    "detail",
-    "error"
-  ],
-  "live_status": 404,
-  "article_status": "quality_review",
-  "quality_score": 88,
-  "quality_warnings": [
-    "Нет конкретного примера или разбора ситуации"
-  ],
+  "approve_status": 200,
+  "publish_status": 200,
+  "live_status": 200,
   "live_checks": {
-    "live_http": 404,
+    "live_http": 200,
+    "hook_present": true,
     "cover_hero_in_live": false,
-    "tme_count": 0,
-    "rasklad_rewrite": false
-  }
+    "tme_count": 4,
+    "rasklad_rewrite": true,
+    "title_present": true,
+    "rasklad_in_site_chrome": true,
+    "tme_in_article_body": 4
+  },
+  "verdict": "pass",
+  "publish": "PUBLISHED",
+  "reason": ""
 }
