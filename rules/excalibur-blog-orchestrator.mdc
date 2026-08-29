@@ -38,7 +38,8 @@ alwaysApply: false
 6. shell: `pipeline_canon --stamp` + opening_meta + description_gate + html_linter
 7. **ПАРАЛЛЕЛЬНО** cover-text (Gemini) + schema (inherit) → cover (inherit)
 8. `excalibur-blog-indexer`
-9. `excalibur-blog-publish`
+9. `excalibur-blog-publish` → `excalibur_blog_site_publish.py`
+   (ключ есть → не SKIP; нет ключа → SKIP «нет ключа»; не Hall)
 10. fixer(open) → merge_to_main → content-learner
 
 Канон: `shared/pipeline-canon.json`.

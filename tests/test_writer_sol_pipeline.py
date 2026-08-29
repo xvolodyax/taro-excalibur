@@ -20,6 +20,9 @@ class WriterSolContractsTest(unittest.TestCase):
         self.assertIn("drafts/writer.html", canon["sol_allowed_sources"])
         self.assertNotIn("shared/SOUL.md", canon["writer_allowed_sources"])
         self.assertTrue(canon["opening_rules"].get("sol_owns_opening"))
+        self.assertTrue(canon["opening_rules"].get("no_vozmem_label"))
+        self.assertTrue(canon["opening_rules"].get("lead_once_in_body"))
+        self.assertTrue(canon["opening_rules"].get("on_page_excerpt_empty"))
 
     def test_sol_agent_and_skill_exist(self) -> None:
         self.assertTrue((ROOT / "agents/excalibur-blog-sol.md").is_file())

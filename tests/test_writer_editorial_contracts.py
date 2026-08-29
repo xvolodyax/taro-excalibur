@@ -18,6 +18,9 @@ class WriterEditorialContractsTest(unittest.TestCase):
         self.assertIn("published-titles-only.md", prompt)
         self.assertIn("Sol", prompt)
         self.assertNotIn("lead.md", prompt)
+        self.assertIn("Возьмём:", prompt)
+        self.assertIn("Возьмем:", prompt)
+        self.assertIn("один раз", prompt)
 
         canon = json.loads((ROOT / "shared/pipeline-canon.json").read_text(encoding="utf-8"))
         self.assertEqual(
@@ -37,6 +40,8 @@ class WriterEditorialContractsTest(unittest.TestCase):
         self.assertIn("drafts/writer.html", skill)
         self.assertIn("published-titles-only.md", skill)
         self.assertIn("Sol", skill)
+        self.assertIn("Возьмём:", skill)
+        self.assertIn("excerpt", skill)
 
     def test_soul_layer_present(self) -> None:
         soul = (ROOT / "shared/SOUL.md").read_text(encoding="utf-8")
@@ -47,12 +52,14 @@ class WriterEditorialContractsTest(unittest.TestCase):
         self.assertIn("Core Truths", soul)
         self.assertIn("excalibur-blog-sol", soul)
         self.assertIn("Vibe", soul)
-        self.assertIn("SETUP_REQUIRED", good)
+        self.assertIn("Возьмём:", soul)
         self.assertIn("Calibration", good)
-        self.assertIn("SETUP_REQUIRED", src)
+        self.assertTrue("SETUP_REQUIRED" in good or "ТАРО СЕЙЧАС" in good)
+        self.assertTrue("SETUP_REQUIRED" in src or "ТАРО СЕЙЧАС" in src)
         self.assertIn("битов", post.lower())
         self.assertIn("seo-робот", bad.lower())
         self.assertIn("чужой голос", bad.lower())
+        self.assertIn("Возьмём:", bad)
 
     def test_pipeline_canon_lists_sol_sources(self) -> None:
         canon = json.loads((ROOT / "shared/pipeline-canon.json").read_text(encoding="utf-8"))

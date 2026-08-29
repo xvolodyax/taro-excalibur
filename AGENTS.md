@@ -45,10 +45,14 @@ python3 scripts/excalibur_blog_research_start.py --topic-id B111 --title "…"
 
 - Второй автор / rewrite-loop **поверх Sol** (Sol — единственный стилевой рерайт)
 - Термин-дамп / research-брифинг в открытии финала
+- «Возьмём:» / «Возьмем:» в открытии; двойной лид (excerpt/dek = первый абзац)
 - Description = title или обрезка лида (двойная карточка в Дзене)
 - topics / SEO-хвосты
 - Writer/Sol читают старые article.html / live-сайт как образец
 - Publish без pipeline_canon stamp
+- Publish SKIP при живом ключе (канон: после GATE PASS рой сам заливает)
+- Hall upload/approve/publish вместо `excalibur_blog_site_publish.py`
+- Живую B21 трогать site-publish API
 - Scout/тема про RF-blocked heroes без Дзен-канона (если `dzen_rf_pack`)
 - Sol выдумывает факты, которых нет в `drafts/writer.html` / research
 - Запуск пайплайна до завершения Setup
@@ -63,6 +67,15 @@ python3 scripts/excalibur_blog_doctor.py
 python3 scripts/excalibur_blog_today.py
 python3 scripts/excalibur_blog_research_start.py --topic-id <id> --title "<short>"
 ```
+
+После GATE PASS (не Hall):
+
+```bash
+python3 scripts/excalibur_blog_site_publish.py --article-dir memory/blog/articles/<id>-<slug>
+```
+
+Env: `SITE_PUBLISH_TOKEN` / `HALL_PUBLISH_TOKEN` / `PUBLISH_TOKEN` / `TARO_SITE_TOKEN`.
+Нет ключа → SKIP «нет ключа». B21 live не трогать. Дзен Студия — нет.
 
 Директор: `.cursor/agents/excalibur-blog-director.md` (не Task).  
 Setup: `.cursor/agents/excalibur-blog-setup.md` (не Task).

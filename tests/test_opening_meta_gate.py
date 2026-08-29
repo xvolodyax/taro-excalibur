@@ -58,6 +58,43 @@ class OpeningMetaGateTest(unittest.TestCase):
             report = check_article(d)
             self.assertEqual(report["status"], "BLOCK")
 
+    def test_blocks_vozmem_opener(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            d = Path(td)
+            (d / "article.html").write_text(
+                "<p>Возьмём: экран смартфона загорается ближе к полуночи.</p>\n",
+                encoding="utf-8",
+            )
+            (d / "article.meta.json").write_text(
+                json.dumps({"description": "Как не путать импульс с возвратом."}, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            report = check_article(d)
+            self.assertEqual(report["status"], "BLOCK", report)
+            self.assertTrue(any("vozmem" in e for e in report["errors"]), report)
+
+    def test_blocks_excerpt_clone_of_first_paragraph(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            d = Path(td)
+            first = (
+                "Экран смартфона загорается ближе к полуночи: короткое «Привет, как ты?» "
+                "или дежурное «Спишь?»."
+            )
+            (d / "article.html").write_text(f"<h1>Тема</h1>\n<p>{first}</p>\n<p>Дальше мысль.</p>\n", encoding="utf-8")
+            (d / "article.meta.json").write_text(
+                json.dumps(
+                    {
+                        "description": "Как не путать ночной пинг с желанием всё вернуть.",
+                        "excerpt": first,
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+            report = check_article(d)
+            self.assertEqual(report["status"], "BLOCK", report)
+            self.assertTrue(any("excerpt" in e and "clone" in e for e in report["errors"]), report)
+
     def test_pass_without_orphan_lead_md(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             d = Path(td)

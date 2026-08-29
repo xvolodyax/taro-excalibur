@@ -1,0 +1,51 @@
+{
+  "title": "Он зашёл в сеть и молчит",
+  "h1": "Он зашёл в сеть и молчит",
+  "seo_title": "Он зашёл в сеть и молчит — что делать с онлайном",
+  "slug": "on-zashel-v-set-i-molchit",
+  "topic_id": "B23",
+  "author_id": "victoria",
+  "article_mode": "B",
+  "description": "Как не путать статус в сети с отказом писать и перестать додумывать чужие мысли, когда значок онлайна горит без входящего сообщения.",
+  "meta_ab": {
+    "title_seo": "Он зашёл в сеть и молчит — что делать с онлайном",
+    "title_ctr": "Он зашёл в сеть и молчит — что делать с онлайном",
+    "title_aeo": "Он зашёл в сеть и молчит — что делать с онлайном",
+    "description_seo": "Как не путать статус в сети с отказом писать и перестать додумывать чужие мысли, когда значок онлайна горит без входящего сообщения.",
+    "description_ctr": "Как не путать статус в сети с отказом писать и перестать додумывать чужие мысли, когда значок онлайна горит без входящего сообщения.",
+    "description_aeo": "Как не путать статус в сети с отказом писать и перестать додумывать чужие мысли, когда значок онлайна горит без входящего сообщения."
+  },
+  "excerpt": "",
+  "dek": "",
+  "lead": "",
+  "on_page_excerpt": false,
+  "skip_quality_review": true,
+  "auto_approve": true,
+  "excalibur_gate": "PASS",
+  "theme_blocks": {
+    "faq": "skip",
+    "quiz": "skip",
+    "side_stickers": "skip",
+    "lead": "skip"
+  },
+  "date": "2026-08-29",
+  "pipeline_canon": "human-first-v2",
+  "editorial_swarm": false,
+  "slot": "20:00",
+  "slot_date": "2026-08-29",
+  "cover_credit": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "placement": "above_image",
+    "render_in_png": false
+  },
+  "cover_face_canon": "memory/cover/assets/Виктория.png",
+  "cta_dzen": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776",
+    "https://max.ru/id531102974575_bot?startapp=ref_9BAD4149"
+  ],
+  "cta_site_only": [
+    "https://t.me/TodayTaro_bot?start=id8293683394",
+    "https://t.me/TodayTaro_bot?startapp=ref_361BDE45"
+  ]
+}

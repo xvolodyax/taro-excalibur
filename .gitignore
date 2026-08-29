@@ -1,5 +1,6 @@
 memory/site.env.local
 memory/site.env.local.example
+memory/wordstat.env.local
 .cursor/excalibur-blog-handoff.md
 shared/excalibur-blog-handoff.md
 .cursor/excalibur-blog-fragments/

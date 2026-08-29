@@ -1,0 +1,81 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B23",
+  "slug": "on-zashel-v-set-i-molchit",
+  "title": "Он зашёл в сеть и молчит",
+  "research_date": "2026-08-29",
+  "slot": "evening",
+  "slot_time": "20:00",
+  "status": "PASS",
+  "verdict": "PASS",
+  "blocker": null,
+  "fresh_signal": {
+    "ok": true,
+    "kind": "channel_or_news_this_week",
+    "date": "2026-08-29",
+    "source": "https://aiqube.ru/tarot/taro-na-otnosheniya-pochemu-on-molchit-onlayn",
+    "evidence": "AiQube page stamped «Обновлено: 29 августа 2026 г.»; live fetch 2026-08-29. Adjacent same-day tenant Dzen post is B22 (message after breakup), used only as anti-clone.",
+    "also_checked": [
+      "https://astro7.com/online-journal/taro-i-gadania/rasklad-taro-na-obshchenie-s-muzhchinoj.html",
+      "https://dzen.ru/todaytaro_bot"
+    ]
+  },
+  "angle": "online status present, no letter; card of the day in body, not H1",
+  "overlap_avoided": [
+    "B17 прочитал и молчит",
+    "B20 отменил свидание",
+    "B21 ушёл гулять и не позвал",
+    "B22 пишет после расставания",
+    "LIVE напишет ли он сегодня вечером",
+    "LIVE смотрит истории и молчит"
+  ],
+  "rf_ok": true,
+  "wordstat": {
+    "provider": "yandex_cloud_search_api_v2",
+    "endpoint": "https://searchapi.api.cloud.yandex.net/v2/wordstat/topRequests",
+    "accessed_at": "2026-08-29",
+    "posts": 4,
+    "region": "225",
+    "partial": true,
+    "partial_reason": "two phrases returned totalCount without results list; associations were spelling noise",
+    "queries": [
+      {
+        "phrase": "он в сети не пишет",
+        "totalCount": 1830,
+        "results": [
+          {"phrase": "он в сети но не пишет", "count": 601},
+          {"phrase": "почему он не пишет в сети", "count": 425}
+        ]
+      },
+      {
+        "phrase": "он зашёл в сеть и молчит",
+        "totalCount": 4,
+        "results": []
+      },
+      {
+        "phrase": "он онлайн но не пишет",
+        "totalCount": 154,
+        "results": [
+          {"phrase": "он онлайн но не пишет", "count": 154}
+        ]
+      },
+      {
+        "phrase": "почему он в сети и не пишет",
+        "totalCount": 180,
+        "results": []
+      }
+    ]
+  },
+  "key_facts": [
+    "AiQube 29.08.2026: молчание онлайн запускает сериал предположений; разбор = ясность, не гарантия будущего.",
+    "Astro7: ложное равенство «был онлайн = мог написать, но не захотел»; намерение писать и факт письма — разные слои.",
+    "Telegram FAQ: «был недавно» = от 1 секунды до 2–3 дней; онлайн ≠ открыл её диалог; две галочки = открыл именно этот чат.",
+    "Telegram FAQ: онлайн ~30 с без шаринга last seen только если написал / прочитал её личку / показал «печатает».",
+    "VK faq21812: «заходил недавно» = скрытый статус, не доказательство отсутствия.",
+    "Psychologies 09.04.2026: «есть 15 секунд» игнорирует эмоциональный ресурс; мозг достраивает худшее.",
+    "Опрос 2023 (n=1350): 61% читают тишину в чате как игнор; отдельно выделяют слой «онлайн и молчит».",
+    "Слот 20:00: карта дня сверяет её вечер, не прогноз «напишет ли»; бот = 3 бесплатных расклада; приложение = «Суть – Тень – Вектор» + аудиоразбор."
+  ],
+  "notes_path": "memory/blog/articles/B23-on-zashel-v-set-i-molchit/research-notes.md",
+  "incident_report": "none"
+}

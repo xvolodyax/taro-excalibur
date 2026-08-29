@@ -16,7 +16,7 @@
   │    → Sol (Gemini) → Description (Gemini)
   ├─ shell: pipeline_canon --stamp + opening_meta + description_gate + html_linter
   ├─ Cover-text (Gemini) || Schema (inherit) → Cover (inherit)
-  ├─ Indexer (llms only) → Publish                 inherit
+  ├─ Indexer (llms only) → Publish (site API)      inherit
   └─ Fixer(open) → merge_to_main → Content-learner inherit
 ```
 
@@ -39,4 +39,6 @@
 3. Sol → `article.html` (SOUL + soul-examples; факты из Writer)
 4. Description → `description-brief.json` (`shared/dzen-description-rules.md`)
 5. `python3 scripts/excalibur_blog_pipeline_canon.py --article-dir … --stamp`
-6. Cover-text → Cover; Indexer; Publish
+6. Cover-text → Cover; Indexer
+7. `python3 scripts/excalibur_blog_site_publish.py --article-dir …`
+   (ключ есть → upload/approve/publish; нет ключа → SKIP «нет ключа»)

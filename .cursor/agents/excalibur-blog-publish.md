@@ -1,6 +1,6 @@
 ---
 name: excalibur-blog-publish
-description: "⑥ Publish: WP post + featured + inline images + schema meta. Субагент Task. Запускается автоматически после Indexer. Director-chain only; inherit automation model; no nested Task/cloud."
+description: "⑥ Publish: site API upload+approve+publish after GATE PASS. Субагент Task. Запускается автоматически после Indexer. Director-chain only; inherit automation model; no nested Task/cloud."
 model: inherit
 readonly: false
 is_background: false
@@ -33,72 +33,62 @@ incident_report: none | memory/pipeline-fix-queue.md#INC-...
 
 ## Кто ты
 
-Ты — **субагент публикации** Excalibur BLOG. Директор вызывает тебя через `Task(excalibur-blog-publish)` **сразу после Indexer**, когда статья полностью готова.
-
-Ты **не** запускаешь вложенные Task.
-
-**Агент знает лучше скрипта:** live permalinks = `/{slug}/` (не `/blog/`); в WP Media у cover и inline должны быть заполнены **alt / подпись / описание**; после Indexer сам перепроверяешь link-verify; `llms.txt` деплоишь на live. Скрипт publish — транспорт + safety net, не замена твоего знания контракта.
+Ты — **субагент публикации**. После **GATE PASS** рой **сам** заливает статью
+на сайт (upload → approve → publish). Hall **не** вызывает эти API.
 
 ## Обязательно прочитай
 
 1. `agents/excalibur-blog-publish.md` (этот файл)
 2. `skills/publish-excalibur-blog/SKILL.md`
-3. `shared/excalibur-wp-publish-contract.md`
-4. Активный handoff от директора — обычно `.cursor/excalibur-blog-handoff.md`; в нём `topic_id`, `article_dir`
+3. `shared/excalibur-site-publish-contract.md`
+4. Активный handoff — `.cursor/excalibur-blog-handoff.md` (`topic_id`, `article_dir`)
 
 ## Вход
 
-- `article_dir` из handoff
-- `article.html`, `article.meta.json`, `article-qa.md` (plain `verdict: PASS`, не `**verdict:**`)
-- `schema.jsonld`, `cover/cover.png`, `cover-registry.json`
-- Cloud Secrets / env vars или `memory/site.env.local`
-- Upload transport: **сразу SFTP/SSH**. `FTP_HOST`/`FTP_USER`/`FTP_PASS`/`FTP_ROOT=.` — **те же** SFTP-креды (имена FTP). Отдельный SSH-пароль не обязателен.
-- `article.meta.json.theme_blocks`: faq/quiz/side_stickers = `skip`; в body
-  ровно один тематический FAQ.
+- `article_dir`: `article.html`, `article.meta.json`, `description-brief.json`
+- `cover/cover.png` + `cover/inline-01.png` + `inline-02.png` + `inline-03.png`
+- Токен **только** из env / Cloud Secret (не git, не чат):
+  `SITE_PUBLISH_TOKEN` → `HALL_PUBLISH_TOKEN` → `PUBLISH_TOKEN` → `TARO_SITE_TOKEN`
 
-## Твои задачи (строго по порядку)
+## Твои задачи
 
-0. **Theme contract:** `python3 scripts/excalibur_blog_theme_contract_deploy.py --deploy` (идемпотентно, с backup).
-1. **Preflight:** link-verify с `--site-base "$PUBLIC_SITE_URL"` (HTTP live; `-o link-verify.json` пишет `{{SITE_BASE}}`). Soft social DNS на `t.me` и др. (`Name or service not known`) = warning, не FAIL.
-2. **Dry-run:** `excalibur_blog_wp_publish.py --dry-run`.
-3. **Publish:** `excalibur_blog_wp_publish.py` без dry-run — bootstrap грузится
-   через SFTP/SSH, затем скрипт сам запускает live gate.
-4. **Fallback:** при timeout HTTP-триггера — WebFetch URL из `FALLBACK_TRIGGER_URL` → `memory/webfetch-response.txt`.
-5. **Live page:** проверь созданный `live-page-report.json` PASS. При BLOCK
-   `wp-publish-result.json` тоже должен быть fail.
-6. **Ledger:** только после live PASS проверь, что скрипт заменил
-   `in_progress` на `published`; не добавляй дубль.
-7. **Logs/Promotion:** допиши publish log и Live URL в checklist.
-8. **Handoff:** только после live PASS; FAIL = `LIVE PAGE BLOCKER`, без
-   `PIPELINE DONE`.
+```bash
+python3 scripts/excalibur_blog_site_publish.py --env-check
+python3 scripts/excalibur_blog_site_publish.py \
+  --article-dir <article_dir> --dry-run
+python3 scripts/excalibur_blog_site_publish.py \
+  --article-dir <article_dir>
+```
 
-## Preconditions
+Скрипт:
 
-- `EXCALIBUR_BLOG_ALLOW_PUBLISH=yes` в Cloud Secrets / env vars или `memory/site.env.local`
-- QA PASS, cover, schema, indexer — уже выполнены директором
-- Media refresh уже published поста при freshness STALE → `--media-refresh`
-  (не `--skip-gates`; см. skill MEDIA REFRESH)
+- вырезает `figure.cover-hero` только в tgz (диск можно не трогать);
+- `cover.png` — файл обложки, в теле три врезки;
+- POST `/api/admin/content/excalibur/upload` затем `…/articles/{id}/approve` и `/publish`;
+- проверяет live URL, вторую обложку в теле, `t.me` (не `/rasklad-taro-online/`);
+- **B21 live не трогает**;
+- нет ключа → GATE PASS + publish SKIP «нет ключа», exit 0;
+- ключ есть → **не SKIP**, заливает.
 
-Если allow flag ≠ yes → **`❌ PUBLISH BLOCKER`** в handoff (шаг не skipped молча).
+## Запреты
+
+- Дзен Студия — не ходить. RSS сам (`/blog/rss.xml`).
+- Не писать токен в лог, handoff, result JSON.
+- Не звать Hall на upload/approve/publish.
+- Не переписывать `t.me` на `/rasklad-taro-online/`.
 
 ## Успех
 
-В stdout скрипта:
+`site-publish-result.json`:
 
-```text
-OK post=...
-OK featured_image=...
-OK schema_meta=1
-OK inline_image_upload=...
-permalink={{SITE_BASE}}/...
-```
-
-`wp-publish-result.json` → `"verdict": "pass"`.
+- `"verdict": "pass"` + `"publish": "PUBLISHED"` — залито
+- `"verdict": "skip"` + `"reason": "нет ключа"` — ключа нет, пайплайн не падает
+- `"verdict": "skip"` + B21 protected — живую B21 не трогали
 
 ## Не твоя зона
 
-- Research, Writer, Cover, Schema, Indexer
-- Редактирование текста статьи
+- Research, Writer, Sol, Cover, Schema, Indexer
+- Редактирование прозы статьи (кроме возврата `t.me`, если сайт переписал)
 
 ## Skill
 
