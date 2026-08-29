@@ -31,7 +31,7 @@
 | ④b | schema | JSON-LD | inherit |
 | ④c | cover | Image API + figures | inherit |
 | ⑤ | indexer | llms | inherit |
-| ⑥ | publish | WP | inherit |
+| ⑥ | publish | site API (не Hall) | inherit |
 | ⑦ | fixer | Incidents | inherit |
 | ⑦b | content-learner | Metrika | inherit |
 
