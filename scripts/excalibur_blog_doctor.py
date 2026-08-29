@@ -140,6 +140,8 @@ def main() -> int:
         "scripts/excalibur_blog_description_gate.py",
         "scripts/excalibur_blog_writer_ready_gate.py",
         "scripts/excalibur_blog_cover_text_gate.py",
+        "scripts/excalibur_blog_cover_identity_gate.py",
+        "shared/cover-host-canon.md",
         "scripts/excalibur_blog_wp_publish.py",
         "scripts/excalibur_blog_merge_to_main.py",
         "scripts/excalibur_blog_community_cta_gate.py",
@@ -261,6 +263,37 @@ def main() -> int:
             warnings,
             warn=True,
         )
+
+    canon_face = root / "memory/cover/assets/Виктория.png"
+    check(
+        canon_face.is_file() and canon_face.name == "Виктория.png",
+        "canon face is memory/cover/assets/Виктория.png",
+        errors,
+        warnings,
+    )
+    latin_face_names = (
+        "viktoriaref.png",
+        "victoria-sheet.png",
+        "victoria-sheet-front.png",
+        "victoria.png",
+        "victoria_ref.jpg",
+        "victoria_ref.jpeg",
+        "виктория.png",
+    )
+    latin_hits: list[str] = []
+    for folder in (root / "memory/cover", root / "cover-refs"):
+        if not folder.is_dir():
+            continue
+        for path in folder.rglob("*"):
+            if path.is_file() and path.name.lower() in {n.lower() for n in latin_face_names}:
+                if path.name != "Виктория.png":
+                    latin_hits.append(str(path.relative_to(root)))
+    check(
+        not latin_hits,
+        "latin face aliases removed (viktoriaref / victoria-sheet / victoria.png / victoria_ref)",
+        errors,
+        warnings,
+    )
 
     # Privacy deny-list (product must stay tenant-clean)
     deny = (

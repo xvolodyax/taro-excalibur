@@ -11,8 +11,8 @@ disable-model-invocation: true
 Кратко:
 
 1. Прочитай visual-inbox + cover_mode.
-2. Скопируй assets в `memory/cover/assets/`.
+2. Скопируй assets в `memory/cover/assets/`. Реф лица — только `Виктория.png`.
 3. Заполни blog-hero.json, cover-design-code.json, quad-style-*.json.
 4. Обнови tenant-config cover fields.
-5. Никаких чужих дефолтных лиц/брендовых коллажей.
+5. Никаких чужих дефолтных лиц/брендовых коллажей. Запрещены `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.*`.
 6. Handoff PASS или NEED_MORE_REFS.
