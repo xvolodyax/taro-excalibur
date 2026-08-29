@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{SITE_BASE}}/on-ushel-gulyat-i-ne-pozval/",
+  "url": "{{SITE_BASE}}/on-ushel-gulyat-i-ne-pozval/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{SITE_BASE}}/on-ushel-gulyat-i-ne-pozval/"
+  },
+  "headline": "Он ушёл гулять с друзьями и не позвал тебя с собой",
+  "description": "Разбираемся, почему ранит внезапное исключение из планов, как отличить личные границы от пренебрежения и забрать этот вечер себе.",
+  "datePublished": "2026-08-29",
+  "dateModified": "2026-08-29",
+  "inLanguage": "ru-RU",
+  "wordCount": 790,
+  "author": {
+    "@type": "Person",
+    "@id": "{{SITE_BASE}}/#victoria",
+    "name": "Виктория",
+    "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+    "description": "Таролог команды «ТАРО СЕЙЧАС». Пишет живые сцены про отношения — без воды и без обещания прочитать мысли.",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/"
+    },
+    "sameAs": [
+      "{{SITE_BASE}}/",
+      "https://dzen.ru/todaytaro_bot"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "{{SITE_BASE}}/#organization",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}/"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "{{SITE_BASE}}/#website",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}/"
+  }
+}
