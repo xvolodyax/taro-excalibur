@@ -1,0 +1,57 @@
+{
+  "topic_id": "B23",
+  "slug": "on-zashel-v-set-i-molchit",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: зелёный статус в сети горит, а ответа нет",
+  "caption": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+  "cover_credit": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "placement": "above_image",
+    "render_in_png": false
+  },
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-29T17:55:33+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: зелёный статус в сети горит, а ответа нет",
+      "caption": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: онлайн в мессенджере не равен отказу писать",
+      "h2_anchor": "Ловушка ложного равенства: почему «онлайн» не означает отказ писать",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема интерфейса: что на самом деле показывает статус в мессенджере",
+      "h2_anchor": "Что на самом деле показывает технический статус в мессенджере",
+      "visual_type": "tool_screenshot",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Карточка: почему пауза в сети ранит сильнее обычного молчания",
+      "h2_anchor": "Психология тишины: почему пауза в сети ранит сильнее обычного",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
