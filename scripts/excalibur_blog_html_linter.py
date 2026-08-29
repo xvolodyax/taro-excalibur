@@ -259,6 +259,24 @@ class HTMLTagLinter(HTMLParser):
             self.errors.append(f"Line {line}, Col {col}: Unclosed HTML tag <{tag}> at end of document.")
 
 
+def detect_cover_hero_in_body(html: str) -> list[str]:
+    """Canon 2026-08-29: cover.png is hero/RSS only — never in article body."""
+    errors: list[str] = []
+    if re.search(r'class=["\'][^"\']*cover-hero', html, flags=re.I):
+        errors.append(
+            "Forbidden figure.cover-hero in article body. "
+            "cover.png is the cover file only (hero/RSS); body uses inline_1..3."
+        )
+    if re.search(r'src=["\'][^"\']*cover/cover\.png', html, flags=re.I):
+        errors.append(
+            "Forbidden cover/cover.png in article body. "
+            "Do not repeat the host cover inside the text."
+        )
+    if re.search(r"\bСцена\b", html):
+        errors.append("Forbidden word «Сцена» in article prose.")
+    return errors
+
+
 def lint_html_file(html_path: Path, whitelist: set[str]) -> dict[str, Any]:
     html_content = html_path.read_text(encoding="utf-8")
     linter = HTMLTagLinter(whitelist)
@@ -267,6 +285,7 @@ def lint_html_file(html_path: Path, whitelist: set[str]) -> dict[str, Any]:
     linter.errors.extend(detect_anchor_toc(html_content))
     linter.errors.extend(detect_duplicate_faq_sections(html_content))
     linter.errors.extend(detect_faq_h3_markup(html_content))
+    linter.errors.extend(detect_cover_hero_in_body(html_content))
 
     return {
         "file": str(html_path.name),
