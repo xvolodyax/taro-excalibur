@@ -16,6 +16,7 @@ from excalibur_blog_pipeline_canon import (  # noqa: E402
     description_clones_opening,
     description_near_title,
     stamp_article,
+    validate_article_canon,
 )
 from excalibur_blog_wp_publish import rss_safe_excerpt  # noqa: E402
 
@@ -125,6 +126,9 @@ class DescriptionAgentContracts(unittest.TestCase):
             meta = json.loads((article_dir / "article.meta.json").read_text(encoding="utf-8"))
             self.assertEqual(meta["description"], teaser)
             self.assertNotEqual(meta["description"], meta["h1"])
+            self.assertEqual(meta["written_by"], "gemini-3.7-flash")
+            self.assertEqual(meta["text_model"], "gemini-3.7-flash-high")
+            self.assertEqual(validate_article_canon(article_dir, ROOT), [])
 
     def test_rss_safe_excerpt_rejects_title_fallback(self) -> None:
         title = "Cloudflare дал агентам кошелёк с лимитом трат"

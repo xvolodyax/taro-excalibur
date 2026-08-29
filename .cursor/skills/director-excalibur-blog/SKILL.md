@@ -48,7 +48,7 @@ python3 scripts/excalibur_blog_research_start.py --topic-id <ID> --title "<short
 ## Шаги
 
 ### 0 Scout? (только после Дзен+РФ при pack)
-`Task(excalibur-blog-scout)` · `model: inherit` · foreground.
+`Task(excalibur-blog-scout)` · `model: gemini-3.7-flash-high` · foreground.
 ### 1–2 Research → Title
 `Task(excalibur-blog-research)` · `model: inherit`.  
 `Task(excalibur-blog-title)` · `model: gemini-3.7-flash-high`.
@@ -78,7 +78,7 @@ python3 scripts/excalibur_blog_description_gate.py --article-dir <dir>
 ### 5 Cover-text || Schema → Cover
 В одном сообщении (параллель):  
 `Task(excalibur-blog-cover-text)` · Gemini; `Task(excalibur-blog-schema)` · inherit.  
-Потом `Task(excalibur-blog-cover)` · inherit. Cover **не** зовёт Cover-text.
+Потом `Task(excalibur-blog-cover)` · `model: gemini-3.7-flash-high` (промпт/хуки/alt). Пиксели — Kie. Cover **не** зовёт Cover-text.
 ### 6 Indexer → Publish
 `model: inherit`.
 ### 7 Fixer → merge → learner

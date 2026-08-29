@@ -10,7 +10,7 @@
 | [subagents.md](subagents.md) | Task, foreground/background, nested, cloud subagents |
 | [automations.md](automations.md) | Одна automation = один Cloud Agent + модель пользователя |
 | [agents-window.md](agents-window.md) | Окна, handoff local↔cloud, `/in-cloud` |
-| [models.md](models.md) | Gemini на текст, inherit на остальное |
+| [models.md](models.md) | Gemini на текст и промпт картинки, inherit на остальное |
 | [hooks-and-skills.md](hooks-and-skills.md) | Хуки Task, skills vs subagents |
 
 Канон репозитория (обязателен агентам):

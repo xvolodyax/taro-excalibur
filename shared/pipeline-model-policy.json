@@ -7,23 +7,31 @@
   "text_model_id": "gemini-3.7-flash",
   "text_model_display": "Gemini 3.7 Flash",
   "text_model_source": "https://cursor.com/docs/models/gemini-3-7-flash",
-  "inherit_means": "Модель родителя = модель Cursor Automation / выбранная пользователем. Не подменять Gemini.",
+  "written_by": "gemini-3.7-flash",
+  "inherit_means": "Модель родителя = модель Cursor Automation / выбранная пользователем. Не подменять Gemini на текстовых шагах.",
+  "text_means": "Всё читаемое и всё, что уходит в промпт картинки: H1/title, Scout-title, статья, подписи, хуки, scene_hint, промпт холста, prompt_fragment.",
+  "not_text": [
+    "kie / gpt-image (пиксели)",
+    "wordpress publish",
+    "wordstat API",
+    "gate as judge (без прозы)"
+  ],
   "text_agents": [
     "excalibur-blog-title",
     "excalibur-blog-writer",
     "excalibur-blog-sol",
     "excalibur-blog-description",
     "excalibur-blog-cover-text",
-    "excalibur-blog-setup-voice"
+    "excalibur-blog-setup-voice",
+    "excalibur-blog-scout",
+    "excalibur-blog-cover",
+    "excalibur-blog-setup-visual"
   ],
   "inherit_agents": [
     "excalibur-blog-director",
     "excalibur-blog-setup",
-    "excalibur-blog-setup-visual",
-    "excalibur-blog-scout",
     "excalibur-blog-research",
     "excalibur-blog-schema",
-    "excalibur-blog-cover",
     "excalibur-blog-indexer",
     "excalibur-blog-publish",
     "excalibur-blog-fixer",

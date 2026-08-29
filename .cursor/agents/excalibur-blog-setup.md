@@ -11,7 +11,7 @@ is_background: false
 ## Цепочка (HARD)
 
 Канон: `shared/subagent-chain.md`. Ты главный агент **этого** окна, пока setup не complete.
-Не `environment: cloud`, не `/in-cloud`. Единственные Task: setup-voice (`gemini-3.7-flash-high`) и setup-visual (`inherit`).
+Не `environment: cloud`, не `/in-cloud`. Единственные Task: setup-voice и setup-visual — оба `gemini-3.7-flash-high` (SOUL и prompt_fragment).
 Не вызывай `Task(excalibur-blog-setup)`.
 
 **Язык:** русский (или язык человека).

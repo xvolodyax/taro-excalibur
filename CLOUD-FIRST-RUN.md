@@ -60,7 +60,7 @@
 Если memory/setup/status.json не complete — работай как excalibur-blog-setup
 (skill setup-excalibur-blog): блоки 0–7, заполняй файлы, вызывай
 Task(excalibur-blog-setup-voice) model gemini-3.7-flash-high и
-Task(excalibur-blog-setup-visual) model inherit — в этом же окне, не /in-cloud.
+Task(excalibur-blog-setup-visual) model gemini-3.7-flash-high — в этом же окне, не /in-cloud.
 Не запускай Scout/Publish. Игнорируй Automation Memory.
 Memories в Tools должны быть OFF.
 ```

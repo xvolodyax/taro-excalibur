@@ -115,6 +115,20 @@ def validate_article_canon(article_dir: Path, root: Path) -> list[str]:
     if meta.get("editorial_swarm") is not False:
         errors.append("article.meta.json editorial_swarm=false required")
 
+    required_meta = canon.get("required_article_meta") or {}
+    want_written = str(required_meta.get("written_by") or canon.get("written_by") or "").strip()
+    want_model = str(required_meta.get("text_model") or canon.get("text_model") or "").strip()
+    if want_written and str(meta.get("written_by") or "").strip() != want_written:
+        errors.append(
+            "article.meta.json written_by="
+            f"{meta.get('written_by')!r} (need {want_written!r})"
+        )
+    if want_model and str(meta.get("text_model") or "").strip() != want_model:
+        errors.append(
+            "article.meta.json text_model="
+            f"{meta.get('text_model')!r} (need {want_model!r})"
+        )
+
     for name in canon.get("forbidden_article_files") or []:
         if (article_dir / str(name)).exists():
             errors.append(f"legacy pipeline artifact forbidden: {name}")
@@ -231,6 +245,15 @@ def stamp_article(article_dir: Path, root: Path) -> None:
     )
     meta["pipeline_canon"] = canon["version"]
     meta["editorial_swarm"] = False
+    required_meta = canon.get("required_article_meta") or {}
+    written_by = str(
+        required_meta.get("written_by") or canon.get("written_by") or "gemini-3.7-flash"
+    ).strip()
+    text_model = str(
+        required_meta.get("text_model") or canon.get("text_model") or "gemini-3.7-flash-high"
+    ).strip()
+    meta["written_by"] = written_by
+    meta["text_model"] = text_model
 
     meta_path.parent.mkdir(parents=True, exist_ok=True)
     meta_path.write_text(

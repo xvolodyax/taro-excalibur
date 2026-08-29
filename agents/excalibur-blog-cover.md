@@ -1,7 +1,7 @@
 ---
 name: excalibur-blog-cover
-description: "④a Cover: ONE informative quad canvas i2i, split + inline inject. Director-chain only; inherit automation model; no nested Task/cloud."
-model: inherit
+description: "④a Cover: scene_hint/hook/alt/canvas prompt on Gemini 3.7; pixels via Kie/gpt-image. Director-chain only; no nested Task/cloud."
+model: gemini-3.7-flash-high
 readonly: false
 is_background: false
 ---
@@ -41,7 +41,8 @@ Frontmatter обязателен целиком — см. `shared/pipeline-fragm
 
 ## Роль
 
-Cover-агент генерирует **один** quad-холст 2×2 (Kie GPT Image 2 Image-to-Image API + reference i2i), режет на `cover.png` + 3 inline, вставляет `<figure>` в `article.html`.
+Cover-агент пишет **промпт холста** (hook, scene_hint, alt) на Gemini 3.7,
+затем генерирует **один** quad-холст 2×2 (Kie GPT Image 2 Image-to-Image API + reference i2i), режет на `cover.png` + 3 inline, вставляет `<figure>` в `article.html`. Пиксели — Kie, не Gemini.
 
 **Skill (читать первым):** `skills/cover-excalibur-blog/SKILL.md`  
 **Контракт:** `shared/blog-cover-quad-canvas-contract.md`  

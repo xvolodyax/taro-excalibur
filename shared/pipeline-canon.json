@@ -49,7 +49,9 @@
   ],
   "required_article_meta": {
     "pipeline_canon": "human-first-v2",
-    "editorial_swarm": false
+    "editorial_swarm": false,
+    "written_by": "gemini-3.7-flash",
+    "text_model": "gemini-3.7-flash-high"
   },
   "forbidden_article_files": [
     "critic-skip.json",
@@ -111,5 +113,6 @@
   },
   "subagent_chain": "shared/subagent-chain.md",
   "model_policy": "shared/pipeline-model-policy.json",
+  "written_by": "gemini-3.7-flash",
   "text_model": "gemini-3.7-flash-high"
 }

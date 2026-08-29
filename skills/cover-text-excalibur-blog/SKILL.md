@@ -64,7 +64,7 @@ python3 scripts/excalibur_blog_cover_text_gate.py --article-dir <article_dir>
 
 - Не придумывай английские заголовки, не смешивай языки.
 - Не запускай manifest/prompt/Kie/publish — только cover-text.json + gate.
-- Не трогай стиль, hero, scene_hint — это Cover agent.
+- Не трогай стиль, hero, scene_hint — это Cover agent (тоже Gemini 3.7).
 
 ## Handoff
 

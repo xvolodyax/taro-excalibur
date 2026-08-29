@@ -20,8 +20,8 @@
 | # | Task | Роль | Модель |
 |---|------|------|--------|
 | S1 | setup-voice | SOUL + examples + article-style | **Gemini 3.7 Flash** |
-| S2 | setup-visual | cover configs + assets | inherit |
-| 🔍 | scout | Тема | inherit |
+| S2 | setup-visual | prompt_fragment + design-code | **Gemini 3.7 Flash** |
+| 🔍 | scout | Тема + короткий title | **Gemini 3.7 Flash** |
 | ① | research | Facts | inherit |
 | ①b | title | H1 | **Gemini 3.7 Flash** |
 | ② | writer | Смысл → `drafts/writer.html` | **Gemini 3.7 Flash** |
@@ -29,7 +29,7 @@
 | ②c | **description** | **Дзен/RSS карточка → `description-brief.json`** | **Gemini 3.7 Flash** |
 | ④a | cover-text | RU надписи | **Gemini 3.7 Flash** |
 | ④b | schema | JSON-LD | inherit |
-| ④c | cover | Image API + figures | inherit |
+| ④c | cover | scene_hint / промпт холста (Gemini); пиксели Kie | **Gemini 3.7 Flash** |
 | ⑤ | indexer | llms | inherit |
 | ⑥ | publish | WP | inherit |
 | ⑦ | fixer | Incidents | inherit |

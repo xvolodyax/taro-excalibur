@@ -96,7 +96,8 @@ incident_report: none
 1. WebFetch / SERP → живой хайп (каналы + новости). Запиши URL.
 2. `published-titles.md` + ledger — только чтобы **не повторить** уже покрытое.
 3. `--suggest-next` → next id.
-4. Один короткий title из сигнала (не SEO-primary).
+4. Один короткий title из сигнала (не SEO-primary). Title — проза Gemini 3.7;
+   Wordstat — только API частотностей, не автор title.
 5. focus + check-query + check-slug (макс. 2 попытки).
 6. Handoff со `signal_urls` → стоп.
 

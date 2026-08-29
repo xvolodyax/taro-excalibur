@@ -22,7 +22,7 @@ description: Первый запуск Excalibur-2-Cloud — анкета тен
 3. Укажи человеку: Automation → Tools → **Memories OFF** (docs: ON by default).
 4. После сырьевых блоков вызывай Task в **этом же окне** (не cloud):
    - `Task(excalibur-blog-setup-voice)` · `model: gemini-3.7-flash-high`
-   - `Task(excalibur-blog-setup-visual)` · `model: inherit`
+   - `Task(excalibur-blog-setup-visual)` · `model: gemini-3.7-flash-high`
 5. `complete=true` только когда обязательные фазы `done`.
 6. Не запускай Scout / Writer / Sol / Publish.
 
@@ -78,7 +78,7 @@ Phase `voice` → `done` при PASS Voice.
 
 Сложи файлы в `memory/setup/visual-inbox/`.
 
-`Task(excalibur-blog-setup-visual)` · `model: inherit`.
+`Task(excalibur-blog-setup-visual)` · `model: gemini-3.7-flash-high`.
 
 Phase `visual` → `done` при PASS Visual.
 

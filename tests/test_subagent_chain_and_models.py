@@ -53,6 +53,27 @@ class SubagentChainPolicyTest(unittest.TestCase):
         files = {p.stem for p in (ROOT / "agents").glob("excalibur-blog-*.md")}
         self.assertEqual(files, self.expected)
         self.assertEqual(self.policy["text_model"], "gemini-3.7-flash-high")
+        self.assertEqual(self.policy["text_model_id"], "gemini-3.7-flash")
+        self.assertEqual(self.policy.get("written_by"), "gemini-3.7-flash")
+        for name in (
+            "excalibur-blog-scout",
+            "excalibur-blog-cover",
+            "excalibur-blog-setup-visual",
+            "excalibur-blog-title",
+            "excalibur-blog-writer",
+            "excalibur-blog-sol",
+            "excalibur-blog-description",
+            "excalibur-blog-cover-text",
+            "excalibur-blog-setup-voice",
+        ):
+            self.assertIn(name, self.text_agents, name)
+        for name in (
+            "excalibur-blog-research",
+            "excalibur-blog-schema",
+            "excalibur-blog-publish",
+            "excalibur-blog-indexer",
+        ):
+            self.assertIn(name, self.inherit_agents, name)
 
     def test_agent_models_match_policy(self) -> None:
         for name in sorted(self.expected):
@@ -115,8 +136,31 @@ class SubagentChainPolicyTest(unittest.TestCase):
         self.assertIn("https://cursor.com/docs/cloud-agent/automations", source)
         chain = (ROOT / "shared/subagent-chain.md").read_text(encoding="utf-8")
         self.assertNotIn("WAIT.", chain)
+        self.assertIn(
+            "excalibur-blog-{scout|title|writer|sol|description|cover-text|cover|setup-visual}",
+            chain,
+        )
+        self.assertNotIn(
+            "excalibur-blog-{scout|research|schema|cover|indexer",
+            chain,
+        )
         canon = json.loads((ROOT / "shared/pipeline-canon.json").read_text(encoding="utf-8"))
         self.assertEqual(canon["text_model"], "gemini-3.7-flash-high")
+        self.assertEqual(canon["written_by"], "gemini-3.7-flash")
+        self.assertEqual(
+            canon["required_article_meta"]["written_by"], "gemini-3.7-flash"
+        )
+        self.assertEqual(
+            canon["required_article_meta"]["text_model"], "gemini-3.7-flash-high"
+        )
+        director = (ROOT / "agents/excalibur-blog-director.md").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("gemini-3.7-flash-high", director)
+        self.assertNotIn(
+            "Research / scout / schema / cover / indexer",
+            director,
+        )
 
     def test_plugin_trees_match(self) -> None:
         subprocess.run(
