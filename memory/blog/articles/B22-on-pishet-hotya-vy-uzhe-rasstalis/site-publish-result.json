@@ -1,0 +1,62 @@
+{
+  "topic_id": "B22",
+  "slug": "on-pishet-hotya-vy-uzhe-rasstalis",
+  "article_id": null,
+  "publish_method": "site-api",
+  "hall": "not_used",
+  "dzen_studio": "not_used",
+  "token_env": "SITE_PUBLISH_TOKEN",
+  "token_configured": true,
+  "fallback_envs_present": {
+    "HALL_PUBLISH_TOKEN": false,
+    "PUBLISH_TOKEN": false,
+    "TARO_SITE_TOKEN": false
+  },
+  "visible_secret_names": [
+    "KIE_API_KEY",
+    "SITE_PUBLISH_TOKEN",
+    "YANDEX_CLOUD_SEARCH_API_KEY",
+    "YANDEX_FOLDER_ID"
+  ],
+  "site_base": "{{SITE_BASE}}",
+  "cover_hero_stripped": false,
+  "strip": {
+    "cover_hero_removed": 0,
+    "cover_png_figures_removed": 0
+  },
+  "gate": "PASS",
+  "publish": "FAIL",
+  "verdict": "fail",
+  "reason": "site rejected SITE_PUBLISH_TOKEN",
+  "permalink": "{{SITE_BASE}}/blog/on-pishet-hotya-vy-uzhe-rasstalis/",
+  "http": {
+    "upload_unauth_probe": 401,
+    "upload_with_token": 401,
+    "upload_retry_after_401": 429,
+    "approve": null,
+    "publish": null,
+    "live_get": 404
+  },
+  "upload_status": 401,
+  "upload_error": "Неверный токен публикации",
+  "approve_status": null,
+  "publish_status": null,
+  "live_status": 404,
+  "live_url": "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/on-pishet-hotya-vy-uzhe-rasstalis/",
+  "tgz_members": [
+    "article.html",
+    "article.meta.json",
+    "description-brief.json",
+    "cover/cover.png",
+    "cover/inline-01.png",
+    "cover/inline-02.png",
+    "cover/inline-03.png"
+  ],
+  "tgz_bytes": 2184754,
+  "notes": [
+    "Ключ в env есть (SITE_PUBLISH_TOKEN). Значение в отчёт не писалось.",
+    "Сайт принял заголовок Authorization/X-Publish-Token и ответил 401 Неверный токен публикации.",
+    "Повторные попытки упёрлись в 429. Approve/publish не вызывались.",
+    "Live URL 404. Статью не переписывали. В Дзен не ходили."
+  ]
+}
