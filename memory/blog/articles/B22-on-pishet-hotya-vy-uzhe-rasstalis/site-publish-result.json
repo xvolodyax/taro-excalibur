@@ -1,0 +1,71 @@
+{
+  "topic_id": "B22",
+  "slug": "on-pishet-hotya-vy-uzhe-rasstalis",
+  "article_id": "28",
+  "publish_method": "site-api",
+  "hall": "director_one_shot",
+  "dzen_studio": "not_used",
+  "token_env": "SITE_PUBLISH_TOKEN",
+  "token_configured": true,
+  "site_base": "{{SITE_BASE}}",
+  "cover_hero_stripped": false,
+  "strip": {
+    "cover_hero_removed": 0
+  },
+  "tgz_members": [
+    "article.html",
+    "article.meta.json",
+    "description-brief.json",
+    "cover/cover.png",
+    "cover/inline-01.png",
+    "cover/inline-02.png",
+    "cover/inline-03.png"
+  ],
+  "tgz_bytes": 2184754,
+  "permalink": "{{SITE_BASE}}/blog/on-pishet-hotya-vy-uzhe-rasstalis/",
+  "live_url": "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/on-pishet-hotya-vy-uzhe-rasstalis/",
+  "http": {
+    "upload": 201,
+    "approve": 409,
+    "publish": 409,
+    "live_get": 404
+  },
+  "upload_error": null,
+  "verdict": "fail",
+  "publish": "FAIL",
+  "notes": [
+    "One upload, one approve, one publish. No upload retry after 201.",
+    "Dzen not used. Article not rewritten.",
+    "Site left article 28 in quality_review (score 88, warning: no concrete example).",
+    "Hall token cannot access quality/review (403). Owner 2FA admin needed to pass quality."
+  ],
+  "upload_status": 201,
+  "upload_payload_keys": [
+    "article",
+    "images",
+    "incoming_dir",
+    "package_hash",
+    "quality"
+  ],
+  "approve_status": 409,
+  "reason": "Публиковать можно только одобренную статью",
+  "approve_error": "Сначала статья должна пройти проверку качества",
+  "publish_status": 409,
+  "publish_error": "Публиковать можно только одобренную статью",
+  "publish_payload_keys": [
+    "detail",
+    "error"
+  ],
+  "live_status": 404,
+  "article_status": "quality_review",
+  "quality_score": 88,
+  "quality_warnings": [
+    "Нет конкретного примера или разбора ситуации"
+  ],
+  "live_checks": {
+    "live_http": 404,
+    "cover_hero_in_live": false,
+    "tme_count": 0,
+    "rasklad_rewrite": false
+  }
+}
