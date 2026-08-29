@@ -1,0 +1,8 @@
+{
+  "file": "article.html",
+  "verdict": "fail",
+  "total_errors": 1,
+  "errors": [
+    "Line 1, Col 0: Forbidden HTML tag <h1> used."
+  ]
+}
