@@ -610,7 +610,12 @@ def run_publish(
                 detail = str(payload.get("detail") or payload.get("error") or "")
             result[f"{action}_detail"] = detail
             # 409 "already approved" can continue. Quality-review 409 cannot publish.
+            # Publish 500 sitemap EACCES still leaves the article live (B23 29.08).
             if action == "approve" and resp.status == 409 and "одобрен" in detail.lower():
+                pass
+            elif action == "publish" and resp.status == 500 and "sitemap" in detail.lower():
+                result["publish_sitemap_skipped"] = "eacces"
+            elif action == "publish" and resp.status == 409 and "опублик" in detail.lower():
                 pass
             else:
                 result["verdict"] = "fail"

@@ -19,6 +19,7 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B20 | karta-dnya-esli-on-otmenil-svidanie | Карта дня возвращает твой вечер, если он отменил свидание без новой даты | hall-pack |
 | B21 | on-ushel-gulyat-i-ne-pozval | Он ушёл гулять с друзьями и не позвал тебя с собой | live |
 | B22 | on-pishet-hotya-vy-uzhe-rasstalis | Он пишет, хотя вы уже расстались | live |
+| B23 | on-zashel-v-set-i-molchit | Он зашёл в сеть и молчит | live |
 | LIVE | ty-razbereshsya-v-sukhih-otvetah | Ты разберёшься в сухих ответах и поймёшь, почему он охладел | live |
 | LIVE | chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom | Он зовёт в последний момент и карта дня объясняет твои сомнения | live |
 | LIVE | on-smotrit-moi-istorii-i-molchit | Он смотрит твои истории и молчит | live |

@@ -14,10 +14,11 @@
     "h1_removed": 1
   },
   "gate": "PASS",
-  "publish": "FAIL",
-  "verdict": "fail",
-  "reason": "approve status=409",
+  "publish": "PUBLISHED",
+  "verdict": "pass",
+  "reason": "",
   "permalink": "{{SITE_BASE}}/blog/on-zashel-v-set-i-molchit/",
+  "permalink_live": "{{SITE_BASE}}/blog/on-zashel-v-set-i-molchit/",
   "tgz_members": [
     "article.html",
     "article.meta.json",
@@ -27,12 +28,16 @@
     "cover/inline-02.png",
     "cover/inline-03.png"
   ],
-  "tgz_bytes": 2911736,
+  "tgz_bytes": 2911838,
   "upload_status": 201,
   "article_id": "29",
   "excerpt_clear_status": 403,
   "excerpt_clear_skipped": "hall_token_no_patch",
-  "approve_status": 409,
-  "approve_detail": "Сначала статья должна пройти проверку качества",
-  "reason_detail": "Сначала статья должна пройти проверку качества"
+  "approve_status": 200,
+  "publish_status": 500,
+  "publish_detail": "Не удалось обновить sitemap.xml (EACCES)",
+  "publish_sitemap_skipped": "eacces",
+  "live_status": 200,
+  "live_ok": true,
+  "quality_score": 100
 }

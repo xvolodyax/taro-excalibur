@@ -198,7 +198,19 @@ class FakeHttp:
         path = url.split("://", 1)[-1]
         if path.endswith("/api/admin/content/excalibur/upload"):
             return HttpResponse(201, {}, json.dumps({"id": self.upload_id, "url": "/blog/on-prochital-i-molchit/"}).encode(), url)
-        if "/approve" in path or path.endswith("/publish"):
+        if "/approve" in path:
+            return HttpResponse(200, {}, b'{"ok":true}', url)
+        if path.endswith("/publish"):
+            if getattr(self, "publish_sitemap_eacces", False):
+                return HttpResponse(
+                    500,
+                    {},
+                    json.dumps(
+                        {"detail": "Не удалось обновить sitemap.xml (EACCES)"},
+                        ensure_ascii=False,
+                    ).encode("utf-8"),
+                    url,
+                )
             return HttpResponse(200, {}, b'{"ok":true}', url)
         if method.upper() == "PATCH" and "/articles/" in path:
             if data and b"preserve_telegram" in data:
@@ -404,6 +416,25 @@ class SitePublishUnitTest(unittest.TestCase):
             self.assertNotIn("unit-test-token-not-for-git", report)
             self.assertNotIn("{{SITE_BASE}}".replace("SITE_BASE", "nope"), report)
             self.assertIn("{{SITE_BASE}}/blog/on-prochital-i-molchit/", report)
+
+    def test_publish_sitemap_eacces_still_live(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            article_dir = _write_article(Path(tmp))
+            http = FakeHttp()
+            http.publish_sitemap_eacces = True
+            code, result = run_publish(
+                article_dir=article_dir,
+                root=ROOT,
+                env={"SITE_PUBLISH_TOKEN": "unit-test-token-not-for-git"},
+                site_base=DEFAULT_SITE_BASE,
+                dry_run=False,
+                skip_gates=False,
+                http=http,
+            )
+            self.assertEqual(code, 0, result)
+            self.assertEqual(result["verdict"], "pass")
+            self.assertEqual(result["publish"], "PUBLISHED")
+            self.assertEqual(result.get("publish_sitemap_skipped"), "eacces")
 
     def test_restore_telegram_if_site_rewrote(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
