@@ -1,0 +1,64 @@
+{
+  "topic_id": "B21",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Ушёл к друзьям без тебя",
+  "cover_hook_highlight": "тебя",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Host lock = blog-hero.json + tenant style_preset.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: он ушёл к друзьям и не позвал тебя",
+      "scene_hint": "Host LARGE left from viktoriaref; dusty-olive blouse not cami; tiny empty key right; sticky «верни вечер себе»; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "верни вечер себе"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Обида не на друзей, а на отсутствие приглашения",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Comparison GOOD vs BAD: GOOD green «жест уважения»+«право на выбор»; BAD red X «рана исключения». Label «дело не в друзьях». Outcome: боль от молчаливого ухода. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема: обида не на друзей, а на отсутствие приглашения",
+      "labels": [
+        "дело не в друзьях",
+        "рана исключения",
+        "жест уважения",
+        "право на выбор"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Ловушка ожидания: две крайности, которые сжигают вечер",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist avoid: проверка сети; тотальный контроль; молчаливая обида. Title «ловушка ожидания». Outcome: оба пути сжигают вечер. NO people/faces/emoji/silhouettes. Gold+white cards.",
+      "alt": "Чеклист: две крайности ловушки ожидания, которые сжигают вечер",
+      "labels": [
+        "проверка сети",
+        "тотальный контроль",
+        "молчаливая обида",
+        "ловушка ожидания"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Разобрать свой вечер вместо слежки: о чём спросить карты",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Workflow L→R: фокус на себе → источник боли → куда уходит ресурс → шаг к равновесию. Outcome: карты про тебя, не слежка. NO people/faces/emoji/silhouettes. Optional tiny card.",
+      "alt": "Схема вопросов к картам вместо слежки за вечером",
+      "labels": [
+        "фокус на себе",
+        "источник боли",
+        "куда уходит ресурс",
+        "шаг к равновесию"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

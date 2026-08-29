@@ -1,0 +1,50 @@
+{
+  "topic_id": "B21",
+  "slug": "on-ushel-gulyat-i-ne-pozval",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: он ушёл к друзьям и не позвал тебя",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-29T06:39:02+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: он ушёл к друзьям и не позвал тебя",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: обида не на друзей, а на отсутствие приглашения",
+      "h2_anchor": "Обида не на друзей, а на отсутствие приглашения",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Чеклист: две крайности ловушки ожидания, которые сжигают вечер",
+      "h2_anchor": "Ловушка ожидания: две крайности, которые сжигают вечер",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Схема вопросов к картам вместо слежки за вечером",
+      "h2_anchor": "Разобрать свой вечер вместо слежки: о чём спросить карты",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

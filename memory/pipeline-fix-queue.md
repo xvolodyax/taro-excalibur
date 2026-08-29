@@ -1,7 +1,7 @@
 # Pipeline fix queue
 
 ## INC-20260828-1750-cover-host-local-expand
-status: open
+status: fixed
 run_date: 2026-08-28
 role: excalibur-blog-cover
 topic_id: B20
@@ -33,7 +33,16 @@ category: script
 - none recorded
 
 ### Fixer resolution
-- pending
+- status: fixed
+- fixed_at: 2026-08-29
+- fix_summary: B21 Cover landed remaining durable scripts. Manifest already inherits tenant style_preset (victoria-studio). Prompt builder starts with viktoriaref identity opener + hair lock, gold highlight, prefer_local batch. Kie skips SITE_BASE expand when prefer_local upload is set.
+- files_changed:
+  - `scripts/excalibur_blog_cover_quad_prompt.py`
+  - `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- checks_run:
+  - `python3 -m unittest tests.test_cover_identity tests.test_cover_text`
+  - B21 Kie create_attempts=1 + split PASS
+- commit: 95ae9b3
 
 ## INC-20260829-0034-title-robot-h1
 status: fixed
