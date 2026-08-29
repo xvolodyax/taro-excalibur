@@ -7,21 +7,18 @@
 lessons, benchmarks, QA reports или соседние research-notes как образец
 прозы. Заголовки нужны только чтобы не повторить уже покрытую тему.
 
-Список собран 2026-08-29. Тела статей не читались.
-B15/B16/B21/B22 live. B17–B20 hall-pack. Вечер 29.08 — новый слот, не клон B21/B22.
-
 | topic_id | slug | title | status |
 |----------|------|-------|--------|
-| B22 | on-pishet-hotya-vy-uzhe-rasstalis | Он пишет, хотя вы уже расстались | live |
-| B21 | on-ushel-gulyat-i-ne-pozval | Он ушёл гулять с друзьями и не позвал тебя с собой | live |
-| B20 | karta-dnya-esli-on-otmenil-svidanie | Карта дня возвращает твой вечер, если он отменил свидание без новой даты | hall-pack |
-| B19 | chislo-imeni-pokazyvaet-ego-ton-v-pare | Число имени объясняет привычный тон мужчины в паре | hall-pack |
-| B18 | paren-propal-posle-blizosti | Парень пропал после близости и перестал отвечать | hall-pack |
-| B17 | karta-dnya-esli-on-prochital-i-molchit | Карта дня сверяет твои сутки, если он прочитал и молчит | hall-pack |
-| B16 | lichnoe-chislo-dnya-lomaet-ozhidanie-otveta | Личное число дня ломает ожидание ответа | live |
-| B15 | on-revnuet-ili-eto-ne-lyubov | Он скрывает ревность или ему действительно всё равно | live |
 | B12 | lichnoe-chislo-goda-etim-letom | Личное число года показывает твой ритм в отношениях | live |
 | B14 | on-okhladel | Он охладел | hall-anti-dup |
+| B15 | on-revnuet-ili-eto-ne-lyubov | Он скрывает ревность или ему действительно всё равно | live |
+| B16 | lichnoe-chislo-dnya-lomaet-ozhidanie-otveta | Личное число дня ломает ожидание ответа | live |
+| B17 | karta-dnya-esli-on-prochital-i-molchit | Карта дня сверяет твои сутки, если он прочитал и молчит | hall-pack |
+| B18 | paren-propal-posle-blizosti | Парень пропал после близости и перестал отвечать | hall-pack |
+| B19 | chislo-imeni-pokazyvaet-ego-ton-v-pare | Число имени объясняет привычный тон мужчины в паре | hall-pack |
+| B20 | karta-dnya-esli-on-otmenil-svidanie | Карта дня возвращает твой вечер, если он отменил свидание без новой даты | hall-pack |
+| B21 | on-ushel-gulyat-i-ne-pozval | Он ушёл гулять с друзьями и не позвал тебя с собой | live |
+| B22 | on-pishet-hotya-vy-uzhe-rasstalis | Он пишет, хотя вы уже расстались | live |
 | LIVE | ty-razbereshsya-v-sukhih-otvetah | Ты разберёшься в сухих ответах и поймёшь, почему он охладел | live |
 | LIVE | chto-govorit-karta-dnya-esli-on-zovet-segodnya-vecherom | Он зовёт в последний момент и карта дня объясняет твои сомнения | live |
 | LIVE | on-smotrit-moi-istorii-i-molchit | Он смотрит твои истории и молчит | live |
