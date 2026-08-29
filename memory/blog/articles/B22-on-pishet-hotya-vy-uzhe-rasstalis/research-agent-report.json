@@ -1,0 +1,91 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B22",
+  "title": "Он пишет, хотя вы уже расстались",
+  "slug": "on-pishet-hotya-vy-uzhe-rasstalis",
+  "article_dir": "memory/blog/articles/B22-on-pishet-hotya-vy-uzhe-rasstalis",
+  "research_date": "2026-08-29",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "wordstat": "OK",
+  "wordstat_status": "OK",
+  "fresh_signal": true,
+  "fresh_signal_kind": "tarot-media week 24–30.08.2026 (TSN 6 Cups + 8 Wands) + today 29.08 KU66 (8 Wands + Judgment, ex/hello ping)",
+  "block_reason": null,
+  "blockers": [],
+  "incident_report": "none",
+  "wordstat_recheck": {
+    "provider": "yandex_cloud_search_api_v2",
+    "endpoint": "https://searchapi.api.cloud.yandex.net/v2/wordstat/topRequests",
+    "accessed_at": "2026-08-29",
+    "regions": ["225"],
+    "numPhrases": 10,
+    "status": "OK",
+    "note": "Полные tops+associations, не totalCount-only. «бывший написал» — шум морфологии, в H1 не клеить.",
+    "phrases": [
+      {
+        "phrase": "бывший написал",
+        "role": "parent",
+        "totalCount": 709498,
+        "top": [
+          {"phrase": "суть написанного", "count": 704416},
+          {"phrase": "будучи написаны", "count": 703001},
+          {"phrase": "что написать бывшему", "count": 282427}
+        ]
+      },
+      {
+        "phrase": "он пишет после расставания",
+        "role": "angle",
+        "totalCount": 599,
+        "top": [
+          {"phrase": "не писать ему после расставания", "count": 385},
+          {"phrase": "почему он пишет после расставания", "count": 76},
+          {"phrase": "стоит после расставания ему писать", "count": 49}
+        ]
+      },
+      {
+        "phrase": "что ответить бывшему",
+        "role": "synonym_action",
+        "totalCount": 109048,
+        "top": [
+          {"phrase": "что ответить бывшему", "count": 109048},
+          {"phrase": "что отвечать бывшему на вопрос", "count": 15843}
+        ]
+      },
+      {
+        "phrase": "зачем пишет бывший",
+        "role": "angle_why",
+        "totalCount": 3654,
+        "top": [
+          {"phrase": "зачем пишет бывший", "count": 3654},
+          {"phrase": "зачем бывшие пишут и что ответить", "count": 521},
+          {"phrase": "зачем бывшие пишут после расставания", "count": 150}
+        ]
+      }
+    ]
+  },
+  "fresh_signal_urls": [
+    "https://tsn.ua/ru/lady/astrologiya/taro-prognoz-na-period-s-24-po-30-avgusta-2026-goda-ne-speshite-stavit-tochku-3153932.html",
+    "https://ku66.ru/life/utrom_neozhidannoe_soobshchenie_vecherom_glavnyj_otvet_chto_pokazali_karty_taro_na_29_avgusta",
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/blog/"
+  ],
+  "key_facts": [
+    "Неделя 24–30.08.2026 (ТСН): 6 Кубков — человек из прошлого может напомнить о себе; оглянуться ≠ вернуться. 8 Жезлов — сообщения/звонки ускоряются. 5 Кубков — не спешить ставить точку из обиды на закрытую главу.",
+    "Сегодня 29.08 (КУ66, материал 28.08 21:06): 8 Жезлов + Суд — короткое «Привет» от бывшего или пропавшего без объяснения; вспышка ≠ билет назад; часто пишут ради ответа, который сами не получили.",
+    "Письма 20–50 (Woman.ru / комменты Т—Ж): ночной «привет как дела» спустя месяцы; «спокойной ночи» после того как он сам поставил точку; вопрос «зачем/что значит», не «как вернуть».",
+    "Т—Ж 14.07.2026: эффект Зейгарник и пинг без вектора; не отвечать, если боль сырая или он давит на возврат — граница обрывается ею, не дебатом.",
+    "Карты тенанта не отвечают «любит ли / вернётся ли / что он решил». Рабочий вопрос: зачем ему писать сейчас и что делать с её вечером и границей. Wordstat живой угол — «не писать ему после расставания» (385) и «что ответить бывшему» (109048)."
+  ],
+  "not_clone_of": {
+    "B21": "текущая пара, ушёл гулять и не позвал — не письмо после разрыва",
+    "B20": "текущее свидание отменено / ярлык карты дня — не бывший",
+    "LIVE_pause": "ещё неясно, вместе ли; B22 — точка уже была",
+    "LIVE_weekend": "пауза в текущем чате «вернётся ли»",
+    "B18": "пропал после близости, тишина",
+    "B17": "прочитал и молчит в текущем диалоге"
+  },
+  "notes_path": "research-notes.md",
+  "publish": false
+}

@@ -1,0 +1,17 @@
+{
+  "task_id": "0547a2e923c6e2e2f8a6157616fed1af",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B22-on-pishet-hotya-vy-uzhe-rasstalis/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1788010449,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "viktoriaref.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "agent": "excalibur-blog",
+  "date_context": {
+    "timezone": "Europe/Moscow",
+    "today_iso": "2026-08-29",
+    "today_ru": "29.08.2026",
+    "year": 2026,
+    "month": 8,
+    "month_name_ru": "август",
+    "weekday_ru": "суббота"
+  },
+  "topic": {
+    "topic_id": "B22",
+    "title": "Он пишет, хотя вы уже расстались",
+    "h1": "Он пишет, хотя вы уже расстались",
+    "slug": "on-pishet-hotya-vy-uzhe-rasstalis",
+    "primary_query": "Он пишет, хотя вы уже расстались",
+    "priority": "P0"
+  },
+  "searches": [
+    {
+      "query_id": "primary_fresh",
+      "query": "Он пишет, хотя вы уже расстались 2026",
+      "purpose": "актуальный SERP",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Почему бывший пишет после расставания: 8 причин",
+          "url": "https://kurazh.org/ru/pochemu-byvshyj-prodolzhaet-pysat-psyhologycheskyh/",
+          "snippet": ""
+        },
+        {
+          "title": "Зачем бывший парень пишет после расставания: 17 причин, как реагировать",
+          "url": "https://beelady.ru/otnosheniya/pochemu-byvshij-pishet.html",
+          "snippet": "Узнайте, почему ваш бывший продолжает писать и как это влияет на ваши эмоции. Мы рассмотрим 8 психологических причин. 💔📱."
+        },
+        {
+          "title": "Почему Пишет Бывший - 9 Мая 2026 | V1.ру",
+          "url": "https://v1.ru/text/relations/2026/05/09/76412179/",
+          "snippet": "Вы расстались с парнем, и вдруг он появляется, как гром среди ясного неба, и начинает писать? В статье описаны 17 возможных причин и как реагировать на бывшего."
+        },
+        {
+          "title": "Почему пишет бывший - 9 мая 2026 | ИРСИТИ.ру",
+          "url": "https://ircity.ru/text/relations/2026/05/09/76412182/",
+          "snippet": "Вы расстались, удалили общие фото и почти забыли о человеке. Вы снова чувствуете вкус к жизни, строите планы и, возможно, уже смотрите в сторону новых отношений."
+        },
+        {
+          "title": "Почему пишет бывший - 9 мая 2026 | ЧИТА.ру",
+          "url": "https://www.chita.ru/text/relations/2026/05/09/76412206/",
+          "snippet": "Вы расстались, удалили общие фото и почти забыли о человеке. Вы снова чувствуете вкус к жизни, строите планы и, возможно, уже смотрите в сторону новых отношений."
+        },
+        {
+          "title": "ТОП 20 причин, почему бывший пишет после расставания",
+          "url": "https://samka.co/otnosheniya/pochemu-byvshiy-paren-pishet-posle-rasstavaniya/",
+          "snippet": "Вы расстались, удалили общие фото и почти забыли о человеке. Вы снова чувствуете вкус к жизни, строите планы и, возможно, уже смотрите в сторону новых отношений."
+        }
+      ],
+      "searched_at": "2026-08-29"
+    },
+    {
+      "query_id": "title_fresh",
+      "query": "Он пишет, хотя вы уже расстались 2026",
+      "purpose": "SERP по человеческому title",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Почему бывший пишет после расставания: 8 причин",
+          "url": "https://kurazh.org/ru/pochemu-byvshyj-prodolzhaet-pysat-psyhologycheskyh/",
+          "snippet": ""
+        },
+        {
+          "title": "Почему пишет бывший - 9 мая 2026 | ИРСИТИ.ру",
+          "url": "https://ircity.ru/text/relations/2026/05/09/76412182/",
+          "snippet": "Узнайте, почему ваш бывший продолжает писать и как это влияет на ваши эмоции. Мы рассмотрим 8 психологических причин. 💔📱."
+        },
+        {
+          "title": "Зачем бывший парень пишет после расставания: 17 причин, как реагировать",
+          "url": "https://beelady.ru/otnosheniya/pochemu-byvshij-pishet.html",
+          "snippet": "Вы расстались, удалили общие фото и почти забыли о человеке. Вы снова чувствуете вкус к жизни, строите планы и, возможно, уже смотрите в сторону новых отношений."
+        },
+        {
+          "title": "Почему пишет бывший - 9 мая 2026 | ЧИТА.ру",
+          "url": "https://www.chita.ru/text/relations/2026/05/09/76412206/",
+          "snippet": "Вы расстались с парнем, и вдруг он появляется, как гром среди ясного неба, и начинает писать? В статье описаны 17 возможных причин и как реагировать на бывшего."
+        },
+        {
+          "title": "Почему пишет бывший - 14 мая 2026 | 56.ру",
+          "url": "https://56.ru/text/relations/2026/05/14/76412191/",
+          "snippet": "Вы расстались, удалили общие фото и почти забыли о человеке. Вы снова чувствуете вкус к жизни, строите планы и, возможно, уже смотрите в сторону новых отношений."
+        },
+        {
+          "title": "ТОП 20 причин, почему бывший пишет после расставания",
+          "url": "https://samka.co/otnosheniya/pochemu-byvshiy-paren-pishet-posle-rasstavaniya/",
+          "snippet": "Вы расстались, удалили общие фото и почти забыли о человеке. Вы снова чувствуете вкус к жизни, строите планы и, возможно, уже смотрите в сторону новых отношений."
+        }
+      ],
+      "searched_at": "2026-08-29"
+    },
+    {
+      "query_id": "official_docs",
+      "query": "Он пишет, хотя вы уже расстались official docs 2026",
+      "purpose": "официальные docs",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Google Документы: вход в систему",
+          "url": "https://docs.google.com/document/create?hl=ru",
+          "snippet": ""
+        },
+        {
+          "title": "Министерство финансов Российской Федерации",
+          "url": "https://minfin.gov.ru/",
+          "snippet": "Используйте Google Документы в аккаунте Google (для личных целей) или в аккаунте Google Workspace (для бизнеса)."
+        },
+        {
+          "title": "«Он всё ещё пишет. Это что-то значит?» Вы расстались. Прошло время. Но ...",
+          "url": "https://vk.com/wall-235858653_448",
+          "snippet": "Министерство Деятельность Документы Обращения Исполнение судебных актов Контакты Работа в Минфине Пресс-центр Организационная структура Государственная служба Открытое министерство Планирование деятельности ..."
+        },
+        {
+          "title": "Google Документы: онлайн-документы и PDF-редактор | Google Workspace",
+          "url": "https://workspace.google.com/intl/ru/products/docs/",
+          "snippet": "Идея, которую стоит проверить: В следующий раз, когда он/она напишет — не отвечайте. Не потому что игра. А потому что хватит позволять себе надеяться на движения без вектора."
+        },
+        {
+          "title": "Overview - Claude.ai Documentation",
+          "url": "https://claude.com/docs/cowork/overview",
+          "snippet": "Gemini в Документах может синтезировать информацию из Диска, Gmail и Chat и создавать черновики за считаные секунды. Используйте функции \"Применить формат\" и \"Применить стиль текста\", чтобы..."
+        },
+        {
+          "title": "Проверка орфографии и пунктуации онлайн — бесплатно и быстро исправьте ...",
+          "url": "https://textovod.com/spelling",
+          "snippet": "Cowork uses the same agentic architecture that powers Claude Code, accessible within Claude Desktop without opening the terminal. Rather than responding to prompts sequentially, Claude tackles intricate, multi-step tasks autonomously. Describe a desired outcome, then return later to completed work — polished documents, organized files, synthesized research, and more."
+        }
+      ],
+      "searched_at": "2026-08-29"
+    },
+    {
+      "query_id": "github_evidence",
+      "query": "site:github.com Он пишет, хотя вы уже расстались 2026",
+      "purpose": "GitHub evidence",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Releases · ValdikSS/GoodbyeDPI - GitHub",
+          "url": "https://github.com/ValdikSS/GoodbyeDPI/releases",
+          "snippet": ""
+        },
+        {
+          "title": "Перестал работать Cloudflare WARP",
+          "url": "https://github.com/Flowseal/zapret-discord-youtube/discussions/10489",
+          "snippet": "Not really a bug, but anyway: --max-payload 1200 would skip HTTP request block circumvention if the payload is large (if there's a lot of cookies for example). Quick bugfix for the domain names which contain hyphen (-), which were not processed correctly in v0.2.0. Known bugs:"
+        },
+        {
+          "title": "Устранение распространённых проблем с GitHub Copilot",
+          "url": "https://docs.github.com/ru/copilot/how-tos/troubleshoot-copilot/troubleshoot-common-issues",
+          "snippet": "У меня после данных манипуляций подключается на некоторых bat (не всегда), но не один сайт не открывается, и он почти сразу начинает переподключаться, и уже неудачно."
+        },
+        {
+          "title": "Почему Kafka быстрая хотя пишет на диск — WAL, page cache, batching",
+          "url": "https://gist.github.com/ypapax/74fd0f51d5e88fd30941d60cba86dbd1",
+          "snippet": "Эта ошибка указывает на то, что вы превысили лимит по Copilot запросам. GitHub использует Copilot тарифные лимиты, чтобы обеспечить всем справедливый доступ к сервису и защитить от злоупотреблений."
+        },
+        {
+          "title": "Как получить доступ к ChatGPT и OpenAI из России в 2026 — рабочий гайд ...",
+          "url": "https://gist.github.com/evilork/01e4a7fdd2abab9dd24ed11f02e8e6ca",
+          "snippet": "Слова WAL в коде / доке Kafka НЕТ. Почему книга всё-таки пишет WAL: проводит аналогию по похожим свойствам (append-only, sequential write, durability). Удобно для новичков, но терминологически неточно."
+        },
+        {
+          "title": "[Проблема] Не удалось подключиться к серверу чата Warframe",
+          "url": "https://github.com/Flowseal/zapret-discord-youtube/issues/14078",
+          "snippet": "Что если OpenAI разблокирует Россию? Маловероятно в обозримом будущем (2026-2028). Геополитические причины. Но если разблокирует - просто перестанете использовать VPN, аккаунт продолжит ..."
+        }
+      ],
+      "searched_at": "2026-08-29"
+    },
+    {
+      "query_id": "community_experience",
+      "query": "Он пишет, хотя вы уже расстались forum problems опыт 2026",
+      "purpose": "форумы и живые проблемы",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "«Он всё ещё пишет. Это что-то значит?» Вы расстались. Прошло время. Но ...",
+          "url": "https://vk.com/wall-235858653_448",
+          "snippet": ""
+        },
+        {
+          "title": "Расстались с парнем, но он продолжает со мной общаться",
+          "url": "https://www.b17.ru/forum/topic.php?id=636205",
+          "snippet": "Идея, которую стоит проверить: В следующий раз, когда он/она напишет — не отвечайте. Не потому что игра. А потому что хватит позволять себе надеяться на движения без вектора."
+        },
+        {
+          "title": "«Когда вы уже расстались, но рука всё равно тянется написать ему» После ...",
+          "url": "https://vk.com/wall-182609939_5016",
+          "snippet": "Он же пытается со мной общаться как раньше, звонит, пишет раз в день, говорит что мы не расстались, а просто разъехались, чтобы каждый мог решить свои проблемы, предлагает видеться иногда. Говорит что потом снова будем вместе если каждый станет лучшей версией себя. Я запуталась и не понимаю что делать, как себя вести."
+        },
+        {
+          "title": "Расстались, но до сих пор пишет - Woman.ru",
+          "url": "https://www.woman.ru/relations/men/thread/6011798/",
+          "snippet": "«Когда вы уже расстались, но рука всё равно тянется написать ему» После расставания многие люди сталкиваются не столько с болью разрыва, сколько с надеждой, которая никак не отпускает."
+        },
+        {
+          "title": "Давно расстались, но до сих пор тревожно",
+          "url": "https://www.b17.ru/forum/topic.php?id=625421",
+          "snippet": "Написывает он тебе, потому что, скорее всего, держит как запасной вариант, вдруг что перепадёт потом."
+        },
+        {
+          "title": "расстались... зачем он пишет? - 10 ... - Woman.ru",
+          "url": "https://www.woman.ru/relations/men/thread/4536678/",
+          "snippet": "Расстались более 7 месяцев назад. Расставание было не из приятных. Переживала это, затем, по-классике, сначала он пытался выйти вновь на контакт - не вышло. Затем я пыталась - тоже не вышло. Стандартный пинг понг. Меня это всё выжгло и сломало, я очень тяжело переживала ситуацию."
+        }
+      ],
+      "searched_at": "2026-08-29"
+    }
+  ],
+  "errors": []
+}

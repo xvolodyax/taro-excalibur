@@ -1,0 +1,64 @@
+{
+  "topic_id": "B22",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Бывший снова пишет ночью",
+  "cover_hook_highlight": "пишет",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. Host lock = blog-hero.json + tenant style_preset.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: бывший снова пишет ночью — это ещё не возврат",
+      "scene_hint": "Host LARGE left from viktoriaref, camel blazer new pose not white cami/hoodie; tiny night phone right; sticky «это не возврат»; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "это не возврат"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Почему сообщение после разрыва редко означает желание всё вернуть",
+      "visual_type": "infographic_card",
+      "scene_hint": "Fact card, no people/faces/emoji/silhouettes. Labels L→R: поиск тепла · проверка границ · эмоциональный зуд · жажда внимания. Outcome: письмо ≠ возврат. #FFF gold.",
+      "alt": "Схема мотивов: почему сообщение после разрыва редко значит желание вернуться",
+      "labels": [
+        "поиск тепла",
+        "проверка границ",
+        "эмоциональный зуд",
+        "жажда внимания"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Разница между пустым сигналом и реальным намерением",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Comparison GOOD vs BAD, no people/faces. BAD red X: пустой сигнал, дежурное «как ты». GOOD green: прямой разговор, реальные шаги. Outcome: без шагов пусто. #FFF",
+      "alt": "Сравнение пустого сигнала и реального намерения в переписке с бывшим",
+      "labels": [
+        "пустой сигнал",
+        "дежурное «как ты»",
+        "прямой разговор",
+        "реальные шаги"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Как выбрать реакцию и защитить свои границы",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist no people/faces. Boxes: сухой ответ · осознанная тишина · блокировка контакта. Outcome: защита покоя. Read top→bottom. #FFF gold.",
+      "alt": "Чеклист реакции и защиты границ, когда пишет бывший",
+      "labels": [
+        "сухой ответ",
+        "осознанная тишина",
+        "блокировка контакта",
+        "защита покоя"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

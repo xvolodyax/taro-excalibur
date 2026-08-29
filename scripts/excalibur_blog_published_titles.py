@@ -35,6 +35,35 @@ def humanize_slug(slug: str) -> str:
     return text[:1].upper() + text[1:] if text else ""
 
 
+def load_existing_titles(root: Path) -> list[dict[str, str]]:
+    """Read hand-maintained shared/published-titles.md (anti-dup)."""
+    path = root / "shared" / "published-titles.md"
+    rows: list[dict[str, str]] = []
+    if not path.is_file():
+        return rows
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) < 3:
+            continue
+        topic_id = cells[0].strip()
+        if not topic_id or topic_id.lower() in {"topic_id", "----------"}:
+            continue
+        if set(topic_id) <= {"-"}:
+            continue
+        rows.append(
+            {
+                "topic_id": topic_id,
+                "slug": cells[1].strip().strip("/"),
+                "title": cells[2].strip(),
+                "status": cells[3].strip() if len(cells) > 3 else "live",
+                "date": "",
+            }
+        )
+    return rows
+
+
 def load_ledger_rows(root: Path) -> list[dict[str, str]]:
     path = root / "shared" / "published-articles.md"
     rows: list[dict[str, str]] = []
@@ -105,6 +134,10 @@ def build_titles(
     allowed = statuses or {"published", "in_progress", "draft_ready"}
     blog_dir = root / "memory" / "blog" / "articles"
     latest: dict[str, dict[str, str]] = {}
+    for row in load_existing_titles(root):
+        key = f"{row['topic_id']}|{row['slug']}"
+        if row.get("title"):
+            latest[key] = row
     for row in load_ledger_rows(root):
         if row["status"] not in allowed:
             continue
@@ -114,7 +147,10 @@ def build_titles(
         title = title_from_meta(article_dir) if article_dir else ""
         if not title:
             title = humanize_slug(slug)
-        latest[topic_id] = {
+        key = f"{topic_id}|{slug}"
+        if key in latest and latest[key].get("title"):
+            continue
+        latest[key] = {
             "topic_id": topic_id,
             "slug": slug,
             "title": title,

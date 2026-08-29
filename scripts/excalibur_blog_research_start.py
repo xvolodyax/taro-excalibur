@@ -316,7 +316,21 @@ def run_research_start(
 
     titles_info: dict[str, Any] | None = None
     if not dry_run:
-        titles_info = write_titles(root, article_dir=out_dir)
+        shared_titles = root / "shared" / "published-titles.md"
+        if shared_titles.is_file() and shared_titles.read_text(encoding="utf-8").count("|") >= 8:
+            dest = out_dir / "published-titles-only.md"
+            dest.write_text(shared_titles.read_text(encoding="utf-8"), encoding="utf-8")
+            titles_info = {
+                "count": sum(
+                    1
+                    for line in shared_titles.read_text(encoding="utf-8").splitlines()
+                    if line.startswith("|") and not line.startswith("|---") and "topic_id" not in line
+                ),
+                "shared_path": str(shared_titles),
+                "article_copy": str(dest),
+            }
+        else:
+            titles_info = write_titles(root, article_dir=out_dir)
 
     payload_context = {
         "agent": "excalibur-blog",
