@@ -27,7 +27,8 @@
 | `FTP_HOST` / `FTP_USER` / `FTP_PASS` / `FTP_ROOT` | SFTP publish (имена FTP_*, транспорт SFTP) |
 | `EXCALIBUR_BLOG_ALLOW_PUBLISH` | `yes` только когда готовы публиковать |
 | Image API key (Kie / ваш провайдер) | Cover, когда Visual setup готов |
-| MCP tokens | Wordstat / WP blob — по необходимости |
+| `YANDEX_CLOUD_SEARCH_API_KEY` | Scout Wordstat (Yandex Cloud Search API v2). Не в git. |
+| MCP tokens | Wordstat MCP / WP blob — по необходимости |
 | `YANDEX_METRIKA_*` | Опционально Content-learner |
 
 Рекомендуется Runtime Secrets для паролей (не светятся в transcript).

@@ -1,0 +1,38 @@
+{
+  "style_id": "victoria-studio",
+  "status": "ok",
+  "label_ru": "Виктория / светлая студия ТАРО СЕЙЧАС / editorial type",
+  "updated": "2026-08-27",
+  "cover_mode": "host_reference",
+  "cover_hero_mode": "host",
+  "skip_human_host": false,
+  "allows_animal_stickers": false,
+  "allowed_animal_motif": "",
+  "design_code": "memory/cover/cover-design-code.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "local_reference": "memory/cover/assets/viktoriaref.png",
+  "prefer_local_reference": true,
+  "canvas": "2048x1152",
+  "resolution": "2K",
+  "meme_caption_ru": "",
+  "color_palette": {
+    "background": "#FFFFFF",
+    "ink": "#141821",
+    "accent_primary": "#C4A574",
+    "accent_secondary": "#D4B5A0"
+  },
+  "typography": {
+    "hook": "editorial display Cyrillic (didone or refined geometric grotesque, normal tracking); in-frame, not sticker",
+    "secondary": "lighter designer humanist sans",
+    "forbidden": "Arial Roboto Inter Impact Times bold condensed squish-bold all-caps plaque"
+  },
+  "global_prompt_prefix": "High-key light studio. WHITE #FFFFFF, ink #141821, medallion gold #C4A574, dusty summer tones. Cover hero LARGE left from viktoriaref.png ONLY. NEVER a cat, NEVER faceless, NEVER default white hoodie. Hook type: editorial display Cyrillic (high-contrast modern serif/didone OR refined geometric grotesque, normal tracking); letters are part of the frame, not a sticker. One punch word same face, gold. Sticky/labels: light humanist sans. Ban Arial/Roboto/Inter/Impact/Times/bold condensed/squish-bold/all-caps plaque. Thin white gutters at x=1024 y=576.",
+  "inline_prompt_suffix": "Inline all: white #FFFFFF, lighter designer humanist sans Cyrillic labels (3–6), medallion gold accent only; NO people/faces/host/Alyona/cat; no cover-hook duplicate; no bold condensed; no all-caps sticker plaque. Neg: candles, gothic, pink-cat, #FF1493, Arial, Roboto, Inter, Impact, beige full-panel, unfinished gray boxes, watermark, 9:16.",
+  "cover_credit_html": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "placement": "above_image",
+    "render_in_png": false
+  },
+  "rebuild_rule": "Wrong face vs viktoriaref.png, wrong eyes (not green+hazel), platinum/lighter-than-ref hair, crooked seam, crooked letters → rebuild the whole 2K 2×2 canvas. Do not fix face, eyes, hair, or type outside the canvas. Do not publish — Hall publishes.",
+  "comment": "Tenant preset. Do not fall back to pink-cat collage or bold condensed Cyrillic."
+}

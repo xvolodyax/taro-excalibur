@@ -358,6 +358,26 @@ def main() -> int:
         )
         print("NOTE read shared/dzen-content-rules.md + rf-blocked-entities.json BEFORE Scout")
 
+    try:
+        from excalibur_blog_wordstat_env import wordstat_key_status
+    except ImportError:
+        sys.path.insert(0, str(root / "scripts"))
+        from excalibur_blog_wordstat_env import wordstat_key_status  # type: ignore
+    ws = wordstat_key_status(root)
+    check(
+        bool(ws.get("present")),
+        "wordstat API key present",
+        errors,
+        warnings,
+        warn=True,
+    )
+    if not ws.get("present"):
+        print(
+            "NOTE wordstat key missing → Scout WORDSTAT PARTIAL. "
+            "Paste into gitignored memory/wordstat.env.local or Cloud Secret "
+            "YANDEX_CLOUD_SEARCH_API_KEY (never into git/chat)"
+        )
+
     print(f"SUMMARY errors={len(errors)} warnings={len(warnings)} setup_complete={setup_complete}")
     if errors:
         print("ERRORS: " + "; ".join(errors))

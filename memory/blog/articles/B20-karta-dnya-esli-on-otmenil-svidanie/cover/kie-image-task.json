@@ -1,0 +1,17 @@
+{
+  "task_id": "5a96744ba70b974d4fa66d2446cf7726",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B20-karta-dnya-esli-on-otmenil-svidanie/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1787939276,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "viktoriaref.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}
