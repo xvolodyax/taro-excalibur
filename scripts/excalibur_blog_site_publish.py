@@ -60,6 +60,11 @@ COVER_PNG_FIGURE_RE = re.compile(
     r"<figure\b[^>]*>[\s\S]*?</figure>",
     re.I,
 )
+COVER_CREDIT_RE = re.compile(
+    r"<p\b(?=[^>]*\bclass=['\"][^'\"]*\bcover-credit\b)[^>]*>.*?</p>\s*",
+    re.I | re.S,
+)
+LEADING_H1_RE = re.compile(r"<h1\b[^>]*>.*?</h1>\s*", re.I | re.S)
 TELEGRAM_HREF_RE = re.compile(
     r"""href\s*=\s*(['"])(https?://(?:t\.me|telegram\.me)/[^'"]+)\1""",
     re.I,
@@ -152,10 +157,22 @@ def strip_cover_png_body_figures(html: str) -> tuple[str, int]:
     return cleaned, max(removed, 0)
 
 
+def strip_theme_chrome(html: str) -> tuple[str, dict[str, int]]:
+    """Theme already prints H1 and author. First tgz <p> must be the situation."""
+    out, credit_n = COVER_CREDIT_RE.subn("", html or "")
+    out, h1_n = LEADING_H1_RE.subn("", out, count=1)
+    return out, {"cover_credit_removed": credit_n, "h1_removed": h1_n}
+
+
 def prepare_site_html(html: str) -> tuple[str, dict[str, int]]:
     out, hero_n = strip_cover_hero(html)
     out, cover_n = strip_cover_png_body_figures(out)
-    return out, {"cover_hero_removed": hero_n, "cover_png_figures_removed": cover_n}
+    out, chrome = strip_theme_chrome(out)
+    return out, {
+        "cover_hero_removed": hero_n,
+        "cover_png_figures_removed": cover_n,
+        **chrome,
+    }
 
 
 def collect_telegram_hrefs(html: str) -> list[str]:

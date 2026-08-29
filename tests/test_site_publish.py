@@ -253,6 +253,19 @@ class SitePublishUnitTest(unittest.TestCase):
         self.assertNotIn("cover-hero", site)
         self.assertNotIn('src="cover/cover.png"', site)
 
+    def test_prepare_site_html_starts_with_situation_not_credit(self) -> None:
+        html = (
+            '<p class="cover-credit">Виктория - таролог команды «ТАРО СЕЙЧАС»</p>\n'
+            "<h1>Он зашёл в сеть и молчит</h1>\n"
+            "<p>Субботний вечер, 21:17: экран телефона загорается, а входящего нет.</p>\n"
+        )
+        site, info = prepare_site_html(html)
+        self.assertGreaterEqual(info["cover_credit_removed"], 1)
+        self.assertGreaterEqual(info["h1_removed"], 1)
+        self.assertNotIn("cover-credit", site)
+        self.assertNotIn("<h1>", site)
+        self.assertTrue(site.lstrip().startswith("<p>Субботний вечер"))
+
     def test_tgz_members_and_no_hero(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             article_dir = _write_article(Path(tmp), cover_hero=True)

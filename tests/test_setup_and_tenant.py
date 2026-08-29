@@ -29,7 +29,13 @@ class SetupTenantTests(unittest.TestCase):
         self.assertTrue(tenant.get("dzen_rss"))
         hero = json.loads((ROOT / "memory/cover/blog-hero.json").read_text(encoding="utf-8"))
         self.assertEqual(hero.get("reference_image"), "memory/cover/assets/Виктория.png")
-        self.assertTrue((ROOT / "memory/cover/assets/Виктория.png").is_file())
+        face = ROOT / "memory/cover/assets/Виктория.png"
+        inbox = ROOT / "cover-refs/Виктория.png"
+        self.assertTrue(face.is_file())
+        self.assertTrue(inbox.is_file())
+        self.assertEqual(face.stat().st_size, 2_191_823)
+        self.assertEqual(inbox.stat().st_size, 2_191_823)
+        self.assertEqual(face.read_bytes(), inbox.read_bytes())
         self.assertFalse((ROOT / "memory/cover/assets/viktoriaref.png").exists())
 
     def test_setup_agents_present(self) -> None:

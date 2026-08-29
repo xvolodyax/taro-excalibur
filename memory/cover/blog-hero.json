@@ -5,7 +5,7 @@
   "author_id": "victoria",
   "cover_mode": "host_reference",
   "reference_image": "memory/cover/assets/Виктория.png",
-  "reference_notes": "Канон лица — Виктория.png. Запрещены viktoriaref.png, victoria.png, victoria-sheet.png как i2i. Реф — студийный high-key портрет для lock лица; белый блейзер и карты Rider-Waite на рефе не lock одежды/реквизита.",
+  "reference_notes": "Канон лица — cover-refs/Виктория.png = memory/cover/assets/Виктория.png, 2191823 байт, 1341×1173, многоракурсный студийный лист. Не короткий однокадровый лист. Запрещены viktoriaref.png, victoria.png, victoria-sheet.png как i2i. Реф lock только лица; одежда/эмоция на обложке новые.",
   "png_on_disk": true,
   "png_required_action": "",
   "visual_lock": {

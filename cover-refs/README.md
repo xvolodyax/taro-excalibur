@@ -1,5 +1,7 @@
 # Cover-refs inbox
 
-Канон лица для i2i: `memory/cover/assets/Виктория.png`.
-Этот файл — то же inode. Не использовать `viktoriaref.png`.
+Канон лица для i2i: `Виктория.png` — **2 191 823 байт**, **1341×1173**, студийный лист с нескольких ракурсов.
 
+Тот же inode: `memory/cover/assets/Виктория.png`.
+
+Не короткий однокадровый лист. Не `viktoriaref.png`.
