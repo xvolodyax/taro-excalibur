@@ -1,7 +1,10 @@
 {
   "version": "1",
   "complete": true,
-  "updated_at": "2026-08-27T12:25:00Z",
+  "reopen": false,
+  "updated_at": "2026-08-29T18:22:00Z",
+  "live_tenant": true,
+  "notes": "Живой тенант ТАРО СЕЙЧАС (таросейчас.рф). Setup Gate закрыт: анкету Владимиру не задавать. Реф лица: Виктория.png.",
   "phases": {
     "cloud": "done",
     "site": "done",
@@ -10,6 +13,5 @@
     "visual": "done",
     "cta": "done",
     "scout": "done"
-  },
-  "notes": "Setup 1–7 closed. Face canon Виктория.png on disk. After GATE swarm publishes with SITE_PUBLISH_TOKEN; Dzen picks RSS."
+  }
 }

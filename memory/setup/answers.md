@@ -1,5 +1,7 @@
 # Setup answers log
 
+**Setup закрыт (2026-08-29).** Блог живой. `complete: true`, все фазы `done`. Анкету Владимиру не задавать.
+
 Заполнено Setup 2026-08-27 из ответов владельца. **Секретов и ключей нет.**
 
 ## Cloud
@@ -11,7 +13,7 @@
 - Kie (`KIE_API_KEY`) и Wordstat уже лежат в секретах снаружи; в git не класть.
 - `PUBLIC_SITE_URL` публичный (не секрет): `https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/` (IDN таросейчас.рф).
 - FTP/SFTP для этого пайплайна не нужны: Hall публикует руками.
-- First-run = Setup (этот прогон). Daily automation — только после `setup_complete`.
+- First-run Setup уже закрыт. Daily automation — этот канон, без повторной анкеты.
 
 ## Site
 
