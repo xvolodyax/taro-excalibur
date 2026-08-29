@@ -12,7 +12,7 @@
 | MCP WordPress blob / image API (если нужны) | n/a | Hall публикует. Image = Kie, не WP blob |
 | Image API key (Kie / provider) | yes | Kie уже в секретах снаружи. В git не класть |
 | Yandex Metrika tokens | n/a | Не запрошены; Content-learner опционален |
-| First-run automation = Setup prompt | yes | Этот прогон. Scout/Research/Publish не запускать |
-| Daily automation = CLOUD-AUTOMATION.md (после setup) | later | Включать после `setup_complete`. `EXCALIBUR_BLOG_ALLOW_PUBLISH` оставить выкл |
+| First-run automation = Setup prompt | done | Setup закрыт 2026-08-29. Анкету не задавать. |
+| Daily automation = CLOUD-AUTOMATION.md (после setup) | yes | `setup_complete: true`. Вечерний слот пишет Director + site publish. |
 
 Новых Secrets у человека не просили.
