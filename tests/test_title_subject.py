@@ -20,6 +20,16 @@ class TitleSubjectWordstatTest(unittest.TestCase):
         self.assertIn("Тема/имя в заголовке", a)
         self.assertIn("OpenAI", a)
 
+    def test_title_prefers_spoken_h1_over_slogan_verb(self) -> None:
+        a = (ROOT / "agents/excalibur-blog-title.md").read_text(encoding="utf-8")
+        s = (ROOT / "skills/title-excalibur-blog/SKILL.md").read_text(encoding="utf-8")
+        blob = a + s
+        self.assertIn("не назвал новое время", blob)
+        self.assertIn("возвращает твой вечер", blob)
+        self.assertIn("вслух", blob)
+        style = (ROOT / "shared/article-style.md").read_text(encoding="utf-8")
+        self.assertIn("не назвал новое время", style)
+
     def test_scout_uses_multiple_wordstat_calls(self) -> None:
         s = (ROOT / "skills/scout-excalibur-blog/SKILL.md").read_text(encoding="utf-8")
         low = s.lower()

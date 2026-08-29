@@ -106,6 +106,7 @@
   "h1_rules": {
     "no_series_templates": true,
     "max_len": 70,
+    "spoken_not_slogan": true,
     "style": "shared/article-style.md",
     "soul": "shared/SOUL.md"
   },

@@ -34,3 +34,38 @@ category: script
 
 ### Fixer resolution
 - pending
+
+## INC-20260829-0034-title-robot-h1
+status: open
+run_date: 2026-08-29
+role: excalibur-blog-title
+topic_id: B20
+article_dir: memory/blog/articles/B20-karta-dnya-esli-on-otmenil-svidanie
+severity: medium
+category: prompt
+
+### What went wrong
+- Owner: B20 H1 «Карта дня возвращает твой вечер, если он отменил свидание без новой даты» звучит топорно, как робот.
+- Title skill требовал «сильный глагол» → агент клеил слоган («возвращает вечер») и канцелярит («без новой даты»).
+- Человечный эталон владельца: «Карта дня, если он отменил свидание и не назвал новое время».
+
+### How the agent recovered this run
+- Durable contract rewrite (this fix). B20 body not retitled in the same change unless owner asks.
+
+### Fixer resolution
+- status: fixed
+- fixed_at: 2026-08-29
+- fix_summary:
+  - Title skill/agent: spoken H1 over slogan verb; эталон владельца в контракте.
+  - article-style + bad-outputs: тот же эталон/антиэталон.
+  - Тест `test_title_prefers_spoken_h1_over_slogan_verb`.
+- files_changed:
+  - `skills/title-excalibur-blog/SKILL.md`
+  - `agents/excalibur-blog-title.md`
+  - `shared/article-style.md`
+  - `shared/soul-examples/bad-outputs.md`
+  - `shared/pipeline-canon.json`
+  - `tests/test_title_subject.py`
+- checks_run:
+  - `python3 -m unittest tests.test_title_subject tests.test_title_lead_agents tests.test_subagent_chain_and_models`
+- commit: pending
