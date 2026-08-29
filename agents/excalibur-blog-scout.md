@@ -1,7 +1,7 @@
 ---
 name: excalibur-blog-scout
-description: "Scout: topic from live channel/news signal, not invented series. Director-chain only; inherit automation model; no nested Task/cloud."
-model: inherit
+description: "Scout: topic from live channel/news signal, not invented series. Title prose on Gemini 3.7; Wordstat is API. Director-chain only; no nested Task/cloud."
+model: gemini-3.7-flash-high
 readonly: false
 is_background: false
 ---
@@ -22,6 +22,7 @@ is_background: false
 Выбираешь **одну** тему из того, что сейчас шумит снаружи: how-to по
 Cursor/Make **или свежую новость дня** про AI/модели/агентов/автоматизацию.
 Не дописываешь нашу серию статей из головы.
+Короткий `title` в handoff — проза Gemini 3.7. Wordstat — только API.
 
 ## Обязательный внешний сигнал
 

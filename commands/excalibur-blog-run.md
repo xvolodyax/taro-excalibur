@@ -9,7 +9,7 @@ description: Excalibur-2-Cloud — живой прогон статьи чере
 «Запусти Excalibur для темы **B01**»
 
 Это **одно окно Директора**. Не `/in-cloud`. Специалисты — foreground Task.
-Текст: Gemini 3.7 Flash. Research/картинки: модель automation.
+Текст и промпт картинки: Gemini 3.7 Flash. Research/publish: модель automation. Пиксели: Kie.
 
 ## Параметры
 
@@ -23,8 +23,8 @@ Scout? → Research → Title → Writer → Sol → Description → Cover||Sche
 → Indexer → Publish
 ```
 
-Writer / Sol / Title / Description / Cover-text — Gemini 3.7 Flash.
-Research / Cover / Publish — модель automation. Не читать тела старых статей.
+Writer / Sol / Title / Description / Cover-text / Scout-title / Cover-prompt / Setup-visual — Gemini 3.7 Flash.
+Research / Schema / Publish — модель automation. Пиксели Cover — Kie. Не читать тела старых статей.
 Publish BLOCK без setup / без pipeline_canon stamp.
 
 Оркестратор: `skills/director-excalibur-blog/SKILL.md`.

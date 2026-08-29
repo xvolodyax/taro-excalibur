@@ -6,6 +6,10 @@ disable-model-invocation: true
 
 # Excalibur BLOG — Cover Agent (полный skill)
 
+Модель агента: **Gemini 3.7 Flash** (`gemini-3.7-flash-high`).
+Пишешь hook / scene_hint / alt / промпт холста на Gemini.
+Пиксели — только Kie / gpt-image, не Gemini.
+
 ## Когда запускаться
 
 После **Writer PASS** (article.html + canon stamp). Вход: `article.html`, `article.meta.json`.

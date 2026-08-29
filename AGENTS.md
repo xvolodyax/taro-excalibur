@@ -75,7 +75,9 @@ Setup: `.cursor/agents/excalibur-blog-setup.md` (не Task).
 
 - Один Cloud Agent / automation = Директор (или Setup). Не `/in-cloud`.
 - Специалисты — foreground Task в этом прогоне, без вложенных `Task(excalibur-blog-*)`.
-- Текст (title, writer, sol, description, cover-text, setup-voice):
+- Текст и промпт картинки (scout-title, title, writer, sol, description,
+  cover-text, cover scene_hint/холст, setup-voice, setup-visual):
   `model: gemini-3.7-flash-high` (Gemini 3.7 Flash).
-- Research, scout, cover/картинки, schema, publish и оркестратор:
+- Research, schema, publish, indexer, fixer и оркестратор:
   `model: inherit` (модель automation, которую выбрал человек).
+  Пиксели Cover — Kie/gpt-image. Wordstat — API. Gate без прозы — не Gemini.

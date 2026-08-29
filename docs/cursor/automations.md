@@ -11,11 +11,12 @@
 - инструментами (MCP, Slack, Memories, computer use);
 - репозиторием / environment.
 
-Модель automation — это `inherit` для Директора, Setup, Research, Cover,
-Publish. Её не хардкодим.
+Модель automation — это `inherit` для Директора, Setup, Research,
+Schema, Publish. Её не хардкодим.
 
-Текстовые субагенты **переопределяют** модель на Gemini 3.7 Flash
-(YAML + явный `model` в Task), независимо от того, Grok это или Composer.
+Текстовые субагенты и авторы промпта картинки **переопределяют** модель
+на Gemini 3.7 Flash (YAML + явный `model` в Task), независимо от того,
+Grok это или Composer. Пиксели остаются Kie/gpt-image.
 
 ## Как настраивать Excalibur
 

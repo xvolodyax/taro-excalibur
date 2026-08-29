@@ -38,12 +38,13 @@ Daily / First-run **Automation** поднимает **один** Cloud Agent
 
 ## Кто какой моделью
 
-- **Текст** (H1, черновик, финальная статья, карточка Дзена, надписи обложки,
+- **Текст и промпт картинки** (H1, Scout-title, черновик, финальная статья,
+  карточка Дзена, надписи обложки, scene_hint, промпт холста, prompt_fragment,
   SOUL/article-style): YAML + Task `model: gemini-3.7-flash-high`
   (Gemini 3.7 Flash, latest Google в каталоге Cursor на дату доков).
-- **Research, Scout, картинки, schema, publish, fixer, indexer, visual setup,
-  Директор, Setup:** `model: inherit` — модель **этой** automation /
-  выбранная пользователем.
+- **Research, schema, publish, fixer, indexer, Директор, Setup:**
+  `model: inherit` — модель **этой** automation / выбранная пользователем.
+  Пиксели Cover — Kie/gpt-image, не Gemini. Wordstat — API, не модель текста.
 
 Если Task **опускает** `model`, runtime часто берёт модель родителя
 и может перебить YAML. Поэтому текстовые шаги Директор передаёт явно:
@@ -52,14 +53,14 @@ Daily / First-run **Automation** поднимает **один** Cloud Agent
 ## Как Директор вызывает Task
 
 ```text
-Текстовый шаг:
-  subagent_type: excalibur-blog-{title|writer|sol|description|cover-text}
+Текстовый / prompt шаг:
+  subagent_type: excalibur-blog-{scout|title|writer|sol|description|cover-text|cover|setup-visual}
   model: gemini-3.7-flash-high
   run_in_background: false
   (environment не передавать — default local)
 
-Не-текст:
-  subagent_type: excalibur-blog-{scout|research|schema|cover|indexer|publish|fixer|content-learner}
+Не-текст (факты, JSON-LD, WP, incidents):
+  subagent_type: excalibur-blog-{research|schema|indexer|publish|fixer|content-learner}
   model: inherit   # или опустить
   run_in_background: false
 ```

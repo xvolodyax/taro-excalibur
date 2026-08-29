@@ -1,7 +1,7 @@
 ---
 name: excalibur-blog-setup-visual
-description: "Setup Visual: cover/hero design-code + prompt system from tenant references. Director-chain only; inherit automation model; no nested Task/cloud."
-model: inherit
+description: "Setup Visual: cover/hero design-code + prompt_fragment on Gemini 3.7. Director-chain only; no nested Task/cloud."
+model: gemini-3.7-flash-high
 readonly: false
 is_background: false
 ---

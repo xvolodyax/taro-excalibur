@@ -25,18 +25,19 @@ alwaysApply: false
 - **Setup** — чат (не Task): `agents/excalibur-blog-setup.md`
 - **Директор** — чат (не Task): `agents/excalibur-blog-director.md`
 - **Субагенты** — foreground `Task(<name>)` в том же окне, см. `agents/FOR-AGENTS.md`
-- Текст: Gemini 3.7 Flash (`gemini-3.7-flash-high`). Остальное: inherit automation.
+- Текст и промпт картинки: Gemini 3.7 Flash (`gemini-3.7-flash-high`).
+  Research / schema / publish / оркестратор: inherit. Пиксели: Kie.
 
 ## Пайплайн (после setup)
 
-0. Scout Task при `needs_scout`, затем shell `research_start`
+0. Scout Task при `needs_scout` (Gemini, title), затем shell `research_start`
 1. `excalibur-blog-research` (inherit)
 2. `excalibur-blog-title` (Gemini)
 3. `excalibur-blog-writer` → `drafts/writer.html` (смысл, Gemini)
 4. `excalibur-blog-sol` → `article.html` (слог SOUL + examples, Gemini)
 5. `excalibur-blog-description` → `description-brief.json` (Gemini)
 6. shell: `pipeline_canon --stamp` + opening_meta + description_gate + html_linter
-7. **ПАРАЛЛЕЛЬНО** cover-text (Gemini) + schema (inherit) → cover (inherit)
+7. **ПАРАЛЛЕЛЬНО** cover-text (Gemini) + schema (inherit) → cover (Gemini prompt; Kie pixels)
 8. `excalibur-blog-indexer`
 9. `excalibur-blog-publish`
 10. fixer(open) → merge_to_main → content-learner

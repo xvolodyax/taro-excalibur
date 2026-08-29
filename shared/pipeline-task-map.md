@@ -7,15 +7,15 @@
 [S] Setup (чат, inherit) — если !setup_complete
   ├─ блоки 0–7
   ├─ Task: setup-voice   (Gemini 3.7 Flash)
-  └─ Task: setup-visual  (inherit)
+  └─ Task: setup-visual  (Gemini 3.7 Flash — prompt_fragment)
 
 [Д] Директор (чат, inherit) — только если setup_complete
-  ├─ Scout (needs_scout)          inherit
+  ├─ Scout (needs_scout)          Gemini 3.7 Flash (title)
   ├─ shell: today + research_start (+ titles-only)
   ├─ Research (inherit) → Title (Gemini) → Writer (Gemini)
   │    → Sol (Gemini) → Description (Gemini)
   ├─ shell: pipeline_canon --stamp + opening_meta + description_gate + html_linter
-  ├─ Cover-text (Gemini) || Schema (inherit) → Cover (inherit)
+  ├─ Cover-text (Gemini) || Schema (inherit) → Cover (Gemini prompt; Kie pixels)
   ├─ Indexer (llms only) → Publish                 inherit
   └─ Fixer(open) → merge_to_main → Content-learner inherit
 ```
@@ -29,8 +29,10 @@
 | **Title** | Только H1 в brief (Gemini) |
 | **Description** | Только тизер карточки → `description-brief.json` (не body, Gemini) |
 | **Cover-text** | Только русские надписи (Gemini) |
-| `pipeline_canon --stamp` | meta only, **0** переписки |
-| Cover | Только `<figure>` |
+| **Scout** | Короткий title в handoff (Gemini); Wordstat — API |
+| **Cover** | hook / scene_hint / alt / промпт холста (Gemini); пиксели Kie |
+| **Setup-visual** | prompt_fragment + prompt blocks (Gemini) |
+| `pipeline_canon --stamp` | meta only (`written_by` / `text_model`), **0** переписки |
 
 ## Правила
 

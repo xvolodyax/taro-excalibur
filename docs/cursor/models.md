@@ -25,23 +25,26 @@
 
 Это модель для:
 
+- Scout (короткий title в handoff; Wordstat — отдельный API)
 - Title (H1 / title)
 - Writer (смысл, заголовки H2, черновик)
 - Sol (финальная проза)
 - Description (тизер карточки)
 - Cover-text (русские надписи)
+- Cover (scene_hint, hook, alt, промпт холста/inline)
 - Setup Voice (SOUL, article-style, examples)
+- Setup Visual (prompt_fragment и prompt blocks)
 
 Gemini 3 Pro Image / image preview — **не** текстовые роли.
-Картинки Cover идут через Kie/MCP на inherit-агенте `excalibur-blog-cover`.
+Пиксели Cover идут через Kie/MCP (`gpt-image`), не через Gemini.
 
 ## Что остаётся на модели automation
 
-Scout, Research, Schema, Cover (генерация), Indexer, Publish, Fixer,
-Content-learner, Setup, Setup Visual, сам Директор.
+Research, Schema, Indexer, Publish, Fixer, Content-learner,
+Setup (чат), сам Директор.
 
-Владелец ставит Grok / Composer / Opus в automation — research и картинки
-идут на неё. Текст статьи всё равно Gemini.
+Владелец ставит Grok / Composer / Opus в automation — research и публикация
+идут на неё. Текст и промпт картинки всё равно Gemini.
 
 ## Fallback
 
