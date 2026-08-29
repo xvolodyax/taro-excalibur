@@ -1,0 +1,11 @@
+{
+  "face": "pending-file",
+  "updated_at": "2026-08-29T17:33:40Z",
+  "canon_name": "Виктория.png",
+  "expected_paths": [
+    "cover-refs/Виктория.png",
+    "memory/cover/assets/Виктория.png"
+  ],
+  "reason": "Hall re-attached the Vladimir-approved Виктория.png. Advertised path /workspace/cover-refs/Виктория.png did not receive new bytes. On-disk PNG is still the previous substituted 1280×720 sheet (sha256 bcf5d05b9c557c71db9064135cdf5e60b74b4ed12f3fae0853f6eb2f0432323f, mtime 17:30:20Z), not the chat attachment. No other sheet was substituted this turn.",
+  "action": "Do not generate a sheet. Do not average faces. Do not publish. Wait for the approved file to land on disk, then copy those exact bytes to both canon paths."
+}
