@@ -19,6 +19,9 @@
   "dek": "",
   "lead": "",
   "on_page_excerpt": false,
+  "skip_quality_review": true,
+  "auto_approve": true,
+  "excalibur_gate": "PASS",
   "theme_blocks": {
     "faq": "skip",
     "quiz": "skip",
