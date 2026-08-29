@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from excalibur_blog_opening_editorial import (  # noqa: E402
+    first_body_paragraph,
     live_double_lead_errors,
     sanitize_site_meta,
 )
@@ -318,6 +319,15 @@ class SitePublishUnitTest(unittest.TestCase):
             "<div class=\"seo-content\"><p>Субботний вечер, экран телефона загорается.</p></div>"
         )
         self.assertFalse(live_double_lead_errors(clean))
+
+    def test_first_body_paragraph_skips_cover_credit(self) -> None:
+        html = (
+            '<p class="cover-credit">Виктория - таролог команды «ТАРО СЕЙЧАС»</p>\n'
+            "<h1>Он зашёл в сеть и молчит</h1>\n"
+            "<p>Субботний вечер, 21:17: экран телефона загорается, а входящего нет.</p>\n"
+        )
+        self.assertIn("Субботний вечер", first_body_paragraph(html))
+        self.assertNotIn("Виктория", first_body_paragraph(html))
 
     def test_telegram_rewrite_detect_and_restore_local(self) -> None:
         source = _article_html(cover_hero=False)

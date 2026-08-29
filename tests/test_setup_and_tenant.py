@@ -12,6 +12,7 @@ class SetupTenantTests(unittest.TestCase):
     def test_setup_status_complete(self) -> None:
         status = json.loads((ROOT / "memory/setup/status.json").read_text(encoding="utf-8"))
         self.assertTrue(status.get("complete"))
+        self.assertFalse(status.get("reopen"))
         for phase in ("cloud", "site", "author", "voice", "visual", "cta", "scout"):
             self.assertEqual(status.get("phases", {}).get(phase), "done", phase)
 
