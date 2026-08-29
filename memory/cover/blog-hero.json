@@ -9,8 +9,8 @@
   "never_upload_source_sheet": true,
   "reference_notes": "i2i ONLY Виктория.png (кириллица). Owner sheet lives at cover-refs/Виктория.png and memory/cover/assets/Виктория.png — same file. Delete and never upload viktoriaref.png, victoria-sheet.png, victoria-sheet-front.png, victoria-face.png, victoria.png, victoria_ref.*, alena.png, виктория.png.",
   "png_on_disk": true,
-  "face_status": "pending-file",
-  "png_required_action": "face: pending-file — on-disk Виктория.png is NOT the Hall/Vladimir-approved attachment. Do not i2i until the chat file lands. Do not substitute another sheet.",
+  "face_status": "ok",
+  "png_required_action": "memory/cover/assets/Виктория.png must exist (owner bytes, ~2.1MB). Cover stops if missing or if a latin/lowercase alias is present.",
   "visual_lock": {
     "identity": "Виктория — та же женщина, что на Виктория.png",
     "face_source": "ONLY memory/cover/assets/Виктория.png — i2i lock.",
