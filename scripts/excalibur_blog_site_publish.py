@@ -563,7 +563,10 @@ def run_publish(
 
     excerpt_resp = patch_on_page_excerpt_empty(http, site_base, token, article_id)
     result["excerpt_clear_status"] = excerpt_resp.status
-    if excerpt_resp.status >= 400:
+    if excerpt_resp.status == 403:
+        # Hall token can upload/approve/publish, but not PATCH article fields.
+        result["excerpt_clear_skipped"] = "hall_token_no_patch"
+    elif excerpt_resp.status >= 400:
         result["verdict"] = "fail"
         result["publish"] = "FAIL"
         result["reason"] = f"excerpt clear status={excerpt_resp.status}"
@@ -584,13 +587,22 @@ def run_publish(
             headers={"Content-Type": "application/json"},
         )
         result[f"{action}_status"] = resp.status
-        # 409 on approve: already in quality_review / already approved — still publish.
-        if resp.status >= 400 and not (action == "approve" and resp.status == 409):
-            result["verdict"] = "fail"
-            result["publish"] = "FAIL"
-            result["reason"] = f"{action} status={resp.status}"
-            write_result(article_dir, result, site_base)
-            return 1, result
+        if resp.status >= 400:
+            detail = ""
+            if isinstance(payload, dict):
+                detail = str(payload.get("detail") or payload.get("error") or "")
+            result[f"{action}_detail"] = detail
+            # 409 "already approved" can continue. Quality-review 409 cannot publish.
+            if action == "approve" and resp.status == 409 and "одобрен" in detail.lower():
+                pass
+            else:
+                result["verdict"] = "fail"
+                result["publish"] = "FAIL"
+                result["reason"] = f"{action} status={resp.status}"
+                if detail:
+                    result["reason_detail"] = detail
+                write_result(article_dir, result, site_base)
+                return 1, result
         permalink_guess = extract_permalink(payload, site_base, slug)
         if permalink_guess:
             result["permalink_live"] = permalink_guess
