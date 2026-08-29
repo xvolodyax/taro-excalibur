@@ -556,9 +556,12 @@ def main() -> int:
     design_code = load_json(design_code_path) if design_code_path.is_file() else {}
 
     cat_hero = style_is_situational_cat_hero(style)
-    local_reference = str(style.get("local_reference") or "").strip()
+    local_reference = str(
+        style.get("local_reference") or hero.get("reference_image") or ""
+    ).strip()
     prefer_local_reference = False
-    if cat_hero and local_reference:
+    host_local = (not cat_hero) and bool(local_reference) and (root / local_reference).is_file()
+    if (cat_hero and local_reference) or host_local:
         local_path = root / local_reference
         if not local_path.is_file():
             print(

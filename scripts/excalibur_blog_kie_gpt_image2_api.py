@@ -51,7 +51,7 @@ DEFAULT_POLL_INTERVAL_SECONDS = 15
 DEFAULT_MAX_WAIT_SECONDS = 900
 DEFAULT_MAX_CREATE_RETRIES = 1
 DEFAULT_RETRY_WAIT_SECONDS = 15
-DEFAULT_LOCAL_REFERENCE = "memory/cover/assets/blog-hero-reference.png"
+DEFAULT_LOCAL_REFERENCE = "memory/cover/assets/Виктория.png"
 
 
 class KieApiError(RuntimeError):
