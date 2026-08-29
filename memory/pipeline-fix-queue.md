@@ -36,7 +36,7 @@ category: script
 - pending
 
 ## INC-20260829-0034-title-robot-h1
-status: open
+status: fixed
 run_date: 2026-08-29
 role: excalibur-blog-title
 topic_id: B20
