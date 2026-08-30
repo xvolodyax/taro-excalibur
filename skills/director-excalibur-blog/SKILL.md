@@ -81,6 +81,8 @@ python3 scripts/excalibur_blog_description_gate.py --article-dir <dir>
 Потом `Task(excalibur-blog-cover)` · inherit. Cover **не** зовёт Cover-text.
 ### 6 Indexer → Publish
 `model: inherit`.
+После GATE PASS: `python3 scripts/excalibur_blog_site_publish.py --article-dir …`
+Нет ключа → SKIP, не FAIL. **Не** переписывать Sol ради site quality.
 ### 7 Fixer → merge → learner
 `model: inherit`.
 
