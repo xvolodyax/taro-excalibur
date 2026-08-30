@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{SITE_BASE}}/on-ne-nazyvaet-tebya-svoej/",
+  "url": "{{SITE_BASE}}/on-ne-nazyvaet-tebya-svoej/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{SITE_BASE}}/on-ne-nazyvaet-tebya-svoej/"
+  },
+  "headline": "Он не называет тебя своей",
+  "description": "Разбираем психологию отношений без статуса, риски долгого ожидания и практические шаги для возвращения внутренней опоры.",
+  "datePublished": "2026-08-30",
+  "dateModified": "2026-08-30",
+  "inLanguage": "ru",
+  "author": {
+    "@type": "Person",
+    "name": "Виктория",
+    "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+    "url": "{{SITE_BASE}}",
+    "sameAs": [
+      "{{SITE_BASE}}",
+      "https://dzen.ru/todaytaro_bot"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}"
+  }
+}
