@@ -79,8 +79,11 @@ python3 scripts/excalibur_blog_description_gate.py --article-dir <dir>
 В одном сообщении (параллель):  
 `Task(excalibur-blog-cover-text)` · Gemini; `Task(excalibur-blog-schema)` · inherit.  
 Потом `Task(excalibur-blog-cover)` · inherit. Cover **не** зовёт Cover-text.
+После Cover `KIE API BLOCKER` на 500×2 **или** 422 `generate playground failed, task id is blank`: не третий Cover create и не soften промпта. Когда Kie playground живой — same-batch `excalibur_blog_kie_gpt_image2_api.py` на неизменённом batch, затем Cover **apply-only**. Credits 200 ≠ playground healthy. См. `shared/kie-gpt-image-api-contract.md`.
 ### 6 Indexer → Publish
 `model: inherit`.
+После GATE PASS: `python3 scripts/excalibur_blog_site_publish.py --article-dir …`
+Нет ключа → SKIP, не FAIL. **Не** переписывать Sol ради site quality.
 ### 7 Fixer → merge → learner
 `model: inherit`.
 
