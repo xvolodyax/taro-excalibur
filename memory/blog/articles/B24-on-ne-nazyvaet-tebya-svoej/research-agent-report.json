@@ -1,0 +1,107 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B24",
+  "slug": "on-ne-nazyvaet-tebya-svoej",
+  "research_date": "2026-08-30",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "block_reason": null,
+  "fresh_external_signal": {
+    "week_of": "2026-08-24/2026-08-30",
+    "ok": true,
+    "items": [
+      {
+        "url": "https://dzen.ru/a/ang93lEk-R0SrZKh",
+        "kind": "competitor_dzen_card",
+        "when": "2 дня назад на 2026-08-30 (~2026-08-28)",
+        "what": "любовь или женщина, которую он не хочет потерять; статус без ярлыка"
+      },
+      {
+        "url": "https://dzen.ru/todaytaro_bot",
+        "kind": "tenant_channel",
+        "when": "2026-08-30 ~2 часа к проверке",
+        "what": "бытовая магия «иголка в косяк»; утренней 30.08 про статус нет"
+      },
+      {
+        "url": "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/",
+        "kind": "tenant_blog_index",
+        "when": "2026-08-30",
+        "what": "live вечер 29.08 «Он зашёл в сеть и молчит»; утреннего 30.08 нет"
+      }
+    ]
+  },
+  "unverified_signal_urls": [
+    {
+      "url": "https://dzen.ru/a/alnXbF3jemAbmJMl",
+      "accessed_at": "2026-08-30",
+      "result": "SSO wall / тело не прочитано; не выдумывать"
+    }
+  ],
+  "wordstat": {
+    "provider": "yandex_cloud_search_api_v2",
+    "endpoint": "POST /v2/wordstat/topRequests",
+    "region": "225",
+    "calls": 4,
+    "accessed_at": "2026-08-30",
+    "results": [
+      {
+        "role": "parent",
+        "phrase": "он не считает меня своей",
+        "totalCount": 1083,
+        "top": [{"phrase": "он не считает меня своей девушкой", "count": 42}],
+        "partial": false
+      },
+      {
+        "role": "synonym",
+        "phrase": "он не называет меня своей",
+        "totalCount": 1201,
+        "top": [
+          {"phrase": "он не называет меня своей", "count": 1201},
+          {"phrase": "почему он не называет меня своей", "count": 55}
+        ],
+        "partial": false
+      },
+      {
+        "role": "angle_household",
+        "phrase": "он не знакомит с друзьями",
+        "totalCount": 76,
+        "top": [],
+        "partial": true
+      },
+      {
+        "role": "angle_readiness",
+        "phrase": "он не готов к отношениям",
+        "totalCount": 566,
+        "top": [
+          {"phrase": "он не готов к отношениям", "count": 566},
+          {"phrase": "он не готов к серьезным отношениям", "count": 152},
+          {"phrase": "почему он не готов к отношениям", "count": 18}
+        ],
+        "partial": false
+      }
+    ],
+    "scout_inherited_not_this_run": [
+      {
+        "phrase": "хочет ли он отношений",
+        "totalCount": 2300,
+        "note": "самая жирная; в H1 не клеить"
+      }
+    ]
+  },
+  "overlap_titles_only": [
+    "Он зашёл в сеть и молчит",
+    "Он пишет, хотя вы уже расстались",
+    "Он ушёл гулять с друзьями и не позвал тебя с собой",
+    "Он охладел",
+    "Он охладел ко мне",
+    "Он смотрит твои истории и молчит",
+    "Напишет ли он сегодня вечером и стоит ли написать первой",
+    "Пауза или конец?",
+    "Зачем втыкают иголку в дверной косяк"
+  ],
+  "cta_slot": "bot",
+  "notes_path": "memory/blog/articles/B24-on-ne-nazyvaet-tebya-svoej/research-notes.md",
+  "report_path": "memory/blog/articles/B24-on-ne-nazyvaet-tebya-svoej/research-agent-report.json",
+  "incident_report": "none"
+}
