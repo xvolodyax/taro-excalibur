@@ -1,0 +1,48 @@
+{
+  "topic_id": "B26",
+  "slug": "on-skazal-chto-ne-gotov-k-otnosheniyam",
+  "publish_method": "site-api",
+  "hall": "not_used",
+  "dzen_studio": "not_used",
+  "token_env": "SITE_PUBLISH_TOKEN",
+  "token_configured": true,
+  "cover_hero_stripped": false,
+  "strip": {
+    "cover_hero_removed": 0,
+    "cover_png_figures_removed": 0,
+    "cover_credit_removed": 0,
+    "h1_removed": 1
+  },
+  "gate": "PASS",
+  "publish": "FAIL",
+  "verdict": "fail",
+  "reason": "approve status=409",
+  "permalink": "{{SITE_BASE}}/blog/on-skazal-chto-ne-gotov-k-otnosheniyam/",
+  "tgz_members": [
+    "article.html",
+    "article.meta.json",
+    "description-brief.json",
+    "cover/cover.png",
+    "cover/inline-01.png",
+    "cover/inline-02.png",
+    "cover/inline-03.png"
+  ],
+  "tgz_bytes": 2447579,
+  "upload_status": 201,
+  "article_id": "36",
+  "excerpt_clear_status": 403,
+  "excerpt_clear_skipped": "hall_token_no_patch",
+  "approve_status": 409,
+  "approve_detail": "Сначала статья должна пройти проверку качества",
+  "reason_detail": "Сначала статья должна пройти проверку качества",
+  "publish_status": null,
+  "live_status": 404,
+  "quality_score": 76,
+  "quality_warnings": [
+    "Нет практического блока (практика / шаги / чеклист)",
+    "Нет конкретного примера или разбора ситуации"
+  ],
+  "article_status": "quality_review",
+  "article_version": 1,
+  "sol_rewritten": false
+}

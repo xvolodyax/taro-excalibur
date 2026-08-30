@@ -402,3 +402,43 @@ category: publish
 
 ### Fixer resolution
 - pending
+
+## INC-20260830-1932-publish-site-quality-409-b26
+status: open
+run_date: 2026-08-30
+role: excalibur-blog-publish
+topic_id: B26
+article_dir: memory/blog/articles/B26-on-skazal-chto-ne-gotov-k-otnosheniyam
+severity: blocker
+category: publish
+
+### What went wrong
+- GATE PASS + env-check `token_configured=true` + dry-run PASS. Upload 201, `article_id=36`, `version=1`.
+- PATCH excerpt 403 → `excerpt_clear_skipped=hall_token_no_patch` (не FAIL).
+- First approve 409 «Сначала статья должна пройти проверку качества».
+- Admin GET: `status=quality_review`, `quality_score=76`.
+- Warnings: «Нет практического блока (практика / шаги / чеклист)»; «Нет конкретного примера или разбора ситуации».
+- Site excerpt ~215 chars is the first `<p>` (screen / «не готов» / video / coffee). No «конкретный пример» / «разбор ситуации» in that window.
+- New vs B25: quality now also wants a practice / steps / checklist block. SITE token quality-review endpoints 403.
+- Approve skip flags ignored. Publish not reached. Live GET 404. Ledger not updated.
+
+### How the agent recovered this run
+- Did not rewrite Sol / opening / `article.html`.
+- Did not add «Возьмём:» / «Сцена» or B23 `20:40`.
+- Did not treat first-upload quality 409 as resume-already-live (article not live).
+- Wrote `site-publish-result.json` without secrets / live host.
+
+### Durable fix needed before next run
+- Site ingest must honor `skip_quality_review` on excalibur upload, **or** quality must accept GATE PASS Sol without the B23/B25 three-paragraph opening template and without a labeled practice block.
+- New checker rule «практический блок» is out of this repo; Publish must not invent чеклист / «шаги» in the opening.
+- If Director returns Sol: situation markers + practice block are Sol’s job from this article’s facts/slot. Publish still must not rewrite.
+
+### Suggested files to inspect/change
+- `shared/excalibur-site-publish-contract.md`
+- site ingest / quality checker (not in this repo)
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
