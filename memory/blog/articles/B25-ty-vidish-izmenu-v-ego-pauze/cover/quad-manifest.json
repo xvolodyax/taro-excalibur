@@ -1,0 +1,64 @@
+{
+  "topic_id": "B25",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Его молчание кажется изменой",
+  "cover_hook_highlight": "изменой",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: когда молчание партнёра кажется изменой",
+      "scene_hint": "Виктория крупно слева, глаза зелёные с лёгким карим, новая одежда не камисоль; tiny телефон справа; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "дистанция не измена"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Почему мозг видит измену в любой тишине",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Две колонки: факт тишины vs готовый сценарий. Стрелка: дефицит информации → страх обмана → поиск подтверждений. Итог: тишина не измена. Без людей.",
+      "alt": "Как мозг заполняет тишину готовым сценарием измены",
+      "labels": [
+        "дефицит информации",
+        "страх обмана",
+        "готовый сценарий",
+        "поиск подтверждений"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Разбор ситуации",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Цепочка сверху вниз: сухое сообщение → повисшая тишина → вспышка тревоги → домыслы вместо фактов. Итог: факт короче домысла. Без людей.",
+      "alt": "Как из сухого сообщения рождается домысел о предательстве",
+      "labels": [
+        "сухое сообщение",
+        "повисшая тишина",
+        "вспышка тревоги",
+        "домыслы вместо фактов"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Дистанция, глухая стена или третье лицо: что происходит на самом деле",
+      "visual_type": "checklist_board",
+      "scene_hint": "Чеклист: каменная стена, защита границ, перегруз нервной системы. Итог: реальная дистанция, не третье лицо. Без людей.",
+      "alt": "Чем дистанция и глухая стена отличаются от третьего лица",
+      "labels": [
+        "каменная стена",
+        "защита границ",
+        "перегруз нервной системы",
+        "реальная дистанция"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
