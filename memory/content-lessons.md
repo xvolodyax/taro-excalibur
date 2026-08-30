@@ -49,7 +49,7 @@ confidence: low
 - Cloud Secrets: `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` (scope `metrika:read`), иначе следующий Content-learner снова BLOCKER.
 
 ### Durable applied
-- none — practice/checklist 409 на B26 первый раз; B24/B25 были про форму opening, не про этот чекер. Rollback не нужен.
+- 2026-08-30 Fixer INC-1932: Writer/Sol заранее H2 «Практика: чеклист шагов…» из маркеров этой статьи; Publish первый quality 409 → `needs_sol` (не PIPELINE FAIL); практика ≠ «конкретный пример: ЧЧ:ММ»; без «Возьмём:» и без шаблона B23. B25 INC-1423 не закрыт как «починили сайт».
 
 ### Resolution
 status: recorded

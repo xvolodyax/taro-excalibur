@@ -4,10 +4,12 @@
 After GATE PASS the swarm calls this script. Token comes only from env /
 Cursor Cloud Secret. Missing token → SKIP «нет ключа», exit 0.
 
-Known site limits (B23/B24, see shared/excalibur-site-publish-contract.md):
+Known site limits (B23/B24/B26, see shared/excalibur-site-publish-contract.md):
 Hall/SITE token PATCH excerpt → 403 (not FAIL); publish 500 sitemap EACCES
 + live 200 → live_ok; related blog-card__ cover.png is not a second cover;
-resume 409 on already-live continues to live GET. Do not rewrite Sol.
+resume 409 on already-live continues to live GET. First quality 409 without
+resume → verdict needs_sol (Director returns Sol with practice H2; not
+pipeline FAIL; never add «Возьмём:»). Do not rewrite Sol.
 """
 from __future__ import annotations
 
@@ -618,10 +620,12 @@ def run_publish(
             if isinstance(payload, dict):
                 detail = str(payload.get("detail") or payload.get("error") or "")
             result[f"{action}_detail"] = detail
-            # 409 "already approved" can continue. Quality-review 409 cannot publish
-            # on first upload. Resume of an already-live article still gets that 409
-            # even when status=published (B24 30.08) — continue to publish/live.
-            # Publish 500 sitemap EACCES still leaves the article live (B23 29.08).
+            # 409 "already approved" can continue. First-upload quality 409 cannot
+            # publish, but is not a pipeline FAIL: Director returns Sol with a
+            # practice H2 from this article (B26). Resume of an already-live
+            # article still gets that 409 even when status=published (B24) —
+            # continue to publish/live. Publish 500 sitemap EACCES still leaves
+            # the article live (B23 29.08). Never add «Возьмём:».
             if action == "approve" and resp.status == 409 and "одобрен" in detail.lower():
                 pass
             elif (
@@ -631,6 +635,20 @@ def run_publish(
                 and "качеств" in detail.lower()
             ):
                 result["approve_resume_409"] = "already_live_or_quality"
+            elif (
+                action == "approve"
+                and resp.status == 409
+                and not resume_article_id
+                and "качеств" in detail.lower()
+            ):
+                result["verdict"] = "needs_sol"
+                result["publish"] = "NEEDS_SOL"
+                result["reason"] = "approve_quality_409"
+                result["director_next"] = "return_sol_practice"
+                if detail:
+                    result["reason_detail"] = detail
+                write_result(article_dir, result, site_base)
+                return 2, result
             elif action == "publish" and resp.status == 500 and "sitemap" in detail.lower():
                 result["publish_sitemap_skipped"] = "eacces"
             elif action == "publish" and resp.status == 409 and "опублик" in detail.lower():
@@ -807,6 +825,13 @@ def main(argv: list[str] | None = None, http: HttpFn | None = None) -> int:
         _safe_print(
             f"OK site-publish article_id={result.get('article_id')} "
             f"permalink={result.get('permalink')}",
+            token,
+        )
+    elif verdict == "needs_sol":
+        _safe_print(
+            "QUALITY 409: Director returns Sol with practice H2 "
+            "(not pipeline FAIL, no «Возьмём:») "
+            f"report={repo_relative(article_dir / 'site-publish-result.json', root)}",
             token,
         )
     else:

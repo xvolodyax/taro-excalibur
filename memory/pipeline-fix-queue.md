@@ -403,8 +403,16 @@ category: publish
 ### Fixer resolution
 - pending
 
+### Follow-up same evening (B26, INC-1932)
+- B26 live прошёл **без** трёхабзацного opening B23/B25: H2 «Практика:
+  чеклист шагов…» + фраза «Разберём этот конкретный пример…» из фактов
+  статьи. Сайт по-прежнему игнорирует `skip_quality_review`.
+- **Не** закрывать этот INC как «починили сайт»: чекер opening-shape
+  живёт вне репо. 1932 закрыт как контракт Writer/Sol/Publish, не как
+  починка site quality.
+
 ## INC-20260830-1932-publish-site-quality-409-b26
-status: open
+status: fixed
 run_date: 2026-08-30
 role: excalibur-blog-publish
 topic_id: B26
@@ -441,7 +449,40 @@ category: publish
 - none recorded
 
 ### Fixer resolution
-- pending
+status: fixed
+fixed_at: 2026-08-30
+fix_summary:
+- Writer/Sol: вечерний слот заранее пишет H2 «Практика: чеклист шагов…»
+  из маркеров research этой статьи. Не «Возьмём:». Не шаблон B23
+  (часы + H2 «Разбор ситуации» + по минутам).
+- Publish: первый approve 409 quality без resume → `verdict=needs_sol`,
+  `director_next=return_sol_practice`, exit 2. Это **не** PIPELINE FAIL.
+  Директор возвращает Sol с практикой, затем новый POST upload
+  (не `--resume-article-id`). Publish тело не правит.
+- Контракт: сайт по-прежнему игнорирует `skip_quality_review`.
+  Практика/чеклист ≠ «конкретный пример: ЧЧ:ММ». B25 INC-1423 не
+  закрыт: форму opening сайта мы не чинили.
+files_changed:
+- `shared/writer-master-prompt.md`
+- `shared/excalibur-site-publish-contract.md`
+- `scripts/excalibur_blog_site_publish.py`
+- `tests/test_site_publish.py`
+- `tests/test_writer_sol_pipeline.py`
+- `agents/excalibur-blog-writer.md` + `.cursor/agents/`
+- `agents/excalibur-blog-sol.md` + `.cursor/agents/`
+- `agents/excalibur-blog-publish.md` + `.cursor/agents/`
+- `agents/excalibur-blog-director.md` + `.cursor/agents/`
+- `skills/writer-excalibur-blog/SKILL.md` + `.cursor/skills/`
+- `skills/sol-excalibur-blog/SKILL.md` + `.cursor/skills/`
+- `skills/publish-excalibur-blog/SKILL.md` + `.cursor/skills/`
+- `skills/director-excalibur-blog/SKILL.md` + `.cursor/skills/`
+- `memory/content-lessons.md`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile scripts/excalibur_blog_site_publish.py`
+- `python3 -m unittest tests.test_site_publish tests.test_writer_sol_pipeline` (28 OK)
+- `rg` needs_sol / return_sol_practice / Практика: чеклист шагов / Возьмём
+commit: pending
 
 ## INC-20260830-1936-metrika-credentials-b26
 status: open

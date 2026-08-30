@@ -84,6 +84,12 @@ python3 scripts/excalibur_blog_description_gate.py --article-dir <dir>
 `model: inherit`.
 После GATE PASS: `python3 scripts/excalibur_blog_site_publish.py --article-dir …`
 Нет ключа → SKIP, не FAIL. **Не** переписывать Sol ради site quality.
+Сайт игнорирует `skip_quality_review`. Первый approve **409** quality
+→ `needs_sol`, **не** PIPELINE FAIL: верни Sol с H2
+«Практика: чеклист шагов…» из маркеров этой статьи (вечерний слот —
+лучше заранее, до upload). Не «Возьмём:». Не шаблон B23. Практика ≠
+«конкретный пример: ЧЧ:ММ». Затем новый POST upload, не
+`--resume-article-id`.
 ### 7 Fixer → merge → learner
 `model: inherit`.
 

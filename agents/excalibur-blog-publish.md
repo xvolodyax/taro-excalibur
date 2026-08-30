@@ -47,14 +47,18 @@ incident_report: none | memory/pipeline-fix-queue.md#INC-...
 4. `shared/excalibur-wp-publish-contract.md`
 5. Активный handoff от директора — обычно `.cursor/excalibur-blog-handoff.md`; в нём `topic_id`, `article_dir`
 
-## Site quality после GATE PASS (HARD, INC-20260830-0650)
+## Site quality после GATE PASS (HARD, INC-20260830-0650 / 1932)
 
 После GATE PASS **не переписывать** `article.html` / opening Sol
 ради site quality score. Сайт игнорирует `skip_quality_review`.
+Практика/чеклист ≠ «конкретный пример: ЧЧ:ММ» и ≠ шаблон B23.
 
 Если approve **409** «проверка качества»:
 
 - не добавлять «Возьмём:» / «Возьмем:» / «Сцена»;
+- первый 409 без resume → `needs_sol`, **не** PIPELINE FAIL:
+  Директор возвращает Sol с H2 «Практика: чеклист шагов…» из фактов
+  этой статьи, затем новый POST upload (не `--resume-article-id`);
 - не ставить чужой слот (утренний прогон ≠ «суббота, 20:40» из B23);
 - markers только из фактов этой статьи, не из соседа;
 - Hall/SITE token: PATCH excerpt **403** — не FAIL;
