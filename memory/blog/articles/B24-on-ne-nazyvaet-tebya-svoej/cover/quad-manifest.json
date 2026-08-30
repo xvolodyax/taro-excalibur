@@ -1,0 +1,61 @@
+{
+  "topic_id": "B24",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Вместе только наедине",
+  "cover_hook_highlight": "наедине",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Он не называет тебя своей: вместе только наедине",
+      "scene_hint": "same woman as Виктория.png LARGE left; green hazel eyes; new dusty-rose knit not white cami; tiny closed door right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "для всех просто знакомая"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "«Не хочу потерять» и «выбираю тебя»: почему тепло не равно решению",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "comparison BAD left «тепло без выбора» vs GOOD right empty until status; labels «удобное общение» «сообщения в чате»; L→R; outcome тепло ≠ выбор; NO people/faces/emoji/silhouettes",
+      "alt": "Схема: тепло в общении не равно решению назвать своей",
+      "labels": [
+        "тепло без выбора",
+        "удобное общение",
+        "сообщения в чате"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Неделя молчания о статусе: почему ожидание только усиливает туман",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "workflow 1→2→3: «неделя молчания» then «пустой ярлык» then «страх разговора»; fog grows each week; outcome ожидание усиливает туман; NO people/faces/emoji/silhouettes",
+      "alt": "Как неделя молчания о статусе усиливает туман",
+      "labels": [
+        "неделя молчания",
+        "пустой ярлык",
+        "страх разговора"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Жизнь вне его круга: цена отношений без социальной опоры",
+      "visual_type": "checklist_board",
+      "scene_hint": "checklist board: «проверка реальностью», «шаг назад», «возврат опоры»; hidden from his circle; outcome без круга нет опоры; NO people/faces/emoji/silhouettes",
+      "alt": "Проверка реальности, когда тебя нет в его круге",
+      "labels": [
+        "проверка реальностью",
+        "шаг назад",
+        "возврат опоры"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
