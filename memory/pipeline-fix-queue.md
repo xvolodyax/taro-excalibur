@@ -34,7 +34,7 @@ category: script
 - pending
 
 ## INC-20260830-0650-publish-site-quality-409
-status: open
+status: fixed
 run_date: 2026-08-30
 role: excalibur-blog-publish
 topic_id: B24
@@ -69,4 +69,34 @@ category: publish
 - none recorded
 
 ### Fixer resolution
-- pending
+status: fixed
+fixed_at: 2026-08-30
+fix_summary:
+- Site ingest still ignores `skip_quality_review` (out of repo). Repo now
+  forbids rewriting Sol after GATE PASS and documents Hall/SITE 403,
+  sitemap EACCES + live 200 = live_ok, related blog-card ≠ second cover,
+  no «Возьмём:» / «Сцена», morning slot ≠ B23 20:40.
+- Script already skipped related cards, treated excerpt 403 as non-FAIL,
+  and resumed 409 on already-live; tests lock that. First-upload quality
+  409 still FAIL (do not touch Sol; write incident).
+- Publish agent/skill + director + doctor + `.env.example` wired to
+  `excalibur_blog_site_publish.py`. B24 `article.html` not touched.
+files_changed:
+- `shared/excalibur-site-publish-contract.md`
+- `scripts/excalibur_blog_site_publish.py`
+- `tests/test_site_publish.py`
+- `agents/excalibur-blog-publish.md`
+- `.cursor/agents/excalibur-blog-publish.md`
+- `skills/publish-excalibur-blog/SKILL.md`
+- `.cursor/skills/publish-excalibur-blog/SKILL.md`
+- `skills/director-excalibur-blog/SKILL.md`
+- `.cursor/skills/director-excalibur-blog/SKILL.md`
+- `scripts/excalibur_blog_doctor.py`
+- `.env.example`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile scripts/excalibur_blog_site_publish.py scripts/excalibur_blog_doctor.py`
+- `python3 -m unittest tests.test_site_publish` (23 OK)
+- `python3 scripts/excalibur_blog_doctor.py` (errors=0)
+- `rg` blog-card__ / hall_token_no_patch / не переписывать / 20:40
+commit: pending-this-commit

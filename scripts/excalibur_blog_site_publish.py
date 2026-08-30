@@ -3,6 +3,11 @@
 
 After GATE PASS the swarm calls this script. Token comes only from env /
 Cursor Cloud Secret. Missing token → SKIP «нет ключа», exit 0.
+
+Known site limits (B23/B24, see shared/excalibur-site-publish-contract.md):
+Hall/SITE token PATCH excerpt → 403 (not FAIL); publish 500 sitemap EACCES
++ live 200 → live_ok; related blog-card__ cover.png is not a second cover;
+resume 409 on already-live continues to live GET. Do not rewrite Sol.
 """
 from __future__ import annotations
 

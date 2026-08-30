@@ -199,6 +199,16 @@ class FakeHttp:
         if path.endswith("/api/admin/content/excalibur/upload"):
             return HttpResponse(201, {}, json.dumps({"id": self.upload_id, "url": "/blog/on-prochital-i-molchit/"}).encode(), url)
         if "/approve" in path:
+            if getattr(self, "approve_409_quality", False):
+                return HttpResponse(
+                    409,
+                    {},
+                    json.dumps(
+                        {"detail": "Сначала статья должна пройти проверку качества"},
+                        ensure_ascii=False,
+                    ).encode("utf-8"),
+                    url,
+                )
             return HttpResponse(200, {}, b'{"ok":true}', url)
         if path.endswith("/publish"):
             if getattr(self, "publish_sitemap_eacces", False):
@@ -207,6 +217,26 @@ class FakeHttp:
                     {},
                     json.dumps(
                         {"detail": "Не удалось обновить sitemap.xml (EACCES)"},
+                        ensure_ascii=False,
+                    ).encode("utf-8"),
+                    url,
+                )
+            if getattr(self, "publish_409_already", False):
+                return HttpResponse(
+                    409,
+                    {},
+                    json.dumps(
+                        {"detail": "Статья уже опубликована"},
+                        ensure_ascii=False,
+                    ).encode("utf-8"),
+                    url,
+                )
+            if getattr(self, "publish_409_generic", False):
+                return HttpResponse(
+                    409,
+                    {},
+                    json.dumps(
+                        {"detail": "Статья в статусе published"},
                         ensure_ascii=False,
                     ).encode("utf-8"),
                     url,
@@ -447,6 +477,89 @@ class SitePublishUnitTest(unittest.TestCase):
             self.assertEqual(result["publish"], "PUBLISHED")
             self.assertEqual(result.get("publish_sitemap_skipped"), "eacces")
 
+    def test_excerpt_patch_403_is_not_fail(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            article_dir = _write_article(Path(tmp))
+            http = FakeHttp()
+            http.patch_403 = True
+            code, result = run_publish(
+                article_dir=article_dir,
+                root=ROOT,
+                env={"SITE_PUBLISH_TOKEN": "unit-test-token-not-for-git"},
+                site_base=DEFAULT_SITE_BASE,
+                dry_run=False,
+                skip_gates=False,
+                http=http,
+            )
+            self.assertEqual(code, 0, result)
+            self.assertEqual(result["verdict"], "pass")
+            self.assertEqual(result["excerpt_clear_status"], 403)
+            self.assertEqual(result.get("excerpt_clear_skipped"), "hall_token_no_patch")
+            self.assertTrue(result.get("live_ok"))
+
+    def test_first_upload_quality_409_still_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            article_dir = _write_article(Path(tmp))
+            http = FakeHttp()
+            http.approve_409_quality = True
+            code, result = run_publish(
+                article_dir=article_dir,
+                root=ROOT,
+                env={"SITE_PUBLISH_TOKEN": "unit-test-token-not-for-git"},
+                site_base=DEFAULT_SITE_BASE,
+                dry_run=False,
+                skip_gates=False,
+                http=http,
+            )
+            self.assertEqual(code, 1, result)
+            self.assertEqual(result["verdict"], "fail")
+            self.assertEqual(result["reason"], "approve status=409")
+            self.assertIn("качеств", str(result.get("reason_detail") or "").lower())
+
+    def test_resume_quality_409_on_already_live_continues(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            article_dir = _write_article(Path(tmp))
+            http = FakeHttp()
+            http.approve_409_quality = True
+            http.publish_409_already = True
+            code, result = run_publish(
+                article_dir=article_dir,
+                root=ROOT,
+                env={"SITE_PUBLISH_TOKEN": "unit-test-token-not-for-git"},
+                site_base=DEFAULT_SITE_BASE,
+                dry_run=False,
+                skip_gates=False,
+                http=http,
+                resume_article_id="33",
+            )
+            self.assertEqual(code, 0, result)
+            self.assertEqual(result["verdict"], "pass")
+            self.assertEqual(result["publish"], "PUBLISHED")
+            self.assertEqual(result.get("approve_resume_409"), "already_live_or_quality")
+            self.assertEqual(result["publish_status"], 409)
+            self.assertTrue(result.get("live_ok"))
+            self.assertFalse(any(u.endswith("/excalibur/upload") for _, u in http.calls))
+
+    def test_resume_generic_publish_409_continues(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            article_dir = _write_article(Path(tmp))
+            http = FakeHttp()
+            http.publish_409_generic = True
+            code, result = run_publish(
+                article_dir=article_dir,
+                root=ROOT,
+                env={"SITE_PUBLISH_TOKEN": "unit-test-token-not-for-git"},
+                site_base=DEFAULT_SITE_BASE,
+                dry_run=False,
+                skip_gates=False,
+                http=http,
+                resume_article_id="33",
+            )
+            self.assertEqual(code, 0, result)
+            self.assertEqual(result["verdict"], "pass")
+            self.assertEqual(result.get("publish_resume_409"), "Статья в статусе published")
+            self.assertTrue(result.get("live_ok"))
+
     def test_hall_token_double_lead_does_not_fail_live_ok(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             article_dir = _write_article(Path(tmp), cover_hero=False)
@@ -544,6 +657,14 @@ class SitePublishUnitTest(unittest.TestCase):
         self.assertIn("Hall", contract)
         self.assertIn("B21", contract)
         self.assertIn("B22", contract)
+        self.assertIn("Hall / SITE token не PATCH excerpt", contract)
+        self.assertIn("sitemap EACCES + live 200 = `live_ok`", contract)
+        self.assertIn("blog-card", contract)
+        self.assertIn("Возьмём:", contract)
+        self.assertIn("Сцена", contract)
+        self.assertIn("20:40", contract)
+        self.assertIn("Утренний слот", contract)
+        self.assertIn("skip_quality_review", contract)
         doctor = (ROOT / "scripts/excalibur_blog_doctor.py").read_text(encoding="utf-8")
         self.assertIn("excalibur_blog_site_publish.py", doctor)
         director = (ROOT / "skills/director-excalibur-blog/SKILL.md").read_text(encoding="utf-8")
@@ -551,7 +672,14 @@ class SitePublishUnitTest(unittest.TestCase):
         publish = (ROOT / "skills/publish-excalibur-blog/SKILL.md").read_text(encoding="utf-8")
         self.assertIn("excalibur_blog_site_publish.py", publish)
         self.assertIn("нет ключа", publish)
+        self.assertIn("не переписывать Sol", publish)
+        self.assertIn("Возьмём:", publish)
+        self.assertIn("20:40", publish)
         self.assertNotIn("Hall вызывает upload", publish)
+        agent = (ROOT / "agents/excalibur-blog-publish.md").read_text(encoding="utf-8")
+        self.assertIn("не переписывать", agent)
+        self.assertIn("20:40", agent)
+        self.assertIn("excalibur_blog_site_publish.py", agent)
         env_ex = (ROOT / ".env.example").read_text(encoding="utf-8")
         for name in TOKEN_ENV_NAMES:
             self.assertIn(f"{name}=", env_ex)

@@ -69,14 +69,48 @@ cover/inline-03.png
   под H1. В tgz `article.meta.json` поле `excerpt` **пустое** (не копия
   первого `<p>`). После upload скрипт PATCH `excerpt=""`. Лид живёт только
   в теле. `description` / RSS — карточка Дзена, не dek под H1.
-- Hall-токен: upload + approve + publish. Approve **409**, пока site
-  quality не PASS. Живой чекер 100 баллов на «Возьмём:» — этот ярлык
-  **не** добавлять. PATCH excerpt Hall-токену **403**.
+
+## Ограничения сайта (B23 / B24) — не лечить телом статьи
+
+Сайт **игнорирует** `skip_quality_review` / `auto_approve` в meta.
+Чекер качества (часы + «конкретный пример» + H2 «Разбор ситуации»)
+живёт **вне этого репо**. Publish после **GATE PASS** **не**
+переписывает opening Sol ради score.
+
+- **Hall / SITE token не PATCH excerpt.** И `SITE_PUBLISH_TOKEN`, и
+  `HALL_PUBLISH_TOKEN` на `PATCH excerpt=""` получают **403**. Это
+  **не** FAIL: тема печатает первый `<p>` как `p.seo-article__lead`.
+  Скрипт пишет `excerpt_clear_skipped=hall_token_no_patch` и идёт
+  дальше. Не откатывать live из‑за двойного лида, который нельзя снять.
+- **sitemap EACCES + live 200 = `live_ok`.** `POST …/publish` может
+  ответить **500** «Не удалось обновить sitemap.xml (EACCES)», при этом
+  статья уже на сайте (`GET` permalink **200**). Не FAIL, не retry
+  телом статьи. Скрипт: `publish_sitemap_skipped=eacces`.
+- **Related `blog-card` cover ≠ вторая обложка.** Карточки «ещё
+  почитать» (`figure.blog-card__media` / любой `blog-card__*`) берут
+  чужой `/{other-slug}/cover.png` внутри `<article>`. Live-gate это
+  **не** считает второй обложкой этого поста. Настоящая вторая обложка —
+  extra `cover.png` figure **без** `seo-article__cover` и **без**
+  `blog-card__`.
+- **Quality 409 нельзя лечить ярлыком.** Approve **409** «Сначала
+  статья должна пройти проверку качества» **не** чинится словами
+  «Возьмём:» / «Возьмем:» / «Сцена». Эти ярлыки запрещены
+  (`shared/article-style.md`, `shared/SOUL.md`). Не копировать шаблон
+  B23 (H2 «Разбор ситуации» + разбор по минутам) в новую статью.
+- **Утренний слот ≠ вечерние часы B23.** Не ставить в opening чужие
+  часы/день: «суббота, 20:40» из B23 не принадлежит утреннему прогону.
+  Ситуация — только из research / Writer / Sol **этой** статьи.
+- **Resume 409 на already-live.** Повторный approve/publish уже
+  живой статьи снова даёт 409 (quality / «уже опубликована»), даже
+  когда `status=published`. При `--resume-article-id` скрипт не FAIL:
+  идёт к live GET. Первый upload без resume + quality 409 — по-прежнему
+  FAIL (сайт не пропустил; тело Sol не трогать, писать incident).
 
 ## После publish
 
 - Проверить live URL (`/blog/{slug}/`).
-- В теле нет второй обложки (`cover-hero` / `cover.png` внутри body figure).
+- В теле нет второй обложки (`cover-hero` / extra `cover.png` figure
+  без `seo-article__cover` и без `blog-card__`).
 - `t.me` **не** переписывать на `/rasklad-taro-online/`.
   Если сайт переписал — вернуть исходные `t.me` (PATCH статьи) и перепроверить.
 
