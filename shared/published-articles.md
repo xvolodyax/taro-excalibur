@@ -5,3 +5,6 @@ Publish / Indexer обновляют по мере выхода.
 
 | topic_id | slug | status | permalink |
 |----------|------|--------|-----------|
+| B23 | on-zashel-v-set-i-molchit | live | {{SITE_BASE}}/blog/on-zashel-v-set-i-molchit/ |
+| B24 | on-ne-nazyvaet-tebya-svoej | live | {{SITE_BASE}}/blog/on-ne-nazyvaet-tebya-svoej/ |
+| B25 | ty-vidish-izmenu-v-ego-pauze | live | {{SITE_BASE}}/blog/ty-vidish-izmenu-v-ego-pauze/ |
