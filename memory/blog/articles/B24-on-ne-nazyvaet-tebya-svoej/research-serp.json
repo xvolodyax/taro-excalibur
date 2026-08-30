@@ -1,0 +1,218 @@
+{
+  "agent": "excalibur-blog",
+  "date_context": {
+    "timezone": "Europe/Moscow",
+    "today_iso": "2026-08-30",
+    "today_ru": "30.08.2026",
+    "year": 2026,
+    "month": 8,
+    "month_name_ru": "август",
+    "weekday_ru": "воскресенье"
+  },
+  "topic": {
+    "topic_id": "B24",
+    "title": "Он не называет тебя своей",
+    "h1": "Он не называет тебя своей",
+    "slug": "on-ne-nazyvaet-tebya-svoej",
+    "primary_query": "Он не называет тебя своей",
+    "priority": "P0"
+  },
+  "searches": [
+    {
+      "query_id": "primary_fresh",
+      "query": "Он не называет тебя своей 2026",
+      "purpose": "актуальный SERP",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Почему он не называет тебя своей женщиной?",
+          "url": "https://www.youtube.com/watch?v=4v3YpldsmTQ",
+          "snippet": ""
+        },
+        {
+          "title": "Он не называет тебя своей — почему он определился и что делать | TikTok",
+          "url": "https://www.tiktok.com/@dima.vkurse/video/7655974232236510472",
+          "snippet": "Он сразу включает: «Подожди, не дави, зачем всё называть». Иногда причина не в том, что он не понял. А в том, что статус требует выбора, ответственности и закрытых дверей для других вариантов. В..."
+        },
+        {
+          "title": "Почему мужчина не называет свою женщину по имени: мнение психолога",
+          "url": "https://fb.ru/article/555225/2023-pochemu-mujchina-ne-nazyivaet-svoyu-jenschinu-po-imeni-mnenie-psihologa",
+          "snippet": "Как понять, что он действительно для тебя ничего не значит - Он не называет тебя по имени или «своей», даже в приватных разговорах."
+        },
+        {
+          "title": "Мужчина не называет по имени по телефону",
+          "url": "https://megavtogal.com/voprosy/muzhchina-ne-nazyvaet-po-imeni-po-telefonu.html",
+          "snippet": "Иногда женщине бывает сложно понять, действительно ли мужчина не называет ее по имени из-за каких-то психологических проблем, или он просто не заинтересован в серьезных отношениях."
+        },
+        {
+          "title": "6 новых фильмов и сериалов 2025-2026, в которых главный герой сам не ...",
+          "url": "https://www.ixbt.com/live/movie/6-novyh-filmov-i-serialov-2025-2026-v-kotoryh-glavnyy-geroy-sam-ne-ponimaet-kto-on.html",
+          "snippet": "Мы решили выяснить, по каким причинам мужчина не называет женщину по имени в начале отношений и спустя продолжительное время (при живом общении и в переписке)."
+        },
+        {
+          "title": "Мужчина не называет по имени женщину почему психология",
+          "url": "https://dadanews.ru/obschestvo/muzhchina-ne-nazyvaet-po-imeni-zhenschinu-pochemu-psihologiya/",
+          "snippet": "Человек смотрит в зеркало и видит незнакомца. Вокруг твердят, кто он такой, но внутри пустота. В триллерах 2025-2026 годов эта тема всплывает особенно часто. Герои теряют память, а вместе с ней и ощущение себя. Они бродят по миру, собирая осколки чужой, как им кажется, жизни."
+        }
+      ],
+      "searched_at": "2026-08-30"
+    },
+    {
+      "query_id": "title_fresh",
+      "query": "Он не называет тебя своей 2026",
+      "purpose": "SERP по человеческому title",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Почему он не называет тебя своей женщиной?",
+          "url": "https://www.youtube.com/watch?v=4v3YpldsmTQ",
+          "snippet": ""
+        },
+        {
+          "title": "Он не называет тебя своей — почему он определился и что делать | TikTok",
+          "url": "https://www.tiktok.com/@dima.vkurse/video/7655974232236510472",
+          "snippet": "Он сразу включает: «Подожди, не дави, зачем всё называть». Иногда причина не в том, что он не понял. А в том, что статус требует выбора, ответственности и закрытых дверей для других вариантов. В..."
+        },
+        {
+          "title": "Почему мужчина не называет свою женщину по имени: мнение психолога",
+          "url": "https://fb.ru/article/555225/2023-pochemu-mujchina-ne-nazyivaet-svoyu-jenschinu-po-imeni-mnenie-psihologa",
+          "snippet": "Как понять, что он действительно для тебя ничего не значит - Он не называет тебя по имени или «своей», даже в приватных разговорах."
+        },
+        {
+          "title": "Мужчина не называет по имени по телефону",
+          "url": "https://megavtogal.com/voprosy/muzhchina-ne-nazyvaet-po-imeni-po-telefonu.html",
+          "snippet": "Иногда женщине бывает сложно понять, действительно ли мужчина не называет ее по имени из-за каких-то психологических проблем, или он просто не заинтересован в серьезных отношениях."
+        },
+        {
+          "title": "6 новых фильмов и сериалов 2025-2026, в которых главный герой сам не ...",
+          "url": "https://www.ixbt.com/live/movie/6-novyh-filmov-i-serialov-2025-2026-v-kotoryh-glavnyy-geroy-sam-ne-ponimaet-kto-on.html",
+          "snippet": "Мы решили выяснить, по каким причинам мужчина не называет женщину по имени в начале отношений и спустя продолжительное время (при живом общении и в переписке)."
+        },
+        {
+          "title": "Мужчина не называет по имени женщину почему психология",
+          "url": "https://dadanews.ru/obschestvo/muzhchina-ne-nazyvaet-po-imeni-zhenschinu-pochemu-psihologiya/",
+          "snippet": "Человек смотрит в зеркало и видит незнакомца. Вокруг твердят, кто он такой, но внутри пустота. В триллерах 2025-2026 годов эта тема всплывает особенно часто. Герои теряют память, а вместе с ней и ощущение себя. Они бродят по миру, собирая осколки чужой, как им кажется, жизни."
+        }
+      ],
+      "searched_at": "2026-08-30"
+    },
+    {
+      "query_id": "official_docs",
+      "query": "Он не называет тебя своей official docs 2026",
+      "purpose": "официальные docs",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Google Docs",
+          "url": "https://docs.google.com/",
+          "snippet": ""
+        },
+        {
+          "title": "Не представлены документы по соцконтракту: отказ и сроки",
+          "url": "https://soccontract.com/ne-predstavleny-dokumenty-soczialnyj-kontrakt-otkaz-srok/",
+          "snippet": "Create and edit web-based documents, spreadsheets, and presentations. Store documents online and access them from any computer."
+        },
+        {
+          "title": "Он не называет тебя своей — почему он определился и что делать | TikTok",
+          "url": "https://www.tiktok.com/@dima.vkurse/video/7655974232236510472",
+          "snippet": "Отказ в социальном контракте нужно разбирать не по слухам и не по общей фразе «комиссия не одобрила», а по конкретному федеральному основанию, фактам заявления и региональному порядку. В 2026 году базовый перечень ..."
+        },
+        {
+          "title": "Google Документы: вход в систему",
+          "url": "https://docs.google.com/document/create?hl=ru",
+          "snippet": "Вопрос читателю: хочешь ли ты, чтобы он признал вас официально, или готова двигаться дальше без ожиданий?"
+        },
+        {
+          "title": "Google Документы (2026): что это + как работать в Гугл Докс",
+          "url": "https://kokoc.com/blog/google-docs/",
+          "snippet": "Работаете на чужом компьютере? Используйте режим инкогнито. Подробнее об использовании гостевого режима. Используйте Google Документы в аккаунте Google (для личных целей) или в аккаунте Google..."
+        },
+        {
+          "title": "Google Переводчик",
+          "url": "https://translate.google.com/?hl=ru",
+          "snippet": "Google Docs, или «Google Документы» — популярный облачный текстовый редактор от Google. Это полноценный сервис и достойная альтернатива десктопной программе MS Office Word."
+        }
+      ],
+      "searched_at": "2026-08-30"
+    },
+    {
+      "query_id": "github_evidence",
+      "query": "site:github.com Он не называет тебя своей 2026",
+      "purpose": "GitHub evidence",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "ikna/README.ru.md at main · d1d2dopamine/ikna · GitHub",
+          "url": "https://github.com/d1d2dopamine/ikna/blob/main/README.ru.md",
+          "snippet": ""
+        },
+        {
+          "title": "coursera-ddp-shiny/corpora/ru_50k.txt at master - GitHub",
+          "url": "https://github.com/spujadas/coursera-ddp-shiny/blob/master/corpora/ru_50k.txt",
+          "snippet": "Версия живёт в файле сборки, а не выводится из тега или номера запуска CI, чтобы клон репозитория собирал ту же версию на любой машине — без тега и без CI вообще."
+        },
+        {
+          "title": "Steam из России в 2026: низкий пинг, обход замедления, голосовой чат ...",
+          "url": "https://gist.github.com/evilork/a40aa5841ba2f9236aa72c7b35551823",
+          "snippet": "Coursera Developing Data Products Week 4 Peer-graded Assignment: Shiny - spujadas/coursera-ddp-shiny"
+        },
+        {
+          "title": "RimWorld AutoTranslation Cache - Russian (Русский) (Yandex)",
+          "url": "https://gist.github.com/csh1668/4007fe148cd076db470fa59eceaf4e6b",
+          "snippet": "Май 2026: Сейчас. Steam не заблокирован, но работает с деградацией. Это и есть главная проблема — нет чёткой блокировки, нет официальной причины, есть только постепенное ухудшение качества."
+        },
+        {
+          "title": "Free-Configs/README_RU.md at main - GitHub",
+          "url": "https://github.com/dreamboxone/Free-Configs/blob/main/README_RU.md",
+          "snippet": "RimWorld AutoTranslation Cache - Russian (Русский) (Yandex) - metadata.json"
+        },
+        {
+          "title": "Сбой ByeBye DPI 28.05.26 #415 - GitHub",
+          "url": "https://github.com/dovecoteescapee/ByeDPIAndroid/issues/415",
+          "snippet": "Вот неудобный ответ, измеренный, а не прикинутый: в любой момент подавляющее большинство любого пула бесплатных конфигов мертво."
+        }
+      ],
+      "searched_at": "2026-08-30"
+    },
+    {
+      "query_id": "community_experience",
+      "query": "Он не называет тебя своей forum problems опыт 2026",
+      "purpose": "форумы и живые проблемы",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Почему он не называет меня по ... - Woman.ru",
+          "url": "https://www.woman.ru/relations/medley4/thread/3973575/",
+          "snippet": ""
+        },
+        {
+          "title": "Почему он не называет меня по ... - Woman.ru",
+          "url": "https://www.woman.ru/relations/medley4/thread/3973575/2/",
+          "snippet": "И неужели он не испытывает дискомфорт, обращаясь ко мне просто на \"ты\", никак меня не называя при этом?"
+        },
+        {
+          "title": "Парень не называет по имени",
+          "url": "https://www.b17.ru/forum/topic.php?id=561935",
+          "snippet": "Когда за глаза говорю об этом человеке, то называю его имя с удовольствием и без проблем. Собравшись с духом, еще могу из другой комнаты обратиться по имени, но в глаза - ну не могу и все. И сама..."
+        },
+        {
+          "title": "Он не называет тебя своей — почему он определился и что делать | TikTok",
+          "url": "https://www.tiktok.com/@dima.vkurse/video/7655974232236510472",
+          "snippet": "Мой молодой человек никогда не называет меня по имени, вот вообще никогда. Использует только уменьшительно-ласкательные прозвища, и то редко. В начале общения обращался ко мне по имени в переписке раза 2, вживую только один раз, во время очень стрессовой ситуации."
+        },
+        {
+          "title": "Почему мужчина не называет свою женщину по имени? Правда ли, что самое ...",
+          "url": "https://vk.com/wall-72693251_91575",
+          "snippet": "Как понять, что он действительно для тебя ничего не значит - Он не называет тебя по имени или «своей», даже в приватных разговорах."
+        },
+        {
+          "title": "Обезличивание при общении",
+          "url": "https://www.b17.ru/forum/topic.php?id=623681",
+          "snippet": "И тут не возникает вопроса: «Почему не Оля?», здесь все понятно без слов. Так что, если ваш любимый называет вас «Душа моя» или «Милая», не стоит расстраиваться или паниковать."
+        }
+      ],
+      "searched_at": "2026-08-30"
+    }
+  ],
+  "errors": []
+}
