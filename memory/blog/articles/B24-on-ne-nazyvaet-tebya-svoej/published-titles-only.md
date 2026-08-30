@@ -20,6 +20,7 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B21 | on-ushel-gulyat-i-ne-pozval | Он ушёл гулять с друзьями и не позвал тебя с собой | live |
 | B22 | on-pishet-hotya-vy-uzhe-rasstalis | Он пишет, хотя вы уже расстались | live |
 | B23 | on-zashel-v-set-i-molchit | Он зашёл в сеть и молчит | live |
+| B24 | on-ne-nazyvaet-tebya-svoej | Он не называет тебя своей | live |
 | LIVE | zachem-vtykayut-igolku-v-dvernoy-kosyak | Зачем втыкают иголку в дверной косяк | live |
 | LIVE | zachem-syplyut-sol-v-ugol-ot-skandalov | Зачем сыплют соль в угол от скандалов | live |
 | LIVE | kak-vyzyvayut-domovogo-v-kvartire | Как вызывают домового в квартире | live |

@@ -215,6 +215,8 @@ class FakeHttp:
         if method.upper() == "PATCH" and "/articles/" in path:
             if data and b"preserve_telegram" in data:
                 self.telegram_patched = True
+            if getattr(self, "patch_403", False):
+                return HttpResponse(403, {}, b'{"error":"hall"}', url)
             return HttpResponse(200, {}, b'{"ok":true}', url)
         if method.upper() == "GET" and "/blog/" in path:
             html = self.live_html
@@ -368,6 +370,15 @@ class SitePublishUnitTest(unittest.TestCase):
         self.assertTrue(live_second_cover_errors(_live_html(second_cover=True)))
         self.assertFalse(live_second_cover_errors(_live_html(second_cover=False)))
 
+    def test_related_blog_card_cover_is_not_second_cover(self) -> None:
+        html = _live_html(second_cover=False).replace(
+            "</article>",
+            '<figure class="blog-card__media">'
+            '<img src="/assets/blog/other-slug/cover.png" alt="related">'
+            "</figure></article>",
+        )
+        self.assertFalse(live_second_cover_errors(html))
+
     def test_skip_without_token(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             article_dir = _write_article(Path(tmp))
@@ -435,6 +446,35 @@ class SitePublishUnitTest(unittest.TestCase):
             self.assertEqual(result["verdict"], "pass")
             self.assertEqual(result["publish"], "PUBLISHED")
             self.assertEqual(result.get("publish_sitemap_skipped"), "eacces")
+
+    def test_hall_token_double_lead_does_not_fail_live_ok(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            article_dir = _write_article(Path(tmp), cover_hero=False)
+            live = (
+                "<html><body><article>"
+                '<p class="seo-article__lead">Многие ждут ответа сразу. Здесь другая картина вечера.</p>'
+                "<p>Многие ждут ответа сразу. Здесь другая картина вечера.</p>"
+                '<figure class="seo-article__cover">'
+                '<img src="/assets/blog/on-prochital-i-molchit/cover.png" alt="hero">'
+                "</figure>"
+                '<p>Снять ответ в <a href="https://t.me/example_bot?start=ref1">боте</a>.</p>'
+                "</article></body></html>"
+            )
+            http = FakeHttp(live_html=live)
+            http.patch_403 = True
+            code, result = run_publish(
+                article_dir=article_dir,
+                root=ROOT,
+                env={"SITE_PUBLISH_TOKEN": "unit-test-token-not-for-git"},
+                site_base=DEFAULT_SITE_BASE,
+                dry_run=False,
+                skip_gates=False,
+                http=http,
+            )
+            self.assertEqual(code, 0, result)
+            self.assertEqual(result["verdict"], "pass")
+            self.assertEqual(result.get("double_lead_uncleared"), "hall_token_no_patch")
+            self.assertTrue(result.get("live_ok"))
 
     def test_restore_telegram_if_site_rewrote(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

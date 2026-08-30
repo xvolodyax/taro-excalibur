@@ -230,9 +230,13 @@ def live_second_cover_errors(live_html: str) -> list[str]:
     )
     body = article.group(1) if article else html
     # Page hero (seo-article__cover) may show cover.png once. Extra body figure = second cover.
+    # Related-read cards (blog-card__media) also use /{other-slug}/cover.png inside <article>
+    # on this tenant — that is not a second cover of *this* post (B24 30.08).
     body_cover_figs = 0
     for block in COVER_PNG_FIGURE_RE.findall(body):
         if re.search(r"\bseo-article__cover\b", block, flags=re.I):
+            continue
+        if re.search(r"\bblog-card__", block, flags=re.I):
             continue
         if re.search(r"""src\s*=\s*['"][^'"]*cover\.png""", block, flags=re.I):
             body_cover_figs += 1
@@ -609,14 +613,25 @@ def run_publish(
             if isinstance(payload, dict):
                 detail = str(payload.get("detail") or payload.get("error") or "")
             result[f"{action}_detail"] = detail
-            # 409 "already approved" can continue. Quality-review 409 cannot publish.
+            # 409 "already approved" can continue. Quality-review 409 cannot publish
+            # on first upload. Resume of an already-live article still gets that 409
+            # even when status=published (B24 30.08) — continue to publish/live.
             # Publish 500 sitemap EACCES still leaves the article live (B23 29.08).
             if action == "approve" and resp.status == 409 and "одобрен" in detail.lower():
                 pass
+            elif (
+                action == "approve"
+                and resp.status == 409
+                and resume_article_id
+                and "качеств" in detail.lower()
+            ):
+                result["approve_resume_409"] = "already_live_or_quality"
             elif action == "publish" and resp.status == 500 and "sitemap" in detail.lower():
                 result["publish_sitemap_skipped"] = "eacces"
             elif action == "publish" and resp.status == 409 and "опублик" in detail.lower():
                 pass
+            elif action == "publish" and resp.status == 409 and resume_article_id:
+                result["publish_resume_409"] = detail or "already_live"
             else:
                 result["verdict"] = "fail"
                 result["publish"] = "FAIL"
@@ -686,17 +701,22 @@ def run_publish(
     if lead_errors:
         retry = patch_on_page_excerpt_empty(http, site_base, token, article_id)
         result["excerpt_clear_retry_status"] = retry.status
-        live_resp = fetch_live(http, permalink)
-        live_html = live_resp.text()
-        lead_errors = live_double_lead_errors(live_html)
-        if lead_errors:
-            result["verdict"] = "fail"
-            result["publish"] = "FAIL"
-            result["reason"] = "double lead on live (seo-article__lead clones first p)"
-            result["live_errors"] = lead_errors
-            write_result(article_dir, result, site_base)
-            return 1, result
-        result["double_lead_cleared"] = True
+        if retry.status == 403:
+            # Hall token cannot PATCH excerpt (B23/B24). Theme reprints first p
+            # as seo-article__lead. Live 200 still counts; do not roll back.
+            result["double_lead_uncleared"] = "hall_token_no_patch"
+        else:
+            live_resp = fetch_live(http, permalink)
+            live_html = live_resp.text()
+            lead_errors = live_double_lead_errors(live_html)
+            if lead_errors:
+                result["verdict"] = "fail"
+                result["publish"] = "FAIL"
+                result["reason"] = "double lead on live (seo-article__lead clones first p)"
+                result["live_errors"] = lead_errors
+                write_result(article_dir, result, site_base)
+                return 1, result
+            result["double_lead_cleared"] = True
 
     result["verdict"] = "pass"
     result["publish"] = "PUBLISHED"
