@@ -1,0 +1,148 @@
+{
+  "agent": "excalibur-blog-cover-quad-split",
+  "status": "PASS",
+  "manifest": "cover/quad-manifest.json",
+  "split": {
+    "source_canvas": "memory/blog/articles/B25-ty-vidish-izmenu-v-ego-pauze/cover/canvas-quad.png",
+    "source_size_px": [
+      2048,
+      1152
+    ],
+    "panel_size_px": [
+      1024,
+      576
+    ],
+    "split_meta": {
+      "split_mode": "mechanical_center",
+      "h_gutter_px": null,
+      "v_gutter_px": null,
+      "requested_mode": "auto",
+      "fallback_reason": "gutter_too_far_from_center",
+      "rejected_gutter": {
+        "h_gutter_px": {
+          "start": 570,
+          "end": 598
+        },
+        "v_gutter_px": {
+          "start": 1020,
+          "end": 1104
+        },
+        "gutter_quality": {
+          "h_center_offset_px": 8.0,
+          "v_center_offset_px": 38.0,
+          "max_aspect_crop_loss": 0.0684,
+          "per_panel_crop_loss": {
+            "top_left": 0.0069,
+            "top_right": 0.0684,
+            "bottom_left": 0.0343,
+            "bottom_right": 0.0415
+          },
+          "reject_reason": "gutter_too_far_from_center"
+        }
+      }
+    },
+    "output_size_px": [
+      1200,
+      675
+    ],
+    "outputs": {
+      "cover": {
+        "file": "cover/cover.png",
+        "quadrant": "top_left",
+        "box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1024,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1024,
+          "bottom": 576
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Иллюстрация: когда молчание партнёра кажется изменой",
+        "h2_anchor": null
+      },
+      "inline_1": {
+        "file": "cover/inline-01.png",
+        "quadrant": "top_right",
+        "box_px": {
+          "left": 1024,
+          "top": 0,
+          "right": 2048,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 1024,
+          "top": 0,
+          "right": 2048,
+          "bottom": 576
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Как мозг заполняет тишину готовым сценарием измены",
+        "h2_anchor": "Почему мозг видит измену в любой тишине"
+      },
+      "inline_2": {
+        "file": "cover/inline-02.png",
+        "quadrant": "bottom_left",
+        "box_px": {
+          "left": 0,
+          "top": 576,
+          "right": 1024,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 576,
+          "right": 1024,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Как из сухого сообщения рождается домысел о предательстве",
+        "h2_anchor": "Разбор ситуации"
+      },
+      "inline_3": {
+        "file": "cover/inline-03.png",
+        "quadrant": "bottom_right",
+        "box_px": {
+          "left": 1024,
+          "top": 576,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 1024,
+          "top": 576,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Чем дистанция и глухая стена отличаются от третьего лица",
+        "h2_anchor": "Дистанция, глухая стена или третье лицо: что происходит на самом деле"
+      }
+    }
+  },
+  "html_inject": [
+    "injected inline_1 after H2 — Почему мозг видит измену в любой тишине",
+    "injected inline_2 after H2 — Разбор ситуации",
+    "injected inline_3 after H2 — Дистанция, глухая стена или третье лицо: что происходит на самом деле"
+  ]
+}

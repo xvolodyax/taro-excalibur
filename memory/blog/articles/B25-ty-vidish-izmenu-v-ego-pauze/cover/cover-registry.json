@@ -1,0 +1,50 @@
+{
+  "topic_id": "B25",
+  "slug": "ty-vidish-izmenu-v-ego-pauze",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: когда молчание партнёра кажется изменой",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-30T14:02:12+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: когда молчание партнёра кажется изменой",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Как мозг заполняет тишину готовым сценарием измены",
+      "h2_anchor": "Почему мозг видит измену в любой тишине",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Как из сухого сообщения рождается домысел о предательстве",
+      "h2_anchor": "Разбор ситуации",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чем дистанция и глухая стена отличаются от третьего лица",
+      "h2_anchor": "Дистанция, глухая стена или третье лицо: что происходит на самом деле",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

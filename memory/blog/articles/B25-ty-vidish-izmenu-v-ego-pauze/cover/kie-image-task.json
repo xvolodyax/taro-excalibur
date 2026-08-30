@@ -1,19 +1,12 @@
 {
-  "task_id": "c7102508cb2208c7677289424a1073ab",
+  "task_id": "3b0719d84409ba55e7689763277416b4",
   "source": "kie-api",
   "model": "gpt-image-2-image-to-image",
-  "state": "created",
-  "create_response": {
-    "code": 200,
-    "msg": "success",
-    "data": {
-      "taskId": "c7102508cb2208c7677289424a1073ab",
-      "recordId": "c7102508cb2208c7677289424a1073ab"
-    }
-  },
-  "create_attempt": 1,
-  "created_at_epoch": 1788097797,
-  "input_urls_via": "kie-file-upload",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B25-ty-vidish-izmenu-v-ego-pauze/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1788098507,
+  "file_upload_fallback": true,
   "file_upload": {
     "source": "prefer_local_reference",
     "upload_path": "excalibur-blog/hero",
