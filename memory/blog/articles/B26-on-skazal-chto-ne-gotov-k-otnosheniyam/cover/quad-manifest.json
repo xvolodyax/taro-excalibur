@@ -1,0 +1,64 @@
+{
+  "topic_id": "B26",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Он не готов, но не отпускает",
+  "cover_hook_highlight": "отпускает",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: он не готов к отношениям, но не отпускает",
+      "scene_hint": "same woman as Виктория.png, eyes green with slight hazel, new clothes not the white cami. Host LARGE left; tiny half-open door right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "почему он рядом"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Три причины, почему он произносит «не готов», но не исчезает",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Comparison: LEFT BAD «не готов» red X; RIGHT GOOD «рядом» green checks only: комфорт, снял ответственность, запасной вариант, страх отпустить. L→R, outcome: рядом без обязательств. NO people/faces. #FFF",
+      "alt": "Схема трёх причин, почему он говорит «не готов», но не исчезает",
+      "labels": [
+        "эмоциональный комфорт",
+        "снял ответственность",
+        "запасной вариант",
+        "страх отпустить"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Маркеры поступков: как отличить временное сомнение от удобной игры",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Workflow L→R: чаты вместо встреч → уход от планов → закрытые двери → качели внимания. Outcome: удобная игра, не сомнение. Paper, gold. NO people/faces. #FFF",
+      "alt": "Схема маркеров: как отличить сомнение от удобной игры",
+      "labels": [
+        "чаты вместо встреч",
+        "уход от планов",
+        "закрытые двери",
+        "качели внимания"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Ловушка ожидания: почему надежда «он изменится» затягивает",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist: бег по кругу; баланс вложений; потеря времени; трезвый взгляд. Outcome: надежда «изменится» затягивает. Gold ticks, paper/tape. NO people/faces/emoji/silhouettes. #FFF",
+      "alt": "Чеклист ловушки ожидания: почему надежда «он изменится» затягивает",
+      "labels": [
+        "бег по кругу",
+        "баланс вложений",
+        "потеря времени",
+        "трезвый взгляд"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
