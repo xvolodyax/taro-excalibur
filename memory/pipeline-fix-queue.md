@@ -232,3 +232,43 @@ checks_run:
 - `python3 scripts/excalibur_blog_doctor.py` (errors=0)
 - `rg` blog-card__ / hall_token_no_patch / не переписывать / 20:40
 commit: f9cb57d
+
+## INC-20260830-1404-publish-site-quality-409-b25
+status: open
+run_date: 2026-08-30
+role: excalibur-blog-publish
+topic_id: B25
+article_dir: memory/blog/articles/B25-ty-vidish-izmenu-v-ego-pauze
+severity: blocker
+category: publish
+
+### What went wrong
+- GATE PASS + env-check `token_configured=true` + dry-run PASS. Upload 201, `article_id=34`.
+- PATCH excerpt 403 → `excerpt_clear_skipped=hall_token_no_patch` (не FAIL, INC-0650).
+- First approve 409 «Сначала статья должна пройти проверку качества».
+- Admin GET: `status=quality_review`, `quality_score=78`.
+- Warnings: «Нет конкретного примера или разбора ситуации»; SEO title 30–70.
+- Stored body already has H2 «Разбор ситуации» (idx 3222), «конкретный пример» (3533), `15:45` / `16:30` (3642 / 4090), opening «Воскресенье». No «Возьмём:» / «Сцена» / `20:40`.
+- Ingest set `seo_title` to the short H1 (28 chars) and ignored meta `seo_title` 30–70. SITE token PATCH seo_title 403.
+- Approve skip flags ignored. Direct publish 409 «только одобренную». Live GET 404.
+
+### How the agent recovered this run
+- Did not rewrite Sol / opening / `article.html`.
+- Did not add «Возьмём:» / «Сцена» or B23 `20:40`.
+- Did not treat first-upload quality 409 as resume-already-live.
+- Wrote `site-publish-result.json` without secrets / live host. Ledger not updated.
+
+### Durable fix needed before next run
+- Site ingest must honor `skip_quality_review` on excalibur upload, **or** quality must scan full `body_html` (markers after CTA, idx 3k+), not excerpt / opening-only.
+- Ingest must keep meta `seo_title` (30–70), not replace it with H1.
+- SITE token cannot PATCH; do not ask Publish to move H2 into the opening.
+
+### Suggested files to inspect/change
+- `shared/excalibur-site-publish-contract.md`
+- site ingest / quality checker (not in this repo)
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
