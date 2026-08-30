@@ -27,10 +27,10 @@
     "cover/inline-02.png",
     "cover/inline-03.png"
   ],
-  "tgz_bytes": 3363216,
+  "tgz_bytes": 3363131,
   "upload_status": 201,
   "article_id": "34",
-  "article_version": 2,
+  "article_version": 3,
   "resumed": false,
   "resume_article_id_used": false,
   "upsert_same_id": true,
@@ -40,20 +40,23 @@
   "approve_detail": "Сначала статья должна пройти проверку качества",
   "reason_detail": "Сначала статья должна пройти проверку качества",
   "article_status": "quality_review",
-  "quality_score": 78,
+  "quality_score": 88,
   "quality_warnings": [
-    "Нет конкретного примера или разбора ситуации",
-    "SEO title рекомендуется держать в диапазоне 30–70 символов"
+    "Нет конкретного примера или разбора ситуации"
   ],
-  "excerpt_len": 216,
-  "excerpt_has_concrete_example": false,
+  "excerpt_len": 218,
+  "excerpt_has_concrete_example": true,
+  "excerpt_has_situation_phrase": true,
   "excerpt_has_situation_h2": false,
+  "excerpt_220": "Конкретный пример. Воскресенье, 15:45: ты пишешь ему про встречу. В 16:00 прочитано, ответа нет. В 16:20 сухое «Не получится, занят», к 16:30 в голове уже другая. Это разбор ситуации по минутам, не приговор. Сухое «ок»",
   "body_markers_present": {
-    "Разбор ситуации": 3184,
-    "конкретный пример": 253,
-    "15:45": 16,
-    "16:30": 184,
-    "Воскресенье": 3
+    "Разбор ситуации": 2990,
+    "конкретный пример": 3301,
+    "Конкретный пример": 3,
+    "разбор ситуации": 170,
+    "15:45": 35,
+    "16:30": 139,
+    "<h2>Разбор ситуации</h2>": 2986
   },
   "forbidden_labels_absent": [
     "Возьмём",
@@ -65,6 +68,6 @@
   "live_status": 404,
   "live_ok": false,
   "ledger_updated": false,
-  "seo_title_ingest": "h1_28_chars",
-  "note": "New upload upserted article 34 v2. First p now has minute example + «конкретный пример» at idx 253, before CTA. Site excerpt is 216 chars and does not include the phrase. Quality still 78. Did not rewrite Sol. PATCH seo_title/excerpt 403."
+  "seo_title_ingest": "h1_35_chars",
+  "note": "Third upload upserted article 34 v3. H1 35 chars; SEO title warning gone; score 78→88. Site excerpt 218 chars now has «Конкретный пример», «разбор ситуации», 15:45–16:30. Quality warning still «нет примера». Approve 409. Live 404. Did not rewrite Sol. PATCH excerpt 403."
 }

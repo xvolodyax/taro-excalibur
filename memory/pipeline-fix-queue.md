@@ -316,3 +316,47 @@ category: publish
 
 ### Fixer resolution
 - pending
+
+### Follow-up same day (14:16, third upload)
+- New POST upload (not `--resume-article-id`: resume skips body) upserted `article_id=34` v3, 201.
+- First `<p>` now starts with «Конкретный пример»; 15:45–16:30 and «разбор ситуации» are inside the site excerpt (~218 chars). H1 is 35 chars (`…сейчас`).
+- Quality 78→88: SEO title warning gone. Remaining warning still «Нет конкретного примера или разбора ситуации».
+- Approve 409; live GET 404. See INC-20260830-1416-publish-quality-88-still-409-b25.
+
+## INC-20260830-1416-publish-quality-88-still-409-b25
+status: open
+run_date: 2026-08-30
+role: excalibur-blog-publish
+topic_id: B25
+article_dir: memory/blog/articles/B25-ty-vidish-izmenu-v-ego-pauze
+severity: blocker
+category: publish
+
+### What went wrong
+- Third upload after Sol put markers into the first 216 chars of the first `<p>`. Did not edit `article.html`.
+- POST upload 201, upsert `article_id=34` `version=3`. PATCH excerpt 403 = not FAIL.
+- Admin: `status=quality_review`, `quality_score=88` (was 78). SEO 30–70 warning gone (H1 35).
+- Site excerpt 218 chars **has** «Конкретный пример», «разбор ситуации», `15:45` / `16:30`.
+- Quality warning **still** «Нет конкретного примера или разбора ситуации». H2 «Разбор ситуации» is at body idx ~2986, outside excerpt.
+- Approve 409. SITE token quality-review endpoints 403. Live GET 404. Ledger not updated.
+- Poll approve 60s: score stays 88, no auto-pass.
+
+### How the agent recovered this run
+- Did not rewrite Sol / add «Возьмём:» / «Сцена» / B23 `20:40`.
+- Did not treat quality 409 as already-live (article not live).
+- Wrote `site-publish-result.json` without secrets / live host.
+
+### Durable fix needed before next run
+- Site quality must accept in-excerpt «Конкретный пример» + «разбор ситуации» + clock, **or** scan H2 in full `body_html`.
+- Honor `skip_quality_review` on excalibur upload.
+- If the checker wants an H2 inside the 216-char excerpt window, that is a site bug: Publish must not move H2 into the opening.
+
+### Suggested files to inspect/change
+- `shared/excalibur-site-publish-contract.md`
+- site ingest / quality checker (not in this repo)
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
