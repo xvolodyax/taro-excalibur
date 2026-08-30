@@ -13,6 +13,16 @@ import sys
 from pathlib import Path
 from typing import Any
 
+_SCRIPTS = Path(__file__).resolve().parent
+if str(_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_SCRIPTS))
+
+from excalibur_blog_opening_editorial import (  # noqa: E402
+    article_html_double_lead_errors,
+    has_vozmem_label,
+    meta_on_page_excerpt_errors,
+)
+
 
 # Calque of "API" that reads as machine Russian, not Lebedev.
 STYK_API_RE = re.compile(
@@ -85,14 +95,23 @@ def check_article(article_dir: Path) -> dict[str, Any]:
         errors.append("article.meta.json missing")
 
     if html_path.is_file():
-        html = _plain(html_path.read_text(encoding="utf-8"))
+        raw_html = html_path.read_text(encoding="utf-8")
+        html = _plain(raw_html)
         head = html[:900]
         for h in _hits(head):
             errors.append(f"article.html-head: {h}")
         if STYK_API_RE.search(html):
             errors.append("article.html: api-calque-styk")
+        if has_vozmem_label(head):
+            errors.append("article.html-head: vozmem-label")
+        errors.extend(article_html_double_lead_errors(raw_html))
+        errors.extend(meta_on_page_excerpt_errors(meta, raw_html))
     else:
         errors.append("article.html missing")
+
+    writer_path = article_dir / "drafts" / "writer.html"
+    if writer_path.is_file() and has_vozmem_label(writer_path.read_text(encoding="utf-8")):
+        errors.append("drafts/writer.html: vozmem-label")
 
     status = "PASS" if not errors else "BLOCK"
     return {

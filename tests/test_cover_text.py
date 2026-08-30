@@ -93,6 +93,43 @@ class CoverTextTest(unittest.TestCase):
         self.assertIn("«минус 20–30%»", prompt)
         self.assertIn("«новой модели нет»", prompt)
 
+    def test_prompt_does_not_default_bold_condensed_or_pink(self) -> None:
+        import sys
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from excalibur_blog_cover_quad_prompt import build_prompt
+
+        manifest = {
+            "cover_hook": "Он написал в одиннадцать",
+            "cover_hook_highlight": "написал",
+            "slots": {
+                "cover": {"scene_hint": "Victoria LARGE left", "sticky": "не отвечай сразу"},
+                "inline_1": {
+                    "visual_type": "infographic_card",
+                    "h2_anchor": "Сцена",
+                    "scene_hint": "fact card",
+                    "labels": ["две галочки", "пауза"],
+                },
+                "inline_2": {"visual_type": "comparison_table_ui", "h2_anchor": "Двери", "scene_hint": "two columns"},
+                "inline_3": {"visual_type": "workflow_diagram", "h2_anchor": "Шаг", "scene_hint": "arrows"},
+            },
+        }
+        empty = build_prompt(manifest, {}, {}, {}, {})
+        self.assertNotIn("big bold condensed", empty.lower())
+        self.assertNotIn("bold condensed cyrillic", empty.lower())
+        self.assertNotIn("#FF1493", empty)
+        self.assertIn("editorial display", empty.lower())
+
+        import json
+        design = json.loads((ROOT / "memory/cover/cover-design-code.json").read_text(encoding="utf-8"))
+        style = json.loads((ROOT / "memory/cover/quad-style-victoria-studio.json").read_text(encoding="utf-8"))
+        tenant = build_prompt(manifest, style, {}, {}, design)
+        lock_line = next(line for line in tenant.splitlines() if "COVER TEXT LOCK" in line)
+        self.assertNotIn("bold condensed", lock_line.lower())
+        self.assertNotIn("accent #FF1493", tenant)
+        self.assertIn("accent #C4A574", tenant)
+        self.assertIn("humanist sans", tenant.lower())
+        self.assertIn("Victoria", tenant)
+
     def test_overlay_script_removed(self) -> None:
         self.assertFalse(
             (ROOT / "scripts/excalibur_blog_cover_text_overlay.py").exists(),
