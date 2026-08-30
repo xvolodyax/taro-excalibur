@@ -272,3 +272,47 @@ category: publish
 
 ### Fixer resolution
 - pending
+
+### Follow-up same day (14:13, Sol return re-upload)
+- New upload (not `--resume-article-id`: resume skips body) upserted `article_id=34` v2, 201.
+- Opening now has minute example + «конкретный пример» at idx 253, before CTA. H2 «Разбор ситуации» at 3184.
+- Site `excerpt` is 216 chars of first `<p>` and does **not** contain «конкретный пример» (phrase at 253). Quality still 78, same warnings.
+- See INC-20260830-1413-publish-excerpt-window-b25.
+
+## INC-20260830-1413-publish-excerpt-window-b25
+status: open
+run_date: 2026-08-30
+role: excalibur-blog-publish
+topic_id: B25
+article_dir: memory/blog/articles/B25-ty-vidish-izmenu-v-ego-pauze
+severity: blocker
+category: publish
+
+### What went wrong
+- Re-upload after Sol return (minute example + «конкретный пример» in first `<p>` before CTA). Did not edit `article.html`.
+- `--resume-article-id` skips upload, so new POST upload. Site upserted same `article_id=34`, `version=2`.
+- PATCH excerpt 403 = not FAIL. Approve 409 quality. `quality_score=78` unchanged.
+- Admin: `excerpt` 216 chars has `15:45` / `16:30`, not «конкретный пример» (idx 253) and not «Разбор ситуации» (idx 3184).
+- Ingest still replaced meta `seo_title` (30–70) with H1 (28). PATCH seo_title 403.
+- Approve skip flags ignored. Live GET 404. Ledger not updated.
+
+### How the agent recovered this run
+- Did not rewrite Sol / add «Возьмём:» / «Сцена» / B23 `20:40`.
+- Did not treat quality 409 as resume-already-live (article not live).
+- Wrote `site-publish-result.json` without secrets / live host.
+
+### Durable fix needed before next run
+- Site quality must scan full `body_html` / `body_source`, not the 216-char excerpt window.
+- Ingest must keep meta `seo_title` 30–70.
+- Honor `skip_quality_review` on excalibur upload.
+- If Director returns Sol again: move «конкретный пример» into the first ~200 characters of the first `<p>` (currently 253, past excerpt 216). Publish still must not rewrite Sol.
+
+### Suggested files to inspect/change
+- `shared/excalibur-site-publish-contract.md`
+- site ingest / quality checker (not in this repo)
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending

@@ -27,28 +27,32 @@
     "cover/inline-02.png",
     "cover/inline-03.png"
   ],
-  "tgz_bytes": 3363326,
+  "tgz_bytes": 3363216,
   "upload_status": 201,
   "article_id": "34",
+  "article_version": 2,
+  "resumed": false,
+  "resume_article_id_used": false,
+  "upsert_same_id": true,
   "excerpt_clear_status": 403,
   "excerpt_clear_skipped": "hall_token_no_patch",
   "approve_status": 409,
   "approve_detail": "Сначала статья должна пройти проверку качества",
   "reason_detail": "Сначала статья должна пройти проверку качества",
-  "publish_direct_status": 409,
-  "publish_direct_detail": "Публиковать можно только одобренную статью",
-  "live_status": 404,
   "article_status": "quality_review",
   "quality_score": 78,
   "quality_warnings": [
     "Нет конкретного примера или разбора ситуации",
     "SEO title рекомендуется держать в диапазоне 30–70 символов"
   ],
+  "excerpt_len": 216,
+  "excerpt_has_concrete_example": false,
+  "excerpt_has_situation_h2": false,
   "body_markers_present": {
-    "Разбор ситуации": 3222,
-    "конкретный пример": 3533,
-    "15:45": 3642,
-    "16:30": 4090,
+    "Разбор ситуации": 3184,
+    "конкретный пример": 253,
+    "15:45": 16,
+    "16:30": 184,
     "Воскресенье": 3
   },
   "forbidden_labels_absent": [
@@ -58,5 +62,9 @@
     "20:40"
   ],
   "sol_rewritten": false,
-  "resume_article_id": "34"
+  "live_status": 404,
+  "live_ok": false,
+  "ledger_updated": false,
+  "seo_title_ingest": "h1_28_chars",
+  "note": "New upload upserted article 34 v2. First p now has minute example + «конкретный пример» at idx 253, before CTA. Site excerpt is 216 chars and does not include the phrase. Quality still 78. Did not rewrite Sol. PATCH seo_title/excerpt 403."
 }
