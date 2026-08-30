@@ -1,0 +1,50 @@
+{
+  "title": "Он не называет тебя своей",
+  "h1": "Он не называет тебя своей",
+  "slug": "on-ne-nazyvaet-tebya-svoej",
+  "topic_id": "B24",
+  "author_id": "victoria",
+  "article_mode": "B",
+  "description": "Разбираем психологию отношений без статуса, риски долгого ожидания и практические шаги для возвращения внутренней опоры.",
+  "meta_ab": {
+    "title_seo": "Он не называет тебя своей",
+    "title_ctr": "Он не называет тебя своей",
+    "title_aeo": "Он не называет тебя своей",
+    "description_seo": "Разбираем психологию отношений без статуса, риски долгого ожидания и практические шаги для возвращения внутренней опоры.",
+    "description_ctr": "Разбираем психологию отношений без статуса, риски долгого ожидания и практические шаги для возвращения внутренней опоры.",
+    "description_aeo": "Разбираем психологию отношений без статуса, риски долгого ожидания и практические шаги для возвращения внутренней опоры."
+  },
+  "theme_blocks": {
+    "faq": "skip",
+    "quiz": "skip",
+    "side_stickers": "skip",
+    "lead": "skip"
+  },
+  "date": "2026-08-30",
+  "pipeline_canon": "human-first-v2",
+  "editorial_swarm": false,
+  "excerpt": "",
+  "dek": "",
+  "lead": "",
+  "on_page_excerpt": false,
+  "skip_quality_review": true,
+  "auto_approve": true,
+  "excalibur_gate": "PASS",
+  "slot": "09:00",
+  "slot_date": "2026-08-30",
+  "cover_credit": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "placement": "above_image",
+    "render_in_png": false
+  },
+  "cover_face_canon": "memory/cover/assets/Виктория.png",
+  "cta_dzen": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776",
+    "https://max.ru/id531102974575_bot?startapp=ref_9BAD4149"
+  ],
+  "cta_site_only": [
+    "https://t.me/TodayTaro_bot?start=id8293683394",
+    "https://t.me/TodayTaro_bot?startapp=ref_361BDE45"
+  ]
+}
