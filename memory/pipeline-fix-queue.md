@@ -70,7 +70,7 @@ checks_run:
 - `python3 -m py_compile scripts/excalibur_blog_kie_gpt_image2_api.py`
 - `python3 -m unittest tests.test_cover_identity` (7 OK)
 - `rg` playground-blank / task id is blank / is_playground_blank_fail
-commit: pending-parent-commit
+commit: 8171326
 
 ## INC-20260830-1340-cover-prefer-local-site-base
 status: fixed
@@ -118,7 +118,7 @@ files_changed:
 checks_run:
 - `python3 -m unittest tests.test_cover_identity.CoverIdentityTest.test_kie_prefer_local_skips_site_base_expand`
 - `python3 -m unittest tests.test_cover_identity.CoverIdentityTest.test_kie_without_prefer_local_requires_site_base`
-commit: pending-parent-commit
+commit: 8171326
 
 ## INC-20260829-1753-cover-prompt-budget
 status: fixed
@@ -163,7 +163,7 @@ files_changed:
 checks_run:
 - `python3 -m unittest tests.test_cover_text.CoverTextTest.test_victoria_studio_short_hints_fit_prompt_budget`
 - B25 `cover/quad-mcp-batch.json` validation.prompt_chars=3126
-commit: pending-parent-commit
+commit: 8171326
 
 ## INC-20260830-0650-publish-site-quality-409
 status: fixed
