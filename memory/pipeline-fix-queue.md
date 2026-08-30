@@ -99,4 +99,4 @@ checks_run:
 - `python3 -m unittest tests.test_site_publish` (23 OK)
 - `python3 scripts/excalibur_blog_doctor.py` (errors=0)
 - `rg` blog-card__ / hall_token_no_patch / не переписывать / 20:40
-commit: pending-this-commit
+commit: f9cb57d
