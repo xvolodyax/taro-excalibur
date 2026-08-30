@@ -482,7 +482,7 @@ checks_run:
 - `python3 -m py_compile scripts/excalibur_blog_site_publish.py`
 - `python3 -m unittest tests.test_site_publish tests.test_writer_sol_pipeline` (28 OK)
 - `rg` needs_sol / return_sol_practice / Практика: чеклист шагов / Возьмём
-commit: pending
+commit: 3408cb4
 
 ## INC-20260830-1936-metrika-credentials-b26
 status: open
