@@ -66,8 +66,35 @@ class CoverIdentityTest(unittest.TestCase):
         errors = validate_prompt("Cover hero platinum blonde hair, ice-blonde, lighten the hair")
         self.assertTrue(errors)
 
+    def _write_kie_batch(
+        self, tmp: str, *, prefer_local: bool, local_reference: str
+    ) -> Path:
+        batch_path = Path(tmp) / "quad-mcp-batch.json"
+        batch_path.write_text(
+            json.dumps(
+                {
+                    "prefer_local_reference": prefer_local,
+                    "local_reference": local_reference,
+                    "jobs": [
+                        {
+                            "mcp_args": {
+                                "prompt": "test",
+                                "input_urls": [
+                                    "{{SITE_BASE}}/wp-content/uploads/excalibur/Виктория.png"
+                                ],
+                                "aspect_ratio": "16:9",
+                                "resolution": "2K",
+                            }
+                        }
+                    ],
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        return batch_path
+
     def test_kie_prefer_local_skips_site_base_expand(self) -> None:
-        import json
         import os
         import sys
         import tempfile
@@ -78,33 +105,66 @@ class CoverIdentityTest(unittest.TestCase):
         for key in ("PUBLIC_SITE_URL", "WP_SITE_URL", "WP_HOME"):
             os.environ.pop(key, None)
         with tempfile.TemporaryDirectory() as tmp:
-            batch_path = Path(tmp) / "quad-mcp-batch.json"
-            batch_path.write_text(
-                json.dumps(
-                    {
-                        "prefer_local_reference": True,
-                        "local_reference": "memory/cover/assets/Виктория.png",
-                        "jobs": [
-                            {
-                                "mcp_args": {
-                                    "prompt": "test",
-                                    "input_urls": [
-                                        "{{SITE_BASE}}/wp-content/uploads/excalibur/Виктория.png"
-                                    ],
-                                    "aspect_ratio": "16:9",
-                                    "resolution": "2K",
-                                }
-                            }
-                        ],
-                    },
-                    ensure_ascii=False,
-                ),
-                encoding="utf-8",
+            batch_path = self._write_kie_batch(
+                tmp,
+                prefer_local=True,
+                local_reference="memory/cover/assets/Виктория.png",
             )
             args = batch_mcp_args(batch_path)
             self.assertEqual(
                 args["input_urls"],
                 ["{{SITE_BASE}}/wp-content/uploads/excalibur/Виктория.png"],
+            )
+
+    def test_kie_without_prefer_local_requires_site_base(self) -> None:
+        import os
+        import sys
+        import tempfile
+
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from excalibur_blog_kie_gpt_image2_api import KieApiError, batch_mcp_args
+
+        for key in ("PUBLIC_SITE_URL", "WP_SITE_URL", "WP_HOME"):
+            os.environ.pop(key, None)
+        with tempfile.TemporaryDirectory() as tmp:
+            batch_path = self._write_kie_batch(
+                tmp, prefer_local=False, local_reference=""
+            )
+            with self.assertRaises(KieApiError) as ctx:
+                batch_mcp_args(batch_path)
+            self.assertIn("{{SITE_BASE}}", str(ctx.exception))
+            self.assertIn("unset", str(ctx.exception))
+
+    def test_kie_playground_blank_is_retryable_infra_not_sensitive(self) -> None:
+        import sys
+
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from excalibur_blog_kie_gpt_image2_api import (
+            classify_record_info,
+            is_playground_blank_fail,
+            is_retryable_server_fail,
+            is_sensitive_content_fail,
+            retry_kind_for_server_fail,
+            KieRetryableFail,
+        )
+
+        msg = "generate playground failed, task id is blank"
+        self.assertTrue(is_playground_blank_fail(422, msg))
+        self.assertTrue(is_retryable_server_fail(422, msg))
+        self.assertFalse(is_sensitive_content_fail(422, msg))
+        self.assertEqual(retry_kind_for_server_fail(422, msg), "playground_blank")
+
+        sensitive = "The input or output was flagged as sensitive"
+        self.assertFalse(is_playground_blank_fail(422, sensitive))
+        self.assertFalse(is_retryable_server_fail(422, sensitive))
+        self.assertTrue(is_sensitive_content_fail(422, sensitive))
+        self.assertEqual(retry_kind_for_server_fail(422, sensitive), "server_500")
+
+        self.assertTrue(is_retryable_server_fail(500, "try again later"))
+        with self.assertRaises(KieRetryableFail):
+            classify_record_info(
+                {"state": "fail", "failCode": 422, "failMsg": msg},
+                "task-blank",
             )
 
 

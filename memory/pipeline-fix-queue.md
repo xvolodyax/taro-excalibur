@@ -3,7 +3,7 @@
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
 ## INC-20260830-1339-cover-kie-422-playground
-status: open
+status: needs-human
 run_date: 2026-08-30
 role: excalibur-blog-cover
 topic_id: B25
@@ -41,10 +41,39 @@ category: api
 - none recorded
 
 ### Fixer resolution
-- pending
+status: needs-human
+fixed_at: 2026-08-30
+reason:
+- Kie GPT Image 2 playground returns 422 `generate playground failed, task id is blank`
+  on i2i and t2i (~1.5s). Credits 200. Not article-prompt / not sensitive.
+  This repo cannot repair Kie servers.
+needed_decision_or_secret:
+- Wait until Kie playground is healthy, then Director same-batch on unchanged
+  `quad-mcp-batch.json` and Cover apply-only. Do not invent a third Cover create
+  and do not soften hook/H2 for this failMsg.
+fix_summary:
+- Repo-fix only: playground-blank is infra like 500×2 (script max-1 recreate,
+  Cover no soften / no third create, Director same-batch when playground live,
+  then apply-only). Not marked fixed as «починили Kie».
+files_changed:
+- `shared/kie-gpt-image-api-contract.md`
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `agents/excalibur-blog-cover.md`
+- `.cursor/agents/excalibur-blog-cover.md`
+- `skills/cover-excalibur-blog/SKILL.md`
+- `.cursor/skills/cover-excalibur-blog/SKILL.md`
+- `skills/director-excalibur-blog/SKILL.md`
+- `.cursor/skills/director-excalibur-blog/SKILL.md`
+- `tests/test_cover_identity.py`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `python3 -m unittest tests.test_cover_identity` (7 OK)
+- `rg` playground-blank / task id is blank / is_playground_blank_fail
+commit: pending-parent-commit
 
 ## INC-20260830-1340-cover-prefer-local-site-base
-status: open
+status: fixed
 run_date: 2026-08-30
 role: excalibur-blog-cover
 topic_id: B25
@@ -74,10 +103,25 @@ category: script
 - none recorded
 
 ### Fixer resolution
-- pending
+status: fixed
+fixed_at: 2026-08-30
+fix_summary:
+- Confirmed `batch_mcp_args` skips `{{SITE_BASE}}` expand when
+  `prefer_local_reference` + `local_reference` are set. Cover i2i from
+  `Виктория.png` does not need live `PUBLIC_SITE_URL`.
+- Kept existing unit; added negative: without prefer_local, unset site
+  base still raises.
+files_changed:
+- `scripts/excalibur_blog_kie_gpt_image2_api.py` (already on branch)
+- `tests/test_cover_identity.py`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m unittest tests.test_cover_identity.CoverIdentityTest.test_kie_prefer_local_skips_site_base_expand`
+- `python3 -m unittest tests.test_cover_identity.CoverIdentityTest.test_kie_without_prefer_local_requires_site_base`
+commit: pending-parent-commit
 
 ## INC-20260829-1753-cover-prompt-budget
-status: open
+status: fixed
 run_date: 2026-08-29
 role: excalibur-blog-cover
 topic_id: B23
@@ -105,7 +149,21 @@ category: script
 - none recorded
 
 ### Fixer resolution
-- pending
+status: fixed
+fixed_at: 2026-08-30
+fix_summary:
+- Shared lock reclaim already in `excalibur_blog_cover_quad_prompt.py`
+  (B25 batch `prompt_chars` 3126). Added unit:
+  victoria-studio + 4 short hints + 4 labels stays ≤3500.
+- Cover still must not empty `scene_hint` if budget fails — reclaim shared
+  style/ban text.
+files_changed:
+- `tests/test_cover_text.py`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m unittest tests.test_cover_text.CoverTextTest.test_victoria_studio_short_hints_fit_prompt_budget`
+- B25 `cover/quad-mcp-batch.json` validation.prompt_chars=3126
+commit: pending-parent-commit
 
 ## INC-20260830-0650-publish-site-quality-409
 status: fixed
