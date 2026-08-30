@@ -1,0 +1,143 @@
+{
+  "agent": "excalibur-blog-cover-quad-split",
+  "status": "PASS",
+  "manifest": "cover/quad-manifest.json",
+  "split": {
+    "source_canvas": "memory/blog/articles/B24-on-ne-nazyvaet-tebya-svoej/cover/canvas-quad.png",
+    "source_size_px": [
+      2688,
+      1520
+    ],
+    "panel_size_px": [
+      1340,
+      756
+    ],
+    "split_meta": {
+      "split_mode": "gutter_detect",
+      "h_gutter_px": {
+        "start": 756,
+        "end": 766
+      },
+      "v_gutter_px": {
+        "start": 1340,
+        "end": 1348
+      },
+      "requested_mode": "auto",
+      "gutter_quality": {
+        "h_center_offset_px": 1.0,
+        "v_center_offset_px": 0.0,
+        "max_aspect_crop_loss": 0.0,
+        "per_panel_crop_loss": {
+          "top_left": 0.0,
+          "top_right": 0.0,
+          "bottom_left": 0.0,
+          "bottom_right": 0.0
+        },
+        "reject_reason": null
+      }
+    },
+    "output_size_px": [
+      1200,
+      675
+    ],
+    "outputs": {
+      "cover": {
+        "file": "cover/cover.png",
+        "quadrant": "top_left",
+        "box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1340,
+          "bottom": 756
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1340,
+          "bottom": 756
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Он не называет тебя своей: вместе только наедине",
+        "h2_anchor": null
+      },
+      "inline_1": {
+        "file": "cover/inline-01.png",
+        "quadrant": "top_right",
+        "box_px": {
+          "left": 1348,
+          "top": 0,
+          "right": 2688,
+          "bottom": 756
+        },
+        "raw_box_px": {
+          "left": 1348,
+          "top": 0,
+          "right": 2688,
+          "bottom": 756
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Схема: тепло в общении не равно решению назвать своей",
+        "h2_anchor": "«Не хочу потерять» и «выбираю тебя»: почему тепло не равно решению"
+      },
+      "inline_2": {
+        "file": "cover/inline-02.png",
+        "quadrant": "bottom_left",
+        "box_px": {
+          "left": 0,
+          "top": 766,
+          "right": 1340,
+          "bottom": 1520
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 766,
+          "right": 1340,
+          "bottom": 1520
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Как неделя молчания о статусе усиливает туман",
+        "h2_anchor": "Неделя молчания о статусе: почему ожидание только усиливает туман"
+      },
+      "inline_3": {
+        "file": "cover/inline-03.png",
+        "quadrant": "bottom_right",
+        "box_px": {
+          "left": 1348,
+          "top": 766,
+          "right": 2688,
+          "bottom": 1520
+        },
+        "raw_box_px": {
+          "left": 1348,
+          "top": 766,
+          "right": 2688,
+          "bottom": 1520
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Проверка реальности, когда тебя нет в его круге",
+        "h2_anchor": "Жизнь вне его круга: цена отношений без социальной опоры"
+      }
+    }
+  },
+  "html_inject": [
+    "injected inline_1 after H2 — «Не хочу потерять» и «выбираю тебя»: почему тепло не равно решению",
+    "injected inline_2 after H2 — Неделя молчания о статусе: почему ожидание только усиливает туман",
+    "injected inline_3 after H2 — Жизнь вне его круга: цена отношений без социальной опоры"
+  ]
+}

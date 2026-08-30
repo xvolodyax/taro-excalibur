@@ -1,0 +1,17 @@
+{
+  "task_id": "c5926b3f8207acd9b58cbdda6e0cfb8d",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 2,
+  "result_path": "memory/blog/articles/B24-on-ne-nazyvaet-tebya-svoej/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1788071695,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "Виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}
