@@ -66,6 +66,47 @@ class CoverIdentityTest(unittest.TestCase):
         errors = validate_prompt("Cover hero platinum blonde hair, ice-blonde, lighten the hair")
         self.assertTrue(errors)
 
+    def test_kie_prefer_local_skips_site_base_expand(self) -> None:
+        import json
+        import os
+        import sys
+        import tempfile
+
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from excalibur_blog_kie_gpt_image2_api import batch_mcp_args
+
+        for key in ("PUBLIC_SITE_URL", "WP_SITE_URL", "WP_HOME"):
+            os.environ.pop(key, None)
+        with tempfile.TemporaryDirectory() as tmp:
+            batch_path = Path(tmp) / "quad-mcp-batch.json"
+            batch_path.write_text(
+                json.dumps(
+                    {
+                        "prefer_local_reference": True,
+                        "local_reference": "memory/cover/assets/Виктория.png",
+                        "jobs": [
+                            {
+                                "mcp_args": {
+                                    "prompt": "test",
+                                    "input_urls": [
+                                        "{{SITE_BASE}}/wp-content/uploads/excalibur/Виктория.png"
+                                    ],
+                                    "aspect_ratio": "16:9",
+                                    "resolution": "2K",
+                                }
+                            }
+                        ],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+            args = batch_mcp_args(batch_path)
+            self.assertEqual(
+                args["input_urls"],
+                ["{{SITE_BASE}}/wp-content/uploads/excalibur/Виктория.png"],
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -2,6 +2,38 @@
 
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
+## INC-20260830-1340-cover-prefer-local-site-base
+status: open
+run_date: 2026-08-30
+role: excalibur-blog-cover
+topic_id: B25
+article_dir: memory/blog/articles/B25-ty-vidish-izmenu-v-ego-pauze
+severity: medium
+category: script
+
+### What went wrong
+- Kie script exited before createTask: batch `input_urls` held `{{SITE_BASE}}` while `PUBLIC_SITE_URL` / `WP_SITE_URL` were unset.
+- Batch already had `prefer_local_reference` + local `Виктория.png`; those placeholders are replaced by File Upload and should not need a live site URL.
+
+### How the agent recovered this run
+- `batch_mcp_args` skips `{{SITE_BASE}}` expand when `prefer_local_reference` and `local_reference` are set.
+- No billed createTask happened on the failed first call. Re-ran the same Kie script once after the skip.
+- Unit: `test_kie_prefer_local_skips_site_base_expand`.
+
+### Durable fix needed before next run
+- Keep prefer-local skip so Cover i2i from `Виктория.png` works without live site env.
+- Do not require Cover to invent a live host or rewrite batch `input_urls`.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `tests/test_cover_identity.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260829-1753-cover-prompt-budget
 status: open
 run_date: 2026-08-29
