@@ -35,12 +35,23 @@ class WriterSolContractsTest(unittest.TestCase):
         self.assertIn("drafts/writer.html", skill)
         self.assertIn("Sol", skill)
         self.assertNotIn("финальный article.html целиком", skill.lower())
+        self.assertIn("Практика: чеклист шагов", skill)
+        self.assertIn("Возьмём:", skill)
+        prompt = (ROOT / "shared/writer-master-prompt.md").read_text(encoding="utf-8")
+        self.assertIn("Практика: чеклист шагов", prompt)
+        self.assertIn("конкретный пример: ЧЧ:ММ", prompt)
+        sol = (ROOT / "skills/sol-excalibur-blog/SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("Практика: чеклист шагов", sol)
+        self.assertIn("Возьмём:", sol)
 
     def test_director_orders_sol_before_stamp(self) -> None:
         d = (ROOT / "skills/director-excalibur-blog/SKILL.md").read_text(encoding="utf-8")
         self.assertIn("excalibur-blog-sol", d)
         self.assertLess(d.find("### 3 Writer"), d.find("### 3b Sol"))
         self.assertLess(d.find("### 3b Sol"), d.find("### 4 Stamp"))
+        self.assertIn("needs_sol", d)
+        self.assertIn("Практика: чеклист шагов", d)
+        self.assertIn("Возьмём:", d)
 
     def test_soul_owned_by_sol(self) -> None:
         soul = (ROOT / "shared/SOUL.md").read_text(encoding="utf-8")

@@ -1,0 +1,50 @@
+{
+  "topic_id": "B26",
+  "slug": "on-skazal-chto-ne-gotov-k-otnosheniyam",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: он не готов к отношениям, но не отпускает",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-30T19:29:00+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: он не готов к отношениям, но не отпускает",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема трёх причин, почему он говорит «не готов», но не исчезает",
+      "h2_anchor": "Три причины, почему он произносит «не готов», но не исчезает",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема маркеров: как отличить сомнение от удобной игры",
+      "h2_anchor": "Маркеры поступков: как отличить временное сомнение от удобной игры",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист ловушки ожидания: почему надежда «он изменится» затягивает",
+      "h2_anchor": "Ловушка ожидания: почему надежда «он изменится» затягивает",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B26",
+  "slug": "on-skazal-chto-ne-gotov-k-otnosheniyam",
+  "article_dir": "memory/blog/articles/B26-on-skazal-chto-ne-gotov-k-otnosheniyam",
+  "research_date": "2026-08-30",
+  "status": "PASS",
+  "verdict": "PASS",
+  "blocker": null,
+  "fresh_signal": true,
+  "fresh_signal_kind": "dzen_channel_this_week",
+  "fresh_signal_week": "2026-W35",
+  "fresh_signal_summary": "Чужой таро-канал 2026-08-29 (Фарно): развилка «отношения или игра»; соседний канал ~27.08 о намерениях без плана; новость 2026-08-27 Петербург.Эксперт «ветер вместо дела». Наш Дзен/листинг эту развилку не закрыли.",
+  "fresh_signal_urls": [
+    "https://dzen.ru/a/alnXbF3jemAbmJMl",
+    "https://dzen.ru/a/anWEOmOqDkSpabvH",
+    "https://peterburg.expert/news/2026/8/27/12067"
+  ],
+  "scout_signal_checked": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/",
+    "https://dzen.ru/a/alnXbF3jemAbmJMl",
+    "https://dzen.ru/a/akOCfov8FxUpKzg-"
+  ],
+  "rf_deny": false,
+  "wordstat": {
+    "status": "OK",
+    "region": "225",
+    "accessed_at": "2026-08-30",
+    "calls": 7,
+    "fattest_not_h1": "отношения без обязательств",
+    "phrases": [
+      {"phrase": "он не готов к отношениям", "totalCount": 567},
+      {"phrase": "не готов к серьезным отношениям", "totalCount": 709},
+      {"phrase": "хочет ли он отношений", "totalCount": 2261},
+      {"phrase": "отношения без обязательств", "totalCount": 2789},
+      {"phrase": "предложил отношения без обязательств", "totalCount": 176},
+      {"phrase": "он играет со мной", "totalCount": 2263, "note": "top resolves to «он играл со мной»; noisy"},
+      {"phrase": "хочет ли он отношений таро", "totalCount": 161}
+    ]
+  },
+  "overlap": [
+    "B24 Он не называет тебя своей — статус/ярлык",
+    "B25 Ты видишь измену в его паузе сейчас — измена",
+    "LIVE Пауза или конец? — пауза без его фразы",
+    "B14 / LIVE Он охладел — тон, не сказанный стоп",
+    "LIVE Что он чувствует / Что он скрывает — другой вопрос",
+    "карта дня и 21:21 опрос — не этот слот"
+  ],
+  "cta": {
+    "slot": "evening-2026-08-30",
+    "product": "bot",
+    "two_doors": "triplet / cross in bot, not bot vs VK app",
+    "dzen_no_telegram": true
+  },
+  "notes_path": "memory/blog/articles/B26-on-skazal-chto-ne-gotov-k-otnosheniyam/research-notes.md",
+  "incident_report": "none"
+}

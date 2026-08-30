@@ -81,8 +81,11 @@ Cover-агент генерирует **один** quad-холст 2×2 (Kie GPT
 0. **Человеческие подписи alt:** Категорически запрещено заполнять поле `alt` техническим описанием нейросети (*«Ведущий в белом худи...»*, *«крошечный значок...»*). `alt` заносится строго по смыслу темы и раздела H2.
 1. **ONE IMAGE JOB** — один холст 2×2 и **один** успешный billed createTask.
    Quality-redo (host/sticky/style после PNG) **запрещён**, кроме явного запроса владельца (1 billed redo). Recreate только
-   при ошибке Kie API (500/400/422) или одном pre-taskId Connection reset
-   (тот же batch; INC-20260725-1631). **Запрещено** 4 отдельных вызова.
+   при ошибке Kie API (500 / 400 / sensitive-422 / playground-blank) или одном
+   pre-taskId Connection reset (тот же batch; INC-20260725-1631).
+   422 `generate playground failed, task id is blank` = infra как 500: скрипт
+   max-1, Cover **не** soften и **не** третий create (INC-20260830-1339).
+   **Запрещено** 4 отдельных вызова.
 2. Image API/MCP **обязан** иметь `input_urls: [reference_url_hosted]` (Image to Image).
 3. **Cover (top-left):** сильная редакционная композиция с обязательным
    reference host: то же лицо, белое плотное худи heavyweight fabric,
@@ -321,7 +324,7 @@ summary: ...
 | Код                | Причина                                             |
 | ------------------ | --------------------------------------------------- |
 | COVER HERO BLOCKER | нет `reference_url_hosted` или image call без `input_urls` |
-| KIE API BLOCKER | нет `KIE_API_KEY`, non-retryable fail, 500 retries exhausted, pre-taskId Connection reset exhausted (один retry), image-fetch File Upload fallback exhausted, sensitive 422 после одного soften+recreate, polling timeout или нет resultUrls. После 500×2 exhausted: fragment+incident с `summary`: batch ready for Director same-batch re-run — Cover **не** invent'ит третий create; Director Kie re-run → Cover apply-only (не quality-redo / не MCP) |
+| KIE API BLOCKER | нет `KIE_API_KEY`, non-retryable fail, 500 / playground-blank retries exhausted, pre-taskId Connection reset exhausted (один retry), image-fetch File Upload fallback exhausted, sensitive 422 после одного soften+recreate, polling timeout или нет resultUrls. После 500×2 **или** 422 playground-blank exhausted: fragment+incident с `summary`: batch ready for Director same-batch re-run when playground healthy — Cover **не** invent'ит третий create и **не** soften (playground-blank ≠ sensitive); Director Kie re-run → Cover apply-only (не quality-redo / не MCP). Credits 200 ≠ playground healthy. |
 | QUAD SPLIT BLOCKER | нет canvas / не 2×2 16:9 / нет alt в manifest       |
 | COVER BLOCKER      | 4 отдельных image jobs                              |
 | COVER BLOCKER      | отсутствует одна из трёх inline, её H2/anchor или injection |

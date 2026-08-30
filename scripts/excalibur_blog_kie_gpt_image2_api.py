@@ -17,6 +17,12 @@ Errno 104), the script waits and retries createTask once with the same batch.
 On poll-window timeout (still waiting/generating past --max-wait): one final
 recordInfo before KIE API BLOCKER. If that call shows terminal failCode=500 /
 «try again later», the existing max-1 recreate path runs (INC-20260730-0834).
+
+On terminal failCode=422 / «generate playground failed, task id is blank»
+(Kie GPT Image 2 playground/tempfile infra, not sensitive content): same
+max-1 recreate as 500. Cover must not soften the prompt. After exhausted:
+Director same-batch when playground is healthy, then Cover apply-only
+(INC-20260830-1339). Credits 200 does not mean playground is healthy.
 """
 
 from __future__ import annotations
@@ -89,16 +95,47 @@ def _normalize_fail_code(fail_code: Any) -> str:
     return code_s
 
 
+def is_playground_blank_fail(fail_code: Any, fail_msg: Any) -> bool:
+    """True for Kie GPT Image 2 playground infra: 422 + task-id-blank.
+
+    Not the sensitive-content 422 path. Instant fail (~1–2s) on i2i and t2i
+    while credits may still look OK (INC-20260830-1339 / B25).
+    """
+    msg_s = str(fail_msg if fail_msg is not None else "").strip().lower()
+    if "generate playground failed" in msg_s and "task id is blank" in msg_s:
+        return True
+    code_s = _normalize_fail_code(fail_code)
+    return code_s == "422" and "task id is blank" in msg_s
+
+
+def is_sensitive_content_fail(fail_code: Any, fail_msg: Any) -> bool:
+    """True for content-flagged 422. Playground-blank is infra, not this."""
+    if is_playground_blank_fail(fail_code, fail_msg):
+        return False
+    code_s = _normalize_fail_code(fail_code)
+    msg_s = str(fail_msg if fail_msg is not None else "").strip().lower()
+    return code_s == "422" and "sensitive" in msg_s
+
+
+def retry_kind_for_server_fail(fail_code: Any, fail_msg: Any) -> str:
+    if is_playground_blank_fail(fail_code, fail_msg):
+        return "playground_blank"
+    return "server_500"
+
+
 def is_retryable_server_fail(fail_code: Any, fail_msg: Any) -> bool:
-    """True for transient Kie server fails: failCode=500 and/or «try again later».
+    """True for transient Kie server fails: 500, «try again later», playground-blank.
 
     Does not apply to waiting/generating — only terminal state=fail.
+    Does not apply to 422 «sensitive» (agent soften path, not script retry).
     """
     code_s = _normalize_fail_code(fail_code)
     msg_s = str(fail_msg if fail_msg is not None else "").strip().lower()
     if code_s == "500":
         return True
     if "try again later" in msg_s:
+        return True
+    if is_playground_blank_fail(fail_code, fail_msg):
         return True
     return False
 
@@ -238,7 +275,15 @@ def batch_mcp_args(batch_path: Path) -> dict[str, Any]:
         raise KieApiError("Missing prompt in jobs[0].mcp_args")
     if not isinstance(input_urls, list) or not input_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args")
-    expanded_urls = expand_input_urls(input_urls)
+    # Local i2i plate (Виктория.png) is uploaded before createTask. Placeholder
+    # {{SITE_BASE}} URLs must not require PUBLIC_SITE_URL — they are replaced.
+    prefer_local = bool(batch.get("prefer_local_reference")) and bool(
+        str(batch.get("local_reference") or "").strip()
+    )
+    if prefer_local:
+        expanded_urls = [str(u).strip() for u in input_urls if str(u).strip()]
+    else:
+        expanded_urls = expand_input_urls(input_urls)
     if not expanded_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args after expand")
     return {
@@ -834,20 +879,23 @@ def main() -> int:
                 create_response = None
                 continue
             except KieRetryableFail as exc:
+                kind = retry_kind_for_server_fail(exc.fail_code, exc.fail_msg)
                 if remaining_create_retries <= 0:
                     raise KieApiError(
                         f"Kie task failed after create retries exhausted: "
                         f"failCode={exc.fail_code} failMsg={exc.fail_msg} "
-                        f"task_id={exc.task_id}. "
+                        f"task_id={exc.task_id} retry_kind={kind}. "
                         f"Batch ready for Director same-batch re-run on unchanged "
-                        f"quad-mcp-batch.json when Kie healthy; Cover must NOT invent "
-                        f"a third createTask / raise --max-create-retries / softен / MCP "
-                        f"(apply-only after Director success)."
+                        f"quad-mcp-batch.json when Kie playground is healthy; Cover must "
+                        f"NOT invent a third createTask / raise --max-create-retries / "
+                        f"soften prompt / MCP (apply-only after Director success). "
+                        f"422 playground-blank is infra like 500×2, not sensitive."
                     ) from exc
                 wait_s = max(0, int(args.retry_wait))
                 print(
                     f"Kie retryable terminal fail on task_id={exc.task_id}: "
-                    f"failCode={exc.fail_code} failMsg={exc.fail_msg}; "
+                    f"failCode={exc.fail_code} failMsg={exc.fail_msg} "
+                    f"retry_kind={kind}; "
                     f"waiting {wait_s}s then new createTask "
                     f"(create retries left={remaining_create_retries})",
                     flush=True,
@@ -862,7 +910,7 @@ def main() -> int:
                         "failCode": exc.fail_code,
                         "failMsg": exc.fail_msg,
                         "retryable": True,
-                        "retry_kind": "server_500",
+                        "retry_kind": kind,
                         "create_retries_left": remaining_create_retries,
                         "updated_at_epoch": int(time.time()),
                     },
@@ -872,7 +920,7 @@ def main() -> int:
                     "task_id": exc.task_id,
                     "failCode": exc.fail_code,
                     "failMsg": exc.fail_msg,
-                    "retry_kind": "server_500",
+                    "retry_kind": kind,
                 }
                 if wait_s:
                     time.sleep(wait_s)
