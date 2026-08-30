@@ -7,8 +7,8 @@
   "style_file": "memory/cover/quad-style-victoria-studio.json",
   "blog_hero": "memory/cover/blog-hero.json",
   "inline_types_catalog": "memory/cover/inline-visual-types.json",
-  "cover_hook": "Его молчание кажется изменой",
-  "cover_hook_highlight": "изменой",
+  "cover_hook": "Его молчание кажется холодным",
+  "cover_hook_highlight": "холодным",
   "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
   "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
   "slots": {
@@ -18,13 +18,13 @@
       "alt": "Иллюстрация: когда молчание партнёра кажется изменой",
       "scene_hint": "Виктория крупно слева, глаза зелёные с лёгким карим, новая одежда не камисоль; tiny телефон справа; #FFF",
       "meme_caption_ru": "",
-      "sticky": "дистанция не измена"
+      "sticky": "дистанция не приговор"
     },
     "inline_1": {
       "quadrant": "top_right",
       "h2_anchor": "Почему мозг видит измену в любой тишине",
       "visual_type": "comparison_table_ui",
-      "scene_hint": "Две колонки: факт тишины vs готовый сценарий. Стрелка: дефицит информации → страх обмана → поиск подтверждений. Итог: тишина не измена. Без людей.",
+      "scene_hint": "Две колонки: факт тишины vs готовый сценарий. Стрелка: дефицит информации → страх обмана → поиск подтверждений. Итог: тишина не вердикт. Без людей.",
       "alt": "Как мозг заполняет тишину готовым сценарием измены",
       "labels": [
         "дефицит информации",

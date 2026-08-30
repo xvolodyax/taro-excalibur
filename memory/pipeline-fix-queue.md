@@ -19,6 +19,7 @@ category: script
 - `batch_mcp_args` skips `{{SITE_BASE}}` expand when `prefer_local_reference` and `local_reference` are set.
 - No billed createTask happened on the failed first call. Re-ran the same Kie script once after the skip.
 - Unit: `test_kie_prefer_local_skips_site_base_expand`.
+- After that, first billed task `554077f5240291e0fd2533c6575c1ce1` returned failCode=422 (`generate playground failed, task id is blank`). One contract soften+recreate: hook/sticky without «измена»; cover-text.json left unchanged.
 
 ### Durable fix needed before next run
 - Keep prefer-local skip so Cover i2i from `Виктория.png` works without live site env.
