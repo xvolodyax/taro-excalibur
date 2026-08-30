@@ -21,6 +21,13 @@ category: api
 - Second 422 → `KIE API BLOCKER`. No MCP, no quality-redo, no third create.
 - Split/inject not run. Fragment `status: BLOCKER`.
 
+### Director follow-up (same run)
+- Same-batch re-runs after waits: still 422 playground-blank (~1.5s).
+- Soften remaining «измену» in image prompt H2 → same 422.
+- Minimal 1K i2i and gpt-image-2-text-to-image also 422 playground-blank. Credits endpoint 200 (`data` present). Not article-prompt / not «измена».
+- Live `{{SITE_BASE}}/wp-content/uploads/excalibur/Виктория.png` is 404; File Upload tempfile path is the working one when playground is healthy (B24 morning).
+- Publish blocked until Kie GPT Image 2 playground is up: no cover.png / inline-01..03, Hall does not upload.
+
 ### Durable fix needed before next run
 - Confirm whether 422 `generate playground failed, task id is blank` is tempfile/playground infra vs content.
 - If infra: Director same-batch re-run when Kie healthy (or WP media URL when `PUBLIC_SITE_URL` is set), then Cover apply-only.

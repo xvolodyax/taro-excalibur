@@ -1,15 +1,18 @@
 {
-  "task_id": "99591a88d168c931d65524483c417886",
+  "task_id": "c7102508cb2208c7677289424a1073ab",
   "source": "kie-api",
   "model": "gpt-image-2-image-to-image",
-  "state": "fail",
-  "failCode": "422",
-  "failMsg": "generate playground failed, task id is blank",
+  "state": "created",
+  "create_response": {
+    "code": 200,
+    "msg": "success",
+    "data": {
+      "taskId": "c7102508cb2208c7677289424a1073ab",
+      "recordId": "c7102508cb2208c7677289424a1073ab"
+    }
+  },
   "create_attempt": 1,
-  "prior_task_id": "554077f5240291e0fd2533c6575c1ce1",
-  "prior_failCode": "422",
-  "prior_failMsg": "generate playground failed, task id is blank",
-  "soften_recreate_done": true,
+  "created_at_epoch": 1788097797,
   "input_urls_via": "kie-file-upload",
   "file_upload": {
     "source": "prefer_local_reference",

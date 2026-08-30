@@ -20,6 +20,17 @@
     "side_stickers": "skip"
   },
   "date": "2026-08-30",
+  "slot": "day",
+  "slot_date": "2026-08-30",
   "pipeline_canon": "human-first-v2",
-  "editorial_swarm": false
+  "editorial_swarm": false,
+  "excerpt": "",
+  "dek": "",
+  "lead": "",
+  "on_page_excerpt": "",
+  "seo_title": "Ты видишь измену в его паузе — что сверять",
+  "skip_quality_review": true,
+  "auto_approve": true,
+  "cover_face_canon": "Виктория.png",
+  "cover_credit": "Виктория - таролог команды «ТАРО СЕЙЧАС»"
 }
