@@ -2,6 +2,40 @@
 
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
+## INC-20260830-1339-cover-kie-422-playground
+status: open
+run_date: 2026-08-30
+role: excalibur-blog-cover
+topic_id: B25
+article_dir: memory/blog/articles/B25-ty-vidish-izmenu-v-ego-pauze
+severity: blocker
+category: api
+
+### What went wrong
+- Two billed Kie tasks failed in ~1.5s with failCode=422, failMsg=`generate playground failed, task id is blank`.
+- task_id first: `554077f5240291e0fd2533c6575c1ce1`; after one hook soften: `99591a88d168c931d65524483c417886`.
+- Message is not the usual «sensitive» text. Both used File Upload of `Виктория.png` (`tempfile.redpandaai.co`). Cover did not invent a third createTask.
+
+### How the agent recovered this run
+- Contract 422 path: one soften of hook/sticky (dropped «измена» from PNG text; `cover-text.json` unchanged) + one recreate.
+- Second 422 → `KIE API BLOCKER`. No MCP, no quality-redo, no third create.
+- Split/inject not run. Fragment `status: BLOCKER`.
+
+### Durable fix needed before next run
+- Confirm whether 422 `generate playground failed, task id is blank` is tempfile/playground infra vs content.
+- If infra: Director same-batch re-run when Kie healthy (or WP media URL when `PUBLIC_SITE_URL` is set), then Cover apply-only.
+- If content: shrink H2 text that still contains «измену» in the shared prompt (H2 anchors), not a third Cover create in the same run.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `shared/kie-gpt-image-api-contract.md`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260830-1340-cover-prefer-local-site-base
 status: open
 run_date: 2026-08-30

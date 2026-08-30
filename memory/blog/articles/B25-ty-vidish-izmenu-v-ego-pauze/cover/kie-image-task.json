@@ -1,0 +1,21 @@
+{
+  "task_id": "99591a88d168c931d65524483c417886",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "fail",
+  "failCode": "422",
+  "failMsg": "generate playground failed, task id is blank",
+  "create_attempt": 1,
+  "prior_task_id": "554077f5240291e0fd2533c6575c1ce1",
+  "prior_failCode": "422",
+  "prior_failMsg": "generate playground failed, task id is blank",
+  "soften_recreate_done": true,
+  "input_urls_via": "kie-file-upload",
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "Виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}
