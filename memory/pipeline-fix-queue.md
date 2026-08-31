@@ -64,7 +64,7 @@ checks_run:
 - `python3 -m py_compile scripts/excalibur_blog_site_publish.py`
 - `python3 -m unittest tests.test_site_publish tests.test_writer_sol_pipeline`
 - `rg` false_example_409_no_body_edit / починили сайт / Возьмём
-commit: pending-this-commit
+commit: 5b88870
 
 ## INC-20260831-0636-cover-host-missing-first-try
 status: fixed
@@ -117,7 +117,7 @@ checks_run:
 - `python3 -m py_compile scripts/excalibur_blog_cover_quad_prompt.py`
 - `python3 -m unittest tests.test_cover_text` (8 OK)
 - `rg` Host LARGE left / Виктория.png / host+face; dense collage
-commit: pending-this-commit
+commit: 5b88870
 
 ## INC-20260831-0640-cover-manifest-pink-cat-default
 status: fixed
@@ -165,7 +165,7 @@ checks_run:
 - `python3 -m py_compile scripts/excalibur_blog_quad_manifest.py`
 - `python3 -m unittest tests.test_quad_manifest` (3 OK)
 - `rg` tenant_unset / pink-cat leftover default
-commit: pending-this-commit
+commit: 5b88870
 
 ## INC-20260830-1339-cover-kie-422-playground
 status: needs-human
