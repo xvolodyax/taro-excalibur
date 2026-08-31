@@ -4,6 +4,64 @@
 Исторические scorecard / judge / ensemble — read-only, не шаблон.
 Writer prompt и Sol skill сюда не раздувать автоматически.
 
+## LESSON-20260831-2040-B29-evening-wall-live-chat
+status: proposed
+topic_id: B29
+category: other
+confidence: low
+
+### Evidence
+- artifact: none (skipped under human-first-v2)
+  finding: `content-evidence-report.json` отсутствует; evidence_gate=SKIP, не BLOCK. Report не invent'ился. Gate-артефакт: `content-evidence-gate.json` status=SKIP.
+- process: `research-notes.md` + `title-brief.json` + `research-context.json`
+  finding: слот вечер 2026-08-31 / 20:00 / CTA bot; острый запрос «стена при живом чате» (отвечает, иногда сам пишет, встреча может быть — но шаг ближе сам режет). Не карта дня (вечерний слот тенанта так подписан — игнорировать). Не клон B26 («не готов», но остаётся), B27 (выходные есть, осени нет), B28 (привет после месяцев без конкретного шага). H1 — наблюдаемый живой контакт без шага («Он остаётся на связи, но ставит паузу вместо сближения»), не жирные Wordstat «пауза в отношениях» (9033) / «он отдалился» (3943) / «он не пишет первым» (3924).
+- process: `cover/quad-mcp-batch.json` + `cover/cover-registry.json` + `cover/kie-image-task.json` + `site-publish-result.json#strip`
+  finding: реф `Виктория.png` (`prefer_local_reference` + local file); style `victoria-studio`; Kie `state=success`, `create_attempts=1`. `cover_png_figures_removed=0` / `cover_hero_removed=0` — cover не в теле. Hall / MCP gpt-image-2 не звали.
+- process: `site-publish-result.json`
+  finding: SITE token сам (`token_env=SITE_PUBLISH_TOKEN`, Hall / Дзен Студия `not_used`). Upload 201 `article_id=39`; excerpt 403 = не FAIL; первый approve 409, `quality_score=88`, warning «Нет конкретного примера или разбора ситуации» при H2 «Практика: чеклист шагов, когда диалог есть, а движения навстречу нет» уже в теле. Publish 409 «только одобренную»; live GET 404; `site_status=quality_review`; `live_ok=false`; `sol_rewritten=false`; `slot_2121=not_closed`. Тело не правили.
+- process: `memory/pipeline-fix-queue.md#INC-20260831-2035-publish-false-409-example-b29` + LESSON-20260831-2035-B29-false-example-409
+  finding: Fixer-фрагмент про 409/пример уже записан; этот блок — полный slot-lesson Content-learner. 409 example ≠ «Возьмём:»; Director/Publish тело не правили (`false_example_409_no_body_edit`). Не помечено «починили сайт».
+- metrika_signal: none
+  finding: `excalibur_blog_metrika_fetch.py --days 30 --ingest` → METRIKA CREDENTIALS BLOCKER (нет `YANDEX_METRIKA_OAUTH_TOKEN` / `YANDEX_METRIKA_COUNTER_ID`). `memory/analytics/metrika-latest.json` не создан. Цифры не выдумывать. См. INC-20260831-2040-metrika-credentials-b29; B26 INC-1936, B27 INC-0709 и B28 INC-1526 всё ещё open.
+
+### Named blockers
+- EVIDENCE_SKIPPED
+- METRIKA FEEDBACK BLOCKER
+- SITE_QUALITY_409 (конкретный пример ≠ «Возьмём:»; первый upload; live 404 / quality_review)
+
+### Keep
+- Вечерний острый запрос «стена при живом чате» — не формат «карта дня», даже если слот 20:00 так назван у тенанта.
+- Cover i2i от рефа `Виктория.png` (`prefer_local_reference` + local file), style `victoria-studio`.
+- `cover.png` только файл обложки, не вторая картинка в теле.
+- SITE token сам: upload → approve → publish; Hall / Дзен Студия не звать.
+- Заранее H2 «Практика: чеклист шагов…» из фактов этой статьи. 409 example при практике в теле — не лечить ярлыком.
+- Publish / Director тело не правят. Слот 21:21 не закрывать этой статьёй.
+
+### Change
+- 409 «нет конкретного примера» при уже живой сцене + H2 практике — не слать Sol на ярлык (`false_example_409_no_body_edit`). Повтор B27 INC-0650 / B29 INC-2035.
+- Не помечать B25 INC-1423 / B26–B27 409 как «починили сайт»: B29 снова 409 + live 404.
+- Metrika secrets по-прежнему отсутствуют — следующий Content-learner снова BLOCKER, пока секреты не в Cloud Secrets.
+
+### Never again
+- «Возьмём:» / «Возьмем:» / «Сцена» как лечение 409 example.
+- Закрывать слот картой дня / числом дня / 21:21 этой статьёй.
+- Клеить жирную Wordstat («пауза в отношениях», «он отдалился», «он не пишет первым») в H1.
+- Сливать угол с B26 («не готов, но остаётся»), B27 (живой календарь субботы без осени), B28 (привет после месяцев без шага).
+- Возврат Sol на ярлык, если практика уже в статье.
+- Раздувать `shared/writer-master-prompt.md` / Writer / Sol skill автоматически (один кейс + evidence SKIP + no-Metrika).
+
+### Proposed apply
+- Review-only: слот вечер / 20:00 / «стена при живом чате» держит H1-наблюдение + практику из research этой статьи; 409 example ≠ «Возьмём:»; live 404 = quality_review, не PIPELINE FAIL после GATE PASS.
+- Не добавлять правила в `shared/writer-master-prompt.md` и Writer/Sol skill автоматически.
+- Cloud Secrets: `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` (scope `metrika:read`).
+- Site quality checker (вне репо) — INC-2035 already needs-human; не дублировать apply из этого прогона.
+
+### Durable applied
+- none this run. Prior Fixer INC-2035 (commit 3726cd9): после GATE PASS + H2 практики не слать Sol на ярлык; `article.html` B29 не трогали. Rollback: только по явному решению человека, не из этого SKIP+no-Metrika прогона.
+
+### Resolution
+status: recorded
+
 ## LESSON-20260830-1936-B26-evening-practice-h2
 status: proposed
 topic_id: B26
