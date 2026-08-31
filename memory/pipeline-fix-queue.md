@@ -2,6 +2,45 @@
 
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
+## INC-20260831-1526-metrika-credentials-b28
+status: open
+run_date: 2026-08-31
+role: excalibur-blog-content-learner
+topic_id: B28
+article_dir: memory/blog/articles/B28-on-obyavilsya-spustya-mesyacy-molchaniya
+severity: blocker
+category: credentials
+
+### What went wrong
+- Content-learner обязателен `python3 scripts/excalibur_blog_metrika_fetch.py --days 30 --ingest`.
+- Exit 2: `METRIKA CREDENTIALS BLOCKER`.
+- В env нет `YANDEX_METRIKA_OAUTH_TOKEN` и `YANDEX_METRIKA_COUNTER_ID`.
+- Нет `memory/site.env.local` и `.env`. `.cursor/environment.json` секреты Metrika не задаёт.
+- `memory/analytics/metrika-latest.json` не создан. Цифры не выдумывались.
+- Тот же корневой gap, что INC-20260830-1936-metrika-credentials-b26 и INC-20260831-0709-metrika-credentials-b27 (оба open).
+
+### How the agent recovered this run
+- Evidence gate SKIP (нет `content-evidence-report.json`) — не BLOCK, report не invent'ился.
+- Lesson `LESSON-20260831-1526-B28-day-silence-return` записан как low-confidence (process + SKIP), без causal Metrika.
+- Durable apply нет. `article.html` и Writer prompt не трогали.
+- Пайплайн не FAIL: Metrika BLOCKER зафиксирован, слот B28 уже live (`site-publish-result.json` verdict pass, `live_ok`).
+
+### Durable fix needed before next run
+- Положить в Cloud Secrets (не в git): `YANDEX_METRIKA_OAUTH_TOKEN` (OAuth, `metrika:read`) и `YANDEX_METRIKA_COUNTER_ID`.
+- Документация: `shared/yandex-metrika-contract.md`, имена в `.env.example`.
+- После секретов: тот же fetch `--days 30 --ingest`; не invent rows.
+
+### Suggested files to inspect/change
+- `shared/yandex-metrika-contract.md`
+- `.env.example`
+- Cloud Secrets / environment (вне репо)
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260831-1508-cover-kie-poll-timeout-b28
 status: fixed
 run_date: 2026-08-31
@@ -101,6 +140,7 @@ category: credentials
 
 ### Fixer resolution
 - pending
+- reproduced 2026-08-31 B28: INC-20260831-1526-metrika-credentials-b28 (same missing secrets)
 
 ## INC-20260831-0650-publish-false-409-example-b27
 status: fixed
@@ -785,3 +825,4 @@ category: credentials
 
 ### Fixer resolution
 - pending
+- reproduced 2026-08-31 B27 INC-0709 and B28 INC-1526 (same missing secrets)

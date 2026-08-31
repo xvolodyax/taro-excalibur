@@ -135,3 +135,61 @@ confidence: medium
 - Ярлык «Возьмём:» / «например» / «кейс» как лечение 409.
 - Возврат Sol, если практика уже в статье.
 - Закрывать INC как «починили сайт».
+
+## LESSON-20260831-1526-B28-day-silence-return
+status: proposed
+topic_id: B28
+category: other
+confidence: low
+
+### Evidence
+- artifact: none (skipped under human-first-v2)
+  finding: `content-evidence-report.json` отсутствует; evidence_gate=SKIP, не BLOCK. Report не invent'ился. Gate-артефакт: `content-evidence-gate.json` status=SKIP.
+- process: `research-notes.md` + `title-brief.json` + `research-context.json`
+  finding: слот день 2026-08-31 / 16:00 / CTA vk_app; острый запрос «написал после месяцев молчания, шага нет». Не карта дня, не утренний B27 («зовёт на выходные»), не вечерний B26 («не готов, но остаётся»), не B22 (рваный контакт без долгой ямы). H1 — наблюдаемое сообщение без плана («Он написал после месяцев молчания, но не предлагает ничего конкретного»), не жирная Wordstat «он объявился» (4446) / «объявился бывший» (3130).
+- process: `cover/quad-mcp-batch.json` + `cover/cover-registry.json` + `cover/kie-image-task.json` + `site-publish-result.json#strip`
+  finding: реф `Виктория.png` (`prefer_local_reference` + local file); style `victoria-studio`; `cover_png_figures_removed=0` / `cover_hero_removed=0` — cover не в теле. Первый Kie poll window исчерпан на still-`generating` (INC-1508); тот же `task_id` → late 500 → max-1 recreate → success. Hall / MCP gpt-image-2 не звали.
+- process: `site-publish-result.json`
+  finding: SITE token сам (`token_env=SITE_PUBLISH_TOKEN`, Hall / Дзен Студия `not_used`). Upload 201 `article_id=38`; excerpt 403 = не FAIL; **первый approve 200** (без 409); publish 500 sitemap EACCES + live GET 200 = `live_ok`; `practice_h2_present=true`; `sol_rewritten=false`. H2 «Практика: чеклист шагов, если он написал после долгой тишины» уже в финале.
+- process: `memory/pipeline-fix-queue.md#INC-20260831-1508-cover-kie-poll-timeout-b28`
+  finding: Cover timeout уже закрыт Fixer (commit 0f076d7): `--max-wait` 1500 + `--late-poll-extend` на том же taskId; не третий billed create. `article.html` B28 Fixer не трогал.
+- metrika_signal: none
+  finding: `excalibur_blog_metrika_fetch.py --days 30 --ingest` → METRIKA CREDENTIALS BLOCKER (нет `YANDEX_METRIKA_OAUTH_TOKEN` / `YANDEX_METRIKA_COUNTER_ID`). `memory/analytics/metrika-latest.json` не создан. Цифры не выдумывать. См. INC-20260831-1526-metrika-credentials-b28; B26 INC-1936 и B27 INC-0709 всё ещё open.
+
+### Named blockers
+- EVIDENCE_SKIPPED
+- METRIKA FEEDBACK BLOCKER
+- KIE_POLL_TIMEOUT (первый window; recovered same-task + recreate; Fixer INC-1508 already fixed)
+
+### Keep
+- Дневной острый запрос «написал после месяцев тишины, шага нет» — не формат «карта дня».
+- Cover i2i от рефа `Виктория.png` (`prefer_local_reference` + local file), style `victoria-studio`.
+- `cover.png` только файл обложки, не вторая картинка в теле.
+- SITE token сам: upload → approve → publish; Hall / Дзен Студия не звать.
+- Заранее H2 «Практика: чеклист шагов…» из фактов этой статьи. Первый approve 200 при практике в теле — не доказательство, что «сайт починили».
+- Publish тело не правит. Sitemap EACCES + live 200 = `live_ok`.
+- Cover: после poll-window на still-`generating` — тот же `task_id`, не новый create.
+
+### Change
+- Один первый approve 200 не закрывает B25 INC-1423 / B26–B27 409 как «починили сайт».
+- Metrika secrets по-прежнему отсутствуют — следующий Content-learner снова BLOCKER, пока секреты не в Cloud Secrets.
+
+### Never again
+- «Возьмём:» / «Возьмем:» / «Сцена» как лечение quality.
+- Закрывать слот картой дня / числом дня / 21:21 этой статьёй.
+- Клеить жирную Wordstat («он объявился», «объявился бывший») в H1.
+- Сливать угол с B22 (рваный контакт), B26 («не готов, но остаётся»), B27 (живой календарь субботы).
+- Третий billed Kie create после timeout на still-`generating`.
+- Раздувать `shared/writer-master-prompt.md` / Writer / Sol skill автоматически (один кейс + evidence SKIP + no-Metrika).
+
+### Proposed apply
+- Review-only: слот день / 16:00 / «написал после молчания» держит H1-наблюдение + практику из research этой статьи; 200 на первом approve ≠ «сайт починили».
+- Не добавлять правила в `shared/writer-master-prompt.md` и Writer/Sol skill автоматически.
+- Cloud Secrets: `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` (scope `metrika:read`).
+- Cover durable уже в Fixer INC-1508 — не дублировать apply из этого прогона.
+
+### Durable applied
+- none this run. Prior Fixer INC-1508 (commit 0f076d7): Kie late-poll same taskId + max-wait 1500; recreate max-1. Rollback: только по явному решению человека, не из этого SKIP+no-Metrika прогона.
+
+### Resolution
+status: recorded
