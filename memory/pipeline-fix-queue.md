@@ -62,7 +62,7 @@ checks_run:
 - `python3 -m py_compile scripts/excalibur_blog_kie_gpt_image2_api.py scripts/excalibur_blog_cover_quad_prompt.py`
 - `python3 -m unittest tests.test_kie_gpt_image2_api tests.test_cover_identity`
 - `rg` KIE POLL WINDOW EXHAUSTED / --resume / late-poll / max-wait 900 default
-commit: pending-parent-commit
+commit: 0f076d7
 
 ## INC-20260831-0709-metrika-credentials-b27
 status: open
