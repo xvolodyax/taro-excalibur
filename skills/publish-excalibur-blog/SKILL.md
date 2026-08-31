@@ -6,6 +6,40 @@ disable-model-invocation: true
 
 # Excalibur BLOG — Publish (субагент ⑥)
 
+## Site API после GATE PASS (канон, не Hall)
+
+```bash
+python3 scripts/excalibur_blog_site_publish.py --env-check
+python3 scripts/excalibur_blog_site_publish.py \
+  --article-dir memory/blog/articles/<topic_id>-<slug> \
+  --dry-run
+python3 scripts/excalibur_blog_site_publish.py \
+  --article-dir memory/blog/articles/<topic_id>-<slug>
+```
+
+Нет ключа (`SITE_PUBLISH_TOKEN` / `HALL_PUBLISH_TOKEN` / …) →
+`publish: SKIP`, reason `нет ключа`, exit 0. Пайплайн **не** падает.
+
+Контракт: `shared/excalibur-site-publish-contract.md`.
+
+### После GATE PASS не переписывать Sol (INC-20260830-0650 / 1932)
+
+Site quality **игнорирует** `skip_quality_review`. Это **не** повод
+править opening. Практика/чеклист ≠ «конкретный пример: ЧЧ:ММ».
+Если approve **409**:
+
+- не добавлять «Возьмём:» / «Возьмем:» / «Сцена» / «кейс»;
+- тело **не** править; не помечать «починили сайт»;
+- первый 409 без resume → `needs_sol`, **не** PIPELINE FAIL;
+- нет H2 «Практика: чеклист шагов…» → `return_sol_practice`, затем новый POST
+  (не `--resume-article-id`);
+- практика уже в теле → `false_example_409_no_body_edit`;
+- утренний слот ≠ вечерние часы B23 («суббота, 20:40»);
+- Hall/SITE token: PATCH excerpt **403** — не FAIL;
+- publish **500** sitemap EACCES + live **200** = `live_ok`;
+- related `blog-card__` cover.png ≠ вторая обложка;
+- `--resume-article-id` + 409 на already-live → live GET.
+
 ## Future publish hard gate
 
 До upload проверь `article.meta.json.theme_blocks`: faq, quiz и side_stickers

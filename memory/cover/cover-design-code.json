@@ -1,27 +1,100 @@
 {
-  "design_code_id": "tenant_unset",
-  "status": "SETUP_REQUIRED",
-  "label_ru": "Заполняется Setup Visual из референсов тенанта",
-  "reference_notes": "Нет дефолтного чужого бренд-коллажа. Setup Visual пишет palette, motifs, cover/inline rules.",
+  "design_code_id": "victoria_studio_white",
+  "status": "ok",
+  "label_ru": "ТАРО СЕЙЧАС — светлая студия Виктории, editorial display",
+  "updated": "2026-08-27",
+  "reference_notes": "Tenant visual. Не pink-cat коллаж, не gothic, не тёмный стол со свечами, не белое худи без Вики. Герой cover = Виктория по рефу. Алёну не ставить.",
+  "cover_mode": "host_reference",
   "cover_rules": [
-    "Один cover_hook разумной длины; meme_caption_ru по умолчанию пуст",
-    "Стиль и герой — только из blog-hero.json + этого design-code после Setup",
-    "Запрещён штамп пайплайна на PNG: «EXCALIBUR» / sword lockup"
+    "cover_mode=host_reference: лицо = Виктория по memory/cover/assets/victoria.png — не кот и не без лица",
+    "Цвет волос только с рефа: светлый блонд с тёплым honey/пепельным мясом, корни темнее. Не платина, не ice-blonde, не осветлять. Промпт: hair color copied exactly from reference photo, same root depth, do not lighten, no platinum. Платина / сильно светлее рефа = blocker, пересобрать холст",
+    "Хук 2–6 слов на кадре, не заголовок статьи",
+    "Типографика дизайнерская, не системная. Хук = editorial display (didone / refined grotesque), буквы часть кадра, не стикер",
+    "Одно ударное слово из хука — тот же шрифт, другой цвет/насыщенность (золото медальона)",
+    "Sticky и inline labels — лёгкий humanist sans, тоже дизайнерский",
+    "Иерархия: размер, воздух, выравнивание. Кривые буквы / разный кегль в одном слове = blocker, пересобрать холст",
+    "Холст 2K 2×2 (2048×1152), резка по белым швам; gutters только на x=1024 / y=576",
+    "Одежда и эмоция каждый раз новые; белый блейзер рефа — не lock одежды; не белое худи пайплайна",
+    "Один hook + один мелкий предмет/метафора; host LARGE left; topic prop tiny/small",
+    "meme_caption_ru всегда пустая строка",
+    "Подпись НАД картинкой кодом, не моделью: «Виктория - таролог команды «ТАРО СЕЙЧАС»»",
+    "Алёну на обложки не ставить",
+    "Не тёмный стол со свечами, не gothic, не pink-cat, не #FF1493",
+    "Провайдер: Kie GPT Image 2, i2i, resolution 2K",
+    "Если лицо не Вики, волосы платина/сильно светлее рефа, шов кривой или буквы кривые — пересобрать холст, не чинить снаружи",
+    "Запрещён штамп пайплайна на PNG: EXCALIBUR / sword lockup"
   ],
   "inline_rules": [
-    "Только информация конкретного H2",
-    "Без людей/лиц на inline, если tenant не разрешил иное",
+    "Только информация конкретного H2: comparison / workflow / checklist / UI explanation / fact card",
+    "Без людей и лиц на inline",
+    "3–6 читаемых кириллических labels humanist sans, ясный reading order и outcome",
+    "Тот же светлый finish: белый свет, золото медальона, пыльные летние тона",
+    "Не unfinished gray boxes, не голый SaaS-slide, не pink-cat стикеры, не all-caps плашка-наклейка",
     "Generated UI не выдавать за реальный screenshot"
   ],
-  "visual_motifs": [],
+  "visual_motifs": [
+    "high-key light studio",
+    "medallion gold highlight on one hook word",
+    "dusty summer props (not full-panel beige)",
+    "editorial type as part of the frame",
+    "clean white gutters",
+    "optional tiny tarot-card prop only when the H2 needs it"
+  ],
   "color_palette": {
     "background": "#FFFFFF",
     "ink": "#141821",
-    "accent_primary": "",
-    "usage": "Set by Setup Visual"
+    "accent_primary": "#C4A574",
+    "accent_secondary": "#D4B5A0",
+    "accent_gold": "#C4A574",
+    "accent_dust": "#C9B089",
+    "accent_nude": "#D4B5A0",
+    "forbidden_accents": ["#FF1493", "#6C4DFF", "#00C2FF"],
+    "usage": "Свет, золото медальона, пыльные летние тона. Фон панелей #FFFFFF. Не дефолтный розовый #FF1493 cat-collage."
   },
-  "typography_reference": "",
-  "cover_panel_prompt_block": "",
-  "inline_information_block": "",
-  "global_negative": "sterile empty white, meme reaction cutouts, pipeline name watermark, stock banner, beige gradient spam"
+  "typography": {
+    "mode": "designer_editorial",
+    "hook": "editorial display, журнальный кириллический: high-contrast modern serif / didone ИЛИ refined geometric grotesque с нормальным трекингом. Буквы часть кадра, не стикер поверх фото.",
+    "hook_prompt": "editorial display Cyrillic (high-contrast modern serif/didone OR refined geometric grotesque, normal tracking); letters sit in the frame, not a sticker on the photo",
+    "highlight": "одно ударное слово из хука, та же гарнитура, другой цвет/насыщенность (золото медальона #C4A574)",
+    "secondary": "sticky и inline labels — более лёгкий humanist sans, дизайнерский, не системный",
+    "secondary_prompt": "lighter designer humanist sans for sticky and inline labels, normal tracking, not system UI",
+    "hierarchy": "размер, воздух, выравнивание. Кривые буквы или разный кегль в одном слове = blocker, пересобрать холст.",
+    "forbidden": [
+      "Arial",
+      "Roboto",
+      "Inter",
+      "Impact",
+      "Times",
+      "обычный жирный",
+      "default bold condensed",
+      "bold condensed Cyrillic",
+      "squish-bold meme",
+      "all-caps плашка как наклейка"
+    ],
+    "forbidden_prompt": "Ban type: Arial, Roboto, Inter, Impact, Times, default bold condensed, squish-bold meme, all-caps sticker plaque, crooked letters, mixed sizes inside one word."
+  },
+  "typography_reference": "Editorial display Cyrillic (didone or refined geometric grotesque, normal tracking). One punch word same face in medallion gold #C4A574. Sticky/inline: light humanist sans. Never Arial/Roboto/Inter/Impact/Times/bold condensed/squish-bold/all-caps sticker.",
+  "cover_credit_html": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "placement": "above_image",
+    "render_in_png": false,
+    "note": "Кодом поверх картинки. Модель эту строку не рисует."
+  },
+  "meme_caption_ru": "",
+  "canvas": {
+    "layout": "2x2",
+    "size_px": [2048, 1152],
+    "resolution": "2K",
+    "gutters": "white seams at x=1024 and y=576"
+  },
+  "image_provider": {
+    "vendor": "kie.ai",
+    "model": "gpt-image-2-image-to-image",
+    "mode": "i2i",
+    "resolution": "2K"
+  },
+  "rebuild_rule": "Лицо не Виктории, волосы платина/сильно светлее рефа, кривой шов, кривые буквы или разный кегль в одном слове → пересобрать холст. Не чинить лицо/волосы/шрифт снаружи.",
+  "cover_panel_prompt_block": "High-key light studio editorial. WHITE #FFFFFF panels, ink #141821, medallion gold #C4A574, dusty summer accents. Cover hero MUST be Victoria from reference LARGE left, hair color copied exactly from reference photo, same root depth, do not lighten, no platinum, new outfit+emotion, not a cat, not faceless, not a white hoodie default. Hook: editorial display Cyrillic (didone or refined geometric grotesque, normal tracking) as part of the frame, not a sticker. One punch word same typeface in gold. No Arial/Roboto/Inter/Impact/Times/bold condensed/squish-bold/all-caps plaque. Thin white gutters.",
+  "inline_information_block": "Inline: no people/faces; 3–6 readable Cyrillic labels in lighter designer humanist sans; comparison/workflow/checklist/fact for that H2; white+ink+medallion gold+dusty summer; no pink stickers, no bold condensed, no all-caps plaque, no unfinished gray boxes.",
+  "global_negative": "platinum hair, ice-blonde, white blonde, lightened roots, Arial, Roboto, Inter, Impact, Times, default bold condensed, squish-bold meme, all-caps sticker plaque, crooked letters, mixed glyph sizes in one word, dark candle table, gothic purple, pink-cat collage, #FF1493, beige full-panel, white-hoodie without Victoria, cat as cover hero, faceless cover, Alyona, meme reaction, pipeline EXCALIBUR watermark"
 }

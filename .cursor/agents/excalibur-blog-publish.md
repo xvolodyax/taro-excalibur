@@ -43,8 +43,33 @@ incident_report: none | memory/pipeline-fix-queue.md#INC-...
 
 1. `agents/excalibur-blog-publish.md` (этот файл)
 2. `skills/publish-excalibur-blog/SKILL.md`
-3. `shared/excalibur-wp-publish-contract.md`
-4. Активный handoff от директора — обычно `.cursor/excalibur-blog-handoff.md`; в нём `topic_id`, `article_dir`
+3. `shared/excalibur-site-publish-contract.md`
+4. `shared/excalibur-wp-publish-contract.md`
+5. Активный handoff от директора — обычно `.cursor/excalibur-blog-handoff.md`; в нём `topic_id`, `article_dir`
+
+## Site quality после GATE PASS (HARD, INC-20260830-0650 / 1932)
+
+После GATE PASS **не переписывать** `article.html` / opening Sol
+ради site quality score. Сайт игнорирует `skip_quality_review`.
+Практика/чеклист ≠ «конкретный пример: ЧЧ:ММ» и ≠ шаблон B23.
+
+Если approve **409** «проверка качества»:
+
+- не добавлять «Возьмём:» / «Возьмем:» / «Сцена» / «кейс»;
+- тело **не** править; не помечать «починили сайт»;
+- первый 409 без resume → `needs_sol`, **не** PIPELINE FAIL;
+- нет H2 практика/чеклист → `director_next=return_sol_practice`,
+  затем новый POST (не `--resume-article-id`);
+- практика уже в теле → `director_next=false_example_409_no_body_edit`:
+  **не** слать Sol на ярлык «конкретный пример»;
+- не ставить чужой слот (утренний прогон ≠ «суббота, 20:40» из B23);
+- markers только из фактов этой статьи, не из соседа;
+- Hall/SITE token: PATCH excerpt **403** — не FAIL;
+- publish **500** sitemap EACCES + live **200** = `live_ok`;
+- related `blog-card__` `cover.png` ≠ вторая обложка;
+- resume 409 на already-live → live GET, не править Sol.
+
+Скрипт: `python3 scripts/excalibur_blog_site_publish.py --article-dir …`
 
 ## Вход
 

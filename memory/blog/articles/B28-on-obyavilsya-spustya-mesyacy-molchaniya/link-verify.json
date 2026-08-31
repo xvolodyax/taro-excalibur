@@ -1,0 +1,26 @@
+{
+  "source": "/workspace/memory/blog/articles/B28-on-obyavilsya-spustya-mesyacy-molchaniya/article.html",
+  "total_links": 2,
+  "failed_count": 0,
+  "verdict": "pass",
+  "links": [
+    {
+      "url": "https://vk.com/app54565776",
+      "status": 200,
+      "ok": true,
+      "method": "GET",
+      "error": null,
+      "kind": "external",
+      "skipped": false
+    },
+    {
+      "url": "https://max.ru/id531102974575_bot?startapp=ref_9BAD4149",
+      "status": 200,
+      "ok": true,
+      "method": "HEAD",
+      "error": null,
+      "kind": "external",
+      "skipped": false
+    }
+  ]
+}
