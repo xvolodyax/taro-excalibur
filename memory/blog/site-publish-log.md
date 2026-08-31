@@ -1,5 +1,20 @@
 # Site publish log
 
+## 2026-08-31 B28 on-obyavilsya-spustya-mesyacy-molchaniya
+
+- method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)
+- article_id: 38
+- upload: 201
+- excerpt_clear: 403 hall_token_no_patch (не FAIL)
+- approve: 200
+- publish: 500 sitemap EACCES → live_ok
+- live_get: 200 `{{SITE_BASE}}/blog/on-obyavilsya-spustya-mesyacy-molchaniya/`
+- root `{{SITE_BASE}}/on-obyavilsya-spustya-mesyacy-molchaniya/`: 404 (live канон /blog/)
+- live has scene «Привет, как дела?» + «Разберём этот конкретный пример…» + practice H2; no «Возьмём:»; no cover-hero; 3 inline figures
+- related `blog-card__` covers ≠ вторая обложка
+- sol_rewritten_by_publish: no
+- dzen_studio: not_used
+
 ## 2026-08-31 B27 on-ne-obsuzhdaet-buduschee-vashih-otnoshenij
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)
