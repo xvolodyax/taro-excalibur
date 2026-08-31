@@ -1,0 +1,94 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B29",
+  "slug": "on-stavit-pauzu-vmesto-sblizheniya",
+  "article_dir": "memory/blog/articles/B29-on-stavit-pauzu-vmesto-sblizheniya",
+  "research_date": "2026-08-31",
+  "status": "PASS",
+  "verdict": "PASS",
+  "blocker": null,
+  "fresh_signal": true,
+  "fresh_signal_kind": "channel_and_tarot_news_this_week",
+  "fresh_signal_week": "2026-W36",
+  "fresh_signal_summary": "Неделя 31.08–06.09: ТСН (Туз Мечей + стена/граница + 3 Мечей/Луна при живом контакте, не требовать мгновенного шага); horo.mail.ru Семёрка Мечей — стратегия vs избегание назревшего вопроса; Cursorinfo сегодня 21:01 — слова подтверждать действиями. Community: Дзен Таро Манс «2 дня назад» — отдаляется, оставаясь на связи; Дзен b17 «вчера» — хочет близости и сам ставит дистанцию. AiQube обновлён 31.08 на жирный «почему отдалился». Свой Дзен сегодня закрыл B28 (привет после месяцев) — не клонить. Scout URL dzen.ru/a/aku2LPsOLVnDYepA недоступен (заглушка), сигнал недели подтверждён расширением.",
+  "fresh_signal_urls": [
+    "https://dzen.ru/a/ahfzexd9yzTmQChs",
+    "https://dzen.ru/a/amRRocpc2E9VWr6N",
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html",
+    "https://horo.mail.ru/article/15436-taro-prognoz-na-nedelyu-s-31-avgusta-po-6-sentyabrya-2026/",
+    "https://aiqube.ru/tarot/taro-pochemu-on-otdalilsya-na-etoy-nedele-chto-dumaet-partner"
+  ],
+  "signal_urls": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/",
+    "https://dzen.ru/a/aku2LPsOLVnDYepA",
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html"
+  ],
+  "scout_signal_checked": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/",
+    "https://dzen.ru/a/aku2LPsOLVnDYepA",
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html"
+  ],
+  "scout_urls_alive": true,
+  "scout_url_notes": {
+    "https://dzen.ru/a/aku2LPsOLVnDYepA": "WebFetch 2026-08-31: Dzen error stub; content not recovered; not invented",
+    "tenant_channel": "alive; top post B28 ~4h ago"
+  },
+  "rf_deny": false,
+  "genre_ban": "do_not_write_karta_dnya",
+  "wordstat": {
+    "status": "OK_PARTIAL",
+    "region": "225",
+    "accessed_at": "2026-08-31",
+    "calls": 19,
+    "fattest_not_h1": "он отдалился",
+    "note": "Field is `phrase` not `query`. PARTIAL = totalCount without results. «он отдалился»=3943, «он не пишет первым»=3924, «пауза в отношениях»=9033 — ЖИРНЫЕ, НЕ в H1. Угол: «он держит дистанцию»=481 / «он не сближается»=572 / «он не идет на сближение»=71. «он ставит паузу»=397 PARTIAL.",
+    "phrases": [
+      {"phrase": "пауза в отношениях", "totalCount": 9033, "note": "ЖИР + клон LIVE «Пауза или конец?». Не H1"},
+      {"phrase": "он отдалился", "totalCount": 3943, "tops": ["почему он отдаляется=674", "он стал отдаляться=474", "он начал отдаляться=404"]},
+      {"phrase": "он не пишет первым", "totalCount": 3924, "note": "соседний угол: у нас он на связи"},
+      {"phrase": "он не делает шаг", "totalCount": 1287, "tops": ["он не делает первый шаг=354"]},
+      {"phrase": "он не сближается", "totalCount": 572},
+      {"phrase": "он ставит стену", "totalCount": 504, "note": "шум «стен» стройка"},
+      {"phrase": "он не идет навстречу", "totalCount": 492, "note": "PARTIAL"},
+      {"phrase": "он держит дистанцию", "totalCount": 481, "tops": ["почему он держит дистанцию=43", "я нравлюсь мужчине но он держит дистанцию=15"]},
+      {"phrase": "он стал отдаляться", "totalCount": 474},
+      {"phrase": "он ставит паузу", "totalCount": 397, "note": "PARTIAL"},
+      {"phrase": "он не делает первый шаг", "totalCount": 354},
+      {"phrase": "он держит на расстоянии", "totalCount": 286, "note": "резолв в обратную сторону"},
+      {"phrase": "он избегает близости", "totalCount": 225, "note": "PARTIAL"},
+      {"phrase": "держать дистанцию в отношениях", "totalCount": 121, "tops": ["мужчина держит дистанцию в отношениях=41"]},
+      {"phrase": "он не идет на сближение", "totalCount": 71},
+      {"phrase": "почему он держит дистанцию", "totalCount": 43},
+      {"phrase": "он боится сближения", "totalCount": 18, "note": "PARTIAL"},
+      {"phrase": "он отвечает но не сближается", "totalCount": 7, "note": "PARTIAL"},
+      {"phrase": "почему он отдаляется", "totalCount": 674, "tops": ["почему он отдалился таро=33"]}
+    ]
+  },
+  "overlap": [
+    "B26 Он сказал, что не готов к отношениям, но остаётся рядом — стоп-фраза + тепло",
+    "B27 Он охотно зовёт на выходные, но избегает разговоров о будущем — календарь, не стена шага",
+    "B28 Он написал после месяцев молчания, но не предлагает ничего конкретного — сегодня на Дзене",
+    "LIVE Пауза или конец? — тишина vs точка",
+    "LIVE Он смотрит твои истории и молчит / Напишет ли он сегодня вечером",
+    "B23 Он зашёл в сеть и молчит — онлайн без письма",
+    "B25 Ты видишь измену в его паузе сейчас — измена",
+    "B14 / LIVE Он охладел — тон",
+    "карта дня — жанр запрещён в B29"
+  ],
+  "cta": {
+    "slot": "evening-2026-08-31",
+    "time": "20:00",
+    "product": "bot",
+    "vk_app_this_slot": false,
+    "bot_spreads": "3 бесплатных расклада (триплет / крест)",
+    "do_not_mix_bot_and_app": true,
+    "dzen_no_telegram": true,
+    "site_only_telegram": true,
+    "raw_urls_in_body": false,
+    "forbidden_phrase": "личный аудиоразбор"
+  },
+  "notes_path": "memory/blog/articles/B29-on-stavit-pauzu-vmesto-sblizheniya/research-notes.md",
+  "incident_report": "none"
+}
