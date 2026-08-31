@@ -3,7 +3,7 @@
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
 ## INC-20260831-2035-publish-false-409-example-b29
-status: open
+status: needs-human
 run_date: 2026-08-31
 role: excalibur-blog-publish
 topic_id: B29
@@ -38,7 +38,36 @@ category: publish
 - none recorded
 
 ### Fixer resolution
-- pending
+status: needs-human
+fixed_at: 2026-08-31
+reason:
+- Чекер качества живёт **вне репо**. После GATE PASS + H2 практики
+  сайт всё ещё 409-ит warning «Нет конкретного примера» при
+  `quality_score=88`. Это повтор B27 INC-0650 (репо уже fixed).
+  Сайт должен перестать 409-ить. Не помечено «починили сайт».
+needed_decision_or_secret:
+- Владелец сайта: убрать или смягчить правило «конкретный пример»
+  для GATE PASS статей с H2 «Практика: чеклист шагов…» + сценой
+  из research. Honor `skip_quality_review` на upload.
+fix_summary:
+- Повторно закрепили в контракте / Publish skill / Director notes:
+  после GATE PASS + H2 практики **не** слать Sol на ярлык
+  «конкретный пример». Не «Возьмём:». Hall: сайт текст не бракует;
+  гейта в репо нет. Код publish не меняли — логика INC-0650 уже есть.
+- `article.html` B29 не трогали. Writer prompt не раздували.
+files_changed:
+- `shared/excalibur-site-publish-contract.md`
+- Publish/Director agents + skills (обе стороны)
+- `tests/test_site_publish.py`
+- `tests/test_writer_sol_pipeline.py`
+- `memory/content-lessons.md`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile scripts/excalibur_blog_site_publish.py`
+- `python3 -m unittest tests.test_site_publish tests.test_writer_sol_pipeline` (29 OK)
+- `rg` GATE PASS + H2 практики / не слать Sol на ярлык / INC-2035 / Возьмём
+- B29 `article.html` не менялся; «Возьмём:» в нём нет
+commit: pending-this-commit
 
 ## INC-20260831-1526-metrika-credentials-b28
 status: open

@@ -53,7 +53,10 @@ Description = Дзен/RSS карточка (`description-brief.json`) ≠ title
 4. cover-text || schema → Cover
 5. indexer → publish. Первый site quality 409 → не PIPELINE FAIL,
    не «Возьмём:». Верни Sol **только** если нет H2 практика/чеклист.
-   Практика уже есть → тело не трогать; не помечать «починили сайт».
+   **GATE PASS + H2 практики уже в теле** (B27 / B29 INC-2035) →
+   не слать Sol на ярлык «конкретный пример»;
+   `false_example_409_no_body_edit`. Тело не трогать; не помечать
+   «починили сайт». Чекер качества — вне репо.
 6. Fixer → merge → content-learner
 
 Skill: `skills/director-excalibur-blog/SKILL.md`

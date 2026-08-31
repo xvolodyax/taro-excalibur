@@ -87,10 +87,13 @@ python3 scripts/excalibur_blog_description_gate.py --article-dir <dir>
 Нет ключа → SKIP, не FAIL. **Не** переписывать Sol ради site quality.
 Сайт игнорирует `skip_quality_review`. Первый approve **409** quality
 → `needs_sol`, **не** PIPELINE FAIL. Верни Sol **только** если нет H2
-«Практика: чеклист шагов…». Не «Возьмём:» / «кейс». Не шаблон B23.
-Практика уже в теле → тело не трогать; не помечать «починили сайт».
-Writer/Sol заранее кладут сцену в лид. Если Sol всё же переписал —
-новый POST, не `--resume-article-id`.
+«Практика: чеклист шагов…». **GATE PASS + H2 практики уже в теле**
+(B27 INC-0650 / B29 INC-2035) → не слать Sol на ярлык
+«конкретный пример». Не «Возьмём:» / «например» / «кейс». Не шаблон B23.
+`false_example_409_no_body_edit`. Тело не трогать; не помечать
+«починили сайт». Hall: сайт текст не бракует; гейта в репо нет.
+Чекер качества — вне репо. Writer/Sol заранее кладут сцену в лид.
+Если Sol всё же переписал — новый POST, не `--resume-article-id`.
 ### 7 Fixer → merge → learner
 `model: inherit`.
 

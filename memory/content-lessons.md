@@ -113,6 +113,29 @@ confidence: low
 ### Resolution
 status: recorded
 
+## LESSON-20260831-2035-B29-false-example-409
+status: recorded
+topic_id: B29
+category: publish
+confidence: medium
+
+### Evidence
+- process: INC-20260831-2035 — GATE PASS, upload 201 `article_id=39`,
+  approve 409, `quality_score=88`, warning «Нет конкретного примера
+  или разбора ситуации». H2 практики уже в теле. Повтор B27 INC-0650.
+- user / Hall: сайт текст не бракует; в репо нет гейта «конкретный
+  пример» / «возьмём / например / кейс». Не лечить «Возьмём:».
+  Директор тело не правил. Чекер качества — вне репо.
+
+### Keep
+- После GATE PASS + H2 «Практика: чеклист шагов…» — не слать Sol
+  на ярлык (`false_example_409_no_body_edit`).
+- Publish / Director тело не правят.
+
+### Never again
+- Возврат Sol на ярлык «конкретный пример», если практика уже в статье.
+- Закрывать INC как «починили сайт».
+
 ## LESSON-20260831-0650-B27-scene-in-lead
 status: recorded
 topic_id: B27

@@ -58,6 +58,9 @@ class WriterSolContractsTest(unittest.TestCase):
         self.assertIn("Возьмём:", d)
         self.assertIn("починили сайт", d)
         self.assertIn("если нет H2", d)
+        self.assertIn("GATE PASS + H2 практики уже в теле", d)
+        self.assertIn("не слать Sol на ярлык", d)
+        self.assertIn("INC-2035", d)
 
     def test_soul_owned_by_sol(self) -> None:
         soul = (ROOT / "shared/SOUL.md").read_text(encoding="utf-8")
