@@ -2,6 +2,38 @@
 
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
+## INC-20260831-0636-cover-host-missing-first-try
+status: open
+run_date: 2026-08-31
+role: excalibur-blog-cover
+topic_id: B27
+article_dir: memory/blog/articles/B27-on-ne-obsuzhdaet-buduschee-vashih-otnoshenij
+severity: medium
+category: prompt
+
+### What went wrong
+- One successful Kie 2K i2i (`create_attempts=1`). Cover panel came back as hook + still life (calendar/mug), host missing on left half.
+- `scene_hint` was 107 chars with `Host LARGE left` + `tiny Saturday calendar right`. Shared style prefix already has Victoria LARGE left. Model still filled cover with type + props.
+- No quality-redo (INC-20260724-2120 / this-run contract: recreate only on Kie 500/400/playground-blank/sensitive).
+
+### How the agent recovered this run
+- Split/inject PASS; identity gate PASS (prompt hair lock). Cover.png kept as file, not in body.
+- Documented for next first-try: even shorter cover hint, one tiny prop, no equal-weight still-life list leaking from hook objects.
+
+### Durable fix needed before next run
+- Strengthen victoria-studio cover lock so type+prop cannot drop the host on first billed gen.
+- Keep Cover from inventing a second createTask on host miss.
+
+### Suggested files to inspect/change
+- `memory/cover/quad-style-victoria-studio.json`
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260831-0640-cover-manifest-pink-cat-default
 status: open
 run_date: 2026-08-31
