@@ -14,9 +14,9 @@
     "h1_removed": 1
   },
   "gate": "PASS",
-  "publish": "NEEDS_SOL",
-  "verdict": "needs_sol",
-  "reason": "approve_quality_409",
+  "publish": "PUBLISHED",
+  "verdict": "pass",
+  "reason": "",
   "permalink": "{{SITE_BASE}}/blog/on-ne-obsuzhdaet-buduschee-vashih-otnoshenij/",
   "tgz_members": [
     "article.html",
@@ -27,21 +27,22 @@
     "cover/inline-02.png",
     "cover/inline-03.png"
   ],
-  "tgz_bytes": 2836324,
+  "tgz_bytes": 2836403,
   "upload_status": 201,
   "article_id": "37",
   "excerpt_clear_status": 403,
   "excerpt_clear_skipped": "hall_token_no_patch",
-  "approve_status": 409,
-  "approve_detail": "Сначала статья должна пройти проверку качества",
-  "director_next": "return_sol_practice",
-  "reason_detail": "Сначала статья должна пройти проверку качества",
-  "quality_score": 88,
-  "quality_warnings": [
-    "Нет конкретного примера или разбора ситуации"
-  ],
+  "approve_status": 200,
+  "permalink_live": "{{SITE_BASE}}/blog/on-ne-obsuzhdaet-buduschee-vashih-otnoshenij/",
+  "publish_status": 500,
+  "publish_detail": "Не удалось обновить sitemap.xml (EACCES)",
+  "publish_sitemap_skipped": "eacces",
+  "live_status": 200,
+  "live_ok": true,
+  "article_status": "published",
+  "version": 2,
+  "quality_score": 100,
+  "quality_warnings": [],
   "practice_h2_present": true,
-  "sol_rewritten": false,
-  "live_ok": false,
-  "article_status": "quality_review"
+  "sol_rewritten": false
 }

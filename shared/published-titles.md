@@ -23,6 +23,7 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B24 | on-ne-nazyvaet-tebya-svoej | Он не называет тебя своей | live |
 | B25 | ty-vidish-izmenu-v-ego-pauze | Ты видишь измену в его паузе сейчас | live |
 | B26 | on-skazal-chto-ne-gotov-k-otnosheniyam | Он сказал, что не готов к отношениям, но остаётся рядом | live |
+| B27 | on-ne-obsuzhdaet-buduschee-vashih-otnoshenij | Он охотно зовёт на выходные, но избегает разговоров о будущем | live |
 | LIVE | zachem-vtykayut-igolku-v-dvernoy-kosyak | Зачем втыкают иголку в дверной косяк | live |
 | LIVE | zachem-syplyut-sol-v-ugol-ot-skandalov | Зачем сыплют соль в угол от скандалов | live |
 | LIVE | kak-vyzyvayut-domovogo-v-kvartire | Как вызывают домового в квартире | live |

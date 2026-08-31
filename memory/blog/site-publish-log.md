@@ -3,20 +3,18 @@
 ## 2026-08-31 B27 on-ne-obsuzhdaet-buduschee-vashih-otnoshenij
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)
-- article_id: 37
-- version: 1
-- upload: 201
+- first upload: 201 article_id 37 version 1 → approve 409 quality_score 88 warning «Нет конкретного примера…»; needs_sol; тело не правили
+- second POST upload (no `--resume-article-id`): 201 same id 37 version 2 (новое тело: «Разберём этот конкретный пример…» в лиде)
 - excerpt_clear: 403 hall_token_no_patch (не FAIL)
-- approve: 409 quality → verdict needs_sol (не PIPELINE FAIL)
-- quality_score: 88
-- quality_warnings: «Нет конкретного примера или разбора ситуации»
-- practice_h2: already in article (`Практика: чеклист шагов для проверки общего горизонта отношений`)
-- publish: not reached
-- live_ok: false
-- permalink placeholder: {{SITE_BASE}}/on-ne-obsuzhdaet-buduschee-vashih-otnoshenij/
-- sol_rewritten: no (тело не правили; «Возьмём:» не добавляли)
+- approve: 200
+- publish: 500 sitemap EACCES → live_ok
+- quality_score: 100
+- quality_warnings: none
+- live_get: 200 `{{SITE_BASE}}/blog/on-ne-obsuzhdaet-buduschee-vashih-otnoshenij/`
+- root `{{SITE_BASE}}/on-ne-obsuzhdaet-buduschee-vashih-otnoshenij/`: 404 (live канон /blog/)
+- live has example sentence + practice H2; no «Возьмём:»; no cover-hero
+- sol_rewritten_by_publish: no
 - dzen_studio: not_used
-- director_next: return_sol_practice — H2 практика уже есть; 409 скорее ложный (гейт «конкретный пример» ≠ править opening)
 
 ## 2026-08-30 B26 on-skazal-chto-ne-gotov-k-otnosheniyam
 
