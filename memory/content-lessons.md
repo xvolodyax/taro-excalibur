@@ -54,6 +54,65 @@ confidence: low
 ### Resolution
 status: recorded
 
+## LESSON-20260831-0709-B27-morning-future-talk
+status: proposed
+topic_id: B27
+category: other
+confidence: low
+
+### Evidence
+- artifact: none (skipped under human-first-v2)
+  finding: `content-evidence-report.json` отсутствует; evidence_gate=SKIP, не BLOCK. Report не invent'ился.
+- process: `research-notes.md` + `title-brief.json` + `research-context.json`
+  finding: слот утро 2026-08-31 / 09:00 / острый запрос «он не обсуждает будущее»; не карта дня, не нумерология, не вечерний «напишет ли». H1 — наблюдаемый разговор («зовёт на выходные, но избегает разговоров о будущем»), не жирная Wordstat «не видит будущего» / мусор «он не говорит мы».
+- process: `cover/quad-mcp-batch.json` + `cover/cover-registry.json` + `site-publish-result.json#strip`
+  finding: реф `Виктория.png` (`prefer_local_reference` + `memory/cover/assets/Виктория.png`); style `victoria-studio`; `cover_png_figures_removed=0` / `cover_hero_removed=0` — cover не в теле. Первый billed gen без хоста (INC-0636); один owner redo → host left. Manifest pink-cat leftover закрыт INC-0640.
+- process: `site-publish-result.json`
+  finding: SITE token сам (`token_env=SITE_PUBLISH_TOKEN`, Hall / Дзен Студия `not_used`). Upload 201 `article_id=37`; excerpt 403 = не FAIL; publish 500 sitemap EACCES + live GET 200 = `live_ok`; `quality_score=100`, `practice_h2_present=true`, `sol_rewritten=false`.
+- process: `memory/pipeline-fix-queue.md#INC-20260831-0650-publish-false-409-example-b27`
+  finding: первый approve 409, quality 88, warning «Нет конкретного примера или разбора ситуации» при живой сцене (четверг / суббота / геопозиция отеля / «там посмотрим») и H2 «Практика: чеклист шагов для проверки общего горизонта отношений». Warning «практический блок» не было. Слот вышел после фразы «Разберём этот конкретный пример…» + новый POST (не resume). Это ≠ ярлык «Возьмём:».
+- process: LESSON-20260831-0650-B27-scene-in-lead
+  finding: Fixer-фрагмент про 409/сцену уже записан; этот блок — полный slot-lesson Content-learner после publish.
+- metrika_signal: none
+  finding: `excalibur_blog_metrika_fetch.py --days 30 --ingest` → METRIKA CREDENTIALS BLOCKER (нет `YANDEX_METRIKA_OAUTH_TOKEN` / `YANDEX_METRIKA_COUNTER_ID`). `memory/analytics/metrika-latest.json` не создан. Цифры не выдумывать. См. INC-20260831-0709-metrika-credentials-b27; B26 INC-1936 всё ещё open.
+
+### Named blockers
+- EVIDENCE_SKIPPED
+- METRIKA FEEDBACK BLOCKER
+- SITE_QUALITY_409 (конкретный пример ≠ «Возьмём:»; первый upload; later live)
+
+### Keep
+- Утренний острый запрос «не обсуждает будущее» (контакт и суббота есть, горизонта нет) — не формат «карта дня».
+- Cover i2i от рефа `Виктория.png` (`prefer_local_reference` + local file), style `victoria-studio`.
+- `cover.png` только файл обложки, не вторая картинка в теле.
+- SITE token сам: upload → approve → publish; Hall / Дзен Студия не звать.
+- Живая сцена из research этой статьи в лиде + заранее H2 «Практика: чеклист шагов…».
+- Publish тело не правит. Sitemap EACCES + live 200 = `live_ok`.
+
+### Change
+- 409 «нет конкретного примера» при уже живой сцене + H2 практике — не лечить ярлыком «Возьмём:» / «например» / «кейс» и не слать Sol на вставку ярлыка (`false_example_409_no_body_edit`).
+- Не ждать возврата Sol после quality 88, если практика уже в статье.
+- Не помечать B25 INC-1423 / site quality как «починили сайт».
+
+### Never again
+- «Возьмём:» / «Возьмем:» / «Сцена» как лечение 409 example.
+- Закрывать слот картой дня / числом дня / 21:21 этой статьёй.
+- Клеить жирную Wordstat («не видит будущего», шум «он не говорит мы») в H1.
+- Часы и день B23 («суббота, 20:40») в утренний слот.
+- Сливать угол с B26 («сказал, что не готов, но остаётся»).
+- Раздувать `shared/writer-master-prompt.md` / Writer skill автоматически (фраза «Разберём этот конкретный пример…» уже в prompt после Fixer 5b88870; новый токен не добавлять).
+
+### Proposed apply
+- Review-only: слот утро / острый запрос «не обсуждает будущее» держит сцену+практику из research этой статьи; 409 example ≠ «Возьмём:».
+- Не добавлять правила в `shared/writer-master-prompt.md` и Writer/Sol skill автоматически (один кейс + evidence SKIP + повтор 409 уже закрыт Fixer INC-0650).
+- Cloud Secrets: `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` (scope `metrika:read`), иначе следующий Content-learner снова BLOCKER.
+
+### Durable applied
+- none this run. Prior Fixer INC-0650 (commit 5b88870): сцена в лиде + фраза опоры; Publish `false_example_409_no_body_edit`; Writer prompt не трогать повторно. Rollback: вернуть только по явному решению человека, не из этого SKIP+no-Metrika прогона.
+
+### Resolution
+status: recorded
+
 ## LESSON-20260831-0650-B27-scene-in-lead
 status: recorded
 topic_id: B27
