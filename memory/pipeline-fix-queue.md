@@ -2,6 +2,46 @@
 
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
+## INC-20260831-0650-publish-false-409-example-b27
+status: open
+run_date: 2026-08-31
+role: excalibur-blog-publish
+topic_id: B27
+article_dir: memory/blog/articles/B27-on-ne-obsuzhdaet-buduschee-vashih-otnoshenij
+severity: medium
+category: publish
+
+### What went wrong
+- GATE PASS + env-check `token_configured=true` + dry-run PASS. Upload 201, `article_id=37`, `version=1`.
+- PATCH excerpt 403 → `excerpt_clear_skipped=hall_token_no_patch` (не FAIL).
+- First approve 409 «Сначала статья должна пройти проверку качества» без `--resume-article-id`.
+- Admin GET: `status=quality_review`, `quality_score=88`.
+- Единственный warning: «Нет конкретного примера или разбора ситуации».
+- Warning «практический блок» нет. H2 «Практика: чеклист шагов для проверки общего горизонта отношений» уже в `article.html` (чеклист из фактов B27).
+- Opening уже сцена: четверг / суббота / геопозиция отеля / «там посмотрим». Это не шаблон B23 и не «Возьмём:».
+
+### How the agent recovered this run
+- Не переписывал Sol / opening / `article.html`.
+- Не добавлял «Возьмём:» / «Сцена» / часы B23.
+- Первый 409 без resume → `verdict=needs_sol`, не PIPELINE FAIL.
+- Ledger `published-*` не трогал (статья не live).
+- Вернул Директору: практика уже в статье; 409 скорее ложный (гейт «конкретный пример» ≠ править тело).
+
+### Durable fix needed before next run
+- Site quality не должен 409-ить GATE PASS статью с H2 практики + сценой из research только из‑за ярлыка «конкретный пример».
+- Publish после GATE PASS не лечит «конкретный пример» телом и не добавляет «Возьмём:».
+- Директор: не слать Sol на вставку «Возьмём:»; если возвращать Sol — только если в этой статье реально нет практики (здесь она есть).
+
+### Suggested files to inspect/change
+- `shared/excalibur-site-publish-contract.md`
+- site quality checker (вне этого репо)
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260831-0636-cover-host-missing-first-try
 status: open
 run_date: 2026-08-31

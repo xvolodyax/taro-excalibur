@@ -1,5 +1,23 @@
 # Site publish log
 
+## 2026-08-31 B27 on-ne-obsuzhdaet-buduschee-vashih-otnoshenij
+
+- method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)
+- article_id: 37
+- version: 1
+- upload: 201
+- excerpt_clear: 403 hall_token_no_patch (не FAIL)
+- approve: 409 quality → verdict needs_sol (не PIPELINE FAIL)
+- quality_score: 88
+- quality_warnings: «Нет конкретного примера или разбора ситуации»
+- practice_h2: already in article (`Практика: чеклист шагов для проверки общего горизонта отношений`)
+- publish: not reached
+- live_ok: false
+- permalink placeholder: {{SITE_BASE}}/on-ne-obsuzhdaet-buduschee-vashih-otnoshenij/
+- sol_rewritten: no (тело не правили; «Возьмём:» не добавляли)
+- dzen_studio: not_used
+- director_next: return_sol_practice — H2 практика уже есть; 409 скорее ложный (гейт «конкретный пример» ≠ править opening)
+
 ## 2026-08-30 B26 on-skazal-chto-ne-gotov-k-otnosheniyam
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)
