@@ -1,0 +1,76 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B27",
+  "slug": "on-ne-obsuzhdaet-buduschee-vashih-otnoshenij",
+  "article_dir": "memory/blog/articles/B27-on-ne-obsuzhdaet-buduschee-vashih-otnoshenij",
+  "research_date": "2026-08-31",
+  "status": "PASS",
+  "verdict": "PASS",
+  "blocker": null,
+  "fresh_signal": true,
+  "fresh_signal_kind": "tarot_news_this_week",
+  "fresh_signal_week": "2026-W36",
+  "fresh_signal_summary": "Неделя 31.08–6.09 / последний день лета: ТСН, Cursorinfo (сегодня 00:06), Mixnews и КУ66 (30.08) зовут ясный разговор о долгом будущем пары и планах на сентябрь. Канал и листинг тенанта крутят двусмысленный контакт (B26 / зал), угол «не обсуждает мы дальше субботы» не закрыт.",
+  "fresh_signal_urls": [
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html",
+    "https://cursorinfo.co.il/horoscope/goroskop-na-31-avgusta-2026-po-kartam-taro-vse-znaki-zodiaka/",
+    "https://mixnews.lv/goroskop/2026/08/30/goroskop-na-31-avgusta-po-kartam-taro-teltsu-ne-toropit-rezultat-streltsu-smotret-dalshe-blizhayshey-vygody/",
+    "https://ku66.ru/life/poslednij_den_leta_mozhet_pomenyat_plany_taro_na_31_avgusta_pokazyvaet_neozhidannyj_povorot_pered_nachalom_oseni"
+  ],
+  "signal_urls": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.таросейчас.рф/blog/",
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html",
+    "https://cursorinfo.co.il/horoscope/goroskop-na-31-avgusta-2026-po-kartam-taro-vse-znaki-zodiaka/"
+  ],
+  "scout_signal_checked": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.таросейчас.рф/blog/",
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html",
+    "https://cursorinfo.co.il/horoscope/goroskop-na-31-avgusta-2026-po-kartam-taro-vse-znaki-zodiaka/"
+  ],
+  "scout_urls_alive": true,
+  "rf_deny": false,
+  "wordstat": {
+    "status": "OK_PARTIAL",
+    "region": "225",
+    "accessed_at": "2026-08-31",
+    "calls": 18,
+    "fattest_not_h1": "он не видит будущего",
+    "note": "regions must be string \"225\"; int 225 → HTTP 400. PARTIAL = totalCount without results. «он не говорит мы»=17029 шум, не ключ.",
+    "phrases": [
+      {"phrase": "он не видит будущего", "totalCount": 790, "tops": ["не вижу с ним будущего=350", "он не видит будущее со мной=45", "он любит но будущее не видит=32"]},
+      {"phrase": "он не строит планы", "totalCount": 382, "note": "assoc стройка/проект, шум"},
+      {"phrase": "нет будущего в отношениях", "totalCount": 309},
+      {"phrase": "он не говорит о будущем", "totalCount": 261},
+      {"phrase": "он не планирует будущее", "totalCount": 115, "note": "PARTIAL без results"},
+      {"phrase": "он не обсуждает будущее", "totalCount": 84, "note": "PARTIAL без results"},
+      {"phrase": "не строит совместных планов", "totalCount": 75},
+      {"phrase": "он не видит со мной будущего", "totalCount": 45},
+      {"phrase": "не обсуждает будущее отношений", "totalCount": 29, "note": "PARTIAL без results"},
+      {"phrase": "он не говорит о будущем в отношениях", "totalCount": 20, "note": "PARTIAL без results"},
+      {"phrase": "он избегает разговора о будущем", "totalCount": 16, "note": "PARTIAL без results"}
+    ]
+  },
+  "overlap": [
+    "B26 Он сказал, что не готов к отношениям, но остаётся рядом — стоп-фраза + остаётся",
+    "B24 Он не называет тебя своей — ярлык, не горизонт",
+    "B14 / LIVE Он охладел — тон, не отказ обсуждать «мы»",
+    "B25 Ты видишь измену в его паузе сейчас — измена",
+    "LIVE Пауза или конец? / Что он решил за выходные — не этот угол",
+    "LIVE Что он чувствует / Что он скрывает — мысли; не этот слот",
+    "карта дня и нумерология — не утренний острый слот"
+  ],
+  "cta": {
+    "slot": "morning-2026-08-31",
+    "product": "bot",
+    "two_doors": "triplet / cross in bot, not bot vs VK app",
+    "dzen_no_telegram": true,
+    "site_only_telegram": true,
+    "raw_urls_in_body": false,
+    "forbidden_phrase": "личный аудиоразбор",
+    "vk_app_this_slot": false
+  },
+  "notes_path": "memory/blog/articles/B27-on-ne-obsuzhdaet-buduschee-vashih-otnoshenij/research-notes.md",
+  "incident_report": "none"
+}

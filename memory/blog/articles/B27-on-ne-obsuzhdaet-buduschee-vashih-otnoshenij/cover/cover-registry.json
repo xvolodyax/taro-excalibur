@@ -1,0 +1,50 @@
+{
+  "topic_id": "B27",
+  "slug": "on-ne-obsuzhdaet-buduschee-vashih-otnoshenij",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: зовёт на выходные, а будущего нет",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-31T06:41:05+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: зовёт на выходные, а будущего нет",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: фраза «не люблю планировать» скрывает личные планы без тебя",
+      "h2_anchor": "Почему слова «я не люблю планировать» часто скрывают личные планы без тебя",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема маркеров: как отличить временную паузу от глухого блока",
+      "h2_anchor": "Маркеры в поведении: как отличить временную паузу от глухого блока",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист шагов для проверки общего горизонта отношений",
+      "h2_anchor": "Практика: чеклист шагов для проверки общего горизонта отношений",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

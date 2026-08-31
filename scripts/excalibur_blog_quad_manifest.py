@@ -32,6 +32,12 @@ DEFAULT_SLOT_MAP = {
     "inline_2": "bottom_left",
     "inline_3": "bottom_right",
 }
+DEFAULT_STYLE_FILE = "memory/cover/quad-style-victoria-studio.json"
+DEFAULT_STYLE_ID = "victoria-studio"
+_FAQ_LIKE_H2 = re.compile(
+    r"faq|частые вопрос|часто задаваем|вопрос[- ]ответ",
+    re.IGNORECASE,
+)
 
 
 def project_root() -> Path:
@@ -74,16 +80,55 @@ def score_type(h2: str, type_def: dict) -> int:
     return score
 
 
+def is_faq_like_h2(h2: str) -> bool:
+    """schema_faq_ui only for FAQ-like H2, not any «часто» (INC-20260831-0640)."""
+    hay = re.sub(r"\s+", " ", (h2 or "").strip().lower())
+    if hay in {"вопросы", "частые вопросы", "faq"}:
+        return True
+    return bool(_FAQ_LIKE_H2.search(hay))
+
+
+def resolve_tenant_style(root: Path) -> tuple[str, str]:
+    """Tenant cover_files.style_preset; never the pink-cat leftover default."""
+    style_file = DEFAULT_STYLE_FILE
+    tenant_path = root / "shared/tenant-config.json"
+    if tenant_path.is_file():
+        try:
+            configured = str(
+                (load_json(tenant_path).get("cover_files") or {}).get("style_preset") or ""
+            ).strip()
+        except json.JSONDecodeError:
+            configured = ""
+        if configured:
+            style_file = configured
+    style_id = DEFAULT_STYLE_ID
+    style_path = root / style_file
+    if style_path.is_file():
+        try:
+            sid = str(load_json(style_path).get("style_id") or "").strip()
+            if sid:
+                style_id = sid
+        except json.JSONDecodeError:
+            style_id = Path(style_file).stem.replace("quad-style-", "")
+    else:
+        style_id = Path(style_file).stem.replace("quad-style-", "")
+    return style_id, style_file
+
+
 def pick_visual_type(h2: str, types_catalog: dict, used: set[str]) -> str:
     types = types_catalog.get("types") or {}
     scored: list[tuple[int, str]] = []
     for type_id, type_def in types.items():
+        if type_id == "schema_faq_ui" and not is_faq_like_h2(h2):
+            continue
         scored.append((score_type(h2, type_def), type_id))
     scored.sort(key=lambda item: (-item[0], TYPE_PRIORITY.index(item[1]) if item[1] in TYPE_PRIORITY else 99))
     for score, type_id in scored:
         if score > 0 and type_id not in used:
             return type_id
     for type_id in TYPE_PRIORITY:
+        if type_id == "schema_faq_ui" and not is_faq_like_h2(h2):
+            continue
         if type_id not in used:
             return type_id
     return TYPE_PRIORITY[0]
@@ -142,14 +187,15 @@ def build_manifest(article_dir: Path, root: Path, preserve: dict | None) -> dict
         str(cover_text.get("highlight") or "").strip()
         or str((preserve or {}).get("cover_hook_highlight") or "").strip()
     )
+    style_id, style_file = resolve_tenant_style(root)
 
     return {
         "topic_id": topic_id,
         "canvas_file": "cover/canvas-quad.png",
         "layout": "2x2",
         "pipeline": "quad_canvas_1x_image_api",
-        "style_preset": "tenant_unset",
-        "style_file": "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
+        "style_preset": style_id,
+        "style_file": style_file,
         "blog_hero": "memory/cover/blog-hero.json",
         "inline_types_catalog": "memory/cover/inline-visual-types.json",
         "cover_hook": hook,
