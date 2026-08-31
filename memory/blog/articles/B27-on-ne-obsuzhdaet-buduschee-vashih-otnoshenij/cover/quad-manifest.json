@@ -1,0 +1,64 @@
+{
+  "topic_id": "B27",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Зовёт на выходные, а будущего нет",
+  "cover_hook_highlight": "будущего",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: зовёт на выходные, а будущего нет",
+      "scene_hint": "Host LARGE left, same woman as Виктория.png, new clothes not white cami; tiny Saturday calendar right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "планы только на субботу"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Почему слова «я не люблю планировать» часто скрывают личные планы без тебя",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Comparison: LEFT BAD «не люблю планировать» red X; RIGHT REAL «планы без тебя» green only: командировки, машина, офис. L→R, outcome: спонтанность — маска. NO people/faces. #FFF",
+      "alt": "Схема: фраза «не люблю планировать» скрывает личные планы без тебя",
+      "labels": [
+        "планы в одиночку",
+        "только на субботу",
+        "удобная спонтанность",
+        "планы без тебя"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Маркеры в поведении: как отличить временную паузу от глухого блока",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Comparison: LEFT GOOD «пауза» green: сам вернулся; RIGHT BAD «блок» red X: вечное потом, только «я», комфорт вместо планов. Outcome: отличить паузу от блока. NO people/faces. #FFF",
+      "alt": "Схема маркеров: как отличить временную паузу от глухого блока",
+      "labels": [
+        "вечное «потом»",
+        "в речи только «я»",
+        "комфорт вместо планов",
+        "уход от темы"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Практика: чеклист шагов для проверки общего горизонта отношений",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist: ближний горизонт; пауза без давления; слушай «мы»; прямой вопрос о векторе. Outcome: проверка общего горизонта. Gold ticks, paper/tape. NO people/faces/emoji/silhouettes. #FFF",
+      "alt": "Чеклист шагов для проверки общего горизонта отношений",
+      "labels": [
+        "проверка горизонта",
+        "пауза без давления",
+        "прямой вопрос",
+        "трезвый взгляд"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

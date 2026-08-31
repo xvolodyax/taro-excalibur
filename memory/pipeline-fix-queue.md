@@ -2,6 +2,37 @@
 
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
+## INC-20260831-0640-cover-manifest-pink-cat-default
+status: open
+run_date: 2026-08-31
+role: excalibur-blog-cover
+topic_id: B27
+article_dir: memory/blog/articles/B27-on-ne-obsuzhdaet-buduschee-vashih-otnoshenij
+severity: medium
+category: script
+
+### What went wrong
+- `excalibur_blog_quad_manifest.py` hardcodes `style_preset: tenant_unset` and `style_file: memory/cover/quad-style-pink-cat-digital-collage-ru.json`.
+- Tenant `cover_files.style_preset` is `memory/cover/quad-style-victoria-studio.json`. Prompt script prefers `manifest.style_file` over tenant, so an unpatched manifest would send pink-cat collage to Kie.
+
+### How the agent recovered this run
+- After `--merge`, overwrote `style_preset`/`style_file` to victoria-studio (same as B26) before `--write-batch`.
+- Auto `schema_faq_ui` on H2 with «часто» also overridden to `comparison_table_ui`.
+
+### Durable fix needed before next run
+- Manifest builder must read tenant `cover_files.style_preset` instead of the pink-cat leftover.
+- Optional: skip `schema_faq_ui` unless H2 is FAQ-like, not any «часто».
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_quad_manifest.py`
+- `shared/tenant-config.json`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260830-1339-cover-kie-422-playground
 status: needs-human
 run_date: 2026-08-30
