@@ -2,6 +2,45 @@
 
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
+## INC-20260831-1508-cover-kie-poll-timeout-b28
+status: open
+run_date: 2026-08-31
+role: excalibur-blog-cover
+topic_id: B28
+article_dir: memory/blog/articles/B28-on-obyavilsya-spustya-mesyacy-molchaniya
+severity: medium
+category: api
+
+### What went wrong
+- First Kie `createTask` stayed `waiting`/`generating` past default `--max-wait` 900s.
+- Script one final `recordInfo` still non-terminal → exited `KIE API BLOCKER` (no URL).
+- Same `task_id` later went terminal `failCode=500` / upstream timeout (late 500 after client poll clock).
+- 2K i2i can outlive 900s; first window cut a still-running job.
+
+### How the agent recovered this run
+- Did **not** invent a third billed create and did **not** quality-redo / MCP.
+- `--task-id` poll of the first job (no new create) → late 500.
+- Script max-1 recreate (`retry_kind=server_500`) on unchanged `quad-mcp-batch.json`.
+- Recreate still `generating` at 600s; `--task-id` + `--max-create-retries 0` until `success`.
+- Apply/split/inject only after URL. Cover.png + 3 inline. No `figure.cover-hero`.
+
+### Durable fix needed before next run
+- After poll-window exhausted while `state=generating`, Cover `--task-id` polls the **same** job (not immediate BLOCKER, not a new create).
+- Late terminal 500 then enters existing max-1 recreate (INC-20260730-0834).
+- Recreate poll: `--max-create-retries 0` so a second timeout cannot bill a third job.
+- Optional: raise default `--max-wait` for 2K i2i, or document Cover late-poll in Kie contract.
+
+### Suggested files to inspect/change
+- `shared/kie-gpt-image-api-contract.md`
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `skills/cover-excalibur-blog/SKILL.md`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260831-0709-metrika-credentials-b27
 status: open
 run_date: 2026-08-31
