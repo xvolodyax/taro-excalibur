@@ -67,7 +67,7 @@ checks_run:
 - `python3 -m unittest tests.test_site_publish tests.test_writer_sol_pipeline` (29 OK)
 - `rg` GATE PASS + H2 практики / не слать Sol на ярлык / INC-2035 / Возьмём
 - B29 `article.html` не менялся; «Возьмём:» в нём нет
-commit: pending-this-commit
+commit: 3726cd9
 
 ## INC-20260831-1526-metrika-credentials-b28
 status: open
