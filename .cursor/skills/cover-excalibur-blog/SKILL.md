@@ -57,7 +57,8 @@ write scene_hint + hook
 
 Self-check **до** первого Kie (обязателен):
 
-1. cover `scene_hint` ≈80–140, starts from blog-hero prompt_fragment / cover_mode;
+1. cover `scene_hint` ≈80–140: `Host LARGE left half` + `Виктория.png` +
+   `face fills left`; type/calendar/mug **RIGHT only** (INC-20260831-0636);
 2. ровно один topic prop с `tiny`/`small` (не equal-weight list);
 3. sticky (если есть) — полная кириллическая фраза агента, не «не»+Latin;
 4. `meme_caption_ru == ""`; `jobs.length === 1`; `input_urls` не пуст;
@@ -140,7 +141,7 @@ size lock) — props конкурируют с лицом и вытесняют 
 коротком hint (~120 chars). Один крупный prop на left half = fail pattern.
 
 Форма (не phrase bank — topic object/sticky invents агент):
-`<host_or_hero_lock from blog-hero>; tiny <topic object> right; sticky «…»; layers from design-code; #FFF`
+`Host LARGE left half, same woman as Виктория.png, face fills left; tiny <topic object> RIGHT only; #FFF`
 
 Inline `scene_hint` остаются ≈**100–220** (H2 facts + 3–6 labels). Cover короче inline.
 

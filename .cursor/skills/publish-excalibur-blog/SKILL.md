@@ -28,10 +28,12 @@ Site quality **игнорирует** `skip_quality_review`. Это **не** п�
 править opening. Практика/чеклист ≠ «конкретный пример: ЧЧ:ММ».
 Если approve **409**:
 
-- не добавлять «Возьмём:» / «Возьмем:» / «Сцена»;
-- первый 409 без resume → `needs_sol`, **не** PIPELINE FAIL:
-  Директор возвращает Sol с H2 «Практика: чеклист шагов…» из фактов
-  этой статьи, затем новый POST upload (не `--resume-article-id`);
+- не добавлять «Возьмём:» / «Возьмем:» / «Сцена» / «кейс»;
+- тело **не** править; не помечать «починили сайт»;
+- первый 409 без resume → `needs_sol`, **не** PIPELINE FAIL;
+- нет H2 «Практика: чеклист шагов…» → `return_sol_practice`, затем новый POST
+  (не `--resume-article-id`);
+- практика уже в теле → `false_example_409_no_body_edit`;
 - утренний слот ≠ вечерние часы B23 («суббота, 20:40»);
 - Hall/SITE token: PATCH excerpt **403** — не FAIL;
 - publish **500** sitemap EACCES + live **200** = `live_ok`;

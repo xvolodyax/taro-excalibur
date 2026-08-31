@@ -466,11 +466,14 @@ def build_prompt(
             "keyword spam/«Ключевые темы»/Latin lookalike Cyrillic/pipeline stamps/"
             "EXCALIBUR badge or sword."
         )
+        # INC-20260831-0636: type+calendar/mug must not drop the host on first billed gen.
         cover_scene_tail = (
-            "host+face; dense collage + topic object; no sterile/meme/canned EN chat filler."
+            "Host LARGE left half, face fills left (Виктория.png i2i); "
+            "tiny topic prop RIGHT only; type cannot drop/replace host."
         )
         reference_line = (
-            "REFERENCE FACE top-left: blog-hero lock; new emotion; no headphones."
+            "i2i Виктория.png: face LARGE left half first; "
+            "type+calendar/mug RIGHT only; NEVER faceless cover."
         )
         inline_suffix = (
             "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "

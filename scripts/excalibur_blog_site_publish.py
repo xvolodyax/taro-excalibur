@@ -8,8 +8,10 @@ Known site limits (B23/B24/B26, see shared/excalibur-site-publish-contract.md):
 Hall/SITE token PATCH excerpt → 403 (not FAIL); publish 500 sitemap EACCES
 + live 200 → live_ok; related blog-card__ cover.png is not a second cover;
 resume 409 on already-live continues to live GET. First quality 409 without
-resume → verdict needs_sol (Director returns Sol with practice H2; not
-pipeline FAIL; never add «Возьмём:»). Do not rewrite Sol.
+resume → verdict needs_sol (not pipeline FAIL; never add «Возьмём:»).
+Director returns Sol only if practice H2 is missing; if practice+scene
+already in the body → director_next=false_example_409_no_body_edit.
+Do not rewrite Sol. Not «починили сайт».
 """
 from __future__ import annotations
 
@@ -206,6 +208,16 @@ def rewrite_rasklad_back_to_telegram(live_html: str, telegram_hrefs: list[str]) 
         live_html or "",
         flags=re.I,
     )
+
+
+def article_has_practice_h2(html: str) -> bool:
+    """True when Sol already wrote a practice / checklist H2 (INC-20260831-0650)."""
+    for match in re.finditer(r"<h2[^>]*>(.*?)</h2>", html or "", flags=re.I | re.S):
+        title = re.sub(r"<[^>]+>", "", match.group(1))
+        title = re.sub(r"\s+", " ", title).strip().lower()
+        if "практик" in title or "чеклист" in title:
+            return True
+    return False
 
 
 def telegram_rewritten_to_rasklad(source_html: str, live_html: str) -> list[str]:
@@ -621,11 +633,13 @@ def run_publish(
                 detail = str(payload.get("detail") or payload.get("error") or "")
             result[f"{action}_detail"] = detail
             # 409 "already approved" can continue. First-upload quality 409 cannot
-            # publish, but is not a pipeline FAIL: Director returns Sol with a
-            # practice H2 from this article (B26). Resume of an already-live
+            # publish, but is not a pipeline FAIL. Director returns Sol only if
+            # practice H2 is missing (B26). If practice+scene already in the body
+            # (B27), do not send Sol to insert «Возьмём:» / «кейс» — that is not
+            # a repo gate and not «починили сайт». Resume of an already-live
             # article still gets that 409 even when status=published (B24) —
             # continue to publish/live. Publish 500 sitemap EACCES still leaves
-            # the article live (B23 29.08). Never add «Возьмём:».
+            # the article live (B23 29.08). Never add «Возьмём:». Never rewrite body.
             if action == "approve" and resp.status == 409 and "одобрен" in detail.lower():
                 pass
             elif (
@@ -644,7 +658,12 @@ def run_publish(
                 result["verdict"] = "needs_sol"
                 result["publish"] = "NEEDS_SOL"
                 result["reason"] = "approve_quality_409"
-                result["director_next"] = "return_sol_practice"
+                if article_has_practice_h2(raw_html):
+                    result["director_next"] = "false_example_409_no_body_edit"
+                    result["practice_h2_present"] = True
+                else:
+                    result["director_next"] = "return_sol_practice"
+                    result["practice_h2_present"] = False
                 if detail:
                     result["reason_detail"] = detail
                 write_result(article_dir, result, site_base)
@@ -828,10 +847,19 @@ def main(argv: list[str] | None = None, http: HttpFn | None = None) -> int:
             token,
         )
     elif verdict == "needs_sol":
+        next_step = str(result.get("director_next") or "return_sol_practice")
+        if next_step == "false_example_409_no_body_edit":
+            msg = (
+                "QUALITY 409: practice H2 already in body — do not return Sol "
+                "for «Возьмём:» / «кейс»; do not rewrite body; not «починили сайт»"
+            )
+        else:
+            msg = (
+                "QUALITY 409: Director returns Sol with practice H2 "
+                "(not pipeline FAIL, no «Возьмём:»)"
+            )
         _safe_print(
-            "QUALITY 409: Director returns Sol with practice H2 "
-            "(not pipeline FAIL, no «Возьмём:») "
-            f"report={repo_relative(article_dir / 'site-publish-result.json', root)}",
+            f"{msg} report={repo_relative(article_dir / 'site-publish-result.json', root)}",
             token,
         )
     else:

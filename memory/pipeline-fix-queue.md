@@ -3,7 +3,7 @@
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
 ## INC-20260831-0650-publish-false-409-example-b27
-status: open
+status: fixed
 run_date: 2026-08-31
 role: excalibur-blog-publish
 topic_id: B27
@@ -40,10 +40,34 @@ category: publish
 - none recorded
 
 ### Fixer resolution
-- pending
+status: fixed
+fixed_at: 2026-08-31
+fix_summary:
+- Writer/Sol заранее кладут живую сцену в лид и опираются на неё
+  («Разберём этот конкретный пример…») без ярлыка «Возьмём:» / «кейс».
+  Это не гейт сайта и не обязательный токен.
+- Publish тело не правит. Первый 409: нет практики →
+  `return_sol_practice`; практика уже в теле →
+  `false_example_409_no_body_edit` (не слать Sol на ярлык).
+- Не помечено «починили сайт». B25 INC-1423 / 1404 / 1413 / 1416
+  не закрыты. `article.html` B27 не трогали.
+files_changed:
+- `shared/writer-master-prompt.md`
+- `shared/excalibur-site-publish-contract.md`
+- `scripts/excalibur_blog_site_publish.py`
+- `tests/test_site_publish.py`
+- `tests/test_writer_sol_pipeline.py`
+- Writer/Sol/Publish/Director agents + skills (обе стороны)
+- `memory/content-lessons.md`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile scripts/excalibur_blog_site_publish.py`
+- `python3 -m unittest tests.test_site_publish tests.test_writer_sol_pipeline`
+- `rg` false_example_409_no_body_edit / починили сайт / Возьмём
+commit: pending-this-commit
 
 ## INC-20260831-0636-cover-host-missing-first-try
-status: open
+status: fixed
 run_date: 2026-08-31
 role: excalibur-blog-cover
 topic_id: B27
@@ -72,10 +96,31 @@ category: prompt
 - none recorded
 
 ### Fixer resolution
-- pending
+status: fixed
+fixed_at: 2026-08-31
+fix_summary:
+- victoria-studio prefix + host cover_scene_tail: first-try
+  `Host LARGE left half` + i2i `Виктория.png` + face fills left;
+  type/calendar/mug RIGHT only; type cannot drop/replace host.
+- Cover по-прежнему не invent второй createTask из‑за host miss
+  (один owner redo — только по явному запросу).
+- Prompt budget victoria-studio + 4 short hints всё ещё ≤3500.
+files_changed:
+- `memory/cover/quad-style-victoria-studio.json`
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `shared/cover-host-canon.md`
+- `shared/blog-cover-quad-canvas-contract.md`
+- Cover agent + skill (обе стороны)
+- `tests/test_cover_text.py`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile scripts/excalibur_blog_cover_quad_prompt.py`
+- `python3 -m unittest tests.test_cover_text` (8 OK)
+- `rg` Host LARGE left / Виктория.png / host+face; dense collage
+commit: pending-this-commit
 
 ## INC-20260831-0640-cover-manifest-pink-cat-default
-status: open
+status: fixed
 run_date: 2026-08-31
 role: excalibur-blog-cover
 topic_id: B27
@@ -103,7 +148,24 @@ category: script
 - none recorded
 
 ### Fixer resolution
-- pending
+status: fixed
+fixed_at: 2026-08-31
+fix_summary:
+- `excalibur_blog_quad_manifest.py` читает tenant
+  `cover_files.style_preset` → victoria-studio. Больше нет
+  hardcoded `tenant_unset` / pink-cat leftover default.
+- `schema_faq_ui` только для FAQ-like H2; голое «часто» не матчит.
+  Keyword «часто» убран из catalog.
+files_changed:
+- `scripts/excalibur_blog_quad_manifest.py`
+- `memory/cover/inline-visual-types.json`
+- `tests/test_quad_manifest.py`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile scripts/excalibur_blog_quad_manifest.py`
+- `python3 -m unittest tests.test_quad_manifest` (3 OK)
+- `rg` tenant_unset / pink-cat leftover default
+commit: pending-this-commit
 
 ## INC-20260830-1339-cover-kie-422-playground
 status: needs-human

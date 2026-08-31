@@ -51,7 +51,9 @@ DESCRIPTION = (
 )
 
 
-def _article_html(*, cover_hero: bool = True, telegram: bool = True) -> str:
+def _article_html(
+    *, cover_hero: bool = True, telegram: bool = True, practice_h2: bool = False
+) -> str:
     tg = (
         '<p>Ответ можно снять в <a href="https://t.me/example_bot?start=ref1">боте</a>.</p>\n'
         if telegram
@@ -89,14 +91,26 @@ def _article_html(*, cover_hero: bool = True, telegram: bool = True) -> str:
         '  <img src="cover/inline-03.png" alt="Вопросы к картам">\n'
         "</figure>\n"
         "<p>Финал без второй обложки и без переписывания ссылок на расклад.</p>\n"
+        + (
+            '<h2>Практика: чеклист шагов для проверки паузы</h2>\n'
+            "<p>Проверь время ответа и не пиши первой.</p>\n"
+            if practice_h2
+            else ""
+        )
     )
 
 
-def _write_article(tmp: Path, *, topic_id: str = "B99", cover_hero: bool = True) -> Path:
+def _write_article(
+    tmp: Path,
+    *,
+    topic_id: str = "B99",
+    cover_hero: bool = True,
+    practice_h2: bool = False,
+) -> Path:
     article_dir = tmp / f"{topic_id}-on-prochital-i-molchit"
     cover = article_dir / "cover"
     cover.mkdir(parents=True)
-    html = _article_html(cover_hero=cover_hero)
+    html = _article_html(cover_hero=cover_hero, practice_h2=practice_h2)
     (article_dir / "article.html").write_text(html, encoding="utf-8")
     (article_dir / "article.meta.json").write_text(
         json.dumps(
@@ -516,7 +530,33 @@ class SitePublishUnitTest(unittest.TestCase):
             self.assertEqual(result["publish"], "NEEDS_SOL")
             self.assertEqual(result["reason"], "approve_quality_409")
             self.assertEqual(result.get("director_next"), "return_sol_practice")
+            self.assertFalse(result.get("practice_h2_present"))
             self.assertIn("качеств", str(result.get("reason_detail") or "").lower())
+            self.assertFalse(any("/publish" in u for _, u in http.calls))
+
+    def test_first_upload_quality_409_practice_present_no_body_edit(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            article_dir = _write_article(Path(tmp), practice_h2=True)
+            html_before = (article_dir / "article.html").read_text(encoding="utf-8")
+            http = FakeHttp()
+            http.approve_409_quality = True
+            code, result = run_publish(
+                article_dir=article_dir,
+                root=ROOT,
+                env={"SITE_PUBLISH_TOKEN": "unit-test-token-not-for-git"},
+                site_base=DEFAULT_SITE_BASE,
+                dry_run=False,
+                skip_gates=False,
+                http=http,
+            )
+            self.assertEqual(code, 2, result)
+            self.assertEqual(result["verdict"], "needs_sol")
+            self.assertEqual(result.get("director_next"), "false_example_409_no_body_edit")
+            self.assertTrue(result.get("practice_h2_present"))
+            self.assertEqual(
+                (article_dir / "article.html").read_text(encoding="utf-8"),
+                html_before,
+            )
             self.assertFalse(any("/publish" in u for _, u in http.calls))
 
     def test_resume_quality_409_on_already_live_continues(self) -> None:
@@ -671,11 +711,15 @@ class SitePublishUnitTest(unittest.TestCase):
         self.assertIn("needs_sol", contract)
         self.assertIn("Практика: чеклист шагов", contract)
         self.assertIn("конкретный пример: ЧЧ:ММ", contract)
+        self.assertIn("false_example_409_no_body_edit", contract)
+        self.assertIn("починили сайт", contract)
         self.assertIn("PIPELINE FAIL", contract)
         doctor = (ROOT / "scripts/excalibur_blog_doctor.py").read_text(encoding="utf-8")
         self.assertIn("excalibur_blog_site_publish.py", doctor)
         director = (ROOT / "skills/director-excalibur-blog/SKILL.md").read_text(encoding="utf-8")
         self.assertIn("excalibur_blog_site_publish.py", director)
+        self.assertIn("если нет H2", director)
+        self.assertIn("починили сайт", director)
         publish = (ROOT / "skills/publish-excalibur-blog/SKILL.md").read_text(encoding="utf-8")
         self.assertIn("excalibur_blog_site_publish.py", publish)
         self.assertIn("нет ключа", publish)
@@ -684,11 +728,14 @@ class SitePublishUnitTest(unittest.TestCase):
         self.assertIn("20:40", publish)
         self.assertIn("needs_sol", publish)
         self.assertIn("Практика: чеклист шагов", publish)
+        self.assertIn("false_example_409_no_body_edit", publish)
+        self.assertIn("починили сайт", publish)
         self.assertNotIn("Hall вызывает upload", publish)
         agent = (ROOT / "agents/excalibur-blog-publish.md").read_text(encoding="utf-8")
         self.assertIn("не переписывать", agent)
         self.assertIn("20:40", agent)
         self.assertIn("needs_sol", agent)
+        self.assertIn("false_example_409_no_body_edit", agent)
         self.assertIn("excalibur_blog_site_publish.py", agent)
         env_ex = (ROOT / ".env.example").read_text(encoding="utf-8")
         for name in TOKEN_ENV_NAMES:

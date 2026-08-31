@@ -92,9 +92,12 @@ Cover-агент генерирует **один** quad-холст 2×2 (Kie GPT
    естественная уверенная эмоция, без наушников/headset/earbuds. Один hook,
    один предмет или метафора, много воздуха. Cover `scene_hint` ≈**80–140**
    chars; start from `memory/cover/blog-hero.json` prompt_fragment / cover_mode — **не** MUST/face essays
-   (INC-20260724-0837: long essay → host missing). Topic props = **`tiny`/`small`**
+   (INC-20260724-0837: long essay → host missing).    Topic props = **`tiny`/`small`**
    right/background — **не** equal-weight prop lists рядом с лицом
    (INC-20260724-1239: alarm+brief card → host missing).
+   First-try (INC-20260831-0636): `Host LARGE left half` +
+   `Виктория.png` + `face fills left`; type/calendar/mug **RIGHT only**.
+   Cover **не** invent второй createTask из‑за host miss.
 4. **White background lock:** cover и все inline на чистом `#FFFFFF`; без бежевого, серого, gradient или grunge full-panel background.
 5. **Cover typography:** bold condensed Cyrillic **чёрным** `#141821`;
    accent colors — из `memory/cover/cover-design-code.json` color_palette. Не выдумывай чужой бренд-розовый.
@@ -244,7 +247,7 @@ HTTP MCP tool execution failed: MCP error -32001: Request timed out
   "slots": {
     "cover": {
       "meme_caption_ru": "",
-      "scene_hint": "≈80–140 chars: Host LARGE left half + tiny topic object right + white bg (no MUST/face essay, no equal-weight props)",
+      "scene_hint": "≈80–140 chars: Host LARGE left half, same woman as Виктория.png, face fills left; tiny topic object RIGHT only; #FFF",
       "alt": "осмысленный alt"
     },
     "inline_1": {

@@ -99,7 +99,7 @@ Split-скрипт в режиме `auto` пробует белые gutters у �
 - Подпись credit (`cover_credit_html`) — кодом поверх, не моделью.
 - `meme_caption_ru` = `""`. Запрещён штамп «EXCALIBUR BLOG» (INC-20260723-1223).
 - Cover `scene_hint` ≈**80–140** chars:
-  `<hero_or_scene from blog-hero>; sticky «…»; type per design-code; #FFF`
+  `Host LARGE left half, same woman as Виктория.png, face fills left; tiny <topic object> RIGHT only; #FFF`
 - Inline: 3–6 labels; без людей и лиц.
 
 ## Файлы

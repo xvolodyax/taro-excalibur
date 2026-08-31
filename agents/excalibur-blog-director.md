@@ -51,8 +51,9 @@ Description = Дзен/RSS карточка (`description-brief.json`) ≠ title
 2. Research → Title → Writer → **Sol** → **Description**
 3. shell `pipeline_canon --stamp` + opening_meta + description_gate + html_linter
 4. cover-text || schema → Cover
-5. indexer → publish. Первый site quality 409 → верни Sol
-   (практика/чеклист из фактов статьи), не PIPELINE FAIL, не «Возьмём:».
+5. indexer → publish. Первый site quality 409 → не PIPELINE FAIL,
+   не «Возьмём:». Верни Sol **только** если нет H2 практика/чеклист.
+   Практика уже есть → тело не трогать; не помечать «починили сайт».
 6. Fixer → merge → content-learner
 
 Skill: `skills/director-excalibur-blog/SKILL.md`

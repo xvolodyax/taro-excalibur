@@ -55,10 +55,13 @@ incident_report: none | memory/pipeline-fix-queue.md#INC-...
 
 Если approve **409** «проверка качества»:
 
-- не добавлять «Возьмём:» / «Возьмем:» / «Сцена»;
-- первый 409 без resume → `needs_sol`, **не** PIPELINE FAIL:
-  Директор возвращает Sol с H2 «Практика: чеклист шагов…» из фактов
-  этой статьи, затем новый POST upload (не `--resume-article-id`);
+- не добавлять «Возьмём:» / «Возьмем:» / «Сцена» / «кейс»;
+- тело **не** править; не помечать «починили сайт»;
+- первый 409 без resume → `needs_sol`, **не** PIPELINE FAIL;
+- нет H2 практика/чеклист → `director_next=return_sol_practice`,
+  затем новый POST (не `--resume-article-id`);
+- практика уже в теле → `director_next=false_example_409_no_body_edit`:
+  **не** слать Sol на ярлык «конкретный пример»;
 - не ставить чужой слот (утренний прогон ≠ «суббота, 20:40» из B23);
 - markers только из фактов этой статьи, не из соседа;
 - Hall/SITE token: PATCH excerpt **403** — не FAIL;
