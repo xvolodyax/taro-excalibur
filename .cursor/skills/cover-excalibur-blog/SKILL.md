@@ -44,6 +44,7 @@ write scene_hint + hook
 
 - terminal `failCode=500` / try again later → скрипт: max 1 recreate;
 - poll-timeout + late terminal 500 (final `recordInfo` after `--max-wait`) → тот же max-1 recreate (INC-20260730-0834);
+- poll-timeout, job всё ещё `generating` → late-poll extend того же `taskId`, затем `--resume` / `--task-id` (не BLOCKER, не новый create). Recreate poll: `--max-create-retries 0` (INC-20260831-1508);
 - terminal `failCode=400` image fetch → File Upload + max 1 recreate;
 - terminal `failCode=422` `generate playground failed, task id is blank` → **infra** как 500: скрипт max-1; Cover **не** soften и **не** третий create (INC-20260830-1339);
 - terminal `failCode=422` sensitive → агент: один soften hook/hint + 1 recreate.
@@ -271,7 +272,11 @@ python3 scripts/excalibur_blog_kie_gpt_image2_api.py \
 - Скрипт читает `cover/quad-mcp-batch.json`, создаёт `createTask`, polling'ом вызывает `recordInfo`, пишет `cover/quad-mcp-result.json`.
 - `cover/kie-image-task.json` хранит `task_id`/status без секретов.
 - Transient Kie 500: если `recordInfo` вернул terminal `fail` с failCode=`500` / «try again later», скрипт сам делает **один** новый `createTask` (`--max-create-retries 1`, пауза `--retry-wait 15`). Не poll failed taskId forever; не createTask повторно пока state=`waiting`/`generating`. Первый 500 ≠ сразу `KIE API BLOCKER`.
-- **Poll-timeout + late terminal 500 (INC-20260730-0834):** если poll window (`--max-wait`, default 900s) исчерпан при всё ещё `waiting`/`generating`, скрипт делает **один final** `recordInfo` до `KIE API BLOCKER`. Если final = terminal 500 / try-again → тот же max-1 recreate path (не Director-only, не quality-redo). Если final всё ещё non-terminal → тогда BLOCKER. Cover не invent'ит второй create вручную «на всякий случай» пока скрипт сам не вышел.
+- **Poll-timeout + late terminal 500 (INC-20260730-0834 / INC-20260831-1508):** если poll window (`--max-wait`, default **1500s** для 2K i2i) исчерпан при всё ещё `waiting`/`generating`, скрипт делает **один final** `recordInfo`. Если final = terminal 500 / try-again → тот же max-1 recreate path (не Director-only, не quality-redo). Если final всё ещё non-terminal → **один** `--late-poll-extend` (default 600s) на **тот же** `taskId` (не новый create). После extend всё ещё non-terminal → `KIE POLL WINDOW EXHAUSTED` (exit 2), **не** `KIE API BLOCKER` и **не** новый create. Cover сразу:
+  ```bash
+  python3 scripts/excalibur_blog_kie_gpt_image2_api.py --article-dir "$ARTICLE" --resume
+  ```
+  Late 500 на первом job → script max-1 recreate. Recreate ещё `generating` на timeout → `--resume --max-create-retries 0` (не третий billed job). Не MCP. Не invent create «на всякий случай».
 - **500 retries exhausted (B102–B106 / B116 / B117):** после двух terminal 500 Cover пишет fragment `status: BLOCKER` / `blockers: KIE API BLOCKER` + incident и **останавливается**. В `summary` явно: batch готов к Director same-batch re-run; Cover **не** invent'ит третий `createTask`. Не поднимай `--max-create-retries`, не softен prompt, не MCP при живом `KIE_API_KEY`. Approved: Director same-batch re-run `excalibur_blog_kie_gpt_image2_api.py` на неизменённом `quad-mcp-batch.json` когда Kie healthy → затем Cover **apply-only** (`quad_apply.py --inject-html`). File Upload на 400 image-fetch внутри этого re-run допустим. Это не quality-redo. Recurring upstream 500 cluster → тот же policy path (не новый Cover retry design).
 - **422 playground-blank (INC-20260830-1339 / B25):** `failCode=422` + `generate playground failed, task id is blank` — **не** sensitive. Instant fail на i2i и t2i; credits 200 ≠ playground healthy; soften hook/H2 не лечит. Скрипт: тот же max-1 recreate, что у 500. После exhausted — тот же Director same-batch + Cover apply-only. Cover **не** soften и **не** третий create. Fixer не помечает это «починили Kie» — upstream.
 - Pre-taskId TCP reset (INC-20260725-1631): если `createTask` упал с `Connection reset by peer` / `[Errno 104]` **до** `taskId` и **до** записи `cover/kie-image-task.json`, скрипт сам делает **один** новый `createTask` (тот же batch, пауза `--retry-wait`). Это **не** quality-redo. Агент на старой сборке скрипта может один раз перезапустить ту же CLI-команду. **Не** MCP при живом `KIE_API_KEY`. Если `taskId` уже есть — poll, не второй create. Второй такой reset после одного retry → `KIE API BLOCKER`.
@@ -406,7 +411,8 @@ Visual QA **skip по умолчанию**. Cover подтверждается s
 
 - нет reference_url_hosted
 - image call text-only (без input_urls)
-- `KIE API BLOCKER`: нет `KIE_API_KEY`, non-retryable createTask/recordInfo fail, retryable 500 / playground-blank exhausted (`--max-create-retries`), pre-taskId Connection reset exhausted (один retry), image-fetch File Upload fallback exhausted/`--no-file-upload-fallback`, sensitive 422 после одного soften+recreate, polling timeout после final `recordInfo` (всё ещё non-terminal) или нет resultUrls
+- `KIE POLL WINDOW EXHAUSTED` (exit 2): job всё ещё `waiting`/`generating` после `--max-wait` + late-poll. **Не** новый create. `--resume` / `--task-id` тот же job; recreate poll `--max-create-retries 0`
+- `KIE API BLOCKER`: нет `KIE_API_KEY`, non-retryable createTask/recordInfo fail, retryable 500 / playground-blank exhausted (`--max-create-retries`), pre-taskId Connection reset exhausted (один retry), image-fetch File Upload fallback exhausted/`--no-file-upload-fallback`, sensitive 422 после одного soften+recreate, или нет resultUrls после resume (job уже terminal fail, не still-generating)
 - async status/result tool подтвердил failed/no result или повторный timeout уже в status/result flow
 - `COVER MCP RECOVERY NEEDED`: после timeout агент не имеет доступа к MCP/Cursor log, где виден generated URL; нужен URL из лога, повторять генерацию вслепую нельзя
 - `COVER MCP ASYNC BLOCKER`: sync `gpt-image-2` обрывается по client timeout, а MCP server не даёт `task_id` и отдельный status/result tool для получения позднего URL

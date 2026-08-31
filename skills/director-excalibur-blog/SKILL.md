@@ -80,6 +80,7 @@ python3 scripts/excalibur_blog_description_gate.py --article-dir <dir>
 `Task(excalibur-blog-cover-text)` · Gemini; `Task(excalibur-blog-schema)` · inherit.  
 Потом `Task(excalibur-blog-cover)` · inherit. Cover **не** зовёт Cover-text.
 После Cover `KIE API BLOCKER` на 500×2 **или** 422 `generate playground failed, task id is blank`: не третий Cover create и не soften промпта. Когда Kie playground живой — same-batch `excalibur_blog_kie_gpt_image2_api.py` на неизменённом batch, затем Cover **apply-only**. Credits 200 ≠ playground healthy. См. `shared/kie-gpt-image-api-contract.md`.
+После `KIE POLL WINDOW EXHAUSTED` (ещё `generating`): Cover `--resume` / `--task-id` тот же job, не новый create и не 500×2 path. Late 500 → script max-1 recreate. Recreate poll: `--max-create-retries 0`.
 ### 6 Indexer → Publish
 `model: inherit`.
 После GATE PASS: `python3 scripts/excalibur_blog_site_publish.py --article-dir …`

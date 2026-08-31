@@ -646,7 +646,7 @@ def main() -> int:
             "prefer_local_reference": prefer_local_reference,
             "local_reference": local_reference if prefer_local_reference else "",
             "output_canvas": "cover/canvas-quad.png",
-            "expected_runtime_seconds": 900,
+            "expected_runtime_seconds": 1500,
             "preferred_image_flow": {
                 "provider": "kie.ai",
                 "model": KIE_IMAGE_MODEL,
@@ -661,9 +661,11 @@ def main() -> int:
                 "timeout_error": "HTTP MCP tool execution failed: MCP error -32001: Request timed out",
                 "not_final_blocker": True,
                 "sync_create_max_attempts": 1,
-                "backend_max_wait_seconds": 900,
+                "backend_max_wait_seconds": 1500,
                 "recommended_async_poll_interval_seconds": 10,
-                "recommended_async_max_wait_seconds": 900,
+                "recommended_async_max_wait_seconds": 1500,
+                "late_poll_extend_seconds": 600,
+                "poll_exhausted_resume": "If still waiting/generating after --max-wait: --resume / --task-id same job (no new create). Recreate poll: --max-create-retries 0.",
                 "backend_note": "If KIE_API_KEY is set, skip MCP entirely and use preferred_image_flow. Sync MCP -32001 is client timeout; do not blind-retry create.",
                 "preferred_async_flow": {
                     "primary": "python scripts/excalibur_blog_kie_gpt_image2_api.py --article-dir <article_dir> when KIE_API_KEY is set.",

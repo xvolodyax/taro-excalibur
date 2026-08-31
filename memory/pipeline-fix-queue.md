@@ -3,7 +3,7 @@
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
 ## INC-20260831-1508-cover-kie-poll-timeout-b28
-status: open
+status: fixed
 run_date: 2026-08-31
 role: excalibur-blog-cover
 topic_id: B28
@@ -39,7 +39,30 @@ category: api
 - none recorded
 
 ### Fixer resolution
-- pending
+status: fixed
+fixed_at: 2026-08-31
+fix_summary:
+- 2K i2i default `--max-wait` 900→1500; after still-`generating` — one
+  `--late-poll-extend` 600s on the SAME taskId (no new create).
+- Still non-terminal → `KIE POLL WINDOW EXHAUSTED` (exit 2), not
+  `KIE API BLOCKER` / not a third create. Cover `--resume` / `--task-id`.
+- `--resume` reads `kie-image-task.json`. First job keeps max-1 recreate
+  so late 500 enters INC-20260730-0834. Recreate record (`retry_of` /
+  `create_attempt>1`) defaults `--max-create-retries 0`.
+- `article.html` B28 не трогали.
+files_changed:
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `shared/kie-gpt-image-api-contract.md`
+- `shared/blog-cover-quad-canvas-contract.md`
+- Cover/Director agents + skills (обе стороны)
+- `tests/test_kie_gpt_image2_api.py`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile scripts/excalibur_blog_kie_gpt_image2_api.py scripts/excalibur_blog_cover_quad_prompt.py`
+- `python3 -m unittest tests.test_kie_gpt_image2_api tests.test_cover_identity`
+- `rg` KIE POLL WINDOW EXHAUSTED / --resume / late-poll / max-wait 900 default
+commit: pending-parent-commit
 
 ## INC-20260831-0709-metrika-credentials-b27
 status: open

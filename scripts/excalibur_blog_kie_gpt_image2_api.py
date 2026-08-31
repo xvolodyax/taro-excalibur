@@ -15,8 +15,12 @@ On createTask transport failure before any taskId (Connection reset by peer /
 Errno 104), the script waits and retries createTask once with the same batch.
 
 On poll-window timeout (still waiting/generating past --max-wait): one final
-recordInfo before KIE API BLOCKER. If that call shows terminal failCode=500 /
-«try again later», the existing max-1 recreate path runs (INC-20260730-0834).
+recordInfo. Terminal failCode=500 / «try again later» enters the existing
+max-1 recreate path (INC-20260730-0834). If still non-terminal, the script
+extends the SAME task_id once (--late-poll-extend, default 600s) — no new
+create. After that: KIE POLL WINDOW EXHAUSTED (exit 2). Cover resumes with
+--resume / --task-id (same job). Recreate poll uses --max-create-retries 0
+so a second timeout cannot bill a third job (INC-20260831-1508 / B28).
 
 On terminal failCode=422 / «generate playground failed, task id is blank»
 (Kie GPT Image 2 playground/tempfile infra, not sensitive content): same
@@ -54,7 +58,9 @@ DEFAULT_FILE_UPLOAD_USER_AGENT = "ExcaliburBlogKieFallback/1.0"
 DEFAULT_MODEL = "gpt-image-2-image-to-image"
 DEFAULT_API_KEY_ENV = "KIE_API_KEY"
 DEFAULT_POLL_INTERVAL_SECONDS = 15
-DEFAULT_MAX_WAIT_SECONDS = 900
+# 2K i2i often outlives 900s (B28 first job still generating at --max-wait).
+DEFAULT_MAX_WAIT_SECONDS = 1500
+DEFAULT_LATE_POLL_EXTEND_SECONDS = 600
 DEFAULT_MAX_CREATE_RETRIES = 1
 DEFAULT_RETRY_WAIT_SECONDS = 15
 DEFAULT_LOCAL_REFERENCE = "memory/cover/assets/blog-hero-reference.png"
@@ -85,6 +91,35 @@ class KieImageFetchFail(KieApiError):
         self.task_id = task_id
         super().__init__(
             f"Kie image fetch failed: failCode={fail_code} failMsg={fail_msg} task_id={task_id}"
+        )
+
+
+class KiePollWindowExhausted(KieApiError):
+    """Poll clock ran out while the job is still waiting/generating.
+
+    Not a new create. Cover must --resume / --task-id the same job
+    (INC-20260831-1508). Late terminal 500 then uses max-1 recreate.
+    Recreate poll: --max-create-retries 0.
+    """
+
+    def __init__(
+        self,
+        task_id: str,
+        last_state: str,
+        max_wait: int,
+        late_poll_extend: int = 0,
+    ) -> None:
+        self.task_id = task_id
+        self.last_state = last_state
+        self.max_wait = max_wait
+        self.late_poll_extend = late_poll_extend
+        extra = f" after late-poll extend {late_poll_extend}s" if late_poll_extend else ""
+        super().__init__(
+            f"Kie task did not finish within {max_wait} seconds{extra} "
+            f"(still {last_state or 'non-terminal'}); task_id={task_id}. "
+            f"Resume SAME job with --resume or --task-id {task_id} "
+            f"(no new create). If late terminal 500 appears, existing "
+            f"max-1 recreate applies. Recreate poll: --max-create-retries 0."
         )
 
 
@@ -201,6 +236,66 @@ def resolve_path(root: Path, article_dir_arg: str, path_arg: str) -> Path:
     if not path.is_absolute():
         path = article_dir / path
     return path
+
+
+def load_task_record(path: Path) -> dict[str, Any]:
+    if not path.is_file():
+        return {}
+    try:
+        loaded = load_json(path)
+    except (OSError, json.JSONDecodeError, TypeError):
+        return {}
+    return loaded if isinstance(loaded, dict) else {}
+
+
+def infer_resume_create_retries(record: dict[str, Any]) -> int:
+    """When resuming a known task_id: 0 if this record is already a recreate.
+
+    First job (create_attempt=1, no retry_of) keeps max-1 so a late 500
+    can still recreate. Recreate poll must not bill a third job (B28).
+    """
+    if not record:
+        return DEFAULT_MAX_CREATE_RETRIES
+    if record.get("retry_of"):
+        return 0
+    for key in ("create_attempt", "create_attempts"):
+        raw = record.get(key)
+        if raw is None:
+            continue
+        try:
+            if int(raw) > 1:
+                return 0
+        except (TypeError, ValueError):
+            continue
+    return DEFAULT_MAX_CREATE_RETRIES
+
+
+def resolve_resume_task_id(
+    *,
+    explicit_task_id: str,
+    resume: bool,
+    task_record_path: Path,
+) -> tuple[str, dict[str, Any]]:
+    record = load_task_record(task_record_path)
+    task_id = (explicit_task_id or "").strip()
+    if not task_id and resume:
+        task_id = str(record.get("task_id") or "").strip()
+        if not task_id:
+            raise KieApiError(
+                "KIE --resume needs task_id in cover/kie-image-task.json "
+                "or an explicit --task-id (same job, no new create)"
+            )
+    return task_id, record
+
+
+def poll_window_exhausted_resume_cmd(article_dir: str, *, recreate: bool = False) -> str:
+    cmd = (
+        "python3 scripts/excalibur_blog_kie_gpt_image2_api.py "
+        f"--article-dir {article_dir} --resume"
+    )
+    if recreate:
+        cmd += " --max-create-retries 0"
+    return cmd
 
 
 def http_json(method: str, url: str, api_key: str, payload: dict[str, Any] | None = None) -> dict[str, Any]:
@@ -600,9 +695,12 @@ def poll_until_result(
     task_id: str,
     poll_interval: int,
     max_wait: int,
+    late_poll_extend: int = 0,
 ) -> dict[str, Any]:
     started = time.monotonic()
     last_state = ""
+    deadline = max(1, int(max_wait))
+    extended = False
     while True:
         data = query_task(record_url=record_url, api_key=api_key, task_id=task_id)
         state = str(data.get("state") or "").strip().lower()
@@ -616,12 +714,14 @@ def poll_until_result(
 
         # waiting / generating / other non-terminal: keep polling this taskId only
         elapsed = time.monotonic() - started
-        if elapsed >= max_wait:
-            # INC-20260730-0834: one final recordInfo before timeout BLOCKER.
-            # Late terminal 500 / image-fetch must enter recreate paths, not hard-stop.
+        if elapsed >= deadline:
+            # INC-20260730-0834: one final recordInfo. Late terminal 500 /
+            # image-fetch must enter recreate paths, not hard-stop.
+            # INC-20260831-1508: if still generating, one late-poll extend
+            # on the SAME task_id (no new create) before EXHAUSTED.
             print(
-                f"Kie task {task_id}: poll window exhausted ({max_wait}s); "
-                "one final recordInfo before timeout BLOCKER",
+                f"Kie task {task_id}: poll window exhausted ({deadline}s); "
+                "one final recordInfo",
                 flush=True,
             )
             try:
@@ -629,19 +729,37 @@ def poll_until_result(
                     record_url=record_url, api_key=api_key, task_id=task_id
                 )
             except KieApiError as exc:
-                raise KieApiError(
-                    f"Kie task did not finish within {max_wait} seconds; task_id={task_id}"
+                raise KiePollWindowExhausted(
+                    task_id=task_id,
+                    last_state=last_state,
+                    max_wait=max_wait,
+                    late_poll_extend=late_poll_extend if extended else 0,
                 ) from exc
             final_state = str(final_data.get("state") or "").strip().lower()
             if final_state != last_state:
                 print(f"Kie task {task_id}: state={final_state or 'unknown'} (final)")
+                last_state = final_state
             terminal = classify_record_info(final_data, task_id)
             if terminal is not None:
                 return terminal
-            raise KieApiError(
-                f"Kie task did not finish within {max_wait} seconds; task_id={task_id}"
+            extend_s = max(0, int(late_poll_extend))
+            if not extended and extend_s > 0:
+                extended = True
+                deadline = elapsed + extend_s
+                print(
+                    f"Kie task {task_id}: still {final_state or 'non-terminal'}; "
+                    f"late-poll extend {extend_s}s (same task_id, no new create)",
+                    flush=True,
+                )
+                time.sleep(min(poll_interval, extend_s))
+                continue
+            raise KiePollWindowExhausted(
+                task_id=task_id,
+                last_state=final_state or last_state,
+                max_wait=max_wait,
+                late_poll_extend=extend_s if extended else 0,
             )
-        time.sleep(min(poll_interval, max(1, int(max_wait - elapsed))))
+        time.sleep(min(poll_interval, max(1, int(deadline - elapsed))))
 
 
 def result_record(task_data: dict[str, Any], task_id: str) -> dict[str, Any]:
@@ -676,12 +794,24 @@ def main() -> int:
     ap.add_argument("--poll-interval", type=int, default=DEFAULT_POLL_INTERVAL_SECONDS)
     ap.add_argument("--max-wait", type=int, default=DEFAULT_MAX_WAIT_SECONDS)
     ap.add_argument(
+        "--late-poll-extend",
+        type=int,
+        default=DEFAULT_LATE_POLL_EXTEND_SECONDS,
+        help=(
+            "After --max-wait, if the job is still waiting/generating, keep polling "
+            "the SAME task_id this many extra seconds (default 600). 0 disables. "
+            "No new create. INC-20260831-1508."
+        ),
+    )
+    ap.add_argument(
         "--max-create-retries",
         type=int,
-        default=DEFAULT_MAX_CREATE_RETRIES,
+        default=None,
         help=(
             "After terminal failCode=500 / «try again later», create a new task this many times "
-            "(default 1). Never blind-retries while state=waiting/generating; never re-polls a failed taskId."
+            "(default 1). On --resume / --task-id of an already-recreated job, default 0 "
+            "so a second timeout cannot bill a third job. Never blind-retries while "
+            "state=waiting/generating; never re-polls a failed taskId."
         ),
     )
     ap.add_argument(
@@ -705,7 +835,20 @@ def main() -> int:
         action="store_true",
         help="Disable auto File Upload recreate on failCode=400 / image fetch failed",
     )
-    ap.add_argument("--task-id", default="", help="Poll an existing Kie task instead of creating a new one")
+    ap.add_argument(
+        "--task-id",
+        default="",
+        help="Poll an existing Kie task instead of creating a new one (same job, no new create)",
+    )
+    ap.add_argument(
+        "--resume",
+        action="store_true",
+        help=(
+            "Poll task_id from cover/kie-image-task.json (same job, no new create). "
+            "After poll-window exhausted while still generating. Recreate records "
+            "default to --max-create-retries 0."
+        ),
+    )
     ap.add_argument("--create-only", action="store_true", help="Create task, write task record, and exit")
     ap.add_argument("--dry-run", action="store_true", help="Validate batch and print sanitized create payload")
     args = ap.parse_args()
@@ -717,6 +860,9 @@ def main() -> int:
     batch_path = resolve_path(root, args.article_dir, args.batch)
     result_path = resolve_path(root, args.article_dir, args.result)
     task_record_path = resolve_path(root, args.article_dir, args.task_record)
+    existing_record: dict[str, Any] = {}
+    create_attempts = 0
+    retry_from_fail: dict[str, Any] | None = None
 
     try:
         image_input = batch_mcp_args(batch_path)
@@ -749,11 +895,30 @@ def main() -> int:
             upload_path=args.file_upload_path,
         )
 
-        task_id = args.task_id.strip()
+        task_id, existing_record = resolve_resume_task_id(
+            explicit_task_id=args.task_id,
+            resume=bool(args.resume),
+            task_record_path=task_record_path,
+        )
+        if args.max_create_retries is None:
+            if task_id and (args.resume or args.task_id.strip()):
+                remaining_create_retries = infer_resume_create_retries(existing_record)
+            else:
+                remaining_create_retries = DEFAULT_MAX_CREATE_RETRIES
+        else:
+            remaining_create_retries = max(0, int(args.max_create_retries))
         create_response: dict[str, Any] | None = None
-        remaining_create_retries = max(0, int(args.max_create_retries))
-        create_attempts = 0
-        retry_from_fail: dict[str, Any] | None = None
+        if existing_record.get("create_attempt") or existing_record.get("create_attempts"):
+            try:
+                create_attempts = int(
+                    existing_record.get("create_attempt")
+                    or existing_record.get("create_attempts")
+                    or 0
+                )
+            except (TypeError, ValueError):
+                create_attempts = 0
+        if existing_record.get("retry_of") and not retry_from_fail:
+            retry_from_fail = existing_record.get("retry_of")
         fetch_upload_fallback_done = bool(prefer_meta)
         fetch_upload_meta: dict[str, Any] | None = prefer_meta
         pre_task_connection_reset_retry_done = False
@@ -822,6 +987,7 @@ def main() -> int:
                     task_id=task_id,
                     poll_interval=max(1, args.poll_interval),
                     max_wait=max(1, args.max_wait),
+                    late_poll_extend=max(0, int(args.late_poll_extend)),
                 )
                 break
             except KieImageFetchFail as exc:
@@ -947,6 +1113,35 @@ def main() -> int:
         print(f"OK url={record['url']}")
         print(f"OK result={result_path}")
         return 0
+    except KiePollWindowExhausted as exc:
+        exhausted_record: dict[str, Any] = {
+            "task_id": exc.task_id,
+            "source": "kie-api",
+            "model": args.model,
+            "state": "poll_window_exhausted",
+            "last_state": exc.last_state,
+            "max_wait": exc.max_wait,
+            "late_poll_extend": exc.late_poll_extend,
+            "resume": "--resume or --task-id (same job, no new create)",
+            "create_attempt": create_attempts,
+            "create_attempts": create_attempts,
+            "updated_at_epoch": int(time.time()),
+        }
+        if retry_from_fail:
+            exhausted_record["retry_of"] = retry_from_fail
+        elif existing_record.get("retry_of"):
+            exhausted_record["retry_of"] = existing_record["retry_of"]
+        save_json(task_record_path, exhausted_record)
+        print(f"❌ KIE POLL WINDOW EXHAUSTED: {exc}", file=sys.stderr)
+        already_recreate = bool(exhausted_record.get("retry_of")) or create_attempts > 1
+        print(
+            "Resume same job (no new create): "
+            + poll_window_exhausted_resume_cmd(
+                args.article_dir, recreate=already_recreate
+            ),
+            file=sys.stderr,
+        )
+        return 2
     except KieApiError as exc:
         print(f"❌ KIE API BLOCKER: {exc}", file=sys.stderr)
         return 1
