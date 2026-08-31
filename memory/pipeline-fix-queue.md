@@ -17,8 +17,8 @@ category: prompt
 - No quality-redo (INC-20260724-2120 / this-run contract: recreate only on Kie 500/400/playground-blank/sensitive).
 
 ### How the agent recovered this run
-- Split/inject PASS; identity gate PASS (prompt hair lock). Cover.png kept as file, not in body.
-- Documented for next first-try: even shorter cover hint, one tiny prop, no equal-weight still-life list leaking from hook objects.
+- First billed gen: host missing (hook + calendar/mug). No Cover-invented redo.
+- Owner/Director slot: exactly one billed redo. Hint → `Host LARGE left half … face fills left; tiny Saturday calendar RIGHT only`. One createTask `626cf2ccac782eb8c7b143844c316272`. Host present on left (honey-wheat, green-hazel, new beige top, not white cami). Inject 3/0. Identity PASS. No third gen.
 
 ### Durable fix needed before next run
 - Strengthen victoria-studio cover lock so type+prop cannot drop the host on first billed gen.

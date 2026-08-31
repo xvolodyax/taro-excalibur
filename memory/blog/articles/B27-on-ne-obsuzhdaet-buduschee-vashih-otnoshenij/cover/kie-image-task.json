@@ -1,11 +1,11 @@
 {
-  "task_id": "9d7c1a8311bcf9a7d1776e042aac64f6",
+  "task_id": "626cf2ccac782eb8c7b143844c316272",
   "source": "kie-api",
   "model": "gpt-image-2-image-to-image",
   "state": "success",
   "create_attempts": 1,
   "result_path": "memory/blog/articles/B27-on-ne-obsuzhdaet-buduschee-vashih-otnoshenij/cover/quad-mcp-result.json",
-  "updated_at_epoch": 1788158137,
+  "updated_at_epoch": 1788158443,
   "file_upload_fallback": true,
   "file_upload": {
     "source": "prefer_local_reference",

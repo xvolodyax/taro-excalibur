@@ -5,12 +5,12 @@
   "split": {
     "source_canvas": "memory/blog/articles/B27-on-ne-obsuzhdaet-buduschee-vashih-otnoshenij/cover/canvas-quad.png",
     "source_size_px": [
-      2048,
-      1152
+      2688,
+      1520
     ],
     "panel_size_px": [
-      1024,
-      576
+      1344,
+      760
     ],
     "split_meta": {
       "split_mode": "mechanical_center",
@@ -20,22 +20,22 @@
       "fallback_reason": "gutter_too_far_from_center",
       "rejected_gutter": {
         "h_gutter_px": {
-          "start": 583,
-          "end": 656
+          "start": 756,
+          "end": 840
         },
         "v_gutter_px": {
-          "start": 1030,
-          "end": 1079
+          "start": 1264,
+          "end": 1424
         },
         "gutter_quality": {
-          "h_center_offset_px": 43.5,
-          "v_center_offset_px": 30.5,
-          "max_aspect_crop_loss": 0.1437,
+          "h_center_offset_px": 38.0,
+          "v_center_offset_px": 0.0,
+          "max_aspect_crop_loss": 0.0595,
           "per_panel_crop_loss": {
-            "top_left": 0.0069,
-            "top_right": 0.0652,
-            "bottom_left": 0.1437,
-            "bottom_right": 0.0898
+            "top_left": 0.0595,
+            "top_right": 0.0595,
+            "bottom_left": 0.0435,
+            "bottom_right": 0.0435
           },
           "reject_reason": "gutter_too_far_from_center"
         }
@@ -52,14 +52,14 @@
         "box_px": {
           "left": 0,
           "top": 0,
-          "right": 1024,
-          "bottom": 576
+          "right": 1344,
+          "bottom": 760
         },
         "raw_box_px": {
           "left": 0,
           "top": 0,
-          "right": 1024,
-          "bottom": 576
+          "right": 1344,
+          "bottom": 760
         },
         "size_px": [
           1200,
@@ -73,16 +73,16 @@
         "file": "cover/inline-01.png",
         "quadrant": "top_right",
         "box_px": {
-          "left": 1024,
+          "left": 1344,
           "top": 0,
-          "right": 2048,
-          "bottom": 576
+          "right": 2688,
+          "bottom": 760
         },
         "raw_box_px": {
-          "left": 1024,
+          "left": 1344,
           "top": 0,
-          "right": 2048,
-          "bottom": 576
+          "right": 2688,
+          "bottom": 760
         },
         "size_px": [
           1200,
@@ -97,15 +97,15 @@
         "quadrant": "bottom_left",
         "box_px": {
           "left": 0,
-          "top": 576,
-          "right": 1024,
-          "bottom": 1152
+          "top": 760,
+          "right": 1344,
+          "bottom": 1520
         },
         "raw_box_px": {
           "left": 0,
-          "top": 576,
-          "right": 1024,
-          "bottom": 1152
+          "top": 760,
+          "right": 1344,
+          "bottom": 1520
         },
         "size_px": [
           1200,
@@ -119,16 +119,16 @@
         "file": "cover/inline-03.png",
         "quadrant": "bottom_right",
         "box_px": {
-          "left": 1024,
-          "top": 576,
-          "right": 2048,
-          "bottom": 1152
+          "left": 1344,
+          "top": 760,
+          "right": 2688,
+          "bottom": 1520
         },
         "raw_box_px": {
-          "left": 1024,
-          "top": 576,
-          "right": 2048,
-          "bottom": 1152
+          "left": 1344,
+          "top": 760,
+          "right": 2688,
+          "bottom": 1520
         },
         "size_px": [
           1200,
@@ -141,8 +141,8 @@
     }
   },
   "html_inject": [
-    "injected inline_1 after H2 — Почему слова «я не люблю планировать» часто скрывают личные планы без тебя",
-    "injected inline_2 after H2 — Маркеры в поведении: как отличить временную паузу от глухого блока",
-    "injected inline_3 after H2 — Практика: чеклист шагов для проверки общего горизонта отношений"
+    "skip inline_1: already correct under H2 — Почему слова «я не люблю планировать» часто скрывают личные планы без тебя",
+    "skip inline_2: already correct under H2 — Маркеры в поведении: как отличить временную паузу от глухого блока",
+    "skip inline_3: already correct under H2 — Практика: чеклист шагов для проверки общего горизонта отношений"
   ]
 }
