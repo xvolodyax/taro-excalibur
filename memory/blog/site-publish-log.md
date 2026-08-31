@@ -1,5 +1,22 @@
 # Site publish log
 
+## 2026-08-31 B29 on-stavit-pauzu-vmesto-sblizheniya
+
+- method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)
+- article_id: 39
+- upload: 201
+- excerpt_clear: 403 hall_token_no_patch (не FAIL)
+- approve: 409 quality «Сначала статья должна пройти проверку качества»
+- publish: not called
+- verdict: needs_sol
+- director_next: false_example_409_no_body_edit
+- practice_h2_present: true
+- live_get: 404 `{{SITE_BASE}}/blog/on-stavit-pauzu-vmesto-sblizheniya/`
+- sol_rewritten_by_publish: no
+- dzen_studio: not_used
+- slot 21:21: not closed
+- ledger published-*: not updated (not live)
+
 ## 2026-08-31 B28 on-obyavilsya-spustya-mesyacy-molchaniya
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)

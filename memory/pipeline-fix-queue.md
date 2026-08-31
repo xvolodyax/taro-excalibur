@@ -2,6 +2,44 @@
 
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
+## INC-20260831-2035-publish-false-409-example-b29
+status: open
+run_date: 2026-08-31
+role: excalibur-blog-publish
+topic_id: B29
+article_dir: memory/blog/articles/B29-on-stavit-pauzu-vmesto-sblizheniya
+severity: medium
+category: publish
+
+### What went wrong
+- GATE PASS + env-check `token_configured=true` (`SITE_PUBLISH_TOKEN`) + dry-run PASS.
+- Upload 201, `article_id=39`. PATCH excerpt 403 → `excerpt_clear_skipped=hall_token_no_patch` (не FAIL).
+- First approve 409 «Сначала статья должна пройти проверку качества» без `--resume-article-id`.
+- Publish HTTP не вызывался. Live GET `{{SITE_BASE}}/blog/on-stavit-pauzu-vmesto-sblizheniya/` → 404.
+- H2 «Практика: чеклист шагов, когда диалог есть, а движения навстречу нет» уже в `article.html`.
+- В теле нет `figure.cover-hero`. Слот 21:21 не закрывали. B26/B27/B28 не трогали.
+
+### How the agent recovered this run
+- Тело / opening / Sol не правил. Не добавлял «Возьмём:» / «например» / «кейс».
+- Первый 409 → `verdict=needs_sol`, `director_next=false_example_409_no_body_edit`, не PIPELINE FAIL.
+- Ledger `published-*` не трогал (статья не live).
+- Не помечено «починили сайт». Повтор того же ложного гейта, что INC-20260831-0650 (B27, status: fixed в репо).
+
+### Durable fix needed before next run
+- Site quality не должен 409-ить GATE PASS статью с H2 практики + сценой из research только из‑за ярлыка «конкретный пример».
+- Publish после GATE PASS не лечит «конкретный пример» телом.
+- Директор: не слать Sol на вставку «Возьмём:» / «например» / «кейс»; практика уже в теле.
+
+### Suggested files to inspect/change
+- `shared/excalibur-site-publish-contract.md`
+- site quality checker (вне этого репо)
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260831-1526-metrika-credentials-b28
 status: open
 run_date: 2026-08-31
