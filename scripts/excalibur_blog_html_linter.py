@@ -14,14 +14,27 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 
+_SCRIPTS = Path(__file__).resolve().parent
+if str(_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_SCRIPTS))
+
+from excalibur_blog_opening_editorial import (  # noqa: E402
+    article_html_double_lead_errors,
+    first_body_paragraph,
+    has_vozmem_label,
+)
+
 # Whitelist tags based on excalibur contract and cover inline figure injection.
 # Keep in sync with shared/excalibur-article-writing-contract.md (body tags).
 ALLOWED_TAGS: set[str] = {
+    "h1",
     "h2",
     "h3",
     "p",
     "b",
+    "strong",
     "i",
+    "em",
     "a",
     "ul",
     "ol",
@@ -36,6 +49,7 @@ ALLOWED_TAGS: set[str] = {
     "figure",
     "img",
     "br",
+    "div",
 }
 
 
@@ -267,6 +281,12 @@ def lint_html_file(html_path: Path, whitelist: set[str]) -> dict[str, Any]:
     linter.errors.extend(detect_anchor_toc(html_content))
     linter.errors.extend(detect_duplicate_faq_sections(html_content))
     linter.errors.extend(detect_faq_h3_markup(html_content))
+    linter.errors.extend(article_html_double_lead_errors(html_content))
+    first_p = first_body_paragraph(html_content)
+    if has_vozmem_label(first_p):
+        linter.errors.append(
+            "Forbidden opener «Возьмём:» / «Возьмем:». First body line is the situation."
+        )
 
     return {
         "file": str(html_path.name),
