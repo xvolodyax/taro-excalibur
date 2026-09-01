@@ -19,6 +19,7 @@ category: script
 ### How the agent recovered this run
 - After `--merge`, Cover rewrote `style_file` to `memory/cover/quad-style-victoria-studio.json`.
 - After `--write-batch`, Cover patched batch: `prefer_local_reference: true`, `local_reference: memory/cover/assets/Виктория.png`, hair lock phrase, gold/editorial type. Did not raise Kie retries.
+- Kie `batch_mcp_args` expands `{{SITE_BASE}}` before local upload and errors if `PUBLIC_SITE_URL` is unset. This run exported the tenant public base only in the process env so prefer_local upload could run. Committed batch stayed on placeholders.
 
 ### Durable fix needed before next run
 - Manifest must take `style_file` from tenant `cover_files.style_preset`.

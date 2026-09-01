@@ -1,0 +1,50 @@
+{
+  "topic_id": "B31",
+  "slug": "on-otkladyvaet-otnosheniya-na-osen",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: обещал с осени, а шагов нет",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-09-01T13:55:39+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: обещал с осени, а шагов нет",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Сравнение точной даты и размытого обещания «потом»",
+      "h2_anchor": "Сезон вместо даты: почему «с осени» звучало как обещание",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Признаки, что осенью снова нет реальных шагов",
+      "h2_anchor": "Осень наступила: почему «потом» больше не будущее время",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист: точный срок против повторного тумана",
+      "h2_anchor": "Новые формулировки или тот же туман: как распознать откладывание",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
