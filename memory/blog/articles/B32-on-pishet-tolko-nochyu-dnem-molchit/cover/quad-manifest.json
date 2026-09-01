@@ -1,0 +1,64 @@
+{
+  "topic_id": "B32",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Он пишет ночью и исчезает днём",
+  "cover_hook_highlight": "исчезает",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: он пишет ночью и исчезает днём",
+      "scene_hint": "same woman as Виктория.png; Host LARGE left half, face fills left; eyes green+hazel; tiny phone RIGHT; sticky «тепло без обязательств»",
+      "meme_caption_ru": "",
+      "sticky": "тепло без обязательств"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Поздний график или отсутствие дневного места: в чём разница",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "GOOD «сменный график» + green «сообщения в обед»; BAD «тишина до темноты» + red X «отговорки от встреч». Outcome: есть место. NO people/faces/emoji/silhouettes.",
+      "alt": "Сравнение позднего графика и отсутствия дневного места в переписке",
+      "labels": [
+        "сообщения в обед",
+        "сменный график",
+        "тишина до темноты",
+        "отговорки от встреч"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Почему ночная нежность не равна реальным намерениям",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Flow: «эмоции от усталости»→«ночные признания»→«тепло без обязательств»→«удобный контакт». Gold cards. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема: ночная нежность не равна реальным намерениям",
+      "labels": [
+        "эмоции от усталости",
+        "тепло без обязательств",
+        "ночные признания",
+        "удобный контакт"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Три проверки, чтобы увидеть его реальную позицию",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist: «встречи до вечера»; «реакция на конкретику»; «ответы утром»; «спокойные границы». Outcome: позиция ясна. NO people/faces/emoji/silhouettes.",
+      "alt": "Чеклист трёх проверок его реальной позиции",
+      "labels": [
+        "встречи до вечера",
+        "реакция на конкретику",
+        "ответы утром",
+        "спокойные границы"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
