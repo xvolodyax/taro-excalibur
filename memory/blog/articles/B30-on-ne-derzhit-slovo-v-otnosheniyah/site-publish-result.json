@@ -4,6 +4,7 @@
   "publish_method": "site-api",
   "hall": "not_used",
   "dzen_studio": "not_used",
+  "vc_ru": "not_used",
   "token_env": "SITE_PUBLISH_TOKEN",
   "token_configured": true,
   "cover_hero_stripped": false,
@@ -17,6 +18,7 @@
   "publish": "NEEDS_SOL",
   "verdict": "needs_sol",
   "reason": "approve_quality_409",
+  "reason_detail": "Сначала статья должна пройти проверку качества",
   "permalink": "{{SITE_BASE}}/blog/on-ne-derzhit-slovo-v-otnosheniyah/",
   "tgz_members": [
     "article.html",
@@ -34,7 +36,19 @@
   "excerpt_clear_skipped": "hall_token_no_patch",
   "approve_status": 409,
   "approve_detail": "Сначала статья должна пройти проверку качества",
+  "approve_resume_409": "already_live_or_quality",
+  "publish_status": 409,
+  "publish_detail": "Публиковать можно только одобренную статью",
   "director_next": "false_example_409_no_body_edit",
   "practice_h2_present": true,
-  "reason_detail": "Сначала статья должна пройти проверку качества"
+  "sol_rewritten": false,
+  "sol_rewritten_by_publish": false,
+  "live_ok": false,
+  "live_status": 404,
+  "site_status": "quality_review",
+  "quality_score": 88,
+  "quality_warnings": [
+    "Нет конкретного примера или разбора ситуации"
+  ],
+  "note": "Hall: no example gate, do not add Возьмём:/Сцена/например/кейс. Body not edited. SITE token cannot quality-pass (403)."
 }
