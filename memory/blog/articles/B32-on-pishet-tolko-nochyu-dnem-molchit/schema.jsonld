@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{SITE_BASE}}/on-pishet-tolko-nochyu-dnem-molchit/",
+  "url": "{{SITE_BASE}}/on-pishet-tolko-nochyu-dnem-molchit/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{SITE_BASE}}/on-pishet-tolko-nochyu-dnem-molchit/"
+  },
+  "headline": "Он пишет только ночью, а днём молчит",
+  "description": "Как понять, что стоит за полуночными сообщениями, почему мужчина исчезает при свете дня и готов ли он впустить тебя в свои реальные будни.",
+  "datePublished": "2026-09-01",
+  "dateModified": "2026-09-01",
+  "inLanguage": "ru-RU",
+  "author": {
+    "@type": "Person",
+    "name": "Виктория",
+    "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+    "sameAs": [
+      "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
+      "https://dzen.ru/todaytaro_bot"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ТАРО СЕЙЧАС",
+    "@id": "{{SITE_BASE}}/#organization",
+    "url": "{{SITE_BASE}}/"
+  }
+}
