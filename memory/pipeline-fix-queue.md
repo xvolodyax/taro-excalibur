@@ -142,4 +142,4 @@ checks_run:
 - `python3 -m json.tool` tenant-config + victoria style + cover-design-code
 - `python3 -m unittest tests.test_quad_manifest` — 4/4 ok
 - `python3 -m unittest tests.test_cover_identity` — tenant/local-ref/gold/hair/kie-prefer-local ok; pre-existing `is_playground_blank_fail` import still missing (не этот INC)
-commit: pending-parent-commit
+commit: 21afd83
