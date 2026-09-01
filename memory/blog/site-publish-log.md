@@ -1,5 +1,22 @@
 # Site publish log
 
+## 2026-09-01 B30 on-ne-derzhit-slovo-v-otnosheniyah
+
+- method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)
+- article_id: 40
+- upload: 201
+- excerpt_clear: 403 hall_token_no_patch (не FAIL)
+- approve: 409 quality «Сначала статья должна пройти проверку качества»
+- publish: not called
+- verdict: needs_sol
+- director_next: false_example_409_no_body_edit
+- practice_h2_present: true
+- live_get: 404 `{{SITE_BASE}}/blog/on-ne-derzhit-slovo-v-otnosheniyah/`
+- root `{{SITE_BASE}}/on-ne-derzhit-slovo-v-otnosheniyah/`: 404
+- sol_rewritten_by_publish: no
+- dzen_studio: not_used
+- ledger published-*: not updated (not live)
+
 ## 2026-08-31 B29 on-stavit-pauzu-vmesto-sblizheniya
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)
