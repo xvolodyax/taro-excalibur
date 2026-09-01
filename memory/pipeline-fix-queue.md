@@ -2,6 +2,44 @@
 
 Durable incident memory. Append-only until Fixer marks `status: fixed`.
 
+## INC-20260901-0648-cover-kie-500-b30
+status: open
+run_date: 2026-09-01
+role: excalibur-blog-cover
+topic_id: B30
+article_dir: memory/blog/articles/B30-on-ne-derzhit-slovo-v-otnosheniyah
+severity: blocker
+category: api
+
+### What went wrong
+- One billed `createTask` (`create_attempt=1`) went `waiting` → `generating` → terminal `failCode=500` / Internal Error (`retry_kind=server_500`).
+- Script max-1 recreate on unchanged `quad-mcp-batch.json` (`create_attempt=2`, `retry_of` first job) → again `generating` → terminal `failCode=500`.
+- `--max-create-retries` exhausted. No result URL. No canvas / split / inject.
+- `prefer_local_reference` File Upload of `Виктория.png` succeeded before create (not image-fetch 400).
+- Not poll-window / still-generating. Not 422 playground-blank. Not sensitive 422.
+
+### How the agent recovered this run
+- Cover did **not** invent a third `createTask`, raise `--max-create-retries`, soften prompt, rewrite batch, or MCP.
+- Manifest + `--write-batch` from this run kept unchanged for Director same-batch re-run.
+- Fragment `status: BLOCKER` / `blockers: KIE API BLOCKER`. Apply-only after Director success.
+- `article.html` prose not rewritten. No `figure.cover-hero`. No inline figures (no PNG pack).
+
+### Durable fix needed before next run
+- Recurring upstream 500×2: same approved path as B102–B106 / B116 / B117 — Director same-batch re-run `excalibur_blog_kie_gpt_image2_api.py` on unchanged `quad-mcp-batch.json` when Kie is healthy; Cover apply-only (`quad_apply.py --inject-html`). File Upload on 400 image-fetch is OK inside that re-run.
+- Cover must not raise retries, soften, MCP, or quality-redo.
+- Fixer: do not mark this «we repaired Kie». Annotate topic_id B30 on the proven cluster.
+
+### Suggested files to inspect/change
+- `shared/kie-gpt-image-api-contract.md`
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `memory/blog/articles/B30-on-ne-derzhit-slovo-v-otnosheniyah/cover/quad-mcp-batch.json`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260831-2040-metrika-credentials-b29
 status: open
 run_date: 2026-08-31
