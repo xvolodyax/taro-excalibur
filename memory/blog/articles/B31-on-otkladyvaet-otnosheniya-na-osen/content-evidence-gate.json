@@ -1,0 +1,9 @@
+{
+  "gate": "content-evidence",
+  "status": "SKIP",
+  "errors": [],
+  "notes": [
+    "content-evidence-report.json absent; optional under pipeline_canon human-first-v2"
+  ],
+  "rating_mode": "forbidden"
+}

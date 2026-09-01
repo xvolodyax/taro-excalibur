@@ -4,6 +4,67 @@
 Исторические scorecard / judge / ensemble — read-only, не шаблон.
 Writer prompt и Sol skill сюда не раздувать автоматически.
 
+## LESSON-20260901-1431-B31-day-autumn-deadline
+status: proposed
+topic_id: B31
+category: other
+confidence: low
+
+### Evidence
+- artifact: none (skipped under human-first-v2)
+  finding: `content-evidence-report.json` отсутствует; evidence_gate=SKIP, не BLOCK. Report не invent'ился. Gate-артефакт: `content-evidence-gate.json` status=SKIP.
+- process: `research-notes.md` + `title-brief.json` + `research-agent-report.json`
+  finding: слот день 2026-09-01 / 16:00 / CTA vk_app (приложение «Суть – Тень – Вектор»; не bot). Scout канон: Дзен → сайт (только заголовки) → неделя → Wordstat. Острый запрос — календарный дедлайн «потом / с осени / после лета»: лето кончилось, 1 сентября уже вторник, фраза не сменилась на день или шаг. Не карта дня, не нумерология. Не клон B30 (сорвал приход / звонок), B29 (стена при живом чате), B28 (привет после месяцев без шага), B27 (выходные есть, горизонта нет — привычный паттерн свиданий, не сгоревший сезонный срок), B26 («не готов», но остаётся). H1 — наблюдаемый сгоревший сезон («Лето кончилось, а он всё ещё говорит тебе «потом»»), не жир Wordstat «с осени» (243652) / «после лета» (2521002) / «давай осенью» (14530) / «потом осень» (3755) / «кормит завтраками» (4043) / «первый шаг» (ребёнок 379 у «он не делает шаг» 1348). Exact working_title «он откладывает отношения на осень» — EMPTY. Узкий хвост «он откладывает на осень» = 21 — не жир.
+- process: `cover/quad-mcp-batch.json` + `cover/cover-registry.json` + `cover/kie-image-task.json` + `cover/quad-split-report.json` + `site-publish-result.json#strip`
+  finding: реф `Виктория.png` (`prefer_local_reference` + local file); style `victoria-studio`; pack cover+3 inline. Kie `state=success`, `create_attempts=2`, `task_id` 0aa0a409…. `cover_png_figures_removed=0` / `cover_hero_removed=0`; в теле только `figure.inline-quad` ×3, `figure.cover-hero` нет. Hall / MCP gpt-image-2 не звали. Cover INC-20260901-1350 (tenant style_file / local-ref / gold) recovered this run → Fixer `status: fixed` (commit 21afd83); не «починили Kie».
+- process: `site-publish-result.json`
+  finding: SITE token сам (`token_env=SITE_PUBLISH_TOKEN`, Hall / Дзен Студия `not_used`). Upload 201 `article_id=41`; excerpt 403 = не FAIL; первый approve 409, `quality_score=88`, warning «Нет конкретного примера или разбора ситуации» при H2 «Практика: чеклист шагов, как отличить точный срок от повторного тумана» уже в теле. Publish 409 «только одобренную»; live GET 404; `site_status=quality_review`; `live_ok=false`; `sol_rewritten=false`; `director_next=false_example_409_no_body_edit`. Тело не правили. «Возьмём:» / «Сцена» в `article.html` нет.
+- process: `memory/pipeline-fix-queue.md#INC-20260901-1405-publish-false-409-example-b31` + INC-20260901-0700 (B30) + INC-20260831-2035 (B29) + INC-20260831-0650 (B27)
+  finding: тот же ложный 409 example, что B27/B29/B30. Чекер вне репо, `needs-human`. 409 example ≠ «Возьмём:» / «Сцена» / ярлык «конкретный пример»; Director/Publish тело не правили (`false_example_409_no_body_edit`). SITE token GET quality / force-approve → 403. Не помечено «починили сайт».
+- metrika_signal: none
+  finding: `excalibur_blog_metrika_fetch.py --days 30 --ingest` → METRIKA CREDENTIALS BLOCKER (нет `YANDEX_METRIKA_OAUTH_TOKEN` / `YANDEX_METRIKA_COUNTER_ID`). `memory/analytics/metrika-latest.json` не создан. Цифры не выдумывать. См. INC-20260901-1431-metrika-credentials-b31; B30 INC-0659, B29 INC-2040, B28 INC-1526, B27 INC-0709 и B26 INC-1936 всё ещё open.
+
+### Named blockers
+- EVIDENCE_SKIPPED
+- METRIKA FEEDBACK BLOCKER
+- SITE_QUALITY_409 (конкретный пример ≠ «Возьмём:»; первый upload; live 404 / quality_review)
+
+### Keep
+- Scout: Дзен → сайт (заголовки) → неделя → Wordstat. Дневной острый запрос «потом / с осени» как сгоревший календарный дедлайн — не формат «карта дня», даже если чужие недельные арканы так подписаны.
+- Календарный дедлайн «потом / с осени» ≠ B27 (выходные есть, горизонта нет). B27 — привычный паттерн свиданий без разговора о будущем; B31 — сезон, который он сам назвал сроком, уже наступил.
+- Жир Wordstat не в H1.
+- Заранее H2 «Практика: чеклист шагов…» из фактов этой статьи. 409 example при практике в теле — не лечить ярлыком.
+- Cover i2i от рефа `Виктория.png` (`prefer_local_reference` + local file), style `victoria-studio`. Pack cover+3 inline; `cover.png` только файл обложки, не вторая картинка в теле (`cover-hero` не инжектить).
+- SITE token сам: upload → approve → publish; Hall / Дзен Студия не звать.
+- Publish / Director тело не правят.
+
+### Change
+- 409 «нет конкретного примера» при уже живой сцене + H2 практике — не слать Sol на ярлык (`false_example_409_no_body_edit`). Повтор B27 INC-0650 / B29 INC-2035 / B30 INC-0700 / B31 article_id=41.
+- Не помечать B25 INC-1423 / B26–B30 409 как «починили сайт»: B31 снова 409 + live 404.
+- Metrika secrets по-прежнему отсутствуют — следующий Content-learner снова BLOCKER, пока секреты не в Cloud Secrets.
+
+### Never again
+- «Возьмём:» / «Возьмем:» / «Сцена» как лечение 409 example.
+- Возврат Sol на ярлык, если практика уже в статье.
+- Клон B30 срыва слова / B29 стены при живом чате / B28 месяцев молчания / B27 субботы без горизонта / B26 «не готов».
+- Сливать B31 с B27: «потом / с осени» — сгоревший сезонный срок, не «зовёт на выходные, но не говорит про будущее».
+- Клеить жирную Wordstat («с осени», «после лета», «давай осенью», «потом осень», «кормит завтраками», «первый шаг») в H1.
+- Закрывать слот картой дня / числом дня / 21:21 этой статьёй.
+- Раздувать `shared/writer-master-prompt.md` / Writer / Sol skill автоматически (один кейс + evidence SKIP + no-Metrika).
+
+### Proposed apply
+- Review-only: слот день / 16:00 / CTA vk_app / календарный дедлайн «потом / с осени» держит Scout Дзен→сайт→неделя→Wordstat + H1-наблюдение + практику из research этой статьи; 409 example ≠ «Возьмём:»; live 404 = quality_review, не PIPELINE FAIL после GATE PASS.
+- Не добавлять правила в `shared/writer-master-prompt.md` и Writer/Sol skill автоматически.
+- Cloud Secrets: `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` (scope `metrika:read`).
+- Site quality checker (вне репо) — INC-1405 already needs-human; не дублировать apply из этого прогона.
+- Cover tenant style/local-ref: INC-1350 already fixed (commit 21afd83); не помечать «починили Kie».
+
+### Durable applied
+- none this run. Prior Fixer INC-1350 (commit 21afd83): tenant `style_preset` + local `Виктория.png` + gold/editorial; `article.html` B31 не трогали. Prior Fixer INC-1405: контракт B27/B29/B30/B31 + SITE token quality/force-approve 403; не лечить ярлыком. Не «починили сайт». Rollback: только по явному решению человека, не из этого SKIP+no-Metrika прогона.
+
+### Resolution
+status: recorded
+
 ## LESSON-20260901-0659-B30-morning-broken-word
 status: proposed
 topic_id: B30
