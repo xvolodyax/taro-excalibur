@@ -111,7 +111,7 @@ checks_run:
 - `python3 -m unittest tests.test_kie_gpt_image2_api tests.test_site_publish tests.test_writer_sol_pipeline` (OK)
 - `rg` director-same-batch / INC-0700 / B27 / B29 / B30 / force-approve
 - B30 `article.html` не менялся
-commit: pending
+commit: ce3daf9
 
 ## INC-20260901-0648-cover-kie-500-b30
 status: fixed
@@ -176,7 +176,7 @@ checks_run:
 - `python3 -m unittest tests.test_kie_gpt_image2_api tests.test_site_publish tests.test_writer_sol_pipeline` (OK)
 - `rg` director-same-batch / cover_create_exhausted / B30 / apply-only
 - B30 `article.html` не менялся
-commit: pending
+commit: ce3daf9
 
 ## INC-20260831-2040-metrika-credentials-b29
 status: open
