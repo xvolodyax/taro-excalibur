@@ -1,0 +1,29 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{SITE_BASE}}/on-ne-derzhit-slovo-v-otnosheniyah/",
+  "url": "{{SITE_BASE}}/on-ne-derzhit-slovo-v-otnosheniyah/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{SITE_BASE}}/on-ne-derzhit-slovo-v-otnosheniyah/"
+  },
+  "headline": "Он обещает прийти или позвонить, но не держит слово",
+  "description": "Разбираем причины сорванных договорённостей, учимся отличать единичный форс-мажор от пустых слов и сохранять уверенность в себе.",
+  "datePublished": "2026-09-01",
+  "dateModified": "2026-09-01",
+  "inLanguage": "ru",
+  "author": {
+    "@type": "Person",
+    "name": "Виктория",
+    "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+    "sameAs": [
+      "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
+      "https://dzen.ru/todaytaro_bot"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}/"
+  }
+}
