@@ -21,9 +21,11 @@ from excalibur_blog_opening_editorial import (  # noqa: E402
 )
 from excalibur_blog_site_publish import (  # noqa: E402
     DEFAULT_SITE_BASE,
+    PRACTICE_H2_MARKERS,
     PROTECTED_LIVE_TOPIC_IDS,
     TOKEN_ENV_NAMES,
     HttpResponse,
+    article_has_practice_h2,
     build_tgz_bytes,
     collect_telegram_hrefs,
     live_second_cover_errors,
@@ -52,7 +54,11 @@ DESCRIPTION = (
 
 
 def _article_html(
-    *, cover_hero: bool = True, telegram: bool = True, practice_h2: bool = False
+    *,
+    cover_hero: bool = True,
+    telegram: bool = True,
+    practice_h2: bool = False,
+    practice_h2_html: str = "",
 ) -> str:
     tg = (
         '<p>Ответ можно снять в <a href="https://t.me/example_bot?start=ref1">боте</a>.</p>\n'
@@ -92,10 +98,14 @@ def _article_html(
         "</figure>\n"
         "<p>Финал без второй обложки и без переписывания ссылок на расклад.</p>\n"
         + (
-            '<h2>Практика: чеклист шагов для проверки паузы</h2>\n'
-            "<p>Проверь время ответа и не пиши первой.</p>\n"
-            if practice_h2
-            else ""
+            practice_h2_html
+            if practice_h2_html
+            else (
+                '<h2>Практика: чеклист шагов для проверки паузы</h2>\n'
+                "<p>Проверь время ответа и не пиши первой.</p>\n"
+                if practice_h2
+                else ""
+            )
         )
     )
 
@@ -106,11 +116,16 @@ def _write_article(
     topic_id: str = "B99",
     cover_hero: bool = True,
     practice_h2: bool = False,
+    practice_h2_html: str = "",
 ) -> Path:
     article_dir = tmp / f"{topic_id}-on-prochital-i-molchit"
     cover = article_dir / "cover"
     cover.mkdir(parents=True)
-    html = _article_html(cover_hero=cover_hero, practice_h2=practice_h2)
+    html = _article_html(
+        cover_hero=cover_hero,
+        practice_h2=practice_h2,
+        practice_h2_html=practice_h2_html,
+    )
     (article_dir / "article.html").write_text(html, encoding="utf-8")
     (article_dir / "article.meta.json").write_text(
         json.dumps(
@@ -534,6 +549,50 @@ class SitePublishUnitTest(unittest.TestCase):
             self.assertIn("качеств", str(result.get("reason_detail") or "").lower())
             self.assertFalse(any("/publish" in u for _, u in http.calls))
 
+    def test_practice_h2_markers_include_scenario_check_step(self) -> None:
+        self.assertIn("практик", PRACTICE_H2_MARKERS)
+        self.assertIn("чеклист", PRACTICE_H2_MARKERS)
+        self.assertIn("сценарий", PRACTICE_H2_MARKERS)
+        self.assertIn("проверк", PRACTICE_H2_MARKERS)
+        self.assertIn("шаг", PRACTICE_H2_MARKERS)
+        self.assertTrue(
+            article_has_practice_h2(
+                "<h2>Как изменить сценарий без драмы и выяснения отношений</h2>"
+            )
+        )
+        self.assertTrue(article_has_practice_h2("<h2>Проверка паузы за один вечер</h2>"))
+        self.assertTrue(article_has_practice_h2("<h2>Шаг, который не стоит делать первой</h2>"))
+        self.assertTrue(article_has_practice_h2("<h2>Практика: чеклист шагов</h2>"))
+        self.assertFalse(article_has_practice_h2("<h2>Что происходит</h2>"))
+        self.assertFalse(article_has_practice_h2("<h2>Какой вопрос к картам</h2>"))
+
+    def test_first_upload_quality_409_scenario_h2_no_body_edit(self) -> None:
+        heading = (
+            '<h2>Как изменить сценарий без драмы и выяснения отношений</h2>\n'
+            "<p>Не пиши днём в ответ на ночной чат.</p>\n"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            article_dir = _write_article(Path(tmp), practice_h2_html=heading)
+            html_before = (article_dir / "article.html").read_text(encoding="utf-8")
+            http = FakeHttp()
+            http.approve_409_quality = True
+            code, result = run_publish(
+                article_dir=article_dir,
+                root=ROOT,
+                env={"SITE_PUBLISH_TOKEN": "unit-test-token-not-for-git"},
+                site_base=DEFAULT_SITE_BASE,
+                dry_run=False,
+                skip_gates=False,
+                http=http,
+            )
+            self.assertEqual(code, 2, result)
+            self.assertEqual(result.get("director_next"), "false_example_409_no_body_edit")
+            self.assertTrue(result.get("practice_h2_present"))
+            self.assertEqual(
+                (article_dir / "article.html").read_text(encoding="utf-8"),
+                html_before,
+            )
+
     def test_first_upload_quality_409_practice_present_no_body_edit(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             article_dir = _write_article(Path(tmp), practice_h2=True)
@@ -710,6 +769,8 @@ class SitePublishUnitTest(unittest.TestCase):
         self.assertIn("skip_quality_review", contract)
         self.assertIn("needs_sol", contract)
         self.assertIn("Практика: чеклист шагов", contract)
+        self.assertIn("Как изменить сценарий", contract)
+        self.assertIn("article_has_practice_h2", contract)
         self.assertIn("конкретный пример: ЧЧ:ММ", contract)
         self.assertIn("false_example_409_no_body_edit", contract)
         self.assertIn("починили сайт", contract)

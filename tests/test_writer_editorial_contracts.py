@@ -104,6 +104,70 @@ class WriterEditorialContractsTest(unittest.TestCase):
             self.assertIn("Демо заголовок", text)
             self.assertNotIn("BODY MUST NOT APPEAR", text)
 
+    def test_write_titles_keeps_existing_when_ledger_has_no_dates(self) -> None:
+        import sys
+
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from excalibur_blog_published_titles import write_titles
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            shared = root / "shared"
+            shared.mkdir(parents=True)
+            (shared / "published-articles.md").write_text(
+                "# ledger\n\n"
+                "| topic_id | slug | status | permalink |\n"
+                "|----------|------|--------|-----------|\n"
+                "| B32 | night-only | quality_review | /night-only/ |\n",
+                encoding="utf-8",
+            )
+            titles = (
+                "# Published titles only — не читать тела статей\n\n"
+                "| topic_id | slug | title | status |\n"
+                "|----------|------|-------|--------|\n"
+                "| B12 | old-slug | Старый заголовок | live |\n"
+                "| B31 | autumn | Осенний заголовок | quality_review |\n"
+            )
+            (shared / "published-titles.md").write_text(titles, encoding="utf-8")
+            result = write_titles(root)
+            text = (shared / "published-titles.md").read_text(encoding="utf-8")
+            self.assertGreaterEqual(result["count"], 2)
+            self.assertIn("Старый заголовок", text)
+            self.assertIn("Осенний заголовок", text)
+            self.assertIn("| B12 |", text)
+            self.assertIn("| B31 |", text)
+            self.assertIn("| B32 |", text)
+            self.assertNotIn("| topic_id | slug | title | status |\n|----------|------|-------|--------|\n\n", text)
+
+    def test_write_titles_does_not_wipe_to_empty_header(self) -> None:
+        import sys
+
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from excalibur_blog_published_titles import write_titles
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            shared = root / "shared"
+            shared.mkdir(parents=True)
+            (shared / "published-articles.md").write_text(
+                "# ledger\n\n"
+                "| topic_id | slug | status | permalink |\n"
+                "|----------|------|--------|-----------|\n",
+                encoding="utf-8",
+            )
+            (shared / "published-titles.md").write_text(
+                "# Published titles only — не читать тела статей\n\n"
+                "| topic_id | slug | title | status |\n"
+                "|----------|------|-------|--------|\n"
+                "| B31 | autumn | Осенний заголовок | quality_review |\n",
+                encoding="utf-8",
+            )
+            result = write_titles(root)
+            text = (shared / "published-titles.md").read_text(encoding="utf-8")
+            self.assertEqual(result["count"], 1)
+            self.assertIn("Осенний заголовок", text)
+            self.assertIn("| B31 |", text)
+
     def test_writer_ready_gate_has_no_critic_contract(self) -> None:
         gate = (ROOT / "scripts/excalibur_blog_writer_ready_gate.py").read_text(
             encoding="utf-8"

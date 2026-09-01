@@ -212,12 +212,27 @@ def rewrite_rasklad_back_to_telegram(live_html: str, telegram_hrefs: list[str]) 
     )
 
 
+# How-to / practice H2 stems. Not only «практик»/«чеклист» — B32 used
+# «Как изменить сценарий…» and similar step/check headings (INC-20260901-1939).
+PRACTICE_H2_MARKERS: tuple[str, ...] = (
+    "практик",
+    "чеклист",
+    "сценарий",
+    "проверк",
+    "шаг",
+)
+
+
 def article_has_practice_h2(html: str) -> bool:
-    """True when Sol already wrote a practice / checklist H2 (INC-20260831-0650)."""
+    """True when Sol already wrote a practice / checklist / how-to H2.
+
+    INC-20260831-0650: «практик» / «чеклист».
+    INC-20260901-1939: «Как изменить сценарий…», «проверк», «шаг».
+    """
     for match in re.finditer(r"<h2[^>]*>(.*?)</h2>", html or "", flags=re.I | re.S):
         title = re.sub(r"<[^>]+>", "", match.group(1))
         title = re.sub(r"\s+", " ", title).strip().lower()
-        if "практик" in title or "чеклист" in title:
+        if any(marker in title for marker in PRACTICE_H2_MARKERS):
             return True
     return False
 

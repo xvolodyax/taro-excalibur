@@ -72,7 +72,7 @@ incident_report: none | memory/pipeline-fix-queue.md#INC-...
 
 1. Внешний сигнал (каналы/новости) → URL  
 2. titles ledger — только anti-dup  
-3. `--suggest-next`  
+3. `--suggest-next`  (колонка `topic_id` B\\d+ в `shared/published-titles.md`, не только `| 20` ledger)
 4. один title → focus/query/slug  
 5. handoff → стоп  
 

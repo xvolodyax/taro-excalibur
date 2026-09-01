@@ -95,7 +95,8 @@ incident_report: none
 
 1. WebFetch / SERP → живой хайп (каналы + новости). Запиши URL.
 2. `published-titles.md` + ledger — только чтобы **не повторить** уже покрытое.
-3. `--suggest-next` → next id.
+3. `--suggest-next` → next id. Смотрит колонку `topic_id` (`B\\d+`) в
+   `shared/published-titles.md`, не только строки `| 20` ledger.
 4. Один короткий title из сигнала (не SEO-primary).
 5. focus + check-query + check-slug (макс. 2 попытки).
 6. Handoff со `signal_urls` → стоп.
