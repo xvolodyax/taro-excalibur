@@ -25,6 +25,7 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B26 | on-skazal-chto-ne-gotov-k-otnosheniyam | Он сказал, что не готов к отношениям, но остаётся рядом | live |
 | B27 | on-ne-obsuzhdaet-buduschee-vashih-otnoshenij | Он охотно зовёт на выходные, но избегает разговоров о будущем | live |
 | B28 | on-obyavilsya-spustya-mesyacy-molchaniya | Он написал после месяцев молчания, но не предлагает ничего конкретного | live |
+| B29 | on-stavit-pauzu-vmesto-sblizheniya | Он остаётся на связи, но ставит паузу вместо сближения | hall-anti-dup |
 | LIVE | zachem-vtykayut-igolku-v-dvernoy-kosyak | Зачем втыкают иголку в дверной косяк | live |
 | LIVE | zachem-syplyut-sol-v-ugol-ot-skandalov | Зачем сыплют соль в угол от скандалов | live |
 | LIVE | kak-vyzyvayut-domovogo-v-kvartire | Как вызывают домового в квартире | live |
