@@ -1,0 +1,52 @@
+{
+  "topic_id": "B31",
+  "slug": "on-otkladyvaet-otnosheniya-na-osen",
+  "publish_method": "site-api",
+  "hall": "not_used",
+  "dzen_studio": "not_used",
+  "token_env": "SITE_PUBLISH_TOKEN",
+  "token_configured": true,
+  "cover_hero_stripped": false,
+  "strip": {
+    "cover_hero_removed": 0,
+    "cover_png_figures_removed": 0,
+    "cover_credit_removed": 0,
+    "h1_removed": 1
+  },
+  "gate": "PASS",
+  "publish": "NEEDS_SOL",
+  "verdict": "needs_sol",
+  "reason": "approve_quality_409",
+  "permalink": "{{SITE_BASE}}/blog/on-otkladyvaet-otnosheniya-na-osen/",
+  "tgz_members": [
+    "article.html",
+    "article.meta.json",
+    "description-brief.json",
+    "cover/cover.png",
+    "cover/inline-01.png",
+    "cover/inline-02.png",
+    "cover/inline-03.png"
+  ],
+  "tgz_bytes": 3189105,
+  "upload_status": 201,
+  "article_id": "41",
+  "excerpt_clear_status": 403,
+  "excerpt_clear_skipped": "hall_token_no_patch",
+  "approve_status": 409,
+  "approve_detail": "Сначала статья должна пройти проверку качества",
+  "director_next": "false_example_409_no_body_edit",
+  "practice_h2_present": true,
+  "reason_detail": "Сначала статья должна пройти проверку качества",
+  "publish_status": 409,
+  "publish_detail": "Публиковать можно только одобренную статью",
+  "sol_rewritten": false,
+  "sol_rewritten_by_publish": false,
+  "live_ok": false,
+  "live_status": 404,
+  "site_status": "quality_review",
+  "quality_score": 88,
+  "quality_warnings": [
+    "Нет конкретного примера или разбора ситуации"
+  ],
+  "note": "Hall: no example gate, do not add Возьмём:/Сцена/например/кейс. Body not edited. SITE token cannot quality-pass (403). Same checker as B27/B29/B30."
+}

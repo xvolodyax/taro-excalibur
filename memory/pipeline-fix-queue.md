@@ -2,6 +2,41 @@
 
 Durable incident memory for Excalibur BLOG. Agents append; Fixer resolves.
 
+## INC-20260901-1405-publish-false-409-example-b31
+status: open
+run_date: 2026-09-01
+role: excalibur-blog-publish
+topic_id: B31
+article_dir: memory/blog/articles/B31-on-otkladyvaet-otnosheniya-na-osen
+severity: high
+category: env
+
+### What went wrong
+- After GATE PASS Director uploaded with `SITE_PUBLISH_TOKEN`: upload 201 `article_id=41`.
+- Approve 409, `quality_score=88`, warning «Нет конкретного примера или разбора ситуации» while H2 «Практика: чеклист шагов…» and a September chat scene are already in the body.
+- SITE token GET/POST quality-pass and PATCH status → 403. skip_quality_review / force ignored.
+- Live GET 404. Same checker as B27 INC-0650 / B29 INC-2035 / B30 INC-0700.
+- Hall prompt said site is upload-only and has no example gate. Checker still lives outside this repo.
+
+### How the agent recovered this run
+- Did not rewrite Sol. Did not add «Возьмём:» / «Сцена» / «например» / «кейс» / ярлык «конкретный пример».
+- `director_next=false_example_409_no_body_edit`.
+
+### Durable fix needed before next run
+- Site quality checker (вне репо) must stop blocking approve on «конкретный пример» when practice H2 + scene exist; or SITE token needs quality-pass.
+- Do not treat this 409 as a Writer/Sol rewrite.
+
+### Suggested files to inspect/change
+- `shared/excalibur-site-publish-contract.md`
+- `scripts/excalibur_blog_site_publish.py`
+- site admin quality checker (вне репо)
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
+
 ## INC-20260901-1350-cover-tenant-style-local-ref
 status: open
 run_date: 2026-09-01

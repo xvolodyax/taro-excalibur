@@ -1,5 +1,23 @@
 # Site publish log
 
+## 2026-09-01 B31 on-otkladyvaet-otnosheniya-na-osen
+
+- method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)
+- article_id: 41
+- upload: 201
+- excerpt_clear: 403 hall_token_no_patch (не FAIL)
+- approve: 409 quality_score=88 warning «Нет конкретного примера или разбора ситуации» при H2 практике уже в теле
+- publish: 409 «только одобренную»
+- quality-pass / PATCH status: 403 hall_token
+- verdict: needs_sol
+- director_next: false_example_409_no_body_edit
+- practice_h2_present: true
+- live_get: 404 `{{SITE_BASE}}/blog/on-otkladyvaet-otnosheniya-na-osen/`
+- root `{{SITE_BASE}}/on-otkladyvaet-otnosheniya-na-osen/`: 404
+- sol_rewritten_by_publish: no
+- dzen_studio: not_used
+- ledger published-*: quality_review (not live)
+
 ## 2026-09-01 B30 on-ne-derzhit-slovo-v-otnosheniyah
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)
