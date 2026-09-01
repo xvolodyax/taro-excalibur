@@ -1,0 +1,83 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B32",
+  "slug": "on-pishet-tolko-nochyu-dnem-molchit",
+  "article_dir": "memory/blog/articles/B32-on-pishet-tolko-nochyu-dnem-molchit",
+  "research_date": "2026-09-01",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "block_reason": null,
+  "fresh_signal": true,
+  "fresh_signal_window": "this_week",
+  "fresh_signal_note": "2026-09-01 канал dzen.ru/todaytaro_bot крутит промо «Ты пишешь, он молчит?!»; в ленте за сегодня вечерний внезапный контакт (~9 ч), за неделю посты «если он не пишет» / «почему он молчит». SERP того же дня держит community-сцену «тёплый после полуночи, днём места нет» (intrigue 13.06.2026 в выдаче; woman-look; b17/VK сниппеты).",
+  "wordstat_status": "OK",
+  "wordstat_note": "Перепроверка Yandex Cloud Search API v2 topRequests 2026-09-01. Не только Scout. Часть фраз totalCount-only. Жирную «парень пишет ночью»=1123 в title не клеить (топ — спокойной/доброй ночи).",
+  "wordstat": {
+    "он пишет только ночью": {"totalCount": 162, "tops": []},
+    "пишет только ночью": {"totalCount": 931, "tops": [["пишет только ночью", 931], ["пишет только утром и ночью", 145], ["парень пишет только ночью", 123], ["мужчина пишет только ночью", 117]]},
+    "он пишет ночью": {"totalCount": 2764, "tops": [["он пишет мне ночью", 1171], ["он пишет ночью пишет днем", 449], ["он пишет спокойной ночи", 409], ["он пишет ночью спишь", 254], ["почему он пишет ночью", 204]]},
+    "пишет только по ночам": {"totalCount": 118, "tops": [["пишет только по ночам", 118]]},
+    "он пишет поздно ночью": {"totalCount": 48, "tops": []},
+    "парень пишет ночью": {"totalCount": 1123, "tops": [["парень пишет спокойной ночи", 354], ["парень пишет доброй ночи", 243], ["парень пишет девушка ночь", 155], ["парень пишет ночью спишь", 91], ["парень пишет ночью что значит", 81]]},
+    "он пишет ночью пишет днем": {"totalCount": 449, "tops": [["он пишет ночью пишет днем", 449]]},
+    "мужчина пишет только ночью": {"totalCount": 117, "tops": [["мужчина пишет только ночью", 117], ["мужчина пишет только спокойной ночи", 66]]}
+  },
+  "key_facts": [
+    "Канал сегодня: «Ты пишешь, он молчит?!» + вечерний внезапный контакт в ленте (~9 ч).",
+    "Сцена community: ночью тепло («не спишь», «думал о тебе»), днём тишина и нет места в расписании.",
+    "Критерий не часы, а продолжение: встреча / слово / дневная жизнь vs туман при попытке выйти из ночного чата.",
+    "Три проверки (b17, сниппеты SERP): знает ли дневную жизнь; была ли встреча до 18:00; есть ли место кроме переписки. Трижды нет — вечерний запасной вариант.",
+    "Бытовой контрпример: пояс (Украина–Канада 7 ч) или смена до 23:00 → первое сообщение в 23:15. Не брать военный сюжет CQMI.",
+    "woman-look: после 23:00 без договорённости часто проверка границ; даже занятый находит ~30 секунд днём, если важна.",
+    "Состояние читательницы: ночью тепло, утром тревожно; подстраивает сон под чат.",
+    "Wordstat ближе к боли: «он пишет ночью пишет днем»=449; не «парень пишет ночью»=1123."
+  ],
+  "reader_problem": "Днём чат пустой, после полуночи он вдруг тёплый — и она не понимает, есть ли дневное место в его жизни или только ночной экран.",
+  "reader_outcome": "Отделит график/пояс от сценария «тепло только когда день кончился» и спросит про дневную встречу вместо расшифровки «Спишь?».",
+  "surprising_fact": "Ночное сообщение в источниках 2026 само по себе не приговор; ломает картину цикл ночь-тепло / день-пусто / туман на встречу. Ежедневные 23:15 у CQMI оказались концом смены в ресторане, не «жена легла».",
+  "overlap": [
+    "B22 ночной «Спишь?» после расставания",
+    "B23 онлайн и молчит",
+    "B28 возврат после месяцев",
+    "B30 не держит слово",
+    "B31 откладывает на осень",
+    "LIVE карта дня / истории / напишет ли вечером"
+  ],
+  "constraints": [
+    "не карта дня",
+    "не 21:21",
+    "не клон B30/B31",
+    "не читать мысли",
+    "не пугать одиночеством",
+    "не медицина",
+    "не СВО",
+    "не Instagram hero",
+    "CTA: 3 расклада бот; Суть–Тень–Вектор + аудиоразбор в приложении; не «личный аудиоразбор»"
+  ],
+  "writer_safe_urls": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://woman-look.ru/muzhchina-pishet-pozdno-nochju/",
+    "https://intrigue.dating/znakomstva/pochemu-on-pishet-tolko-nochu-i-chto-jeto-znachit-dlya-otnosheniy/",
+    "https://www.b17.ru/article/708537/",
+    "https://cqmi.com.ua/ru/cqmi-agency-news-novosti-kanadskogo-agentstva-mezhdunarodnykh-brakov/item/1732-pochemu-muzhchina-pishet-nochyu-chto-eto-znachit-i-zachem-on-eto-delaet",
+    "https://samka.co/psihologiya/pochemu-paren-pishet-tolko-nochu/",
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776",
+    "https://max.ru/id531102974575_bot?startapp=ref_9BAD4149"
+  ],
+  "notes_path": "memory/blog/articles/B32-on-pishet-tolko-nochyu-dnem-molchit/research-notes.md",
+  "report_path": "memory/blog/articles/B32-on-pishet-tolko-nochyu-dnem-molchit/research-agent-report.json",
+  "incident_report": "none",
+  "next_step": "Title (не Research, не Writer)",
+  "did_not": [
+    "h2_outline",
+    "FAQ",
+    "lead",
+    "action_outline",
+    "article.html read",
+    "Task(excalibur-blog-*)",
+    "Title",
+    "Writer"
+  ]
+}
