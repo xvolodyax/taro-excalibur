@@ -3,7 +3,7 @@
 Durable incident memory for Excalibur BLOG. Agents append; Fixer resolves.
 
 ## INC-20260901-1405-publish-false-409-example-b31
-status: open
+status: needs-human
 run_date: 2026-09-01
 role: excalibur-blog-publish
 topic_id: B31
@@ -35,10 +35,22 @@ category: env
 - none recorded
 
 ### Fixer resolution
-- pending
+status: needs-human
+fixed_at: 2026-09-01
+reason:
+- Durable fix is the site quality checker (вне репо). Approve 409 «Нет конкретного примера или разбора ситуации» при H2 практике + сцене в теле — тот же ложный гейт, что B27/B29/B30.
+- В репо нет гейта «конкретный пример». `shared/excalibur-site-publish-contract.md` уже говорит: не лечить телом, не «Возьмём:», `director_next=false_example_409_no_body_edit`.
+- SITE token GET quality / force-approve → 403. Это не обход 409.
+needed_decision_or_secret:
+- Site admin: перестать блокировать approve по «конкретный пример», когда practice H2 + сцена уже есть; или выдать SITE token quality-pass.
+- Не помечать «починили сайт». Тело B31 / Sol не трогать.
+files_changed: none
+checks_run:
+- queue + publish-contract re-read; no repo patch
+commit: n/a
 
 ## INC-20260901-1350-cover-tenant-style-local-ref
-status: open
+status: fixed
 run_date: 2026-09-01
 role: excalibur-blog-cover
 topic_id: B31
@@ -71,4 +83,24 @@ category: script
 - none recorded
 
 ### Fixer resolution
-- pending
+status: fixed
+fixed_at: 2026-09-01
+fix_summary:
+- `quad_manifest.py` берёт `style_file` / `style_id` из `tenant-config.cover_files.style_preset`; пустой preset → прежний pink-cat fallback.
+- `cover_quad_prompt.py`: `prefer_local_reference` + `local_reference` из style (host_reference / Виктория.png), не только situational cat; highlight/sticky/typeface из cover-design-code (золото #C4A574, editorial); пустой design-code → hot-pink / bold condensed.
+- `kie_gpt_image2_api.batch_mcp_args` не разворачивает `{{SITE_BASE}}`, если batch `prefer_local_reference` (upload локального файла дальше).
+- Статья B31 / `article.html` / слог не трогались.
+files_changed:
+- `scripts/excalibur_blog_quad_manifest.py`
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `scripts/excalibur_blog_cover_identity_gate.py`
+- `tests/test_quad_manifest.py`
+- `tests/test_cover_identity.py`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile` quad_manifest + cover_quad_prompt + kie + identity_gate
+- `python3 -m json.tool` tenant-config + victoria style + cover-design-code
+- `python3 -m unittest tests.test_quad_manifest` — 4/4 ok
+- `python3 -m unittest tests.test_cover_identity` — tenant/local-ref/gold/hair/kie-prefer-local ok; pre-existing `is_playground_blank_fail` import still missing (не этот INC)
+commit: pending-parent-commit

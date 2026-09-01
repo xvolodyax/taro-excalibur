@@ -22,6 +22,8 @@ import re
 import sys
 from pathlib import Path
 
+CANON_FACE_NAME = "Виктория.png"
+CANON_FACE_REL = "memory/cover/assets/Виктория.png"
 REQUIRED_HAIR_PHRASE = (
     "hair color copied exactly from reference photo, same root depth, "
     "do not lighten, no platinum"

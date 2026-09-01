@@ -31,6 +31,63 @@ class CoverIdentityTest(unittest.TestCase):
         verdict = run_gate(root=ROOT, article_dir=None)
         self.assertEqual(verdict["status"], "PASS", verdict)
 
+    def test_host_style_prefers_local_victoria_png(self) -> None:
+        import sys
+
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from excalibur_blog_cover_quad_prompt import style_wants_local_reference
+
+        style = json.loads(
+            (ROOT / "memory/cover/quad-style-victoria-studio.json").read_text(encoding="utf-8")
+        )
+        self.assertTrue(style.get("prefer_local_reference"))
+        self.assertTrue(style_wants_local_reference(style))
+        self.assertEqual(style["local_reference"], "memory/cover/assets/Виктория.png")
+        self.assertFalse(style_wants_local_reference({"cover_hero_mode": "host"}))
+        self.assertTrue(
+            style_wants_local_reference(
+                {
+                    "cover_hero_mode": "situational_cat",
+                    "local_reference": "memory/cover/assets/cat-plate.png",
+                }
+            )
+        )
+
+    def test_prompt_highlight_and_type_from_design_code(self) -> None:
+        import sys
+
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from excalibur_blog_cover_quad_prompt import build_prompt
+
+        hero = json.loads((ROOT / "memory/cover/blog-hero.json").read_text(encoding="utf-8"))
+        design = json.loads((ROOT / "memory/cover/cover-design-code.json").read_text(encoding="utf-8"))
+        style = json.loads(
+            (ROOT / "memory/cover/quad-style-victoria-studio.json").read_text(encoding="utf-8")
+        )
+        manifest = {
+            "cover_hook": "Он написал в одиннадцать",
+            "cover_hook_highlight": "написал",
+            "slots": {
+                "cover": {"scene_hint": "Victoria LARGE left", "sticky": "осень"},
+                "inline_1": {"visual_type": "infographic_card", "h2_anchor": "Сцена", "scene_hint": "card"},
+                "inline_2": {"visual_type": "comparison_table_ui", "h2_anchor": "Двери", "scene_hint": "cols"},
+                "inline_3": {"visual_type": "workflow_diagram", "h2_anchor": "Шаг", "scene_hint": "arrows"},
+            },
+        }
+        prompt = build_prompt(manifest, style, hero, {}, design)
+        self.assertIn("#C4A574", prompt)
+        self.assertIn("gold", prompt)
+        self.assertIn("editorial display Cyrillic", prompt)
+        self.assertNotIn("hot-pink", prompt)
+        self.assertNotIn("#FF1493", prompt)
+        self.assertNotIn("bold condensed Cyrillic", prompt)
+        self.assertIn("Small gold sticky", prompt)
+
+        fallback = build_prompt(manifest, {}, {}, {}, {})
+        self.assertIn("hot-pink #FF1493", fallback)
+        self.assertIn("bold condensed Cyrillic", fallback)
+        self.assertIn("Small pink sticky", fallback)
+
     def test_prompt_injects_hair_lock(self) -> None:
         import sys
 
