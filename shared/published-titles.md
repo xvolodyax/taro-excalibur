@@ -28,6 +28,7 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B29 | on-stavit-pauzu-vmesto-sblizheniya | Он остаётся на связи, но ставит паузу вместо сближения | hall-anti-dup |
 | B30 | on-ne-derzhit-slovo-v-otnosheniyah | Он обещает прийти или позвонить, но не держит слово | quality_review |
 | B31 | on-otkladyvaet-otnosheniya-na-osen | Лето кончилось, а он всё ещё говорит тебе «потом» | quality_review |
+| B32 | on-pishet-tolko-nochyu-dnem-molchit | Он пишет только ночью, а днём молчит | quality_review |
 | LIVE | zachem-vtykayut-igolku-v-dvernoy-kosyak | Зачем втыкают иголку в дверной косяк | live |
 | LIVE | zachem-syplyut-sol-v-ugol-ot-skandalov | Зачем сыплют соль в угол от скандалов | live |
 | LIVE | kak-vyzyvayut-domovogo-v-kvartire | Как вызывают домового в квартире | live |

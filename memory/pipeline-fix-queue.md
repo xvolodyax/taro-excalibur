@@ -2,6 +2,57 @@
 
 Durable incident memory for Excalibur BLOG. Agents append; Fixer resolves.
 
+## INC-20260901-1939-publish-false-409-example-b32
+status: needs-human
+run_date: 2026-09-01
+role: excalibur-blog-publish
+topic_id: B32
+article_dir: memory/blog/articles/B32-on-pishet-tolko-nochyu-dnem-molchit
+severity: high
+category: env
+
+### What went wrong
+- After GATE PASS upload with `SITE_PUBLISH_TOKEN`: 201 `article_id=42`.
+- Approve 409, `quality_score=88`, warning «Нет конкретного примера или разбора ситуации» while H2 «Как изменить сценарий без драмы и выяснения отношений» (чеклист шагов) and a night-chat scene are already in the body.
+- SITE token GET quality → 403. skip_quality_review / force ignored.
+- Live GET 404 both `/blog/{slug}/` and `/{slug}/`. Same checker as B27 INC-0650 / B29 INC-2035 / B30 INC-0700 / B31 INC-1405.
+- Script `article_has_practice_h2` looked only for «практик»/«чеклист» in H2 and set `director_next=return_sol_practice` + `practice_h2_present=false`. That would wrongly send Sol.
+
+### How the agent recovered this run
+- Did not rewrite Sol. Did not add «Возьмём:» / «Сцена» / «например» / «кейс» / ярлык «конкретный пример».
+- Did not invent a live permalink. `live_ok=false`.
+- Overrode `director_next=false_example_409_no_body_edit` and `practice_h2_present=true` in `site-publish-result.json`.
+- Slot 21:21 not closed. B21/B22 not touched. Dzen Studio / Hall not used.
+
+### Durable fix needed before next run
+- Site quality checker (вне репо) must stop blocking approve on «конкретный пример» when practice H2 + scene exist; or SITE token needs quality-pass.
+- Script detector must treat H2 «Как изменить сценарий…» (and similar practice titles without the words «практика»/«чеклист») as practice already present.
+- Do not treat this 409 as a Writer/Sol rewrite.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_site_publish.py` (`article_has_practice_h2`)
+- `shared/excalibur-site-publish-contract.md`
+- site admin quality checker (вне репо)
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+status: needs-human
+fixed_at: 2026-09-01
+reason:
+- Durable approve fix is the site quality checker (вне репо). Same false gate as B27/B29/B30/B31.
+- Repo detector gap is separate: expand `article_has_practice_h2` so «Как изменить сценарий» counts as practice. Publish did not patch the script this run.
+- В репо нет гейта «конкретный пример». Не лечить телом, не «Возьмём:».
+needed_decision_or_secret:
+- Site admin: перестать блокировать approve по «конкретный пример», когда practice H2 + сцена уже есть; или выдать SITE token quality-pass.
+- Fixer: расширить `article_has_practice_h2` (не тело статьи).
+- Не помечать «починили сайт». Тело B32 / Sol не трогать.
+files_changed: none
+checks_run:
+- upload 201 / approve 409 / live 404 / quality GET 403 / article GET score 88
+commit: n/a
+
 ## INC-20260901-1431-metrika-credentials-b31
 status: open
 run_date: 2026-09-01

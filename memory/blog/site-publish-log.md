@@ -1,5 +1,27 @@
 # Site publish log
 
+## 2026-09-01 B32 on-pishet-tolko-nochyu-dnem-molchit
+
+- method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)
+- article_id: 42
+- upload: 201
+- excerpt_clear: 403 hall_token_no_patch (не FAIL)
+- approve: 409 quality_score=88 warning «Нет конкретного примера или разбора ситуации» при H2 практике уже в теле («Как изменить сценарий без драмы и выяснения отношений»)
+- publish: not called
+- quality GET: 403 hall_token
+- verdict: needs_sol
+- director_next: false_example_409_no_body_edit
+- practice_h2_present: true
+- script_practice_h2_detect: false (детектор ищет только «практик»/«чеклист»; H2 сценария не посчитал)
+- live_get: 404 `{{SITE_BASE}}/blog/on-pishet-tolko-nochyu-dnem-molchit/`
+- root `{{SITE_BASE}}/on-pishet-tolko-nochyu-dnem-molchit/`: 404
+- permalink live не выдумывался
+- sol_rewritten_by_publish: no
+- dzen_studio: not_used
+- slot 21:21: not closed
+- B21/B22: not touched
+- ledger published-titles: quality_review; published-articles: quality_review (not live)
+
 ## 2026-09-01 B31 on-otkladyvaet-otnosheniya-na-osen
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)

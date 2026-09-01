@@ -11,3 +11,4 @@ Publish / Indexer обновляют по мере выхода.
 | B26 | on-skazal-chto-ne-gotov-k-otnosheniyam | live | {{SITE_BASE}}/blog/on-skazal-chto-ne-gotov-k-otnosheniyam/ |
 | B27 | on-ne-obsuzhdaet-buduschee-vashih-otnoshenij | live | {{SITE_BASE}}/blog/on-ne-obsuzhdaet-buduschee-vashih-otnoshenij/ |
 | B28 | on-obyavilsya-spustya-mesyacy-molchaniya | live | {{SITE_BASE}}/blog/on-obyavilsya-spustya-mesyacy-molchaniya/ |
+| B32 | on-pishet-tolko-nochyu-dnem-molchit | quality_review | {{SITE_BASE}}/blog/on-pishet-tolko-nochyu-dnem-molchit/ |
