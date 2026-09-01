@@ -1,25 +1,12 @@
 {
-  "task_id": "ba1a6bb1ea8d4a9c37565356d035d36a",
+  "task_id": "c112399b3638ed90538dc80fa09d0188",
   "source": "kie-api",
   "model": "gpt-image-2-image-to-image",
-  "state": "created",
-  "create_response": {
-    "code": 200,
-    "msg": "success",
-    "data": {
-      "taskId": "ba1a6bb1ea8d4a9c37565356d035d36a",
-      "recordId": "ba1a6bb1ea8d4a9c37565356d035d36a"
-    }
-  },
-  "create_attempt": 2,
-  "created_at_epoch": 1788245128,
-  "retry_of": {
-    "task_id": "fe620dca559b2e4c47d9cba26dbc0108",
-    "failCode": "500",
-    "failMsg": "Internal Error",
-    "retry_kind": "server_500"
-  },
-  "input_urls_via": "kie-file-upload",
+  "state": "success",
+  "create_attempts": 3,
+  "result_path": "memory/blog/articles/B30-on-ne-derzhit-slovo-v-otnosheniyah/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1788245498,
+  "file_upload_fallback": true,
   "file_upload": {
     "source": "prefer_local_reference",
     "upload_path": "excalibur-blog/hero",
