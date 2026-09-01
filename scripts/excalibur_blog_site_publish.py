@@ -10,8 +10,10 @@ Hall/SITE token PATCH excerpt → 403 (not FAIL); publish 500 sitemap EACCES
 resume 409 on already-live continues to live GET. First quality 409 without
 resume → verdict needs_sol (not pipeline FAIL; never add «Возьмём:»).
 Director returns Sol only if practice H2 is missing; if practice+scene
-already in the body → director_next=false_example_409_no_body_edit.
-Do not rewrite Sol. Not «починили сайт».
+already in the body (B27 / B29 / B30) → director_next=false_example_409_no_body_edit.
+Do not rewrite Sol. Do not treat 409 with «Возьмём:» / «Сцена» /
+a «конкретный пример» label. SITE token GET quality / force-approve
+is 403 (not a bypass). Not «починили сайт».
 """
 from __future__ import annotations
 
@@ -635,7 +637,7 @@ def run_publish(
             # 409 "already approved" can continue. First-upload quality 409 cannot
             # publish, but is not a pipeline FAIL. Director returns Sol only if
             # practice H2 is missing (B26). If practice+scene already in the body
-            # (B27), do not send Sol to insert «Возьмём:» / «кейс» — that is not
+            # (B27 / B29 / B30), do not send Sol to insert «Возьмём:» / «кейс» — that is not
             # a repo gate and not «починили сайт». Resume of an already-live
             # article still gets that 409 even when status=published (B24) —
             # continue to publish/live. Publish 500 sitemap EACCES still leaves

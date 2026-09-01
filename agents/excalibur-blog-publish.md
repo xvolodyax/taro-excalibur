@@ -47,7 +47,7 @@ incident_report: none | memory/pipeline-fix-queue.md#INC-...
 4. `shared/excalibur-wp-publish-contract.md`
 5. Активный handoff от директора — обычно `.cursor/excalibur-blog-handoff.md`; в нём `topic_id`, `article_dir`
 
-## Site quality после GATE PASS (HARD, INC-0650 / 1932 / **2035**)
+## Site quality после GATE PASS (HARD, INC-0650 / 1932 / INC-2035 / INC-0700)
 
 После GATE PASS **не переписывать** `article.html` / opening Sol
 ради site quality score. Сайт игнорирует `skip_quality_review`.
@@ -60,9 +60,11 @@ incident_report: none | memory/pipeline-fix-queue.md#INC-...
 - первый 409 без resume → `needs_sol`, **не** PIPELINE FAIL;
 - нет H2 практика/чеклист → `director_next=return_sol_practice`,
   затем новый POST (не `--resume-article-id`);
-- **GATE PASS + H2 практики уже в теле** (B27 / B29) →
+- **GATE PASS + H2 практики уже в теле** (B27 / B29 / B30) →
   `director_next=false_example_409_no_body_edit`:
   не слать Sol на ярлык «конкретный пример»;
+  не лечить «Возьмём:» / «Сцена» / ярлыком «конкретный пример»;
+  SITE token GET quality / force-approve → **403** (не обход);
   Hall: сайт текст не бракует; гейта в репо нет; чекер — вне репо;
 - не ставить чужой слот (утренний прогон ≠ «суббота, 20:40» из B23);
 - markers только из фактов этой статьи, не из соседа;

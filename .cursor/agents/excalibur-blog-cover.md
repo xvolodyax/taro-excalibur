@@ -155,6 +155,10 @@ python scripts/excalibur_blog_cover_quad_prompt.py --article-dir "$ARTICLE" --wr
 #      --resume / --task-id тот же job (не новый create).
 #    Recreate poll: --resume --max-create-retries 0
 python3 scripts/excalibur_blog_kie_gpt_image2_api.py --article-dir "$ARTICLE"
+#    After 500×2 BLOCKER: do NOT re-run this without Director. Director:
+#      --director-same-batch on the same batch (B30 / B102–B117).
+#    Then apply-only. If kie-image-task.json is already success + URL,
+#    this script skips create.
 #
 #    Legacy MCP fallback ТОЛЬКО если KIE_API_KEY отсутствует:
 #    один вызов gpt-image-2 (или async create/status) с jobs[0].mcp_args.
@@ -331,7 +335,7 @@ summary: ...
 | ------------------ | --------------------------------------------------- |
 | COVER HERO BLOCKER | нет `reference_url_hosted` или image call без `input_urls` |
 | KIE POLL WINDOW EXHAUSTED | job всё ещё `waiting`/`generating` после `--max-wait` + late-poll (exit 2). **Не** новый create и **не** 500×2 path. `--resume` / `--task-id` тот же job. Late 500 → script max-1 recreate. Recreate poll: `--max-create-retries 0` (INC-20260831-1508). |
-| KIE API BLOCKER | нет `KIE_API_KEY`, non-retryable fail, 500 / playground-blank retries exhausted, pre-taskId Connection reset exhausted (один retry), image-fetch File Upload fallback exhausted, sensitive 422 после одного soften+recreate, или нет resultUrls после resume (job уже terminal fail). После 500×2 **или** 422 playground-blank exhausted: fragment+incident с `summary`: batch ready for Director same-batch re-run when playground healthy — Cover **не** invent'ит третий create и **не** soften (playground-blank ≠ sensitive); Director Kie re-run → Cover apply-only (не quality-redo / не MCP). Credits 200 ≠ playground healthy. |
+| KIE API BLOCKER | нет `KIE_API_KEY`, non-retryable fail, 500 / playground-blank retries exhausted, pre-taskId Connection reset exhausted (один retry), image-fetch File Upload fallback exhausted, sensitive 422 после одного soften+recreate, или нет resultUrls после resume (job уже terminal fail). После 500×2 **или** 422 playground-blank exhausted: fragment+incident с `summary`: batch ready for Director `--director-same-batch` (B102–B106 / B116 / B117 / B30) — Cover **не** invent'ит третий create, **не** передаёт `--director-same-batch` и **не** soften (playground-blank ≠ sensitive); Director Kie re-run → Cover apply-only (не quality-redo / не MCP). Уже `state=success` + URL → script skip create. Credits 200 ≠ playground healthy. |
 | QUAD SPLIT BLOCKER | нет canvas / не 2×2 16:9 / нет alt в manifest       |
 | COVER BLOCKER      | 4 отдельных image jobs                              |
 | COVER BLOCKER      | отсутствует одна из трёх inline, её H2/anchor или injection |

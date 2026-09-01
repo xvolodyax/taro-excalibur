@@ -41,8 +41,80 @@ category: credentials
 ### Fixer resolution
 - pending
 
+## INC-20260901-0700-publish-false-409-example-b30
+status: needs-human
+run_date: 2026-09-01
+role: excalibur-blog-publish
+topic_id: B30
+article_dir: memory/blog/articles/B30-on-ne-derzhit-slovo-v-otnosheniyah
+severity: medium
+category: publish
+
+### What went wrong
+- GATE PASS + env-check `token_configured=true` + dry-run PASS.
+- Upload 201, `article_id=40`. PATCH excerpt 403 → `excerpt_clear_skipped=hall_token_no_patch` (не FAIL).
+- First approve 409 «Сначала статья должна пройти проверку качества».
+- Admin: `status=quality_review`, `quality_score=88`.
+- Единственный warning: «Нет конкретного примера или разбора ситуации».
+- H2 «Практика: чеклист шагов, как отличить случайный срыв от пустых обещаний» уже в `article.html`.
+- SITE token GET quality / force-approve → **403**.
+- Publish HTTP 409 «только одобренную». Live GET `{{SITE_BASE}}/blog/on-ne-derzhit-slovo-v-otnosheniyah/` → 404.
+- Повтор B27 INC-0650 / B29 INC-2035.
+
+### How the agent recovered this run
+- Тело / opening / Sol не правил. Не добавлял «Возьмём:» / «Сцена» / «конкретный пример» как ярлык.
+- Первый 409 → `verdict=needs_sol`, `director_next=false_example_409_no_body_edit`, не PIPELINE FAIL.
+- Ledger `published-*` не трогал (статья не live).
+- Не помечено «починили сайт».
+
+### Durable fix needed before next run
+- Site quality не должен 409-ить GATE PASS статью с H2 практики только из‑за ярлыка «конкретный пример».
+- Publish после GATE PASS не лечит 409 телом и не вставляет «Возьмём:» / «Сцена» / ярлык «конкретный пример».
+- SITE token не может quality-pass / force-approve (403) — не обход в репо.
+
+### Suggested files to inspect/change
+- `shared/excalibur-site-publish-contract.md`
+- site quality checker (вне этого репо)
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+status: needs-human
+fixed_at: 2026-09-01
+reason:
+- Чекер качества живёт **вне репо**. После GATE PASS + H2 практики
+  сайт всё ещё 409-ит warning «Нет конкретного примера» при
+  `quality_score=88`. SITE token GET quality / force-approve = 403.
+  Это повтор B27 INC-0650 / B29 INC-2035 (репо уже fixed).
+  Сайт должен перестать 409-ить. Не помечено «починили сайт».
+needed_decision_or_secret:
+- Владелец сайта: убрать или смягчить правило «конкретный пример»
+  для GATE PASS статей с H2 «Практика: чеклист шагов…».
+  Honor `skip_quality_review` на upload. SITE token не force-approve.
+fix_summary:
+- Закрепили B30 в кластере ложного 409 (B27 / B29 / B30).
+  После GATE PASS + H2 практики **не** слать Sol на ярлык
+  «конкретный пример». Не «Возьмём:» / «Сцена». SITE token
+  quality/force-approve 403 — не обход. `article.html` B30 не трогали.
+  Writer prompt не раздували.
+files_changed:
+- `shared/excalibur-site-publish-contract.md`
+- Publish/Director agents + skills (обе стороны)
+- `scripts/excalibur_blog_site_publish.py` (комментарий)
+- `tests/test_site_publish.py`
+- `tests/test_writer_sol_pipeline.py`
+- `memory/content-lessons.md`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile scripts/excalibur_blog_kie_gpt_image2_api.py scripts/excalibur_blog_site_publish.py`
+- `python3 -m unittest tests.test_kie_gpt_image2_api tests.test_site_publish tests.test_writer_sol_pipeline` (OK)
+- `rg` director-same-batch / INC-0700 / B27 / B29 / B30 / force-approve
+- B30 `article.html` не менялся
+commit: pending
+
 ## INC-20260901-0648-cover-kie-500-b30
-status: open
+status: fixed
 run_date: 2026-09-01
 role: excalibur-blog-cover
 topic_id: B30
@@ -77,7 +149,34 @@ category: api
 - none recorded
 
 ### Fixer resolution
-- pending
+status: fixed
+fixed_at: 2026-09-01
+fix_summary:
+- Annotate B30 on the proven 500×2 cluster (B102–B106 / B116 / B117 / B30).
+  Not marked «починили Kie».
+- Script: after Cover max-1 recreate exhausted, write
+  `cover_create_exhausted` and refuse a third create unless
+  `--director-same-batch`. After `state=success` + result URL,
+  a plain re-run skips create (apply-only).
+- Director command is now `--director-same-batch` on unchanged
+  `quad-mcp-batch.json`; Cover apply-only (`quad_apply.py --inject-html`).
+  Cover must not pass the Director flag. File Upload on 400 inside
+  Director re-run stays OK (B30 pack already assembled this way).
+- `article.html` B30 / слог Sol не трогали.
+files_changed:
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `shared/kie-gpt-image-api-contract.md`
+- `shared/blog-cover-quad-canvas-contract.md`
+- Cover/Director agents + skills (обе стороны)
+- `tests/test_kie_gpt_image2_api.py`
+- `memory/content-lessons.md`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile scripts/excalibur_blog_kie_gpt_image2_api.py scripts/excalibur_blog_site_publish.py`
+- `python3 -m unittest tests.test_kie_gpt_image2_api tests.test_site_publish tests.test_writer_sol_pipeline` (OK)
+- `rg` director-same-batch / cover_create_exhausted / B30 / apply-only
+- B30 `article.html` не менялся
+commit: pending
 
 ## INC-20260831-2040-metrika-credentials-b29
 status: open
@@ -185,6 +284,8 @@ checks_run:
 - `rg` GATE PASS + H2 практики / не слать Sol на ярлык / INC-2035 / Возьмём
 - B29 `article.html` не менялся; «Возьмём:» в нём нет
 commit: 3726cd9
+reproduced: 2026-09-01 B30 INC-20260901-0700 (same false 409; SITE token
+  quality/force-approve 403; body not edited; not «починили сайт»)
 
 ## INC-20260831-1526-metrika-credentials-b28
 status: open

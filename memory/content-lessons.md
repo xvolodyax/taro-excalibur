@@ -19,8 +19,8 @@ confidence: low
   finding: реф `Виктория.png` (`prefer_local_reference` + local file); style `victoria-studio`; pack cover+3 inline. Cover INC-20260901-0648: Kie `failCode=500` ×2 (`create_attempt=1` затем max-1 recreate). Cover не выдумал третий `createTask`, не повышал `--max-create-retries`, batch не менял. Director same-batch re-run → `state=success` (`task_id` c112399b…, `create_attempts=3` = успешный Director-прогон, не Cover-retry). `cover_png_figures_removed=0` / `cover_hero_removed=0`; в теле только `figure.inline-quad` ×3, `figure.cover-hero` нет. Hall / MCP gpt-image-2 не звали.
 - process: `site-publish-result.json`
   finding: SITE token сам (`token_env=SITE_PUBLISH_TOKEN`, Hall / Дзен Студия `not_used`). Upload 201 `article_id=40`; excerpt 403 = не FAIL; первый approve 409, `quality_score=88`, warning «Нет конкретного примера или разбора ситуации» при H2 «Практика: чеклист шагов, как отличить случайный срыв от пустых обещаний» уже в теле. Publish 409 «только одобренную»; live GET 404; `site_status=quality_review`; `live_ok=false`; `sol_rewritten=false`; `director_next=false_example_409_no_body_edit`. Тело не правили. «Возьмём:» / «Сцена» в `article.html` нет.
-- process: `memory/pipeline-fix-queue.md#INC-20260831-2035-publish-false-409-example-b29` + INC-20260831-0650 (B27)
-  finding: тот же ложный 409 example, что B27/B29. Чекер вне репо, `needs-human`. 409 example ≠ «Возьмём:»; Director/Publish тело не правили (`false_example_409_no_body_edit`). Не помечено «починили сайт».
+- process: `memory/pipeline-fix-queue.md#INC-20260901-0700-publish-false-409-example-b30` + INC-20260831-2035 (B29) + INC-20260831-0650 (B27)
+  finding: тот же ложный 409 example, что B27/B29. Чекер вне репо, `needs-human`. 409 example ≠ «Возьмём:» / «Сцена» / ярлык «конкретный пример»; Director/Publish тело не правили (`false_example_409_no_body_edit`). SITE token GET quality / force-approve → 403. Не помечено «починили сайт».
 - metrika_signal: none
   finding: `excalibur_blog_metrika_fetch.py --days 30 --ingest` → METRIKA CREDENTIALS BLOCKER (нет `YANDEX_METRIKA_OAUTH_TOKEN` / `YANDEX_METRIKA_COUNTER_ID`). `memory/analytics/metrika-latest.json` не создан. Цифры не выдумывать. См. INC-20260901-0659-metrika-credentials-b30; B26 INC-1936, B27 INC-0709, B28 INC-1526 и B29 INC-2040 всё ещё open.
 
@@ -36,7 +36,7 @@ confidence: low
 - Заранее H2 «Практика: чеклист шагов…» из фактов этой статьи. 409 example при практике в теле — не лечить ярлыком.
 - Cover i2i от рефа `Виктория.png` (`prefer_local_reference` + local file), style `victoria-studio`. Pack cover+3 inline; `cover.png` только файл обложки, не вторая картинка в теле (`cover-hero` не инжектить).
 - SITE token сам: upload → approve → publish; Hall / Дзен Студия не звать.
-- После Kie 500×2: Cover стоп + неизменный `quad-mcp-batch.json`; Director same-batch re-run, затем apply-only. Publish / Director тело не правят.
+- После Kie 500×2: Cover стоп + неизменный `quad-mcp-batch.json`; Director `--director-same-batch`, затем Cover apply-only. Publish / Director тело не правят.
 
 ### Change
 - 409 «нет конкретного примера» при уже живой сцене + H2 практике — не слать Sol на ярлык (`false_example_409_no_body_edit`). Повтор B27 INC-0650 / B29 INC-2035 / B30 article_id=40.
@@ -58,10 +58,12 @@ confidence: low
 - Не добавлять правила в `shared/writer-master-prompt.md` и Writer/Sol skill автоматически.
 - Cloud Secrets: `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` (scope `metrika:read`).
 - Site quality checker (вне репо) — INC-2035 already needs-human; не дублировать apply из этого прогона.
-- Cover 500×2: INC-0648 already open; Director same-batch уже сработал в этом слоте — не помечать «починили Kie».
+- Cover 500×2: INC-0648 — Director `--director-same-batch` + Cover apply-only; не помечать «починили Kie».
+- Site quality 409: INC-0700 needs-human (чекер вне репо).
 
 ### Durable applied
-- none this run. Prior Fixer INC-2035 (commit 3726cd9) / INC-0650: после GATE PASS + H2 практики не слать Sol на ярлык; `article.html` B30 не трогали. Cover INC-0648: Cover не выдумал третий create; Director same-batch recovered. Rollback: только по явному решению человека, не из этого SKIP+no-Metrika прогона.
+- 2026-09-01 Fixer INC-0648: скрипт отказывает Cover в третьем create после 500×2; Director `--director-same-batch`; после success skip create (apply-only). B30 на кластере. Не «починили Kie».
+- 2026-09-01 Fixer INC-0700: контракт B27/B29/B30 + SITE token quality/force-approve 403; не лечить ярлыком. `article.html` B30 не трогали. Не «починили сайт».
 
 ### Resolution
 status: recorded

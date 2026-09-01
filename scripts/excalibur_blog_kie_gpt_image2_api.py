@@ -25,8 +25,11 @@ so a second timeout cannot bill a third job (INC-20260831-1508 / B28).
 On terminal failCode=422 / «generate playground failed, task id is blank»
 (Kie GPT Image 2 playground/tempfile infra, not sensitive content): same
 max-1 recreate as 500. Cover must not soften the prompt. After exhausted:
-Director same-batch when playground is healthy, then Cover apply-only
-(INC-20260830-1339). Credits 200 does not mean playground is healthy.
+Director ``--director-same-batch`` when playground is healthy, then Cover
+apply-only (INC-20260830-1339 / INC-20260901-0648 / B30). Credits 200
+does not mean playground is healthy. After a success result exists, a
+plain re-run skips create (apply-only). Cover must not invent a third
+createTask after 500×2.
 """
 
 from __future__ import annotations
@@ -268,6 +271,77 @@ def infer_resume_create_retries(record: dict[str, Any]) -> int:
         except (TypeError, ValueError):
             continue
     return DEFAULT_MAX_CREATE_RETRIES
+
+
+def record_create_attempts(record: dict[str, Any]) -> int:
+    for key in ("create_attempt", "create_attempts"):
+        raw = record.get(key)
+        if raw is None:
+            continue
+        try:
+            return int(raw)
+        except (TypeError, ValueError):
+            continue
+    return 0
+
+
+def is_cover_create_exhausted(record: dict[str, Any]) -> bool:
+    """True after Cover's max-1 recreate on 500 / playground-blank (no third create)."""
+    if not record:
+        return False
+    if record.get("cover_create_exhausted"):
+        return True
+    if record_create_attempts(record) < 2:
+        return False
+    kind = str(record.get("retry_kind") or "")
+    if kind in {"server_500", "playground_blank"}:
+        return True
+    if str(record.get("state") or "") == "fail" and is_retryable_server_fail(
+        record.get("failCode"), record.get("failMsg")
+    ):
+        return True
+    return False
+
+
+def existing_success_result(
+    result_path: Path, record: dict[str, Any]
+) -> dict[str, Any] | None:
+    """Return result JSON when a prior run already has a success URL (apply-only)."""
+    if str(record.get("state") or "").lower() != "success":
+        return None
+    if not result_path.is_file():
+        return None
+    try:
+        data = load_json(result_path)
+    except (OSError, json.JSONDecodeError, TypeError):
+        return None
+    if not isinstance(data, dict):
+        return None
+    url = str(data.get("url") or "").strip()
+    if not url:
+        return None
+    return data
+
+
+def refuse_cover_third_create(
+    record: dict[str, Any],
+    *,
+    director_same_batch: bool,
+    resume: bool,
+    task_id: str,
+) -> str | None:
+    """Error if Cover would invent a third create after 500×2 / playground-blank."""
+    if director_same_batch or resume or (task_id or "").strip():
+        return None
+    if not is_cover_create_exhausted(record):
+        return None
+    return (
+        "Cover must NOT invent a third createTask after 500×2 / playground-blank "
+        "exhausted (B102–B106 / B116 / B117 / B30). Director: "
+        "--director-same-batch on unchanged quad-mcp-batch.json when Kie is healthy; "
+        "then Cover apply-only (quad_apply.py --inject-html). "
+        "Do not raise --max-create-retries / soften / MCP."
+    )
 
 
 def resolve_resume_task_id(
@@ -849,6 +923,16 @@ def main() -> int:
             "default to --max-create-retries 0."
         ),
     )
+    ap.add_argument(
+        "--director-same-batch",
+        action="store_true",
+        help=(
+            "Director-only: allow one new createTask after Cover 500×2 / "
+            "playground-blank exhausted, on unchanged quad-mcp-batch.json "
+            "(B102–B106 / B116 / B117 / B30). Cover must not pass this. "
+            "After success: Cover apply-only, no third Cover create."
+        ),
+    )
     ap.add_argument("--create-only", action="store_true", help="Create task, write task record, and exit")
     ap.add_argument("--dry-run", action="store_true", help="Validate batch and print sanitized create payload")
     args = ap.parse_args()
@@ -900,6 +984,26 @@ def main() -> int:
             resume=bool(args.resume),
             task_record_path=task_record_path,
         )
+        success_ready = existing_success_result(result_path, existing_record)
+        if success_ready and not task_id:
+            print(
+                "Kie result already success; apply-only (no new createTask). "
+                "Cover: quad_apply.py --inject-html. "
+                "Proven: B102–B106 / B116 / B117 / B30.",
+                flush=True,
+            )
+            print(f"OK url={success_ready['url']}")
+            print(f"OK result={result_path}")
+            return 0
+        refuse_third = refuse_cover_third_create(
+            existing_record,
+            director_same_batch=bool(args.director_same_batch),
+            resume=bool(args.resume),
+            task_id=args.task_id,
+        )
+        if refuse_third:
+            print(f"❌ KIE API BLOCKER: {refuse_third}", file=sys.stderr)
+            return 1
         if args.max_create_retries is None:
             if task_id and (args.resume or args.task_id.strip()):
                 remaining_create_retries = infer_resume_create_retries(existing_record)
@@ -1047,14 +1151,34 @@ def main() -> int:
             except KieRetryableFail as exc:
                 kind = retry_kind_for_server_fail(exc.fail_code, exc.fail_msg)
                 if remaining_create_retries <= 0:
+                    exhausted_fail: dict[str, Any] = {
+                        "task_id": exc.task_id,
+                        "source": "kie-api",
+                        "model": args.model,
+                        "state": "fail",
+                        "failCode": exc.fail_code,
+                        "failMsg": exc.fail_msg,
+                        "retryable": True,
+                        "retry_kind": kind,
+                        "create_attempt": create_attempts,
+                        "create_attempts": create_attempts,
+                        "cover_create_exhausted": True,
+                        "director_next": "same_batch_rerun",
+                        "cover_next": "apply_only_after_director",
+                        "updated_at_epoch": int(time.time()),
+                    }
+                    if retry_from_fail:
+                        exhausted_fail["retry_of"] = retry_from_fail
+                    save_json(task_record_path, exhausted_fail)
                     raise KieApiError(
                         f"Kie task failed after create retries exhausted: "
                         f"failCode={exc.fail_code} failMsg={exc.fail_msg} "
                         f"task_id={exc.task_id} retry_kind={kind}. "
-                        f"Batch ready for Director same-batch re-run on unchanged "
+                        f"Batch ready for Director --director-same-batch on unchanged "
                         f"quad-mcp-batch.json when Kie playground is healthy; Cover must "
                         f"NOT invent a third createTask / raise --max-create-retries / "
                         f"soften prompt / MCP (apply-only after Director success). "
+                        f"Proven: B102–B106 / B116 / B117 / B30. "
                         f"422 playground-blank is infra like 500×2, not sensitive."
                     ) from exc
                 wait_s = max(0, int(args.retry_wait))

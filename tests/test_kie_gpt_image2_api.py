@@ -15,9 +15,12 @@ from excalibur_blog_kie_gpt_image2_api import (  # noqa: E402
     KiePollWindowExhausted,
     KieRetryableFail,
     classify_record_info,
+    existing_success_result,
     infer_resume_create_retries,
+    is_cover_create_exhausted,
     poll_until_result,
     poll_window_exhausted_resume_cmd,
+    refuse_cover_third_create,
     resolve_resume_task_id,
 )
 
@@ -176,6 +179,72 @@ class KiePollResumeTest(unittest.TestCase):
                 )
         self.assertEqual(ctx.exception.task_id, "job-late-500")
         self.assertEqual(str(ctx.exception.fail_code), "500")
+
+    def test_cover_create_exhausted_refuses_third_without_director_flag(self) -> None:
+        exhausted = {
+            "state": "fail",
+            "create_attempts": 2,
+            "retry_kind": "server_500",
+            "failCode": 500,
+            "cover_create_exhausted": True,
+        }
+        self.assertTrue(is_cover_create_exhausted(exhausted))
+        self.assertTrue(
+            is_cover_create_exhausted(
+                {
+                    "state": "fail",
+                    "create_attempt": 2,
+                    "retry_kind": "server_500",
+                    "failCode": 500,
+                }
+            )
+        )
+        msg = refuse_cover_third_create(
+            exhausted, director_same_batch=False, resume=False, task_id=""
+        )
+        self.assertIsNotNone(msg)
+        assert msg is not None
+        self.assertIn("third createTask", msg)
+        self.assertIn("--director-same-batch", msg)
+        self.assertIn("B30", msg)
+        self.assertIsNone(
+            refuse_cover_third_create(
+                exhausted, director_same_batch=True, resume=False, task_id=""
+            )
+        )
+        self.assertFalse(is_cover_create_exhausted({"state": "success", "create_attempts": 3}))
+
+    def test_existing_success_skips_create_apply_only(self) -> None:
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            result_path = Path(tmp) / "quad-mcp-result.json"
+            result_path.write_text(
+                '{"url": "https://cdn.example/quad.png"}\n', encoding="utf-8"
+            )
+            data = existing_success_result(
+                result_path, {"state": "success", "create_attempts": 3}
+            )
+            self.assertIsNotNone(data)
+            assert data is not None
+            self.assertEqual(data["url"], "https://cdn.example/quad.png")
+            self.assertIsNone(
+                existing_success_result(
+                    result_path, {"state": "fail", "create_attempts": 2}
+                )
+            )
+
+    def test_docs_annotate_b30_director_same_batch(self) -> None:
+        contract = (ROOT / "shared/kie-gpt-image-api-contract.md").read_text(encoding="utf-8")
+        self.assertIn("B30", contract)
+        self.assertIn("--director-same-batch", contract)
+        self.assertIn("apply-only", contract)
+        cover = (ROOT / "skills/cover-excalibur-blog/SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("B30", cover)
+        self.assertIn("--director-same-batch", cover)
+        director = (ROOT / "skills/director-excalibur-blog/SKILL.md").read_text(encoding="utf-8")
+        self.assertIn("--director-same-batch", director)
+        self.assertIn("B30", director)
 
     def test_classify_success_and_generating(self) -> None:
         self.assertIsNone(classify_record_info({"state": "generating"}, "t"))
