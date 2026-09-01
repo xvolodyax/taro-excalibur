@@ -41,6 +41,128 @@ category: credentials
 ### Fixer resolution
 - pending
 
+## INC-20260901-1945-scout-suggest-next-ignores-titles
+status: fixed
+run_date: 2026-09-01
+role: excalibur-blog-scout
+topic_id: B32
+article_dir: n/a
+severity: medium
+category: script
+
+### What went wrong
+- `scout_helper --suggest-next` читал только строки `| 20` из `published-articles.md`.
+- Текущий ledger без дат → reserved пустой (если нет article dirs) → next `B01`, хотя `shared/published-titles.md` уже до B31/B32.
+
+### How the agent recovered this run
+- Director передал Fixer; Scout не стартовал заново.
+
+### Durable fix needed before next run
+- `--suggest-next` должен смотреть колонку `topic_id` (`B\d+`) в `shared/published-titles.md`.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_scout_helper.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+status: fixed
+fixed_at: 2026-09-01
+fix_summary:
+- `load_published_title_topic_ids` + `load_reserved_topic_ids` + `next_b_topic_id`.
+- `--suggest-next` на этом репо → `B33` (titles до B32).
+- Тело B32 / Sol не трогали.
+files_changed:
+- `scripts/excalibur_blog_scout_helper.py`
+- `tests/test_scout_helper_query_slug_cover.py`
+- `skills/scout-excalibur-blog/SKILL.md`
+- `.cursor/skills/scout-excalibur-blog/SKILL.md`
+- `agents/excalibur-blog-scout.md`
+- `.cursor/agents/excalibur-blog-scout.md`
+checks_run:
+- `python3 -m unittest tests.test_scout_helper_query_slug_cover` — ok
+- `python3 scripts/excalibur_blog_scout_helper.py --suggest-next` → B33
+commit: 1a625f9
+
+## INC-20260901-1944-html-linter-allow-h1
+status: fixed
+run_date: 2026-09-01
+role: excalibur-blog-writer
+topic_id: B32
+article_dir: n/a
+severity: low
+category: script
+
+### What went wrong
+- HTML linter раньше браковал `<h1>` как forbidden tag. В этом прогоне `h1` уже в `ALLOWED_TAGS`.
+
+### How the agent recovered this run
+- Confirm + regression test, без правки прозы B32.
+
+### Durable fix needed before next run
+- Держать `h1` в whitelist; тест, что `<h1>` не FAIL.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_html_linter.py`
+- `tests/test_html_linter.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+status: fixed
+fixed_at: 2026-09-01
+fix_summary:
+- `ALLOWED_TAGS` уже содержит `h1` (этот прогон). Добавлен `tests/test_html_linter.py`.
+- Тело B32 не трогали.
+files_changed:
+- `tests/test_html_linter.py`
+checks_run:
+- `python3 -m unittest tests.test_html_linter` — 3/3 ok
+commit: 1a625f9
+
+## INC-20260901-1943-research-start-wipe-published-titles
+status: fixed
+run_date: 2026-09-01
+role: excalibur-blog-research
+topic_id: B32
+article_dir: n/a
+severity: high
+category: script
+
+### What went wrong
+- `write_titles` читал только строки `| 20` из `published-articles.md`.
+- Ledger без дат → `build_titles=[]` → `shared/published-titles.md` перезаписывался пустой таблицей.
+
+### How the agent recovered this run
+- titles на диске ещё держали B12–B32; Fixer сделал durable preserve/merge.
+
+### Durable fix needed before next run
+- Не затирать существующие строки titles, если ledger без дат. Merge, не wipe.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_published_titles.py`
+- `scripts/excalibur_blog_research_start.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+status: fixed
+fixed_at: 2026-09-01
+fix_summary:
+- `load_existing_title_rows` + `merge_title_rows`: пустой/без дат ledger не стирает titles.
+- Dateless `| Bxx |` строки ledger тоже читаются; статусы `live` / `quality_review` в allowed.
+- Smoke: existing=39, built=7, merged=39 (B12–B32 + LIVE сохранены).
+files_changed:
+- `scripts/excalibur_blog_published_titles.py`
+- `tests/test_writer_editorial_contracts.py`
+checks_run:
+- `test_write_titles_keeps_existing_when_ledger_has_no_dates` ok
+- `test_write_titles_does_not_wipe_to_empty_header` ok
+commit: 1a625f9
+
 ## INC-20260901-1939-publish-false-409-example-b32
 status: needs-human
 run_date: 2026-09-01
@@ -81,16 +203,24 @@ status: needs-human
 fixed_at: 2026-09-01
 reason:
 - Durable approve fix is the site quality checker (вне репо). Same false gate as B27/B29/B30/B31.
-- Repo detector gap is separate: expand `article_has_practice_h2` so «Как изменить сценарий» counts as practice. Publish did not patch the script this run.
+- Repo detector (этот Fixer): `article_has_practice_h2` считает «Как изменить сценарий…» / «проверк» / «шаг» практикой. Не «починили сайт».
 - В репо нет гейта «конкретный пример». Не лечить телом, не «Возьмём:».
 needed_decision_or_secret:
 - Site admin: перестать блокировать approve по «конкретный пример», когда practice H2 + сцена уже есть; или выдать SITE token quality-pass.
-- Fixer: расширить `article_has_practice_h2` (не тело статьи).
 - Не помечать «починили сайт». Тело B32 / Sol не трогать.
-files_changed: none
+repo_fix:
+- `article_has_practice_h2` + `PRACTICE_H2_MARKERS` (практик, чеклист, сценарий, проверк, шаг)
+- контракт: H2 «Как изменить сценарий…» = практика уже в теле
+- тесты: markers + quality 409 scenario H2 → `false_example_409_no_body_edit`
+files_changed:
+- `scripts/excalibur_blog_site_publish.py`
+- `shared/excalibur-site-publish-contract.md`
+- `tests/test_site_publish.py`
 checks_run:
-- upload 201 / approve 409 / live 404 / quality GET 403 / article GET score 88
-commit: n/a
+- `test_practice_h2_markers_include_scenario_check_step` ok
+- `test_first_upload_quality_409_scenario_h2_no_body_edit` ok
+- upload 201 / approve 409 / live 404 / quality GET 403 / article GET score 88 (этот прогон, сайт)
+commit: 1a625f9 (repo detector); site 409 still needs-human
 
 ## INC-20260901-1431-metrika-credentials-b31
 status: open
