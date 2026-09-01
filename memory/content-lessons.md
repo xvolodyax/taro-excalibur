@@ -4,6 +4,66 @@
 Исторические scorecard / judge / ensemble — read-only, не шаблон.
 Writer prompt и Sol skill сюда не раздувать автоматически.
 
+## LESSON-20260901-1945-B32-evening-night-only-chat
+status: proposed
+topic_id: B32
+category: other
+confidence: low
+
+### Evidence
+- artifact: none (skipped under human-first-v2)
+  finding: `content-evidence-report.json` отсутствует; evidence_gate=SKIP, не BLOCK. Report не invent'ился. Gate-артефакт: `content-evidence-gate.json` status=SKIP.
+- process: `research-notes.md` + `title-brief.json` + `research-agent-report.json`
+  finding: слот вечер 2026-09-01 / CTA бот (3 расклада) + vk_app. Scout сам взял живой сигнал «пишет только ночью / днём молчит»: канал `dzen.ru/todaytaro_bot` 01.09 крутит «Ты пишешь, он молчит?!»; лента — вечерний внезапный контакт (~9 ч) и недельные посты про молчание / поздний экран. Не карта дня, не 21:21, не 16:00-нумерология. Не клон B31 (сгоревший «потом / с осени»), B30 (сорвал слово), B29 (стена при живом чате), B28 (привет после месяцев), B22 (ночной «Спишь?» после точки). H1 — наблюдаемая сцена («Он пишет только ночью, а днём молчит»), не жир Wordstat «парень пишет ночью» (1123; топ — «спокойной/доброй ночи») / «он пишет мне ночью» (1171). Ближе к боли: «он пишет ночью пишет днем» = 449. Wordstat перепроверка Research = OK (API v2 `topRequests`); часть фраз totalCount-only («он пишет только ночью» 162, «он пишет поздно ночью» 48) = WORDSTAT PARTIAL — не стоп.
+- process: `cover/quad-mcp-batch.json` + `cover/cover-registry.json` + `cover/kie-image-task.json` + `cover/quad-split-report.json` + `site-publish-result.json#strip`
+  finding: реф `Виктория.png` (`prefer_local_reference` + local file); style `victoria-studio`; глаза `green+hazel` / зелёные с карим. Pack cover+3 inline. Kie `state=success`, `create_attempts=1`, `task_id` 74c2b5be…. `cover_png_figures_removed=0` / `cover_hero_removed=0`; в теле только `figure.inline-quad` ×3, `figure.cover-hero` нет. Hall / MCP gpt-image-2 не звали.
+- process: `site-publish-result.json`
+  finding: SITE token сам (`token_env=SITE_PUBLISH_TOKEN`, Hall / Дзен Студия `not_used`). Upload 201 `article_id=42`; excerpt 403 = не FAIL; первый approve 409, `quality_score=88`, warning «Нет конкретного примера или разбора ситуации» при сцене ночного чата и H2 «Как изменить сценарий без драмы и выяснения отношений» уже в теле. Publish не звали; live GET 404; `site_status=quality_review`; `live_ok=false`; `sol_rewritten=false`; `director_next=false_example_409_no_body_edit`; `slot_21_21=not_closed`. Тело не правили. «Возьмём:» / «Сцена» в `article.html` нет. Скрипт `article_has_practice_h2` смотрел только «практик»/«чеклист» → `script_practice_h2_detect=false`; Publish переопределил `practice_h2_present=true`.
+- process: `memory/pipeline-fix-queue.md#INC-20260901-1939-publish-false-409-example-b32` + INC-20260901-1405 (B31) + INC-20260901-0700 (B30) + INC-20260831-2035 (B29) + INC-20260831-0650 (B27)
+  finding: тот же ложный 409 example. Чекер вне репо, `needs-human`. 409 example ≠ «Возьмём:» / «Сцена» / ярлык «конкретный пример»; Director/Publish тело не правили. SITE token GET quality → 403. Не помечено «починили сайт». Не урок «добавить Возьмём».
+- metrika_signal: none
+  finding: `excalibur_blog_metrika_fetch.py --days 30 --ingest` → METRIKA CREDENTIALS BLOCKER (нет `YANDEX_METRIKA_OAUTH_TOKEN` / `YANDEX_METRIKA_COUNTER_ID`). `memory/analytics/metrika-latest.json` не создан. Цифры не выдумывать. См. INC-20260901-1945-metrika-credentials-b32; B31 INC-1431, B30 INC-0659, B29 INC-2040, B28 INC-1526, B27 INC-0709 и B26 INC-1936 всё ещё open.
+
+### Named blockers
+- EVIDENCE_SKIPPED
+- METRIKA FEEDBACK BLOCKER
+- SITE_QUALITY_409 (конкретный пример ≠ «Возьмём:»; первый upload; live 404 / quality_review)
+
+### Keep
+- Scout сам берёт живой сигнал («пишет только ночью / днём молчит» из канала + недели + SERP). Дзен → сайт (заголовки) → неделя → Wordstat. Не формат «карта дня», даже если вечерний слот тенанта так подписан.
+- WORDSTAT PARTIAL / totalCount-only — не стоп. Research перепроверка OK. Жир Wordstat не в H1.
+- Заранее практика из фактов этой статьи (H2 сценария / шагов). 409 example при сцене + практике в теле — не лечить ярлыком.
+- Cover i2i от рефа `Виктория.png` (`prefer_local_reference` + local file), style `victoria-studio`, глаза зелёные с карим (`green+hazel`). Pack cover+3 inline; `cover.png` только файл обложки, не вторая картинка в теле (`cover-hero` не инжектить).
+- SITE token сам: upload → approve → publish; Hall / Дзен Студия не звать.
+- Publish / Director тело не правят. Слот 21:21 не закрывать этой статьёй.
+
+### Change
+- 409 «нет конкретного примера» при уже живой сцене + H2 практике — не слать Sol на ярлык (`false_example_409_no_body_edit`). Повтор B27 INC-0650 / B29 INC-2035 / B30 INC-0700 / B31 INC-1405 / B32 article_id=42.
+- Не помечать B25 INC-1423 / B26–B31 409 как «починили сайт»: B32 снова 409 + live 404.
+- Детектор `article_has_practice_h2` не видит H2 без слов «практик»/«чеклист» («Как изменить сценарий…»). Это скрипт, не тело; INC-1939 already needs-human.
+- Metrika secrets по-прежнему отсутствуют — следующий Content-learner снова BLOCKER, пока секреты не в Cloud Secrets.
+
+### Never again
+- «Возьмём:» / «Возьмем:» / «Сцена» как лечение 409 example. Не урок «добавить Возьмём».
+- Возврат Sol на ярлык, если практика уже в статье.
+- Стоп пайплайна из-за WORDSTAT PARTIAL / totalCount-only, если живой сигнал и перепроверка есть.
+- Клон B31 осени / B30 срыва слова / B29 стены при живом чате / B28 месяцев молчания / B22 ночного «Спишь?» после расставания.
+- Клеить жирную Wordstat («парень пишет ночью», «он пишет мне ночью», «спокойной ночи») в H1.
+- Закрывать слот картой дня / числом дня / 21:21 этой статьёй.
+- Раздувать `shared/writer-master-prompt.md` / Writer / Sol skill автоматически (один кейс + evidence SKIP + no-Metrika).
+
+### Proposed apply
+- Review-only: слот вечер / живой сигнал «пишет только ночью» держит Scout Дзен→сайт→неделя→Wordstat + H1-наблюдение + практику из research этой статьи; WORDSTAT PARTIAL ≠ стоп; 409 example ≠ «Возьмём:»; live 404 = quality_review, не PIPELINE FAIL после GATE PASS.
+- Не добавлять правила в `shared/writer-master-prompt.md` и Writer/Sol skill автоматически.
+- Cloud Secrets: `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` (scope `metrika:read`).
+- Site quality checker (вне репо) + детектор H2 практики — INC-1939 already needs-human; не дублировать apply из этого прогона.
+
+### Durable applied
+- none this run. Prior Fixer INC-1405 / INC-0700 / INC-2035 / INC-0650: контракт false-example 409 + не лечить ярлыком. `article.html` B32 не трогали. Не «починили сайт». Rollback: только по явному решению человека, не из этого SKIP+no-Metrika прогона.
+
+### Resolution
+status: recorded
+
 ## LESSON-20260901-1431-B31-day-autumn-deadline
 status: proposed
 topic_id: B31
