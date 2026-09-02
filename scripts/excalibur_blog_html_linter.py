@@ -16,6 +16,7 @@ from typing import Any
 
 # Whitelist tags based on excalibur contract and cover inline figure injection.
 # Keep in sync with shared/excalibur-article-writing-contract.md (body tags).
+# Do not add div/strong for CTA wrappers (B34/B35): Sol unwraps; return Sol, do not widen.
 ALLOWED_TAGS: set[str] = {
     "h1",
     "h2",

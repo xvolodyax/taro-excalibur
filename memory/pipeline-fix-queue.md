@@ -40,6 +40,7 @@ category: credentials
 
 ### Fixer resolution
 - pending (B34 Fixer 2026-09-02: still Cloud Secrets; no invent tokens; left open)
+- pending (B35 Fixer 2026-09-02: still Cloud Secrets; no invent tokens; left open. B26–B33 same gap)
 
 ## INC-20260902-0650-metrika-credentials-b33
 status: open
@@ -499,7 +500,7 @@ checks_run:
 commit: 21afd83
 
 ## INC-20260902-1428-cover-kie-result-download
-status: fixed
+status: open
 run_date: 2026-09-02
 role: excalibur-blog-cover
 topic_id: B34
@@ -530,26 +531,107 @@ category: script
 - none recorded
 
 ### Fixer resolution
+- pending (B35 Fixer 2026-09-02: hang not reproduced; not «починили»)
+- B34 repo mitigation remains (commit 6f812de): Range-resume / progress / dest=canvas. Keep code.
+- B35 Cover: один Kie createTask success (`create_attempts=1`, `state=success`). Range-resume не понадобился. CDN hang не воспроизведён — это не подтверждение, что hang исчез.
+- Тело B35 / Sol не трогали. Не второй createTask. Не закрывать INC по «B35 скачалось сразу».
+
+## INC-20260902-2121-director-gemini-task-catalog-missing
+status: needs-human
+run_date: 2026-09-02
+role: excalibur-blog-director
+topic_id: B35
+article_dir: memory/blog/articles/B35-on-predlagaet-druzhbu-posle-rasstavaniya
+severity: medium
+category: env
+
+### What went wrong
+- Gemini 3.7 Flash (`gemini-3.7-flash-high`) нет в каталоге Task этого runtime.
+- Текстовые шаги B35 шли `inherit` automation. Это gap каталога, не сбой статьи.
+
+### How the agent recovered this run
+- Director не подставлял другой model id. Policy `text_model` не меняли.
+
+### Durable fix needed before next run
+- Человек: добавить Gemini 3.7 Flash в Task-каталог runtime **или** явно сменить pin.
+- До решения: если slug нет в каталоге — inherit automation. Не угадывать `gpt-*` / `gemini-2.*` / flash-lite.
+
+### Suggested files to inspect/change
+- `shared/pipeline-model-policy.json` (pin не менять без человека)
+- `shared/subagent-chain.md`
+- `agents/excalibur-blog-director.md`
+- Cloud / Task catalog (вне репо)
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+status: needs-human
+fixed_at: 2026-09-02
+reason:
+- Каталог Task — env. Репо только фиксирует fallback inherit и запрет угадывать модель.
+needed_decision_or_secret:
+- Добавить `gemini-3.7-flash-high` в каталог Task этого runtime или явно сменить `text_model`.
+repo_fix:
+- `catalog_missing_fallback=inherit`, `catalog_missing_do_not_guess_model=true`
+- Director / chain / docs: inherit, не другой slug
+files_changed:
+- `shared/pipeline-model-policy.json`
+- `shared/subagent-chain.md`
+- `docs/cursor/models.md`
+- `agents/excalibur-blog-director.md`
+- `skills/director-excalibur-blog/SKILL.md`
+- `.cursor/agents/excalibur-blog-director.md`
+- `.cursor/skills/director-excalibur-blog/SKILL.md`
+- `tests/test_subagent_chain_and_models.py`
+- `memory/pipeline-fix-queue.md`
+checks_run: pending
+commit: pending
+
+## INC-20260902-2121-html-linter-div-strong-unwrap-b35
+status: fixed
+run_date: 2026-09-02
+role: excalibur-blog-sol
+topic_id: B35
+article_dir: memory/blog/articles/B35-on-predlagaet-druzhbu-posle-rasstavaniya
+severity: low
+category: qa
+
+### What went wrong
+- html_linter сначала FAIL: forbidden `<div>` / `<strong>` (CTA-обёртка), как B34.
+- Sol unwrap. Тело после unwrap без этих тегов.
+
+### How the agent recovered this run
+- Sol unwrap, не расширение whitelist. Writer/Sol skill не раздували.
+
+### Durable fix needed before next run
+- Не добавлять `div` / `strong` в `ALLOWED_TAGS` ради CTA.
+- FAIL → верни Sol unwrap. CTA остаётся `p` / `b` / `a`.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_html_linter.py`
+- `tests/test_html_linter.py`
+- `agents/excalibur-blog-director.md`
+- `skills/director-excalibur-blog/SKILL.md`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
 status: fixed
 fixed_at: 2026-09-02
 fix_summary:
-- `download_url_bytes`: progress на stderr; Range shrink 8 KiB → 2 KiB на timeout; dest + resume partial file; полный GET больше не один silent read.
-- `quad_apply`: dest=`cover/canvas-quad.png`, `--timeout`, explicit «CDN stall ≠ Kie createTask». Тот же billed URL, без второго createTask.
-- Cover skill / agent / Kie contract: stall result-CDN — resume apply, не quality-redo.
-- Тело B34 / Sol / SOUL не трогали. Metrika credentials INC оставлены open (Cloud Secrets, не invent). EACCES B33 не реопенили.
+- Whitelist не расширяли. Комментарий в linter + тест, что `div`/`strong` остаются forbidden.
+- Director: FAIL на CTA-div → Sol unwrap, как B34/B35.
+- Тело B35 `article.html` этот Fixer не трогал.
 files_changed:
-- `scripts/asset_download.py`
-- `scripts/excalibur_blog_quad_apply.py`
-- `tests/test_asset_download.py`
-- `skills/cover-excalibur-blog/SKILL.md`
-- `.cursor/skills/cover-excalibur-blog/SKILL.md`
-- `agents/excalibur-blog-cover.md`
-- `.cursor/agents/excalibur-blog-cover.md`
-- `shared/kie-gpt-image-api-contract.md`
+- `scripts/excalibur_blog_html_linter.py`
+- `tests/test_html_linter.py`
+- `agents/excalibur-blog-director.md`
+- `skills/director-excalibur-blog/SKILL.md`
+- `.cursor/agents/excalibur-blog-director.md`
+- `.cursor/skills/director-excalibur-blog/SKILL.md`
 - `memory/pipeline-fix-queue.md`
-checks_run:
-- `python3 -m py_compile scripts/asset_download.py scripts/excalibur_blog_quad_apply.py tests/test_asset_download.py`
-- `python3 -m unittest tests.test_asset_download` — 4/4 ok
-- rg: dest=canvas_path / Range-resume / min_chunk; Critic/Panel/Voice не возвращались
-commit: 6f812de
+checks_run: pending
+commit: pending
 

@@ -52,6 +52,7 @@ python3 scripts/excalibur_blog_research_start.py --topic-id <ID> --title "<short
 ### 1–2 Research → Title
 `Task(excalibur-blog-research)` · `model: inherit`.  
 `Task(excalibur-blog-title)` · `model: gemini-3.7-flash-high`.
+Если каталог Task не знает этот slug — `inherit` automation, не угадывать другую модель.
 ### 3 Writer (смысл)
 `Task(excalibur-blog-writer)` · `model: gemini-3.7-flash-high` → `drafts/writer.html`.
 
@@ -72,6 +73,7 @@ python3 scripts/excalibur_blog_description_gate.py --article-dir <dir>
 ```
 
 Плохой **слог/открытие** → верни **Sol**.  
+html_linter FAIL на `<div>` / `<strong>` (часто CTA-обёртка) → верни **Sol** unwrap (B34/B35). Не добавлять эти теги в whitelist.  
 Сломан **смысл/факты** → верни **Writer**, потом снова Sol.  
 Плохой **description** → верни **Description** (прозу статьи не трогай).
 
