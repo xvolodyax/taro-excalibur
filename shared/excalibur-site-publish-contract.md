@@ -96,6 +96,16 @@ Publish после **GATE PASS** **не** переписывает opening Sol �
   ответить **500** «Не удалось обновить sitemap.xml (EACCES)», при этом
   статья уже на сайте (`GET` permalink **200**). Не FAIL, не retry
   телом статьи. Скрипт: `publish_sitemap_skipped=eacces`.
+- **directory EACCES ≠ sitemap EACCES.** `POST …/publish` **500**
+  «Не удалось создать каталог публикации … (EACCES)» — каталог slug
+  на диске не создан, live GET **404**. Это не sitemap skip.
+  Скрипт: `publish_dir_eacces=true`, `verdict=needs_human`,
+  `director_next=needs_human_publish_dir_eacces`. Не `live_ok`.
+  Не invent live URL. Не лечить телом / «Возьмём:». Права на
+  каталог блога — вне репо (не «починили сайт»).
+- **Resume: API уже `approved` — не слать approve.** Повторный
+  approve даёт 409 «проверка качества» (не example-gate). Скрипт
+  читает GET статьи и пропускает approve (`approve_skipped=already_approved`).
 - **Related `blog-card` cover ≠ вторая обложка.** Карточки «ещё
   почитать» (`figure.blog-card__media` / любой `blog-card__*`) берут
   чужой `/{other-slug}/cover.png` внутри `<article>`. Live-gate это
@@ -160,5 +170,5 @@ exit: 0
 
 ## Артефакт
 
-`site-publish-result.json` (verdict `pass` | `skip` | `fail`, permalink как
-`{{SITE_BASE}}/blog/{slug}/`, без секрета).
+`site-publish-result.json` (verdict `pass` | `skip` | `fail` | `needs_sol` |
+`needs_human`, permalink как `{{SITE_BASE}}/blog/{slug}/`, без секрета).

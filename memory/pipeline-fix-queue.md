@@ -2,6 +2,62 @@
 
 Durable incident memory for Excalibur BLOG. Agents append; Fixer resolves.
 
+## INC-20260902-0645-publish-dir-eacces-b33
+status: fixed
+run_date: 2026-09-02
+role: excalibur-blog-publish
+topic_id: B33
+article_dir: memory/blog/articles/B33-on-pishet-kazhdyj-den-no-ne-zovet
+severity: blocker
+category: site-permissions
+
+### What went wrong
+- GATE PASS. `SITE_PUBLISH_TOKEN` сам: upload 201 `article_id=43`, first approve **200**, `quality_score=100`, warnings пустые.
+- `POST …/publish` → 500: «Не удалось создать каталог публикации» (EACCES). Каталог slug на диске сайта не создан.
+- Live GET 404. Это не sitemap EACCES (контракт B23: sitemap + live 200 = live_ok).
+- Resume `--resume-article-id 43`: API всё ещё `status=approved`; повторный approve 409 «проверка качества» — не example-gate; publish снова 500 тот же EACCES.
+- Тело / Sol не трогали. «Возьмём:» не писали. Hall / Дзен Студия не звали.
+
+### How the agent recovered this run
+- Зафиксировано в `site-publish-result.json` + site-publish-log. Ledger `approved_eacces`.
+- `director_next=needs_human_publish_dir_eacces`. Пайплайн не invent live URL.
+
+### Durable fix needed before next run
+- На сервере: права www на каталог блога (создавать slug). Это вне репо.
+- Скрипт: publish 500 directory EACCES → `publish_dir_eacces=true`, не путать с sitemap skip; resume не слать approve, если API уже `approved`.
+- Не учить Writer/Sol лечить EACCES текстом.
+
+### Suggested files to inspect/change
+- `scripts/excalibur_blog_site_publish.py`
+- `shared/excalibur-site-publish-contract.md`
+- `tests/test_site_publish.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+status: fixed
+fixed_at: 2026-09-02
+fix_summary:
+- Publish 500 «каталог публикации» / directory EACCES → `publish_dir_eacces=true`.
+- sitemap + live 200 = `live_ok`; directory EACCES + live 404 = `verdict=needs_human` (`director_next=needs_human_publish_dir_eacces`). Не invent live URL.
+- Resume: GET статьи; если API `status=approved` — не POST approve (`approve_skipped=already_approved`).
+- Контракт: directory EACCES ≠ sitemap EACCES; не лечить телом / «Возьмём:».
+- Тело B33 / Writer / Sol skill не трогали. Старые Metrika INC не чинили (секретов нет).
+- Права www на каталог блога по-прежнему вне репо.
+files_changed:
+- `scripts/excalibur_blog_site_publish.py`
+- `shared/excalibur-site-publish-contract.md`
+- `tests/test_site_publish.py`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile scripts/excalibur_blog_site_publish.py tests/test_site_publish.py`
+- `test_publish_dir_eacces_live_404_needs_human` ok
+- `test_resume_already_approved_skips_approve` ok
+- `test_publish_sitemap_eacces_still_live` ok (не путает с dir EACCES)
+- `test_dir_eacces_detector_not_sitemap` ok
+commit: pending-parent-commit
+
 ## INC-20260901-1945-metrika-credentials-b32
 status: open
 run_date: 2026-09-01

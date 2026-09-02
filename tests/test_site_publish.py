@@ -32,6 +32,8 @@ from excalibur_blog_site_publish import (  # noqa: E402
     main,
     prepare_site_html,
     publish_env_report,
+    extract_article_status,
+    is_publish_dir_eacces,
     redact_secrets,
     resolve_publish_token,
     rewrite_rasklad_back_to_telegram,
@@ -250,6 +252,21 @@ class FakeHttp:
                     ).encode("utf-8"),
                     url,
                 )
+            if getattr(self, "publish_dir_eacces", False):
+                return HttpResponse(
+                    500,
+                    {},
+                    json.dumps(
+                        {
+                            "detail": (
+                                "Не удалось создать каталог публикации: "
+                                "/tmp/excalibur-test-blog/on-prochital-i-molchit (EACCES)"
+                            )
+                        },
+                        ensure_ascii=False,
+                    ).encode("utf-8"),
+                    url,
+                )
             if getattr(self, "publish_409_already", False):
                 return HttpResponse(
                     409,
@@ -277,7 +294,29 @@ class FakeHttp:
             if getattr(self, "patch_403", False):
                 return HttpResponse(403, {}, b'{"error":"hall"}', url)
             return HttpResponse(200, {}, b'{"ok":true}', url)
+        if (
+            method.upper() == "GET"
+            and "/api/admin/content/articles/" in path
+            and getattr(self, "article_api_status", "")
+        ):
+            return HttpResponse(
+                200,
+                {},
+                json.dumps(
+                    {"id": self.upload_id, "status": self.article_api_status},
+                    ensure_ascii=False,
+                ).encode("utf-8"),
+                url,
+            )
         if method.upper() == "GET" and "/blog/" in path:
+            live_code = int(getattr(self, "live_http_status", 200))
+            if live_code >= 400:
+                return HttpResponse(
+                    live_code,
+                    {"content-type": "text/html"},
+                    b"not found",
+                    url,
+                )
             html = self.live_html
             if self.live_after_restore is not None and getattr(self, "telegram_patched", False):
                 html = self.live_after_restore
@@ -505,6 +544,8 @@ class SitePublishUnitTest(unittest.TestCase):
             self.assertEqual(result["verdict"], "pass")
             self.assertEqual(result["publish"], "PUBLISHED")
             self.assertEqual(result.get("publish_sitemap_skipped"), "eacces")
+            self.assertFalse(result.get("publish_dir_eacces"))
+            self.assertTrue(result.get("live_ok"))
 
     def test_excerpt_patch_403_is_not_fail(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -617,6 +658,81 @@ class SitePublishUnitTest(unittest.TestCase):
                 html_before,
             )
             self.assertFalse(any("/publish" in u for _, u in http.calls))
+
+    def test_publish_dir_eacces_live_404_needs_human(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            article_dir = _write_article(Path(tmp))
+            html_before = (article_dir / "article.html").read_text(encoding="utf-8")
+            http = FakeHttp()
+            http.publish_dir_eacces = True
+            http.live_http_status = 404
+            code, result = run_publish(
+                article_dir=article_dir,
+                root=ROOT,
+                env={"SITE_PUBLISH_TOKEN": "unit-test-token-not-for-git"},
+                site_base=DEFAULT_SITE_BASE,
+                dry_run=False,
+                skip_gates=False,
+                http=http,
+            )
+            self.assertEqual(code, 2, result)
+            self.assertEqual(result["verdict"], "needs_human")
+            self.assertEqual(result["publish"], "NEEDS_HUMAN")
+            self.assertTrue(result.get("publish_dir_eacces"))
+            self.assertNotEqual(result.get("publish_sitemap_skipped"), "eacces")
+            self.assertFalse(result.get("live_ok"))
+            self.assertEqual(result.get("director_next"), "needs_human_publish_dir_eacces")
+            self.assertEqual(result["reason"], "publish_dir_eacces")
+            self.assertIn("каталог публикации", str(result.get("publish_detail") or "").lower())
+            self.assertEqual(
+                (article_dir / "article.html").read_text(encoding="utf-8"),
+                html_before,
+            )
+            self.assertNotIn("Возьмём:", html_before)
+
+    def test_resume_already_approved_skips_approve(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            article_dir = _write_article(Path(tmp))
+            http = FakeHttp()
+            http.article_api_status = "approved"
+            code, result = run_publish(
+                article_dir=article_dir,
+                root=ROOT,
+                env={"SITE_PUBLISH_TOKEN": "unit-test-token-not-for-git"},
+                site_base=DEFAULT_SITE_BASE,
+                dry_run=False,
+                skip_gates=False,
+                http=http,
+                resume_article_id="43",
+            )
+            self.assertEqual(code, 0, result)
+            self.assertEqual(result["verdict"], "pass")
+            self.assertEqual(result.get("approve_skipped"), "already_approved")
+            self.assertEqual(result.get("site_status"), "approved")
+            self.assertFalse(any("/approve" in u for _, u in http.calls))
+            self.assertTrue(any(u.endswith("/publish") for _, u in http.calls))
+            self.assertTrue(
+                any(
+                    method == "GET" and "/api/admin/content/articles/43" in url
+                    for method, url in http.calls
+                )
+            )
+            self.assertFalse(any(u.endswith("/excalibur/upload") for _, u in http.calls))
+
+    def test_dir_eacces_detector_not_sitemap(self) -> None:
+        self.assertTrue(
+            is_publish_dir_eacces(
+                "Не удалось создать каталог публикации: /tmp/x (EACCES)"
+            )
+        )
+        self.assertTrue(is_publish_dir_eacces("Failed to create directory (EACCES)"))
+        self.assertFalse(is_publish_dir_eacces("Не удалось обновить sitemap.xml (EACCES)"))
+        self.assertFalse(is_publish_dir_eacces("internal error"))
+        self.assertEqual(extract_article_status({"status": "approved"}), "approved")
+        self.assertEqual(
+            extract_article_status({"article": {"status": "Approved"}}),
+            "approved",
+        )
 
     def test_resume_quality_409_on_already_live_continues(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -761,6 +877,11 @@ class SitePublishUnitTest(unittest.TestCase):
         self.assertIn("B22", contract)
         self.assertIn("Hall / SITE token не PATCH excerpt", contract)
         self.assertIn("sitemap EACCES + live 200 = `live_ok`", contract)
+        self.assertIn("directory EACCES ≠ sitemap EACCES", contract)
+        self.assertIn("каталог публикации", contract)
+        self.assertIn("publish_dir_eacces", contract)
+        self.assertIn("already_approved", contract)
+        self.assertIn("не слать approve", contract)
         self.assertIn("blog-card", contract)
         self.assertIn("Возьмём:", contract)
         self.assertIn("Сцена", contract)

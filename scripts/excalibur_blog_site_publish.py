@@ -4,15 +4,18 @@
 After GATE PASS the swarm calls this script. Token comes only from env /
 Cursor Cloud Secret. Missing token → SKIP «нет ключа», exit 0.
 
-Known site limits (B23/B24/B26, see shared/excalibur-site-publish-contract.md):
+Known site limits (B23/B24/B26/B33, see shared/excalibur-site-publish-contract.md):
 Hall/SITE token PATCH excerpt → 403 (not FAIL); publish 500 sitemap EACCES
-+ live 200 → live_ok; related blog-card__ cover.png is not a second cover;
-resume 409 on already-live continues to live GET. First quality 409 without
++ live 200 → live_ok; publish 500 directory / «каталог публикации» EACCES
++ live 404 → needs_human (publish_dir_eacces=true, not sitemap skip);
+related blog-card__ cover.png is not a second cover;
+resume: if API status=approved, do not POST approve again; 409 on
+already-live continues to live GET. First quality 409 without
 resume → verdict needs_sol (not pipeline FAIL; never add «Возьмём:»).
 Director returns Sol only if practice H2 is missing; if practice+scene
 already in the body (B27 / B29 / B30) → director_next=false_example_409_no_body_edit.
-Do not rewrite Sol. Do not treat 409 with «Возьмём:» / «Сцена» /
-a «конкретный пример» label. SITE token GET quality / force-approve
+Do not rewrite Sol. Do not treat 409 or directory EACCES with «Возьмём:» /
+«Сцена» / a «конкретный пример» label. SITE token GET quality / force-approve
 is 403 (not a bypass). Not «починили сайт».
 """
 from __future__ import annotations
@@ -427,6 +430,34 @@ def extract_article_id(payload: Any) -> str:
     return ""
 
 
+def extract_article_status(payload: Any) -> str:
+    """API article status (approved / published / …). Empty if unknown."""
+    if isinstance(payload, dict):
+        for key in ("status", "state", "article_status"):
+            value = str(payload.get(key) or "").strip().lower()
+            if value:
+                return value
+        for nested_key in ("article", "data", "result"):
+            found = extract_article_status(payload.get(nested_key))
+            if found:
+                return found
+    return ""
+
+
+def is_publish_dir_eacces(detail: str) -> bool:
+    """True for publish-500 slug-directory EACCES, not sitemap.xml EACCES."""
+    text = str(detail or "").lower()
+    if "eacces" not in text:
+        return False
+    if "sitemap" in text:
+        return False
+    return (
+        "каталог публикации" in text
+        or "создать каталог" in text
+        or "directory" in text
+    )
+
+
 def extract_permalink(payload: Any, site_base: str, slug: str) -> str:
     if isinstance(payload, dict):
         for key in ("url", "permalink", "canonical", "public_url", "href"):
@@ -630,7 +661,26 @@ def run_publish(
         write_result(article_dir, result, site_base)
         return 1, result
 
+    skip_approve = False
+    if resume_article_id and article_id:
+        # B33: API already approved → second approve is 409 «проверка качества»
+        # (not example-gate). Do not POST approve again.
+        get_url = urljoin(
+            site_base.rstrip("/") + "/",
+            f"api/admin/content/articles/{article_id}",
+        )
+        status_resp, status_payload = _request_json(http, "GET", get_url, token)
+        result["article_get_status"] = status_resp.status
+        api_status = extract_article_status(status_payload)
+        if api_status:
+            result["site_status"] = api_status
+        if api_status == "approved":
+            skip_approve = True
+            result["approve_skipped"] = "already_approved"
+
     for action in ("approve", "publish"):
+        if action == "approve" and skip_approve:
+            continue
         action_url = urljoin(
             site_base.rstrip("/") + "/",
             f"api/admin/content/articles/{article_id}/{action}",
@@ -687,6 +737,10 @@ def run_publish(
                 return 2, result
             elif action == "publish" and resp.status == 500 and "sitemap" in detail.lower():
                 result["publish_sitemap_skipped"] = "eacces"
+            elif action == "publish" and resp.status == 500 and is_publish_dir_eacces(detail):
+                # B33: slug directory not created. Not sitemap skip. Live GET
+                # decides: 404 → needs_human; do not invent live_ok.
+                result["publish_dir_eacces"] = True
             elif action == "publish" and resp.status == 409 and "опублик" in detail.lower():
                 pass
             elif action == "publish" and resp.status == 409 and resume_article_id:
@@ -709,6 +763,17 @@ def run_publish(
     live_resp = fetch_live(http, permalink)
     result["live_status"] = live_resp.status
     if live_resp.status >= 400:
+        if result.get("publish_dir_eacces"):
+            result["verdict"] = "needs_human"
+            result["publish"] = "NEEDS_HUMAN"
+            result["reason"] = "publish_dir_eacces"
+            result["director_next"] = "needs_human_publish_dir_eacces"
+            result["live_ok"] = False
+            result["live_get"] = live_resp.status
+            if result.get("publish_detail"):
+                result["reason_detail"] = result.get("publish_detail")
+            write_result(article_dir, result, site_base)
+            return 2, result
         result["verdict"] = "fail"
         result["publish"] = "FAIL"
         result["reason"] = f"live fetch status={live_resp.status}"
@@ -861,6 +926,13 @@ def main(argv: list[str] | None = None, http: HttpFn | None = None) -> int:
         _safe_print(
             f"OK site-publish article_id={result.get('article_id')} "
             f"permalink={result.get('permalink')}",
+            token,
+        )
+    elif verdict == "needs_human":
+        _safe_print(
+            "NEEDS HUMAN: publish directory EACCES — not sitemap skip; "
+            "do not rewrite body / «Возьмём:»; do not invent live URL "
+            f"report={repo_relative(article_dir / 'site-publish-result.json', root)}",
             token,
         )
     elif verdict == "needs_sol":
