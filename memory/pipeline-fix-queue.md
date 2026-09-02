@@ -39,7 +39,7 @@ category: credentials
 - none recorded
 
 ### Fixer resolution
-- pending
+- pending (B34 Fixer 2026-09-02: still Cloud Secrets; no invent tokens; left open)
 
 ## INC-20260902-0650-metrika-credentials-b33
 status: open
@@ -551,5 +551,5 @@ checks_run:
 - `python3 -m py_compile scripts/asset_download.py scripts/excalibur_blog_quad_apply.py tests/test_asset_download.py`
 - `python3 -m unittest tests.test_asset_download` — 4/4 ok
 - rg: dest=canvas_path / Range-resume / min_chunk; Critic/Panel/Voice не возвращались
-commit: pending
+commit: 6f812de
 
