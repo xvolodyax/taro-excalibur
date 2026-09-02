@@ -4,6 +4,67 @@
 Исторические scorecard / judge / ensemble — read-only, не шаблон.
 Writer prompt и Sol skill сюда не раздувать автоматически.
 
+## LESSON-20260902-1455-B34-month-number-no-step
+status: proposed
+topic_id: B34
+category: other
+confidence: low
+
+### Evidence
+- artifact: none (skipped under human-first-v2)
+  finding: `content-evidence-report.json` отсутствует; evidence_gate=SKIP, не BLOCK. Report не invent'ился. Gate-артефакт: `content-evidence-gate.json` status=SKIP.
+- process: `research-notes.md` + `title-brief.json` + `research-agent-report.json`
+  finding: слот день 2026-09-02 / 16:00 нумерология / CTA vk_app (приложение; не bot). Scout канон: Дзен → сайт (только заголовки) → неделя → Wordstat. Сигнал недели 26.08–02.09: сентябрь 2026 как календарная 1 / «первый шаг» (Mail 27.08, Шняги 26.08 + комменты «не ждать чужого первого шага») против Дзен «Код отношений» 02.09 (сентябрь как 9 в году 1). Канал `dzen.ru/todaytaro_bot` жив, но карточка дня — сюжет B33, не B34. Не карта дня. Не клон B12 (личный год / 2026=1), B16 (личное число дня), B19 (число имени), B31 (сгоревший «потом / с осени»), B33 (ежедневный тёплый чат без зова). Ядро: календарная единица / его личный месяц описывает ритм недель, не делает шаг за него. H1 — наблюдаемая сцена («Его число месяца не делает шаг за него»), не жир Wordstat «нумерология сентября» (1093). Research = OK_WITH_PARTIAL (API v2 `topRequests`, 4 фразы); «личное число сентября» 53 = WORDSTAT PARTIAL (totalCount-only) — не стоп.
+- process: `cover/quad-mcp-batch.json` + `cover/cover-registry.json` + `cover/kie-image-task.json` + `cover/quad-split-report.json` + `site-publish-result.json#strip` + `memory/cover/blog-hero.json`
+  finding: реф только `Виктория.png` (`prefer_local_reference` + local file); style `victoria-studio`; глаза `green+hazel` / зелёные с карим. `viktoriaref.png` / latin alias / sheet — forbid, не звали. Pack cover+3 inline. Kie `state=success`, `create_attempts=1`, `task_id` 1d44e959…. `cover_png_figures_removed=0` / `cover_hero_removed=0`; в теле только `figure.inline-quad` ×3, `figure.cover-hero` нет. Hall / MCP gpt-image-2 не звали.
+- process: `memory/pipeline-fix-queue.md#INC-20260902-1428-cover-kie-result-download`
+  finding: Kie create #1 success; `quad_apply` завис на полном GET CDN (~1.25/2.4 MiB). Recovered same billed URL, Range 2–4 KiB → canvas 2048×1152; split+inject PASS. Не второй createTask. INC-1428 still open (script hang) — не «починили Kie».
+- process: `site-publish-result.json` + `community-cta-gate.json`
+  finding: SITE token сам (`token_env=SITE_PUBLISH_TOKEN`, Hall / Дзен Студия `not_used`). Upload 201 `article_id=45`; excerpt 403 = не FAIL; approve 200; publish 200; live GET 200; `live_ok=true`; `verdict=pass`. CTA vk_app PASS. H2 «Практика: как рассчитать его личный месяц и оценить готовность к шагу» уже в теле. Тело не правили. Один live 200 после B33 directory EACCES + live 404 не закрывает «починили сайт».
+- metrika_signal: none
+  finding: `excalibur_blog_metrika_fetch.py --days 30 --ingest` → METRIKA CREDENTIALS BLOCKER (нет `YANDEX_METRIKA_OAUTH_TOKEN` / `YANDEX_METRIKA_COUNTER_ID`). `memory/analytics/metrika-latest.json` не создан. Цифры не выдумывать. См. INC-20260902-1455-metrika-credentials-b34; B33 INC-0650, B32 INC-1945, B31 INC-1431, B30 INC-0659, B29 INC-2040, B28 INC-1526, B27 INC-0709 и B26 INC-1936 всё ещё open.
+
+### Named blockers
+- EVIDENCE_SKIPPED
+- METRIKA FEEDBACK BLOCKER
+- KIE_RESULT_DOWNLOAD_HANG (same-URL recover; INC-1428 still open — не recreate)
+
+### Keep
+- Scout сам берёт живой сигнал (Дзен «сегодня» + неделя Mail/Шняги «сентябрь 2026 = 1»). Дзен → сайт (заголовки) → неделя → Wordstat. Не формат «карта дня», даже если чужие арканы так подписаны. Слот 16:00 нумерология / CTA vk_app.
+- Не клон B12 (год), B16 (день), B33 (ежедневный чат без зова). Канал todaytaro_bot 02.09 держит B33 — это чужая сцена, не сюжет B34.
+- WORDSTAT PARTIAL / totalCount-only — не стоп. Research перепроверка OK_WITH_PARTIAL. Жир Wordstat («нумерология сентября») не в H1. H1 — наблюдаемая сцена.
+- Заранее практика из фактов этой статьи (H2 «Практика: как рассчитать его личный месяц…»).
+- Cover i2i только от рефа `Виктория.png` (`prefer_local_reference` + local file), style `victoria-studio`, глаза зелёные с карим (`green+hazel`). `viktoriaref.png` / victoria-sheet / latin alias — forbid. Pack cover+3 inline; `cover.png` только файл обложки, не вторая картинка в теле (`cover-hero` не инжектить).
+- SITE token сам: upload → approve → publish; Hall / Дзен Студия не звать. Publish / Director тело не правят.
+- После Kie success + CDN stall: тот же billed URL / Range resume, не второй createTask.
+
+### Change
+- Один live 200 / article_id=45 не закрывает B33 INC-0645 (directory EACCES + live 404) и B25–B32 409 как «починили сайт».
+- Metrika secrets по-прежнему отсутствуют — следующий Content-learner снова BLOCKER, пока секреты не в Cloud Secrets.
+- Cover result-CDN hang: INC-1428 already open; progress + shrink Range + fail-fast — скрипт, не тело.
+
+### Never again
+- Клон B12 личного года / B16 личного дня / B33 ежедневного чата без зова / B31 «потом с осени» / B19 числа имени.
+- Закрывать слот картой дня / числом дня / 21:21 этой статьёй.
+- Клеить жирную Wordstat («нумерология сентября») в H1.
+- Стоп пайплайна из-за WORDSTAT PARTIAL / totalCount-only, если живой сигнал и перепроверка есть.
+- Реф `viktoriaref.png` / victoria-sheet / `victoria.png` / строчная `виктория.png` вместо `Виктория.png`.
+- Инжект `figure.cover-hero` / `cover.png` второй картинкой в тело.
+- Второй billed Kie create после success + CDN stall.
+- Раздувать `shared/writer-master-prompt.md` / Writer / Sol skill автоматически (один кейс + evidence SKIP + no-Metrika).
+
+### Proposed apply
+- Review-only: слот день / 16:00 нумерология / CTA vk_app / сигнал «сентябрь 2026 = календарная 1, личный месяц шаг не делает» держит Scout Дзен→сайт→неделя→Wordstat + H1-наблюдение + практику из research этой статьи; WORDSTAT PARTIAL ≠ стоп; live 200 / id 45 ≠ «сайт починили».
+- Не добавлять правила в `shared/writer-master-prompt.md` и Writer/Sol skill автоматически.
+- Cloud Secrets: `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` (scope `metrika:read`).
+- Cover CDN hang: INC-1428 already open; не дублировать apply из этого прогона.
+
+### Durable applied
+- none this run. Prior Cover recover INC-1428 (same billed URL, Range resume) — Fixer pending; `article.html` B34 не трогали. Не «починили Kie». Rollback: только по явному решению человека, не из этого SKIP+no-Metrika прогона.
+
+### Resolution
+status: recorded
+
 ## LESSON-20260902-0650-B33-morning-writes-daily-no-invite
 status: proposed
 topic_id: B33
