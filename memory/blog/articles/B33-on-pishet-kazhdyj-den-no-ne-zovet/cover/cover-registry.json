@@ -1,0 +1,50 @@
+{
+  "topic_id": "B33",
+  "slug": "on-pishet-kazhdyj-den-no-ne-zovet",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: пишет каждый день, а живой встречи нет",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-09-02T06:34:00+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: пишет каждый день, а живой встречи нет",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Сравнение: теплое общение в чате и отсутствие даты встречи",
+      "h2_anchor": "Сразу к делу: когда переписка подменяет встречу",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Четыре причины, почему общение застревает в переписке",
+      "h2_anchor": "Разные причины одного и того же сценария",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Схема одного шага: конкретное предложение встречи",
+      "h2_anchor": "Практика одного шага: как проверить реальные намерения",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
