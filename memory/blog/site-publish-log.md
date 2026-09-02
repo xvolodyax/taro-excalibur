@@ -1,5 +1,20 @@
 # Site publish log
 
+## 2026-09-02 B34 ego-chislo-mesyaca-ne-delaet-shag
+
+- method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used; Dzen Studio not used)
+- article_id: 45
+- upload: 201
+- excerpt_clear: 403 hall_token_no_patch (не FAIL)
+- approve: **200**
+- publish: **200**
+- live GET **200** `{{SITE_BASE}}/blog/ego-chislo-mesyaca-ne-delaet-shag/`
+- title/H1: Его число месяца не делает шаг за него
+- H2 практики в теле; «Возьмём:» в теле нет (в related blog-card чужих постов — не трогали)
+- тело не правили; Дзен Студия не звали; ключ не меняли
+- B21/B22: not touched
+- verdict: pass
+
 ## 2026-09-02 B33 live after VPS #16
 
 - POST `/api/admin/content/articles/43/publish` → **200**

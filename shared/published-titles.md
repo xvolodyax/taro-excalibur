@@ -30,6 +30,7 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B31 | on-otkladyvaet-otnosheniya-na-osen | Лето кончилось, а он всё ещё говорит тебе «потом» | quality_review |
 | B32 | on-pishet-tolko-nochyu-dnem-molchit | Он пишет только ночью, а днём молчит | quality_review |
 | B33 | on-pishet-kazhdyj-den-no-ne-zovet | Он пишет каждый день, но не зовёт | live |
+| B34 | ego-chislo-mesyaca-ne-delaet-shag | Его число месяца не делает шаг за него | live |
 | LIVE | zachem-vtykayut-igolku-v-dvernoy-kosyak | Зачем втыкают иголку в дверной косяк | live |
 | LIVE | zachem-syplyut-sol-v-ugol-ot-skandalov | Зачем сыплют соль в угол от скандалов | live |
 | LIVE | kak-vyzyvayut-domovogo-v-kvartire | Как вызывают домового в квартире | live |

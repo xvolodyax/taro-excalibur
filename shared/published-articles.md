@@ -13,3 +13,4 @@ Publish / Indexer обновляют по мере выхода.
 | B28 | on-obyavilsya-spustya-mesyacy-molchaniya | live | {{SITE_BASE}}/blog/on-obyavilsya-spustya-mesyacy-molchaniya/ |
 | B32 | on-pishet-tolko-nochyu-dnem-molchit | quality_review | {{SITE_BASE}}/blog/on-pishet-tolko-nochyu-dnem-molchit/ |
 | B33 | on-pishet-kazhdyj-den-no-ne-zovet | live | {{SITE_BASE}}/blog/on-pishet-kazhdyj-den-no-ne-zovet/ |
+| B34 | ego-chislo-mesyaca-ne-delaet-shag | live | {{SITE_BASE}}/blog/ego-chislo-mesyaca-ne-delaet-shag/ |
