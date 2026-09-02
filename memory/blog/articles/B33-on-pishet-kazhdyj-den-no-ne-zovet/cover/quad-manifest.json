@@ -1,0 +1,64 @@
+{
+  "topic_id": "B33",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Пишет сутками, а встреч нет",
+  "cover_hook_highlight": "встреч",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: пишет каждый день, а живой встречи нет",
+      "scene_hint": "Host LARGE left half, new charcoal knit not white hoodie/cami; tiny phone chat right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "чат не заменит встречу"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Сразу к делу: когда переписка подменяет встречу",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "2 cols: GOOD «чат к встрече» green checks vs BAD «чат вместо свидания» red X; labels утренние приветы / мемы и голосовые / иллюзия близости / нет даты встречи; L→R; outcome нет даты. NO people/faces/host",
+      "alt": "Сравнение: теплое общение в чате и отсутствие даты встречи",
+      "labels": [
+        "утренние приветы",
+        "мемы и голосовые",
+        "иллюзия близости",
+        "нет даты встречи"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Разные причины одного и того же сценария",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist 4 cards top→bottom: страх отказа, удобное внимание, безопасная дистанция, отговорки вместо шага; gold ticks; outcome: один сценарий — разные мотивы. NO people/faces/host",
+      "alt": "Четыре причины, почему общение застревает в переписке",
+      "labels": [
+        "страх отказа",
+        "удобное внимание",
+        "безопасная дистанция",
+        "отговорки вместо шага"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Практика одного шага: как проверить реальные намерения",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Workflow L→R: прямое предложение → конкретный день → встречная дата → ясность за минуту; gold arrows, white cards; outcome: ответ ставит точку. NO people/faces/host",
+      "alt": "Схема одного шага: конкретное предложение встречи",
+      "labels": [
+        "прямое предложение",
+        "конкретный день",
+        "встречная дата",
+        "ясность за минуту"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
