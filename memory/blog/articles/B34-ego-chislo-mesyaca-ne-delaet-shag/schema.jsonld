@@ -1,0 +1,59 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{SITE_BASE}}/#organization",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/",
+      "sameAs": [
+        "https://dzen.ru/todaytaro_bot"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "{{SITE_BASE}}/#author-victoria",
+      "name": "Виктория",
+      "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+      "url": "{{SITE_BASE}}/",
+      "sameAs": [
+        "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
+        "https://dzen.ru/todaytaro_bot"
+      ],
+      "worksFor": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{SITE_BASE}}/ego-chislo-mesyaca-ne-delaet-shag/",
+      "url": "{{SITE_BASE}}/ego-chislo-mesyaca-ne-delaet-shag/",
+      "name": "Его число месяца не делает шаг за него",
+      "inLanguage": "ru-RU",
+      "isPartOf": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "{{SITE_BASE}}/ego-chislo-mesyaca-ne-delaet-shag/#article",
+      "url": "{{SITE_BASE}}/ego-chislo-mesyaca-ne-delaet-shag/",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{SITE_BASE}}/ego-chislo-mesyaca-ne-delaet-shag/"
+      },
+      "headline": "Его число месяца не делает шаг за него",
+      "name": "Его число месяца не делает шаг за него",
+      "description": "Как рассчитать личный цикл мужчины и понять по его дате рождения, почему общие прогнозы не заставят его сделать первый шаг.",
+      "datePublished": "2026-09-02",
+      "dateModified": "2026-09-02",
+      "inLanguage": "ru-RU",
+      "author": {
+        "@id": "{{SITE_BASE}}/#author-victoria"
+      },
+      "publisher": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    }
+  ]
+}
