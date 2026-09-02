@@ -1,5 +1,12 @@
 # Site publish log
 
+## 2026-09-02 B33 resume after VPS #15
+
+- resume `--resume-article-id 43`; approve skipped (`already_approved`, score 100)
+- publish 500 EPERM (не EACCES): «Не удалось создать каталог публикации: /var/www/TaroSeoSite/blog/on-pishet-kazhdyj-den-no-ne-zovet (EPERM)»
+- live GET 404 `{{SITE_BASE}}/blog/on-pishet-kazhdyj-den-no-ne-zovet/`
+- тело не трогали; Дзен Студия не звали; ключ не меняли
+
 ## 2026-09-02 B33 on-pishet-kazhdyj-den-no-ne-zovet
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used; Dzen Studio not used)

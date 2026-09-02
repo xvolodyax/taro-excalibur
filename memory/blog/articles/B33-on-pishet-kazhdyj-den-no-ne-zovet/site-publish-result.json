@@ -33,21 +33,20 @@
   "resumed": true,
   "excerpt_clear_status": 403,
   "excerpt_clear_skipped": "hall_token_no_patch",
-  "approve_status": 409,
-  "approve_detail": "Сначала статья должна пройти проверку качества",
-  "approve_resume_409": "already_live_or_quality",
-  "permalink_live": "{{SITE_BASE}}/blog/on-pishet-kazhdyj-den-no-ne-zovet/",
-  "publish_status": 500,
-  "publish_detail": "Не удалось создать каталог публикации: /var/www/TaroSeoSite/blog/on-pishet-kazhdyj-den-no-ne-zovet (EACCES)",
-  "reason_detail": "Не удалось создать каталог публикации: /var/www/TaroSeoSite/blog/on-pishet-kazhdyj-den-no-ne-zovet (EACCES)",
-  "first_approve_status": 200,
-  "quality_score": 100,
-  "quality_warnings": [],
+  "article_get_status": 200,
   "site_status": "approved",
+  "approve_skipped": "already_approved",
+  "publish_status": 500,
+  "publish_detail": "Не удалось создать каталог публикации: /var/www/TaroSeoSite/blog/on-pishet-kazhdyj-den-no-ne-zovet (EPERM)",
+  "reason_detail": "Не удалось создать каталог публикации: /var/www/TaroSeoSite/blog/on-pishet-kazhdyj-den-no-ne-zovet (EPERM)",
+  "publish_raw": {
+    "error": "Не удалось создать каталог публикации: /var/www/TaroSeoSite/blog/on-pishet-kazhdyj-den-no-ne-zovet (EPERM)",
+    "detail": "Не удалось создать каталог публикации: /var/www/TaroSeoSite/blog/on-pishet-kazhdyj-den-no-ne-zovet (EPERM)"
+  },
   "live_get": 404,
   "live_ok": false,
   "sol_rewritten": false,
-  "director_next": "needs_human_publish_dir_eacces",
-  "publish_dir_eacces": true,
-  "false_example_409": false
+  "director_next": "needs_human_publish_dir_eperm",
+  "publish_dir_eacces": false,
+  "publish_dir_eperm": true
 }
