@@ -1,0 +1,50 @@
+{
+  "topic_id": "B35",
+  "slug": "on-predlagaet-druzhbu-posle-rasstavaniya",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: дружба после расставания прячет чувство вины",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-09-02T19:59:16+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: дружба после расставания прячет чувство вины",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема трёх скрытых мотивов за предложением остаться друзьями",
+      "h2_anchor": "Что на самом деле скрывается за предложением «остаться друзьями»",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Чеклист маркеров скрытого интереса в дружбе после разрыва",
+      "h2_anchor": "Маркеры скрытого интереса: когда дружба маскирует надежду на возврат",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Сравнение дружбы сразу и паузы, когда контакт с бывшим безопасен",
+      "h2_anchor": "Когда дружба между бывшими возможна, а когда становится пыткой",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

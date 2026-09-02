@@ -1,0 +1,148 @@
+{
+  "agent": "excalibur-blog-cover-quad-split",
+  "status": "PASS",
+  "manifest": "cover/quad-manifest.json",
+  "split": {
+    "source_canvas": "memory/blog/articles/B35-on-predlagaet-druzhbu-posle-rasstavaniya/cover/canvas-quad.png",
+    "source_size_px": [
+      2048,
+      1152
+    ],
+    "panel_size_px": [
+      1024,
+      576
+    ],
+    "split_meta": {
+      "split_mode": "mechanical_center",
+      "h_gutter_px": null,
+      "v_gutter_px": null,
+      "requested_mode": "auto",
+      "fallback_reason": "aspect_crop_loss_too_high",
+      "rejected_gutter": {
+        "h_gutter_px": {
+          "start": 583,
+          "end": 602
+        },
+        "v_gutter_px": {
+          "start": 1029,
+          "end": 1071
+        },
+        "gutter_quality": {
+          "h_center_offset_px": 16.5,
+          "v_center_offset_px": 26.0,
+          "max_aspect_crop_loss": 0.0566,
+          "per_panel_crop_loss": {
+            "top_left": 0.0069,
+            "top_right": 0.0566,
+            "bottom_left": 0.0496,
+            "bottom_right": 0.0
+          },
+          "reject_reason": "aspect_crop_loss_too_high"
+        }
+      }
+    },
+    "output_size_px": [
+      1200,
+      675
+    ],
+    "outputs": {
+      "cover": {
+        "file": "cover/cover.png",
+        "quadrant": "top_left",
+        "box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1024,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1024,
+          "bottom": 576
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Иллюстрация: дружба после расставания прячет чувство вины",
+        "h2_anchor": null
+      },
+      "inline_1": {
+        "file": "cover/inline-01.png",
+        "quadrant": "top_right",
+        "box_px": {
+          "left": 1024,
+          "top": 0,
+          "right": 2048,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 1024,
+          "top": 0,
+          "right": 2048,
+          "bottom": 576
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Схема трёх скрытых мотивов за предложением остаться друзьями",
+        "h2_anchor": "Что на самом деле скрывается за предложением «остаться друзьями»"
+      },
+      "inline_2": {
+        "file": "cover/inline-02.png",
+        "quadrant": "bottom_left",
+        "box_px": {
+          "left": 0,
+          "top": 576,
+          "right": 1024,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 576,
+          "right": 1024,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Чеклист маркеров скрытого интереса в дружбе после разрыва",
+        "h2_anchor": "Маркеры скрытого интереса: когда дружба маскирует надежду на возврат"
+      },
+      "inline_3": {
+        "file": "cover/inline-03.png",
+        "quadrant": "bottom_right",
+        "box_px": {
+          "left": 1024,
+          "top": 576,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 1024,
+          "top": 576,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Сравнение дружбы сразу и паузы, когда контакт с бывшим безопасен",
+        "h2_anchor": "Когда дружба между бывшими возможна, а когда становится пыткой"
+      }
+    }
+  },
+  "html_inject": [
+    "injected inline_1 after H2 — Что на самом деле скрывается за предложением «остаться друзьями»",
+    "injected inline_2 after H2 — Маркеры скрытого интереса: когда дружба маскирует надежду на возврат",
+    "injected inline_3 after H2 — Когда дружба между бывшими возможна, а когда становится пыткой"
+  ]
+}
