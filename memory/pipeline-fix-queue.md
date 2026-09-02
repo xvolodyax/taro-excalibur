@@ -56,7 +56,7 @@ checks_run:
 - `test_resume_already_approved_skips_approve` ok
 - `test_publish_sitemap_eacces_still_live` ok (не путает с dir EACCES)
 - `test_dir_eacces_detector_not_sitemap` ok
-commit: pending-parent-commit
+commit: cbab9ae
 
 ## INC-20260901-1945-metrika-credentials-b32
 status: open
