@@ -1,5 +1,24 @@
 # Site publish log
 
+## 2026-09-02 B35 on-predlagaet-druzhbu-posle-rasstavaniya
+
+- method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used; Dzen Studio not used)
+- article_id: 47
+- upload: 201
+- excerpt_clear: 403 hall_token_no_patch (не FAIL)
+- approve: **200**
+- publish: **200**
+- live GET **200** `{{SITE_BASE}}/blog/on-predlagaet-druzhbu-posle-rasstavaniya/`
+- title/H1: Он предлагает дружбу после расставания
+- H2 практики в теле; «Возьмём:» не добавляли; тело не правили
+- 3 figure.inline-quad, 0 cover-hero (как в article.html)
+- FAQ в теле нет — OK для site-api
+- slot 21:21: not closed
+- hall: not_used
+- dzen_studio: not_used
+- B21/B22: not touched
+- verdict: pass
+
 ## 2026-09-02 B34 ego-chislo-mesyaca-ne-delaet-shag
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used; Dzen Studio not used)

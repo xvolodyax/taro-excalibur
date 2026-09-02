@@ -14,3 +14,4 @@ Publish / Indexer обновляют по мере выхода.
 | B32 | on-pishet-tolko-nochyu-dnem-molchit | quality_review | {{SITE_BASE}}/blog/on-pishet-tolko-nochyu-dnem-molchit/ |
 | B33 | on-pishet-kazhdyj-den-no-ne-zovet | live | {{SITE_BASE}}/blog/on-pishet-kazhdyj-den-no-ne-zovet/ |
 | B34 | ego-chislo-mesyaca-ne-delaet-shag | live | {{SITE_BASE}}/blog/ego-chislo-mesyaca-ne-delaet-shag/ |
+| B35 | on-predlagaet-druzhbu-posle-rasstavaniya | live | {{SITE_BASE}}/blog/on-predlagaet-druzhbu-posle-rasstavaniya/ |
