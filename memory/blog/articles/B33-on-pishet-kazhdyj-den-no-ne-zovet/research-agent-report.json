@@ -1,0 +1,77 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B33",
+  "slug": "on-pishet-kazhdyj-den-no-ne-zovet",
+  "research_date": "2026-09-02",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "fresh_signal": {
+    "ok": true,
+    "week_of": "2026-08-31/2026-09-06",
+    "kind": "channel + community + live SERP",
+    "summary": "2026-09-02 канал dzen.ru/todaytaro_bot живой: шапка «Ты пишешь, он молчит?!», в ленте пост «1 день назад». Недельный SERP по title держит разборы тёплой ежедневной переписки без зова. Community all-psy 446229 датирован 30.08.2026.",
+    "urls": [
+      "https://dzen.ru/todaytaro_bot",
+      "https://zenstat.ru/channel/todaytaro_bot/",
+      "https://www.all-psy.com/konsultacii/otvet/446229/",
+      "https://strana.life/life/esli_muzhchina_pishet_kazhdyj_den_no_ne_zovet_na_vstrechu_psikholog_obyasnil_kogda_pora_perestat_zhdat",
+      "https://intrigue.dating/znakomstva/pochemu-on-pishet-kajdyy-den-no-ne-zovet-na-vstrechu/"
+    ]
+  },
+  "scout_signal_verified": true,
+  "scout_note": "Канал крутит инвертированную поверхность («ты пишешь — он молчит»); он-топик B33 даёт недельный SERP (ежедневное тепло без приглашения), не тело вчерашнего поста канала (B28).",
+  "wordstat": {
+    "provider": "yandex_cloud_search_api_v2",
+    "endpoint": "topRequests",
+    "accessed_at": "2026-09-02",
+    "status": "OK_WITH_PARTIAL",
+    "calls": 4,
+    "phrases": [
+      {
+        "phrase": "он пишет но не зовет",
+        "totalCount": 163,
+        "top": [],
+        "partial": true
+      },
+      {
+        "phrase": "пишет каждый день но не зовет",
+        "totalCount": 63,
+        "top": [],
+        "partial": true
+      },
+      {
+        "phrase": "не зовет на свидание",
+        "totalCount": 926,
+        "partial": false,
+        "top": [
+          {"phrase": "мужчина не зовет на свидание", "count": 367},
+          {"phrase": "парень не зовет на свидание", "count": 174},
+          {"phrase": "пишет но не зовет на свидание", "count": 78},
+          {"phrase": "мужчина не зовет на свидание но пишет", "count": 56},
+          {"phrase": "переписываемся не зовет на свидание", "count": 33}
+        ]
+      },
+      {
+        "phrase": "переписка без встреч",
+        "totalCount": 218,
+        "partial": false,
+        "top": [
+          {"phrase": "переписка без встреч", "count": 218},
+          {"phrase": "переписка мужчиной без встречи", "count": 30},
+          {"phrase": "долгая переписка без встреч", "count": 19}
+        ]
+      }
+    ],
+    "matches_scout": true,
+    "note": "PARTIAL / отсутствие частот топа — не стоп. Impressions не invent."
+  },
+  "overlap_checked": "published-titles-only.md",
+  "article_html_read": false,
+  "live_bodies_read": false,
+  "invented_facts": false,
+  "notes_path": "memory/blog/articles/B33-on-pishet-kazhdyj-den-no-ne-zovet/research-notes.md",
+  "report_path": "memory/blog/articles/B33-on-pishet-kazhdyj-den-no-ne-zovet/research-agent-report.json",
+  "incident_report": "none",
+  "block_reason": null
+}
