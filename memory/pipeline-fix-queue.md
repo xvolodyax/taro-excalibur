@@ -2,6 +2,45 @@
 
 Durable incident memory for Excalibur BLOG. Agents append; Fixer resolves.
 
+## INC-20260902-2016-metrika-credentials-b35
+status: open
+run_date: 2026-09-02
+role: excalibur-blog-content-learner
+topic_id: B35
+article_dir: memory/blog/articles/B35-on-predlagaet-druzhbu-posle-rasstavaniya
+severity: blocker
+category: credentials
+
+### What went wrong
+- Content-learner обязателен `python3 scripts/excalibur_blog_metrika_fetch.py --days 30 --ingest`.
+- Exit 2: `METRIKA CREDENTIALS BLOCKER`.
+- В env нет `YANDEX_METRIKA_OAUTH_TOKEN` и `YANDEX_METRIKA_COUNTER_ID`.
+- Нет `memory/site.env.local` и `.env`. `.cursor/environment.json` секреты Metrika не задаёт.
+- `memory/analytics/metrika-latest.json` не создан. Цифры не выдумывались.
+- Тот же корневой gap, что INC-20260902-1455-metrika-credentials-b34, INC-20260902-0650-metrika-credentials-b33, INC-20260901-1945-metrika-credentials-b32, INC-20260901-1431-metrika-credentials-b31, INC-20260901-0659-metrika-credentials-b30, INC-20260831-2040-metrika-credentials-b29, INC-20260831-1526-metrika-credentials-b28, INC-20260831-0709-metrika-credentials-b27 и INC-20260830-1936-metrika-credentials-b26 (все open). Известный gap: секреты не в Cloud.
+
+### How the agent recovered this run
+- Evidence gate SKIP (нет `content-evidence-report.json`) — не BLOCK, report не invent'ился.
+- Lesson `LESSON-20260902-2016-B35-evening-offers-friendship` записан как low-confidence (process + SKIP), без causal Metrika.
+- Durable apply нет. `article.html` и Writer/Sol prompt не трогали.
+- Пайплайн не FAIL: Metrika BLOCKER зафиксирован; слот B35 `PUBLISHED` + live 200 + `article_id=47`. Тело не правили.
+
+### Durable fix needed before next run
+- Положить в Cloud Secrets (не в git): `YANDEX_METRIKA_OAUTH_TOKEN` (OAuth, `metrika:read`) и `YANDEX_METRIKA_COUNTER_ID`.
+- Документация: `shared/yandex-metrika-contract.md`, имена в `.env.example`.
+- После секретов: тот же fetch `--days 30 --ingest`; не invent rows.
+
+### Suggested files to inspect/change
+- `shared/yandex-metrika-contract.md`
+- `.env.example`
+- Cloud Secrets / environment (вне репо)
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending (same Cloud Secrets gap as INC-1455; no invent tokens)
+
 ## INC-20260902-1455-metrika-credentials-b34
 status: open
 run_date: 2026-09-02
@@ -41,6 +80,7 @@ category: credentials
 ### Fixer resolution
 - pending (B34 Fixer 2026-09-02: still Cloud Secrets; no invent tokens; left open)
 - pending (B35 Fixer 2026-09-02: still Cloud Secrets; no invent tokens; left open. B26–B33 same gap)
+- pending (B35 Content-learner 2026-09-02: тот же fetch `--days 30 --ingest` → CREDENTIALS BLOCKER; цифры не invent. Новый INC-2016; этот INC не закрывать)
 
 ## INC-20260902-0650-metrika-credentials-b33
 status: open
