@@ -458,3 +458,37 @@ checks_run:
 - `python3 -m unittest tests.test_quad_manifest` — 4/4 ok
 - `python3 -m unittest tests.test_cover_identity` — tenant/local-ref/gold/hair/kie-prefer-local ok; pre-existing `is_playground_blank_fail` import still missing (не этот INC)
 commit: 21afd83
+
+## INC-20260902-1428-cover-kie-result-download
+status: open
+run_date: 2026-09-02
+role: excalibur-blog-cover
+topic_id: B34
+article_dir: memory/blog/articles/B34-ego-chislo-mesyaca-ne-delaet-shag
+severity: medium
+category: script
+
+### What went wrong
+- Kie createTask #1 succeeded (`task_id` in `cover/kie-image-task.json`, `state=success`).
+- `excalibur_blog_quad_apply.py` hung >10 min on `download_url_bytes` with no progress log; PID killed. Not a Kie recreate.
+- Full GET / HTTP/2 of the Kie result CDN stalled at ~1.25 MiB of ~2.4 MiB (truncated PNG).
+- 256 KiB Range reads timed out after offset 1.25 MiB; 16–8 KiB ranges later stalled; 2 KiB ranges completed.
+
+### How the agent recovered this run
+- Same billed Kie URL. No second createTask.
+- Resume Range download (2–4 KiB chunks, timeout per range) → full `cover/canvas-quad.png` 2048×1152.
+- Then `excalibur_blog_cover_quad_split.py --inject-html` PASS: 3 `figure.inline-quad`, 0 `figure.cover-hero`.
+
+### Durable fix needed before next run
+- `asset_download.download_url_bytes` / `quad_apply`: print progress; shrink Range size on timeout; resume partial file; fail fast instead of silent hang.
+- Do not treat result-CDN stall as Kie recreate / quality-redo.
+
+### Suggested files to inspect/change
+- `scripts/asset_download.py`
+- `scripts/excalibur_blog_quad_apply.py`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+- pending
