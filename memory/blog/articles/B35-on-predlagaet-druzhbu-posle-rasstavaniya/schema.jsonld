@@ -1,0 +1,59 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{SITE_BASE}}/#organization",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/",
+      "sameAs": [
+        "https://dzen.ru/todaytaro_bot"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "{{SITE_BASE}}/#author-victoria",
+      "name": "Виктория",
+      "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+      "url": "{{SITE_BASE}}/",
+      "sameAs": [
+        "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
+        "https://dzen.ru/todaytaro_bot"
+      ],
+      "worksFor": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{SITE_BASE}}/on-predlagaet-druzhbu-posle-rasstavaniya/",
+      "url": "{{SITE_BASE}}/on-predlagaet-druzhbu-posle-rasstavaniya/",
+      "name": "Он предлагает дружбу после расставания",
+      "inLanguage": "ru-RU",
+      "isPartOf": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "{{SITE_BASE}}/on-predlagaet-druzhbu-posle-rasstavaniya/#article",
+      "url": "{{SITE_BASE}}/on-predlagaet-druzhbu-posle-rasstavaniya/",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{SITE_BASE}}/on-predlagaet-druzhbu-posle-rasstavaniya/"
+      },
+      "headline": "Он предлагает дружбу после расставания",
+      "name": "Он предлагает дружбу после расставания",
+      "description": "Разбираем скрытые мотивы предложения дружить после разрыва и выясняем, как вовремя распознать манипуляцию и защитить свои границы.",
+      "datePublished": "2026-09-02",
+      "dateModified": "2026-09-02",
+      "inLanguage": "ru-RU",
+      "author": {
+        "@id": "{{SITE_BASE}}/#author-victoria"
+      },
+      "publisher": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    }
+  ]
+}
