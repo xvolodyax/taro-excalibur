@@ -78,7 +78,7 @@ category: credentials
 - none recorded
 
 ### Fixer resolution
-- pending
+- pending (B34 Fixer 2026-09-02: still Cloud Secrets; no invent tokens; left open)
 
 ## INC-20260902-0645-publish-dir-eacces-b33
 status: fixed
@@ -499,7 +499,7 @@ checks_run:
 commit: 21afd83
 
 ## INC-20260902-1428-cover-kie-result-download
-status: open
+status: fixed
 run_date: 2026-09-02
 role: excalibur-blog-cover
 topic_id: B34
@@ -530,4 +530,26 @@ category: script
 - none recorded
 
 ### Fixer resolution
-- pending
+status: fixed
+fixed_at: 2026-09-02
+fix_summary:
+- `download_url_bytes`: progress на stderr; Range shrink 8 KiB → 2 KiB на timeout; dest + resume partial file; полный GET больше не один silent read.
+- `quad_apply`: dest=`cover/canvas-quad.png`, `--timeout`, explicit «CDN stall ≠ Kie createTask». Тот же billed URL, без второго createTask.
+- Cover skill / agent / Kie contract: stall result-CDN — resume apply, не quality-redo.
+- Тело B34 / Sol / SOUL не трогали. Metrika credentials INC оставлены open (Cloud Secrets, не invent). EACCES B33 не реопенили.
+files_changed:
+- `scripts/asset_download.py`
+- `scripts/excalibur_blog_quad_apply.py`
+- `tests/test_asset_download.py`
+- `skills/cover-excalibur-blog/SKILL.md`
+- `.cursor/skills/cover-excalibur-blog/SKILL.md`
+- `agents/excalibur-blog-cover.md`
+- `.cursor/agents/excalibur-blog-cover.md`
+- `shared/kie-gpt-image-api-contract.md`
+- `memory/pipeline-fix-queue.md`
+checks_run:
+- `python3 -m py_compile scripts/asset_download.py scripts/excalibur_blog_quad_apply.py tests/test_asset_download.py`
+- `python3 -m unittest tests.test_asset_download` — 4/4 ok
+- rg: dest=canvas_path / Range-resume / min_chunk; Critic/Panel/Voice не возвращались
+commit: pending
+
