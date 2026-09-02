@@ -4,6 +4,66 @@
 Исторические scorecard / judge / ensemble — read-only, не шаблон.
 Writer prompt и Sol skill сюда не раздувать автоматически.
 
+## LESSON-20260902-0650-B33-morning-writes-daily-no-invite
+status: proposed
+topic_id: B33
+category: other
+confidence: low
+
+### Evidence
+- artifact: none (skipped under human-first-v2)
+  finding: `content-evidence-report.json` отсутствует; evidence_gate=SKIP, не BLOCK. Report не invent'ился. Gate-артефакт: `content-evidence-gate.json` status=SKIP.
+- process: `research-notes.md` + `title-brief.json` + `research-agent-report.json`
+  finding: слот утро 2026-09-02 / 09:00 / CTA bot (триплет/крест; не vk_app). Scout сам: канал `dzen.ru/todaytaro_bot` 02.09 живой (шапка «Ты пишешь, он молчит?!»; лента «1 день назад» — соседняя B28-боль), недельный SERP держит тёплую ежедневную переписку без зова. Не карта дня, не нумерология. Не клон B32 (пишет только ночью / днём молчит), B31 (сгоревший «потом / с осени»), B30 (сорвал слово), B29 (стена при живом чате), B28 (привет после месяцев — чат умирал), B27 (зовёт на выходные, горизонта нет — зов есть). Ядро: сообщения тёплые и регулярные; даты встречи нет. H1 — наблюдаемая сцена («Он пишет каждый день, но не зовёт»), не жир Wordstat «не зовет на свидание» (926) / «мужчина не зовет на свидание» (367). Узкие «он пишет но не зовет» 163 и «пишет каждый день но не зовет» 63 = WORDSTAT PARTIAL (totalCount-only) — не стоп. Research перепроверка = OK_WITH_PARTIAL (API v2 `topRequests`, 4 фразы).
+- process: `cover/quad-mcp-batch.json` + `cover/cover-registry.json` + `cover/kie-image-task.json` + `cover/quad-split-report.json` + `site-publish-result.json#strip`
+  finding: реф `Виктория.png` (`prefer_local_reference` + local file); style `victoria-studio`; глаза `green+hazel` / зелёные с карим (`memory/cover/blog-hero.json`). Pack cover+3 inline. Kie `state=success`, `create_attempts=1`, `task_id` 5098bc76…. `cover_png_figures_removed=0` / `cover_hero_removed=0`; в теле только `figure.inline-quad` ×3, `figure.cover-hero` нет. Hall / MCP gpt-image-2 не звали.
+- process: `site-publish-result.json`
+  finding: SITE token сам (`token_env=SITE_PUBLISH_TOKEN`, Hall / Дзен Студия `not_used`). Upload 201 `article_id=43`; excerpt 403 = не FAIL; **первый approve 200**, `quality_score=100`, warnings `[]`. H2 «Практика одного шага: как проверить реальные намерения» уже в теле. Publish 500: «Не удалось создать каталог публикации: `/var/www/TaroSeoSite/blog/on-pishet-kazhdyj-den-no-ne-zovet` (EACCES)». Live GET 404; `site_status=approved`; `live_ok=false`; `sol_rewritten=false`; `false_example_409=false`; `director_next=needs_human_publish_dir_eacces`. Тело не правили. «Возьмём:» / «Сцена» в `article.html` нет. Это не sitemap EACCES (контракт B23: sitemap + live 200 = live_ok) и не 409 example (B27–B32).
+- process: `memory/pipeline-fix-queue.md#INC-20260902-0645-publish-dir-eacces-b33`
+  finding: Fixer already `status: fixed` (commit cbab9ae): directory EACCES + live 404 = `needs_human`, не sitemap skip; resume не слать approve, если API уже `approved`. Права www на каталог блога — вне репо. Не «починили сайт». Не урок «лечить EACCES текстом».
+- metrika_signal: none
+  finding: `excalibur_blog_metrika_fetch.py --days 30 --ingest` → METRIKA CREDENTIALS BLOCKER (нет `YANDEX_METRIKA_OAUTH_TOKEN` / `YANDEX_METRIKA_COUNTER_ID`). `memory/analytics/metrika-latest.json` не создан. Цифры не выдумывать. См. INC-20260902-0650-metrika-credentials-b33; B32 INC-1945, B31 INC-1431, B30 INC-0659, B29 INC-2040, B28 INC-1526, B27 INC-0709 и B26 INC-1936 всё ещё open.
+
+### Named blockers
+- EVIDENCE_SKIPPED
+- METRIKA FEEDBACK BLOCKER
+- SITE_PUBLISH_DIR_EACCES (первый approve 200 / quality 100; publish 500 каталог; live 404 / approved — не 409 example)
+
+### Keep
+- Scout сам берёт живой сигнал (канал + недельный SERP «пишет каждый день, но не зовёт»). Дзен → сайт (заголовки) → неделя → Wordstat. Не формат «карта дня», даже если утренний слот тенанта так подписан.
+- WORDSTAT PARTIAL / totalCount-only — не стоп. Research перепроверка OK_WITH_PARTIAL. Жир Wordstat не в H1.
+- Заранее практика из фактов этой статьи (H2 «Практика одного шага…»). Первый approve 200 + quality 100 — не доказательство, что «сайт починили» после B27–B32 409.
+- Cover i2i от рефа `Виктория.png` (`prefer_local_reference` + local file), style `victoria-studio`, глаза зелёные с карим (`green+hazel`). Pack cover+3 inline; `cover.png` только файл обложки, не вторая картинка в теле (`cover-hero` не инжектить).
+- SITE token сам: upload → approve → publish; Hall / Дзен Студия не звать.
+- Publish / Director тело не правят. Directory EACCES + live 404 = `needs_human`, не PIPELINE FAIL после GATE PASS и не ярлык в тексте.
+
+### Change
+- Publish 500 directory EACCES ≠ sitemap EACCES (B23/B27/B28: sitemap + live 200 = live_ok). B33: каталог slug не создан, live 404 → `needs_human_publish_dir_eacces`. INC-0645 already fixed в скрипте; права www — вне репо.
+- Один первый approve 200 / quality 100 не закрывает B25 INC-1423 / B26–B32 409 как «починили сайт».
+- Metrika secrets по-прежнему отсутствуют — следующий Content-learner снова BLOCKER, пока секреты не в Cloud Secrets.
+
+### Never again
+- «Возьмём:» / «Возьмем:» / «Сцена» как лечение publish 500 / EACCES / quality.
+- Возврат Sol / правка тела, чтобы «починить» права каталога на сервере.
+- Путать directory EACCES + live 404 с sitemap EACCES + live 200.
+- Стоп пайплайна из-за WORDSTAT PARTIAL / totalCount-only, если живой сигнал и перепроверка есть.
+- Клон B32 ночного ритма / B31 осени / B30 срыва слова / B29 стены при живом чате / B28 месяцев молчания (чат умирал) / B27 субботы без горизонта (зов есть).
+- Клеить жирную Wordstat («не зовет на свидание», «мужчина не зовет на свидание») в H1.
+- Закрывать слот картой дня / числом дня / 21:21 этой статьёй.
+- Раздувать `shared/writer-master-prompt.md` / Writer / Sol skill автоматически (один кейс + evidence SKIP + no-Metrika).
+
+### Proposed apply
+- Review-only: слот утро / живой сигнал «пишет каждый день, но не зовёт» держит Scout Дзен→сайт→неделя→Wordstat + H1-наблюдение + практику из research этой статьи; WORDSTAT PARTIAL ≠ стоп; directory EACCES + live 404 = needs_human, не PIPELINE FAIL после GATE PASS; 200 на первом approve ≠ «сайт починили».
+- Не добавлять правила в `shared/writer-master-prompt.md` и Writer/Sol skill автоматически.
+- Cloud Secrets: `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` (scope `metrika:read`).
+- Directory EACCES: INC-0645 already fixed в скрипте; права www на `/var/www/TaroSeoSite/blog/<slug>` — needs-human вне репо; не дублировать apply из этого прогона.
+
+### Durable applied
+- none this run. Prior Fixer INC-0645 (commit cbab9ae): directory EACCES → `needs_human`, не sitemap skip; `article.html` B33 не трогали. Не «починили сайт». Rollback: только по явному решению человека, не из этого SKIP+no-Metrika прогона.
+
+### Resolution
+status: recorded
+
 ## LESSON-20260901-1945-B32-evening-night-only-chat
 status: proposed
 topic_id: B32
