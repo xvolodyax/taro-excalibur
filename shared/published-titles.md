@@ -29,7 +29,7 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B30 | on-ne-derzhit-slovo-v-otnosheniyah | Он обещает прийти или позвонить, но не держит слово | quality_review |
 | B31 | on-otkladyvaet-otnosheniya-na-osen | Лето кончилось, а он всё ещё говорит тебе «потом» | quality_review |
 | B32 | on-pishet-tolko-nochyu-dnem-molchit | Он пишет только ночью, а днём молчит | quality_review |
-| B33 | on-pishet-kazhdyj-den-no-ne-zovet | Он пишет каждый день, но не зовёт | approved_eperm |
+| B33 | on-pishet-kazhdyj-den-no-ne-zovet | Он пишет каждый день, но не зовёт | live |
 | LIVE | zachem-vtykayut-igolku-v-dvernoy-kosyak | Зачем втыкают иголку в дверной косяк | live |
 | LIVE | zachem-syplyut-sol-v-ugol-ot-skandalov | Зачем сыплют соль в угол от скандалов | live |
 | LIVE | kak-vyzyvayut-domovogo-v-kvartire | Как вызывают домового в квартире | live |

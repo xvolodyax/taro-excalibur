@@ -12,4 +12,4 @@ Publish / Indexer обновляют по мере выхода.
 | B27 | on-ne-obsuzhdaet-buduschee-vashih-otnoshenij | live | {{SITE_BASE}}/blog/on-ne-obsuzhdaet-buduschee-vashih-otnoshenij/ |
 | B28 | on-obyavilsya-spustya-mesyacy-molchaniya | live | {{SITE_BASE}}/blog/on-obyavilsya-spustya-mesyacy-molchaniya/ |
 | B32 | on-pishet-tolko-nochyu-dnem-molchit | quality_review | {{SITE_BASE}}/blog/on-pishet-tolko-nochyu-dnem-molchit/ |
-| B33 | on-pishet-kazhdyj-den-no-ne-zovet | approved_eperm | {{SITE_BASE}}/blog/on-pishet-kazhdyj-den-no-ne-zovet/ |
+| B33 | on-pishet-kazhdyj-den-no-ne-zovet | live | {{SITE_BASE}}/blog/on-pishet-kazhdyj-den-no-ne-zovet/ |

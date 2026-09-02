@@ -1,5 +1,13 @@
 # Site publish log
 
+## 2026-09-02 B33 live after VPS #16
+
+- POST `/api/admin/content/articles/43/publish` → **200**
+- API status `published`, published_at 2026-09-02T12:16:35.508Z, quality 100
+- live GET **200** `{{SITE_BASE}}/blog/on-pishet-kazhdyj-den-no-ne-zovet/`
+- title/H1: Он пишет каждый день, но не зовёт
+- тело не трогали; Дзен Студия не звали; ключ не меняли
+
 ## 2026-09-02 B33 resume after VPS #15
 
 - resume `--resume-article-id 43`; approve skipped (`already_approved`, score 100)
