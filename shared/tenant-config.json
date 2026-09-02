@@ -1,16 +1,76 @@
 {
   "version": "1.0",
-  "setup_complete": false,
-  "brand_name": "",
+  "setup_complete": true,
+  "brand_name": "ТАРО СЕЙЧАС",
   "language": "ru",
-  "niche": "",
-  "content_goals": [],
-  "author_id": "",
-  "cta_required": false,
-  "cta_links": [],
-  "cover_mode": "unset",
+  "niche": "таро / отношения; ядро — женщины 20–50; покупают доступ к голове человека, которого нельзя спросить; ~78% запросов — отношения",
+  "content_goals": [
+    "глубокие живые статьи без воды",
+    "из статьи — в бот (расклад) или в приложение (аудиоразбор)",
+    "не таргет 13–17",
+    "не СВО и не медицина",
+    "не обещать прочитать мысли",
+    "не пугать одиночеством"
+  ],
+  "author_id": "victoria",
+  "cta_required": true,
+  "cta_links": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776",
+    "https://max.ru/id531102974575_bot?startapp=ref_9BAD4149"
+  ],
+  "cta_links_site_only": [
+    "https://t.me/TodayTaro_bot?start=id8293683394",
+    "https://t.me/TodayTaro_bot?startapp=ref_361BDE45"
+  ],
+  "cta_rules": {
+    "do_not_mix_bot_and_app": true,
+    "bot_only": "3 бесплатных расклада (триплет / крест) — только бот",
+    "app_only": "«Суть – Тень – Вектор» и аудиоразбор — только приложение",
+    "forbidden_phrase": "личный аудиоразбор",
+    "raw_urls_in_body": false,
+    "dzen_no_telegram": true,
+    "two_blocks": [
+      "после сцены «сразу к делу»: выжимка + 2–3 вопроса к картам + две двери",
+      "свой продающий финал, не копипаст первого блока"
+    ]
+  },
+  "cover_mode": "host_reference",
   "dzen_rf_pack": true,
-  "scout_signal_urls": [],
+  "dzen_channel": "https://dzen.ru/todaytaro_bot",
+  "dzen_rss": true,
+  "publish_owner": "Hall",
+  "allow_pipeline_publish": true,
+  "publish_slots": [
+    {
+      "time": "09:00",
+      "angle": "острый запрос",
+      "cta": "bot"
+    },
+    {
+      "time": "16:00",
+      "angle": "нумерология",
+      "cta": "vk_app"
+    },
+    {
+      "time": "20:00",
+      "angle": "карта дня",
+      "cta": "bot"
+    }
+  ],
+  "scout_signal_urls": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/"
+  ],
+  "wordstat": {
+    "provider": "yandex_cloud_search_api_v2",
+    "folder_id": "[REDACTED]",
+    "external_agent": false,
+    "note": "Ключ API только в Cloud Secrets. Scout зовёт Wordstat сам."
+  },
+  "public_site_url": "https://www.xn--80aaoqxlidb0d.xn--p1ai/",
+  "public_site_idn": "https://www.таросейчас.рф/",
+  "blog_path": "/blog/",
   "interlink_old_articles": false,
   "style_files": {
     "soul": "shared/SOUL.md",
@@ -20,7 +80,7 @@
   "cover_files": {
     "hero": "memory/cover/blog-hero.json",
     "design_code": "memory/cover/cover-design-code.json",
-    "style_preset": ""
+    "style_preset": "memory/cover/quad-style-victoria-studio.json"
   },
   "comment": "Filled by excalibur-blog-setup. Pipeline agents read this file. Do not put secrets here."
 }

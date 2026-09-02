@@ -32,6 +32,46 @@ def load_published_topics(root: Path) -> set[str]:
     return published
 
 
+def load_published_title_topic_ids(root: Path) -> set[str]:
+    """B\\d+ topic_ids from shared/published-titles.md (not only | 20 ledger).
+
+    INC-20260901-1945: dateless published-articles.md made --suggest-next
+    fall back to B01 even when titles already listed B12–B31.
+    """
+    titles_path = root / "shared/published-titles.md"
+    ids: set[str] = set()
+    if not titles_path.is_file():
+        return ids
+    for line in titles_path.read_text(encoding="utf-8").splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if not cells:
+            continue
+        match = re.match(r"B\d+$", cells[0], flags=re.IGNORECASE)
+        if match:
+            ids.add(cells[0].upper())
+    return ids
+
+
+def next_b_topic_id(reserved: set[str]) -> str:
+    """Next Bxx after the highest reserved B-number; B01 if none."""
+    max_num = 0
+    for tid in reserved:
+        match = re.match(r"B(\d+)", str(tid or ""), flags=re.I)
+        if match:
+            max_num = max(max_num, int(match.group(1)))
+    return f"B{max_num + 1:02d}" if max_num else "B01"
+
+
+def load_reserved_topic_ids(root: Path) -> set[str]:
+    return (
+        load_published_topics(root)
+        | load_active_article_topics(root)
+        | load_published_title_topic_ids(root)
+    )
+
+
 def load_published_rows(root: Path) -> list[dict[str, str]]:
     ledger_path = root / "shared/published-articles.md"
     rows: list[dict[str, str]] = []
@@ -445,7 +485,7 @@ def main() -> int:
     root = project_root()
     published = load_published_topics(root)
     active = load_active_article_topics(root)
-    reserved = published | active
+    reserved = load_reserved_topic_ids(root)
     existing = load_existing_topics(root)
     published_topics = load_published_as_topics(root)
     meta_primaries = load_article_meta_primaries(root)
@@ -475,19 +515,8 @@ def main() -> int:
 
     if args.suggest_next:
         print("=== EXCALIBUR SCOUT HELPER ===")
-        max_num = 0
-        for source in (existing, [{"topic_id": x} for x in reserved]):
-            for t in source:
-                m = re.match(r"B(\d+)", str(t.get("topic_id") or ""), flags=re.I)
-                if m:
-                    max_num = max(max_num, int(m.group(1)))
-        # Also scan article dirs / ledger rows for highest B-number.
-        for tid in reserved:
-            m = re.match(r"B(\d+)", tid, flags=re.I)
-            if m:
-                max_num = max(max_num, int(m.group(1)))
-
-        next_id = f"B{max_num + 1:02d}" if max_num else "B01"
+        extra = {str(t.get("topic_id") or "") for t in existing}
+        next_id = next_b_topic_id(reserved | extra)
         print(f"Next available topic ID: {next_id}")
         print("Topic pool: none (memory/topics/ deleted — Scout title goes to handoff only)")
         print(f"Total articles written/in_progress: {len(reserved)}")
