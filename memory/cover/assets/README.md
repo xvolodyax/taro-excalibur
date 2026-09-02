@@ -1,9 +1,8 @@
 # Cover assets
 
-Сюда Setup Visual кладёт:
-
-- референс лица/героя (если `cover_mode=host_reference`)
+- **Реф лица:** только `Виктория.png` (кириллица). Копия владельца: `cover-refs/Виктория.png`.
+- Запрещены и удалены: `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.*`, `виктория.png` (строчная).
 - moodboard / style plate
-- `style-refs/` — дополнительные референсы
+- `style-refs/` — дополнительные референсы (не лицо)
 
-Пока пусто — Cover не запускать.
+Cover i2i без `Виктория.png` не запускать. Картинку лица не генерировать.
