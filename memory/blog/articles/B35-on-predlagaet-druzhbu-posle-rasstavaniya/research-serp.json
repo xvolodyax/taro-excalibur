@@ -1,0 +1,74 @@
+{
+  "agent": "excalibur-blog",
+  "date_context": {
+    "timezone": "Europe/Moscow",
+    "today_iso": "2026-09-02",
+    "today_ru": "02.09.2026",
+    "year": 2026,
+    "month": 9,
+    "month_name_ru": "сентябрь",
+    "weekday_ru": "среда"
+  },
+  "topic": {
+    "topic_id": "B35",
+    "title": "Он предлагает дружбу после расставания",
+    "h1": "Он предлагает дружбу после расставания",
+    "slug": "on-predlagaet-druzhbu-posle-rasstavaniya",
+    "primary_query": "Он предлагает дружбу после расставания",
+    "priority": "P0"
+  },
+  "searches": [
+    {
+      "query_id": "primary_fresh",
+      "query": "Он предлагает дружбу после расставания 2026",
+      "purpose": "актуальный SERP",
+      "result_count": 0,
+      "results": [],
+      "error": "search failed for 'Он предлагает дружбу после расставания 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+      "searched_at": "2026-09-02"
+    },
+    {
+      "query_id": "title_fresh",
+      "query": "Он предлагает дружбу после расставания 2026",
+      "purpose": "SERP по человеческому title",
+      "result_count": 0,
+      "results": [],
+      "error": "search failed for 'Он предлагает дружбу после расставания 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+      "searched_at": "2026-09-02"
+    },
+    {
+      "query_id": "official_docs",
+      "query": "Он предлагает дружбу после расставания official docs 2026",
+      "purpose": "официальные docs",
+      "result_count": 0,
+      "results": [],
+      "error": "search failed for 'Он предлагает дружбу после расставания official docs 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+      "searched_at": "2026-09-02"
+    },
+    {
+      "query_id": "github_evidence",
+      "query": "site:github.com Он предлагает дружбу после расставания 2026",
+      "purpose": "GitHub evidence",
+      "result_count": 0,
+      "results": [],
+      "error": "search failed for 'site:github.com Он предлагает дружбу после расставания 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+      "searched_at": "2026-09-02"
+    },
+    {
+      "query_id": "community_experience",
+      "query": "Он предлагает дружбу после расставания forum problems опыт 2026",
+      "purpose": "форумы и живые проблемы",
+      "result_count": 0,
+      "results": [],
+      "error": "search failed for 'Он предлагает дружбу после расставания forum problems опыт 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+      "searched_at": "2026-09-02"
+    }
+  ],
+  "errors": [
+    "search failed for 'Он предлагает дружбу после расставания 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+    "search failed for 'Он предлагает дружбу после расставания 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+    "search failed for 'Он предлагает дружбу после расставания official docs 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+    "search failed for 'site:github.com Он предлагает дружбу после расставания 2026': <urlopen error _ssl.c:983: The handshake operation timed out>",
+    "search failed for 'Он предлагает дружбу после расставания forum problems опыт 2026': <urlopen error _ssl.c:983: The handshake operation timed out>"
+  ]
+}
