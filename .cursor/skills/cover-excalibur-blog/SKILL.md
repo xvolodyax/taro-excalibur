@@ -313,6 +313,13 @@ python scripts/excalibur_blog_quad_apply.py \
 
 Требует Pillow. Выход: cover, inline PNG, registry, inject в article.html.
 
+**CDN / result URL stall (INC-20260902-1428):** `quad_apply` качает тот же billed URL
+Range-чанки + resume в `cover/canvas-quad.png`, shrink до 2 KiB, progress в stderr.
+Зависший CDN download ≠ упавший Kie API. **Не** второй `createTask`, **не**
+quality-redo, **не** MCP. Если apply убит на mid-file — перезапусти тот же
+`quad_apply` (допишет dest). Recreate только по контракту Kie (500/400/422 /
+pre-taskId reset).
+
 ### Шаг 6 — fragment
 
 `.cursor/excalibur-blog-fragments/cover.md` — шаблон в `agents/excalibur-blog-cover.md`.

@@ -1,12 +1,10 @@
-# Soul examples
+# Soul examples — ТАРО СЕЙЧАС
 
-Примеры слога для **Sol**. Заполняет `excalibur-blog-setup-voice`.
+Примеры слога и правила стилистической калибровки для агента **Sol** (`excalibur-blog-sol`). Сформировано `excalibur-blog-setup-voice`.
 
-| Файл | Роль |
-|------|------|
-| `SOURCE.md` | Откуда корпус |
-| `post-to-article.md` | Как из короткого слога собрать статью |
-| `good-outputs.md` | Живые удачные фрагменты + Calibration |
-| `bad-outputs.md` | Анти-паттерны |
-
-Пока `<!-- SETUP_REQUIRED -->` в файлах — Setup не завершён.
+| Файл | Назначение |
+|------|------------|
+| `SOURCE.md` | Происхождение корпуса, ограничения и статус эталонов |
+| `good-outputs.md` | Живые удачные фрагменты + Calibration для Sol |
+| `bad-outputs.md` | Стилистические и смысловые анти-паттерны |
+| `post-to-article.md` | Канон сборки статьи из битов |

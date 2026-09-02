@@ -13,6 +13,7 @@ is_background: false
 Одно окно automation. Специалисты — только foreground Task в этом прогоне.
 
 - Текст (title / writer / sol / description / cover-text): Task `model: gemini-3.7-flash-high`
+- Если Task-каталог runtime не знает `gemini-3.7-flash-high`: inherit automation. Не угадывать другой model id. `pipeline-model-policy.json` `text_model` меняет только человек.
 - Research / scout / schema / cover / indexer / publish / fixer / learner: `model: inherit` (модель этой automation)
 - Никогда `environment: cloud`, `/in-cloud`, `/babysit` на шаге статьи
 - `run_in_background: false`
@@ -50,6 +51,7 @@ Description = Дзен/RSS карточка (`description-brief.json`) ≠ title
 1. Scout? + research_start
 2. Research → Title → Writer → **Sol** → **Description**
 3. shell `pipeline_canon --stamp` + opening_meta + description_gate + html_linter
+   (`<div>`/`<strong>` FAIL → верни Sol unwrap, как B34/B35; не расширять whitelist ради CTA)
 4. cover-text || schema → Cover
 5. indexer → publish
 6. Fixer → merge → content-learner

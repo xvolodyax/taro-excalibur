@@ -49,6 +49,11 @@ Daily / First-run **Automation** поднимает **один** Cloud Agent
 и может перебить YAML. Поэтому текстовые шаги Директор передаёт явно:
 `model: gemini-3.7-flash-high`. Не-текст: `inherit` или поле не передавать.
 
+Если каталог Task **этого** runtime не содержит `gemini-3.7-flash-high`:
+текстовые шаги — `inherit` (модель automation). Не подставлять другой slug
+(`gpt-*`, `gemini-2.*`, flash-lite). Это gap каталога, не повод менять
+`pipeline-model-policy.json` `text_model` без решения человека.
+
 ## Как Директор вызывает Task
 
 ```text

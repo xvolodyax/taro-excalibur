@@ -32,6 +32,9 @@ DEFAULT_SLOT_MAP = {
     "inline_2": "bottom_left",
     "inline_3": "bottom_right",
 }
+# Other tenants without cover_files.style_preset keep this fallback (INC-20260901-1350).
+DEFAULT_STYLE_FILE = "memory/cover/quad-style-pink-cat-digital-collage-ru.json"
+DEFAULT_STYLE_PRESET = "tenant_unset"
 
 
 def project_root() -> Path:
@@ -43,6 +46,26 @@ def project_root() -> Path:
 
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def resolve_tenant_style(root: Path, tenant: dict | None = None) -> tuple[str, str]:
+    """style_preset id + style_file from tenant-config; empty preset → pink-cat fallback."""
+    if tenant is None:
+        tenant_path = root / "shared/tenant-config.json"
+        tenant = load_json(tenant_path) if tenant_path.is_file() else {}
+    configured = str((tenant.get("cover_files") or {}).get("style_preset") or "").strip()
+    if not configured:
+        return DEFAULT_STYLE_PRESET, DEFAULT_STYLE_FILE
+    style_file = configured
+    style_preset = DEFAULT_STYLE_PRESET
+    style_path = root / style_file
+    if style_path.is_file():
+        try:
+            style = load_json(style_path)
+        except (OSError, json.JSONDecodeError):
+            style = {}
+        style_preset = str(style.get("style_id") or "").strip() or DEFAULT_STYLE_PRESET
+    return style_preset, style_file
 
 
 def save_json(path: Path, data: dict) -> None:
@@ -142,14 +165,15 @@ def build_manifest(article_dir: Path, root: Path, preserve: dict | None) -> dict
         str(cover_text.get("highlight") or "").strip()
         or str((preserve or {}).get("cover_hook_highlight") or "").strip()
     )
+    style_preset, style_file = resolve_tenant_style(root)
 
     return {
         "topic_id": topic_id,
         "canvas_file": "cover/canvas-quad.png",
         "layout": "2x2",
         "pipeline": "quad_canvas_1x_image_api",
-        "style_preset": "tenant_unset",
-        "style_file": "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
+        "style_preset": style_preset,
+        "style_file": style_file,
         "blog_hero": "memory/cover/blog-hero.json",
         "inline_types_catalog": "memory/cover/inline-visual-types.json",
         "cover_hook": hook,
