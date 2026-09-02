@@ -585,8 +585,11 @@ files_changed:
 - `.cursor/skills/director-excalibur-blog/SKILL.md`
 - `tests/test_subagent_chain_and_models.py`
 - `memory/pipeline-fix-queue.md`
-checks_run: pending
-commit: pending
+checks_run:
+- `python3 -m json.tool shared/pipeline-model-policy.json`
+- `python3 -m unittest tests.test_subagent_chain_and_models tests.test_writer_sol_pipeline`
+- rg: catalog_missing_fallback=inherit; text_model still gemini-3.7-flash-high
+commit: 3ae045f
 
 ## INC-20260902-2121-html-linter-div-strong-unwrap-b35
 status: fixed
@@ -632,6 +635,9 @@ files_changed:
 - `.cursor/agents/excalibur-blog-director.md`
 - `.cursor/skills/director-excalibur-blog/SKILL.md`
 - `memory/pipeline-fix-queue.md`
-checks_run: pending
-commit: pending
+checks_run:
+- `python3 -m unittest tests.test_html_linter` — 3/3 ok
+- `python3 scripts/excalibur_blog_html_linter.py` B35 article.html → PASS (unwrap already in tree; Fixer did not edit body)
+- rg: div/strong not in ALLOWED_TAGS; Director unwrap note
+commit: 3ae045f
 
