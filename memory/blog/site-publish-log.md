@@ -1,5 +1,20 @@
 # Site publish log
 
+## 2026-09-02 B33 on-pishet-kazhdyj-den-no-ne-zovet
+
+- method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used; Dzen Studio not used)
+- article_id: 43
+- upload: 201
+- excerpt_clear: 403 hall_token_no_patch (не FAIL)
+- first approve: **200**, `quality_score=100`, warnings `[]` — ложный 409 «нет конкретного примера» в этом прогоне не сработал
+- publish: 500 EACCES «Не удалось создать каталог публикации: /var/www/TaroSeoSite/blog/on-pishet-kazhdyj-den-no-ne-zovet»
+- resume `--resume-article-id 43`: approve 409 «проверка качества» при API `status=approved` (не example-gate); publish снова 500 тот же EACCES
+- live GET: 404 `{{SITE_BASE}}/blog/on-pishet-kazhdyj-den-no-ne-zovet/` и корень `{{SITE_BASE}}/on-pishet-kazhdyj-den-no-ne-zovet/`
+- site_status: approved; published_at: null; live_ok: false
+- sol_rewritten: no; тело не правили; «Возьмём:» не добавляли
+- director_next: needs_human_publish_dir_eacces
+- B21/B22: not touched
+
 ## 2026-09-01 B32 on-pishet-tolko-nochyu-dnem-molchit
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used)
