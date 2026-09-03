@@ -1,5 +1,22 @@
 # Site publish log
 
+## 2026-09-03 B35 lichnoe-chislo-ne-zakryvaet-staryj-chat
+
+- method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used; Dzen Studio not used)
+- article_id: 50
+- upload: 201
+- excerpt_clear: 403 hall_token_no_patch (не FAIL)
+- approve: **200**
+- publish: **200**
+- live GET **200** `{{SITE_BASE}}/blog/lichnoe-chislo-ne-zakryvaet-staryj-chat/`
+- title/H1: Личное число не закрывает старый чат
+- pack: cover.png 16:9 + inline-01/02/03; `figure.cover-hero` нет; обложка один раз как `seo-article__cover`
+- «Возьмём:» в теле нет (в related blog-card чужих постов — не трогали)
+- лид после H1 один (`p.seo-article__lead` = первый абзац)
+- тело не правили после Sol; Дзен Студия не звали
+- B21/B22: not touched
+- verdict: pass
+
 ## 2026-09-02 B34 ego-chislo-mesyaca-ne-delaet-shag
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used; Dzen Studio not used)
