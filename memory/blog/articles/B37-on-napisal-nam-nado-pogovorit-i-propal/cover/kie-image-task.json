@@ -1,0 +1,17 @@
+{
+  "task_id": "64b14841ecd290c89ac836fbb083f10f",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B37-on-napisal-nam-nado-pogovorit-i-propal/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1788468135,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "Виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}

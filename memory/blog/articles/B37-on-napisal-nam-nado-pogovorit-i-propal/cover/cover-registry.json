@@ -1,0 +1,50 @@
+{
+  "topic_id": "B37",
+  "slug": "on-napisal-nam-nado-pogovorit-i-propal",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: мужчина написал «нам надо поговорить» и пропал",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-09-03T20:42:33+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: мужчина написал «нам надо поговорить» и пропал",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: механизм сброса тревоги и избегающий паттерн поведения",
+      "h2_anchor": "Психологическая механика: сброс тревоги и избегающий паттерн",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Инфографика: четыре реальные причины внезапного молчания после фразы",
+      "h2_anchor": "Почему он молчит после этих слов: 4 реальные причины тишины",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Пошаговая практика: таймбоксинг и возврат контроля над своим вечером",
+      "h2_anchor": "Практика: как вернуть себе вечер и не быть заложницей чужого молчания",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

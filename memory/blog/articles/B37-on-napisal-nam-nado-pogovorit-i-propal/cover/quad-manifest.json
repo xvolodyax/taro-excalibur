@@ -1,0 +1,61 @@
+{
+  "topic_id": "B37",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Написал «надо поговорить» и пропал",
+  "cover_hook_highlight": "пропал",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: мужчина написал «нам надо поговорить» и пропал",
+      "scene_hint": "same woman as Виктория.png, green eyes with slight hazel tint; Host LARGE left half; tiny smartphone right; clean white #FFFFFF background",
+      "meme_caption_ru": "",
+      "sticky": "почему он замолчал"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Психологическая механика: сброс тревоги и избегающий паттерн",
+      "visual_type": "infographic_card",
+      "scene_hint": "L→R: «сбросил напряжение» → «выдохнул и ушел» → «перенос тревоги». Схема сброса эмоционального груза. NO people/faces. #FFF",
+      "alt": "Схема: механизм сброса тревоги и избегающий паттерн поведения",
+      "labels": [
+        "сбросил напряжение",
+        "выдохнул и ушел",
+        "перенос тревоги"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Почему он молчит после этих слов: 4 реальные причины тишины",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "4 карточки причин: «ступор от смелости», «пассивный контроль», «страх разговора». Четкая типографика. NO people/faces. #FFF",
+      "alt": "Инфографика: четыре реальные причины внезапного молчания после фразы",
+      "labels": [
+        "ступор от смелости",
+        "пассивный контроль",
+        "страх разговора"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Практика: как вернуть себе вечер и не быть заложницей чужого молчания",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Пошаговый процесс: «свободна до 22:00» → «верни себе вечер» → «без звонков и паники». Возврат личных границ. NO people/faces. #FFF",
+      "alt": "Пошаговая практика: таймбоксинг и возврат контроля над своим вечером",
+      "labels": [
+        "свободна до 22:00",
+        "верни себе вечер",
+        "без звонков и паники"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
