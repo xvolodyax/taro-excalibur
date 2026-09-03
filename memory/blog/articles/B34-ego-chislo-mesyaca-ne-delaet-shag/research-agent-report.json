@@ -1,0 +1,85 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B34",
+  "slug": "ego-chislo-mesyaca-ne-delaet-shag",
+  "article_dir": "memory/blog/articles/B34-ego-chislo-mesyaca-ne-delaet-shag",
+  "research_date": "2026-09-02",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "block_reason": null,
+  "fresh_signal": true,
+  "fresh_signal_window": "2026-08-26/2026-09-02",
+  "fresh_signal_summary": "Неделя крутит сентябрь 2026 как число 1 / первый шаг: Mail 27.08.2026 (универсальная 1 + оговорка после летней 9), Шняги 26.08.2026 + комменты 26–27.08 («не ждать чужого первого шага»), урок Оккультного Советника 26.08.2026 (личный месяц ≠ день ≠ год). Сегодня 02.09 Дзен «Код отношений» держит противоположный тон: сентябрь как 9 в году 1. Канал todaytaro_bot жив, но карточка дня — B33, не сюжет B34.",
+  "fresh_signal_urls": [
+    "https://horo.mail.ru/article/15407-numerologicheskij-prognoz-na-sentyabr-2026/",
+    "https://shnyagi.net/771802-karty-taro-vash-lichnyy-prognoz-na-sentyabr-2026.html",
+    "https://okkultsovetnik.ru/urok-21-lichnyj-mesyacz-i-lichnyj-den-tonkaya-nastrojka-vremeni-magiya-chisel/",
+    "https://dzen.ru/a/ao1X99jAjhWCBqKA",
+    "https://dzen.ru/todaytaro_bot"
+  ],
+  "notes_path": "memory/blog/articles/B34-ego-chislo-mesyaca-ne-delaet-shag/research-notes.md",
+  "slot": "day-1600-numerology",
+  "cta": "vk_app",
+  "overlap_avoid": ["B12", "B16", "B19", "B31", "B33"],
+  "wordstat": {
+    "provider": "yandex_cloud_search_api_v2",
+    "method": "topRequests",
+    "accessed_at": "2026-09-02",
+    "status": "OK_WITH_PARTIAL",
+    "partial_note": "личное число сентября totalCount=53 без top — не стоп",
+    "do_not_use_in_title": ["нумерология сентября"],
+    "phrases": [
+      {
+        "query": "личное число месяца",
+        "totalCount": 340,
+        "partial": false,
+        "top": [
+          {"phrase": "число личного месяца", "count": 340},
+          {"phrase": "число личного месяца 1", "count": 56},
+          {"phrase": "личное число месяца 2", "count": 46},
+          {"phrase": "личное число месяца 5", "count": 34}
+        ]
+      },
+      {
+        "query": "число месяца нумерология",
+        "totalCount": 382,
+        "partial": false,
+        "top": [
+          {"phrase": "число месяца в нумерологии", "count": 195},
+          {"phrase": "число месяца рождения нумерология", "count": 150},
+          {"phrase": "нумерология число месяц год", "count": 131},
+          {"phrase": "нумерология число дня месяца", "count": 51}
+        ]
+      },
+      {
+        "query": "личный месяц нумерология",
+        "totalCount": 72,
+        "partial": false,
+        "top": [
+          {"phrase": "нумерология личный месяц", "count": 72},
+          {"phrase": "как посчитать личный месяц в нумерологии", "count": 10},
+          {"phrase": "как рассчитать личный месяц по нумерологии", "count": 7}
+        ]
+      },
+      {
+        "query": "личное число сентября",
+        "totalCount": 53,
+        "partial": true,
+        "top": []
+      }
+    ]
+  },
+  "key_facts": [
+    "Календарный сентябрь 2026 у Mail 27.08 / Taliora / Шняги 26.08: 9+(2+0+2+6=10)=19→1.",
+    "Классический личный месяц = личный год + 9; равен 1 только при личном годе 1.",
+    "Mail «индивидуальное» число: день рождения + 9 + 10, без месяца рождения — другая схема.",
+    "Дзен 02.09 читает тот же сентябрь как месяц 9 в году 1: шаг закрыт, пока не зачистишь старое.",
+    "Личный день = личный месяц + календарный день — слой B16, не сцена B34.",
+    "Универсальный 2026=1 — слой года (B12), не его месяц.",
+    "Месяц 1 описывает ритм старта, не мотор, который заставит его назвать / позвать / решить.",
+    "Комменты Шняги 26–27.08: импульс единицы есть, готовности им воспользоваться — нет."
+  ],
+  "invented_signal": false,
+  "incident_report": "none"
+}

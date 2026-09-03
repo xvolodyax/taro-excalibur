@@ -238,7 +238,14 @@ def batch_mcp_args(batch_path: Path) -> dict[str, Any]:
         raise KieApiError("Missing prompt in jobs[0].mcp_args")
     if not isinstance(input_urls, list) or not input_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args")
-    expanded_urls = expand_input_urls(input_urls)
+    prefer_local = bool(batch.get("prefer_local_reference")) and str(
+        batch.get("local_reference") or ""
+    ).strip()
+    if prefer_local:
+        # Local file is uploaded later; keep git-safe {{SITE_BASE}} placeholders.
+        expanded_urls = [str(url).strip() for url in input_urls if str(url or "").strip()]
+    else:
+        expanded_urls = expand_input_urls(input_urls)
     if not expanded_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args after expand")
     return {
