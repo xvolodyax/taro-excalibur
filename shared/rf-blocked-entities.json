@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-08-06",
+  "updated": "2026-08-27",
   "description": "RF-blocked / high-risk entities — DENY as article hero before Scout. Not legal advice; operational canon for Excalibur BLOG + Dzen.",
   "sources": [
     "https://dzen.ru/help/ru/requirements/rules.html",
@@ -93,6 +93,15 @@
     "MAX",
     "YouTube"
   ],
-  "cta_ok": [],
-  "comment_cta": "Filled from tenant-config.cta_links by Setup"
+  "cta_ok": [
+    "https://max.ru/id531102974575_bot",
+    "https://vk.com/app54565776",
+    "https://max.ru/id531102974575_bot?startapp=ref_9BAD4149",
+    "https://t.me/TodayTaro_bot?start=id8293683394",
+    "https://t.me/TodayTaro_bot?startapp=ref_361BDE45",
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.xn--80aaoqxlidb0d.xn--p1ai/",
+    "https://www.таросейчас.рф/"
+  ],
+  "comment_cta": "cta_links (required in every article, including Dzen) + site-only Telegram + public site/Dzen channel. Telegram hrefs are site-only; do not put them in Dzen body."
 }

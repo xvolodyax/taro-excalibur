@@ -15,6 +15,9 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from excalibur_blog_scout_helper import (  # noqa: E402
     check_overlap,
+    load_published_title_topic_ids,
+    load_reserved_topic_ids,
+    next_b_topic_id,
     normalize_and_tokenize,
     transliterate_ru,
 )
@@ -76,6 +79,39 @@ class ScoutHelperQuerySlugCoverTests(unittest.TestCase):
             any("EXACT MATCH" in w["message"] for w in warnings if w["severity"] == "CRITICAL"),
             warnings,
         )
+
+    def test_suggest_next_reads_published_titles_not_only_dated_ledger(self) -> None:
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            shared = root / "shared"
+            shared.mkdir(parents=True)
+            (shared / "published-articles.md").write_text(
+                "# ledger\n\n"
+                "| topic_id | slug | status | permalink |\n"
+                "|----------|------|--------|-----------|\n"
+                "| B23 | live-slug | live | /live-slug/ |\n",
+                encoding="utf-8",
+            )
+            (shared / "published-titles.md").write_text(
+                "| topic_id | slug | title | status |\n"
+                "|----------|------|-------|--------|\n"
+                "| B12 | old | Старый | live |\n"
+                "| B31 | autumn | Осень | quality_review |\n",
+                encoding="utf-8",
+            )
+            ids = load_published_title_topic_ids(root)
+            self.assertEqual(ids, {"B12", "B31"})
+            reserved = load_reserved_topic_ids(root)
+            self.assertIn("B12", reserved)
+            self.assertIn("B31", reserved)
+            self.assertEqual(next_b_topic_id(reserved), "B32")
+
+    def test_next_b_topic_id_empty_is_b01(self) -> None:
+        self.assertEqual(next_b_topic_id(set()), "B01")
+        self.assertEqual(next_b_topic_id({"LIVE", "WP13778"}), "B01")
+        self.assertEqual(next_b_topic_id({"B09", "B1"}), "B10")
 
 
 if __name__ == "__main__":
