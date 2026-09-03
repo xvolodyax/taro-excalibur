@@ -30,33 +30,44 @@ Daily / First-run **Automation** поднимает **один** Cloud Agent
 | `Task(excalibur-blog-director)` / `Task(excalibur-blog-setup)` | Оркестратор не субагент |
 | Специалист вызывает `Task(excalibur-blog-*)` | Вложенный пайплайн (Cursor 2.5 это технически умеет на 1 уровень) |
 | Автозапуск skill специалиста в чужой роли | Writer skill на Research → статья без канона |
+| Fallback на inherit/default для текстовых ролей | Текст пишет только Gemini 3.8 Flash High; fallback запрещён |
+| Дефолтный Cloud Agent / Director / Setup пишет текст сам | При недоступности Writer/Title/Sol/Description/Cover-Text — только FAIL |
 
 Единственное вложенное Task: **Setup** → `setup-voice` и `setup-visual`.
 
 Единственная параллель: **Cover-text ∥ Schema** (два foreground Task
 в одном сообщении Директора), затем Cover.
 
-## Кто какой моделью
+## Кто какой моделью (Правило Владимира 03.09.2026)
 
-- **Текст** (H1, черновик, финальная статья, карточка Дзена, надписи обложки,
-  SOUL/article-style): YAML + Task `model: gemini-3.8-flash-high`
-  (Gemini 3.8 Flash, latest Google в каталоге Cursor на дату доков).
+- **Текст** (заголовки Title / H1, черновик смысла Writer, финальная статья Sol, карточка Дзена description, надписи обложки cover-text, SOUL/article-style setup-voice):
+  только **Gemini 3.8 Flash High**.
+  В Cloud Agents **НЕТ** id `gemini-3.8-flash-high`.
+  Правильный вызов текста: `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}` (или `reasoning_effort: "high"`).
+  **В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст.**
+  **Нет Gemini = FAIL.** Дефолтный Cloud Agent / Director / Setup **НИКОГДА** не пишет H1/Title и тело сам.
+  Запрещён fallback на inherit/default для текста. При сбое или недоступности модели/субагента — **FAIL ONLY** (только FAIL).
 - **Research, Scout, картинки, schema, publish, fixer, indexer, visual setup,
   Директор, Setup:** `model: inherit` — модель **этой** automation /
-  выбранная пользователем.
+  выбранная пользователем. Не трогать Kie/картинки.
 
 Если Task **опускает** `model`, runtime часто берёт модель родителя
 и может перебить YAML. Поэтому текстовые шаги Директор передаёт явно:
-`model: gemini-3.8-flash-high`. Не-текст: `inherit` или поле не передавать.
+`model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}`.
+Не-текст: `inherit` или поле не передавать.
 
 ## Как Директор вызывает Task
 
 ```text
 Текстовый шаг:
   subagent_type: excalibur-blog-{title|writer|sol|description|cover-text}
-  model: gemini-3.8-flash-high
+  model: gemini-3.8-flash
+  model_params:
+    reasoning_effort: high
   run_in_background: false
   (environment не передавать — default local)
+  (В Cloud Agents НЕТ id gemini-3.8-flash-high!)
+  При недоступности / сбое: FAIL ONLY. Не переключаться на inherit/default, не писать текст самому!
 
 Не-текст:
   subagent_type: excalibur-blog-{scout|research|schema|cover|indexer|publish|fixer|content-learner}

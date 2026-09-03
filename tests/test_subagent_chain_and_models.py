@@ -52,7 +52,13 @@ class SubagentChainPolicyTest(unittest.TestCase):
         self.assertFalse(self.text_agents & self.inherit_agents)
         files = {p.stem for p in (ROOT / "agents").glob("excalibur-blog-*.md")}
         self.assertEqual(files, self.expected)
-        self.assertEqual(self.policy["text_model"], "gemini-3.8-flash-high")
+        self.assertEqual(self.policy["text_model"], "gemini-3.8-flash")
+        self.assertEqual(self.policy["text_model_id"], "gemini-3.8-flash")
+        self.assertEqual(self.policy["reasoning_effort"], "high")
+        self.assertEqual(self.policy["model_params"]["reasoning_effort"], "high")
+        self.assertEqual(self.policy["text_model_slug"], "gemini-3.8-flash-high")
+        self.assertFalse(self.policy["text_fallback_allowed"])
+        self.assertEqual(self.policy["text_fallback_action"], "FAIL")
 
     def test_agent_models_match_policy(self) -> None:
         for name in sorted(self.expected):
@@ -60,11 +66,13 @@ class SubagentChainPolicyTest(unittest.TestCase):
                 (ROOT / "agents" / f"{name}.md").read_text(encoding="utf-8")
             )
             want = (
-                "gemini-3.8-flash-high"
+                "gemini-3.8-flash"
                 if name in self.text_agents
                 else "inherit"
             )
             self.assertEqual(fm.get("model"), want, name)
+            if name in self.text_agents:
+                self.assertEqual(fm.get("reasoning_effort"), "high", name)
             self.assertEqual(fm.get("is_background"), "false", name)
 
     def test_specialists_forbid_nested_task(self) -> None:
@@ -116,7 +124,8 @@ class SubagentChainPolicyTest(unittest.TestCase):
         chain = (ROOT / "shared/subagent-chain.md").read_text(encoding="utf-8")
         self.assertNotIn("WAIT.", chain)
         canon = json.loads((ROOT / "shared/pipeline-canon.json").read_text(encoding="utf-8"))
-        self.assertEqual(canon["text_model"], "gemini-3.8-flash-high")
+        self.assertEqual(canon["text_model"], "gemini-3.8-flash")
+        self.assertEqual(canon["reasoning_effort"], "high")
 
     def test_plugin_trees_match(self) -> None:
         subprocess.run(
@@ -208,6 +217,49 @@ class SubagentHookTest(unittest.TestCase):
                 "tool_name": "Task",
                 "tool_input": {
                     "subagent_type": "excalibur-blog-writer",
+                    "model": "gemini-3.8-flash",
+                },
+            }
+        )
+        self.assertEqual(out["permission"], "allow")
+
+    def test_denies_text_role_fallback_to_inherit_or_default(self) -> None:
+        for fallback_model in ["inherit", "default"]:
+            out = self._run(
+                {
+                    "hook_event_name": "preToolUse",
+                    "tool_name": "Task",
+                    "tool_input": {
+                        "subagent_type": "excalibur-blog-writer",
+                        "model": fallback_model,
+                    },
+                }
+            )
+            self.assertEqual(out["permission"], "deny")
+            self.assertIn("fallback", out["agent_message"].lower())
+            self.assertIn("fail only", out["agent_message"].lower())
+
+    def test_denies_unsupported_model_for_text_role(self) -> None:
+        out = self._run(
+            {
+                "hook_event_name": "preToolUse",
+                "tool_name": "Task",
+                "tool_input": {
+                    "subagent_type": "excalibur-blog-title",
+                    "model": "gpt-4o",
+                },
+            }
+        )
+        self.assertEqual(out["permission"], "deny")
+        self.assertIn("запрещена", out["agent_message"].lower())
+
+    def test_allows_gemini_slug_for_text_role(self) -> None:
+        out = self._run(
+            {
+                "hook_event_name": "preToolUse",
+                "tool_name": "Task",
+                "tool_input": {
+                    "subagent_type": "excalibur-blog-title",
                     "model": "gemini-3.8-flash-high",
                 },
             }
@@ -225,7 +277,7 @@ class SubagentHookTest(unittest.TestCase):
                 "transcript_path": path,
                 "tool_input": {
                     "subagent_type": "excalibur-blog-setup-voice",
-                    "model": "gemini-3.8-flash-high",
+                    "model": "gemini-3.8-flash",
                 },
             }
         )

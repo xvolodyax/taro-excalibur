@@ -9,7 +9,7 @@ description: Excalibur-2-Cloud — живой прогон статьи чере
 «Запусти Excalibur для темы **B01**»
 
 Это **одно окно Директора**. Не `/in-cloud`. Специалисты — foreground Task.
-Текст: Gemini 3.8 Flash. Research/картинки: модель automation.
+Текст: Gemini 3.8 Flash High (`model: gemini-3.8-flash`, `model_params.reasoning_effort=high`). Запрет fallback на inherit/default. В эфир с default/inherit не уходит никакой текст. Нет Gemini = FAIL, Director сам не пишет H1 и тело. Research/картинки: модель automation (Kie не трогать).
 
 ## Параметры
 
@@ -23,7 +23,7 @@ Scout? → Research → Title → Writer → Sol → Description → Cover||Sche
 → Indexer → Publish
 ```
 
-Writer / Sol / Title / Description / Cover-text — Gemini 3.8 Flash.
+Writer / Sol / Title / Description / Cover-text — только Gemini 3.8 Flash High (`model: gemini-3.8-flash`, `model_params.reasoning_effort=high`).
 Research / Cover / Publish — модель automation. Не читать тела старых статей.
 Publish BLOCK без setup / без pipeline_canon stamp.
 

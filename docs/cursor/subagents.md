@@ -21,9 +21,10 @@ YAML поля кастомного субагента (`.cursor/agents/*.md`):
 
 - `name`, `description` (роут Task)
 - `model`: `inherit` или ID (`gemini-3.8-flash`, `gpt-5.6-sol`, …)
+- `reasoning_effort`: `high` (для текстовых ролей Gemini 3.8 Flash High)
 - `readonly`, `is_background`
-- параметры модели: `gemini-3.8-flash[effort=high]` или slug
-  `gemini-3.8-flash-high`
+- параметры модели: в Cloud Agents **НЕТ** id `gemini-3.8-flash-high`. Правильный вызов: `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}` (или `reasoning_effort: "high"`).
+- Для текста строгий запрет fallback на inherit/default; дефолтный агент никогда не пишет текст сам при сбое — **FAIL ONLY**.
 
 `description` **не** должен говорить «use proactively» специалистам
 пайплайна — иначе Auto запустит Writer мимо Директора.

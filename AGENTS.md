@@ -43,6 +43,8 @@ python3 scripts/excalibur_blog_research_start.py --topic-id B111 --title "…"
 
 ## Ошибка
 
+- Fallback на inherit/default для текстовых ролей (только Gemini 3.8 Flash High)
+- Дефолтный Cloud Agent / Director / Setup пишет тело статьи, H1, Sol, description или cover-text сам (при недоступности субагентов — только явный FAIL)
 - Второй автор / rewrite-loop **поверх Sol** (Sol — единственный стилевой рерайт)
 - Термин-дамп / research-брифинг в открытии финала
 - Description = title или обрезка лида (двойная карточка в Дзене)
@@ -67,7 +69,7 @@ python3 scripts/excalibur_blog_research_start.py --topic-id <id> --title "<short
 Директор: `.cursor/agents/excalibur-blog-director.md` (не Task).  
 Setup: `.cursor/agents/excalibur-blog-setup.md` (не Task).
 
-## Одно окно + модели
+## Одно окно + модели (Правило Владимира 03.09.2026)
 
 Канон запуска: `shared/subagent-chain.md`.
 Доки Cursor: `docs/cursor/README.md`.
@@ -75,7 +77,13 @@ Setup: `.cursor/agents/excalibur-blog-setup.md` (не Task).
 
 - Один Cloud Agent / automation = Директор (или Setup). Не `/in-cloud`.
 - Специалисты — foreground Task в этом прогоне, без вложенных `Task(excalibur-blog-*)`.
-- Текст (title, writer, sol, description, cover-text, setup-voice):
-  `model: gemini-3.8-flash-high` (Gemini 3.8 Flash).
-- Research, scout, cover/картинки, schema, publish и оркестратор:
+- **Текстовые роли** (заголовки Title / H1, writer, sol, description, cover-text, setup-voice):
+  пишет **только Gemini 3.8 Flash High**.
+  В Cloud Agents **НЕТ** id `gemini-3.8-flash-high`.
+  Правильный вызов: `model: "gemini-3.8-flash"` + `model_params: {"reasoning_effort": "high"}` (или `reasoning_effort: "high"`).
+- **В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст.**
+- **Нет Gemini = FAIL.** Дефолтный Cloud Agent / Director / Setup НИКОГДА не пишет H1/Title и тело сам при сбое или недоступности модели. **FAIL only**.
+- **Строгий запрет fallback на inherit/default для текста.**
+- Research, scout, cover/картинки, schema, publish, fixer, learner и оркестратор:
   `model: inherit` (модель automation, которую выбрал человек).
+  Не трогать Kie/картинки.

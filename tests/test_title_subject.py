@@ -37,6 +37,13 @@ class TitleSubjectWordstatTest(unittest.TestCase):
         blob = (w + t).lower()
         self.assertTrue("тема" in blob or "h1" in blob)
 
+    def test_title_agent_requires_gemini_and_bans_default_text(self) -> None:
+        a = (ROOT / "agents/excalibur-blog-title.md").read_text(encoding="utf-8")
+        self.assertIn("gemini-3.8-flash", a)
+        self.assertIn("reasoning_effort", a)
+        self.assertIn("В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст", a)
+        self.assertIn("Нет Gemini = FAIL", a)
+
 
 if __name__ == "__main__":
     unittest.main()
