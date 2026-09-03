@@ -1,0 +1,53 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B36",
+  "article_dir": "memory/blog/articles/B36-on-sidit-ryadom-i-molchit",
+  "research_date": "2026-09-03",
+  "timezone": "Europe/Moscow",
+  "status": "PASS",
+  "verdict": "PASS",
+  "block_reason": null,
+  "fresh_signal": true,
+  "fresh_signal_kind": "news_this_week",
+  "fresh_signal_summary": "Psychologies 01.09.2026: ему достаточно «просто присутствовать», ей нужны разговоры и связь; канал dzen.ru/todaytaro_bot жив 03.09 (карточка ~10 ч = B35, не клон).",
+  "fresh_signal_urls": [
+    "https://www.psychologies.ru/story/mne-ne-khvataet-vnimaniya-muzha-khochu-pro-nego-vse-znat-a-on-prosto-prisutstvuet-semya-rushitsya/",
+    "https://dzen.ru/todaytaro_bot"
+  ],
+  "wordstat_status": "OK_WITH_PARTIAL",
+  "wordstat_note": "4 фразы API v2 topRequests 2026-09-03. «он рядом но молчит» 115 = totalCount-only, частот топа не было (PARTIAL, не стоп). Жир «сидишь в его телефоне» 8526 и песня «одиночество вдвоём» 1595 — не в title.",
+  "wordstat_phrases": [
+    {
+      "phrase": "он не разговаривает со мной",
+      "totalCount": 1760,
+      "has_top": true
+    },
+    {
+      "phrase": "он рядом но молчит",
+      "totalCount": 115,
+      "has_top": false,
+      "partial": true
+    },
+    {
+      "phrase": "он сидит в телефоне",
+      "totalCount": 8405,
+      "has_top": true,
+      "fat_top_not_for_title": "сидишь в его телефоне 8526"
+    },
+    {
+      "phrase": "одиночество вдвоём",
+      "totalCount": 1595,
+      "has_top": true,
+      "fat_top_not_for_title": "песня / скачать / Дорогин"
+    }
+  ],
+  "slot": "morning-09:00",
+  "cta": "bot",
+  "cta_formats": ["triplet", "cross"],
+  "not_card_of_day": true,
+  "core": "physically present, no conversation",
+  "not_neighbors": ["B23", "B32", "B33", "B24", "B29", "B35", "LIVE-on-smotrit-istorii"],
+  "household_scene_in_notes": true,
+  "notes": "research-notes.md",
+  "incident_report": "none"
+}
