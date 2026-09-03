@@ -1,15 +1,6 @@
 {
   "file": "article.html",
-  "verdict": "fail",
-  "total_errors": 8,
-  "errors": [
-    "Line 38, Col 6: Forbidden HTML tag <strong> used.",
-    "Line 39, Col 6: Forbidden HTML tag <strong> used.",
-    "Line 55, Col 6: Forbidden HTML tag <strong> used.",
-    "Line 56, Col 6: Forbidden HTML tag <strong> used.",
-    "Line 57, Col 6: Forbidden HTML tag <strong> used.",
-    "Line 57, Col 126: Forbidden HTML tag <em> used.",
-    "Line 57, Col 276: Forbidden HTML tag <em> used.",
-    "Line 58, Col 6: Forbidden HTML tag <strong> used."
-  ]
+  "verdict": "pass",
+  "total_errors": 0,
+  "errors": []
 }
