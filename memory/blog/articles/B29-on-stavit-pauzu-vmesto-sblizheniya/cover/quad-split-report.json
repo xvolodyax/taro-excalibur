@@ -1,0 +1,148 @@
+{
+  "agent": "excalibur-blog-cover-quad-split",
+  "status": "PASS",
+  "manifest": "cover/quad-manifest.json",
+  "split": {
+    "source_canvas": "memory/blog/articles/B29-on-stavit-pauzu-vmesto-sblizheniya/cover/canvas-quad.png",
+    "source_size_px": [
+      2688,
+      1520
+    ],
+    "panel_size_px": [
+      1344,
+      760
+    ],
+    "split_meta": {
+      "split_mode": "mechanical_center",
+      "h_gutter_px": null,
+      "v_gutter_px": null,
+      "requested_mode": "auto",
+      "fallback_reason": "gutter_too_far_from_center",
+      "rejected_gutter": {
+        "h_gutter_px": {
+          "start": 770,
+          "end": 840
+        },
+        "v_gutter_px": {
+          "start": 1351,
+          "end": 1424
+        },
+        "gutter_quality": {
+          "h_center_offset_px": 45.0,
+          "v_center_offset_px": 43.5,
+          "max_aspect_crop_loss": 0.1051,
+          "per_panel_crop_loss": {
+            "top_left": 0.013,
+            "top_right": 0.0766,
+            "bottom_left": 0.1051,
+            "bottom_right": 0.0435
+          },
+          "reject_reason": "gutter_too_far_from_center"
+        }
+      }
+    },
+    "output_size_px": [
+      1200,
+      675
+    ],
+    "outputs": {
+      "cover": {
+        "file": "cover/cover.png",
+        "quadrant": "top_left",
+        "box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1344,
+          "bottom": 760
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1344,
+          "bottom": 760
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Иллюстрация: он пишет каждый день, но избегает живых встреч",
+        "h2_anchor": null
+      },
+      "inline_1": {
+        "file": "cover/inline-01.png",
+        "quadrant": "top_right",
+        "box_px": {
+          "left": 1344,
+          "top": 0,
+          "right": 2688,
+          "bottom": 760
+        },
+        "raw_box_px": {
+          "left": 1344,
+          "top": 0,
+          "right": 2688,
+          "bottom": 760
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Схема: контакт в сети и реальное сближение — два разных действия",
+        "h2_anchor": "Контакт в сети и реальное сближение: почему это два разных действия"
+      },
+      "inline_2": {
+        "file": "cover/inline-02.png",
+        "quadrant": "bottom_left",
+        "box_px": {
+          "left": 0,
+          "top": 760,
+          "right": 1344,
+          "bottom": 1520
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 760,
+          "right": 1344,
+          "bottom": 1520
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Схема трёх признаков контролируемой дистанции в переписке",
+        "h2_anchor": "Как проявляется стена: три признака контролируемой дистанции"
+      },
+      "inline_3": {
+        "file": "cover/inline-03.png",
+        "quadrant": "bottom_right",
+        "box_px": {
+          "left": 1344,
+          "top": 760,
+          "right": 2688,
+          "bottom": 1520
+        },
+        "raw_box_px": {
+          "left": 1344,
+          "top": 760,
+          "right": 2688,
+          "bottom": 1520
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Чеклист: почему давление и требование ясности усиливают стену",
+        "h2_anchor": "Почему прямое давление и требования ясности усиливают стену"
+      }
+    }
+  },
+  "html_inject": [
+    "injected inline_1 after H2 — Контакт в сети и реальное сближение: почему это два разных действия",
+    "injected inline_2 after H2 — Как проявляется стена: три признака контролируемой дистанции",
+    "injected inline_3 after H2 — Почему прямое давление и требования ясности усиливают стену"
+  ]
+}

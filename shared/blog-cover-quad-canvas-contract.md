@@ -75,23 +75,32 @@ Split-скрипт в режиме `auto` пробует белые gutters у �
 
 ## Visual locks
 
-- Background: cover и все inline-панели на чистом белом `#FFFFFF`; запрещены beige/cream/off-white, gray, gradient и grunge full-panel backgrounds.
-- Cover: **digital marketing collage** (preset
-  `tenant style preset (Setup Visual)`): один hook (**18–42
-  символа**), bold condensed Cyrillic **чёрным** `#141821`, accent
-  `#FF1493` на highlight / баннерах / sticky; cool accents `#6C4DFF` /
-  `#00C2FF` sparingly. **Герой cover = один ситуативный кот LARGE**
-  (антропоморфная/сюрреалистичная бытовая сцена под тему статьи — каждый
-  раз новая). Лица ведущего на cover **нет**. Torn paper, tape, pink
-  banners, dashed arrows. Запрещены all-pink headline и штамп
-  «EXCALIBUR BLOG» (INC-20260723-1223).
-- Удаляются Drake, facepalm, human reaction, портрет host. `meme_caption_ru`
-  = `""`. Pinterest refs — mood only, не копипаст конкретного фото.
+Типографика, герой, палитра — **только** из tenant `memory/cover/cover-design-code.json` +
+`blog-hero.json` + `quad-style-*.json`. Нет дефолта «bold condensed Cyrillic»,
+`#FF1493`, белого худи или кота без лица.
+
+- Background: cover и все inline-панели на чистом белом `#FFFFFF`, если tenant
+  не задал иное; запрещены gray, gradient и grunge full-panel backgrounds.
+- **Герой:** из `blog-hero.json` `cover_mode`. `host_reference` = лицо рефа
+  (для ТАРО СЕЙЧАС — Виктория). Не подставлять кота и не убирать лицо.
+  Цвет волос копируется с рефа (`hair_color_lock.prompt`). Платина / ice-blonde /
+  осветление = `COVER IDENTITY BLOCKER`, пересобрать холст.
+  Gate: `python3 scripts/excalibur_blog_cover_identity_gate.py --article-dir …`
+- **Хук:** editorial display из `typography.hook_prompt` (журнальный кириллический:
+  high-contrast modern serif / didone **или** refined geometric grotesque,
+  нормальный трекинг). Буквы часть кадра, не стикер. Одно ударное слово —
+  та же гарнитура, цвет `accent_primary` (золото медальона, не розовый).
+- **Вторичные подписи** (sticky, inline labels): лёгкий humanist sans из
+  `typography.secondary_prompt`. Не системный UI-шрифт.
+- **Запрещено в промптах и design-code:** Arial, Roboto, Inter, Impact, Times,
+  «обычный жирный», default bold condensed, squish-bold meme, all-caps плашка
+  как наклейка. Кривые буквы / разный кегль в одном слове = blocker, пересобрать
+  холст.
+- Подпись credit (`cover_credit_html`) — кодом поверх, не моделью.
+- `meme_caption_ru` = `""`. Запрещён штамп «EXCALIBUR BLOG» (INC-20260723-1223).
 - Cover `scene_hint` ≈**80–140** chars:
-  `<hero_or_scene from blog-hero>; sticky «…»; banners per design-code; #FFF`
-- Inline: 3–6 labels; без людей; optional tiny cat accent.
-- `prefer_local_reference` + `cat-collage-style-plate.png` — i2i style lock
-  без лица host.
+  `Host LARGE left half, same woman as Виктория.png, face fills left; tiny <topic object> RIGHT only; #FFF`
+- Inline: 3–6 labels; без людей и лиц.
 
 ## Файлы
 
@@ -116,23 +125,20 @@ Split-скрипт в режиме `auto` пробует белые gutters у �
 (legacy editorial without cats:
 legacy example name — use tenant preset):
 
-- clean white base `#FFFFFF`, основной ink `#141821`, акцент accent
-  + cool violet/cyan; funny cat sticker-cutouts на cover
-- style moodboard: `memory/cover/assets/style-refs/`
-  `#FF1493` (не заливка всего текста), 16:9;
+- clean white base `#FFFFFF`, ink `#141821`, accent и typeface — из tenant
+  design-code (ТАРО: золото медальона, пыльные летние тона, editorial display);
+- style moodboard: `memory/cover/assets/style-refs/` если tenant положил;
 - cover интересный за счёт композиции, масштаба и метафоры, а не gimmick/meme;
 - inline полезен только если объясняет конкретный H2: comparison table, workflow, checklist, UI explanation или fact card;
-- **inline = тот же finished collage, что cover** (torn paper/tape/sticky/pink/
-  cool accents/shadows). Не «недоделанный» каркас рядом с жирной обложкой;
+- **inline = тот же finished язык, что cover** (свет / золото / humanist sans).
+  Не «недоделанный» каркас рядом с жирной обложкой;
 - все Cyrillic labels реально нарисованы; **empty gray placeholder boxes /
   unfinished wireframes = blocker**;
-- схема может быть чистой по структуре, но обязана оставаться в прежнем
-  фирменном языке: bold condensed **чёрная** Cyrillic, pink только как accent
-  marker/sticky/underline, paper/card, tape/sticky layers. Голый минималистичный
-  SaaS-slide = blocker; all-pink headline = blocker;
-- во всех inline запрещены герой, люди, лица, мемы и шутки; black+pink
-  paper/tape/sticky collage layers сохраняются как фирменный стиль;
-- `local_reference` / style plate = finished collage sample (mood quality bar),
+- схема может быть чистой по структуре, но обязана оставаться в фирменном
+  языке тенанта. Голый минималистичный SaaS-slide = blocker;
+  all-caps плашка-наклейка = blocker; bold condensed как дефолт = blocker;
+- во всех inline запрещены герой, люди, лица, мемы и шутки;
+- `local_reference` / style plate = finished sample (mood quality bar),
   не geometric color blocks.
 
 См. `memory/cover/inline-visual-types.json`. Выбор по keywords H2 в `excalibur_blog_quad_manifest.py`.
@@ -140,7 +146,9 @@ legacy example name — use tenant preset):
 ## Blockers
 
 - `❌ COVER HERO BLOCKER` — нет `reference_url_hosted` или image call без `input_urls`
-- `❌ KIE API BLOCKER` — нет `KIE_API_KEY`; non-retryable createTask/recordInfo fail; retryable 500 exhausted; image-fetch File Upload exhausted; sensitive 422 после одного agent soften+recreate; или polling без URL. Первый `failCode=422` sensitive ≠ permanent blocker, пока доступен controlled rewrite. При живом `KIE_API_KEY` не уходить в MCP после 422. После 500×2 / `--max-create-retries` exhausted: Director same-batch re-run Kie script на неизменённом `quad-mcp-batch.json` + Cover apply-only (не quality-redo; B102/B104).
+- `❌ COVER IDENTITY BLOCKER` — нет hair lock phrase в промпте, или волосы платина / ice-blonde / сильно светлее рефа. Пересобрать холст, не чинить волосы снаружи. Gate: `excalibur_blog_cover_identity_gate.py`
+- `❌ KIE API BLOCKER` — нет `KIE_API_KEY`; non-retryable createTask/recordInfo fail; retryable 500 exhausted; image-fetch File Upload exhausted; sensitive 422 после одного agent soften+recreate; или polling без URL **после** late-poll + `--resume` (job already terminal fail, not still-generating). Первый `failCode=422` sensitive ≠ permanent blocker, пока доступен controlled rewrite. При живом `KIE_API_KEY` не уходить в MCP после 422. После 500×2 / `--max-create-retries` exhausted: Director same-batch re-run Kie script на неизменённом `quad-mcp-batch.json` + Cover apply-only (не quality-redo; B102/B104).
+- `❌ KIE POLL WINDOW EXHAUSTED` (exit 2) — job всё ещё `waiting`/`generating` после `--max-wait` + late-poll extend. **Не** новый create и **не** 500×2 path. Cover: `--resume` / `--task-id` тот же job. Late 500 → script max-1 recreate. Recreate poll: `--max-create-retries 0` (INC-20260831-1508 / B28).
 - `❌ COVER MCP TIMEOUT BLOCKER` — image tool вернул повторный timeout, а status/result tool подтверждает failed/no result
 - `❌ COVER MCP ASYNC BLOCKER` — sync `gpt-image-2` обрывается по client timeout, а MCP server не даёт `task_id` и отдельный status/result tool для получения позднего URL
 - **4 отдельных image jobs** на cover+inline — запрещено

@@ -1,0 +1,50 @@
+{
+  "topic_id": "B28",
+  "slug": "on-obyavilsya-spustya-mesyacy-molchaniya",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: написал после молчания, а шагов нет",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-31T15:08:29+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: написал после молчания, а шагов нет",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: почему память стирает причины расставания при первом сообщении",
+      "h2_anchor": "Почему память стирает причины расставания при первом сообщении",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема: сообщение в чате не равно возвращению в отношения",
+      "h2_anchor": "«Он снова в чате» не означает «он снова в отношениях»",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Схема: оценивать следующий шаг, а не додумывать мотивы",
+      "h2_anchor": "Оценивать следующий шаг, а не додумывать мотивы",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

@@ -99,21 +99,83 @@ def compact(value: object, limit: int) -> str:
     return text[: limit - 1].rstrip() + "…"
 
 
+# Never fall back to pink-cat / bold-condensed defaults. Tenant design-code wins.
+DEFAULT_ACCENT_INK = "#141821"
+DEFAULT_HOOK_TYPE = (
+    "editorial display Cyrillic (high-contrast modern serif/didone OR refined "
+    "geometric grotesque, normal tracking); letters are part of the frame, not a sticker; "
+    "not Arial/Roboto/Inter/Impact/Times; not default bold condensed"
+)
+DEFAULT_SECONDARY_TYPE = (
+    "lighter designer humanist sans for sticky and inline labels, not system Arial/Roboto/Inter"
+)
+DEFAULT_TYPE_BAN = (
+    "Ban type: Arial, Roboto, Inter, Impact, Times, default bold condensed, "
+    "squish-bold meme, all-caps sticker plaque, crooked letters, mixed sizes inside one word."
+)
+
+
+def palette_accent(design_code: dict) -> str:
+    palette = design_code.get("color_palette") or {}
+    accent = str(palette.get("accent_primary") or "").strip()
+    if accent.upper() == "#FF1493":
+        accent = ""
+    return accent or DEFAULT_ACCENT_INK
+
+
+def hook_type_lock(design_code: dict) -> str:
+    ty = design_code.get("typography") or {}
+    text = str(ty.get("hook_prompt") or "").strip()
+    if "bold condensed" in text.lower():
+        text = ""
+    return compact(text or DEFAULT_HOOK_TYPE, 100)
+
+
+def secondary_type_lock(design_code: dict) -> str:
+    ty = design_code.get("typography") or {}
+    text = str(ty.get("secondary_prompt") or "").strip()
+    return compact(text or DEFAULT_SECONDARY_TYPE, 80)
+
+
+def typography_ban(design_code: dict) -> str:
+    ty = design_code.get("typography") or {}
+    text = str(ty.get("forbidden_prompt") or "").strip()
+    return compact(text or DEFAULT_TYPE_BAN, 150)
+
+
+REQUIRED_HAIR_PHRASE = (
+    "hair color copied exactly from reference photo, same root depth, "
+    "do not lighten, no platinum"
+)
+
+
+def identity_hair_prompt(hero: dict) -> str:
+    if not hero:
+        return ""
+    lock = hero.get("hair_color_lock")
+    if not isinstance(lock, dict):
+        lock = (hero.get("visual_lock") or {}).get("hair_color_lock") or {}
+    if not isinstance(lock, dict):
+        lock = {}
+    text = str(lock.get("prompt") or "").strip()
+    if text:
+        return compact(text, 160)
+    if str(hero.get("cover_mode") or "") == "host_reference":
+        return REQUIRED_HAIR_PHRASE
+    return ""
+
+
 def inline_panel_prompt(slot: dict, types_catalog: dict) -> str:
     type_id = slot.get("visual_type") or "infographic_card"
     type_def = (types_catalog.get("types") or {}).get(type_id) or {}
     label = type_def.get("label_ru", type_id)
-    h2 = compact(slot.get("h2_anchor", ""), 95)
+    h2 = compact(slot.get("h2_anchor", ""), 70)
     scene = compact(slot.get("scene_hint", ""), INLINE_SCENE_HINT_COMPACT)
     base = f"{label}; H2: «{h2}»; scene: {scene}; no host face."
     labels = [str(x).strip() for x in (slot.get("labels") or []) if str(x).strip()]
     if labels:
         exact = ", ".join(f"«{x}»" for x in labels)
-        base += (
-            f" TEXT LOCK: render ONLY these exact Russian strings on this panel: "
-            f"{exact}. Every letter in Cyrillic, exactly as written. "
-            "No other words, no English, no invented headlines."
-        )
+        base += f" TEXT LOCK: ONLY these exact Russian strings: {exact}."
     return base
 
 
@@ -318,11 +380,11 @@ def build_prompt(
     cat_hero = style_is_situational_cat_hero(style)
 
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
+    accent = palette_accent(design_code)
     highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
-        f'hook text must match exactly — do not substitute «время»/traffic markers'
+        f'paint ONLY the highlight word "{highlight}" in accent {accent}'
         if highlight
-        else "paint at most ONE punch word in hot-pink #FF1493"
+        else f"paint at most ONE punch word in accent {accent}"
     )
     cover_scene = sanitize_cover_scene_hint(
         str(cover.get("scene_hint") or ""), highlight
@@ -330,21 +392,29 @@ def build_prompt(
     cover_hook_text = compact(manifest.get("cover_hook", ""), 120)
     cover_sticky = compact(str(cover.get("sticky") or ""), 48)
     sticky_lock = (
-        f" Small pink sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+        f" Small secondary line EXACTLY «{cover_sticky}» in {secondary_type_lock(design_code)}."
         if cover_sticky
         else ""
     )
-    # Prefer style preset locks when present (cat digital collage vs editorial).
+    tenant_inline = compact(
+        style.get("inline_prompt_suffix")
+        or design_code.get("inline_information_block")
+        or "",
+        280,
+    )
+    type_ban = typography_ban(design_code)
+    hook_type = hook_type_lock(design_code)
+    # Prefer style preset locks when present (tenant design-code over leftover defaults).
     style_prefix = compact(
         style.get("global_prompt_prefix")
         or design_code.get("cover_panel_prompt_block")
         or "",
-        520,
+        400,
     )
     if not style_prefix:
         style_prefix = (
-            "Dense collage RU editorial, WHITE #FFFFFF, BLACK #141821 Cyrillic ink, "
-            "hot-pink #FF1493 one accent only. Every panel: torn paper, tape, "
+            f"Dense collage RU editorial, WHITE #FFFFFF, BLACK #141821 Cyrillic ink, "
+            f"accent {accent} one punch only. Every panel: torn paper, tape, "
             "≥2 topic stickers, sticky, ≥1 educational UI card (labels from scene_hint). "
             "Busy collage, not sterile."
         )
@@ -396,12 +466,14 @@ def build_prompt(
             "keyword spam/«Ключевые темы»/Latin lookalike Cyrillic/pipeline stamps/"
             "EXCALIBUR badge or sword."
         )
+        # INC-20260831-0636: type+calendar/mug must not drop the host on first billed gen.
         cover_scene_tail = (
-            "host+face; dense collage + topic object; no sterile/meme/canned EN chat filler."
+            "Host LARGE left half, face fills left (Виктория.png i2i); "
+            "tiny topic prop RIGHT only; type cannot drop/replace host."
         )
         reference_line = (
-            "REFERENCE FACE only top-left when cover_mode=host_reference: use blog-hero visual_lock; "
-            "expressive editorial pose; no headphones; no meme reaction."
+            "i2i Виктория.png: face LARGE left half first; "
+            "type+calendar/mug RIGHT only; NEVER faceless cover."
         )
         inline_suffix = (
             "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
@@ -409,6 +481,12 @@ def build_prompt(
             "Neg: sterile white, all-pink headline, keyword spam, watermark, logo, 9:16, "
             "unreadable text, extra faces."
         )
+    if tenant_inline:
+        inline_suffix = tenant_inline
+    ban_line = f"{ban_line} {type_ban}"
+    hair_lock = identity_hair_prompt(hero)
+    if hair_lock:
+        reference_line = f"{reference_line} HAIR LOCK: {hair_lock}."
     lines = [
         # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
         # badge on every panel (INC-20260723-1223 / user correction).
@@ -416,13 +494,13 @@ def build_prompt(
         "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
         "",
         ban_line,
-        "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
+        "TEXT LANGUAGE LOCK: visible text is Russian Cyrillic only. Render TEXT LOCK strings exactly. No English headlines, no invented words.",
         "",
         reference_line,
         "",
-        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
-        f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
-        "no keyword list card; "
+        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY «{cover_hook_text}» — {hook_type}, ink #141821, '
+        f'{highlight_rule}; no other large headline.{sticky_lock} '
+        "no keyword list; "
         f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}",
         "",
         f"Top-right inline: {inline_panel_prompt(i1, types_catalog)}",
@@ -457,22 +535,30 @@ def main() -> int:
 
     manifest = load_json(manifest_path)
     hero = load_json(root / manifest.get("blog_hero", "memory/cover/blog-hero.json"))
-    style = load_json(
-        root
-        / manifest.get(
-            "style_file",
-            "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
-        )
-    )
+    default_style = "memory/cover/cover-design-code.json"
+    tenant_path = root / "shared/tenant-config.json"
+    if tenant_path.is_file():
+        try:
+            configured = str(
+                (load_json(tenant_path).get("cover_files") or {}).get("style_preset") or ""
+            ).strip()
+            if configured:
+                default_style = configured
+        except json.JSONDecodeError:
+            pass
+    style = load_json(root / manifest.get("style_file", default_style))
     types_path = root / manifest.get("inline_types_catalog", "memory/cover/inline-visual-types.json")
     types_catalog = load_json(types_path) if types_path.is_file() else {"types": {}}
     design_code_path = root / style.get("design_code", "memory/cover/cover-design-code.json")
     design_code = load_json(design_code_path) if design_code_path.is_file() else {}
 
     cat_hero = style_is_situational_cat_hero(style)
-    local_reference = str(style.get("local_reference") or "").strip()
+    local_reference = str(
+        style.get("local_reference") or hero.get("reference_image") or ""
+    ).strip()
     prefer_local_reference = False
-    if cat_hero and local_reference:
+    host_local = (not cat_hero) and bool(local_reference) and (root / local_reference).is_file()
+    if (cat_hero and local_reference) or host_local:
         local_path = root / local_reference
         if not local_path.is_file():
             print(
@@ -560,7 +646,7 @@ def main() -> int:
             "prefer_local_reference": prefer_local_reference,
             "local_reference": local_reference if prefer_local_reference else "",
             "output_canvas": "cover/canvas-quad.png",
-            "expected_runtime_seconds": 900,
+            "expected_runtime_seconds": 1500,
             "preferred_image_flow": {
                 "provider": "kie.ai",
                 "model": KIE_IMAGE_MODEL,
@@ -575,9 +661,11 @@ def main() -> int:
                 "timeout_error": "HTTP MCP tool execution failed: MCP error -32001: Request timed out",
                 "not_final_blocker": True,
                 "sync_create_max_attempts": 1,
-                "backend_max_wait_seconds": 900,
+                "backend_max_wait_seconds": 1500,
                 "recommended_async_poll_interval_seconds": 10,
-                "recommended_async_max_wait_seconds": 900,
+                "recommended_async_max_wait_seconds": 1500,
+                "late_poll_extend_seconds": 600,
+                "poll_exhausted_resume": "If still waiting/generating after --max-wait: --resume / --task-id same job (no new create). Recreate poll: --max-create-retries 0.",
                 "backend_note": "If KIE_API_KEY is set, skip MCP entirely and use preferred_image_flow. Sync MCP -32001 is client timeout; do not blind-retry create.",
                 "preferred_async_flow": {
                     "primary": "python scripts/excalibur_blog_kie_gpt_image2_api.py --article-dir <article_dir> when KIE_API_KEY is set.",
