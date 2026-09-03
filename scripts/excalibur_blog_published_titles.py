@@ -4,16 +4,20 @@
 Writer may know WHAT was already covered (title + slug), but must never open
 old article.html / drafts / lessons. This script reads only:
 - shared/published-articles.md
+- existing shared/published-titles.md (never wipe if ledger has no dates)
 - article.meta.json title/h1 (never article.html)
 """
 from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 from typing import Any
 
 from excalibur_blog_article_meta_index import is_stale_article_dirname
+
+TOPIC_ID_RE = re.compile(r"^B\d+$", re.I)
 
 HEADER = """# Published titles only — не читать тела статей
 
@@ -36,26 +40,118 @@ def humanize_slug(slug: str) -> str:
 
 
 def load_ledger_rows(root: Path) -> list[dict[str, str]]:
+    """Read published-articles.md.
+
+    Two ledger shapes exist:
+    - dated: ``| 2026-09-01 | B32 | slug | url | status |``
+    - dateless (current tenant): ``| B32 | slug | status | permalink |``
+
+    Dated rows are authoritative when present. Dateless ``| B\\d+ |`` rows
+    still count so write_titles can add new IDs without requiring a date.
+    """
     path = root / "shared" / "published-articles.md"
     rows: list[dict[str, str]] = []
     if not path.is_file():
         return rows
     for line in path.read_text(encoding="utf-8").splitlines():
-        if not line.startswith("| 20"):
+        if not line.startswith("|"):
             continue
         cells = [c.strip() for c in line.strip().strip("|").split("|")]
-        if len(cells) < 5:
+        if line.startswith("| 20") and len(cells) >= 5:
+            rows.append(
+                {
+                    "date": cells[0],
+                    "topic_id": cells[1].upper(),
+                    "slug": cells[2].strip().strip("/"),
+                    "url": cells[3],
+                    "status": cells[4].lower(),
+                }
+            )
+            continue
+        if len(cells) >= 3 and TOPIC_ID_RE.match(cells[0]):
+            rows.append(
+                {
+                    "date": "",
+                    "topic_id": cells[0].upper(),
+                    "slug": cells[1].strip().strip("/"),
+                    "url": cells[3] if len(cells) > 3 else "",
+                    "status": cells[2].lower(),
+                }
+            )
+    return rows
+
+
+def load_existing_title_rows(path: Path) -> list[dict[str, str]]:
+    """Parse shared/published-titles.md table rows (never article bodies)."""
+    rows: list[dict[str, str]] = []
+    if not path.is_file():
+        return rows
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) < 4:
+            continue
+        topic_id = cells[0].strip()
+        if topic_id.lower() == "topic_id" or set(topic_id) <= {"-"}:
+            continue
+        if not (TOPIC_ID_RE.match(topic_id) or topic_id.upper() == "LIVE"):
             continue
         rows.append(
             {
-                "date": cells[0],
-                "topic_id": cells[1].upper(),
-                "slug": cells[2].strip().strip("/"),
-                "url": cells[3],
-                "status": cells[4].lower(),
+                "topic_id": topic_id.upper() if TOPIC_ID_RE.match(topic_id) else topic_id,
+                "slug": cells[1].strip().strip("/"),
+                "title": cells[2],
+                "status": cells[3].lower(),
+                "date": "",
             }
         )
     return rows
+
+
+def title_row_key(row: dict[str, str]) -> str:
+    tid = (row.get("topic_id") or "").strip()
+    if TOPIC_ID_RE.match(tid):
+        return tid.upper()
+    return f"{tid}|{(row.get('slug') or '').strip()}"
+
+
+def title_sort_key(row: dict[str, str]) -> tuple[int, int, str]:
+    tid = (row.get("topic_id") or "").strip()
+    digits = re.search(r"\d+", tid) if TOPIC_ID_RE.match(tid) else None
+    if digits:
+        return (0, int(digits.group(0)), tid.upper())
+    return (1, 0, tid)
+
+
+def merge_title_rows(
+    existing: list[dict[str, str]],
+    built: list[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Keep existing titles; ledger/meta rows update matching keys.
+
+    Durable: a dateless or empty ledger must not wipe published-titles.md.
+    """
+    merged: dict[str, dict[str, str]] = {}
+    for row in existing:
+        merged[title_row_key(row)] = dict(row)
+    for row in built:
+        key = title_row_key(row)
+        old = merged.get(key)
+        incoming = dict(row)
+        if old:
+            new_title = (incoming.get("title") or "").strip()
+            old_title = (old.get("title") or "").strip()
+            if old_title and (
+                not new_title or new_title == humanize_slug(incoming.get("slug") or "")
+            ):
+                incoming["title"] = old_title
+            if not incoming.get("status"):
+                incoming["status"] = old.get("status") or ""
+            if not incoming.get("slug"):
+                incoming["slug"] = old.get("slug") or ""
+        merged[key] = incoming
+    return sorted(merged.values(), key=title_sort_key)
 
 
 def title_from_meta(article_dir: Path) -> str:
@@ -102,7 +198,15 @@ def build_titles(
     *,
     statuses: set[str] | None = None,
 ) -> list[dict[str, str]]:
-    allowed = statuses or {"published", "in_progress", "draft_ready"}
+    allowed = statuses or {
+        "published",
+        "in_progress",
+        "draft_ready",
+        "live",
+        "quality_review",
+        "hall-anti-dup",
+        "hall-pack",
+    }
     blog_dir = root / "memory" / "blog" / "articles"
     latest: dict[str, dict[str, str]] = {}
     for row in load_ledger_rows(root):
@@ -121,7 +225,7 @@ def build_titles(
             "status": row["status"],
             "date": row["date"],
         }
-    return sorted(latest.values(), key=lambda r: (r["date"], r["topic_id"]))
+    return sorted(latest.values(), key=title_sort_key)
 
 
 def render_markdown(rows: list[dict[str, str]]) -> str:
@@ -146,9 +250,17 @@ def write_titles(
     out_path: Path | None = None,
     article_dir: Path | None = None,
 ) -> dict[str, Any]:
-    rows = build_titles(root)
-    text = render_markdown(rows)
     shared_path = out_path or (root / "shared" / "published-titles.md")
+    built = build_titles(root)
+    existing = load_existing_title_rows(shared_path)
+    if not built and existing:
+        # Ledger has no dated (or dateless B-id) rows — do not wipe titles.
+        rows = existing
+    elif existing:
+        rows = merge_title_rows(existing, built)
+    else:
+        rows = built
+    text = render_markdown(rows)
     shared_path.parent.mkdir(parents=True, exist_ok=True)
     shared_path.write_text(text, encoding="utf-8")
     article_copy: Path | None = None

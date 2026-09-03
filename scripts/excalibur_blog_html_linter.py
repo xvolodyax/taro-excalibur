@@ -2,7 +2,7 @@
 """Excalibur BLOG HTML Tag Linter & Sanitizer.
 
 Enforces strict whitelist of HTML tags, prevents unclosed tags, and checks for malformed markup.
-Allowed tags: h2, h3, p, b, i, a, ul, ol, li, blockquote, table, thead, tbody, tr, th, td
+Allowed tags: h1, h2, h3, p, b, i, a, ul, ol, li, blockquote, table, thead, tbody, tr, th, td
 """
 from __future__ import annotations
 
@@ -17,6 +17,7 @@ from typing import Any
 # Whitelist tags based on excalibur contract and cover inline figure injection.
 # Keep in sync with shared/excalibur-article-writing-contract.md (body tags).
 ALLOWED_TAGS: set[str] = {
+    "h1",
     "h2",
     "h3",
     "p",

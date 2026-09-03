@@ -152,6 +152,7 @@ python3 scripts/excalibur_blog_kie_gpt_image2_api.py --article-dir "$ARTICLE"
 #    После -32001 не retry sync create вслепую; нужен URL/task_id/status tool.
 
 # 6. Скачать + split + inject
+#    CDN stall на result URL: тот же quad_apply (Range-resume). Не второй createTask.
 python scripts/excalibur_blog_quad_apply.py \
   --article-dir "$ARTICLE" \
   --inject-html
