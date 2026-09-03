@@ -4,6 +4,43 @@
 Исторические scorecard / judge / ensemble — read-only, не шаблон.
 Writer prompt и Sol skill сюда не раздувать автоматически.
 
+## LESSON-20260903-2045-B37-he-texted-need-to-talk-and-vanished
+status: proposed
+topic_id: B37
+category: other
+confidence: low
+
+### Evidence
+- artifact: none (skipped under human-first-v2)
+  finding: `content-evidence-report.json` отсутствует; evidence_gate=SKIP, не BLOCK. Report не invent'ился. Gate-артефакт: `content-evidence-gate.json` status=SKIP.
+- process: `research-notes.md` + `title-brief.json` + `research-agent-report.json`
+  finding: вечерний слот 03.09.2026 / 20:00 острый контакт / CTA bot (3 бесплатных расклада; приложение для «Суть – Тень – Вектор»). Scout канон: Дзен → сайт (только заголовки) → неделя → Wordstat. Живой сигнал недели: в канале Дзен ТАРО СЕЙЧАС (todaytaro_bot) разобран острый триггер подвешенного вечернего разговора «нам надо поговорить» с уходом в паузу. Отраслевые материалы Psychologies и Psychodemia подтверждают избегающее поведение и сброс тревоги. Тема не пересекается с B17, B18, B23, B29, B36. Не «карта дня». H1 — живая сцена («Он написал «нам надо поговорить» и пропал»), жирная фраза Wordstat изолированно в H1 не вставлялась. Wordstat OK_WITH_PARTIAL.
+- process: `cover/quad-mcp-batch.json` + `cover/cover-registry.json` + `cover/kie-image-task.json` + `cover/quad-split-report.json` + `site-publish-result.json#strip` + `memory/cover/blog-hero.json`
+  finding: лицо только `Виктория.png` (`prefer_local_reference` + local file); style `victoria-studio`; глаза `green+hazel` (зелёные с легким карим). Рефы `viktoriaref.png` / latin alias / sheet запрещены и не использовались. Пакет: cover.png 16:9 + 3 врезки inline-01..03. В теле статьи нет `figure.cover-hero`. Kie Image 2 i2i выполнен с 1 попытки (`create_attempt=1`, task_id `64b14841ecd290c89ac836fbb083f10f`, state=success). Split + inject в article.html выполнен штатно через Range download.
+- process: `site-publish-result.json`
+  finding: публикация выполнена напрямую через site-api (`SITE_PUBLISH_TOKEN`; Hall / Дзен Студия не привлекались). Upload 201 (`article_id=51`), excerpt_clear 403 (не FAIL), approve 200, publish 200, live GET 200 (`live_ok=true`). Пермалинк: `{{SITE_BASE}}/blog/on-napisal-nam-nado-pogovorit-i-propal/`. Слот 21:21 статьей не закрывался. «Возьмём:» в тексте нет, лид после H1 один, тело после Sol не редактировалось.
+- metrika_signal: none
+  finding: `excalibur_blog_metrika_fetch.py --days 30 --ingest` пропущен / credentials blocker (секреты Метрики не заданы в Cloud Secrets).
+
+### Named blockers
+- EVIDENCE_SKIPPED
+- METRIKA FEEDBACK BLOCKER
+
+### Keep
+- Scout берёт тему из живого сигнала (Дзен → сайт → неделя → Wordstat).
+- H1 формулируется как живое наблюдаемое предложение, жирная фраза Wordstat не ставится ярлыком.
+- Без формулировки «карта дня».
+- Лицо на обложке строго `Виктория.png`, глаза зелёные с легким карим, стиль `victoria-studio`.
+- В теле статьи только три inline-врезки, обложка повторно в текст не ставится (`figure.cover-hero` отсутствует).
+- Сайт в текст не лезет, слово «Возьмём:» исключено.
+- Публикация ключом `SITE_PUBLISH_TOKEN` (upload 201 → approve 200 → publish 200 → live 200). Hall не вызывается.
+
+### Never again
+- Писать «карта дня» в вечернем слоте.
+- Использовать `viktoriaref.png` вместо `Виктория.png`.
+- Вставлять `figure.cover-hero` в тело статьи.
+- Переписывать слог статьи после Sol или добавлять искусственные маркеры «Возьмём:».
+
 ## LESSON-20260902-1455-B34-month-number-no-step
 status: proposed
 topic_id: B34
