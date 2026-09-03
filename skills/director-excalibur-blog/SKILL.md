@@ -51,16 +51,16 @@ python3 scripts/excalibur_blog_research_start.py --topic-id <ID> --title "<short
 `Task(excalibur-blog-scout)` · `model: inherit` · foreground.
 ### 1–2 Research → Title
 `Task(excalibur-blog-research)` · `model: inherit`.  
-`Task(excalibur-blog-title)` · `model: gemini-3.7-flash-high`.
+`Task(excalibur-blog-title)` · `model: gemini-3.8-flash-high`.
 ### 3 Writer (смысл)
-`Task(excalibur-blog-writer)` · `model: gemini-3.7-flash-high` → `drafts/writer.html`.
+`Task(excalibur-blog-writer)` · `model: gemini-3.8-flash-high` → `drafts/writer.html`.
 
 ### 3b Sol (финальный слог)
-`Task(excalibur-blog-sol)` · `model: gemini-3.7-flash-high` → `article.html` + `drafts/variant-a.html`  
+`Task(excalibur-blog-sol)` · `model: gemini-3.8-flash-high` → `article.html` + `drafts/variant-a.html`  
 из смысла Writer + SOUL/examples. Не выдумывает факты.
 
 ### 3c Description (карточка Дзена / RSS)
-`Task(excalibur-blog-description)` · `model: gemini-3.7-flash-high` → `description-brief.json`  
+`Task(excalibur-blog-description)` · `model: gemini-3.8-flash-high` → `description-brief.json`  
 по `shared/dzen-description-rules.md`. Не копирует title и не режет opening.
 
 ### 4 Stamp + structural checks (shell, не LLM)

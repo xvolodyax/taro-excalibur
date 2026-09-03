@@ -1,7 +1,7 @@
 ---
 name: excalibur-blog-sol
 description: "Sol: rewrite Writer meaning into tenant-SOUL final article.html. Director-chain only; no nested Task/cloud."
-model: gemini-3.7-flash-high
+model: gemini-3.8-flash-high
 readonly: false
 is_background: false
 ---

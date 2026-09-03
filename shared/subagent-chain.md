@@ -39,22 +39,22 @@ Daily / First-run **Automation** поднимает **один** Cloud Agent
 ## Кто какой моделью
 
 - **Текст** (H1, черновик, финальная статья, карточка Дзена, надписи обложки,
-  SOUL/article-style): YAML + Task `model: gemini-3.7-flash-high`
-  (Gemini 3.7 Flash, latest Google в каталоге Cursor на дату доков).
+  SOUL/article-style): YAML + Task `model: gemini-3.8-flash-high`
+  (Gemini 3.8 Flash, latest Google в каталоге Cursor на дату доков).
 - **Research, Scout, картинки, schema, publish, fixer, indexer, visual setup,
   Директор, Setup:** `model: inherit` — модель **этой** automation /
   выбранная пользователем.
 
 Если Task **опускает** `model`, runtime часто берёт модель родителя
 и может перебить YAML. Поэтому текстовые шаги Директор передаёт явно:
-`model: gemini-3.7-flash-high`. Не-текст: `inherit` или поле не передавать.
+`model: gemini-3.8-flash-high`. Не-текст: `inherit` или поле не передавать.
 
 ## Как Директор вызывает Task
 
 ```text
 Текстовый шаг:
   subagent_type: excalibur-blog-{title|writer|sol|description|cover-text}
-  model: gemini-3.7-flash-high
+  model: gemini-3.8-flash-high
   run_in_background: false
   (environment не передавать — default local)
 

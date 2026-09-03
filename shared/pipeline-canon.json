@@ -111,5 +111,5 @@
   },
   "subagent_chain": "shared/subagent-chain.md",
   "model_policy": "shared/pipeline-model-policy.json",
-  "text_model": "gemini-3.7-flash-high"
+  "text_model": "gemini-3.8-flash-high"
 }

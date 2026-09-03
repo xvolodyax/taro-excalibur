@@ -1,7 +1,7 @@
 ---
 name: excalibur-blog-cover-text
 description: "Текст обложки: точные надписи по-русски в cover-text.json и gate PASS до генерации картинки. Director-chain only; no nested Task/cloud."
-model: gemini-3.7-flash-high
+model: gemini-3.8-flash-high
 readonly: false
 is_background: false
 ---

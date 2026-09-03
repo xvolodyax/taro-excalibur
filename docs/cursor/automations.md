@@ -14,7 +14,7 @@
 Модель automation — это `inherit` для Директора, Setup, Research, Cover,
 Publish. Её не хардкодим.
 
-Текстовые субагенты **переопределяют** модель на Gemini 3.7 Flash
+Текстовые субагенты **переопределяют** модель на Gemini 3.8 Flash
 (YAML + явный `model` в Task), независимо от того, Grok это или Composer.
 
 ## Как настраивать Excalibur
