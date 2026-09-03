@@ -1,0 +1,64 @@
+{
+  "topic_id": "B30",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Обещал приехать, а в ответ тишина",
+  "cover_hook_highlight": "тишина",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: обещал приехать, а в ответ тишина",
+      "scene_hint": "Host LARGE left half, same woman as Виктория.png, face fills left, eyes green+hazel; tiny silent phone RIGHT only; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "форс-мажор или пустые слова"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Разница между твёрдым словом и туманной возможностью",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "BAD «туман» red X vs GOOD «твёрдое слово» green: скользкие фразы, нет точного времени, обещание на словах, вечер в ожидании. L→R, туман ≠ слово. NO people/faces/emoji/silhouettes",
+      "alt": "Схема: твёрдое слово и туманная возможность — в чём разница",
+      "labels": [
+        "скользкие фразы",
+        "нет точного времени",
+        "обещание на словах",
+        "вечер в ожидании"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Единичный форс-мажор против повторяющегося срыва",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Workflow 1→2 vs 3→4: предупредил заранее + назвал новую дату = форс-мажор; сообщение ночью + слова без поступков = повтор. Исход: смотри паттерн. NO people/faces/emoji/silhouettes",
+      "alt": "Схема: единичный форс-мажор против повторяющегося срыва",
+      "labels": [
+        "предупредил заранее",
+        "назвал новую дату",
+        "сообщение ночью",
+        "слова без поступков"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Почему пустые обещания звучат снова и снова",
+      "visual_type": "infographic_card",
+      "scene_hint": "Fact card 4 пункта: смотреть на поступки → не менять свои планы → проверить повторы → трезвый взгляд. Исход: пустые слова видны. NO people/faces/emoji/silhouettes",
+      "alt": "Карточка: почему пустые обещания звучат снова и снова",
+      "labels": [
+        "смотреть на поступки",
+        "не менять свои планы",
+        "проверить повторы",
+        "трезвый взгляд"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

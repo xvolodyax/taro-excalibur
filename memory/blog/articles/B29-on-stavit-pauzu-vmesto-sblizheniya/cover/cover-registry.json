@@ -1,0 +1,50 @@
+{
+  "topic_id": "B29",
+  "slug": "on-stavit-pauzu-vmesto-sblizheniya",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: он пишет каждый день, но избегает живых встреч",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-08-31T20:29:04+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: он пишет каждый день, но избегает живых встреч",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: контакт в сети и реальное сближение — два разных действия",
+      "h2_anchor": "Контакт в сети и реальное сближение: почему это два разных действия",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема трёх признаков контролируемой дистанции в переписке",
+      "h2_anchor": "Как проявляется стена: три признака контролируемой дистанции",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист: почему давление и требование ясности усиливают стену",
+      "h2_anchor": "Почему прямое давление и требования ясности усиливают стену",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

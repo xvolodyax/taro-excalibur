@@ -81,17 +81,23 @@ Cover-агент генерирует **один** quad-холст 2×2 (Kie GPT
 0. **Человеческие подписи alt:** Категорически запрещено заполнять поле `alt` техническим описанием нейросети (*«Ведущий в белом худи...»*, *«крошечный значок...»*). `alt` заносится строго по смыслу темы и раздела H2.
 1. **ONE IMAGE JOB** — один холст 2×2 и **один** успешный billed createTask.
    Quality-redo (host/sticky/style после PNG) **запрещён**, кроме явного запроса владельца (1 billed redo). Recreate только
-   при ошибке Kie API (500/400/422) или одном pre-taskId Connection reset
-   (тот же batch; INC-20260725-1631). **Запрещено** 4 отдельных вызова.
+   при ошибке Kie API (500 / 400 / sensitive-422 / playground-blank) или одном
+   pre-taskId Connection reset (тот же batch; INC-20260725-1631).
+   422 `generate playground failed, task id is blank` = infra как 500: скрипт
+   max-1, Cover **не** soften и **не** третий create (INC-20260830-1339).
+   **Запрещено** 4 отдельных вызова.
 2. Image API/MCP **обязан** иметь `input_urls: [reference_url_hosted]` (Image to Image).
 3. **Cover (top-left):** сильная редакционная композиция с обязательным
    reference host: то же лицо, белое плотное худи heavyweight fabric,
    естественная уверенная эмоция, без наушников/headset/earbuds. Один hook,
    один предмет или метафора, много воздуха. Cover `scene_hint` ≈**80–140**
    chars; start from `memory/cover/blog-hero.json` prompt_fragment / cover_mode — **не** MUST/face essays
-   (INC-20260724-0837: long essay → host missing). Topic props = **`tiny`/`small`**
+   (INC-20260724-0837: long essay → host missing).    Topic props = **`tiny`/`small`**
    right/background — **не** equal-weight prop lists рядом с лицом
    (INC-20260724-1239: alarm+brief card → host missing).
+   First-try (INC-20260831-0636): `Host LARGE left half` +
+   `Виктория.png` + `face fills left`; type/calendar/mug **RIGHT only**.
+   Cover **не** invent второй createTask из‑за host miss.
 4. **White background lock:** cover и все inline на чистом `#FFFFFF`; без бежевого, серого, gradient или grunge full-panel background.
 5. **Cover typography:** bold condensed Cyrillic **чёрным** `#141821`;
    accent colors — из `memory/cover/cover-design-code.json` color_palette. Не выдумывай чужой бренд-розовый.
@@ -144,8 +150,15 @@ python scripts/excalibur_blog_cover_quad_prompt.py --article-dir "$ARTICLE" --wr
 # 5. Kie async image API (PRIMARY when KIE_API_KEY set):
 #    Требует KIE_API_KEY из Cloud Secrets/env; не писать ключ в файлы/логи.
 #    Если ключ задан — НЕ вызывать sync MCP gpt-image-2 первым.
-#    Скрипт создаёт task и polling'ом ждёт URL до 15 минут.
+#    Скрипт создаёт task и polling'ом ждёт URL до 25 минут (+ late-poll extend).
+#    Если exit 2 / KIE POLL WINDOW EXHAUSTED (ещё generating):
+#      --resume / --task-id тот же job (не новый create).
+#    Recreate poll: --resume --max-create-retries 0
 python3 scripts/excalibur_blog_kie_gpt_image2_api.py --article-dir "$ARTICLE"
+#    After 500×2 BLOCKER: do NOT re-run this without Director. Director:
+#      --director-same-batch on the same batch (B30 / B102–B117).
+#    Then apply-only. If kie-image-task.json is already success + URL,
+#    this script skips create.
 #
 #    Legacy MCP fallback ТОЛЬКО если KIE_API_KEY отсутствует:
 #    один вызов gpt-image-2 (или async create/status) с jobs[0].mcp_args.
@@ -241,7 +254,7 @@ HTTP MCP tool execution failed: MCP error -32001: Request timed out
   "slots": {
     "cover": {
       "meme_caption_ru": "",
-      "scene_hint": "≈80–140 chars: Host LARGE left half + tiny topic object right + white bg (no MUST/face essay, no equal-weight props)",
+      "scene_hint": "≈80–140 chars: Host LARGE left half, same woman as Виктория.png, face fills left; tiny topic object RIGHT only; #FFF",
       "alt": "осмысленный alt"
     },
     "inline_1": {
@@ -321,7 +334,8 @@ summary: ...
 | Код                | Причина                                             |
 | ------------------ | --------------------------------------------------- |
 | COVER HERO BLOCKER | нет `reference_url_hosted` или image call без `input_urls` |
-| KIE API BLOCKER | нет `KIE_API_KEY`, non-retryable fail, 500 retries exhausted, pre-taskId Connection reset exhausted (один retry), image-fetch File Upload fallback exhausted, sensitive 422 после одного soften+recreate, polling timeout или нет resultUrls. После 500×2 exhausted: fragment+incident с `summary`: batch ready for Director same-batch re-run — Cover **не** invent'ит третий create; Director Kie re-run → Cover apply-only (не quality-redo / не MCP) |
+| KIE POLL WINDOW EXHAUSTED | job всё ещё `waiting`/`generating` после `--max-wait` + late-poll (exit 2). **Не** новый create и **не** 500×2 path. `--resume` / `--task-id` тот же job. Late 500 → script max-1 recreate. Recreate poll: `--max-create-retries 0` (INC-20260831-1508). |
+| KIE API BLOCKER | нет `KIE_API_KEY`, non-retryable fail, 500 / playground-blank retries exhausted, pre-taskId Connection reset exhausted (один retry), image-fetch File Upload fallback exhausted, sensitive 422 после одного soften+recreate, или нет resultUrls после resume (job уже terminal fail). После 500×2 **или** 422 playground-blank exhausted: fragment+incident с `summary`: batch ready for Director `--director-same-batch` (B102–B106 / B116 / B117 / B30) — Cover **не** invent'ит третий create, **не** передаёт `--director-same-batch` и **не** soften (playground-blank ≠ sensitive); Director Kie re-run → Cover apply-only (не quality-redo / не MCP). Уже `state=success` + URL → script skip create. Credits 200 ≠ playground healthy. |
 | QUAD SPLIT BLOCKER | нет canvas / не 2×2 16:9 / нет alt в manifest       |
 | COVER BLOCKER      | 4 отдельных image jobs                              |
 | COVER BLOCKER      | отсутствует одна из трёх inline, её H2/anchor или injection |

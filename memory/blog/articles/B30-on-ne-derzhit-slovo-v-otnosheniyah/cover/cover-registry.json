@@ -1,0 +1,50 @@
+{
+  "topic_id": "B30",
+  "slug": "on-ne-derzhit-slovo-v-otnosheniyah",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: обещал приехать, а в ответ тишина",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-09-01T06:52:05+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: обещал приехать, а в ответ тишина",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: твёрдое слово и туманная возможность — в чём разница",
+      "h2_anchor": "Разница между твёрдым словом и туманной возможностью",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Схема: единичный форс-мажор против повторяющегося срыва",
+      "h2_anchor": "Единичный форс-мажор против повторяющегося срыва",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Карточка: почему пустые обещания звучат снова и снова",
+      "h2_anchor": "Почему пустые обещания звучат снова и снова",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

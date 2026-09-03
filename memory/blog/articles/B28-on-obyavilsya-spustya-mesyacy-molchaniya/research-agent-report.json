@@ -1,0 +1,81 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B28",
+  "slug": "on-obyavilsya-spustya-mesyacy-molchaniya",
+  "article_dir": "memory/blog/articles/B28-on-obyavilsya-spustya-mesyacy-molchaniya",
+  "research_date": "2026-08-31",
+  "status": "PASS",
+  "verdict": "PASS",
+  "blocker": null,
+  "fresh_signal": true,
+  "fresh_signal_kind": "tarot_news_this_week",
+  "fresh_signal_week": "2026-W36",
+  "fresh_signal_summary": "31.08 / неделя 31.08–06.09: КУ66 (30.08 вечер) бьёт в «напишет тот, кого почти удалось забыть» и коварные воспоминания; ТСН неделя + таро сентября от 31.08 — ясность, всплытие старой боли, инерция истории. Свой Дзен сегодня закрыл B27 (зовёт на выходные, молчит про будущее) — не клонить. Угол «вернулся после месяцев тишины» на канале и в листинге не закрыт.",
+  "fresh_signal_urls": [
+    "https://ku66.ru/life/poslednij_den_leta_mozhet_pomenyat_plany_taro_na_31_avgusta_pokazyvaet_neozhidannyj_povorot_pered_nachalom_oseni",
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html",
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-na-sentyabr-2026-goda-v-etom-mesyatse-pravila-igry-izmenyatsya-3158597.html"
+  ],
+  "signal_urls": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/",
+    "https://ku66.ru/life/poslednij_den_leta_mozhet_pomenyat_plany_taro_na_31_avgusta_pokazyvaet_neozhidannyj_povorot_pered_nachalom_oseni",
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html"
+  ],
+  "scout_signal_checked": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/",
+    "https://ku66.ru/life/poslednij_den_leta_mozhet_pomenyat_plany_taro_na_31_avgusta_pokazyvaet_neozhidannyj_povorot_pered_nachalom_oseni",
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html"
+  ],
+  "scout_urls_alive": true,
+  "rf_deny": false,
+  "wordstat": {
+    "status": "OK_PARTIAL",
+    "region": "225",
+    "accessed_at": "2026-08-31",
+    "calls": 13,
+    "fattest_not_h1": "он объявился",
+    "note": "regions must be string \"225\". PARTIAL = totalCount without results. «он объявился»=4446 и «объявился бывший»=3130 — жирные, НЕ в H1. «когда он объявится»=1524 ждёт, не угол «уже написал».",
+    "phrases": [
+      {"phrase": "он объявился", "totalCount": 4446, "tops": ["когда он объявится=1524", "объявится ли он=770", "он объявился спустя=135", "почему он объявился=101"]},
+      {"phrase": "бывший объявился", "totalCount": 3130, "tops": ["объявился бывший=3130", "будет объявляться=2406 шум", "бывший объявился через=286"]},
+      {"phrase": "когда он объявится", "totalCount": 1524, "note": "ждёт, не «уже написал»"},
+      {"phrase": "он написал после месяцев", "totalCount": 766, "note": "PARTIAL без results"},
+      {"phrase": "объявится ли он", "totalCount": 770, "tops": ["объявится ли он таро=108"]},
+      {"phrase": "он написал после долгого молчания", "totalCount": 447, "tops": ["что написать ему после долгого молчания=398"]},
+      {"phrase": "что написать ему после долгого молчания", "totalCount": 398},
+      {"phrase": "бывший объявился через", "totalCount": 286, "tops": ["через год=125", "через месяц=50", "через полгода=20"]},
+      {"phrase": "он объявился спустя", "totalCount": 135, "tops": ["спустя год он объявился=87"]},
+      {"phrase": "почему он объявился", "totalCount": 101},
+      {"phrase": "стоит ли отвечать если он написал", "totalCount": 85, "note": "PARTIAL без results"},
+      {"phrase": "он написал после паузы", "totalCount": 63, "note": "PARTIAL без results"},
+      {"phrase": "он вернулся после молчания", "totalCount": 45, "note": "PARTIAL без results"}
+    ]
+  },
+  "overlap": [
+    "B22 Он пишет, хотя вы уже расстались — рваный контакт после точки, не месяцы ямы",
+    "B26 Он сказал, что не готов к отношениям, но остаётся рядом — стоп-фраза + тепло",
+    "B27 Он охотно зовёт на выходные, но избегает разговоров о будущем — сегодня на Дзене",
+    "B23 Он зашёл в сеть и молчит — онлайн без письма",
+    "B18 Парень пропал после близости — старт паузы",
+    "LIVE Что он решил за выходные / Пауза или конец? / Напишет ли он сегодня вечером",
+    "LIVE Он охладел / Что он чувствует — тон и мысли",
+    "карта дня и число дня — не слот 16:00"
+  ],
+  "cta": {
+    "slot": "day-2026-08-31",
+    "time": "16:00",
+    "product": "vk_app",
+    "vk_app_this_slot": true,
+    "app_spread": "Суть – Тень – Вектор",
+    "app_extra": "аудиоразбор",
+    "do_not_mix_bot_and_app": true,
+    "dzen_no_telegram": true,
+    "site_only_telegram": true,
+    "raw_urls_in_body": false,
+    "forbidden_phrase": "личный аудиоразбор"
+  },
+  "notes_path": "memory/blog/articles/B28-on-obyavilsya-spustya-mesyacy-molchaniya/research-notes.md",
+  "incident_report": "none"
+}

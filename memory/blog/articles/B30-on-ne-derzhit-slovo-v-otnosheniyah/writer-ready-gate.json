@@ -1,0 +1,8 @@
+{
+  "gate": "writer-ready",
+  "status": "BLOCK",
+  "errors": [
+    "missing writer-ready.json"
+  ],
+  "choice_file": null
+}

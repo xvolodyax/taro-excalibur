@@ -80,9 +80,10 @@ Terminal states:
 - `success`: parse `data.resultJson` and use `resultUrls[0]`
 - `fail` with failCode=`500` / failMsg containing «try again later»: **one** controlled new `createTask` (default `--max-create-retries 1`); do **not** keep polling the failed `taskId`
 - `fail` with failCode=`400` / failMsg «image fetch failed» (or «use our File Upload API»): **one** File Upload + new `createTask` (see below); not a permanent blocker on first hit
+- `fail` with failCode=`422` / failMsg «generate playground failed, task id is blank»: **infra** (like 500), not content. Script one recreate; Cover does **not** soften. After exhausted → Director same-batch when playground is healthy + Cover apply-only (INC-20260830-1339 / B25). Credits 200 ≠ playground healthy.
 - `fail` with failCode=`422` / failMsg «sensitive» (input/output flagged): **agent** softens prompt once + **one** recreate (see below); not a permanent blocker on first hit
 - other `fail`: stop with `KIE API BLOCKER`
-- poll-window timeout (still `waiting`/`generating` past `--max-wait`): **one final** `recordInfo` before `KIE API BLOCKER` (INC-20260730-0834). If that final call is terminal `fail` 500 / try-again (or 400 image-fetch), take the same recreate path as an in-window terminal fail — do **not** hard-stop solely because the client poll clock expired. Only if the final call is still non-terminal (or recordInfo itself errors) → `KIE API BLOCKER`
+- poll-window timeout (still `waiting`/`generating` past `--max-wait`): **one final** `recordInfo` (INC-20260730-0834). If that call is terminal `fail` 500 / try-again (or 400 image-fetch), take the same recreate path as an in-window terminal fail — do **not** hard-stop solely because the client poll clock expired. If still non-terminal: **one** `--late-poll-extend` (default 600s) on the **same** `taskId` (no new create). After that still non-terminal → `KIE POLL WINDOW EXHAUSTED` (exit 2), not a new create and not the 500×2 Director path. Cover resumes with `--resume` / `--task-id` (INC-20260831-1508 / B28).
 
 ## Retry (transient 500)
 
@@ -95,20 +96,30 @@ createTask → poll recordInfo
   → ONE new createTask (not re-poll failed taskId)
   → poll new taskId
 
-# also (INC-20260730-0834):
+# also (INC-20260730-0834 / INC-20260831-1508):
 createTask → poll until --max-wait exhausted (still waiting/generating)
   → ONE final recordInfo
   → if terminal fail 500 / «try again later» → same max-1 recreate path
-  → if still non-terminal → KIE API BLOCKER
+  → if still non-terminal → ONE late-poll extend on SAME taskId (default 600s)
+  → if then terminal 500 → same max-1 recreate
+  → if still non-terminal → KIE POLL WINDOW EXHAUSTED (exit 2)
+Cover resume (no new create):
+  python3 scripts/excalibur_blog_kie_gpt_image2_api.py --article-dir <dir> --resume
+  # or --task-id <id>
+  # late 500 on first job → script max-1 recreate
+  # recreate still generating: --resume --max-create-retries 0
 ```
 
 Flags:
 
-- `--max-create-retries 1` (default) — extra createTask attempts after retryable terminal fail only
+- `--max-create-retries 1` (default on a fresh create) — extra createTask attempts after retryable terminal fail only. On `--resume` / `--task-id` of an already-recreated job (`retry_of` or `create_attempt>1`) default is **0**
 - `--retry-wait 15` — pause before the new create
-- `--max-wait 900` — poll window; exhaustion triggers one final `recordInfo`, not an immediate hard stop when terminal 500 is already visible
+- `--max-wait 1500` — poll window for 2K i2i (900s is often too short; B28 first job still `generating` at 900s)
+- `--late-poll-extend 600` — one extra same-`taskId` window after `--max-wait` if still `waiting`/`generating`; `0` disables
+- `--resume` — poll `task_id` from `cover/kie-image-task.json` (same job, no new create)
+- `--task-id <id>` — poll that job instead of createTask
 
-### Director same-batch re-run after 500 exhausted (B102–B106 / B116 / B117)
+### Director same-batch re-run after 500 exhausted (B102–B106 / B116 / B117 / B30)
 
 When the script exits `KIE API BLOCKER` because `--max-create-retries` is exhausted (typically failCode=`500` ×2), Cover must **not** raise `--max-create-retries`, soften the prompt, or switch to MCP while `KIE_API_KEY` is set. Script stderr now states the batch is ready for Director same-batch re-run (Cover: no third create).
 
@@ -122,11 +133,14 @@ Cover fragment (500×2 exhausted):
            Cover will NOT invent a third create — apply-only after Director
   + incident (max-1 recreate already done by script)
 Director (when Kie healthy again):
-  python3 scripts/excalibur_blog_kie_gpt_image2_api.py --article-dir <dir>
+  python3 scripts/excalibur_blog_kie_gpt_image2_api.py --article-dir <dir> --director-same-batch
   # unchanged cover/quad-mcp-batch.json — no --write-batch, no prompt/quality rewrite
   # File Upload fallback on 400 image-fetch is OK inside this same-batch re-run
+  # Without --director-same-batch a Cover re-run after 500×2 refuses a third create
 Cover apply-only:
   python3 scripts/excalibur_blog_quad_apply.py --article-dir <dir> --inject-html
+  # If kie-image-task.json is already success + result URL exists, a plain
+  # Kie script re-run skips create (apply-only). Cover must not create again.
 ```
 
 Rules:
@@ -137,7 +151,52 @@ Rules:
 - Keep script default `--max-create-retries 1`; longer waits / extra recreates only under explicit Director policy, not Cover autodrift.
 - Still write/keep the open incident so Fixer can confirm docs; ops transient 500 remains possible.
 - **Policy (recurring upstream):** each new 500×2 cluster is the same approved path — annotate proven topic_id, do **not** invent Cover-side retry bumps / MCP fallback / swarm restore. Fixer closes as fixed after Director same-batch success + annotation.
-- Proven on B102/B103/B104/B105/B106/B116/B117 (B105: Director same-batch + File Upload after 400 → success → apply-only; B106/B116/B117: Director same-batch after 500×2 → success → apply-only → publish).
+- Proven on B102/B103/B104/B105/B106/B116/B117/B30 (B105: Director same-batch + File Upload after 400 → success → apply-only; B106/B116/B117/B30: Director same-batch after 500×2 → success → apply-only. B30: File Upload of `Виктория.png` inside Director re-run; Cover did not invent a third create. Not «починили Kie»).
+
+## Retry (422 playground-blank) — infra, not sensitive (INC-20260830-1339 / B25)
+
+`failCode=422` + failMsg `generate playground failed, task id is blank` is **not**
+the sensitive-content path. It is Kie GPT Image 2 playground / tempfile infra:
+
+- Instant terminal fail (~1–2s); billed `taskId` exists; credits endpoint can still be 200
+- Hits image-to-image **and** text-to-image; prompt soften does not change the outcome
+- Not «The input or output was flagged as sensitive»
+
+Script path is the same as transient 500 (`--max-create-retries 1`):
+
+```text
+createTask → poll recordInfo
+  → state=fail + failCode=422 / «generate playground failed» / «task id is blank»
+  → wait --retry-wait (default 15s)
+  → ONE new createTask (not re-poll failed taskId; not prompt rewrite)
+  → still playground-blank → KIE API BLOCKER
+```
+
+Cover must **not**:
+
+- soften hook / sticky / scene_hint (that is the **sensitive** 422 path only)
+- invent a third `createTask` or raise `--max-create-retries`
+- switch to MCP while `KIE_API_KEY` is set
+- treat this as article-prompt / «измена» / H2-text content
+
+Approved recovery (Director, same article run) — same as 500×2:
+
+```text
+Cover fragment (playground-blank ×2 exhausted):
+  status: BLOCKER
+  blockers: KIE API BLOCKER
+  summary: 422 playground-blank exhausted; batch ready for Director
+           same-batch re-run when Kie playground is healthy;
+           Cover will NOT invent a third create — apply-only after Director
+Director (when playground is healthy — credits 200 is not enough):
+  python3 scripts/excalibur_blog_kie_gpt_image2_api.py --article-dir <dir> --director-same-batch
+  # unchanged cover/quad-mcp-batch.json — no --write-batch, no prompt soften
+Cover apply-only:
+  python3 scripts/excalibur_blog_quad_apply.py --article-dir <dir> --inject-html
+```
+
+Fixer must **not** mark this `fixed` as «we repaired Kie». Upstream playground
+outage stays `needs-human` on the Kie side; the repo-fix is this contract.
 
 ## Retry (pre-taskId TCP / Connection reset) — INC-20260725-1631
 
@@ -246,17 +305,19 @@ Do **not**:
 - poll a failed `taskId` forever hoping it flips to success
 - treat the first 500 «try again later» as a permanent blocker before the controlled recreate
 - treat client `--max-wait` exhaustion alone as a permanent blocker without one final `recordInfo` (INC-20260730-0834); late terminal 500 must enter the max-1 recreate path
-- after 500×2 / `--max-create-retries` exhausted: raise Cover retries, rewrite prompt/batch for «quality», invent a third create, or MCP — instead Director same-batch re-run when healthy + Cover apply-only (B102–B106 / B116 / B117)
+- treat still-`generating` after that final `recordInfo` as an immediate `KIE API BLOCKER` or a new create (INC-20260831-1508): late-poll extend the **same** `taskId`, then Cover `--resume` / `--task-id`; recreate poll uses `--max-create-retries 0`
+- after 500×2 / playground-blank ×2 / `--max-create-retries` exhausted: raise Cover retries, rewrite prompt/batch for «quality», invent a third create, or MCP — instead Director `--director-same-batch` when playground is healthy + Cover apply-only (B102–B106 / B116 / B117 / B30 / B25)
+- treat 422 `generate playground failed, task id is blank` as sensitive / soften the article prompt (INC-20260830-1339)
 - treat the first 400 «image fetch failed» as permanent before the File Upload recreate
 - treat the first 422 «sensitive» as permanent before one prompt soften + recreate
 - treat the first pre-`taskId` TCP / Connection reset as a permanent blocker before one same-batch retry
 - patch and commit live Kie tempfile URLs into `quad-mcp-batch.json`
-- switch to MCP while `KIE_API_KEY` is set after any recoverable Kie fail (500 / 400 / 422 / pre-taskId connection reset)
+- switch to MCP while `KIE_API_KEY` is set after any recoverable Kie fail (500 / playground-blank / 400 / sensitive 422 / pre-taskId connection reset)
 
 ## Guardrails
 
-- One API task per article cover run (plus at most one pre-taskId connection-reset retry and/or one 500-recreate and/or one File Upload recreate and/or one agent 422 soften+recreate), not four separate images.
+- One API task per article cover run (plus at most one pre-taskId connection-reset retry and/or one 500-or-playground-blank recreate and/or one File Upload recreate and/or one agent **sensitive** 422 soften+recreate), not four separate images.
 - **Forbidden quality multi-gen (INC-20260724-2120):** after a successful URL, do **not** createTask again because host/sticky/style looks wrong. Visual QA is skip-default and must not trigger Cover redo. Only Kie API terminal fails / pre-taskId transport reset above allow another billed gen.
 - `input_urls` is required; text-only generation is a cover blocker.
-- Do not retry createTask blindly after a network ambiguity if a `taskId` is known; poll the known task. Exception: after explicit terminal `fail` with 500 / «try again later» (including late terminal 500 discovered by the final `recordInfo` after `--max-wait`), or 400 image-fetch → File Upload, or agent 422 soften+recreate, or pre-`taskId` Connection reset (no task record), create a **new** task once.
+- Do not retry createTask blindly after a network ambiguity if a `taskId` is known; poll the known task (`--resume` / `--task-id`). Exception: after explicit terminal `fail` with 500 / «try again later» (including late terminal 500 discovered by the final `recordInfo` or a `--resume` poll after `--max-wait`), or 422 playground-blank, or 400 image-fetch → File Upload, or agent **sensitive** 422 soften+recreate, or pre-`taskId` Connection reset (no task record), create a **new** task once. A second poll-timeout on that recreate must use `--max-create-retries 0` (no third billed job).
 - MCP sync is not a peer alternative when `KIE_API_KEY` is set; use Kie API only.

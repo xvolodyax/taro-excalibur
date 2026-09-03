@@ -1,0 +1,148 @@
+{
+  "agent": "excalibur-blog-cover-quad-split",
+  "status": "PASS",
+  "manifest": "cover/quad-manifest.json",
+  "split": {
+    "source_canvas": "memory/blog/articles/B30-on-ne-derzhit-slovo-v-otnosheniyah/cover/canvas-quad.png",
+    "source_size_px": [
+      2048,
+      1152
+    ],
+    "panel_size_px": [
+      1024,
+      576
+    ],
+    "split_meta": {
+      "split_mode": "mechanical_center",
+      "h_gutter_px": null,
+      "v_gutter_px": null,
+      "requested_mode": "auto",
+      "fallback_reason": "gutter_too_far_from_center",
+      "rejected_gutter": {
+        "h_gutter_px": {
+          "start": 584,
+          "end": 609
+        },
+        "v_gutter_px": {
+          "start": 953,
+          "end": 1015
+        },
+        "gutter_quality": {
+          "h_center_offset_px": 20.5,
+          "v_center_offset_px": 40.0,
+          "max_aspect_crop_loss": 0.0822,
+          "per_panel_crop_loss": {
+            "top_left": 0.0822,
+            "top_right": 0.0,
+            "bottom_left": 0.0129,
+            "bottom_right": 0.0658
+          },
+          "reject_reason": "gutter_too_far_from_center"
+        }
+      }
+    },
+    "output_size_px": [
+      1200,
+      675
+    ],
+    "outputs": {
+      "cover": {
+        "file": "cover/cover.png",
+        "quadrant": "top_left",
+        "box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1024,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1024,
+          "bottom": 576
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Иллюстрация: обещал приехать, а в ответ тишина",
+        "h2_anchor": null
+      },
+      "inline_1": {
+        "file": "cover/inline-01.png",
+        "quadrant": "top_right",
+        "box_px": {
+          "left": 1024,
+          "top": 0,
+          "right": 2048,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 1024,
+          "top": 0,
+          "right": 2048,
+          "bottom": 576
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Схема: твёрдое слово и туманная возможность — в чём разница",
+        "h2_anchor": "Разница между твёрдым словом и туманной возможностью"
+      },
+      "inline_2": {
+        "file": "cover/inline-02.png",
+        "quadrant": "bottom_left",
+        "box_px": {
+          "left": 0,
+          "top": 576,
+          "right": 1024,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 576,
+          "right": 1024,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Схема: единичный форс-мажор против повторяющегося срыва",
+        "h2_anchor": "Единичный форс-мажор против повторяющегося срыва"
+      },
+      "inline_3": {
+        "file": "cover/inline-03.png",
+        "quadrant": "bottom_right",
+        "box_px": {
+          "left": 1024,
+          "top": 576,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 1024,
+          "top": 576,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Карточка: почему пустые обещания звучат снова и снова",
+        "h2_anchor": "Почему пустые обещания звучат снова и снова"
+      }
+    }
+  },
+  "html_inject": [
+    "injected inline_1 after H2 — Разница между твёрдым словом и туманной возможностью",
+    "injected inline_2 after H2 — Единичный форс-мажор против повторяющегося срыва",
+    "injected inline_3 after H2 — Почему пустые обещания звучат снова и снова"
+  ]
+}

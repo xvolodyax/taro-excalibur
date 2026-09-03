@@ -1,0 +1,101 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B30",
+  "slug": "on-ne-derzhit-slovo-v-otnosheniyah",
+  "article_dir": "memory/blog/articles/B30-on-ne-derzhit-slovo-v-otnosheniyah",
+  "research_date": "2026-09-01",
+  "status": "PASS",
+  "verdict": "PASS",
+  "blocker": null,
+  "fresh_signal": true,
+  "fresh_signal_kind": "channel_and_tarot_news_this_week",
+  "fresh_signal_week": "2026-W36",
+  "fresh_signal_summary": "Неделя 31.08–06.09: ТСН живой путь /astrologiya/ — Туз Мечей + Маг (отношения формируют поступками, не только словами). Утро 01.09 Cursorinfo «00:14, Сегодня»: Телец — поступки вместо красивых обещаний; Mixnews 31.08 то же. Cursorinfo неделя: слова подтверждать действиями. horo.mail.ru любовь: реальные цели, не выдавать желаемое за действительное, соблюдать договорённости. horo.mail.ru таро: Семёрка Мечей ≠ всегда обман. Community: Дзен b17 «Вчера» (WebFetch=заглушка, search-extract живой) — слова≠дела. Свой Дзен/сайт сегодня закрыл B28 (привет после месяцев) — не клонить. SERP research_start SSL timeout, источники собраны сами.",
+  "fresh_signal_urls": [
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html",
+    "https://cursorinfo.co.il/horoscope/goroskop-na-1-sentyabrya-2026-po-kartam-taro-vse-znaki-zodiaka/",
+    "https://cursorinfo.co.il/horoscope/goroskop-po-kartam-taro-na-nedelyu-s-31-avgusta-po-6-sentyabrya-2026-goda/",
+    "https://mixnews.lv/goroskop/2026/08/31/goroskop-na-1-sentyabrya-po-kartam-taro-teltsu-nachinat-osen-s-nadezhnoy-opory-bliznetsam-ubrat-lishnee-i-nakonets-uvidet-yasnyy-otvet/",
+    "https://horo.mail.ru/article/15443-lyubovnyj-goroskop-s-31-avgusta-po-6-sentyabrya-2026/",
+    "https://horo.mail.ru/article/15436-taro-prognoz-na-nedelyu-s-31-avgusta-po-6-sentyabrya-2026/",
+    "https://dzen.ru/todaytaro_bot"
+  ],
+  "signal_urls": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/",
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html",
+    "https://cursorinfo.co.il/horoscope/goroskop-na-1-sentyabrya-2026-po-kartam-taro-vse-znaki-zodiaka/",
+    "https://horo.mail.ru/article/15443-lyubovnyj-goroskop-s-31-avgusta-po-6-sentyabrya-2026/"
+  ],
+  "scout_signal_checked": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/",
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html",
+    "https://tsn.ua/ru/lady/astrologia/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html",
+    "https://cursorinfo.co.il/horoscope/goroskop-na-1-sentyabrya-2026-po-kartam-taro-vse-znaki-zodiaka/",
+    "https://horo.mail.ru/article/15443-lyubovnyj-goroskop-s-31-avgusta-po-6-sentyabrya-2026/"
+  ],
+  "scout_urls_alive": true,
+  "scout_url_notes": {
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html": "alive 2026-09-01; /astrologia/ = 404",
+    "https://horo.mail.ru/article/15443-lyubovnyj-goroskop-s-31-avgusta-po-6-sentyabrya-2026/": "first WebFetch timeout; second fetch alive",
+    "https://dzen.ru/a/aoRSFK3UpQP2VvWh": "WebFetch 2026-09-01: Dzen error stub; search-extract marked «Вчера»; content not invented from stub",
+    "https://the-day.ru/psihologiya/na-slovakh-on-lev-tolstoi-kak-vychislit-muzhchinu-kotoryi-nikogda-ne-budet-derzhat-svoe-slovo/": "HTTP 500; analog psychologies.ru",
+    "https://blog.lifestylegroup.ru/mentalnost/obeshhal-priexat-i-ne-priexal-chto-delat": "WebFetch returned dating-sites listing, not article; not invented",
+    "tenant_channel": "alive; top post B28 ~15h ago"
+  },
+  "rf_deny": false,
+  "genre_ban": "do_not_write_karta_dnya",
+  "wordstat": {
+    "status": "OK_PARTIAL",
+    "region": "225",
+    "accessed_at": "2026-09-01",
+    "calls": 18,
+    "numPhrases_required": true,
+    "fattest_not_h1": "он обещал / он врёт / он не пришёл",
+    "note": "Field is `phrase` not `query`. API 01.09 requires numPhrases 1–2000. PARTIAL = totalCount without results. «он обещал»=27568 / «он врёт»=21312 / «он не пришёл»=161262 — ЖИРНЫЕ, НЕ в H1. Угол Scout «он не держит слово»=1334; смежные: не сдержал=594; мужчина не держит=488; обещал позвонить=414; обещал и не сделал=382 PARTIAL; обещает но не делает=268; отменил встречу=434; перенёс=220 PARTIAL.",
+    "phrases": [
+      {"phrase": "он не держит слово", "totalCount": 1334, "tops": ["человек не держит слово кто он=38"]},
+      {"phrase": "он обещал прийти", "totalCount": 854, "tops": ["он обещает и не приходит=237"]},
+      {"phrase": "он обещает и не приходит", "totalCount": 237, "tops": ["он обещал прийти и не пришел=268"]},
+      {"phrase": "он не сдержал слово", "totalCount": 594},
+      {"phrase": "мужчина не держит слово", "totalCount": 488, "tops": ["как назвать мужчину который не держит слово=40", "почему мужчина не держит слово=39"]},
+      {"phrase": "он обещал позвонить", "totalCount": 414},
+      {"phrase": "он обещал и не сделал", "totalCount": 382, "note": "PARTIAL"},
+      {"phrase": "он обещает но не делает", "totalCount": 268},
+      {"phrase": "он отменил встречу", "totalCount": 434, "note": "сосед B20, не карта дня"},
+      {"phrase": "он перенёс встречу", "totalCount": 220, "note": "PARTIAL"},
+      {"phrase": "он постоянно обещает", "totalCount": 122, "note": "PARTIAL"},
+      {"phrase": "не держит слово в отношениях", "totalCount": 37, "note": "PARTIAL"},
+      {"phrase": "он нарушает обещания", "totalCount": 716, "note": "шум Thomas"},
+      {"phrase": "пустые обещания", "totalCount": 2736, "note": "кроссворд/песни. Не H1"},
+      {"phrase": "он обещал", "totalCount": 27568, "note": "ЖИР + песни. Не H1"},
+      {"phrase": "он врёт", "totalCount": 21312, "note": "ЖИР + клон LIVE. Не H1"},
+      {"phrase": "он не пришёл", "totalCount": 161262, "note": "ЖИР-шум песен. Не H1"}
+    ]
+  },
+  "overlap": [
+    "B29 Он остаётся на связи, но ставит паузу вместо сближения — живой чат, не сорванное слово",
+    "B28 Он написал после месяцев молчания, но не предлагает ничего конкретного — сегодня на Дзене",
+    "B27 Он охотно зовёт на выходные, но избегает разговоров о будущем — календарь, не срыв слова",
+    "B26 Он сказал, что не готов к отношениям, но остаётся рядом — стоп-фраза + тепло",
+    "LIVE Что он скрывает / скажет ли правду — и жирный «он врёт»",
+    "LIVE Пауза или конец? / Он охладел / истории и молчит",
+    "B20 Карта дня, если отменил свидание — соседний быт, жанр запрещён",
+    "карта дня / нумерология — жанр запрещён в B30"
+  ],
+  "cta": {
+    "slot": "morning-2026-09-01",
+    "time": "09:00",
+    "product": "bot",
+    "vk_app_this_slot": false,
+    "bot_spreads": "3 бесплатных расклада (триплет / крест)",
+    "do_not_mix_bot_and_app": true,
+    "dzen_no_telegram": true,
+    "site_only_telegram": true,
+    "raw_urls_in_body": false,
+    "forbidden_phrase": "личный аудиоразбор"
+  },
+  "notes_path": "memory/blog/articles/B30-on-ne-derzhit-slovo-v-otnosheniyah/research-notes.md",
+  "incident_report": "none"
+}

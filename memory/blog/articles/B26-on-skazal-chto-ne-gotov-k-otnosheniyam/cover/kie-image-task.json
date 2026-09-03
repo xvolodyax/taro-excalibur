@@ -1,0 +1,17 @@
+{
+  "task_id": "7dfe185eaf7fe401a3cba7febb2e1378",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B26-on-skazal-chto-ne-gotov-k-otnosheniyam/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1788118122,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "Виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}

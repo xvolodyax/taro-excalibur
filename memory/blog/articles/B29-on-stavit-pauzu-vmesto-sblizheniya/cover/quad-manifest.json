@@ -1,0 +1,64 @@
+{
+  "topic_id": "B29",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Он пишет каждый день, но избегает встреч",
+  "cover_hook_highlight": "избегает",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: он пишет каждый день, но избегает живых встреч",
+      "scene_hint": "Host LARGE left half, same woman as Виктория.png, face fills left; tiny phone-chat RIGHT only; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "в чате, но не рядом"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Контакт в сети и реальное сближение: почему это два разных действия",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "BAD «чат» red X vs GOOD «встреча» green: дежурные сообщения, иллюзия близости, безопасная зона, контроль дистанции. L→R, сеть ≠ близость. NO people/faces/emoji/silhouettes",
+      "alt": "Схема: контакт в сети и реальное сближение — два разных действия",
+      "labels": [
+        "дежурные сообщения",
+        "иллюзия близости",
+        "безопасная зона",
+        "контроль дистанции"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Как проявляется стена: три признака контролируемой дистанции",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Workflow 1→2→3→стена: уход от личных тем, нет его инициативы, вечные переносы планов, разговоры о быте. Сверху вниз, исход: дистанция. NO people/faces/emoji/silhouettes",
+      "alt": "Схема трёх признаков контролируемой дистанции в переписке",
+      "labels": [
+        "уход от личных тем",
+        "нет его инициативы",
+        "вечные переносы планов",
+        "разговоры о быте"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Почему прямое давление и требования ясности усиливают стену",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist вместо штурма: не писать вдогонку, смотреть на поступки, поставить срок ожидания, расклад на отношения. Исход: давление усиливает стену. NO people/faces/emoji/silhouettes",
+      "alt": "Чеклист: почему давление и требование ясности усиливают стену",
+      "labels": [
+        "не писать вдогонку",
+        "смотреть на поступки",
+        "поставить срок ожидания",
+        "расклад на отношения"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
