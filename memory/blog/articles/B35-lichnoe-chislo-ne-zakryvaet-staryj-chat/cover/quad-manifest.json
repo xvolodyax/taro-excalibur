@@ -1,0 +1,64 @@
+{
+  "topic_id": "B35",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Цифра в заметках не напишет ответ",
+  "cover_hook_highlight": "ответ",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Цифра в заметках не напишет ответ в зависшем чате",
+      "scene_hint": "same woman as Виктория.png, green+hazel eyes; Host LARGE left half; tiny phone-notes right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "хватит пересчитывать дату"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Почему сентябрьские прогнозы требуют закрыть старое",
+      "visual_type": "infographic_card",
+      "scene_hint": "L→R: «сентябрь требует ясности» → «зависшая переписка» → «ожидание чужих шагов» → «расчет вместо действий». Цифра не закроет чат. NO people/faces. #FFF",
+      "alt": "Сентябрьские прогнозы требуют закрыть зависшую переписку",
+      "labels": [
+        "сентябрь требует ясности",
+        "зависшая переписка",
+        "ожидание чужих шагов",
+        "расчет вместо действий"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Две школы личных чисел: почему их нельзя смешивать",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "GOOD «школа дня рождения» vs «анализ букв имени»; «не смешивай расчеты»; «одна понятная формула». Green only under one school. NO people/faces. #FFF",
+      "alt": "Две школы личных чисел нельзя смешивать в одном расчёте",
+      "labels": [
+        "школа дня рождения",
+        "анализ букв имени",
+        "не смешивай расчеты",
+        "одна понятная формула"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Пошаговый сценарий: как рассчитать число по одной понятной школе и поставить точку в чате",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "L→R: «спокойная фраза» → «отправь сообщение» → «заархивируй чат» → «верни себе фокус». Точка в чате. NO people/faces. #FFF",
+      "alt": "Четыре шага: спокойная фраза, отправка, архив чата, свой фокус",
+      "labels": [
+        "спокойная фраза",
+        "отправь сообщение",
+        "заархивируй чат",
+        "верни себе фокус"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

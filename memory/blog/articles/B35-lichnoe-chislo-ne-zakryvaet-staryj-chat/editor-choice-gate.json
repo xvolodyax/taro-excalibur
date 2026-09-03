@@ -1,0 +1,16 @@
+{
+  "gate": "writer-ready",
+  "status": "BLOCK",
+  "errors": [
+    "missing writer-ready.json",
+    "html_linter: Line 38, Col 6: Forbidden HTML tag <strong> used.",
+    "html_linter: Line 39, Col 6: Forbidden HTML tag <strong> used.",
+    "html_linter: Line 55, Col 6: Forbidden HTML tag <strong> used.",
+    "html_linter: Line 56, Col 6: Forbidden HTML tag <strong> used.",
+    "html_linter: Line 57, Col 6: Forbidden HTML tag <strong> used.",
+    "html_linter: Line 57, Col 126: Forbidden HTML tag <em> used.",
+    "html_linter: Line 57, Col 276: Forbidden HTML tag <em> used.",
+    "html_linter: Line 58, Col 6: Forbidden HTML tag <strong> used."
+  ],
+  "choice_file": null
+}

@@ -1,0 +1,50 @@
+{
+  "topic_id": "B35",
+  "slug": "lichnoe-chislo-ne-zakryvaet-staryj-chat",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Цифра в заметках не напишет ответ в зависшем чате",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-09-03T13:53:47+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Цифра в заметках не напишет ответ в зависшем чате",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Сентябрьские прогнозы требуют закрыть зависшую переписку",
+      "h2_anchor": "Почему сентябрьские прогнозы требуют закрыть старое",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Две школы личных чисел нельзя смешивать в одном расчёте",
+      "h2_anchor": "Две школы личных чисел: почему их нельзя смешивать",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Четыре шага: спокойная фраза, отправка, архив чата, свой фокус",
+      "h2_anchor": "Пошаговый сценарий: как рассчитать число по одной понятной школе и поставить точку в чате",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "task_id": "80fcd372b10ed5af7232767fef32edc4",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B35-lichnoe-chislo-ne-zakryvaet-staryj-chat/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1788443363,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "Виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}

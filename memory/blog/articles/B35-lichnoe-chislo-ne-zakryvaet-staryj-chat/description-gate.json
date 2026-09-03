@@ -1,0 +1,9 @@
+{
+  "gate": "description",
+  "status": "PASS",
+  "errors": [],
+  "description": "Число по дате рождения подсказывает привычный тон человека, но точку в затянувшемся молчании ставит не расчет, а ясная и спокойная фраза.",
+  "title": "Личное число не закрывает старый чат",
+  "char_count": 137,
+  "article_dir": "/workspace/memory/blog/articles/B35-lichnoe-chislo-ne-zakryvaet-staryj-chat"
+}
