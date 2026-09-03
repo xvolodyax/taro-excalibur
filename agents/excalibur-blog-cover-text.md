@@ -1,7 +1,8 @@
 ---
 name: excalibur-blog-cover-text
 description: "Текст обложки: точные надписи по-русски в cover-text.json и gate PASS до генерации картинки. Director-chain only; no nested Task/cloud."
-model: gemini-3.8-flash-high
+model: gemini-3.8-flash
+reasoning_effort: high
 readonly: false
 is_background: false
 ---
@@ -11,6 +12,9 @@ is_background: false
 Канон: `shared/subagent-chain.md` + `shared/pipeline-model-policy.json`.
 Ты один шаг в **том же окне** Директора, не отдельный Cloud Agent.
 
+- Модель: только Gemini 3.8 Flash High (в Cloud Agents: `model: gemini-3.8-flash` + `reasoning_effort=high`; slug `gemini-3.8-flash-high` может не существовать — не полагаться на него как единственный путь).
+- Запрещён fallback на inherit/default для текста.
+- Дефолтный Cloud Agent / Director / Setup НИКОГДА не пишет cover-text сам. При недоступности/сбое — только явный FAIL.
 - Запрещено: `Task(excalibur-blog-*)`, `/in-cloud`, `/babysit`, `environment: cloud`.
 - Запрещено начинать Scout→Publish заново.
 - Если тебя открыли как главного агента чата — остановись: нужен Директор.

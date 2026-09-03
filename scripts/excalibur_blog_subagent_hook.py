@@ -157,6 +157,27 @@ def decide_task(payload: dict[str, Any], policy: dict[str, Any]) -> dict[str, st
             "Не вызывай Task(director) / Task(setup)."
         )
 
+    text_agents = set(policy.get("text_agents") or [])
+    if kind in text_agents:
+        # Check model policy for text roles: strictly Gemini 3.8 Flash High
+        model = str(tool_input.get("model") or "").strip().lower()
+        if model in {"inherit", "default"}:
+            return deny(
+                f"Excalibur chain: запрет fallback на {model} для текстовой роли {kind}. "
+                "Текстовые роли пишет только Gemini 3.8 Flash High "
+                "(в Cloud Agents нет id gemini-3.8-flash-high; "
+                "правильный вызов: model=gemini-3.8-flash, model_params.reasoning_effort=high). FAIL only."
+            )
+        allowed_models = set(policy.get("allowed_text_model_identifiers") or [
+            "gemini-3.8-flash",
+            "gemini-3.8-flash-high",
+        ])
+        if model and model not in allowed_models:
+            return deny(
+                f"Excalibur chain: модель {model} запрещена для текстовой роли {kind}. "
+                "Разрешена только Gemini 3.8 Flash High (model=gemini-3.8-flash, model_params.reasoning_effort=high). FAIL only."
+            )
+
     if kind.startswith(SPECIALIST_PREFIX) and speaker_is_specialist(payload):
         if speaker_is_setup(payload) and kind in setup_may:
             return allow()
@@ -187,6 +208,27 @@ def decide_subagent_start(payload: dict[str, Any], policy: dict[str, Any]) -> di
         return deny(
             f"Excalibur chain: subagentStart blocked for {kind or 'unknown'}."
         )
+
+    text_agents = set(policy.get("text_agents") or [])
+    if kind in text_agents:
+        model = str(payload.get("model") or "").strip().lower()
+        if model in {"inherit", "default"}:
+            return deny(
+                f"Excalibur chain: subagentStart запрещает fallback на {model} для текстовой роли {kind}. "
+                "Текстовые роли пишет только Gemini 3.8 Flash High "
+                "(в Cloud Agents нет id gemini-3.8-flash-high; "
+                "правильный вызов: model=gemini-3.8-flash, model_params.reasoning_effort=high). FAIL only."
+            )
+        allowed_models = set(policy.get("allowed_text_model_identifiers") or [
+            "gemini-3.8-flash",
+            "gemini-3.8-flash-high",
+        ])
+        if model and model not in allowed_models:
+            return deny(
+                f"Excalibur chain: модель {model} запрещена для текстовой роли {kind}. "
+                "Разрешена только Gemini 3.8 Flash High (model=gemini-3.8-flash, model_params.reasoning_effort=high). FAIL only."
+            )
+
     if kind.startswith(SPECIALIST_PREFIX) and speaker_is_specialist(payload):
         setup_may = set(policy.get("setup_may_task") or [])
         if speaker_is_setup(payload) and kind in setup_may:

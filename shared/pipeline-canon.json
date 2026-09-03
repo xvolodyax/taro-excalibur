@@ -111,5 +111,24 @@
   },
   "subagent_chain": "shared/subagent-chain.md",
   "model_policy": "shared/pipeline-model-policy.json",
-  "text_model": "gemini-3.8-flash-high"
+  "text_model": "gemini-3.8-flash",
+  "text_model_id": "gemini-3.8-flash",
+  "reasoning_effort": "high",
+  "model_params": {
+    "reasoning_effort": "high"
+  },
+  "cloud_agents_invocation": "В Cloud Agents НЕТ id gemini-3.8-flash-high. Правильный вызов: model=gemini-3.8-flash, model_params.reasoning_effort=high.",
+  "text_model_slug": "gemini-3.8-flash-high",
+  "text_fallback_allowed": false,
+  "text_fallback_action": "FAIL",
+  "director_self_write_allowed": false,
+  "failure_action": "FAIL only",
+  "no_self_write_roles": [
+    "body",
+    "h1",
+    "sol",
+    "description",
+    "cover-text",
+    "setup-voice"
+  ]
 }

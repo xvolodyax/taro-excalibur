@@ -10,9 +10,15 @@ is_background: false
 
 ## Цепочка (HARD)
 
-Канон: `shared/subagent-chain.md`. Ты главный агент **этого** окна, пока setup не complete.
-Не `environment: cloud`, не `/in-cloud`. Единственные Task: setup-voice (`gemini-3.8-flash-high`) и setup-visual (`inherit`).
+Канон: `shared/subagent-chain.md` + `shared/pipeline-model-policy.json`. Ты главный агент **этого** окна, пока setup не complete.
+Не `environment: cloud`, не `/in-cloud`. Единственные Task: setup-voice (Gemini 3.8 Flash High: `model: gemini-3.8-flash` + `reasoning_effort: high` / slug `gemini-3.8-flash-high`) и setup-visual (`inherit`).
 Не вызывай `Task(excalibur-blog-setup)`.
+
+**Жёсткое правило Владимира 03.09.2026**:
+- Setup / дефолтный Cloud Agent НИКОГДА не пишет тело статьи, H1, Sol, description, cover-text сам.
+- Текстовую роль `setup-voice` пишет только Gemini 3.8 Flash High (cloud id: `gemini-3.8-flash` + `reasoning_effort=high`; slug `gemini-3.8-flash-high` в Cloud Agents может не существовать — не полагаться на него как единственный путь).
+- Запрет fallback на inherit/default для текста. При недоступности `setup-voice` — только явный FAIL (не сочинять SOUL / article-style дефолтным агентом на inherit).
+- Не трогать Kie/картинки (`setup-visual` остаётся на inherit).
 
 **Язык:** русский (или язык человека).
 

@@ -1,4 +1,4 @@
-# Модели для субагентов (выжимка, 2026-08-20)
+# Модели для субагентов (обновлено 2026-09-03)
 
 Источники:
 
@@ -15,15 +15,16 @@
 
 Если Task **опускает** `model`, в Cloud Agent runtime субагент часто
 берёт модель **родителя**, даже если YAML другой. Поэтому Директор
-**явно** передаёт `gemini-3.8-flash-high` на текстовые шаги.
+**явно** передаёт модель Gemini на текстовые шаги.
 
-## Latest Gemini (каталог 2026-08-20)
+## Gemini 3.8 Flash High (Правило Владимира 03.09.2026)
 
-В публичном каталоге Cursor не hidden: **Gemini 3.8 Flash**
-(`gemini-3.8-flash`). Task slug с effort high:
-`gemini-3.8-flash-high`.
+Текстовые роли пишет **только Gemini 3.8 Flash High**:
 
-Это модель для:
+- В Cloud Agents **НЕТ** id `gemini-3.8-flash-high`.
+- Правильный вызов текста: `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}` (или `reasoning_effort: "high"`).
+
+Это модель строго для всех текстовых ролей:
 
 - Title (H1 / title)
 - Writer (смысл, заголовки H2, черновик)
@@ -33,18 +34,18 @@
 - Setup Voice (SOUL, article-style, examples)
 
 Gemini 3 Pro Image / image preview — **не** текстовые роли.
-Картинки Cover идут через Kie/MCP на inherit-агенте `excalibur-blog-cover`.
+Картинки Cover идут через Kie/MCP на inherit-агенте `excalibur-blog-cover` (не трогай Kie/картинки).
 
 ## Что остаётся на модели automation
 
-Scout, Research, Schema, Cover (генерация), Indexer, Publish, Fixer,
+Scout, Research, Schema, Cover (генерация изображений), Indexer, Publish, Fixer,
 Content-learner, Setup, Setup Visual, сам Директор.
 
-Владелец ставит Grok / Composer / Opus в automation — research и картинки
-идут на неё. Текст статьи всё равно Gemini.
+Владелец ставит Grok / Composer / Opus в automation — research и публикация
+идут на неё. Текст статьи всё равно Gemini 3.8 Flash High.
 
-## Fallback
+## Fallback: СТРОГО ЗАПРЕЩЁН ДЛЯ ТЕКСТА (FAIL ONLY)
 
-Админ команды / план / legacy Max Mode могут подменить модель.
-Если текст внезапно не Gemini — смотри план и
-https://cursor.com/docs/subagents.md#why-is-my-subagent-using-a-different-model
+- **Запрет fallback на inherit/default для текста.** Никакого переключения на inherit или дефолтную модель родителя.
+- **Дефолтный Cloud Agent / Director / Setup НИКОГДА не пишет тело статьи, H1, Sol, description, cover-text сам**, если Writer/Title/Sol/Description/Cover-Text недоступны или при сбое.
+- **FAIL ONLY:** При любой ошибке вызова Gemini 3.8 Flash High или недоступности текстового субагента — останавливаться с явным FAIL. Никакого текста своими силами.

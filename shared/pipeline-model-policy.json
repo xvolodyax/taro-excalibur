@@ -1,13 +1,57 @@
 {
-  "version": "1",
-  "docs_fetched_at": "2026-08-20",
+  "version": "2",
+  "rule_date": "2026-09-03",
+  "rule_author": "Vladimir",
+  "rule_title": "Жёсткое правило Владимира 03.09.2026 для taro-excalibur (статьи)",
+  "docs_fetched_at": "2026-09-03",
   "docs_index": "docs/cursor/README.md",
   "chain_canon": "shared/subagent-chain.md",
-  "text_model": "gemini-3.8-flash-high",
+  "text_model": "gemini-3.8-flash",
   "text_model_id": "gemini-3.8-flash",
-  "text_model_display": "Gemini 3.8 Flash",
+  "reasoning_effort": "high",
+  "model_params": {
+    "reasoning_effort": "high"
+  },
+  "text_model_cloud_invocation": {
+    "model": "gemini-3.8-flash",
+    "model_params": {
+      "reasoning_effort": "high"
+    }
+  },
+  "cloud_agents_note": "В Cloud Agents НЕТ id gemini-3.8-flash-high. Правильный вызов текста: model=gemini-3.8-flash, model_params.reasoning_effort=high (или reasoning_effort=high). Заголовки статей (Title / H1) тоже только Gemini 3.8 Flash High. Cover-text / description / Sol / Writer — то же. В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст. Нет Gemini = FAIL, Director не пишет H1 и тело сам.",
+  "text_model_slug": "gemini-3.8-flash-high",
+  "text_model_display": "Gemini 3.8 Flash High",
   "text_model_source": "https://cursor.com/docs/models/gemini-3-8-flash",
-  "inherit_means": "Модель родителя = модель Cursor Automation / выбранная пользователем. Не подменять Gemini.",
+  "text_model_cloud_config": {
+    "model": "gemini-3.8-flash",
+    "model_params": {
+      "reasoning_effort": "high"
+    },
+    "reasoning_effort": "high"
+  },
+  "allowed_text_model_identifiers": [
+    "gemini-3.8-flash",
+    "gemini-3.8-flash-high"
+  ],
+  "text_fallback_allowed": false,
+  "text_fallback_action": "FAIL",
+  "text_fallback_forbidden": [
+    "inherit",
+    "default",
+    "parent_model",
+    "director_self_write",
+    "setup_self_write"
+  ],
+  "no_self_write_roles": [
+    "body",
+    "h1",
+    "sol",
+    "description",
+    "cover-text",
+    "setup-voice"
+  ],
+  "rule_summary": "Заголовки статей (Title / H1) тоже только Gemini 3.8 Flash High — cloud: model=gemini-3.8-flash + reasoning_effort=high (model_params.reasoning_effort=high). Cover-text / description / Sol / Writer — то же. В Cloud Agents НЕТ id gemini-3.8-flash-high. В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст. Нет Gemini = FAIL, Director не пишет H1 и тело сам. FAIL only. Не трогай Kie/картинки.",
+  "inherit_means": "Модель родителя = модель Cursor Automation / выбранная пользователем. Запрещено использовать inherit для текстовых ролей (только Gemini 3.8 Flash High).",
   "text_agents": [
     "excalibur-blog-title",
     "excalibur-blog-writer",

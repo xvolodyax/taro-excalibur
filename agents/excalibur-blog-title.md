@@ -1,7 +1,8 @@
 ---
 name: excalibur-blog-title
 description: "Title: one catchy human H1 with clear subject. No SEO tails, no label heads. Director-chain only; no nested Task/cloud."
-model: gemini-3.8-flash-high
+model: gemini-3.8-flash
+reasoning_effort: high
 readonly: false
 is_background: false
 ---
@@ -11,6 +12,13 @@ is_background: false
 Канон: `shared/subagent-chain.md` + `shared/pipeline-model-policy.json`.
 Ты один шаг в **том же окне** Директора, не отдельный Cloud Agent.
 
+- **Жёсткое правило Владимира 03.09.2026**:
+  - Заголовки статей (Title / H1) пишет **ТОЛЬКО Gemini 3.8 Flash High**.
+  - В Cloud Agents **НЕТ** id `gemini-3.8-flash-high`.
+  - Правильный вызов: `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}` (или `reasoning_effort: "high"`).
+  - **В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст.**
+  - **Строгий запрет fallback на inherit/default для заголовков и текста.**
+  - **Нет Gemini = FAIL.** Дефолтный Cloud Agent / Director / Setup НИКОГДА не пишет H1/Title и тело сам. При недоступности/сбое — **FAIL only**.
 - Запрещено: `Task(excalibur-blog-*)`, `/in-cloud`, `/babysit`, `environment: cloud`.
 - Запрещено начинать Scout→Publish заново.
 - Если тебя открыли как главного агента чата — остановись: нужен Директор.

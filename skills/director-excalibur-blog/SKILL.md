@@ -11,6 +11,18 @@ description: Директор Excalibur-2-Cloud — одно окно, цепо�
 Канон запуска: `shared/subagent-chain.md` + `shared/pipeline-model-policy.json`.
 Не `/in-cloud`, не `environment: cloud`, не isolated worktree.
 
+## Жёсткое правило Владимира 03.09.2026 (уточнение канона)
+
+- Заголовки статей (Title / H1) тоже **только Gemini 3.8 Flash High**. Cover-text / description / Sol / Writer — то же самое.
+- В Cloud Agents **НЕТ** id `gemini-3.8-flash-high`.
+- Правильный вызов текстовых ролей (title, writer, sol, description, cover-text):
+  `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}` (или `reasoning_effort: "high"`).
+- **В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст.**
+- **Нет Gemini = FAIL.** Директор / дефолтный Cloud Agent не пишет H1/Title и тело сам при сбое или недоступности модели. Ни тело статьи, ни H1, ни Sol, ни description, ни cover-text.
+- **Запрет fallback на inherit/default для текста.** Никакого переключения на inherit или дефолтную модель.
+- **FAIL ONLY:** При сбое вызова, недоступности модели или падении текстового субагента — останавливаться с явным FAIL.
+- Не трогать Kie/картинки (генерация картинок и schema остаются на inherit).
+
 ## Setup gate (HARD)
 
 Если `memory/setup/status.json` → `complete != true` **или**
@@ -51,17 +63,17 @@ python3 scripts/excalibur_blog_research_start.py --topic-id <ID> --title "<short
 `Task(excalibur-blog-scout)` · `model: inherit` · foreground.
 ### 1–2 Research → Title
 `Task(excalibur-blog-research)` · `model: inherit`.  
-`Task(excalibur-blog-title)` · `model: gemini-3.8-flash-high`.
+`Task(excalibur-blog-title)` · `model: gemini-3.8-flash`, `model_params: {"reasoning_effort": "high"}` (в Cloud Agents НЕТ id `gemini-3.8-flash-high`). При недоступности/сбое — FAIL ONLY (Director не пишет H1 сам, fallback на inherit/default запрещён).
 ### 3 Writer (смысл)
-`Task(excalibur-blog-writer)` · `model: gemini-3.8-flash-high` → `drafts/writer.html`.
+`Task(excalibur-blog-writer)` · `model: gemini-3.8-flash`, `model_params: {"reasoning_effort": "high"}` → `drafts/writer.html`. При недоступности/сбое — FAIL ONLY (Director не пишет черновик сам, fallback запрещён).
 
 ### 3b Sol (финальный слог)
-`Task(excalibur-blog-sol)` · `model: gemini-3.8-flash-high` → `article.html` + `drafts/variant-a.html`  
-из смысла Writer + SOUL/examples. Не выдумывает факты.
+`Task(excalibur-blog-sol)` · `model: gemini-3.8-flash`, `model_params: {"reasoning_effort": "high"}` → `article.html` + `drafts/variant-a.html`  
+из смысла Writer + SOUL/examples. Не выдумывает факты. При недоступности/сбое — FAIL ONLY (Director не стилизует статью сам, fallback запрещён).
 
 ### 3c Description (карточка Дзена / RSS)
-`Task(excalibur-blog-description)` · `model: gemini-3.8-flash-high` → `description-brief.json`  
-по `shared/dzen-description-rules.md`. Не копирует title и не режет opening.
+`Task(excalibur-blog-description)` · `model: gemini-3.8-flash`, `model_params: {"reasoning_effort": "high"}` → `description-brief.json`  
+по `shared/dzen-description-rules.md`. Не копирует title и не режет opening. При недоступности/сбое — FAIL ONLY (Director не пишет description сам).
 
 ### 4 Stamp + structural checks (shell, не LLM)
 ```bash
@@ -77,8 +89,8 @@ python3 scripts/excalibur_blog_description_gate.py --article-dir <dir>
 
 ### 5 Cover-text || Schema → Cover
 В одном сообщении (параллель):  
-`Task(excalibur-blog-cover-text)` · Gemini; `Task(excalibur-blog-schema)` · inherit.  
-Потом `Task(excalibur-blog-cover)` · inherit. Cover **не** зовёт Cover-text.
+`Task(excalibur-blog-cover-text)` · Gemini 3.8 Flash High (`model: gemini-3.8-flash`, `model_params: {"reasoning_effort": "high"}`; при сбое — FAIL ONLY, Director сам не пишет надписи); `Task(excalibur-blog-schema)` · inherit.  
+Потом `Task(excalibur-blog-cover)` · inherit (не трогай Kie/картинки). Cover **не** зовёт Cover-text.
 ### 6 Indexer → Publish
 `model: inherit`.
 ### 7 Fixer → merge → learner
