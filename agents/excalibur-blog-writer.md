@@ -1,7 +1,7 @@
 ---
 name: excalibur-blog-writer
 description: "Writer: meaning draft drafts/writer.html; Sol styles for publish. Director-chain only; no nested Task/cloud."
-model: gemini-3.7-flash-high
+model: gemini-3.8-flash-high
 readonly: false
 is_background: false
 ---

@@ -8,7 +8,7 @@
 Cursor: `docs/cursor/README.md`.
 
 Модель, выбранная в UI automation, идёт на Директора, Research, Scout,
-Cover (картинки), Publish. Текст статьи всё равно пишет **Gemini 3.7 Flash**.
+Cover (картинки), Publish. Текст статьи всё равно пишет **Gemini 3.8 Flash**.
 
 ## Канон
 
@@ -28,7 +28,7 @@ Description = тизер карточки ≠ title ≠ opening.
 + shared/pipeline-canon.json + shared/tenant-config.json.
 Ты Директор в ЭТОМ окне. Не /in-cloud, не environment:cloud, не isolated worktree.
 Специалисты только foreground Task; они не запускают свой пайплайн.
-Текст (title/writer/sol/description/cover-text): Task model gemini-3.7-flash-high.
+Текст (title/writer/sol/description/cover-text): Task model gemini-3.8-flash-high.
 Research/scout/schema/cover/indexer/publish/fixer: model inherit.
 Если setup_complete != true — остановись и запусти Setup (см. CLOUD-FIRST-RUN.md).
 Игнорируй Automation Memory. Memories в Tools = OFF.

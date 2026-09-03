@@ -40,5 +40,5 @@
 ## После тебя
 
 Директор (не ты) вызывает `Task(excalibur-blog-sol)` с
-`model: gemini-3.7-flash-high`. Sol читает SOUL + examples и пишет
+`model: gemini-3.8-flash-high`. Sol читает SOUL + examples и пишет
 финальный `article.html`. Writer Sol не запускает.

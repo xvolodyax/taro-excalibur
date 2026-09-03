@@ -52,7 +52,7 @@ class SubagentChainPolicyTest(unittest.TestCase):
         self.assertFalse(self.text_agents & self.inherit_agents)
         files = {p.stem for p in (ROOT / "agents").glob("excalibur-blog-*.md")}
         self.assertEqual(files, self.expected)
-        self.assertEqual(self.policy["text_model"], "gemini-3.7-flash-high")
+        self.assertEqual(self.policy["text_model"], "gemini-3.8-flash-high")
 
     def test_agent_models_match_policy(self) -> None:
         for name in sorted(self.expected):
@@ -60,7 +60,7 @@ class SubagentChainPolicyTest(unittest.TestCase):
                 (ROOT / "agents" / f"{name}.md").read_text(encoding="utf-8")
             )
             want = (
-                "gemini-3.7-flash-high"
+                "gemini-3.8-flash-high"
                 if name in self.text_agents
                 else "inherit"
             )
@@ -116,7 +116,7 @@ class SubagentChainPolicyTest(unittest.TestCase):
         chain = (ROOT / "shared/subagent-chain.md").read_text(encoding="utf-8")
         self.assertNotIn("WAIT.", chain)
         canon = json.loads((ROOT / "shared/pipeline-canon.json").read_text(encoding="utf-8"))
-        self.assertEqual(canon["text_model"], "gemini-3.7-flash-high")
+        self.assertEqual(canon["text_model"], "gemini-3.8-flash-high")
 
     def test_plugin_trees_match(self) -> None:
         subprocess.run(
@@ -208,7 +208,7 @@ class SubagentHookTest(unittest.TestCase):
                 "tool_name": "Task",
                 "tool_input": {
                     "subagent_type": "excalibur-blog-writer",
-                    "model": "gemini-3.7-flash-high",
+                    "model": "gemini-3.8-flash-high",
                 },
             }
         )
@@ -225,7 +225,7 @@ class SubagentHookTest(unittest.TestCase):
                 "transcript_path": path,
                 "tool_input": {
                     "subagent_type": "excalibur-blog-setup-voice",
-                    "model": "gemini-3.7-flash-high",
+                    "model": "gemini-3.8-flash-high",
                 },
             }
         )

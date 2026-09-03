@@ -19,15 +19,15 @@
 
 | # | Task | Роль | Модель |
 |---|------|------|--------|
-| S1 | setup-voice | SOUL + examples + article-style | **Gemini 3.7 Flash** |
+| S1 | setup-voice | SOUL + examples + article-style | **Gemini 3.8 Flash** |
 | S2 | setup-visual | cover configs + assets | inherit |
 | 🔍 | scout | Тема | inherit |
 | ① | research | Facts | inherit |
-| ①b | title | H1 | **Gemini 3.7 Flash** |
-| ② | writer | Смысл → `drafts/writer.html` | **Gemini 3.7 Flash** |
-| ②b | **sol** | **Финал `article.html` (слог SOUL)** | **Gemini 3.7 Flash** |
-| ②c | **description** | **Дзен/RSS карточка → `description-brief.json`** | **Gemini 3.7 Flash** |
-| ④a | cover-text | RU надписи | **Gemini 3.7 Flash** |
+| ①b | title | H1 | **Gemini 3.8 Flash** |
+| ② | writer | Смысл → `drafts/writer.html` | **Gemini 3.8 Flash** |
+| ②b | **sol** | **Финал `article.html` (слог SOUL)** | **Gemini 3.8 Flash** |
+| ②c | **description** | **Дзен/RSS карточка → `description-brief.json`** | **Gemini 3.8 Flash** |
+| ④a | cover-text | RU надписи | **Gemini 3.8 Flash** |
 | ④b | schema | JSON-LD | inherit |
 | ④c | cover | Image API + figures | inherit |
 | ⑤ | indexer | llms | inherit |

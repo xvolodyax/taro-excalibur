@@ -12,7 +12,7 @@
 | Agents Window | https://cursor.com/docs/agent/agents-window |
 | Agent overview (queue, /goal, tools) | https://cursor.com/docs/agent/overview |
 | Models & pricing | https://cursor.com/docs/models-and-pricing |
-| Gemini 3.7 Flash | https://cursor.com/docs/models/gemini-3-7-flash |
+| Gemini 3.8 Flash | https://cursor.com/docs/models/gemini-3-8-flash |
 | Skills | https://cursor.com/docs/skills |
 | Hooks (subagentStart / Task) | https://cursor.com/docs/hooks |
 | Cloud agent API / customSubagents | https://cursor.com/docs/cloud-agent/api/endpoints |

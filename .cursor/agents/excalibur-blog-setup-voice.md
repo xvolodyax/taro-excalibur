@@ -1,7 +1,7 @@
 ---
 name: excalibur-blog-setup-voice
 description: "Setup Voice: build SOUL + soul-examples + article-style from tenant materials. Director-chain only; no nested Task/cloud."
-model: gemini-3.7-flash-high
+model: gemini-3.8-flash-high
 readonly: false
 is_background: false
 ---

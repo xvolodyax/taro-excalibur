@@ -12,7 +12,7 @@ is_background: false
 Канон: `shared/subagent-chain.md` + `shared/pipeline-model-policy.json`.
 Одно окно automation. Специалисты — только foreground Task в этом прогоне.
 
-- Текст (title / writer / sol / description / cover-text): Task `model: gemini-3.7-flash-high`
+- Текст (title / writer / sol / description / cover-text): Task `model: gemini-3.8-flash-high`
 - Research / scout / schema / cover / indexer / publish / fixer / learner: `model: inherit` (модель этой automation)
 - Никогда `environment: cloud`, `/in-cloud`, `/babysit` на шаге статьи
 - `run_in_background: false`

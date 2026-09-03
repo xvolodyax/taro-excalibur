@@ -20,10 +20,10 @@ prompt, субагент работает и **возвращает итог р�
 YAML поля кастомного субагента (`.cursor/agents/*.md`):
 
 - `name`, `description` (роут Task)
-- `model`: `inherit` или ID (`gemini-3.7-flash`, `gpt-5.6-sol`, …)
+- `model`: `inherit` или ID (`gemini-3.8-flash`, `gpt-5.6-sol`, …)
 - `readonly`, `is_background`
-- параметры модели: `gemini-3.7-flash[effort=high]` или slug
-  `gemini-3.7-flash-high`
+- параметры модели: `gemini-3.8-flash[effort=high]` или slug
+  `gemini-3.8-flash-high`
 
 `description` **не** должен говорить «use proactively» специалистам
 пайплайна — иначе Auto запустит Writer мимо Директора.

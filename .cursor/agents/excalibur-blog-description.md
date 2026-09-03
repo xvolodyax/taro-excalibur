@@ -1,7 +1,7 @@
 ---
 name: excalibur-blog-description
 description: "Description: Дзен/RSS карточный тизер ≠ title ≠ opening. Субагент Task после Sol, до stamp. Director-chain only; no nested Task/cloud."
-model: gemini-3.7-flash-high
+model: gemini-3.8-flash-high
 readonly: false
 is_background: false
 ---

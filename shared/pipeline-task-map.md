@@ -6,7 +6,7 @@
 ```text
 [S] Setup (чат, inherit) — если !setup_complete
   ├─ блоки 0–7
-  ├─ Task: setup-voice   (Gemini 3.7 Flash)
+  ├─ Task: setup-voice   (Gemini 3.8 Flash)
   └─ Task: setup-visual  (inherit)
 
 [Д] Директор (чат, inherit) — только если setup_complete
