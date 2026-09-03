@@ -1,0 +1,71 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{SITE_BASE}}/#organization",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/",
+      "sameAs": [
+        "https://dzen.ru/todaytaro_bot"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "{{SITE_BASE}}/#author-victoria",
+      "name": "Виктория",
+      "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+      "url": "{{SITE_BASE}}/",
+      "sameAs": [
+        "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
+        "https://dzen.ru/todaytaro_bot"
+      ],
+      "worksFor": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{SITE_BASE}}/on-napisal-nam-nado-pogovorit-i-propal/",
+      "url": "{{SITE_BASE}}/on-napisal-nam-nado-pogovorit-i-propal/",
+      "name": "Он написал «нам надо поговорить» и пропал",
+      "inLanguage": "ru-RU",
+      "isPartOf": {
+        "@id": "{{SITE_BASE}}/#organization"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "{{SITE_BASE}}/on-napisal-nam-nado-pogovorit-i-propal/#article",
+      "url": "{{SITE_BASE}}/on-napisal-nam-nado-pogovorit-i-propal/",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{SITE_BASE}}/on-napisal-nam-nado-pogovorit-i-propal/"
+      },
+      "headline": "Он написал «нам надо поговорить» и пропал",
+      "name": "Он написал «нам надо поговорить» и пропал",
+      "description": "Разбираем скрытые мотивы внезапного молчания после тревожной реплики и возвращаем контроль над своими эмоциями без пустых накручиваний.",
+      "image": "{{SITE_BASE}}/wp-content/uploads/2026/09/cover.png",
+      "datePublished": "2026-09-03",
+      "dateModified": "2026-09-03",
+      "inLanguage": "ru-RU",
+      "author": {
+        "@type": "Person",
+        "@id": "{{SITE_BASE}}/#author-victoria",
+        "name": "Виктория",
+        "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+        "url": "{{SITE_BASE}}/",
+        "sameAs": [
+          "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
+          "https://dzen.ru/todaytaro_bot"
+        ]
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "{{SITE_BASE}}/#organization",
+        "name": "ТАРО СЕЙЧАС",
+        "url": "{{SITE_BASE}}/"
+      }
+    }
+  ]
+}
