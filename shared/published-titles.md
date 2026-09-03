@@ -33,6 +33,7 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B34 | ego-chislo-mesyaca-ne-delaet-shag | Его число месяца не делает шаг за него | live |
 | B35 | lichnoe-chislo-ne-zakryvaet-staryj-chat | Личное число не закрывает старый чат | live |
 | B36 | on-sidit-ryadom-i-molchit | Он сидит рядом и молчит | live |
+| B37 | on-napisal-nam-nado-pogovorit-i-propal | Он написал «нам надо поговорить» и пропал | live |
 | LIVE | zachem-vtykayut-igolku-v-dvernoy-kosyak | Зачем втыкают иголку в дверной косяк | live |
 | LIVE | zachem-syplyut-sol-v-ugol-ot-skandalov | Зачем сыплют соль в угол от скандалов | live |
 | LIVE | kak-vyzyvayut-domovogo-v-kvartire | Как вызывают домового в квартире | live |

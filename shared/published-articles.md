@@ -16,3 +16,4 @@ Publish / Indexer обновляют по мере выхода.
 | B34 | ego-chislo-mesyaca-ne-delaet-shag | live | {{SITE_BASE}}/blog/ego-chislo-mesyaca-ne-delaet-shag/ |
 | B35 | lichnoe-chislo-ne-zakryvaet-staryj-chat | live | {{SITE_BASE}}/blog/lichnoe-chislo-ne-zakryvaet-staryj-chat/ |
 | B36 | on-sidit-ryadom-i-molchit | live | {{SITE_BASE}}/blog/on-sidit-ryadom-i-molchit/ |
+| B37 | on-napisal-nam-nado-pogovorit-i-propal | live | {{SITE_BASE}}/blog/on-napisal-nam-nado-pogovorit-i-propal/ |
