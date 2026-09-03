@@ -68,6 +68,91 @@ def load_articles(blog_dir: Path) -> list[dict[str, Any]]:
     return articles
 
 
+def load_tenant_config(root: Path) -> dict[str, Any]:
+    cfg_path = root / "shared/tenant-config.json"
+    if cfg_path.is_file():
+        try:
+            return json.loads(cfg_path.read_text(encoding="utf-8"))
+        except Exception:
+            return {}
+    return {}
+
+
+def parse_existing_llms_txt(path: Path) -> tuple[str, str, list[dict[str, str]]]:
+    if not path.is_file():
+        return "", "", []
+    try:
+        content = path.read_text(encoding="utf-8")
+    except Exception:
+        return "", "", []
+    lines = content.splitlines()
+    site_name = ""
+    site_desc = ""
+    articles: list[dict[str, str]] = []
+    in_articles = False
+    for line in lines:
+        s = line.strip()
+        if s.startswith("# ") and not site_name:
+            site_name = s[2:].strip()
+        elif s.startswith("> ") and not site_desc:
+            site_desc = s[2:].strip()
+        elif s.startswith("## Blog Articles"):
+            in_articles = True
+        elif in_articles and s.startswith("- ["):
+            m = re.match(r"^-\s*\[(.*?)\]\((.*?)\):\s*(.*)$", s)
+            if m:
+                articles.append({
+                    "title": m.group(1).strip(),
+                    "url": m.group(2).strip(),
+                    "description": m.group(3).strip(),
+                })
+    return site_name, site_desc, articles
+
+
+def parse_existing_llms_full_txt(path: Path) -> tuple[str, list[dict[str, str]]]:
+    if not path.is_file():
+        return "", []
+    try:
+        content = path.read_text(encoding="utf-8")
+    except Exception:
+        return "", []
+    parts = re.split(r"\n---\n?", content)
+    if not parts:
+        return "", []
+    header = parts[0].strip()
+    articles: list[dict[str, str]] = []
+    for part in parts[1:]:
+        p_str = part.strip()
+        if not p_str:
+            continue
+        m = re.match(
+            r"^##\s*(.*?)\n-\s*\*\*URL\*\*:\s*([^\n]+)\n-\s*\*\*Summary\*\*:\s*([^\n]+)\n*(.*)$",
+            p_str,
+            flags=re.DOTALL,
+        )
+        if m:
+            articles.append({
+                "title": m.group(1).strip(),
+                "url": m.group(2).strip(),
+                "description": m.group(3).strip(),
+                "plain_text": m.group(4).strip(),
+            })
+        else:
+            url_m = re.search(r"-\s*\*\*URL\*\*:\s*([^\n]+)", p_str)
+            url = url_m.group(1).strip() if url_m else ""
+            title_m = re.search(r"^##\s*(.*?)\n", p_str)
+            title = title_m.group(1).strip() if title_m else ""
+            summary_m = re.search(r"-\s*\*\*Summary\*\*:\s*([^\n]+)", p_str)
+            summary = summary_m.group(1).strip() if summary_m else ""
+            articles.append({
+                "title": title,
+                "url": url,
+                "description": summary,
+                "plain_text": p_str,
+            })
+    return header, articles
+
+
 def article_url(site_base: str, blog_path: str, slug: str) -> str:
     site_base = site_base.rstrip("/")
     path = "/" + blog_path.strip("/")
@@ -91,7 +176,7 @@ def build_llms_txt(
         ""
     ]
     for a in articles:
-        url = article_url(site_base, blog_path, a["slug"])
+        url = a.get("url") or article_url(site_base, blog_path, a["slug"])
         lines.append(f"- [{a['title']}]({url}): {a['description']}")
 
     return "\n".join(lines) + "\n"
@@ -107,7 +192,7 @@ def build_llms_full_txt(site_name: str, articles: list[dict[str, Any]], site_bas
     ]
 
     for a in articles:
-        url = article_url(site_base, blog_path, a["slug"])
+        url = a.get("url") or article_url(site_base, blog_path, a["slug"])
         lines.extend([
             f"## {a['title']}",
             f"- **URL**: {url}",
@@ -125,8 +210,8 @@ def build_llms_full_txt(site_name: str, articles: list[dict[str, Any]], site_bas
 def main() -> int:
     ap = argparse.ArgumentParser(description="Generate AI-friendly llms.txt and llms-full.txt")
     ap.add_argument("--blog-dir", type=Path, default=None)
-    ap.add_argument("--site-name", type=str, default="Maya AI — Excalibur BLOG")
-    ap.add_argument("--site-desc", type=str, default="Практический блог по автоматизации бизнеса на Make.com, вайбкодингу и ИИ-агентам.")
+    ap.add_argument("--site-name", type=str, default=None)
+    ap.add_argument("--site-desc", type=str, default=None)
     ap.add_argument(
         "--site-base",
         type=str,
@@ -146,6 +231,27 @@ def main() -> int:
     if not out_dir.is_absolute():
         out_dir = root / out_dir
 
+    llms_path = out_dir / "llms.txt"
+    llms_full_path = out_dir / "llms-full.txt"
+
+    tenant_cfg = load_tenant_config(root)
+    existing_site_name, existing_site_desc, existing_articles = parse_existing_llms_txt(llms_path)
+    existing_full_header, existing_full_articles = parse_existing_llms_full_txt(llms_full_path)
+
+    site_name = (
+        args.site_name
+        or existing_site_name
+        or tenant_cfg.get("brand_name")
+        or "Maya AI — Excalibur BLOG"
+    ).strip()
+
+    site_desc = (
+        args.site_desc
+        or existing_site_desc
+        or tenant_cfg.get("niche")
+        or "Практический блог по автоматизации бизнеса на Make.com, вайбкодингу и ИИ-агентам."
+    ).strip()
+
     site_base = (args.site_base or "").strip() or "{{SITE_BASE}}"
     if site_base == "[REDACTED]":
         print(
@@ -154,20 +260,61 @@ def main() -> int:
         )
         site_base = "{{SITE_BASE}}"
 
-    articles = load_articles(blog_dir)
-    print(f"Loaded {len(articles)} articles to index for LLMs.")
+    new_articles = load_articles(blog_dir)
+    print(f"Loaded {len(new_articles)} new/updated articles from {blog_dir}.")
+
+    # Merge into existing_articles for llms.txt
+    merged_articles = list(existing_articles)
+    for na in new_articles:
+        url = article_url(site_base, args.blog_path, na["slug"])
+        norm_url = url.rstrip("/")
+        found_idx = None
+        for idx, ea in enumerate(merged_articles):
+            if ea.get("url", "").rstrip("/") == norm_url:
+                found_idx = idx
+                break
+        entry = {
+            "title": na["title"],
+            "url": url,
+            "description": na["description"],
+            "slug": na["slug"],
+        }
+        if found_idx is not None:
+            merged_articles[found_idx] = entry
+        else:
+            merged_articles.insert(0, entry)
+
+    # Merge into existing_full_articles for llms-full.txt
+    merged_full = list(existing_full_articles)
+    for na in new_articles:
+        url = article_url(site_base, args.blog_path, na["slug"])
+        norm_url = url.rstrip("/")
+        found_idx = None
+        for idx, efa in enumerate(merged_full):
+            if efa.get("url", "").rstrip("/") == norm_url:
+                found_idx = idx
+                break
+        entry = {
+            "title": na["title"],
+            "url": url,
+            "description": na["description"],
+            "plain_text": na["plain_text"],
+        }
+        if found_idx is not None:
+            merged_full[found_idx] = entry
+        else:
+            merged_full.insert(0, entry)
+
+    print(f"Total articles indexed: {len(merged_articles)} in llms.txt, {len(merged_full)} in llms-full.txt.")
 
     # redact_site_base: full PUBLIC_SITE_URL → {{SITE_BASE}}, bare host in prose
     # (legacy article excerpts in llms-full) → {{SITE_HOST}} via env / public base.
     llms_txt = redact_site_base(
-        build_llms_txt(args.site_name, args.site_desc, articles, site_base, args.blog_path)
+        build_llms_txt(site_name, site_desc, merged_articles, site_base, args.blog_path)
     )
     llms_full_txt = redact_site_base(
-        build_llms_full_txt(args.site_name, articles, site_base, args.blog_path)
+        build_llms_full_txt(site_name, merged_full, site_base, args.blog_path)
     )
-
-    llms_path = out_dir / "llms.txt"
-    llms_full_path = out_dir / "llms-full.txt"
 
     llms_path.write_text(llms_txt, encoding="utf-8")
     llms_full_path.write_text(llms_full_txt, encoding="utf-8")
