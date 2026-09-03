@@ -1,0 +1,64 @@
+{
+  "topic_id": "B36",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "На одном диване как чужие",
+  "cover_hook_highlight": "чужие",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: на одном диване как чужие",
+      "scene_hint": "same woman as Виктория.png, Host LARGE left half; tiny empty sofa cushion right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "усталость или бойкот"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Почему физическое присутствие не заменяет близость",
+      "visual_type": "infographic_card",
+      "scene_hint": "Fact L→R: тело рядом на диване → сухие бытовые фразы → эмоциональный разрыв → одиночество вдвоём. Outcome: тело ≠ близость. NO people/faces/emoji/silhouettes. #FFF",
+      "alt": "Схема: почему присутствие рядом не заменяет близость",
+      "labels": [
+        "тело рядом на диване",
+        "эмоциональный разрыв",
+        "сухие бытовые фразы",
+        "одиночество вдвоём"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Усталость после стресса или наказание молчанием",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "GOOD: перегрузка на работе, режим сбережения сил. BAD X: осознанный бойкот, холодная манипуляция. Outcome: усталость ≠ бойкот. NO people/faces/emoji/silhouettes. #FFF",
+      "alt": "Сравнение: усталость после стресса или наказание молчанием",
+      "labels": [
+        "перегрузка на работе",
+        "режим сбережения сил",
+        "осознанный бойкот",
+        "холодная манипуляция"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Практика: как растопить звенящую тишину без давления",
+      "visual_type": "checklist_board",
+      "scene_hint": "Steps: 1 пятнадцать минут тишины 2 вопрос без упрёка 3 вечер без экранов 4 разговор о чувствах. Outcome: тишина тает. NO people/faces/emoji/silhouettes. #FFF",
+      "alt": "Чеклист: как растопить тишину без давления",
+      "labels": [
+        "пятнадцать минут тишины",
+        "вопрос без упрёка",
+        "вечер без экранов",
+        "разговор о чувствах"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

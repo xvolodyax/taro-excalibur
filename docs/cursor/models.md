@@ -48,3 +48,7 @@ Content-learner, Setup, Setup Visual, сам Директор.
 Админ команды / план / legacy Max Mode могут подменить модель.
 Если текст внезапно не Gemini — смотри план и
 https://cursor.com/docs/subagents.md#why-is-my-subagent-using-a-different-model
+
+Если Task-каталог **этого** runtime не знает `gemini-3.7-flash-high`:
+текстовые шаги — `inherit` (модель automation). Не угадывать другой
+model id. Pin в `pipeline-model-policy.json` меняет только человек.

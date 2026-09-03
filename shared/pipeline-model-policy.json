@@ -8,6 +8,9 @@
   "text_model_display": "Gemini 3.7 Flash",
   "text_model_source": "https://cursor.com/docs/models/gemini-3-7-flash",
   "inherit_means": "Модель родителя = модель Cursor Automation / выбранная пользователем. Не подменять Gemini.",
+  "catalog_missing_fallback": "inherit",
+  "catalog_missing_do_not_guess_model": true,
+  "_comment": "catalog miss → inherit; do not guess another model id. text_model pin stays gemini-3.7-flash-high until a human changes it.",
   "text_agents": [
     "excalibur-blog-title",
     "excalibur-blog-writer",
