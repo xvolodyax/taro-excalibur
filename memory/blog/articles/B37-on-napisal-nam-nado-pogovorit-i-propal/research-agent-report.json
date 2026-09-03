@@ -1,0 +1,49 @@
+{
+  "agent": "excalibur-blog-research",
+  "status": "PASS",
+  "verdict": "PASS",
+  "topic_id": "B37",
+  "title": "Он написал «нам надо поговорить» и пропал",
+  "research_date": "2026-09-03",
+  "slot": "evening",
+  "external_signal": {
+    "status": "fresh",
+    "verified": true,
+    "primary_source": "https://dzen.ru/todaytaro_bot",
+    "signal_accessed": "2026-09-03",
+    "signal_summary": "В канале Дзен ТАРО СЕЙЧАС (todaytaro_bot) разобран острый вечерний триггер: партнер бросает в диалог «нам надо поговорить» и исчезает, подвешивая тяжелую тишину и перекладывая тревогу."
+  },
+  "wordstat_evidence": {
+    "nam_nado_pogovorit": 2780,
+    "on_napisal_i_propal": 1500,
+    "pauza_v_obshchenii": 1442,
+    "on_uhodit_v_molchanie": 171,
+    "skazal_nam_nado_pogovorit": 156,
+    "nado_pogovorit_otnosheniya": 148
+  },
+  "deliverables": {
+    "research_notes": "research-notes.md",
+    "research_serp": "research-serp.json",
+    "research_context": "research-context.json"
+  },
+  "notes_validation": {
+    "has_reader_problem": true,
+    "has_reader_outcome": true,
+    "has_practical_facts": true,
+    "has_constraints": true,
+    "has_voice_angle": true,
+    "has_surprising_fact": true,
+    "has_writer_safe_urls": true,
+    "has_source_table": true,
+    "no_invented_series": true,
+    "no_h2_outline": true,
+    "no_prose_draft": true,
+    "word_vozmem_absent": true,
+    "karta_dnya_phrase_absent": true
+  },
+  "checks": {
+    "stale_signal": false,
+    "anti_dup_checked": true,
+    "overlap_with_published_titles": false
+  }
+}
