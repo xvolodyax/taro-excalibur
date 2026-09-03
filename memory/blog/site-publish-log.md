@@ -1,5 +1,24 @@
 # Site publish log
 
+## 2026-09-03 B36 on-sidit-ryadom-i-molchit
+
+- method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used; Dzen Studio not used)
+- article_id: 48
+- upload: 201
+- excerpt_clear: 403 hall_token_no_patch (не FAIL)
+- approve: **200** (409 quality_review не было)
+- publish: **200**
+- live GET **200** `{{SITE_BASE}}/blog/on-sidit-ryadom-i-molchit/`
+- title/H1: Он сидит рядом и молчит
+- H2 практики в теле («Практика: как растопить звенящую тишину без давления»); «Возьмём:» не добавляли; тело не правили
+- live: 1 `seo-article__cover` + 3 `seo-article__figure` (inline-01…03); 4 related `blog-card__media` (не вторая обложка)
+- `t.me` сохранён; `/rasklad-taro-online/` только chrome сайта, не rewrite CTA
+- FAQ в теле есть (тематический) — OK для site-api
+- hall: not_used
+- dzen_studio: not_used
+- B21/B22: not touched
+- verdict: pass
+
 ## 2026-09-02 B35 on-predlagaet-druzhbu-posle-rasstavaniya
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used; Dzen Studio not used)

@@ -15,3 +15,4 @@ Publish / Indexer обновляют по мере выхода.
 | B33 | on-pishet-kazhdyj-den-no-ne-zovet | live | {{SITE_BASE}}/blog/on-pishet-kazhdyj-den-no-ne-zovet/ |
 | B34 | ego-chislo-mesyaca-ne-delaet-shag | live | {{SITE_BASE}}/blog/ego-chislo-mesyaca-ne-delaet-shag/ |
 | B35 | on-predlagaet-druzhbu-posle-rasstavaniya | live | {{SITE_BASE}}/blog/on-predlagaet-druzhbu-posle-rasstavaniya/ |
+| B36 | on-sidit-ryadom-i-molchit | live | {{SITE_BASE}}/blog/on-sidit-ryadom-i-molchit/ |
