@@ -1,0 +1,148 @@
+{
+  "agent": "excalibur-blog-cover-quad-split",
+  "status": "PASS",
+  "manifest": "cover/quad-manifest.json",
+  "split": {
+    "source_canvas": "memory/blog/articles/B33-on-pishet-kazhdyj-den-no-ne-zovet/cover/canvas-quad.png",
+    "source_size_px": [
+      2048,
+      1152
+    ],
+    "panel_size_px": [
+      1024,
+      576
+    ],
+    "split_meta": {
+      "split_mode": "mechanical_center",
+      "h_gutter_px": null,
+      "v_gutter_px": null,
+      "requested_mode": "auto",
+      "fallback_reason": "aspect_crop_loss_too_high",
+      "rejected_gutter": {
+        "h_gutter_px": {
+          "start": 586,
+          "end": 607
+        },
+        "v_gutter_px": {
+          "start": 1030,
+          "end": 1052
+        },
+        "gutter_quality": {
+          "h_center_offset_px": 20.5,
+          "v_center_offset_px": 17.0,
+          "max_aspect_crop_loss": 0.0592,
+          "per_panel_crop_loss": {
+            "top_left": 0.0119,
+            "top_right": 0.0444,
+            "bottom_left": 0.0592,
+            "bottom_right": 0.0271
+          },
+          "reject_reason": "aspect_crop_loss_too_high"
+        }
+      }
+    },
+    "output_size_px": [
+      1200,
+      675
+    ],
+    "outputs": {
+      "cover": {
+        "file": "cover/cover.png",
+        "quadrant": "top_left",
+        "box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1024,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 0,
+          "right": 1024,
+          "bottom": 576
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Иллюстрация: пишет каждый день, а живой встречи нет",
+        "h2_anchor": null
+      },
+      "inline_1": {
+        "file": "cover/inline-01.png",
+        "quadrant": "top_right",
+        "box_px": {
+          "left": 1024,
+          "top": 0,
+          "right": 2048,
+          "bottom": 576
+        },
+        "raw_box_px": {
+          "left": 1024,
+          "top": 0,
+          "right": 2048,
+          "bottom": 576
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Сравнение: теплое общение в чате и отсутствие даты встречи",
+        "h2_anchor": "Сразу к делу: когда переписка подменяет встречу"
+      },
+      "inline_2": {
+        "file": "cover/inline-02.png",
+        "quadrant": "bottom_left",
+        "box_px": {
+          "left": 0,
+          "top": 576,
+          "right": 1024,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 0,
+          "top": 576,
+          "right": 1024,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Четыре причины, почему общение застревает в переписке",
+        "h2_anchor": "Разные причины одного и того же сценария"
+      },
+      "inline_3": {
+        "file": "cover/inline-03.png",
+        "quadrant": "bottom_right",
+        "box_px": {
+          "left": 1024,
+          "top": 576,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "raw_box_px": {
+          "left": 1024,
+          "top": 576,
+          "right": 2048,
+          "bottom": 1152
+        },
+        "size_px": [
+          1200,
+          675
+        ],
+        "aspect_ratio": "16:9",
+        "alt": "Схема одного шага: конкретное предложение встречи",
+        "h2_anchor": "Практика одного шага: как проверить реальные намерения"
+      }
+    }
+  },
+  "html_inject": [
+    "injected inline_1 after H2 — Сразу к делу: когда переписка подменяет встречу",
+    "injected inline_2 after H2 — Разные причины одного и того же сценария",
+    "injected inline_3 after H2 — Практика одного шага: как проверить реальные намерения"
+  ]
+}
