@@ -1,0 +1,38 @@
+{
+  "style_id": "victoria-studio",
+  "status": "ok",
+  "label_ru": "Виктория / светлая студия ТАРО СЕЙЧАС / editorial type",
+  "updated": "2026-08-27",
+  "cover_mode": "host_reference",
+  "cover_hero_mode": "host",
+  "skip_human_host": false,
+  "allows_animal_stickers": false,
+  "allowed_animal_motif": "",
+  "design_code": "memory/cover/cover-design-code.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "local_reference": "memory/cover/assets/Виктория.png",
+  "prefer_local_reference": true,
+  "canvas": "2048x1152",
+  "resolution": "2K",
+  "meme_caption_ru": "",
+  "color_palette": {
+    "background": "#FFFFFF",
+    "ink": "#141821",
+    "accent_primary": "#C4A574",
+    "accent_secondary": "#D4B5A0"
+  },
+  "typography": {
+    "hook": "editorial display Cyrillic (didone or refined geometric grotesque, normal tracking); in-frame, not sticker",
+    "secondary": "lighter designer humanist sans",
+    "forbidden": "Arial Roboto Inter Impact Times bold condensed squish-bold all-caps plaque"
+  },
+  "global_prompt_prefix": "FIRST-TRY COVER: i2i Виктория.png — Host LARGE left half, face fills left; type+props NEVER replace host. High-key WHITE #FFFFFF, ink #141821, gold #C4A574. Hair from ref, no platinum, new outfit+emotion, NEVER cat/faceless/white hoodie. Hook type in-frame (not sticker). Tiny prop RIGHT only.",
+  "inline_prompt_suffix": "Inline all: white #FFFFFF, lighter designer humanist sans Cyrillic labels (3–6), medallion gold accent only; NO people/faces/host/Alyona/cat; no cover-hook duplicate; no bold condensed; no all-caps sticker plaque. Neg: candles, gothic, pink-cat, #FF1493, Arial, Roboto, Inter, Impact, beige full-panel, unfinished gray boxes, watermark, 9:16.",
+  "cover_credit_html": {
+    "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
+    "placement": "above_image",
+    "render_in_png": false
+  },
+  "rebuild_rule": "Wrong face, platinum/lighter-than-ref hair, crooked seam, crooked letters, or mixed sizes in one word → rebuild the 2K 2×2 canvas. Do not fix face, hair, or type outside the canvas.",
+  "comment": "Tenant preset. Do not fall back to pink-cat collage or bold condensed Cyrillic."
+}
