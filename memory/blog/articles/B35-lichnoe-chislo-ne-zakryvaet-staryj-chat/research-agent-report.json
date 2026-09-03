@@ -1,0 +1,68 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B35",
+  "slug": "lichnoe-chislo-ne-zakryvaet-staryj-chat",
+  "research_date": "2026-09-03",
+  "status": "PASS",
+  "verdict": "PASS",
+  "wordstat_status": "OK_WITH_PARTIAL",
+  "fresh_signal": {
+    "ok": true,
+    "week": "2026-08-27/2026-09-03",
+    "summary": "С 27.08 медиа разбирают сентябрь 2026 как единицу (Mail: сначала закрыть подвешенное). 03.09 Дзен «Код отношений» помечает карточку «Сегодня»: месяц-9 в году-1, зачистка и серьёзный разговор сейчас. Ядро: личное число описывает тон, не закрывает старый чат.",
+    "urls": [
+      "https://horo.mail.ru/article/15407-numerologicheskij-prognoz-na-sentyabr-2026/",
+      "https://dzen.ru/a/ao1X99jAjhWCBqKA"
+    ],
+    "accessed_at": "2026-09-03"
+  },
+  "ignored_serp": "research-serp.json Roblox/чат 2026 — мусор, не использован",
+  "wordstat": {
+    "provider": "yandex_cloud_search_api_v2",
+    "method": "topRequests",
+    "region": "225",
+    "accessed_at": "2026-09-03",
+    "partial_note": "«закрыть отношения нумерология» — пустой ответ, частот не было",
+    "phrases": [
+      {
+        "phrase": "личное число",
+        "totalCount": 9270,
+        "partial": false,
+        "fat_not_for_h1": ["личное число 1"]
+      },
+      {
+        "phrase": "число души",
+        "totalCount": 9463,
+        "partial": false,
+        "fat_not_for_h1": ["число души"]
+      },
+      {
+        "phrase": "число характера",
+        "totalCount": 6784,
+        "partial": false,
+        "noise": "характер числа"
+      },
+      {
+        "phrase": "закрыть отношения нумерология",
+        "totalCount": null,
+        "partial": true,
+        "note": "частот не было"
+      }
+    ]
+  },
+  "anti_dup": [
+    "B12",
+    "B16",
+    "B19",
+    "B34",
+    "LIVE судьба",
+    "LIVE Пифагор",
+    "LIVE сходятся даты",
+    "B28",
+    "B33",
+    "B31"
+  ],
+  "notes_path": "research-notes.md",
+  "block_reason": null,
+  "incident_report": "none"
+}
