@@ -2,8 +2,45 @@
 
 Durable incident memory for Excalibur BLOG. Agents append; Fixer resolves.
 
+## INC-20260903-0707-metrika-credentials-b36
+status: needs-human
+run_date: 2026-09-03
+role: excalibur-blog-content-learner
+topic_id: B36
+article_dir: memory/blog/articles/B36-on-sidit-ryadom-i-molchit
+severity: blocker
+category: credentials
+
+### What went wrong
+- Тот же Cloud Secrets gap, что INC-20260902-2016-metrika-credentials-b35 (B26–B35). Секреты Metrika не в Cloud.
+
+### How the agent recovered this run
+- Цифры не invent. Тело B36 / Sol не трогали. Слот PUBLISHED `article_id=48`, live 200.
+
+### Durable fix needed before next run
+- Cloud Secrets (не git): `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID`. Затем тот же fetch `--days 30 --ingest`.
+
+### Suggested files to inspect/change
+- Cloud Secrets / environment (вне репо)
+- `shared/yandex-metrika-contract.md`
+
+### Secrets
+- none recorded
+
+### Fixer resolution
+status: needs-human
+fixed_at: 2026-09-03
+reason:
+- Секреты вне репо. Не invent. Не чинили setup заново (пустой origin/main → restore B35 ожидаем).
+needed_decision_or_secret:
+- Положить Metrika OAuth + counter id в Cloud Secrets.
+files_changed: none (этот INC — указатель на тот же gap)
+checks_run:
+- queue: B26–B35 metrika → needs-human; не десятый полный дубль
+commit: pending
+
 ## INC-20260902-2016-metrika-credentials-b35
-status: open
+status: needs-human
 run_date: 2026-09-02
 role: excalibur-blog-content-learner
 topic_id: B35
@@ -39,10 +76,19 @@ category: credentials
 - none recorded
 
 ### Fixer resolution
-- pending (same Cloud Secrets gap as INC-1455; no invent tokens)
+status: needs-human
+fixed_at: 2026-09-03
+reason:
+- Тот же Cloud Secrets gap. B36 Fixer: не invent; указатель INC-20260903-0707.
+needed_decision_or_secret:
+- `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` в Cloud Secrets.
+files_changed: none
+checks_run:
+- B36 pointer added; older metrika left needs-human
+commit: n/a
 
 ## INC-20260902-1455-metrika-credentials-b34
-status: open
+status: needs-human
 run_date: 2026-09-02
 role: excalibur-blog-content-learner
 topic_id: B34
@@ -78,12 +124,17 @@ category: credentials
 - none recorded
 
 ### Fixer resolution
-- pending (B34 Fixer 2026-09-02: still Cloud Secrets; no invent tokens; left open)
-- pending (B35 Fixer 2026-09-02: still Cloud Secrets; no invent tokens; left open. B26–B33 same gap)
-- pending (B35 Content-learner 2026-09-02: тот же fetch `--days 30 --ingest` → CREDENTIALS BLOCKER; цифры не invent. Новый INC-2016; этот INC не закрывать)
+status: needs-human
+fixed_at: 2026-09-03
+reason:
+- Тот же Cloud Secrets gap (B26–B36). B36 Fixer: не invent.
+needed_decision_or_secret:
+- `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` в Cloud Secrets.
+files_changed: none
+commit: n/a
 
 ## INC-20260902-0650-metrika-credentials-b33
-status: open
+status: needs-human
 run_date: 2026-09-02
 role: excalibur-blog-content-learner
 topic_id: B33
@@ -119,7 +170,14 @@ category: credentials
 - none recorded
 
 ### Fixer resolution
-- pending (B34 Fixer 2026-09-02: still Cloud Secrets; no invent tokens; left open)
+status: needs-human
+fixed_at: 2026-09-03
+reason:
+- Тот же Cloud Secrets gap. B36 Fixer: не invent.
+needed_decision_or_secret:
+- `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` в Cloud Secrets.
+files_changed: none
+commit: n/a
 
 ## INC-20260902-0645-publish-dir-eacces-b33
 status: fixed
@@ -178,7 +236,7 @@ checks_run:
 commit: cbab9ae
 
 ## INC-20260901-1945-metrika-credentials-b32
-status: open
+status: needs-human
 run_date: 2026-09-01
 role: excalibur-blog-content-learner
 topic_id: B32
@@ -214,7 +272,14 @@ category: credentials
 - none recorded
 
 ### Fixer resolution
-- pending
+status: needs-human
+fixed_at: 2026-09-03
+reason:
+- Тот же Cloud Secrets gap. B36 Fixer: не invent.
+needed_decision_or_secret:
+- `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` в Cloud Secrets.
+files_changed: none
+commit: n/a
 
 ## INC-20260901-1945-scout-suggest-next-ignores-titles
 status: fixed
@@ -398,7 +463,7 @@ checks_run:
 commit: 1a625f9 (repo detector); site 409 still needs-human
 
 ## INC-20260901-1431-metrika-credentials-b31
-status: open
+status: needs-human
 run_date: 2026-09-01
 role: excalibur-blog-content-learner
 topic_id: B31
@@ -434,7 +499,14 @@ category: credentials
 - none recorded
 
 ### Fixer resolution
-- pending
+status: needs-human
+fixed_at: 2026-09-03
+reason:
+- Тот же Cloud Secrets gap. B36 Fixer: не invent.
+needed_decision_or_secret:
+- `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` в Cloud Secrets.
+files_changed: none
+commit: n/a
 
 ## INC-20260901-1405-publish-false-409-example-b31
 status: needs-human
@@ -540,7 +612,7 @@ checks_run:
 commit: 21afd83
 
 ## INC-20260902-1428-cover-kie-result-download
-status: open
+status: needs-human
 run_date: 2026-09-02
 role: excalibur-blog-cover
 topic_id: B34
@@ -571,10 +643,17 @@ category: script
 - none recorded
 
 ### Fixer resolution
-- pending (B35 Fixer 2026-09-02: hang not reproduced; not «починили»)
-- B34 repo mitigation remains (commit 6f812de): Range-resume / progress / dest=canvas. Keep code.
-- B35 Cover: один Kie createTask success (`create_attempts=1`, `state=success`). Range-resume не понадобился. CDN hang не воспроизведён — это не подтверждение, что hang исчез.
-- Тело B35 / Sol не трогали. Не второй createTask. Не закрывать INC по «B35 скачалось сразу».
+status: needs-human
+fixed_at: 2026-09-03
+reason:
+- Repo mitigation (Range-resume / progress) уже в дереве (commit 6f812de). CDN hang не воспроизведён на B35/B36 — это не «починили».
+- B36 Cover: 1 Kie i2i `Виктория.png`, `create_attempts=1`, `state=success`, глаза green-hazel, 3 inline, cover-hero в теле нет. Quality-redo не делали (белый блейзер на обложке — не lock, не второй billed).
+needed_decision_or_secret:
+- Если hang вернётся: тот же billed URL + Range-resume, не второй createTask.
+files_changed: none (этот прогон)
+checks_run:
+- B36 `kie-image-task.json`: create_attempts=1 success; не quality-redo
+commit: n/a (mitigation already 6f812de)
 
 ## INC-20260902-2121-director-gemini-task-catalog-missing
 status: needs-human
@@ -587,7 +666,7 @@ category: env
 
 ### What went wrong
 - Gemini 3.7 Flash (`gemini-3.7-flash-high`) нет в каталоге Task этого runtime.
-- Текстовые шаги B35 шли `inherit` automation. Это gap каталога, не сбой статьи.
+- Текстовые шаги B35 и B36 шли `inherit` automation. Это gap каталога, не сбой статьи.
 
 ### How the agent recovered this run
 - Director не подставлял другой model id. Policy `text_model` не меняли.
@@ -610,10 +689,13 @@ status: needs-human
 fixed_at: 2026-09-02
 reason:
 - Каталог Task — env. Репо только фиксирует fallback inherit и запрет угадывать модель.
+- B36: тот же catalog miss; текст снова inherit. Новый INC не плодили.
+- Канон директора уже содержит фразу catalog miss → inherit. B36 Fixer добавил `_comment` в policy.
 needed_decision_or_secret:
 - Добавить `gemini-3.7-flash-high` в каталог Task этого runtime или явно сменить `text_model`.
 repo_fix:
 - `catalog_missing_fallback=inherit`, `catalog_missing_do_not_guess_model=true`
+- `_comment`: catalog miss → inherit
 - Director / chain / docs: inherit, не другой slug
 files_changed:
 - `shared/pipeline-model-policy.json`

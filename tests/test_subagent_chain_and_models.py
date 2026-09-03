@@ -55,6 +55,8 @@ class SubagentChainPolicyTest(unittest.TestCase):
         self.assertEqual(self.policy["text_model"], "gemini-3.7-flash-high")
         self.assertEqual(self.policy.get("catalog_missing_fallback"), "inherit")
         self.assertTrue(self.policy.get("catalog_missing_do_not_guess_model"))
+        self.assertIn("catalog miss", self.policy.get("_comment", ""))
+        self.assertIn("inherit", self.policy.get("_comment", ""))
 
     def test_agent_models_match_policy(self) -> None:
         for name in sorted(self.expected):
