@@ -4,6 +4,69 @@
 Исторические scorecard / judge / ensemble — read-only, не шаблон.
 Writer prompt и Sol skill сюда не раздувать автоматически.
 
+## LESSON-20260903-0710-B36-morning-sits-beside-silent
+status: proposed
+topic_id: B36
+category: other
+confidence: low
+
+### Evidence
+- artifact: none (skipped under human-first-v2)
+  finding: `content-evidence-report.json` отсутствует; evidence_gate=SKIP, не BLOCK. Report не invent'ился. Gate-артефакт: `content-evidence-gate.json` status=SKIP.
+- process: `research-notes.md` + `title-brief.json` + `research-agent-report.json`
+  finding: слот утро 2026-09-03 / 09:00 / CTA bot (триплет/крест; не vk_app). Scout канон: Дзен → сайт (только заголовки) → неделя → Wordstat. Сигнал недели 01.09: Psychologies — ему достаточно «просто присутствовать», ей нужны разговоры и связь (письмо Екатерины 36 лет / Склярова). Канал `dzen.ru/todaytaro_bot` 03.09 жив; карточка ~10 ч = вчерашний B35 «дружба после расставания», не сюжет B36. Не карта дня. Не клон B23 (сеть / статус), B32 (ночной чат), B33 (ежедневные сообщения без зова), B29 (стена при живом чате), B35 (ярлык дружбы после точки), LIVE «смотрит истории». Ядро: он физически в комнате (диван / ужин / кровать), диалога нет. H1 — наблюдаемая сцена («Он сидит рядом и молчит»), не жир Wordstat «сидишь в его телефоне» (8526) и не песня «одиночество вдвоём» (1595). Research = OK_WITH_PARTIAL (API v2 `topRequests`, 4 фразы); «он рядом но молчит» 115 = WORDSTAT PARTIAL (totalCount-only) — не стоп. «он не разговаривает со мной» 1760 = OK с топом.
+- process: `cover/quad-mcp-batch.json` + `cover/cover-registry.json` + `cover/kie-image-task.json` + `cover/quad-split-report.json` + `site-publish-result.json#strip` + `memory/cover/blog-hero.json`
+  finding: реф только `Виктория.png` (`prefer_local_reference` + local file); style `victoria-studio`; глаза `green+hazel` / зелёные с карим. `viktoriaref.png` / latin alias / sheet — forbid, не звали. Pack cover+3 inline. Kie `state=success`, `create_attempts=1`, `task_id` 77235759…. `cover_png_figures_removed=0` / `cover_hero_removed=0`; в теле только `figure.inline-quad` ×3, `figure.cover-hero` нет. Hall / MCP gpt-image-2 не звали. INC-1428 (CDN hang) не воспроизведён — не «починили Kie».
+- process: `site-publish-result.json` + `community-cta-gate.json` + `memory/blog/site-publish-log.md`
+  finding: SITE token сам (`token_env=SITE_PUBLISH_TOKEN`, Hall / Дзен Студия `not_used`). Upload 201 `article_id=48`; excerpt 403 = не FAIL; approve 200; publish 200; live GET 200; `live_ok=true`; `verdict=pass`. 409 quality_review не было. CTA bot PASS. H2 «Практика: как растопить звенящую тишину без давления» уже в теле. Тело не правили. Один live 200 после B33 directory EACCES + B25–B32 409 не закрывает «починили сайт».
+- process: `memory/pipeline-fix-queue.md#INC-20260902-2121-director-gemini-task-catalog-missing`
+  finding: Gemini 3.7 Flash (`gemini-3.7-flash-high`) нет в каталоге Task этого runtime. Текстовые шаги B36 шли `inherit` automation. Новый INC не плодили. Policy `text_model` не меняли. Не угадывали `gpt-*` / `gemini-2.*` / flash-lite.
+- metrika_signal: none
+  finding: `excalibur_blog_metrika_fetch.py --days 30 --ingest` → METRIKA CREDENTIALS BLOCKER (нет `YANDEX_METRIKA_OAUTH_TOKEN` / `YANDEX_METRIKA_COUNTER_ID`). Exit 2. `memory/analytics/metrika-latest.json` не создан. Цифры не выдумывать. Тот же корневой gap, что B35 INC-20260902-2016-metrika-credentials-b35; B34 INC-1455, B33 INC-0650, B32 INC-1945, B31 INC-1431, B30 INC-0659, B29 INC-2040, B28 INC-1526, B27 INC-0709 и B26 INC-1936 всё ещё open. Указатель этого прогона: INC-20260903-0707-metrika-credentials-b36.
+
+### Named blockers
+- EVIDENCE_SKIPPED
+- METRIKA FEEDBACK BLOCKER
+
+### Keep
+- Scout сам берёт живой сигнал (Дзен «сегодня» + неделя Psychologies 01.09 «просто присутствует»). Дзен → сайт (заголовки) → неделя → Wordstat. Не формат «карта дня», даже если утренний слот тенанта так подписан. Слот утро / CTA bot.
+- Не клон B23 (сеть), B32 (ночной чат), B33 (ежедневный чат без зова), B29 (стена при живом чате), B35 (ярлык дружбы после точки), LIVE историй. Канал todaytaro_bot 03.09 держит карточку B35 — сигнал «канал жив», не сюжет B36.
+- WORDSTAT PARTIAL / totalCount-only — не стоп. Research перепроверка OK_WITH_PARTIAL. Жир «сидишь в его телефоне» / песня «одиночество вдвоём» не в H1. H1 — наблюдаемая сцена.
+- Заранее практика из фактов этой статьи (H2 «Практика: как растопить звенящую тишину без давления»).
+- Cover i2i только от рефа `Виктория.png` (`prefer_local_reference` + local file), style `victoria-studio`, глаза зелёные с карим (`green+hazel`). `viktoriaref.png` / victoria-sheet / latin alias — forbid. Pack cover+3 inline; `cover.png` только файл обложки, не вторая картинка в теле (`cover-hero` не инжектить).
+- SITE token сам: upload → approve → publish; Hall / Дзен Студия не звать. Excerpt 403 = не FAIL. Publish / Director тело не правят.
+- Catalog miss Gemini 3.7 Flash → inherit automation. Не угадывать другой model id.
+
+### Change
+- Один live 200 / article_id=48 не закрывает B33 INC-0645 (directory EACCES + live 404) и B25–B32 409 как «починили сайт».
+- Metrika secrets по-прежнему отсутствуют — тот же корневой gap, что INC-2016 / INC-0707. Следующий Content-learner снова BLOCKER, пока секреты не в Cloud Secrets.
+- Cover CDN hang: INC-1428 still open; B36 скачалось с первого create — не подтверждение, что hang исчез.
+- Gemini catalog miss: INC-2121 still open; B36 inherit на тексте — не повод менять `text_model` без человека.
+
+### Never again
+- Клон B23 «зашёл в сеть и молчит» / B32 ночного чата / B33 ежедневного чата без зова / B29 стены при живом чате / B35 ярлыка дружбы после точки / LIVE «смотрит истории».
+- Закрывать слот картой дня / числом дня / 21:21 этой статьёй.
+- Клеить жирную Wordstat («сидишь в его телефоне») или песню («одиночество вдвоём») в H1.
+- Стоп пайплайна из-за WORDSTAT PARTIAL / totalCount-only, если живой сигнал и перепроверка есть.
+- Реф `viktoriaref.png` / victoria-sheet / `victoria.png` / строчная `виктория.png` вместо `Виктория.png`.
+- Инжект `figure.cover-hero` / `cover.png` второй картинкой в тело.
+- Второй billed Kie create после success.
+- Подставлять `gpt-*` / `gemini-2.*` / flash-lite вместо inherit при catalog miss.
+- Раздувать `shared/writer-master-prompt.md` / Writer / Sol skill автоматически (один кейс + evidence SKIP + no-Metrika).
+
+### Proposed apply
+- Review-only: слот утро / CTA bot / сигнал «он просто присутствует в комнате без разговора» держит Scout Дзен→сайт→неделя→Wordstat + H1-наблюдение + практику из research этой статьи; жир-телефон 8526 и песня 1595 ≠ H1; WORDSTAT PARTIAL ≠ стоп; live 200 / id 48 ≠ «сайт починили».
+- Не добавлять правила в `shared/writer-master-prompt.md` и Writer/Sol skill автоматически.
+- Cloud Secrets: `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID` (scope `metrika:read`). Тот же gap, что INC-0707 / INC-2016.
+- Cover CDN hang: INC-1428 already open; не дублировать apply из этого прогона.
+- Gemini catalog miss: INC-2121 already open; inherit, не новый INC и не смена pin.
+
+### Durable applied
+- none this run. `article.html` B36 не трогали. Writer / Sol skill не трогали. Rollback: только по явному решению человека, не из этого SKIP+no-Metrika прогона.
+
+### Resolution
+status: recorded
+
 ## LESSON-20260902-2016-B35-evening-offers-friendship
 status: proposed
 topic_id: B35

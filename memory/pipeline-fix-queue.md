@@ -12,10 +12,17 @@ severity: blocker
 category: credentials
 
 ### What went wrong
+- Content-learner обязателен `python3 scripts/excalibur_blog_metrika_fetch.py --days 30 --ingest`.
+- Exit 2: `METRIKA CREDENTIALS BLOCKER`.
+- В env нет `YANDEX_METRIKA_OAUTH_TOKEN` и `YANDEX_METRIKA_COUNTER_ID`.
+- `memory/analytics/metrika-latest.json` не создан. Цифры не выдумывались. matched_rows / actionable_rows нет.
 - Тот же Cloud Secrets gap, что INC-20260902-2016-metrika-credentials-b35 (B26–B35). Секреты Metrika не в Cloud.
 
 ### How the agent recovered this run
-- Цифры не invent. Тело B36 / Sol не трогали. Слот PUBLISHED `article_id=48`, live 200.
+- Evidence gate SKIP (нет `content-evidence-report.json`) — не BLOCK, report не invent'ился.
+- Lesson `LESSON-20260903-0710-B36-morning-sits-beside-silent` записан как low-confidence (process + SKIP), без causal Metrika.
+- Durable apply нет. `article.html` и Writer/Sol prompt не трогали.
+- Пайплайн не FAIL: Metrika BLOCKER зафиксирован; слот B36 `PUBLISHED` + live 200 + `article_id=48`. Тело не правили.
 
 ### Durable fix needed before next run
 - Cloud Secrets (не git): `YANDEX_METRIKA_OAUTH_TOKEN` + `YANDEX_METRIKA_COUNTER_ID`. Затем тот же fetch `--days 30 --ingest`.
@@ -34,8 +41,13 @@ reason:
 - Секреты вне репо. Не invent. Не чинили setup заново (пустой origin/main → restore B35 ожидаем).
 needed_decision_or_secret:
 - Положить Metrika OAuth + counter id в Cloud Secrets.
-files_changed: none (этот INC — указатель на тот же gap)
+files_changed:
+- `memory/pipeline-fix-queue.md` (этот INC — указатель на тот же gap + факт fetch exit 2)
+- `memory/content-lessons.md` (LESSON-20260903-0710-B36-morning-sits-beside-silent)
+- `memory/blog/articles/B36-on-sidit-ryadom-i-molchit/content-evidence-gate.json`
 checks_run:
+- `python3 scripts/excalibur_blog_content_evidence_gate.py --article-dir memory/blog/articles/B36-on-sidit-ryadom-i-molchit` → SKIP exit 0
+- `python3 scripts/excalibur_blog_metrika_fetch.py --days 30 --ingest` → BLOCKER exit 2; latest.json не создан
 - queue: B26–B35 metrika → needs-human; не десятый полный дубль
 commit: 02c3043
 
