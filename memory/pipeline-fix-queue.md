@@ -37,7 +37,7 @@ needed_decision_or_secret:
 files_changed: none (этот INC — указатель на тот же gap)
 checks_run:
 - queue: B26–B35 metrika → needs-human; не десятый полный дубль
-commit: pending
+commit: 02c3043
 
 ## INC-20260902-2016-metrika-credentials-b35
 status: needs-human
