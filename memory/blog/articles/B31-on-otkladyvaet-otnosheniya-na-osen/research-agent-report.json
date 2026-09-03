@@ -1,0 +1,55 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B31",
+  "slug": "on-otkladyvaet-otnosheniya-na-osen",
+  "article_dir": "memory/blog/articles/B31-on-otkladyvaet-otnosheniya-na-osen",
+  "research_date": "2026-09-01",
+  "timezone": "Europe/Moscow",
+  "fresh_signal_week": "2026-W36",
+  "status": "PASS",
+  "verdict": "PASS",
+  "blocker": null,
+  "fresh_signal": true,
+  "fresh_signal_kind": "weekly_tarot_astro_plus_live_channel",
+  "signal_urls_verified": [
+    "https://dzen.ru/todaytaro_bot",
+    "https://www.таросейчас.рф/blog/",
+    "https://cursorinfo.co.il/horoscope/goroskop-po-kartam-taro-na-nedelyu-s-31-avgusta-po-6-sentyabrya-2026-goda/",
+    "https://dailyhoro.ru/article/taro-prognoz-na-nedelyu-s-31-avgusta-po-6-sentyabrya-2026-goda/",
+    "https://life.ru/p/1917596",
+    "https://tsn.ua/ru/lady/astrologiya/taroprognoz-s-31-avgusta-po-6-sentyabrya-2026-goda-novyy-etap-uzhe-blizko-3158585.html"
+  ],
+  "signal_notes": {
+    "dzen_channel": "карточка ~22ч назад 2026-09-01: B28, не B31; канал живой",
+    "site_blog_titles_only": "верх ленты B28 / B27 / B26; тела не читались",
+    "cursorinfo": "дата на странице «вчера» при доступе 2026-09-01 = 31.08.2026; неделя 31.08–06.09",
+    "dailyhoro": "опубликовано 30.08.2026; неделя 31.08–06.09",
+    "life_ru": "31.08.2026; сентябрь 2026 любовный гороскоп, самопроверка 1.09",
+    "tsn": "живой материал на 31.08–06.09; соседний таро на сентябрь датирован 01.09.2026"
+  },
+  "community_verified": [
+    "https://www.all-psy.com/konsultacii/otvet/427816/",
+    "https://psyh.info/article/psihologiya-otnoshenij/osen-bytie-i-otnosheniya.html",
+    "https://arabicaschool.ru/kormil-zavtrakami-kak-raspoznat-pustye-obeshhaniya-i-perestat-byt-zhertvoj-manipulyaczii/",
+    "https://www.psychol-ok.ru/lib/poppsy/2026/0102.html",
+    "https://psychodemia.ru/blog/bredkrambing-iskusstvo-uderzhaniya-bez-obeshhanij",
+    "https://www.newleaf.ua/ru/bredkrambing/"
+  ],
+  "fetch_blocked_no_body": [
+    "https://www.woman.ru/relations/men/thread-paren-otkladyvaet-predlozhenie-id6393305/",
+    "https://www.b17.ru/blog/558617/",
+    "https://www.b17.ru/article/971588/",
+    "https://psychology-journal.ru/articles/2026/06/01/4753.html",
+    "https://psychologyspb.ru/articles/2026/07/07/5013.html"
+  ],
+  "wordstat_status": "OK",
+  "wordstat_provider": "yandex_cloud_search_api_v2",
+  "wordstat_accessed_at": "2026-09-01",
+  "wordstat_region": 225,
+  "wordstat_note": "Scout 1309/851/538/219 → recheck 1348/889/568/227. PARTIAL на узких хвостах не blocker. Exact working_title EMPTY.",
+  "anti_dup_ok": true,
+  "cta_hint": "vk_app",
+  "invented_signal": false,
+  "notes_path": "memory/blog/articles/B31-on-otkladyvaet-otnosheniya-na-osen/research-notes.md",
+  "incident_report": "none"
+}

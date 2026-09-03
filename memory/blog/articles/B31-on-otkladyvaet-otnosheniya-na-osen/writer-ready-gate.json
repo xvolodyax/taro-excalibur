@@ -1,0 +1,14 @@
+{
+  "gate": "writer-ready",
+  "status": "BLOCK",
+  "errors": [
+    "missing writer-ready.json",
+    "html_linter: Line 1, Col 0: Forbidden HTML tag <h1> used.",
+    "html_linter: Line 35, Col 4: Forbidden HTML tag <strong> used.",
+    "html_linter: Line 36, Col 4: Forbidden HTML tag <strong> used.",
+    "html_linter: Line 37, Col 4: Forbidden HTML tag <strong> used.",
+    "html_linter: Line 38, Col 4: Forbidden HTML tag <strong> used.",
+    "html_linter: Line 39, Col 4: Forbidden HTML tag <strong> used."
+  ],
+  "choice_file": null
+}

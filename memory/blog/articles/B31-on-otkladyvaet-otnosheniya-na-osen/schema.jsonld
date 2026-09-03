@@ -1,0 +1,29 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{SITE_BASE}}/on-otkladyvaet-otnosheniya-na-osen/",
+  "url": "{{SITE_BASE}}/on-otkladyvaet-otnosheniya-na-osen/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{SITE_BASE}}/on-otkladyvaet-otnosheniya-na-osen/"
+  },
+  "headline": "Лето кончилось, а он всё ещё говорит тебе «потом»",
+  "description": "Как отличить точную дату встречи от очередного туманного обещания и понять, планирует ли мужчина реальные шаги этой осенью.",
+  "datePublished": "2026-09-01",
+  "dateModified": "2026-09-01",
+  "inLanguage": "ru",
+  "author": {
+    "@type": "Person",
+    "name": "Виктория",
+    "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+    "sameAs": [
+      "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
+      "https://dzen.ru/todaytaro_bot"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ТАРО СЕЙЧАС",
+    "url": "{{SITE_BASE}}/"
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "agent": "excalibur-blog",
+  "date_context": {
+    "timezone": "Europe/Moscow",
+    "today_iso": "2026-09-01",
+    "today_ru": "01.09.2026",
+    "year": 2026,
+    "month": 9,
+    "month_name_ru": "сентябрь",
+    "weekday_ru": "вторник"
+  },
+  "topic": {
+    "topic_id": "B31",
+    "title": "Он откладывает отношения на осень",
+    "h1": "Он откладывает отношения на осень",
+    "slug": "on-otkladyvaet-otnosheniya-na-osen",
+    "primary_query": "Он откладывает отношения на осень",
+    "priority": "P0"
+  },
+  "searches": [
+    {
+      "query_id": "primary_fresh",
+      "query": "Он откладывает отношения на осень 2026",
+      "purpose": "актуальный SERP",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Телец любовь и отношения: что раздражает в осень 2026 - практические советы",
+          "url": "https://astroden.ru/statyi/telec-lyubov-otnosheniya-chto-razdrazhaet-osenn-2026",
+          "snippet": ""
+        },
+        {
+          "title": "Гороскоп любви и отношений на 2026 год для всех знаков Зодиака",
+          "url": "https://www.letu.ru/blog/ispytaniya-chuvstv-i-otnoshenij-lyubovnyj-goroskop-na-2026-god",
+          "snippet": "Узнайте, что именно раздражает Тельца в любви и отношениях осенью 2026 года, и получите проверенные рекомендации, как избежать конфликтов и сохранить гармонию."
+        },
+        {
+          "title": "Осень 2026: кто встретит золотую пору, а кто — шторм",
+          "url": "https://astrologi-runologi.ru/osen-2026-goda-prognoz-dlya-vseh-znakov.html",
+          "snippet": "Детальный астропрогноз для каждого знака зодиака подскажет, как привлечь любовь, избежать конфликтов и углубить связь с партнером."
+        },
+        {
+          "title": "5 знаков зодиака, которые встретят любовь осенью 2026",
+          "url": "https://www.marieclaire.ru/horoscopes/5-znakov-zodiaka-kotorye-vstretyat-lyubov-osenyu-2026/",
+          "snippet": "Узнай, как осень 2026 года перекроит твою судьбу: любовь, деньги, сюрпризы — всё по знакам! Осень 2026 года обещает быть невероятно динамичным и трансформационным периодом."
+        },
+        {
+          "title": "Любовный гороскоп на 2026 год для всех знаков зодиака: самый точный ...",
+          "url": "https://www.kp.ru/woman/goroskop/lyubovnyj-goroskop-na-2026-god/",
+          "snippet": "5 знаков зодиака, которые встретят любовь осенью 2026 Близнецы (21 мая — 20 июня) Близнецы этой осенью окажутся в центре общения."
+        },
+        {
+          "title": "Пять знаков зодиака, у которых осенью разрушатся отношения, и как этого ...",
+          "url": "https://moika78.ru/news/2026-08-31/1349187-pyat-znakov-zodiaka-u-kotoryh-osenyu-razrushatsya-otnosheniya-i-kak-etogo-izbezhat/",
+          "snippet": "Узнайте, каким знакам зодиака повезет в любви, кому стоит быть осторожнее, а кому пора заключать брак в 2026 ..."
+        }
+      ],
+      "searched_at": "2026-09-01"
+    },
+    {
+      "query_id": "title_fresh",
+      "query": "Он откладывает отношения на осень 2026",
+      "purpose": "SERP по человеческому title",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Телец любовь и отношения: что раздражает в осень 2026 - практические советы",
+          "url": "https://astroden.ru/statyi/telec-lyubov-otnosheniya-chto-razdrazhaet-osenn-2026",
+          "snippet": ""
+        },
+        {
+          "title": "Гороскоп любви и отношений на 2026 год для всех знаков Зодиака",
+          "url": "https://www.letu.ru/blog/ispytaniya-chuvstv-i-otnoshenij-lyubovnyj-goroskop-na-2026-god",
+          "snippet": "Узнайте, что именно раздражает Тельца в любви и отношениях осенью 2026 года, и получите проверенные рекомендации, как избежать конфликтов и сохранить гармонию."
+        },
+        {
+          "title": "Осень 2026: кто встретит золотую пору, а кто — шторм",
+          "url": "https://astrologi-runologi.ru/osen-2026-goda-prognoz-dlya-vseh-znakov.html",
+          "snippet": "Детальный астропрогноз для каждого знака зодиака подскажет, как привлечь любовь, избежать конфликтов и углубить связь с партнером."
+        },
+        {
+          "title": "5 знаков зодиака, которые встретят любовь осенью 2026",
+          "url": "https://www.marieclaire.ru/horoscopes/5-znakov-zodiaka-kotorye-vstretyat-lyubov-osenyu-2026/",
+          "snippet": "Узнай, как осень 2026 года перекроит твою судьбу: любовь, деньги, сюрпризы — всё по знакам! Осень 2026 года обещает быть невероятно динамичным и трансформационным периодом."
+        },
+        {
+          "title": "Гороскоп на осень 2026 — прогноз по знакам зодиака",
+          "url": "https://www.585zolotoy.ru/journal/goroskop-na-osen-2026/",
+          "snippet": "5 знаков зодиака, которые встретят любовь осенью 2026 Близнецы (21 мая — 20 июня) Близнецы этой осенью окажутся в центре общения."
+        },
+        {
+          "title": "Любовный гороскоп на 2026 год для всех знаков зодиака: самый точный ...",
+          "url": "https://www.kp.ru/woman/goroskop/lyubovnyj-goroskop-na-2026-god/",
+          "snippet": "Гороскоп на осень 2026 для всех знаков зодиака: главные события сентября, октября и ноября, прогноз для любви, карьеры и финансов."
+        }
+      ],
+      "searched_at": "2026-09-01"
+    },
+    {
+      "query_id": "official_docs",
+      "query": "Он откладывает отношения на осень official docs 2026",
+      "purpose": "официальные docs",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Одиссея (фильм, 2026) — Википедия",
+          "url": "https://ru.wikipedia.org/wiki/%D0%9E%D0%B4%D0%B8%D1%81%D1%81%D0%B5%D1%8F_(%D1%84%D0%B8%D0%BB%D1%8C%D0%BC,_2026)",
+          "snippet": ""
+        },
+        {
+          "title": "Фильм «Одиссея» Нолана — 2026: актёры, сюжет и отзыв — Лайфхакер",
+          "url": "https://lifehacker.ru/odisseya-film-2026/",
+          "snippet": "Премьерный показ в Лондоне состоялся 6 июля 2026 года. В широкий прокат в США и Великобритании фильм вышел 17 июля 2026 года ."
+        },
+        {
+          "title": "как понять что парень не готов вкладываться если она часто отменяет ...",
+          "url": "https://vk.com/wall-236269603_2398",
+          "snippet": "30 июля в «серый» российский прокат вышел один из самых обсуждаемых фильмов 2026 года — «Одиссея» Кристофера Нолана."
+        },
+        {
+          "title": "Яндекс Доски",
+          "url": "https://boards.yandex.ru/",
+          "snippet": "06-03-2026 как понять что парень не готов вкладываться если она часто отменяет встречи Он часто откладывает встречи, и это бросает тень сомнения на его серьёзность."
+        },
+        {
+          "title": "как понять что парень не готов вкладываться Он часто обещает «позже ...",
+          "url": "https://vk.com/wall-236316122_575",
+          "snippet": "Яндекс Доски Онлайн-доска для совместной работы в режиме реального времени Начать пользоваться"
+        },
+        {
+          "title": "Google Документы: вход в систему",
+          "url": "https://docs.google.com/document/?hl=ru",
+          "snippet": "вернуться к странице Посты сообществаВсе постыПост на стене Оракул Марго совместимость отношения запись закреплена 04-03-2026 как понять что парень не готов вкладываться"
+        }
+      ],
+      "searched_at": "2026-09-01"
+    },
+    {
+      "query_id": "github_evidence",
+      "query": "site:github.com Он откладывает отношения на осень 2026",
+      "purpose": "GitHub evidence",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "SlayTheSpire2ModdingTutorials/images/image22.png at master ...",
+          "url": "https://github.com/GlitchedReme/SlayTheSpire2ModdingTutorials/blob/master/images/image22.png",
+          "snippet": ""
+        },
+        {
+          "title": "Piccup/logo.svg at main · larsdavid99/Piccup · GitHub",
+          "url": "https://github.com/larsdavid99/Piccup/blob/main/logo.svg",
+          "snippet": "Contribute to GlitchedReme/SlayTheSpire2ModdingTutorials development by creating an account on GitHub."
+        },
+        {
+          "title": "Что делать если роблокс перестал работать с запретом? (ОБХОД)",
+          "url": "https://github.com/Flowseal/zapret-discord-youtube/discussions/8391",
+          "snippet": "Contribute to larsdavid99/Piccup development by creating an account on GitHub."
+        },
+        {
+          "title": "GitHub - Clonexy700/YandexJuniorContest: Решения задач Яндекс Контест с ...",
+          "url": "https://github.com/Clonexy700/YandexJuniorContest",
+          "snippet": "Для начала, установите последнюю на данный момент версию запрета (1.9.2). После того, как вы его установили, создайте папку на рабочем столе. Можете назвать его как хотите, например: \"Zapret\"."
+        },
+        {
+          "title": "figma-/XMLID_24_.svg at main · Ibrohim121/figma- · GitHub",
+          "url": "https://github.com/Ibrohim121/figma-/blob/main/XMLID_24_.svg",
+          "snippet": "В основном решения представлены на языке программирования Python. В папке tasks находятся условия задач. В папке solution приведены решения задач контеста. В папке how_to_solve_help приведены подсказки и объяснения решений к задачам."
+        },
+        {
+          "title": "GitHub - Bladhard/lazy-loading: Откладывает загрузку изображений на ...",
+          "url": "https://github.com/Bladhard/lazy-loading",
+          "snippet": "Contribute to Ibrohim121/figma- development by creating an account on GitHub."
+        }
+      ],
+      "searched_at": "2026-09-01"
+    },
+    {
+      "query_id": "community_experience",
+      "query": "Он откладывает отношения на осень forum problems опыт 2026",
+      "purpose": "форумы и живые проблемы",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "как реагировать если парень не строит планы и потом извиняется Когда ...",
+          "url": "https://vk.com/wall-236316049_775",
+          "snippet": ""
+        },
+        {
+          "title": "как понять что парень не готов вкладываться если она часто отменяет ...",
+          "url": "https://vk.com/wall-236269603_2398",
+          "snippet": "Когда парень постоянно откладывает разговоры о совместном будущем, а потом появляется с извинениями, в голове возникает путаница и чувство неуверенности."
+        },
+        {
+          "title": "Парень откладывает предложение - 16 ответов на форуме Woman.ru (6393305)",
+          "url": "https://www.woman.ru/relations/men/thread-paren-otkladyvaet-predlozhenie-id6393305/",
+          "snippet": "Он часто откладывает встречи, и это бросает тень сомнения на его серьёзность. Если парень регулярно отменяет планы, это может быть сигналом, что он пока не готов вкладываться в ..."
+        },
+        {
+          "title": "Новый опыт отношений",
+          "url": "https://www.b17.ru/forum/topic.php?id=615910",
+          "snippet": "Впервые встретили через 3 месяца переписки, приезжали друг к другу. На прошлой неделе он познакомился с моими родителями и познакомил меня со своими (они в другом городе). И вот меня..."
+        },
+        {
+          "title": "Тяжёлый период после разрыва отношений",
+          "url": "https://www.b17.ru/forum/topic.php?id=643884",
+          "snippet": "Чтобы понять, нужно ли вам что-то большее - есть несколько способов."
+        },
+        {
+          "title": "Отношения без будущего? Что делать, если партнёр откладывает совместную ...",
+          "url": "https://www.all-psy.com/konsultacii/otvet/427816/",
+          "snippet": "Обсуждение на тему: Тяжёлый период после разрыва отношений"
+        }
+      ],
+      "searched_at": "2026-09-01"
+    }
+  ],
+  "errors": []
+}
