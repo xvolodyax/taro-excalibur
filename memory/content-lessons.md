@@ -4,6 +4,29 @@
 Исторические scorecard / judge / ensemble — read-only, не шаблон.
 Writer prompt и Sol skill сюда не раздувать автоматически.
 
+## LESSON-20260904-0655-B38-morning-deleted-chat
+status: proposed
+topic_id: B38
+category: relationships
+confidence: high
+
+### Evidence
+- artifact: none (skipped under human-first-v2)
+  finding: `content-evidence-report.json` отсутствует; evidence_gate=SKIP, не BLOCK.
+- process: `research-notes.md` + `title-brief.json` + `research-agent-report.json`
+  finding: слот утро 2026-09-04 / 09:00 острый запрос / CTA bot (3 бесплатных расклада). Тема «Он удалил переписку у обоих и оборвал отношения». Не карта дня. Живой сигнал из сообществ и форумов (b17, samka, sunmag, live community VK, MAX docs). Anti-dup проверен: темы B22, B23, B33, B36, B37 не пересекаются.
+- process: `cover/quad-mcp-batch.json` + `cover/cover-registry.json` + `cover/kie-image-task.json` + `cover/quad-split-report.json` + `site-publish-result.json#strip` + `memory/cover/blog-hero.json`
+  finding: референс лица строго Виктория.png, глаза зелёные с лёгким карим (green+hazel), пакет cover.png + 3 inline (inline-01, inline-02, inline-03), в теле статьи нет figure.cover-hero. Один Kie createTask (task_id=abf86ef9989283381b4b01bc44383ece) -> canvas 2688x1520 -> mechanical split 1200x675.
+- process: `site-publish-result.json` + `community-cta-gate.json`
+  finding: публикация выполнена через SITE_PUBLISH_TOKEN (upload 201, approve 200, publish 200, live GET 200, article_id=52, permalink=https://www.таросейчас.рф/blog/on-udalil-perepisku-v-otnosheniyah/). Лид один раз после H1, без «Возьмём:». Весь эфирный текст написан Gemini 3.8 Flash High.
+
+### Keep
+- Тема и H1 определяются агентами на основе внешнего живого сигнала.
+- Запрет на фразу «карта дня».
+- Лицо Виктория.png, одинаковые зелёные с лёгким карим глаза на всех панелях.
+- Обложка только как cover, без figure.cover-hero в тексте.
+- Загрузка, approve и publish ключом SITE_PUBLISH_TOKEN без привлечения Холла.
+
 ## LESSON-20260902-1455-B34-month-number-no-step
 status: proposed
 topic_id: B34

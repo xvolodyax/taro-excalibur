@@ -1,0 +1,64 @@
+{
+  "topic_id": "B38",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Он стёр переписку у обоих",
+  "cover_hook_highlight": "стёр",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: он стёр переписку у обоих",
+      "scene_hint": "same woman as Виктория.png, Host LARGE left half; tiny blank screen right; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "дело не в тебе"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Скрытая механика: почему стирание чата — это попытка перехватить контроль и сбежать от уязвимости",
+      "visual_type": "infographic_card",
+      "scene_hint": "L→R: бегство от уязвимости → перехват контроля → тишина → иллюзия силы. NO people/faces. #FFF",
+      "alt": "Инфографика: скрытые механизмы удаления переписки",
+      "labels": [
+        "бегство от уязвимости",
+        "перехват контроля",
+        "наказание тишиной",
+        "иллюзия силы"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Разница между аффектом и хладнокровным сокрытием улик",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Table: Аффект (ночной срыв, стыд) vs Расчёт (тайные улики, чужие глаза). NO people/faces. #FFF",
+      "alt": "Сравнение: удаление на эмоциях против сокрытия улик",
+      "labels": [
+        "всплеск аффекта",
+        "холодный расчёт",
+        "тайные улики",
+        "чужие глаза"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Практика: чеклист шагов, как вернуть себе опору и что спросить у карт",
+      "visual_type": "checklist_board",
+      "scene_hint": "Steps: 1 держи паузу 2 не вини себя 3 без чужих номеров 4 опора на факты. NO people/faces. #FFF",
+      "alt": "Чеклист: как вернуть опору и не поддаваться манипуляции",
+      "labels": [
+        "держи паузу",
+        "не вини себя",
+        "без чужих номеров",
+        "опора на факты"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
