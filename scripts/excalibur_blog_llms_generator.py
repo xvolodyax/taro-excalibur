@@ -125,8 +125,8 @@ def build_llms_full_txt(site_name: str, articles: list[dict[str, Any]], site_bas
 def main() -> int:
     ap = argparse.ArgumentParser(description="Generate AI-friendly llms.txt and llms-full.txt")
     ap.add_argument("--blog-dir", type=Path, default=None)
-    ap.add_argument("--site-name", type=str, default="Maya AI — Excalibur BLOG")
-    ap.add_argument("--site-desc", type=str, default="Практический блог по автоматизации бизнеса на Make.com, вайбкодингу и ИИ-агентам.")
+    ap.add_argument("--site-name", type=str, default="ТАРО СЕЙЧАС")
+    ap.add_argument("--site-desc", type=str, default="Психологический разбор отношений через Таро: истинные мотивы партнеров, скрытая выгода молчания и возврат фокуса себе.")
     ap.add_argument(
         "--site-base",
         type=str,

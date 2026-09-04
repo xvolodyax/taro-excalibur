@@ -51,7 +51,7 @@ DEFAULT_POLL_INTERVAL_SECONDS = 15
 DEFAULT_MAX_WAIT_SECONDS = 900
 DEFAULT_MAX_CREATE_RETRIES = 1
 DEFAULT_RETRY_WAIT_SECONDS = 15
-DEFAULT_LOCAL_REFERENCE = "memory/cover/assets/blog-hero-reference.png"
+DEFAULT_LOCAL_REFERENCE = "memory/cover/assets/Виктория.png"
 
 
 class KieApiError(RuntimeError):
@@ -238,7 +238,10 @@ def batch_mcp_args(batch_path: Path) -> dict[str, Any]:
         raise KieApiError("Missing prompt in jobs[0].mcp_args")
     if not isinstance(input_urls, list) or not input_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args")
-    expanded_urls = expand_input_urls(input_urls)
+    try:
+        expanded_urls = expand_input_urls(input_urls)
+    except KieApiError:
+        expanded_urls = input_urls
     if not expanded_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args after expand")
     return {
@@ -712,6 +715,24 @@ def main() -> int:
         fetch_upload_fallback_done = bool(prefer_meta)
         fetch_upload_meta: dict[str, Any] | None = prefer_meta
         pre_task_connection_reset_retry_done = False
+
+        if not task_id and not prefer_meta:
+            try:
+                new_urls, fetch_upload_meta = prepare_kie_hosted_input_urls(
+                    root=root,
+                    article_dir=article_dir,
+                    api_key=api_key,
+                    expanded_input_urls=list(image_input.get("input_urls") or []),
+                    upload_url=args.file_upload_url,
+                    upload_path=args.file_upload_path,
+                    local_reference=DEFAULT_LOCAL_REFERENCE,
+                )
+                image_input = dict(image_input)
+                image_input["input_urls"] = new_urls
+                fetch_upload_fallback_done = True
+                print(f"Kie Reference pre-upload OK: {new_urls[0]}", flush=True)
+            except Exception as exc:
+                print(f"WARN pre-upload reference: {exc}", flush=True)
 
         while True:
             if not task_id:

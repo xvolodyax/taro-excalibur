@@ -9,4 +9,3 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 
 | topic_id | slug | title | status |
 |----------|------|-------|--------|
-| B01 | pochemu-muzhchina-derzhit-distanciyu-skrytye-motivy-i-razbor-taro | Почему мужчина держит дистанцию: скрытые мотивы молчания и разбор Таро | published |

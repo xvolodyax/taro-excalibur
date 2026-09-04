@@ -1,0 +1,35 @@
+{
+  "source": "memory/blog/articles/B01-pochemu-muzhchina-derzhit-distanciyu-skrytye-motivy-i-razbor-taro/article.html",
+  "total_links": 3,
+  "failed_count": 0,
+  "verdict": "pass",
+  "links": [
+    {
+      "url": "https://t.me/TodayTaro_bot?start=id8293683394",
+      "status": 200,
+      "ok": true,
+      "method": "HEAD",
+      "error": null,
+      "kind": "external",
+      "skipped": false
+    },
+    {
+      "url": "https://max.ru/id531102974575_bot",
+      "status": 200,
+      "ok": true,
+      "method": "HEAD",
+      "error": null,
+      "kind": "external",
+      "skipped": false
+    },
+    {
+      "url": "https://vk.com/app54565776",
+      "status": 200,
+      "ok": true,
+      "method": "GET",
+      "error": null,
+      "kind": "external",
+      "skipped": false
+    }
+  ]
+}

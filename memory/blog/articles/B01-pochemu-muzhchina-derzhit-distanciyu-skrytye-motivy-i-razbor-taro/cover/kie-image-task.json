@@ -1,0 +1,16 @@
+{
+  "task_id": "7fe28d07b861b69090a44334c182dd7d",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B01-pochemu-muzhchina-derzhit-distanciyu-skrytye-motivy-i-razbor-taro/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1788529678,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "local_blog_hero_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "Виктория.png",
+    "download_host": "tempfile.redpandaai.co"
+  }
+}
