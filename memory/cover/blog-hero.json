@@ -1,18 +1,23 @@
 {
-  "hero_id": "blog-host",
-  "status": "SETUP_REQUIRED",
-  "name_ru": "",
-  "cover_mode": "unset",
-  "reference_image": "",
-  "reference_notes": "Filled by excalibur-blog-setup-visual. No default personal face or outfit lock.",
-  "visual_lock": {},
-  "outfit_rule": "",
-  "prompt_fragment": "",
+  "hero_id": "victoria-taro",
+  "status": "active",
+  "name_ru": "Виктория",
+  "cover_mode": "host_reference",
+  "reference_image": "memory/cover/assets/Виктория.png",
+  "reference_notes": "Ведущая блога «ТАРО СЕЙЧАС» Виктория. Экспертный разбор через архетипы Таро. Элегантный, психологический, сосредоточенный образ.",
+  "visual_lock": {
+    "face": "Oval face, expressive hazel eyes (green with warm brown tint), neat refined eyebrows, full lips with subtle nude gloss, composed attentive expression",
+    "hair": "Warm straight blonde hair (shoulder-length) with darker natural roots",
+    "outfit": "Structured tailored white double-breasted blazer over a black top, fine delicate gold chain with round pendant medallion",
+    "setting": "Minimalist modern consulting studio, clean neutral backdrop, polished wooden table with classic Tarot cards layout, balanced studio frontal lighting"
+  },
+  "outfit_rule": "Structured white double-breasted blazer over dark top, subtle gold pendant medallion. Clean, high-end professional styling without cheap costume elements.",
+  "prompt_fragment": "Victoria, elegant female Tarot expert, oval face, hazel green-brown eyes, neat eyebrows, shoulder-length warm straight blonde hair with darker roots, wearing structured white blazer over black top, delicate gold chain medallion, calm discerning look, sitting at modern minimalist table with Tarot spread, high-end studio lighting",
   "cover_hook_rules": [
     "cover_hook invents Cover agent from reader_pain; no script templates",
     "meme_caption_ru always empty unless tenant explicitly allows"
   ],
-  "reference_url_hosted": "",
-  "reference_url_source": "",
-  "reference_url_updated_at": null
+  "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/Виктория.png",
+  "reference_url_source": "local_asset",
+  "reference_url_updated_at": "2026-09-04T13:20:00Z"
 }

@@ -1,0 +1,14 @@
+{
+  "preset_id": "quad-style-taro",
+  "status": "active",
+  "label_ru": "ТАРО СЕЙЧАС — Quad Canvas Preset",
+  "design_code": "memory/cover/cover-design-code.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "cover_hero_mode": "host_reference",
+  "skip_human_host": false,
+  "allows_animal_stickers": false,
+  "allowed_animal_motif": "",
+  "global_prompt_prefix": "Editorial psychological Tarot layout RU, clean white #FFFFFF base, dark graphite #141821 Cyrillic typography, warm gold #D4AF37 subtle accents, deep indigo #1A237E framing. Refined minimalist consulting aesthetic, classic Tarot cards, balanced studio lighting, elegant composition, strictly no tacky fantasy magic or cheap clipart.",
+  "cover_hook_typography": "Bold condensed Cyrillic headline in black #141821 with single warm gold #D4AF37 highlight word",
+  "panel_layout": "2x2 quad canvas (2048x1152), top-left cover hero with Victoria host, three inline analytical panels without faces"
+}

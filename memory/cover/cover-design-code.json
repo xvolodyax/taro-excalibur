@@ -1,27 +1,39 @@
 {
-  "design_code_id": "tenant_unset",
-  "status": "SETUP_REQUIRED",
-  "label_ru": "Заполняется Setup Visual из референсов тенанта",
-  "reference_notes": "Нет дефолтного чужого бренд-коллажа. Setup Visual пишет palette, motifs, cover/inline rules.",
+  "design_code_id": "taro_editorial_minimal",
+  "status": "active",
+  "label_ru": "ТАРО СЕЙЧАС — глубокий психологический эдиториал с благородными акцентами",
+  "reference_notes": "Премиальный минималистичный визуальный стиль блога «ТАРО СЕЙЧАС». Сочетание глубокого графита/индиго, теплого золота и чистого фона. Карты Таро как инструмент психологического разбора.",
   "cover_rules": [
     "Один cover_hook разумной длины; meme_caption_ru по умолчанию пуст",
-    "Стиль и герой — только из blog-hero.json + этого design-code после Setup",
-    "Запрещён штамп пайплайна на PNG: «EXCALIBUR» / sword lockup"
+    "Стиль и герой — только из blog-hero.json (Виктория) + этого design-code",
+    "Ведущая Виктория в структурированном белом жакете за столом с классическими картами Таро",
+    "Запрещён штамп пайплайна на PNG: «EXCALIBUR» / sword lockup",
+    "Запрещены дешевые магические спецэффекты, светящиеся сферы, хрустальные шары, клипарты, мемы",
+    "Запрещена формулировка «карта дня»"
   ],
   "inline_rules": [
-    "Только информация конкретного H2",
-    "Без людей/лиц на inline, если tenant не разрешил иное",
-    "Generated UI не выдавать за реальный screenshot"
+    "Только структурированная психологическая информация конкретного H2",
+    "Без людей и лиц на inline-панелях",
+    "Архетипические схемы, таблицы расклада, чеклисты мотивов и векторов",
+    "Четкая кириллическая типографика, благородные золотые и индиго акценты"
   ],
-  "visual_motifs": [],
+  "visual_motifs": [
+    "classic tarot arcana archetypes (Wheel of Fortune, Justice, Pentacles, Wands)",
+    "clean geometric spread lines and minimal gold wireframe card frames",
+    "minimalist wooden and stone textures, soft warm studio shadows",
+    "deep indigo and charcoal panels with subtle warm gold foil highlights"
+  ],
   "color_palette": {
     "background": "#FFFFFF",
     "ink": "#141821",
-    "accent_primary": "",
-    "usage": "Set by Setup Visual"
+    "accent_primary": "#D4AF37",
+    "accent_secondary": "#1A237E",
+    "neutral_dark": "#263238",
+    "neutral_light": "#F5F5F7",
+    "usage": "Чистый белый фон или нейтральная база, глубокий угольный текст #141821, благородный золотой акцент #D4AF37 на ключевых терминах и линиях, глубокий индиго #1A237E для структурных блоков"
   },
-  "typography_reference": "",
-  "cover_panel_prompt_block": "",
-  "inline_information_block": "",
-  "global_negative": "sterile empty white, meme reaction cutouts, pipeline name watermark, stock banner, beige gradient spam"
+  "typography_reference": "Bold clean condensed Cyrillic headlines in dark ink #141821, elegant refined subheaders, subtle gold highlight on key pain-point words",
+  "cover_panel_prompt_block": "High-end psychological Tarot editorial, clean white base #FFFFFF, dark graphite #141821 Cyrillic typography, warm metallic gold #D4AF37 accent, deep indigo #1A237E subtle framing. Minimalist modern interior, professional studio lighting, sophisticated calm atmosphere, elegant Tarot card arrangement. High quality, crisp details, strictly no tacky magic effects or memes.",
+  "inline_information_block": "Clean analytical infographics, structural vector diagrams, archetype comparison cards, crisp Cyrillic labels, dark graphite #141821 text with warm gold #D4AF37 pointers, deep indigo borders on clean white backdrop #FFFFFF, strictly no people or faces.",
+  "global_negative": "sterile empty white, meme reaction cutouts, pipeline name watermark, stock banner, beige gradient spam, cheap crystal balls, neon magic sparks, glowing runes, tacky fortune teller clipart, all-pink headline"
 }
