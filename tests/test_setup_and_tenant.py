@@ -21,6 +21,8 @@ class SetupTenantTests(unittest.TestCase):
         self.assertFalse(tenant.get("cta_required"))
         self.assertEqual(tenant.get("cta_links"), [])
         self.assertTrue(tenant.get("dzen_rf_pack"))
+        folder = str(tenant.get("yandex_cloud_folder_id") or "")
+        self.assertRegex(folder, r"^b1[a-z0-9]{18,}$")
 
     def test_setup_agents_present(self) -> None:
         for rel in (

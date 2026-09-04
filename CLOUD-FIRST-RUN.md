@@ -28,6 +28,8 @@
 | `EXCALIBUR_BLOG_ALLOW_PUBLISH` | `yes` только когда готовы публиковать |
 | Image API key (Kie / ваш провайдер) | Cover, когда Visual setup готов |
 | MCP tokens | Wordstat / WP blob — по необходимости |
+| `YANDEX_CLOUD_SEARCH_API_KEY` | Wordstat v2 / Search API (не в git) |
+| `YANDEX_FOLDER_ID` | ID каталога AI Studio / Yandex Cloud (дубль в `tenant-config.yandex_cloud_folder_id`) |
 | `YANDEX_METRIKA_*` | Опционально Content-learner |
 
 Рекомендуется Runtime Secrets для паролей (не светятся в transcript).

@@ -94,6 +94,8 @@ Phase `visual` → `done` при PASS Visual.
 Спроси signal_urls (каналы/ленты) и нужен ли Wordstat.
 
 Пиши `tenant-config.scout_signal_urls` + site-brief.
+Wordstat folder id (не API-ключ) → `tenant-config.yandex_cloud_folder_id`
+и/или Cloud Secret `YANDEX_FOLDER_ID`.
 
 ## Блок 7 — Stamp
 

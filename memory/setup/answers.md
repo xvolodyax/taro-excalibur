@@ -3,7 +3,8 @@
 <!-- Заполняет excalibur-blog-setup. Без секретов и паролей. -->
 
 ## Cloud
-- _(pending)_
+- Wordstat folder id: записан в tenant-config (не секрет API-ключа)
+- Wordstat API key: Cloud Secret `YANDEX_CLOUD_SEARCH_API_KEY` (значение не в git)
 
 ## Site
 - _(pending)_
