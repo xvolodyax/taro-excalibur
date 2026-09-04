@@ -1,0 +1,32 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B38",
+  "slug": "on-udalil-perepisku-v-otnosheniyah",
+  "title": "Он удалил переписку в отношениях",
+  "status": "PASS",
+  "research_date": "2026-09-04",
+  "signal_evaluation": {
+    "verdict": "PASS",
+    "reason": "FRESH_EXTERNAL_SIGNAL",
+    "fresh_sources_present": true,
+    "community_signals": [
+      "https://www.b17.ru/forum/topic.php?id=597351",
+      "https://vk.com/wall-56106344_10189566",
+      "https://charter97.org/ru/news/2026/9/3/697115/"
+    ],
+    "official_docs": [
+      "https://maxofficial.ru/blog/kak-udalit-perepisku-v-max"
+    ]
+  },
+  "constraints_verified": {
+    "no_rf_blocked_entities_as_hero": true,
+    "no_meta_instagram_facebook_hero": true,
+    "no_h2_outline": true,
+    "no_faq_skeleton": true,
+    "no_lead_prose": true,
+    "anti_dup_checked": true
+  },
+  "artifacts": {
+    "research_notes": "memory/blog/articles/B38-on-udalil-perepisku-v-otnosheniyah/research-notes.md"
+  }
+}
