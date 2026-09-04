@@ -1,0 +1,61 @@
+{
+  "topic_id": "B39",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Он отправил смайлик и молчит",
+  "cover_hook_highlight": "молчит",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: он отправил смайлик и молчит",
+      "scene_hint": "same woman as Виктория.png, Host LARGE left half; tiny smartphone right with emoji message; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "шага нет"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Скрытая механика полусекундного клика: почему мужчины бросают реакции вместо слов",
+      "visual_type": "infographic_card",
+      "scene_hint": "L→R: проверка связи → ноль усилий → пинг-тест → ожидание ответа. NO people/faces. #FFF",
+      "alt": "Инфографика: скрытая механика полусекундного клика",
+      "labels": [
+        "проверка связи",
+        "ноль усилий",
+        "пинг-тест"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Ловушка додумывания и женские ошибки: почему нельзя отвечать текстом на смайлик",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist: ловушка ожидания, без допросов, клик на клик. NO people/faces. #FFF",
+      "alt": "Чеклист: ловушка додумывания и женские ошибки",
+      "labels": [
+        "ловушка ожидания",
+        "без допросов",
+        "клик на клик"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Что показывают арканы Таро: как карты раскрывают истинные мотивы",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Cards: Паж Мечей в засаде, Семёрка Мечей хитрит, совет карт. NO people/faces. #FFF",
+      "alt": "Таро: скрытые мотивы в арканах",
+      "labels": [
+        "Паж Мечей в засаде",
+        "Семёрка Мечей хитрит",
+        "совет карт"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
