@@ -1,15 +1,17 @@
 {
   "version": "1",
-  "complete": false,
-  "updated_at": null,
+  "complete": true,
+  "reopen": false,
+  "updated_at": "2026-08-29T18:22:00Z",
+  "live_tenant": true,
+  "notes": "Живой тенант ТАРО СЕЙЧАС (таросейчас.рф). Setup Gate закрыт: анкету Владимиру не задавать. Реф лица: Виктория.png.",
   "phases": {
-    "cloud": "pending",
-    "site": "pending",
-    "author": "pending",
-    "voice": "pending",
-    "visual": "pending",
-    "cta": "pending",
-    "scout": "pending"
-  },
-  "notes": "excalibur-blog-setup stamps phases to done and sets complete=true when all required phases pass."
+    "cloud": "done",
+    "site": "done",
+    "author": "done",
+    "voice": "done",
+    "visual": "done",
+    "cta": "done",
+    "scout": "done"
+  }
 }
