@@ -1,0 +1,50 @@
+{
+  "topic_id": "B39",
+  "slug": "on-otpravil-reakciyu-na-istoriyu-i-molchit",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: он отправил смайлик и молчит",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-09-04T18:39:57+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: он отправил смайлик и молчит",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Инфографика: скрытая механика полусекундного клика",
+      "h2_anchor": "Скрытая механика полусекундного клика: почему мужчины бросают реакции вместо слов",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Чеклист: ловушка додумывания и женские ошибки",
+      "h2_anchor": "Ловушка додумывания и женские ошибки: почему нельзя отвечать текстом на смайлик",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Таро: скрытые мотивы в арканах",
+      "h2_anchor": "Что показывают арканы Таро: как карты раскрывают истинные мотивы",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}
