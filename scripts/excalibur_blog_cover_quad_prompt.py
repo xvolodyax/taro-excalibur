@@ -500,13 +500,17 @@ def build_prompt(
         f"Bottom-left inline: {inline_panel_prompt(i2, types_catalog)}",
         f"Bottom-right inline: {inline_panel_prompt(i3, types_catalog)}",
         "",
-        inline_suffix,
+        style.get("inline_prompt_suffix") or inline_suffix,
     ]
     if fact_locks:
         lines.extend(["", *fact_locks])
     hair_line = hair_lock_line(hero, design_code)
     if hair_line and hair_line not in "\n".join(lines):
         lines.extend(["", hair_line])
+    eye_lock = (hero.get("visual_lock") or {}).get("eye_color_lock") or {}
+    eye_prompt = str(eye_lock.get("prompt") or "").strip()
+    if eye_prompt and eye_prompt not in "\n".join(lines):
+        lines.extend(["", f"eyes: {eye_prompt}"])
     return "\n".join(line for line in lines if line)
 
 
