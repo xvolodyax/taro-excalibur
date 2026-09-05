@@ -113,12 +113,22 @@
   "model_policy": "shared/pipeline-model-policy.json",
   "text_model": "gemini-3.8-flash",
   "text_model_id": "gemini-3.8-flash",
-  "reasoning_effort": "high",
+  "reasoning_effort": "low",
   "model_params": {
-    "reasoning_effort": "high"
+    "reasoning_effort": "low"
   },
-  "cloud_agents_invocation": "В Cloud Agents НЕТ id gemini-3.8-flash-high. Правильный вызов: model=gemini-3.8-flash, model_params.reasoning_effort=high.",
-  "text_model_slug": "gemini-3.8-flash-high",
+  "reasoning_effort_override": "high",
+  "reasoning_effort_override_rule": "high only on explicit Vladimir override",
+  "cloud_agents_invocation": "В Cloud Agents НЕТ id gemini-3.8-flash-high. Дефолт: model=gemini-3.8-flash, model_params.reasoning_effort=low. high — только явный override Владимира.",
+  "text_model_slug": "gemini-3.8-flash",
+  "anti_burn": {
+    "writer_body_passes": 1,
+    "enricher_allowed": false,
+    "read_loop_allowed": false,
+    "idle_gate_reread_allowed": false,
+    "after_package_pass": "EXIT",
+    "after_site_upload_ready": "EXIT"
+  },
   "text_fallback_allowed": false,
   "text_fallback_action": "FAIL",
   "director_self_write_allowed": false,

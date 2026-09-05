@@ -43,9 +43,10 @@ python3 scripts/excalibur_blog_research_start.py --topic-id B111 --title "…"
 
 ## Ошибка
 
-- Fallback на inherit/default для текстовых ролей (только Gemini 3.8 Flash High)
+- Fallback на inherit/default для текстовых ролей (только Gemini 3.8 Flash)
 - Дефолтный Cloud Agent / Director / Setup пишет тело статьи, H1, Sol, description или cover-text сам (при недоступности субагентов — только явный FAIL)
 - Второй автор / rewrite-loop **поверх Sol** (Sol — единственный стилевой рерайт)
+- Enricher / второй Writer-проход / Read-loop гейтов после PASS
 - Термин-дамп / research-брифинг в открытии финала
 - Description = title или обрезка лида (двойная карточка в Дзене)
 - topics / SEO-хвосты
@@ -78,12 +79,14 @@ Setup: `.cursor/agents/excalibur-blog-setup.md` (не Task).
 - Один Cloud Agent / automation = Директор (или Setup). Не `/in-cloud`.
 - Специалисты — foreground Task в этом прогоне, без вложенных `Task(excalibur-blog-*)`.
 - **Текстовые роли** (заголовки Title / H1, writer, sol, description, cover-text, setup-voice):
-  пишет **только Gemini 3.8 Flash High**.
+  пишет **только Gemini 3.8 Flash**.
   В Cloud Agents **НЕТ** id `gemini-3.8-flash-high`.
-  Правильный вызов: `model: "gemini-3.8-flash"` + `model_params: {"reasoning_effort": "high"}` (или `reasoning_effort: "high"`).
+  Дефолт: `model: "gemini-3.8-flash"` + `model_params: {"reasoning_effort": "low"}`.
+  `reasoning_effort=high` — только явный override Владимира.
 - **В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст.**
 - **Нет Gemini = FAIL.** Дефолтный Cloud Agent / Director / Setup НИКОГДА не пишет H1/Title и тело сам при сбое или недоступности модели. **FAIL only**.
 - **Строгий запрет fallback на inherit/default для текста.**
+- **Anti-burn:** один проход Writer на тело; нет enricher / Read-loop; после package PASS / site upload ready → EXIT. Не перечитывать gate-скрипты вхолостую.
 - Research, scout, cover/картинки, schema, publish, fixer, learner и оркестратор:
   `model: inherit` (модель automation, которую выбрал человек).
   Не трогать Kie/картинки.

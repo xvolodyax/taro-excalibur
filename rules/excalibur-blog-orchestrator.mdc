@@ -25,21 +25,22 @@ alwaysApply: false
 - **Setup** — чат (не Task): `agents/excalibur-blog-setup.md`
 - **Директор** — чат (не Task): `agents/excalibur-blog-director.md`
 - **Субагенты** — foreground `Task(<name>)` в том же окне, см. `agents/FOR-AGENTS.md`
-- Текст: только Gemini 3.8 Flash High (в Cloud Agents НЕТ id `gemini-3.8-flash-high`; правильный вызов: `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}`). Заголовки статей (Title / H1), Cover-text, description, Sol, Writer — то же.
+- Текст: только Gemini 3.8 Flash (в Cloud Agents НЕТ id `gemini-3.8-flash-high`; дефолт: `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "low"}`). `high` — только явный override Владимира. Заголовки статей (Title / H1), Cover-text, description, Sol, Writer — то же.
 - В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст. Нет Gemini = FAIL.
 - Запрет fallback на inherit/default для текста. Дефолтный Cloud Agent / Director / Setup НИКОГДА не пишет H1/Title и тело статьи, Sol, description, cover-text сам при сбое. FAIL only.
+- Anti-burn: один Writer-проход; нет enricher / Read-loop; после package PASS / site upload ready → EXIT.
 - Остальное (research, scout, schema, cover/картинки, indexer, publish, fixer, learner): inherit automation. Не трогать Kie/картинки.
 
 ## Пайплайн (после setup)
 
 0. Scout Task при `needs_scout`, затем shell `research_start`
 1. `excalibur-blog-research` (inherit)
-2. `excalibur-blog-title` (Gemini 3.8 Flash High)
-3. `excalibur-blog-writer` → `drafts/writer.html` (смысл, Gemini 3.8 Flash High)
-4. `excalibur-blog-sol` → `article.html` (слог SOUL + examples, Gemini 3.8 Flash High)
-5. `excalibur-blog-description` → `description-brief.json` (Gemini 3.8 Flash High)
+2. `excalibur-blog-title` (Gemini 3.8 Flash)
+3. `excalibur-blog-writer` → `drafts/writer.html` (смысл, Gemini 3.8 Flash)
+4. `excalibur-blog-sol` → `article.html` (слог SOUL + examples, Gemini 3.8 Flash)
+5. `excalibur-blog-description` → `description-brief.json` (Gemini 3.8 Flash)
 6. shell: `pipeline_canon --stamp` + opening_meta + description_gate + html_linter
-7. **ПАРАЛЛЕЛЬНО** cover-text (Gemini 3.8 Flash High) + schema (inherit) → cover (inherit)
+7. **ПАРАЛЛЕЛЬНО** cover-text (Gemini 3.8 Flash) + schema (inherit) → cover (inherit)
 8. `excalibur-blog-indexer`
 9. `excalibur-blog-publish`
 10. fixer(open) → merge_to_main → content-learner
@@ -56,4 +57,5 @@ alwaysApply: false
 - `environment: cloud`, `/in-cloud`, `/babysit`, `best-of-n-runner` на шаге статьи
 - cover||schema без **Sol** `article.html` + canon stamp
 - rewrite-loop поверх Sol
+- enricher / второй Writer-проход / Read-loop гейтов после PASS
 - пайплайн до завершения Setup

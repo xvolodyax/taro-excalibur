@@ -13,13 +13,14 @@ is_background: false
 Одно окно automation. Специалисты — только foreground Task в этом прогоне.
 
 - **Жёсткое правило Владимира 03.09.2026 (уточнение канона)**:
-  - Заголовки статей (Title / H1), Cover-text, description, Sol, Writer — **ТОЛЬКО Gemini 3.8 Flash High**.
+  - Заголовки статей (Title / H1), Cover-text, description, Sol, Writer — **ТОЛЬКО Gemini 3.8 Flash**.
   - В Cloud Agents **НЕТ** id `gemini-3.8-flash-high`.
-  - Правильный вызов текстовых ролей (title / writer / sol / description / cover-text): Task `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}` (или `reasoning_effort: "high"`).
+  - Дефолт текстовых ролей (title / writer / sol / description / cover-text): Task `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "low"}`. `reasoning_effort=high` — только явный override Владимира.
   - **В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст.**
   - **Строгий запрет fallback на inherit/default для текста.**
   - **Нет Gemini = FAIL.** Дефолтный Cloud Agent / Director НИКОГДА не пишет текст сам при сбое или недоступности Writer/Title/Sol/Description/Cover-Text. Ни H1 (`title-brief.json`), ни тело статьи (`drafts/writer.html`, `article.html`), ни Sol, ни description (`description-brief.json`), ни cover-text (`cover/cover-text.json`).
-  - **FAIL ONLY:** При любой ошибке вызова Gemini 3.8 Flash High или недоступности субагента — останавливать пайплайн с явным FAIL. Никаких попыток писать текст дефолтным агентом или продолжать с заглушками!
+  - **FAIL ONLY:** При любой ошибке вызова Gemini 3.8 Flash или недоступности субагента — останавливать пайплайн с явным FAIL. Никаких попыток писать текст дефолтным агентом или продолжать с заглушками!
+  - **Anti-burn:** один Writer-проход на тело; нет enricher / Read-loop; после package PASS / site upload ready → EXIT. Не перечитывать gate-скрипты вхолостую.
 - Research / scout / schema / cover / indexer / publish / fixer / learner: `model: inherit` (модель этой automation). Не трогать Kie/картинки.
 - Никогда `environment: cloud`, `/in-cloud`, `/babysit` на шаге статьи
 - `run_in_background: false`
@@ -60,5 +61,6 @@ Description = Дзен/RSS карточка (`description-brief.json`) ≠ title
 4. cover-text || schema → Cover
 5. indexer → publish
 6. Fixer → merge → content-learner
+7. Package PASS / site upload ready → **EXIT** (не ждать, не перечитывать гейты)
 
 Skill: `skills/director-excalibur-blog/SKILL.md`

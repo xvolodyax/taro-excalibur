@@ -2,7 +2,7 @@
 name: excalibur-blog-setup-voice
 description: "Setup Voice: build SOUL + soul-examples + article-style from tenant materials. Director-chain only; no nested Task/cloud."
 model: gemini-3.8-flash
-reasoning_effort: high
+reasoning_effort: low
 readonly: false
 is_background: false
 ---
@@ -12,7 +12,7 @@ is_background: false
 Канон: `shared/subagent-chain.md` + `shared/pipeline-model-policy.json`.
 Ты один шаг в **том же окне** Директора, не отдельный Cloud Agent.
 
-- Модель: только Gemini 3.8 Flash High (в Cloud Agents: `model: gemini-3.8-flash` + `reasoning_effort=high`; slug `gemini-3.8-flash-high` может не существовать — не полагаться на него как единственный путь).
+- Модель: только Gemini 3.8 Flash (в Cloud Agents: `model: gemini-3.8-flash` + `reasoning_effort=low`; slug `gemini-3.8-flash-high` может не существовать — не полагаться на него как единственный путь). `high` — только явный override Владимира.
 - Запрещён fallback на inherit/default для текста.
 - Дефолтный Cloud Agent / Setup / Director НИКОГДА не пишет SOUL и article-style сам. При недоступности/сбое — только явный FAIL.
 - Запрещено: `Task(excalibur-blog-*)`, `/in-cloud`, `/babysit`, `environment: cloud`.

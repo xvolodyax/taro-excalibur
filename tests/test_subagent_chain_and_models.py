@@ -54,11 +54,18 @@ class SubagentChainPolicyTest(unittest.TestCase):
         self.assertEqual(files, self.expected)
         self.assertEqual(self.policy["text_model"], "gemini-3.8-flash")
         self.assertEqual(self.policy["text_model_id"], "gemini-3.8-flash")
-        self.assertEqual(self.policy["reasoning_effort"], "high")
-        self.assertEqual(self.policy["model_params"]["reasoning_effort"], "high")
-        self.assertEqual(self.policy["text_model_slug"], "gemini-3.8-flash-high")
+        self.assertEqual(self.policy["reasoning_effort"], "low")
+        self.assertEqual(self.policy["model_params"]["reasoning_effort"], "low")
+        self.assertEqual(self.policy["text_model_slug"], "gemini-3.8-flash")
+        self.assertEqual(self.policy["reasoning_effort_override"], "high")
+        self.assertIn("Vladimir", self.policy["reasoning_effort_override_rule"])
         self.assertFalse(self.policy["text_fallback_allowed"])
         self.assertEqual(self.policy["text_fallback_action"], "FAIL")
+        anti = self.policy["anti_burn"]
+        self.assertEqual(anti["writer_body_passes"], 1)
+        self.assertFalse(anti["enricher_allowed"])
+        self.assertFalse(anti["read_loop_allowed"])
+        self.assertEqual(anti["after_package_pass"], "EXIT")
 
     def test_agent_models_match_policy(self) -> None:
         for name in sorted(self.expected):
@@ -72,7 +79,7 @@ class SubagentChainPolicyTest(unittest.TestCase):
             )
             self.assertEqual(fm.get("model"), want, name)
             if name in self.text_agents:
-                self.assertEqual(fm.get("reasoning_effort"), "high", name)
+                self.assertEqual(fm.get("reasoning_effort"), "low", name)
             self.assertEqual(fm.get("is_background"), "false", name)
 
     def test_specialists_forbid_nested_task(self) -> None:
@@ -125,7 +132,10 @@ class SubagentChainPolicyTest(unittest.TestCase):
         self.assertNotIn("WAIT.", chain)
         canon = json.loads((ROOT / "shared/pipeline-canon.json").read_text(encoding="utf-8"))
         self.assertEqual(canon["text_model"], "gemini-3.8-flash")
-        self.assertEqual(canon["reasoning_effort"], "high")
+        self.assertEqual(canon["reasoning_effort"], "low")
+        self.assertEqual(canon["anti_burn"]["after_package_pass"], "EXIT")
+        self.assertIn("PASS", (ROOT / "shared/subagent-chain.md").read_text(encoding="utf-8"))
+        self.assertIn("EXIT", (ROOT / "shared/subagent-chain.md").read_text(encoding="utf-8"))
 
     def test_plugin_trees_match(self) -> None:
         subprocess.run(
@@ -323,6 +333,50 @@ class SubagentHookTest(unittest.TestCase):
         )
         out = json.loads(proc.stdout)
         self.assertEqual(out["permission"], "deny")
+
+
+class TokenBurnDefaultsTest(unittest.TestCase):
+    """No default reasoning_effort=high for article writers; high is override-only."""
+
+    WRITER_PATHS = (
+        "agents/excalibur-blog-writer.md",
+        "agents/excalibur-blog-sol.md",
+        "agents/excalibur-blog-title.md",
+        "agents/excalibur-blog-description.md",
+        "agents/excalibur-blog-cover-text.md",
+        "shared/pipeline-model-policy.json",
+        "shared/pipeline-canon.json",
+    )
+
+    def test_no_default_reasoning_effort_high_for_article_writers(self) -> None:
+        for rel in self.WRITER_PATHS:
+            text = (ROOT / rel).read_text(encoding="utf-8")
+            self.assertNotRegex(
+                text,
+                r"(?m)^reasoning_effort:\s*high\s*$",
+                f"default YAML high left in {rel}",
+            )
+            self.assertNotRegex(
+                text,
+                r'"reasoning_effort":\s*"high"',
+                f"default JSON high left in {rel}",
+            )
+
+    def test_policy_default_is_low_override_is_high(self) -> None:
+        policy = json.loads(
+            (ROOT / "shared/pipeline-model-policy.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(policy["reasoning_effort"], "low")
+        self.assertEqual(policy["reasoning_effort_override"], "high")
+        self.assertIn("override", policy["reasoning_effort_override_rule"].lower())
+
+    def test_writer_and_director_exit_after_pass(self) -> None:
+        writer = (ROOT / "agents/excalibur-blog-writer.md").read_text(encoding="utf-8")
+        director = (ROOT / "agents/excalibur-blog-director.md").read_text(encoding="utf-8")
+        chain = (ROOT / "shared/subagent-chain.md").read_text(encoding="utf-8")
+        for blob in (writer, director, chain):
+            self.assertIn("EXIT", blob)
+            self.assertIn("один", blob.lower())
 
 
 if __name__ == "__main__":
