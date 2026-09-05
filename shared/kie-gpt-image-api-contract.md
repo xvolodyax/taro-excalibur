@@ -257,6 +257,7 @@ Do **not**:
 
 - One API task per article cover run (plus at most one pre-taskId connection-reset retry and/or one 500-recreate and/or one File Upload recreate and/or one agent 422 soften+recreate), not four separate images.
 - **Forbidden quality multi-gen (INC-20260724-2120):** after a successful URL, do **not** createTask again because host/sticky/style looks wrong. Visual QA is skip-default and must not trigger Cover redo. Only Kie API terminal fails / pre-taskId transport reset above allow another billed gen.
+- **Forbidden recreate on result-CDN stall (INC-20260902-1428):** if `createTask` already `state=success` and `quad_apply` / `download_url_bytes` hangs or times out on the result URL, resume the same URL (Range + shrink, dest=`cover/canvas-quad.png`). Do **not** start a second billed `createTask`.
 - `input_urls` is required; text-only generation is a cover blocker.
 - Do not retry createTask blindly after a network ambiguity if a `taskId` is known; poll the known task. Exception: after explicit terminal `fail` with 500 / «try again later» (including late terminal 500 discovered by the final `recordInfo` after `--max-wait`), or 400 image-fetch → File Upload, or agent 422 soften+recreate, or pre-`taskId` Connection reset (no task record), create a **new** task once.
 - MCP sync is not a peer alternative when `KIE_API_KEY` is set; use Kie API only.

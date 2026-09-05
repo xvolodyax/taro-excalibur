@@ -1,0 +1,74 @@
+{
+  "agent": "excalibur-blog",
+  "step": "research_start",
+  "date_context": {
+    "timezone": "Europe/Moscow",
+    "today_iso": "2026-09-05",
+    "today_ru": "05.09.2026",
+    "year": 2026,
+    "month": 9,
+    "month_name_ru": "сентябрь",
+    "weekday_ru": "суббота"
+  },
+  "topic": {
+    "topic_id": "B40",
+    "title": "Он пропадает на все выходные и молчит",
+    "h1": "Он пропадает на все выходные и молчит",
+    "slug": "on-propadaet-na-vse-vyhodnye-i-molchit",
+    "primary_query": "Он пропадает на все выходные и молчит",
+    "priority": "P0"
+  },
+  "search_queries": [
+    {
+      "id": "primary_fresh",
+      "query": "Он пропадает на все выходные и молчит 2026",
+      "purpose": "актуальный SERP"
+    },
+    {
+      "id": "title_fresh",
+      "query": "Он пропадает на все выходные и молчит 2026",
+      "purpose": "SERP по человеческому title"
+    },
+    {
+      "id": "official_docs",
+      "query": "Он пропадает на все выходные и молчит official docs 2026",
+      "purpose": "официальные docs"
+    },
+    {
+      "id": "github_evidence",
+      "query": "site:github.com Он пропадает на все выходные и молчит 2026",
+      "purpose": "GitHub evidence"
+    },
+    {
+      "id": "community_experience",
+      "query": "Он пропадает на все выходные и молчит forum problems опыт 2026",
+      "purpose": "форумы и живые проблемы"
+    }
+  ],
+  "next_step": "Research reads research-serp.json, does its own thinking and writes research-notes.md",
+  "writer_allowed_sources": [
+    "shared/writer-master-prompt.md",
+    "research-notes.md",
+    "title-brief.json",
+    "published-titles-only.md"
+  ],
+  "sol_allowed_sources": [
+    "shared/SOUL.md",
+    "shared/soul-examples/",
+    "drafts/writer.html",
+    "title-brief.json",
+    "research-notes.md"
+  ],
+  "writer_titles_only": "published-titles-only.md",
+  "forbidden_sources_for_writer": [
+    "memory/blog/articles/*/article.html",
+    "memory/blog/articles/*/drafts",
+    "memory/topics/ (deleted — do not recreate)",
+    "memory/content-lessons.md",
+    "shared/golden-benchmark",
+    "QA reports",
+    "neighbor research-notes as prose exemplars",
+    "old article bodies"
+  ],
+  "published_titles_count": 46
+}

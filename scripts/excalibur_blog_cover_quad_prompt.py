@@ -46,6 +46,18 @@ def sanitize_cover_scene_hint(scene: str, highlight: str) -> str:
     return _PINK_WORD_IN_SCENE.sub(_repl, scene)
 
 
+# Tenant face canon (ТАРО СЕЙЧАС). Other tenants keep their own style.local_reference.
+CANON_FACE_NAME = "Виктория.png"
+CANON_FACE_REL = "memory/cover/assets/Виктория.png"
+REQUIRED_HAIR_PHRASE = (
+    "hair color copied exactly from reference photo, same root depth, "
+    "do not lighten, no platinum"
+)
+DEFAULT_STYLE_FILE = "memory/cover/quad-style-pink-cat-digital-collage-ru.json"
+DEFAULT_HIGHLIGHT_NAME = "hot-pink"
+DEFAULT_HIGHLIGHT_HEX = "#FF1493"
+DEFAULT_HOOK_TYPEFACE = "big bold condensed Cyrillic"
+
 MAX_MCP_PROMPT_CHARS = 3500
 # Compact limits leave headroom under 3500 after style boilerplate (INC-20260721-0837).
 # Cover raw ≈80–140 (from blog-hero lock); inline ≈100–220. Long MUST/face essays
@@ -298,6 +310,62 @@ def style_is_situational_cat_hero(style: dict) -> bool:
     return motif in {"situational_cat_hero", "cat_hero"}
 
 
+def style_wants_local_reference(style: dict) -> bool:
+    """Local i2i file when style asks for it (host_reference) or situational cat hero."""
+    local_reference = str(style.get("local_reference") or "").strip()
+    if not local_reference:
+        return False
+    if style.get("prefer_local_reference") is True:
+        return True
+    return style_is_situational_cat_hero(style)
+
+
+def highlight_paint_spec(design_code: dict) -> tuple[str, str]:
+    """Punch-word color from cover-design-code; empty design → hot-pink fallback."""
+    palette = design_code.get("color_palette") or {}
+    hex_color = (
+        str(palette.get("accent_gold") or "").strip()
+        or str(palette.get("accent_primary") or "").strip()
+    )
+    if not hex_color:
+        return DEFAULT_HIGHLIGHT_NAME, DEFAULT_HIGHLIGHT_HEX
+    typo_hl = str((design_code.get("typography") or {}).get("highlight") or "").lower()
+    usage = str(palette.get("usage") or "").lower()
+    if hex_color.upper() == "#C4A574" or "золот" in typo_hl or "gold" in typo_hl or "gold" in usage:
+        return "gold", hex_color
+    return "accent", hex_color
+
+
+def hook_typeface_spec(design_code: dict) -> str:
+    """Hook typeface from cover-design-code; empty → bold condensed fallback."""
+    typo = design_code.get("typography") or {}
+    prompt = str(typo.get("hook_prompt") or typo.get("hook") or "").strip()
+    if not prompt:
+        return DEFAULT_HOOK_TYPEFACE
+    if "editorial" in prompt.lower():
+        return "editorial display Cyrillic"
+    return compact(prompt, 72)
+
+
+def sticky_color_word(design_code: dict) -> str:
+    name, hex_color = highlight_paint_spec(design_code)
+    if hex_color.upper() == DEFAULT_HIGHLIGHT_HEX.upper():
+        return "pink"
+    return name
+
+
+def hair_lock_line(hero: dict, design_code: dict) -> str:
+    """Exact identity-gate phrase when this tenant locked hair to the reference."""
+    lock = (hero.get("visual_lock") or {}).get("hair_color_lock") or {}
+    phrase = str(lock.get("prompt") or "").strip()
+    if REQUIRED_HAIR_PHRASE in phrase:
+        return REQUIRED_HAIR_PHRASE
+    block = str(design_code.get("cover_panel_prompt_block") or "")
+    if REQUIRED_HAIR_PHRASE in block:
+        return REQUIRED_HAIR_PHRASE
+    return ""
+
+
 def build_prompt(
     manifest: dict,
     style: dict,
@@ -318,19 +386,22 @@ def build_prompt(
     cat_hero = style_is_situational_cat_hero(style)
 
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
+    hl_name, hl_hex = highlight_paint_spec(design_code)
     highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
+        f'paint ONLY the highlight word "{highlight}" in {hl_name} {hl_hex}; '
         f'hook text must match exactly — do not substitute «время»/traffic markers'
         if highlight
-        else "paint at most ONE punch word in hot-pink #FF1493"
+        else f"paint at most ONE punch word in {hl_name} {hl_hex}"
     )
+    hook_typeface = hook_typeface_spec(design_code)
     cover_scene = sanitize_cover_scene_hint(
         str(cover.get("scene_hint") or ""), highlight
     )
     cover_hook_text = compact(manifest.get("cover_hook", ""), 120)
     cover_sticky = compact(str(cover.get("sticky") or ""), 48)
+    sticky_word = sticky_color_word(design_code)
     sticky_lock = (
-        f" Small pink sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+        f" Small {sticky_word} sticky with EXACTLY «{cover_sticky}» in Cyrillic."
         if cover_sticky
         else ""
     )
@@ -420,7 +491,7 @@ def build_prompt(
         "",
         reference_line,
         "",
-        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
+        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — {hook_typeface}, black #141821, '
         f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
         "no keyword list card; "
         f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}",
@@ -429,10 +500,17 @@ def build_prompt(
         f"Bottom-left inline: {inline_panel_prompt(i2, types_catalog)}",
         f"Bottom-right inline: {inline_panel_prompt(i3, types_catalog)}",
         "",
-        inline_suffix,
+        style.get("inline_prompt_suffix") or inline_suffix,
     ]
     if fact_locks:
         lines.extend(["", *fact_locks])
+    hair_line = hair_lock_line(hero, design_code)
+    if hair_line and hair_line not in "\n".join(lines):
+        lines.extend(["", hair_line])
+    eye_lock = (hero.get("visual_lock") or {}).get("eye_color_lock") or {}
+    eye_prompt = str(eye_lock.get("prompt") or "").strip()
+    if eye_prompt and eye_prompt not in "\n".join(lines):
+        lines.extend(["", f"eyes: {eye_prompt}"])
     return "\n".join(line for line in lines if line)
 
 
@@ -461,7 +539,7 @@ def main() -> int:
         root
         / manifest.get(
             "style_file",
-            "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
+            DEFAULT_STYLE_FILE,
         )
     )
     types_path = root / manifest.get("inline_types_catalog", "memory/cover/inline-visual-types.json")
@@ -469,10 +547,9 @@ def main() -> int:
     design_code_path = root / style.get("design_code", "memory/cover/cover-design-code.json")
     design_code = load_json(design_code_path) if design_code_path.is_file() else {}
 
-    cat_hero = style_is_situational_cat_hero(style)
     local_reference = str(style.get("local_reference") or "").strip()
-    prefer_local_reference = False
-    if cat_hero and local_reference:
+    prefer_local_reference = style_wants_local_reference(style)
+    if prefer_local_reference:
         local_path = root / local_reference
         if not local_path.is_file():
             print(
@@ -485,7 +562,6 @@ def main() -> int:
             f"{SITE_BASE_PLACEHOLDER}/wp-content/uploads/excalibur/"
             f"{Path(local_reference).name}"
         )
-        prefer_local_reference = True
     else:
         ref_url = (hero.get("reference_url_hosted") or "").strip()
         if not ref_url:

@@ -4,6 +4,9 @@
 ``--inject-html`` delegates to ``excalibur_blog_cover_quad_split.py``, which
 re-validates each existing ``data-slot`` figure against manifest ``h2_anchor``
 (and src/alt). Wrong-H2 / stale figures are moved/rewritten — never silent skip.
+
+CDN / result-URL stall is a download problem. Resume the same billed URL
+(Range + shrink). Do **not** start a second Kie ``createTask`` / quality-redo.
 """
 
 from __future__ import annotations
@@ -16,7 +19,11 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from asset_download import download_url_bytes  # noqa: E402
+from asset_download import (  # noqa: E402
+    DEFAULT_TIMEOUT,
+    MIN_RANGE_CHUNK,
+    download_url_bytes,
+)
 
 
 def project_root() -> Path:
@@ -32,6 +39,12 @@ def main() -> int:
     ap.add_argument("--url", default="", help="MCP result URL (or read cover/quad-mcp-result.json)")
     ap.add_argument("--inject-html", action="store_true")
     ap.add_argument("--output-size", default="1200x675")
+    ap.add_argument(
+        "--timeout",
+        type=int,
+        default=DEFAULT_TIMEOUT,
+        help="Per-Range / probe timeout in seconds (default 20). Stall ≠ Kie recreate.",
+    )
     args = ap.parse_args()
 
     root = project_root()
@@ -51,9 +64,29 @@ def main() -> int:
         return 1
 
     canvas_path = cover_dir / "canvas-quad.png"
-    data, _evidence = download_url_bytes(url)
-    canvas_path.write_bytes(data)
-    print(f"OK canvas={canvas_path}")
+    print(
+        f"QUAD APPLY: Range-resume download dest={canvas_path} "
+        f"timeout={args.timeout}s (CDN stall ≠ Kie createTask)",
+        file=sys.stderr,
+        flush=True,
+    )
+    data, evidence = download_url_bytes(
+        url,
+        dest=canvas_path,
+        timeout=args.timeout,
+        retries=3,
+        chunk_size=8 * 1024,
+        min_chunk_size=MIN_RANGE_CHUNK,
+        progress=True,
+    )
+    if canvas_path.stat().st_size != len(data):
+        canvas_path.write_bytes(data)
+    print(
+        f"OK canvas={canvas_path} bytes={len(data)} "
+        f"resumed_from={evidence.get('resumed_from')} "
+        f"chunk_final={evidence.get('chunk_size_final')} "
+        f"shrunk={evidence.get('shrunk')}"
+    )
 
     result_json = cover_dir / "quad-mcp-result.json"
     result_json.write_text(json.dumps({"url": url}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

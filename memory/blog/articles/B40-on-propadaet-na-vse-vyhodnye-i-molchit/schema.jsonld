@@ -1,0 +1,60 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{SITE_BASE}}/#organization",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/"
+    },
+    {
+      "@type": "Person",
+      "@id": "{{SITE_BASE}}/#author-victoria",
+      "name": "Виктория",
+      "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+      "sameAs": [
+        "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
+        "https://dzen.ru/todaytaro_bot"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{SITE_BASE}}/on-propadaet-na-vse-vyhodnye-i-molchit/#webpage",
+      "url": "{{SITE_BASE}}/on-propadaet-na-vse-vyhodnye-i-molchit/",
+      "name": "Он пропадает на все выходные и молчит",
+      "isPartOf": {
+        "@id": "{{SITE_BASE}}/#website"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "{{SITE_BASE}}/on-propadaet-na-vse-vyhodnye-i-molchit/#blogposting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{SITE_BASE}}/on-propadaet-na-vse-vyhodnye-i-molchit/"
+      },
+      "url": "{{SITE_BASE}}/on-propadaet-na-vse-vyhodnye-i-molchit/",
+      "headline": "Он пропадает на все выходные и молчит",
+      "description": "Разбираем скрытые причины мужского молчания до утра понедельника, истинные мотивы паузы и способы вернуть себе душевный покой.",
+      "datePublished": "2026-09-05",
+      "dateModified": "2026-09-05",
+      "inLanguage": "ru",
+      "author": {
+        "@type": "Person",
+        "@id": "{{SITE_BASE}}/#author-victoria",
+        "name": "Виктория",
+        "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+        "sameAs": [
+          "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
+          "https://dzen.ru/todaytaro_bot"
+        ]
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "{{SITE_BASE}}/#organization",
+        "name": "ТАРО СЕЙЧАС",
+        "url": "{{SITE_BASE}}/"
+      }
+    }
+  ]
+}

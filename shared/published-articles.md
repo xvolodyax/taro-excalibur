@@ -5,3 +5,18 @@ Publish / Indexer обновляют по мере выхода.
 
 | topic_id | slug | status | permalink |
 |----------|------|--------|-----------|
+| B23 | on-zashel-v-set-i-molchit | live | {{SITE_BASE}}/blog/on-zashel-v-set-i-molchit/ |
+| B24 | on-ne-nazyvaet-tebya-svoej | live | {{SITE_BASE}}/blog/on-ne-nazyvaet-tebya-svoej/ |
+| B25 | ty-vidish-izmenu-v-ego-pauze | live | {{SITE_BASE}}/blog/ty-vidish-izmenu-v-ego-pauze/ |
+| B26 | on-skazal-chto-ne-gotov-k-otnosheniyam | live | {{SITE_BASE}}/blog/on-skazal-chto-ne-gotov-k-otnosheniyam/ |
+| B27 | on-ne-obsuzhdaet-buduschee-vashih-otnoshenij | live | {{SITE_BASE}}/blog/on-ne-obsuzhdaet-buduschee-vashih-otnoshenij/ |
+| B28 | on-obyavilsya-spustya-mesyacy-molchaniya | live | {{SITE_BASE}}/blog/on-obyavilsya-spustya-mesyacy-molchaniya/ |
+| B32 | on-pishet-tolko-nochyu-dnem-molchit | quality_review | {{SITE_BASE}}/blog/on-pishet-tolko-nochyu-dnem-molchit/ |
+| B33 | on-pishet-kazhdyj-den-no-ne-zovet | live | {{SITE_BASE}}/blog/on-pishet-kazhdyj-den-no-ne-zovet/ |
+| B34 | ego-chislo-mesyaca-ne-delaet-shag | live | {{SITE_BASE}}/blog/ego-chislo-mesyaca-ne-delaet-shag/ |
+| B35 | lichnoe-chislo-ne-zakryvaet-staryj-chat | live | {{SITE_BASE}}/blog/lichnoe-chislo-ne-zakryvaet-staryj-chat/ |
+| B36 | on-sidit-ryadom-i-molchit | live | {{SITE_BASE}}/blog/on-sidit-ryadom-i-molchit/ |
+| B37 | on-napisal-nam-nado-pogovorit-i-propal | live | {{SITE_BASE}}/blog/on-napisal-nam-nado-pogovorit-i-propal/ |
+| B38 | on-udalil-perepisku-v-otnosheniyah | live | {{SITE_BASE}}/blog/on-udalil-perepisku-v-otnosheniyah/ |
+| B39 | on-otpravil-reakciyu-na-istoriyu-i-molchit | live | {{SITE_BASE}}/blog/on-otpravil-reakciyu-na-istoriyu-i-molchit/ |
+| B40 | on-propadaet-na-vse-vyhodnye-i-molchit | live | {{SITE_BASE}}/blog/on-propadaet-na-vse-vyhodnye-i-molchit/ |
