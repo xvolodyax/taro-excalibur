@@ -21,3 +21,4 @@ Publish / Indexer обновляют по мере выхода.
 | B39 | on-otpravil-reakciyu-na-istoriyu-i-molchit | live | {{SITE_BASE}}/blog/on-otpravil-reakciyu-na-istoriyu-i-molchit/ |
 | B40 | on-delaet-tebya-vinovatoj-v-svoem-molchanii | live | {{SITE_BASE}}/blog/on-delaet-tebya-vinovatoj-v-svoem-molchanii/ |
 | B40M | on-propadaet-na-vse-vyhodnye-i-molchit | live | {{SITE_BASE}}/blog/on-propadaet-na-vse-vyhodnye-i-molchit/ |
+| B41 | on-napisal-edu-i-propal | live | {{SITE_BASE}}/blog/on-napisal-edu-i-propal/ |
