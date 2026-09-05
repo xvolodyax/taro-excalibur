@@ -1,0 +1,58 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B41",
+  "slug": "on-napisal-edu-i-propal",
+  "research_date": "2026-09-05",
+  "status": "PASS",
+  "verdict": "PASS",
+  "fresh_signal": true,
+  "fresh_signal_week": "2026-09-01/2026-09-05",
+  "block_reason": null,
+  "external_signal": "Суббота 05.09.2026: KP.md ставит дню Императрицу (дом/забота); Mixnews.lv 04.09 разбирает 05.09 как вечер честного разговора и личного пространства, Деве — не исчезать молча; канал dzen.ru/todaytaro_bot сегодня жив картой дня. Бытовой конфликт — он написал «еду» и не появился.",
+  "fresh_signal_urls": [
+    "https://mixnews.lv/goroskop/2026/09/04/goroskop-na-5-sentyabrya-po-kartam-taro-teltsu-tsenit-rezultaty-svoego-truda-lvam-ne-pryatat-zasluzhennyy-uspeh/",
+    "https://kp.md/raznoe/kakoj-taro-prognoz-na-sentyabr-2026-goda-dast-karta-mesyacza-i-prognoz-po-dnyam/",
+    "https://styler.rbc.ua/ukr/horoscopes/taro-goroskop-5-veresnya-komu-den-podarue-1788514180.html",
+    "https://dzen.ru/todaytaro_bot"
+  ],
+  "wordstat": {
+    "status": "OK",
+    "provider": "yandex_cloud_search_api_v2",
+    "endpoint": "/v2/wordstat/topRequests",
+    "accessed_at": "2026-09-05",
+    "phrases": [
+      {
+        "phrase": "он не приехал",
+        "totalCount": 42952,
+        "notable": ["почему он не приезжает 2889", "он не приедет и не позвонит 964"]
+      },
+      {
+        "phrase": "почему он не приезжает",
+        "totalCount": 2889,
+        "notable": ["почему он сегодня не приехал 43"]
+      },
+      {
+        "phrase": "карта дня таро",
+        "totalCount": 34729,
+        "notable": ["на сегодня 4383", "таро дома карта дня 2192"]
+      },
+      {
+        "phrase": "написал еду",
+        "totalCount": 26291,
+        "notable": ["шум: грамматика / Яндекс Еда"]
+      }
+    ],
+    "note": "Жир не в H1. «написал еду» — лексический шум, не сцена."
+  },
+  "overlap": {
+    "source": "published-titles-only.md empty; live blog/channel titles only",
+    "avoid": [
+      "Он написал «нам надо поговорить» и пропал",
+      "Карта дня возвращает твой вечер, если он отменил свидание без новой даты",
+      "Он зовёт в последний момент и карта дня объясняет твои сомнения"
+    ]
+  },
+  "rf_deny_heroes": false,
+  "notes_path": "memory/blog/articles/B41-on-napisal-edu-i-propal/research-notes.md",
+  "incident_report": "none"
+}
