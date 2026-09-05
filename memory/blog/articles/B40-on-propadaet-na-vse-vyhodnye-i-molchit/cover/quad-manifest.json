@@ -1,0 +1,64 @@
+{
+  "topic_id": "B40",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Он пропадает на все выходные",
+  "cover_hook_highlight": "выходные",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: он пропадает на все выходные",
+      "scene_hint": "same woman as Виктория.png, Host LARGE left half; tiny calendar right with weekend highlighted; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "до понедельника"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Четыре скрытых сценария мужского молчания с пятницы по понедельник",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Comparison: скрытая семья, защитная раковина, запасной вариант, игра на дефиците. NO people/faces. #FFF",
+      "alt": "Инфографика: четыре скрытых сценария мужского молчания",
+      "labels": [
+        "скрытая семья",
+        "защитная раковина",
+        "запасной вариант",
+        "игра на дефиците"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Ловушки женского ожидания и ошибки, которые ломают баланс",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist: без допросов, не спасать, свой уикенд, стоп контролю. NO people/faces. #FFF",
+      "alt": "Чеклист: ловушки ожидания и ошибки",
+      "labels": [
+        "без допросов",
+        "не спасать",
+        "свой уикенд",
+        "стоп контролю"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Что показывают арканы Таро: скрытая изнанка за закрытой дверью",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Cards: Тройка Кубков в тени, Двойка Пентаклей, Четвёрка Пентаклей, ясность границ. NO people/faces. #FFF",
+      "alt": "Таро: скрытая изнанка в арканах",
+      "labels": [
+        "Тройка Кубков в тени",
+        "Двойка Пентаклей",
+        "Четвёрка Пентаклей",
+        "ясность границ"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

@@ -36,6 +36,7 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B37 | on-napisal-nam-nado-pogovorit-i-propal | Он написал «нам надо поговорить» и пропал | live |
 | B38 | on-udalil-perepisku-v-otnosheniyah | Он удалил переписку у обоих и оборвал отношения | live |
 | B39 | on-otpravil-reakciyu-na-istoriyu-i-molchit | Он отправил реакцию на историю и молчит | live |
+| B40 | on-propadaet-na-vse-vyhodnye-i-molchit | Он пропадает на все выходные и молчит | live |
 | LIVE | zachem-vtykayut-igolku-v-dvernoy-kosyak | Зачем втыкают иголку в дверной косяк | live |
 | LIVE | zachem-syplyut-sol-v-ugol-ot-skandalov | Зачем сыплют соль в угол от скандалов | live |
 | LIVE | kak-vyzyvayut-domovogo-v-kvartire | Как вызывают домового в квартире | live |

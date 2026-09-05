@@ -1,0 +1,17 @@
+{
+  "task_id": "4b89fd8e057aaa41dff8007063c44444",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B40-on-propadaet-na-vse-vyhodnye-i-molchit/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1788590099,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "Виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}
