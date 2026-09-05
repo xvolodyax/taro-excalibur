@@ -1,6 +1,19 @@
 {
   "registry_version": "1.0",
-  "comment": "E-E-A-T Authors Registry. Filled by excalibur-blog-setup. SETUP_REQUIRED until author block done.",
-  "status": "SETUP_REQUIRED",
-  "authors": []
+  "status": "active",
+  "authors": [
+    {
+      "id": "victoria-taro",
+      "name_ru": "Виктория",
+      "job_title_ru": "Таролог, эксперт проекта «ТАРО СЕЙЧАС»",
+      "bio_short": "Эксперт по анализу отношений через Таро и архетипы. Автор системы разборов «Суть – Тень – Вектор».",
+      "bio_long": "Виктория — ведущий таролог проекта «ТАРО СЕЙЧАС». Помогает разобраться в скрытых мотивах партнеров, преодолеть кризисы в отношениях и вернуть фокус на собственную ценность с помощью Таро и психологического анализа.",
+      "sameAs": [
+        "https://t.me/TodayTaro_bot?start=id8293683394",
+        "https://max.ru/id531102974575_bot",
+        "https://vk.com/app54565776"
+      ]
+    }
+  ],
+  "comment": "E-E-A-T Authors Registry."
 }

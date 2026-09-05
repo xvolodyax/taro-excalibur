@@ -4,13 +4,13 @@
 
 | Пункт | Статус | Комментарий |
 |-------|--------|-------------|
-| Репозиторий подключён к Cursor Cloud Environment | pending | |
-| Automation Tools → **Memories = OFF** | pending | Official docs: Memories ON by default |
-| Secrets: PUBLIC_SITE_URL | pending | |
-| Secrets: FTP_HOST / FTP_USER / FTP_PASS / FTP_ROOT | pending | SFTP under FTP_* names |
-| MCP Wordstat (если нужен Scout) | pending | optional |
-| MCP WordPress blob / image API (если нужны) | pending | optional |
-| Image API key (Kie / provider) | pending | optional until Cover |
-| Yandex Metrika tokens | pending | optional Content-learner |
-| First-run automation = Setup prompt | pending | см. CLOUD-FIRST-RUN.md |
-| Daily automation = CLOUD-AUTOMATION.md (после setup) | pending | |
+| Репозиторий подключён к Cursor Cloud Environment | yes | OK |
+| Automation Tools → **Memories = OFF** | yes | Memories OFF |
+| Secrets: PUBLIC_SITE_URL | yes | Injected / Configured |
+| Secrets: FTP_HOST / FTP_USER / FTP_PASS / FTP_ROOT | yes | Injected / Configured |
+| MCP Wordstat (если нужен Scout) | yes | Optional |
+| MCP WordPress blob / image API (если нужны) | yes | Optional |
+| Image API key (Kie / provider) | yes | KIE_API_KEY Injected |
+| Yandex Metrika tokens | yes | Optional |
+| First-run automation = Setup prompt | yes | Done |
+| Daily automation = CLOUD-AUTOMATION.md (после setup) | yes | Ready |

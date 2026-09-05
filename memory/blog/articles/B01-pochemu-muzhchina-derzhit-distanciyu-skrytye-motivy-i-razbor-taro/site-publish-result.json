@@ -1,0 +1,40 @@
+{
+  "topic_id": "B01",
+  "slug": "pochemu-muzhchina-derzhit-distanciyu-skrytye-motivy-i-razbor-taro",
+  "publish_method": "site-api",
+  "hall": "not_used",
+  "dzen_studio": "not_used",
+  "token_env": "SITE_PUBLISH_TOKEN",
+  "token_configured": true,
+  "cover_hero_stripped": false,
+  "strip": {
+    "cover_hero_removed": 0,
+    "cover_png_figures_removed": 0
+  },
+  "gate": "PASS",
+  "publish": "PUBLISHED",
+  "verdict": "pass",
+  "reason": "",
+  "permalink": "{{SITE_BASE}}/blog/pochemu-muzhchina-derzhit-distanciyu-skrytye-motivy-i-razbor-taro/",
+  "tgz_members": [
+    "article.html",
+    "article.meta.json",
+    "description-brief.json",
+    "cover/cover.png",
+    "cover/inline-01.png",
+    "cover/inline-02.png",
+    "cover/inline-03.png"
+  ],
+  "tgz_bytes": 4705692,
+  "upload_status": 409,
+  "upload_payload": {
+    "error": "Статья с этим slug уже опубликована: сначала снимите её с публикации",
+    "detail": "Статья с этим slug уже опубликована: сначала снимите её с публикации"
+  },
+  "article_id": "54",
+  "approve_status": 200,
+  "permalink_live": "{{SITE_BASE}}/blog/pochemu-muzhchina-derzhit-distanciyu-skrytye-motivy-i-razbor-taro/",
+  "publish_status": 409,
+  "live_status": 200,
+  "live_ok": true
+}

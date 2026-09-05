@@ -1,0 +1,22 @@
+{
+  "agent": "excalibur-blog-research",
+  "status": "PASS",
+  "topic_id": "B01",
+  "research_date": "2026-09-04",
+  "fresh_signal_verified": true,
+  "signal_source": "https://dzen.ru/a/akjefKnBkQUlln2d",
+  "signal_accessed_at": "2026-09-04",
+  "notes_file": "research-notes.md",
+  "overlap_checked_against": "published-titles-only.md",
+  "overlap_found": false,
+  "anti_dup_passed": true,
+  "forbidden_checks": {
+    "no_invented_news": true,
+    "no_h2_outline": true,
+    "no_lead_draft": true,
+    "no_prose_copying": true,
+    "no_karta_dnya": true,
+    "no_cheap_magic": true
+  },
+  "summary": "Глубокое исследование актуальных мотивов мужского дистанцирования и психологических архетипов Таро («Суть – Тень – Вектор») выполнено. Живой сигнал зафиксирован на 2026-09-04, фактура готова для Writer."
+}

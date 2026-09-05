@@ -1,0 +1,50 @@
+{
+  "topic_id": "B01",
+  "slug": "pochemu-muzhchina-derzhit-distanciyu-skrytye-motivy-i-razbor-taro",
+  "cover_family": "brand_collage",
+  "style_preset": "quad-style-taro",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Почему мужчина держит дистанцию и молчит: психологический разбор Таро с ведущей Викторией",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-09-04T13:48:33+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Почему мужчина держит дистанцию и молчит: психологический разбор Таро с ведущей Викторией",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема избегающей привязанности и скрытых выгод мужской дистанции",
+      "h2_anchor": "Психология избегания: почему молчание — это не равнодушие, а стратегия контроля",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Таблица арканов 4 Пентаклей, 2 Мечей и Повешенный в раскладе Суть-Тень-Вектор",
+      "h2_anchor": "Архетипы Таро в раскладе «Суть – Тень – Вектор»: что на самом деле скрывается за маской холода",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Пошаговая схема выхода из режима ожидания и возврата фокуса внимания себе",
+      "h2_anchor": "Возврат фокуса внимания: как выйти из позиции вечно ждущего зрителя",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

@@ -132,6 +132,16 @@ ALLOW_PATTERNS: tuple[str, ...] = (
     r"новост",
     r"review",
     r"обзор",
+    # Tarot / Psychology niche markers (tenant «ТАРО СЕЙЧАС»)
+    r"таро",
+    r"taro",
+    r"расклад",
+    r"аркан",
+    r"интуиц",
+    r"отношен",
+    r"психолог",
+    r"гештальт",
+    r"мотив",
 )
 
 
