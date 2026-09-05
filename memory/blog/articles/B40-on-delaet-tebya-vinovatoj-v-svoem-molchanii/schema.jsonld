@@ -1,0 +1,60 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{SITE_BASE}}/#organization",
+      "name": "ТАРО СЕЙЧАС",
+      "url": "{{SITE_BASE}}/"
+    },
+    {
+      "@type": "Person",
+      "@id": "{{SITE_BASE}}/#author-victoria",
+      "name": "Виктория",
+      "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+      "sameAs": [
+        "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
+        "https://dzen.ru/todaytaro_bot"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{SITE_BASE}}/on-delaet-tebya-vinovatoj-v-svoem-molchanii/#webpage",
+      "url": "{{SITE_BASE}}/on-delaet-tebya-vinovatoj-v-svoem-molchanii/",
+      "name": "Он делает тебя виноватой в своём молчании",
+      "isPartOf": {
+        "@id": "{{SITE_BASE}}/#website"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "{{SITE_BASE}}/on-delaet-tebya-vinovatoj-v-svoem-molchanii/#blogposting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{SITE_BASE}}/on-delaet-tebya-vinovatoj-v-svoem-molchanii/"
+      },
+      "url": "{{SITE_BASE}}/on-delaet-tebya-vinovatoj-v-svoem-molchanii/",
+      "headline": "Он делает тебя виноватой в своём молчании",
+      "description": "Разбираем, почему мужчина наказывает бойкотом и перекладывает ответственность, как перестать оправдываться и вернуть контроль над ситуацией.",
+      "datePublished": "2026-09-05",
+      "dateModified": "2026-09-05",
+      "inLanguage": "ru",
+      "author": {
+        "@type": "Person",
+        "@id": "{{SITE_BASE}}/#author-victoria",
+        "name": "Виктория",
+        "jobTitle": "таролог команды «ТАРО СЕЙЧАС»",
+        "sameAs": [
+          "https://www.xn--80aakc2ajeicm8b4d.xn--p1ai/",
+          "https://dzen.ru/todaytaro_bot"
+        ]
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "{{SITE_BASE}}/#organization",
+        "name": "ТАРО СЕЙЧАС",
+        "url": "{{SITE_BASE}}/"
+      }
+    }
+  ]
+}
