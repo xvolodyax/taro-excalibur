@@ -1,0 +1,43 @@
+{
+  "agent": "excalibur-blog-research",
+  "status": "PASS",
+  "verdict": "PASS",
+  "topic_id": "B40",
+  "slug": "on-delaet-tebya-vinovatoj-v-svoem-molchanii",
+  "title": "Он делает тебя виноватой в своём молчании",
+  "research_date": "2026-09-05",
+  "slot": "sharp_request_relationships",
+  "signal_evaluation": {
+    "verdict": "PASS",
+    "reason": "FRESH_EXTERNAL_SIGNAL",
+    "fresh_sources_present": true,
+    "community_signals": [
+      "https://dzen.ru/todaytaro_bot",
+      "https://smart-inc.ru/blog/chto-takoe-visholding-ili-nakazanie-molchaniem/",
+      "https://dzen.ru/a/Z5KsALPqPQ64w6O3",
+      "https://news-psy.ru/articles/2026/03/03/955.html",
+      "https://blog.alter.ru/likbez/visholding-psikhologicheskoe-nasilie/",
+      "https://www.b17.ru/blog/670137/"
+    ]
+  },
+  "constraints_verified": {
+    "no_rf_blocked_entities_as_hero": true,
+    "no_meta_instagram_facebook_hero": true,
+    "no_h2_outline": true,
+    "no_faq_skeleton": true,
+    "no_lead_prose": true,
+    "karta_dnya_phrase_absent": true,
+    "word_vozmem_absent": true,
+    "anti_dup_checked": true
+  },
+  "checks": {
+    "stale_signal": false,
+    "anti_dup_checked": true,
+    "overlap_with_published_titles": false
+  },
+  "deliverables": {
+    "research_notes": "memory/blog/articles/B40-on-delaet-tebya-vinovatoj-v-svoem-molchanii/research-notes.md",
+    "research_serp": "memory/blog/articles/B40-on-delaet-tebya-vinovatoj-v-svoem-molchanii/research-serp.json",
+    "research_context": "memory/blog/articles/B40-on-delaet-tebya-vinovatoj-v-svoem-molchanii/research-context.json"
+  }
+}
