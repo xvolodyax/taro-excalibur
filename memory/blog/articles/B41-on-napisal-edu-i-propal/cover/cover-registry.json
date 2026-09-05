@@ -1,0 +1,50 @@
+{
+  "topic_id": "B41",
+  "slug": "on-napisal-edu-i-propal",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: обещал приехать и пропал с радаров",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-09-05T19:37:12+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: обещал приехать и пропал с радаров",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: почему статус «еду» включает тревожное ожидание",
+      "h2_anchor": "Почему статус «еду» запускает мучительное ожидание",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Карточка дня: Императрица, тепло для себя и границы заботы",
+      "h2_anchor": "Карта дня: атмосфера вечера и границы заботы",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист шагов на ближайшие часы после молчания",
+      "h2_anchor": "Практика: чеклист шагов на ближайшие часы",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

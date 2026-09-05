@@ -2,8 +2,8 @@
   "pipeline": "quad_canvas_1x_image_api",
   "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/Виктория.png",
   "cover_hero_mode": "host",
-  "prefer_local_reference": false,
-  "local_reference": "",
+  "prefer_local_reference": true,
+  "local_reference": "memory/cover/assets/Виктория.png",
   "output_canvas": "cover/canvas-quad.png",
   "expected_runtime_seconds": 900,
   "preferred_image_flow": {
