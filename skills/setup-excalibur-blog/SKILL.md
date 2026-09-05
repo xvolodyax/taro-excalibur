@@ -17,12 +17,12 @@ description: Первый запуск Excalibur-2-Cloud — анкета тен
 
 ## Жёсткие правила
 
-0. **Правило Владимира 03.09.2026:** Дефолтный Cloud Agent / Setup НИКОГДА не пишет тело статьи, H1, Sol, description, cover-text сам. Текстовую роль `setup-voice` пишет только Gemini 3.8 Flash High (cloud id: `gemini-3.8-flash` + `reasoning_effort=high`; slug `gemini-3.8-flash-high` в Cloud Agents может не существовать — не полагаться на него как единственный путь). Запрет fallback на inherit/default для текста; при сбое — только явный FAIL. Не трогать Kie/картинки.
+0. **Правило Владимира 03.09.2026:** Дефолтный Cloud Agent / Setup НИКОГДА не пишет тело статьи, H1, Sol, description, cover-text сам. Текстовую роль `setup-voice` пишет только Gemini 3.8 Flash (cloud id: `gemini-3.8-flash` + `reasoning_effort=low`; slug `gemini-3.8-flash-high` в Cloud Agents может не существовать — не полагаться на него как единственный путь). Запрет fallback на inherit/default для текста; при сбое — только явный FAIL. Не трогать Kie/картинки.
 1. Один блок вопросов → ответ человека → запись файлов → следующий блок.
 2. **Секреты не в git.** Только checklist yes/no.
 3. Укажи человеку: Automation → Tools → **Memories OFF** (docs: ON by default).
 4. После сырьевых блоков вызывай Task в **этом же окне** (не cloud):
-   - `Task(excalibur-blog-setup-voice)` · `model: gemini-3.8-flash`, `reasoning_effort: high` (при сбое — FAIL)
+   - `Task(excalibur-blog-setup-voice)` · `model: gemini-3.8-flash`, `reasoning_effort: low` (при сбое — FAIL)
    - `Task(excalibur-blog-setup-visual)` · `model: inherit`
 5. `complete=true` только когда обязательные фазы `done`.
 6. Не запускай Scout / Writer / Sol / Publish.
@@ -65,7 +65,7 @@ Phase `cloud` → `done` когда Memories OFF подтверждены и ч�
 
 Изучи доступные материалы (WebFetch/read). Затем:
 
-`Task(excalibur-blog-setup-voice)` · `model: gemini-3.8-flash` (`reasoning_effort=high` / slug `gemini-3.8-flash-high`) с полным контекстом. При сбое/недоступности — явный FAIL (не сочинять SOUL самому).
+`Task(excalibur-blog-setup-voice)` · `model: gemini-3.8-flash` (`reasoning_effort=low` / slug `gemini-3.8-flash-high`) с полным контекстом. При сбое/недоступности — явный FAIL (не сочинять SOUL самому).
 
 Phase `voice` → `done` при PASS Voice.
 

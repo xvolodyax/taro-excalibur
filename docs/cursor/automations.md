@@ -14,8 +14,8 @@
 Модель automation — это `inherit` для Директора, Setup, Research, Cover,
 Publish. Её не хардкодим.
 
-Текстовые субагенты **переопределяют** модель на Gemini 3.8 Flash High
-(YAML + явный `model: gemini-3.8-flash` + `model_params.reasoning_effort=high` в Task), независимо от того, Grok это или Composer.
+Текстовые субагенты **переопределяют** модель на Gemini 3.8 Flash
+(YAML + явный `model: gemini-3.8-flash` + `model_params.reasoning_effort=low` в Task; `high` — только явный override Владимира), независимо от того, Grok это или Composer.
 В эфир с default/inherit не уходит никакой текст. Нет Gemini = FAIL; Director сам не пишет текст.
 Kie и генерация картинок остаются на inherit.
 

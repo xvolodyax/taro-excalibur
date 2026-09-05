@@ -8,8 +8,8 @@ disable-model-invocation: true
 
 ## Жёсткое правило Владимира 03.09.2026 (Title / H1)
 
-- Заголовки статей (Title / H1) пишет **только Gemini 3.8 Flash High**.
-- В Cloud Agents **НЕТ** id `gemini-3.8-flash-high`. Правильный вызов: `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}`.
+- Заголовки статей (Title / H1) пишет **только Gemini 3.8 Flash**.
+- В Cloud Agents **НЕТ** id `gemini-3.8-flash-high`. Правильный вызов: `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "low"}`.
 - **В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст.**
 - **Нет Gemini = FAIL.** Директор / дефолтный Cloud Agent не пишет H1/Title и тело сам при сбое или недоступности модели. **FAIL only**.
 - Запрещён fallback на inherit/default.

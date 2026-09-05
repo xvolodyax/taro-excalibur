@@ -17,12 +17,13 @@
 берёт модель **родителя**, даже если YAML другой. Поэтому Директор
 **явно** передаёт модель Gemini на текстовые шаги.
 
-## Gemini 3.8 Flash High (Правило Владимира 03.09.2026)
+## Gemini 3.8 Flash (Правило Владимира 03.09.2026)
 
-Текстовые роли пишет **только Gemini 3.8 Flash High**:
+Текстовые роли пишет **только Gemini 3.8 Flash**:
 
 - В Cloud Agents **НЕТ** id `gemini-3.8-flash-high`.
-- Правильный вызов текста: `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}` (или `reasoning_effort: "high"`).
+- Дефолт текста: `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "low"}`.
+- `reasoning_effort=high` — только явный override Владимира.
 
 Это модель строго для всех текстовых ролей:
 
@@ -42,10 +43,10 @@ Scout, Research, Schema, Cover (генерация изображений), Inde
 Content-learner, Setup, Setup Visual, сам Директор.
 
 Владелец ставит Grok / Composer / Opus в automation — research и публикация
-идут на неё. Текст статьи всё равно Gemini 3.8 Flash High.
+идут на неё. Текст статьи всё равно Gemini 3.8 Flash.
 
 ## Fallback: СТРОГО ЗАПРЕЩЁН ДЛЯ ТЕКСТА (FAIL ONLY)
 
 - **Запрет fallback на inherit/default для текста.** Никакого переключения на inherit или дефолтную модель родителя.
 - **Дефолтный Cloud Agent / Director / Setup НИКОГДА не пишет тело статьи, H1, Sol, description, cover-text сам**, если Writer/Title/Sol/Description/Cover-Text недоступны или при сбое.
-- **FAIL ONLY:** При любой ошибке вызова Gemini 3.8 Flash High или недоступности текстового субагента — останавливаться с явным FAIL. Никакого текста своими силами.
+- **FAIL ONLY:** При любой ошибке вызова Gemini 3.8 Flash или недоступности текстового субагента — останавливаться с явным FAIL. Никакого текста своими силами.

@@ -1,33 +1,35 @@
 {
-  "version": "2",
-  "rule_date": "2026-09-03",
+  "version": "3",
+  "rule_date": "2026-09-05",
   "rule_author": "Vladimir",
-  "rule_title": "Жёсткое правило Владимира 03.09.2026 для taro-excalibur (статьи)",
+  "rule_title": "Anti-burn: Gemini 3.8 Flash + reasoning_effort=low для текста статей (taro-excalibur)",
   "docs_fetched_at": "2026-09-03",
   "docs_index": "docs/cursor/README.md",
   "chain_canon": "shared/subagent-chain.md",
   "text_model": "gemini-3.8-flash",
   "text_model_id": "gemini-3.8-flash",
-  "reasoning_effort": "high",
+  "reasoning_effort": "low",
   "model_params": {
-    "reasoning_effort": "high"
+    "reasoning_effort": "low"
   },
   "text_model_cloud_invocation": {
     "model": "gemini-3.8-flash",
     "model_params": {
-      "reasoning_effort": "high"
+      "reasoning_effort": "low"
     }
   },
-  "cloud_agents_note": "В Cloud Agents НЕТ id gemini-3.8-flash-high. Правильный вызов текста: model=gemini-3.8-flash, model_params.reasoning_effort=high (или reasoning_effort=high). Заголовки статей (Title / H1) тоже только Gemini 3.8 Flash High. Cover-text / description / Sol / Writer — то же. В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст. Нет Gemini = FAIL, Director не пишет H1 и тело сам.",
-  "text_model_slug": "gemini-3.8-flash-high",
-  "text_model_display": "Gemini 3.8 Flash High",
+  "reasoning_effort_override": "high",
+  "reasoning_effort_override_rule": "high only on explicit Vladimir override",
+  "cloud_agents_note": "В Cloud Agents НЕТ id gemini-3.8-flash-high. Дефолт текста: model=gemini-3.8-flash, model_params.reasoning_effort=low (или reasoning_effort=low). high — только явный override Владимира. Заголовки (Title / H1), Cover-text / description / Sol / Writer — то же. Воркеры наследуют этот штамп. В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст. Нет Gemini = FAIL, Director не пишет H1 и тело сам.",
+  "text_model_slug": "gemini-3.8-flash",
+  "text_model_display": "Gemini 3.8 Flash",
   "text_model_source": "https://cursor.com/docs/models/gemini-3-8-flash",
   "text_model_cloud_config": {
     "model": "gemini-3.8-flash",
     "model_params": {
-      "reasoning_effort": "high"
+      "reasoning_effort": "low"
     },
-    "reasoning_effort": "high"
+    "reasoning_effort": "low"
   },
   "allowed_text_model_identifiers": [
     "gemini-3.8-flash",
@@ -50,8 +52,16 @@
     "cover-text",
     "setup-voice"
   ],
-  "rule_summary": "Заголовки статей (Title / H1) тоже только Gemini 3.8 Flash High — cloud: model=gemini-3.8-flash + reasoning_effort=high (model_params.reasoning_effort=high). Cover-text / description / Sol / Writer — то же. В Cloud Agents НЕТ id gemini-3.8-flash-high. В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст. Нет Gemini = FAIL, Director не пишет H1 и тело сам. FAIL only. Не трогай Kie/картинки.",
-  "inherit_means": "Модель родителя = модель Cursor Automation / выбранная пользователем. Запрещено использовать inherit для текстовых ролей (только Gemini 3.8 Flash High).",
+  "anti_burn": {
+    "writer_body_passes": 1,
+    "enricher_allowed": false,
+    "read_loop_allowed": false,
+    "idle_gate_reread_allowed": false,
+    "after_package_pass": "EXIT",
+    "after_site_upload_ready": "EXIT"
+  },
+  "rule_summary": "Текст статей: model=gemini-3.8-flash + reasoning_effort=low. high — только явный override Владимира. Cover-text / description / Sol / Writer / Title — то же. Воркеры наследуют штамп. Один проход Writer; нет enricher/Read-loop; после package PASS / site upload ready → EXIT. В Cloud Agents НЕТ id gemini-3.8-flash-high. В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст. Нет Gemini = FAIL, Director не пишет H1 и тело сам. FAIL only. Не трогай Kie/картинки.",
+  "inherit_means": "Модель родителя = модель Cursor Automation / выбранная пользователем. Запрещено использовать inherit для текстовых ролей (только Gemini 3.8 Flash + reasoning_effort=low).",
   "text_agents": [
     "excalibur-blog-title",
     "excalibur-blog-writer",

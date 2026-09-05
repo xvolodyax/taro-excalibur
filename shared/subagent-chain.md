@@ -30,7 +30,7 @@ Daily / First-run **Automation** поднимает **один** Cloud Agent
 | `Task(excalibur-blog-director)` / `Task(excalibur-blog-setup)` | Оркестратор не субагент |
 | Специалист вызывает `Task(excalibur-blog-*)` | Вложенный пайплайн (Cursor 2.5 это технически умеет на 1 уровень) |
 | Автозапуск skill специалиста в чужой роли | Writer skill на Research → статья без канона |
-| Fallback на inherit/default для текстовых ролей | Текст пишет только Gemini 3.8 Flash High; fallback запрещён |
+| Fallback на inherit/default для текстовых ролей | Текст пишет только Gemini 3.8 Flash; fallback запрещён |
 | Дефолтный Cloud Agent / Director / Setup пишет текст сам | При недоступности Writer/Title/Sol/Description/Cover-Text — только FAIL |
 
 Единственное вложенное Task: **Setup** → `setup-voice` и `setup-visual`.
@@ -41,9 +41,10 @@ Daily / First-run **Automation** поднимает **один** Cloud Agent
 ## Кто какой моделью (Правило Владимира 03.09.2026)
 
 - **Текст** (заголовки Title / H1, черновик смысла Writer, финальная статья Sol, карточка Дзена description, надписи обложки cover-text, SOUL/article-style setup-voice):
-  только **Gemini 3.8 Flash High**.
+  только **Gemini 3.8 Flash**.
   В Cloud Agents **НЕТ** id `gemini-3.8-flash-high`.
-  Правильный вызов текста: `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}` (или `reasoning_effort: "high"`).
+  Дефолт текста: `model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "low"}`.
+  `reasoning_effort=high` — только явный override Владимира.
   **В эфир с default/inherit Cloud Agent не уходит НИКАКОЙ текст.**
   **Нет Gemini = FAIL.** Дефолтный Cloud Agent / Director / Setup **НИКОГДА** не пишет H1/Title и тело сам.
   Запрещён fallback на inherit/default для текста. При сбое или недоступности модели/субагента — **FAIL ONLY** (только FAIL).
@@ -53,7 +54,7 @@ Daily / First-run **Automation** поднимает **один** Cloud Agent
 
 Если Task **опускает** `model`, runtime часто берёт модель родителя
 и может перебить YAML. Поэтому текстовые шаги Директор передаёт явно:
-`model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}`.
+`model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "low"}`.
 Не-текст: `inherit` или поле не передавать.
 
 ## Как Директор вызывает Task
@@ -63,7 +64,7 @@ Daily / First-run **Automation** поднимает **один** Cloud Agent
   subagent_type: excalibur-blog-{title|writer|sol|description|cover-text}
   model: gemini-3.8-flash
   model_params:
-    reasoning_effort: high
+    reasoning_effort: low
   run_in_background: false
   (environment не передавать — default local)
   (В Cloud Agents НЕТ id gemini-3.8-flash-high!)
@@ -84,3 +85,9 @@ Daily / First-run **Automation** поднимает **один** Cloud Agent
 Их читает **свой** агент по пути из `agents/*.md`, а не Auto всего чата.
 
 Директор и Setup остаются auto-skills оркестратора.
+
+## Anti-burn (HARD)
+
+- Writer: **один** проход тела. Нет enricher, нет второго автора, нет Read-loop.
+- Не перечитывать gate-скрипты вхолостую после первого PASS.
+- После package PASS / site upload ready → **EXIT**. Не ждать следующий цикл.

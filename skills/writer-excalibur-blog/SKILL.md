@@ -22,6 +22,11 @@ disable-model-invocation: true
 4. `published-titles-only.md`
 5. `shared/dzen-content-rules.md` + RF (не герой Meta/…) — кратко
 
+## Anti-burn (HARD)
+
+Один проход тела. Нет enricher, нет второго черновика, нет Read-loop по research/gates.
+После `drafts/writer.html` — EXIT к Директору. Не перечитывать гейты.
+
 ## Не обязан читать (это зона Sol)
 
 `shared/SOUL.md`, `shared/soul-examples/*` — Sol применит слог сам.

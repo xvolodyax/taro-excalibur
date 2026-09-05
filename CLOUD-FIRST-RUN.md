@@ -59,7 +59,7 @@
 Прочитай AGENTS.md и SETUP.md.
 Если memory/setup/status.json не complete — работай как excalibur-blog-setup
 (skill setup-excalibur-blog): блоки 0–7, заполняй файлы, вызывай
-Task(excalibur-blog-setup-voice) model gemini-3.8-flash (model_params.reasoning_effort=high; в Cloud Agents НЕТ id gemini-3.8-flash-high; при недоступности — FAIL only, не писать самому) и
+Task(excalibur-blog-setup-voice) model gemini-3.8-flash (model_params.reasoning_effort=low; в Cloud Agents НЕТ id gemini-3.8-flash-high; при недоступности — FAIL only, не писать самому) и
 Task(excalibur-blog-setup-visual) model inherit — в этом же окне, не /in-cloud. Не трогать Kie/картинки.
 Не запускай Scout/Publish. Игнорируй Automation Memory.
 Memories в Tools должны быть OFF.
