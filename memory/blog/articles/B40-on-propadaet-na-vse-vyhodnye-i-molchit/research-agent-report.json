@@ -1,0 +1,44 @@
+{
+  "agent": "excalibur-blog-research",
+  "status": "PASS",
+  "verdict": "PASS",
+  "topic_id": "B40",
+  "slug": "on-propadaet-na-vse-vyhodnye-i-molchit",
+  "title": "Он пропадает на все выходные и молчит",
+  "research_date": "2026-09-05",
+  "slot": "morning_09:00",
+  "signal_evaluation": {
+    "verdict": "PASS",
+    "reason": "FRESH_EXTERNAL_SIGNAL",
+    "fresh_sources_present": true,
+    "community_signals": [
+      "https://dzen.ru/todaytaro_bot",
+      "https://www.woman.ru/relations/men/thread-muzhchina-propadaet-po-vykhodnym-id6315102/",
+      "https://psycheresurs.ru/articles/2026/05/15/4237.html",
+      "https://voppsyl.ru/articles/2026/05/07/3851.html",
+      "https://stervoza.ru/journal/izmena/muzh-zhivet-na-dve-semi/",
+      "https://dzen.ru/a/akOYSlStahDLH8zu",
+      "https://www.b17.ru/forum/topic.php?id=635928"
+    ]
+  },
+  "constraints_verified": {
+    "no_rf_blocked_entities_as_hero": true,
+    "no_meta_instagram_facebook_hero": true,
+    "no_h2_outline": true,
+    "no_faq_skeleton": true,
+    "no_lead_prose": true,
+    "karta_dnya_phrase_absent": true,
+    "word_vozmem_absent": true,
+    "anti_dup_checked": true
+  },
+  "checks": {
+    "stale_signal": false,
+    "anti_dup_checked": true,
+    "overlap_with_published_titles": false
+  },
+  "deliverables": {
+    "research_notes": "memory/blog/articles/B40-on-propadaet-na-vse-vyhodnye-i-molchit/research-notes.md",
+    "research_serp": "memory/blog/articles/B40-on-propadaet-na-vse-vyhodnye-i-molchit/research-serp.json",
+    "research_context": "memory/blog/articles/B40-on-propadaet-na-vse-vyhodnye-i-molchit/research-context.json"
+  }
+}
