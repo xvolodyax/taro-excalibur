@@ -1,0 +1,50 @@
+{
+  "topic_id": "B40",
+  "slug": "on-delaet-tebya-vinovatoj-v-svoem-molchanii",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: он молчит и винит тебя",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-09-05T13:38:39+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: он молчит и винит тебя",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Инфографика: четыре скрытых сценария молчания",
+      "h2_anchor": "Четыре скрытых сценария, почему он перекладывает вину за своё молчание",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Чеклист: ловушка выученной вины и женские ошибки",
+      "h2_anchor": "Ловушка выученной вины и женские ошибки, которые ломают баланс",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Таро: как арканы снимают морок",
+      "h2_anchor": "Что показывают арканы Таро: как карты снимают морок и показывают расклад сил",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

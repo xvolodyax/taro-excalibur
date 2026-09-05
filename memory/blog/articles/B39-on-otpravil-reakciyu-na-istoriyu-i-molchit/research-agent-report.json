@@ -1,0 +1,42 @@
+{
+  "agent": "excalibur-blog-research",
+  "status": "PASS",
+  "verdict": "PASS",
+  "topic_id": "B39",
+  "slug": "on-otpravil-reakciyu-na-istoriyu-i-molchit",
+  "title": "Он отправил реакцию на историю и молчит",
+  "research_date": "2026-09-04",
+  "slot": "evening_22:00",
+  "signal_evaluation": {
+    "verdict": "PASS",
+    "reason": "FRESH_EXTERNAL_SIGNAL",
+    "fresh_sources_present": true,
+    "community_signals": [
+      "https://dzen.ru/todaytaro_bot",
+      "https://smart-inc.ru/blog/gosting-orbiting-i-bredkrambing-vidy-manipulyaczij-v-soczsetyah/",
+      "https://psychodemia.ru/blog/bredkrambing-iskusstvo-uderzhaniya-bez-obeshhanij",
+      "https://flava.app/ru/blog/bredkrambing",
+      "https://www.b17.ru/article/ne_pishet_ne_otvechaet_smotrit_storis/"
+    ]
+  },
+  "constraints_verified": {
+    "no_rf_blocked_entities_as_hero": true,
+    "no_meta_instagram_facebook_hero": true,
+    "no_h2_outline": true,
+    "no_faq_skeleton": true,
+    "no_lead_prose": true,
+    "karta_dnya_phrase_absent": true,
+    "word_vozmem_absent": true,
+    "anti_dup_checked": true
+  },
+  "checks": {
+    "stale_signal": false,
+    "anti_dup_checked": true,
+    "overlap_with_published_titles": false
+  },
+  "deliverables": {
+    "research_notes": "memory/blog/articles/B39-on-otpravil-reakciyu-na-istoriyu-i-molchit/research-notes.md",
+    "research_serp": "memory/blog/articles/B39-on-otpravil-reakciyu-na-istoriyu-i-molchit/research-serp.json",
+    "research_context": "memory/blog/articles/B39-on-otpravil-reakciyu-na-istoriyu-i-molchit/research-context.json"
+  }
+}

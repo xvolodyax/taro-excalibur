@@ -1,0 +1,17 @@
+{
+  "task_id": "88d4bde97aedc248ec6e47e2579152d8",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B40-on-delaet-tebya-vinovatoj-v-svoem-molchanii/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1788615497,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "Виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}

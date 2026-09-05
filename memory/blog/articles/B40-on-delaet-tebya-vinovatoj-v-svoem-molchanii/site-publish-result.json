@@ -1,0 +1,40 @@
+{
+  "topic_id": "B40",
+  "slug": "on-delaet-tebya-vinovatoj-v-svoem-molchanii",
+  "publish_method": "site-api",
+  "hall": "not_used",
+  "dzen_studio": "not_used",
+  "token_env": "SITE_PUBLISH_TOKEN",
+  "token_configured": true,
+  "cover_hero_stripped": false,
+  "strip": {
+    "cover_hero_removed": 0,
+    "cover_png_figures_removed": 0,
+    "cover_credit_removed": 0,
+    "h1_removed": 0
+  },
+  "gate": "PASS",
+  "publish": "PUBLISHED",
+  "verdict": "pass",
+  "reason": "",
+  "permalink": "{{SITE_BASE}}/blog/on-delaet-tebya-vinovatoj-v-svoem-molchanii/",
+  "tgz_members": [
+    "article.html",
+    "article.meta.json",
+    "description-brief.json",
+    "cover/cover.png",
+    "cover/inline-01.png",
+    "cover/inline-02.png",
+    "cover/inline-03.png"
+  ],
+  "tgz_bytes": 2475791,
+  "upload_status": 201,
+  "article_id": "59",
+  "excerpt_clear_status": 403,
+  "excerpt_clear_skipped": "hall_token_no_patch",
+  "approve_status": 200,
+  "permalink_live": "{{SITE_BASE}}/blog/on-delaet-tebya-vinovatoj-v-svoem-molchanii/",
+  "publish_status": 200,
+  "live_status": 200,
+  "live_ok": true
+}

@@ -1,0 +1,64 @@
+{
+  "topic_id": "B40",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Он молчит и винит тебя",
+  "cover_hook_highlight": "винит",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: он молчит и винит тебя",
+      "scene_hint": "same woman as Виктория.png, Host LARGE left half; tiny smartphone right with cold silence symbol; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "твоей вины нет"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Четыре скрытых сценария, почему он перекладывает вину за своё молчание",
+      "visual_type": "infographic_card",
+      "scene_hint": "L→R: переворот ролей → дрессировка тишиной → страх открытости → скрытый саботаж. NO people/faces. #FFF",
+      "alt": "Инфографика: четыре скрытых сценария молчания",
+      "labels": [
+        "переворот ролей",
+        "дрессировка тишиной",
+        "страх открытости",
+        "скрытый саботаж"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Ловушка выученной вины и женские ошибки, которые ломают баланс",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist: извинения авансом, ловушка угодничества, потеря опор. NO people/faces. #FFF",
+      "alt": "Чеклист: ловушка выученной вины и женские ошибки",
+      "labels": [
+        "извинения авансом",
+        "ловушка угодничества",
+        "самобичевание",
+        "потеря опор"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Что показывают арканы Таро: как карты снимают морок и показывают расклад сил",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Cards: Пятёрка Мечей, Восьмёрка Мечей, Справедливость, совет карт. NO people/faces. #FFF",
+      "alt": "Таро: как арканы снимают морок",
+      "labels": [
+        "Пятёрка Мечей",
+        "Восьмёрка Мечей",
+        "Справедливость",
+        "совет карт"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
