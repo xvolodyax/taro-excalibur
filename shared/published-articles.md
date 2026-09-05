@@ -19,3 +19,4 @@ Publish / Indexer обновляют по мере выхода.
 | B37 | on-napisal-nam-nado-pogovorit-i-propal | live | {{SITE_BASE}}/blog/on-napisal-nam-nado-pogovorit-i-propal/ |
 | B38 | on-udalil-perepisku-v-otnosheniyah | live | {{SITE_BASE}}/blog/on-udalil-perepisku-v-otnosheniyah/ |
 | B39 | on-otpravil-reakciyu-na-istoriyu-i-molchit | live | {{SITE_BASE}}/blog/on-otpravil-reakciyu-na-istoriyu-i-molchit/ |
+| B40 | on-delaet-tebya-vinovatoj-v-svoem-molchanii | live | {{SITE_BASE}}/blog/on-delaet-tebya-vinovatoj-v-svoem-molchanii/ |

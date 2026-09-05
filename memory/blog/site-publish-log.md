@@ -1,5 +1,22 @@
 # Site publish log
 
+## 2026-09-05 B40 on-delaet-tebya-vinovatoj-v-svoem-molchanii
+
+- method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used; Dzen Studio not used)
+- article_id: 59
+- upload: 201
+- excerpt_clear: 403 hall_token_no_patch (не FAIL)
+- approve: **200**
+- publish: **200**
+- live GET **200** `{{SITE_BASE}}/blog/on-delaet-tebya-vinovatoj-v-svoem-molchanii/`
+- title/H1: Он делает тебя виноватой в своём молчании
+- pack: cover.png 16:9 + inline-01/02/03; `figure.cover-hero` нет; обложка один раз как `seo-article__cover`
+- «Возьмём:» в теле нет (в related blog-card чужих постов — не трогали)
+- лид после H1 один (`p.seo-article__lead` = первый абзац)
+- тело не правили после Sol; Дзен Студия не звали
+- B21/B22: not touched
+- verdict: pass
+
 ## 2026-09-04 B39 on-otpravil-reakciyu-na-istoriyu-i-molchit
 
 - method: site-api (`SITE_PUBLISH_TOKEN`; Hall not used; Dzen Studio not used)
