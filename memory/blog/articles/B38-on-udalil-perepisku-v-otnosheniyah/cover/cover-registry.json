@@ -1,0 +1,50 @@
+{
+  "topic_id": "B38",
+  "slug": "on-udalil-perepisku-v-otnosheniyah",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: он стёр переписку у обоих",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-09-04T06:50:37+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: он стёр переписку у обоих",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Инфографика: скрытые механизмы удаления переписки",
+      "h2_anchor": "Скрытая механика: почему стирание чата — это попытка перехватить контроль и сбежать от уязвимости",
+      "visual_type": "infographic_card",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Сравнение: удаление на эмоциях против сокрытия улик",
+      "h2_anchor": "Разница между аффектом и хладнокровным сокрытием улик",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Чеклист: как вернуть опору и не поддаваться манипуляции",
+      "h2_anchor": "Практика: чеклист шагов, как вернуть себе опору и что спросить у карт",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

@@ -51,7 +51,7 @@ DEFAULT_POLL_INTERVAL_SECONDS = 15
 DEFAULT_MAX_WAIT_SECONDS = 900
 DEFAULT_MAX_CREATE_RETRIES = 1
 DEFAULT_RETRY_WAIT_SECONDS = 15
-DEFAULT_LOCAL_REFERENCE = "memory/cover/assets/blog-hero-reference.png"
+DEFAULT_LOCAL_REFERENCE = "memory/cover/assets/Виктория.png"
 
 
 class KieApiError(RuntimeError):
@@ -89,16 +89,47 @@ def _normalize_fail_code(fail_code: Any) -> str:
     return code_s
 
 
+def is_playground_blank_fail(fail_code: Any, fail_msg: Any) -> bool:
+    """True for Kie GPT Image 2 playground infra: 422 + task-id-blank.
+
+    Not the sensitive-content 422 path. Instant fail (~1–2s) on i2i and t2i
+    while credits may still look OK (INC-20260830-1339 / B25).
+    """
+    msg_s = str(fail_msg if fail_msg is not None else "").strip().lower()
+    if "generate playground failed" in msg_s and "task id is blank" in msg_s:
+        return True
+    code_s = _normalize_fail_code(fail_code)
+    return code_s == "422" and "task id is blank" in msg_s
+
+
+def is_sensitive_content_fail(fail_code: Any, fail_msg: Any) -> bool:
+    """True for content-flagged 422. Playground-blank is infra, not this."""
+    if is_playground_blank_fail(fail_code, fail_msg):
+        return False
+    code_s = _normalize_fail_code(fail_code)
+    msg_s = str(fail_msg if fail_msg is not None else "").strip().lower()
+    return code_s == "422" and "sensitive" in msg_s
+
+
+def retry_kind_for_server_fail(fail_code: Any, fail_msg: Any) -> str:
+    if is_playground_blank_fail(fail_code, fail_msg):
+        return "playground_blank"
+    return "server_500"
+
+
 def is_retryable_server_fail(fail_code: Any, fail_msg: Any) -> bool:
-    """True for transient Kie server fails: failCode=500 and/or «try again later».
+    """True for transient Kie server fails: 500, «try again later», playground-blank.
 
     Does not apply to waiting/generating — only terminal state=fail.
+    Does not apply to 422 «sensitive» (agent soften path, not script retry).
     """
     code_s = _normalize_fail_code(fail_code)
     msg_s = str(fail_msg if fail_msg is not None else "").strip().lower()
     if code_s == "500":
         return True
     if "try again later" in msg_s:
+        return True
+    if is_playground_blank_fail(fail_code, fail_msg):
         return True
     return False
 
@@ -238,7 +269,14 @@ def batch_mcp_args(batch_path: Path) -> dict[str, Any]:
         raise KieApiError("Missing prompt in jobs[0].mcp_args")
     if not isinstance(input_urls, list) or not input_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args")
-    expanded_urls = expand_input_urls(input_urls)
+    prefer_local = bool(batch.get("prefer_local_reference")) and str(
+        batch.get("local_reference") or ""
+    ).strip()
+    if prefer_local:
+        # Local file is uploaded later; keep git-safe {{SITE_BASE}} placeholders.
+        expanded_urls = [str(url).strip() for url in input_urls if str(url or "").strip()]
+    else:
+        expanded_urls = expand_input_urls(input_urls)
     if not expanded_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args after expand")
     return {
@@ -288,7 +326,7 @@ def resolve_local_reference_bytes(
     work_dir: Path,
     local_reference: str = DEFAULT_LOCAL_REFERENCE,
 ) -> tuple[Path, str]:
-    """Prefer downloaded WP media, else local blog-hero-reference.png.
+    """Prefer downloaded WP media, else local Виктория.png.
 
     Returns (path, source_label). Does not mutate committed batch files.
     """

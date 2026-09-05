@@ -141,6 +141,8 @@ def main() -> int:
         "scripts/excalibur_blog_writer_ready_gate.py",
         "scripts/excalibur_blog_cover_text_gate.py",
         "scripts/excalibur_blog_wp_publish.py",
+        "scripts/excalibur_blog_site_publish.py",
+        "shared/excalibur-site-publish-contract.md",
         "scripts/excalibur_blog_merge_to_main.py",
         "scripts/excalibur_blog_community_cta_gate.py",
     )

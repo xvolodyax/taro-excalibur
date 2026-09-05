@@ -1,0 +1,218 @@
+{
+  "agent": "excalibur-blog",
+  "date_context": {
+    "timezone": "Europe/Moscow",
+    "today_iso": "2026-09-04",
+    "today_ru": "04.09.2026",
+    "year": 2026,
+    "month": 9,
+    "month_name_ru": "сентябрь",
+    "weekday_ru": "пятница"
+  },
+  "topic": {
+    "topic_id": "B38",
+    "title": "Он удалил переписку в отношениях",
+    "h1": "Он удалил переписку в отношениях",
+    "slug": "on-udalil-perepisku-v-otnosheniyah",
+    "primary_query": "Он удалил переписку в отношениях",
+    "priority": "P0"
+  },
+  "searches": [
+    {
+      "query_id": "primary_fresh",
+      "query": "Он удалил переписку в отношениях 2026",
+      "purpose": "актуальный SERP",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Почему мужчина удаляет переписку — возможные причины и советы",
+          "url": "https://sunmag.me/love/paren-udalil-perepisku-u-oboih-zachem-i-kak-reagirovat.html",
+          "snippet": ""
+        },
+        {
+          "title": "Зачем удаляют переписку после расставания?",
+          "url": "https://www.b17.ru/forum/topic.php?id=597351",
+          "snippet": "Парень удалил переписку? Узнайте, почему мужчины так поступают — от банальной аккуратности до желания скрыть что-то важное. Как правильно отреагировать и стоит ли продолжать общение?"
+        },
+        {
+          "title": "ТОП 20 причин, почему парни удаляют переписку",
+          "url": "https://samka.co/otnosheniya/pochemu-parni-udalyaut-perepisku-mnenie-psihologa/",
+          "snippet": "Зачем удаляют переписку после расставания? Я один раз удаляла переписку. Причина была, что я решила для себя - этого человека больше не будет в моей жизни. И удалила переписку, что бы идти дальше и лишний раз не вспоминать о нем. Так же я отписалась в инстаграме."
+        },
+        {
+          "title": "Почему парень удалил переписку? - советы психологов и консультации онлайн",
+          "url": "https://www.all-psy.com/konsultacii/otvet/418675/",
+          "snippet": "20 возможных причин, почему парни удаляют переписку. О чем говорит такой жест и стоит ли продолжать общение с парнем, который ведет себя подобным образом?"
+        },
+        {
+          "title": "Худшее, что можно сделать после расставания — почистить переписку. Мы ...",
+          "url": "https://vk.com/wall-56106344_10189566",
+          "snippet": "Общались с парнем он спрашивал покушала ли я, переживал за меня, спрашивал всё ли хорошо у меня. А после одной фразы удалил переписку я написала... Читайте советы психологов!"
+        },
+        {
+          "title": "«В компании все в шоке: директор пропал и удалил чаты»",
+          "url": "https://charter97.org/ru/news/2026/9/3/697115/",
+          "snippet": "Делаю абсолютно так же, удаляю к чертям всю переписку с обеих сторон, если есть возможность, и совместные фотки, выбрасываю вещи, которые связаны были с этим человеком."
+        }
+      ],
+      "searched_at": "2026-09-04"
+    },
+    {
+      "query_id": "title_fresh",
+      "query": "Он удалил переписку в отношениях 2026",
+      "purpose": "SERP по человеческому title",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Почему мужчина удаляет переписку — возможные причины и советы",
+          "url": "https://sunmag.me/love/paren-udalil-perepisku-u-oboih-zachem-i-kak-reagirovat.html",
+          "snippet": ""
+        },
+        {
+          "title": "Зачем удаляют переписку после расставания?",
+          "url": "https://www.b17.ru/forum/topic.php?id=597351",
+          "snippet": "Парень удалил переписку? Узнайте, почему мужчины так поступают — от банальной аккуратности до желания скрыть что-то важное. Как правильно отреагировать и стоит ли продолжать общение?"
+        },
+        {
+          "title": "ТОП 20 причин, почему парни удаляют переписку",
+          "url": "https://samka.co/otnosheniya/pochemu-parni-udalyaut-perepisku-mnenie-psihologa/",
+          "snippet": "Зачем удаляют переписку после расставания? Я один раз удаляла переписку. Причина была, что я решила для себя - этого человека больше не будет в моей жизни. И удалила переписку, что бы идти дальше и лишний раз не вспоминать о нем. Так же я отписалась в инстаграме."
+        },
+        {
+          "title": "Худшее, что можно сделать после расставания — почистить переписку. Мы ...",
+          "url": "https://vk.com/wall-56106344_10189566",
+          "snippet": "20 возможных причин, почему парни удаляют переписку. О чем говорит такой жест и стоит ли продолжать общение с парнем, который ведет себя подобным образом?"
+        },
+        {
+          "title": "Почему парень удалил переписку? - советы психологов и консультации онлайн",
+          "url": "https://www.all-psy.com/konsultacii/otvet/418675/",
+          "snippet": "Делаю абсолютно так же, удаляю к чертям всю переписку с обеих сторон, если есть возможность, и совместные фотки, выбрасываю вещи, которые связаны были с этим человеком."
+        },
+        {
+          "title": "Почему мужчина удаляет переписку - Да-Да Новости",
+          "url": "https://dadanews.ru/obschestvo/pochemu-muzhchina-udalyaet-perepisku/",
+          "snippet": "Общались с парнем он спрашивал покушала ли я, переживал за меня, спрашивал всё ли хорошо у меня. А после одной фразы удалил переписку я написала... Читайте советы психологов!"
+        }
+      ],
+      "searched_at": "2026-09-04"
+    },
+    {
+      "query_id": "official_docs",
+      "query": "Он удалил переписку в отношениях official docs 2026",
+      "purpose": "официальные docs",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Как Удалить Переписку В Max: У Себя И У Собеседника (2026)",
+          "url": "https://maxofficial.ru/blog/kak-udalit-perepisku-v-max",
+          "snippet": ""
+        },
+        {
+          "title": "26 смертельных ударов за переписку в мессенджере:",
+          "url": "https://www.omsk.kp.ru/daily/277812/5297581/",
+          "snippet": "Как удалить переписку в МАКС: одно сообщение или весь чат, разница между «удалить у себя» и «удалить у всех» и что может остаться у собеседника."
+        },
+        {
+          "title": "Почему мужчина удаляет переписку — возможные причины и советы",
+          "url": "https://sunmag.me/love/paren-udalil-perepisku-u-oboih-zachem-i-kak-reagirovat.html",
+          "snippet": "По версии следствия, трагедия произошла в ночь на 9 мая 2026 года в доме на улице 17-я Марьяновская. Супруги поссорились из-за переписки, которую муж увидел в мессенджере."
+        },
+        {
+          "title": "В документах Минюста США нашлась переписка Маска с Эпштейном",
+          "url": "https://ria.ru/20260131/ssha-2071361300.html",
+          "snippet": "Парень удалил переписку? Узнайте, почему мужчины так поступают — от банальной аккуратности до желания скрыть что-то важное. Как правильно отреагировать и стоит ли продолжать общение?"
+        },
+        {
+          "title": "ТОП 20 причин, почему парни удаляют переписку",
+          "url": "https://samka.co/otnosheniya/pochemu-parni-udalyaut-perepisku-mnenie-psihologa/",
+          "snippet": "РИА Новости: в документах Минюста США нашлась переписка Маска с Эпштейном ВАШИНГТОН, 31 янв — РИА Новости."
+        },
+        {
+          "title": "Файлы Эпштейна — Википедия",
+          "url": "https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB%D1%8B_%D0%AD%D0%BF%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0",
+          "snippet": "20 возможных причин, почему парни удаляют переписку. О чем говорит такой жест и стоит ли продолжать общение с парнем, который ведет себя подобным образом?"
+        }
+      ],
+      "searched_at": "2026-09-04"
+    },
+    {
+      "query_id": "github_evidence",
+      "query": "site:github.com Он удалил переписку в отношениях 2026",
+      "purpose": "GitHub evidence",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "GitHub - Ashesh3/MessageLoggerV3-BetterDiscord: BetterDiscord ...",
+          "url": "https://github.com/Ashesh3/MessageLoggerV3-BetterDiscord",
+          "snippet": ""
+        },
+        {
+          "title": "sa-guide/sa-html.html at main · AndLee11/sa-guide · GitHub",
+          "url": "https://github.com/AndLee11/sa-guide/blob/main/sa-html.html",
+          "snippet": "It also has highly configurable ignore options, and allows restoring deleted messages after restarting Discord. Make sure you have BetterDiscord installed. You can download it from here. Download the latest version of the plugin from this repository. Save the plugin file in your BetterDiscord plugins folder."
+        },
+        {
+          "title": "Позволяет переводить переписку из telegram dump json в txt с ...",
+          "url": "https://gist.github.com/Xoma163/a9a04ead97a7e11328caeff058a184ce",
+          "snippet": "margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased; position:fixed; top:0; left:0; bottom:0; width:var(--sidebar-w); background:linear-gradient(180deg,var(--sidebar-bg),var(--sidebar-bg-2));"
+        },
+        {
+          "title": "Быстрое удаление сообщений в чатах Discord · GitHub",
+          "url": "https://gist.github.com/believer-ufa/23e65ce014061eec7ec9126eb6ed66b4",
+          "snippet": "Позволяет переводить переписку из telegram dump json в txt с группировкой сообщений и указанием типов вложений - telegram_json_to_txt.py"
+        },
+        {
+          "title": "GitHub - orangepony4/telegram-analyzer: Анализ переписки в Telegram",
+          "url": "https://github.com/orangepony4/telegram-analyzer",
+          "snippet": "Данная инструкция научит вас удалять сразу большое количество сообщений в программе Discord. Вы выполняете эти действия только на свой страх и риск. Я не несу ответственности за то, что вы таким образом удалите важные данные или передадите таким образом доступ к своему аккаунту другому лицу."
+        },
+        {
+          "title": "coursera-ddp-shiny/corpora/ru_50k.txt at master - GitHub",
+          "url": "https://github.com/spujadas/coursera-ddp-shiny/blob/master/corpora/ru_50k.txt",
+          "snippet": "Перетащите файл result.json в выделенную область на странице или нажмите кнопку «Выберите файл» и выберите файл вручную. После загрузки появится зелёное окно «Загрузка и анализ данных...»."
+        }
+      ],
+      "searched_at": "2026-09-04"
+    },
+    {
+      "query_id": "community_experience",
+      "query": "Он удалил переписку в отношениях forum problems опыт 2026",
+      "purpose": "форумы и живые проблемы",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Зачем удаляют переписку после расставания?",
+          "url": "https://www.b17.ru/forum/topic.php?id=597351",
+          "snippet": ""
+        },
+        {
+          "title": "Отношения. Парень удалил переписку - Woman.ru",
+          "url": "https://www.woman.ru/relations/men/thread/6099269/",
+          "snippet": "Зачем удаляют переписку после расставания? Я один раз удаляла переписку. Причина была, что я решила для себя - этого человека больше не будет в моей жизни. И удалила переписку, что бы идти дальше и лишний раз не вспоминать о нем. Так же я отписалась в инстаграме."
+        },
+        {
+          "title": "Парень удалил переписку, почему? - Woman.ru",
+          "url": "https://www.woman.ru/relations/men/thread/5507161/",
+          "snippet": "4 ответа - Смотрите, с парнем все было идеально, мы переписывались, гуляли, целовались, писали страстные сообщения и лапали друг ... (6099269) - Женский форум Woman.ru"
+        },
+        {
+          "title": "Зачем удаляют переписку после расставания? — страница 3",
+          "url": "https://www.b17.ru/forum/topic.php?id=597351&p=3",
+          "snippet": "8 ответов - Парень удалил переписку, почему? Почему до реального общения дело не доходит?"
+        },
+        {
+          "title": "Худшее, что можно сделать после расставания — почистить переписку. Мы ...",
+          "url": "https://vk.com/wall-56106344_10189566",
+          "snippet": "Я один раз удаляла переписку. Причина была, что я решила для себя - этого человека больше не будет в моей жизни. И удалила переписку, что бы идти дальше и лишний раз не вспоминать о нем. Так же я отписалась в инстаграме."
+        },
+        {
+          "title": "Почему мужчина удаляет переписку — возможные причины и советы",
+          "url": "https://sunmag.me/love/paren-udalil-perepisku-u-oboih-zachem-i-kak-reagirovat.html",
+          "snippet": "Делаю абсолютно так же, удаляю к чертям всю переписку с обеих сторон, если есть возможность, и совместные фотки, выбрасываю вещи, которые связаны были с этим человеком."
+        }
+      ],
+      "searched_at": "2026-09-04"
+    }
+  ],
+  "errors": []
+}
