@@ -1,0 +1,64 @@
+{
+  "topic_id": "B41",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Обещал приехать и пропал с радаров",
+  "cover_hook_highlight": "пропал",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: обещал приехать и пропал с радаров",
+      "scene_hint": "Host LARGE left, new dusty-rose knit not white cami; tiny silent phone right; sticky «а вечер уже испорчен»; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "а вечер уже испорчен"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Почему статус «еду» запускает мучительное ожидание",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Workflow L→R on white: «статус «еду»» → «проверка сети» → «режим дежурства» → «тишина в ответ»; outcome: ожидание съедает вечер. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема: почему статус «еду» включает тревожное ожидание",
+      "labels": [
+        "статус «еду»",
+        "проверка сети",
+        "режим дежурства",
+        "тишина в ответ"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Карта дня: атмосфера вечера и границы заботы",
+      "visual_type": "infographic_card",
+      "scene_hint": "Fact card, tiny Empress tarot as схема; labels «аркан Императрица», «тепло для себя», «дом и уют», «четкие границы»; gold accent; outcome: тепло себе. NO people/faces.",
+      "alt": "Карточка дня: Императрица, тепло для себя и границы заботы",
+      "labels": [
+        "аркан Императрица",
+        "тепло для себя",
+        "дом и уют",
+        "четкие границы"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Практика: чеклист шагов на ближайшие часы",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist 1–4: «пауза двадцать минут» → «одно сообщение» → «один звонок» → «снять наряд»; outcome: вечер свой. NO people/faces/emoji/silhouettes.",
+      "alt": "Чеклист шагов на ближайшие часы после молчания",
+      "labels": [
+        "пауза двадцать минут",
+        "одно сообщение",
+        "один звонок",
+        "снять наряд"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}

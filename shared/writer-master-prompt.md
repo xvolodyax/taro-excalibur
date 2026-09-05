@@ -39,10 +39,8 @@
 
 ## После тебя
 
-Директор (не ты) вызывает `Task(excalibur-blog-sol)` с Gemini 3.8 Flash
-(`model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "low"}`).
-`reasoning_effort=high` — только явный override Владимира.
+Директор (не ты) вызывает `Task(excalibur-blog-sol)` с Gemini 3.8 Flash High
+(`model: "gemini-3.8-flash"`, `model_params: {"reasoning_effort": "high"}`).
 В Cloud Agents НЕТ id `gemini-3.8-flash-high`.
 Запрещён fallback на inherit/default; дефолтный агент никогда не пишет текст сам — FAIL only.
 Sol читает SOUL + examples и пишет финальный `article.html`. Writer Sol не запускает.
-Один проход Writer. Нет enricher / Read-loop. После черновика — EXIT.
