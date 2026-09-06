@@ -1,0 +1,17 @@
+{
+  "task_id": "2b71613c2f2f6a6d85eb5b028557f7b7",
+  "source": "kie-api",
+  "model": "gpt-image-2-image-to-image",
+  "state": "success",
+  "create_attempts": 1,
+  "result_path": "memory/blog/articles/B42-on-stavit-usloviya-v-otnosheniyah/cover/quad-mcp-result.json",
+  "updated_at_epoch": 1788678740,
+  "file_upload_fallback": true,
+  "file_upload": {
+    "source": "prefer_local_reference",
+    "upload_path": "excalibur-blog/hero",
+    "local_name": "Виктория.png",
+    "download_host": "tempfile.redpandaai.co",
+    "cover_hero_mode": "host"
+  }
+}

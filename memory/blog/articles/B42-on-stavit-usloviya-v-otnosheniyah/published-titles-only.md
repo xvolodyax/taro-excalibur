@@ -39,7 +39,6 @@ lessons, benchmarks, QA reports или соседние research-notes как о
 | B40 | on-delaet-tebya-vinovatoj-v-svoem-molchanii | Он делает тебя виноватой в своём молчании | live |
 | B40M | on-propadaet-na-vse-vyhodnye-i-molchit | Он пропадает на все выходные и молчит | live |
 | B41 | on-napisal-edu-i-propal | Он написал «еду» и не приехал | live |
-| B42 | on-stavit-usloviya-v-otnosheniyah | Он ставит условия и угрожает расставанием | live |
 | LIVE | zachem-vtykayut-igolku-v-dvernoy-kosyak | Зачем втыкают иголку в дверной косяк | live |
 | LIVE | zachem-syplyut-sol-v-ugol-ot-skandalov | Зачем сыплют соль в угол от скандалов | live |
 | LIVE | kak-vyzyvayut-domovogo-v-kvartire | Как вызывают домового в квартире | live |

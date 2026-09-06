@@ -238,7 +238,12 @@ def batch_mcp_args(batch_path: Path) -> dict[str, Any]:
         raise KieApiError("Missing prompt in jobs[0].mcp_args")
     if not isinstance(input_urls, list) or not input_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args")
-    expanded_urls = expand_input_urls(input_urls)
+    # Host-reference File Upload (Виктория.png) replaces URLs before createTask.
+    # Do not require PUBLIC_SITE_URL just to expand a placeholder that will be overwritten.
+    if batch.get("prefer_local_reference"):
+        expanded_urls = [str(u).strip() for u in input_urls if str(u or "").strip()]
+    else:
+        expanded_urls = expand_input_urls(input_urls)
     if not expanded_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args after expand")
     return {

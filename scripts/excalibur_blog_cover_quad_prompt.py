@@ -318,19 +318,34 @@ def build_prompt(
     cat_hero = style_is_situational_cat_hero(style)
 
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
-    highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
-        f'hook text must match exactly — do not substitute «время»/traffic markers'
-        if highlight
-        else "paint at most ONE punch word in hot-pink #FF1493"
-    )
+    palette = design_code.get("color_palette") or {}
+    forbidden_accents = {str(x).upper() for x in (palette.get("forbidden_accents") or [])}
+    gold = str(palette.get("accent_gold") or palette.get("accent_primary") or "").strip()
+    use_gold_highlight = bool(gold) and "#FF1493" in forbidden_accents
+    if use_gold_highlight:
+        highlight_rule = (
+            f'paint ONLY the highlight word "{highlight}" in medallion gold {gold}'
+            if highlight
+            else f"paint at most ONE punch word in medallion gold {gold}"
+        )
+        hook_type = "editorial display Cyrillic, ink #141821"
+        sticky_kind = "gold"
+    else:
+        highlight_rule = (
+            f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
+            f'hook text must match exactly — do not substitute «время»/traffic markers'
+            if highlight
+            else "paint at most ONE punch word in hot-pink #FF1493"
+        )
+        hook_type = "big bold condensed Cyrillic, black #141821"
+        sticky_kind = "pink"
     cover_scene = sanitize_cover_scene_hint(
         str(cover.get("scene_hint") or ""), highlight
     )
     cover_hook_text = compact(manifest.get("cover_hook", ""), 120)
     cover_sticky = compact(str(cover.get("sticky") or ""), 48)
     sticky_lock = (
-        f" Small pink sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+        f" Small {sticky_kind} sticky with EXACTLY «{cover_sticky}» in Cyrillic."
         if cover_sticky
         else ""
     )
@@ -416,12 +431,12 @@ def build_prompt(
         "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
         "",
         ban_line,
-        "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
+        "TEXT LANGUAGE LOCK: visible text is RUSSIAN Cyrillic only; render TEXT LOCK strings exactly. No English, Latin slogan, or invented words.",
         "",
         reference_line,
         "",
-        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
-        f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
+        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — {hook_type}, '
+        f'{highlight_rule}; no other headline or English.{sticky_lock} '
         "no keyword list card; "
         f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}",
         "",
@@ -471,8 +486,9 @@ def main() -> int:
 
     cat_hero = style_is_situational_cat_hero(style)
     local_reference = str(style.get("local_reference") or "").strip()
+    style_prefer_local = bool(style.get("prefer_local_reference")) and bool(local_reference)
     prefer_local_reference = False
-    if cat_hero and local_reference:
+    if (cat_hero or style_prefer_local) and local_reference:
         local_path = root / local_reference
         if not local_path.is_file():
             print(
@@ -480,12 +496,31 @@ def main() -> int:
                 file=sys.stderr,
             )
             return 1
-        # Git-safe placeholder; Kie uploads local_reference before createTask.
-        batch_ref_url = (
-            f"{SITE_BASE_PLACEHOLDER}/wp-content/uploads/excalibur/"
-            f"{Path(local_reference).name}"
-        )
         prefer_local_reference = True
+        if cat_hero:
+            # Git-safe placeholder; Kie uploads local_reference before createTask.
+            batch_ref_url = (
+                f"{SITE_BASE_PLACEHOLDER}/wp-content/uploads/excalibur/"
+                f"{Path(local_reference).name}"
+            )
+        else:
+            ref_url = (hero.get("reference_url_hosted") or "").strip()
+            if not ref_url:
+                print(
+                    "❌ COVER HERO BLOCKER: reference_url_hosted missing. Run excalibur_blog_hero_reference_url.py",
+                    file=sys.stderr,
+                )
+                return 1
+            if not validate_reference_url(ref_url):
+                return 1
+            batch_ref_url = git_safe_reference_url(ref_url)
+            if REDACTED_LITERAL in batch_ref_url:
+                print(
+                    "❌ COVER HERO BLOCKER: cannot derive git-safe reference_url_hosted; "
+                    f"set blog-hero.json to {SITE_BASE_PLACEHOLDER}/wp-content/.../ava.jpg",
+                    file=sys.stderr,
+                )
+                return 1
     else:
         ref_url = (hero.get("reference_url_hosted") or "").strip()
         if not ref_url:

@@ -1,0 +1,50 @@
+{
+  "topic_id": "B42",
+  "slug": "on-stavit-usloviya-v-otnosheniyah",
+  "cover_family": "brand_collage",
+  "style_preset": "victoria-studio",
+  "pipeline": "quad_canvas_1x_image_api",
+  "file": "cover/cover.png",
+  "alt": "Иллюстрация: ставит ультиматум и угрожает уйти",
+  "aspect_ratio": "16:9",
+  "canvas_source": "cover/canvas-quad.png",
+  "generated_at": "2026-09-06T07:12:42+00:00",
+  "assets": [
+    {
+      "role": "cover",
+      "slot": "cover",
+      "file": "cover/cover.png",
+      "alt": "Иллюстрация: ставит ультиматум и угрожает уйти",
+      "h2_anchor": null,
+      "visual_type": "cover_editorial_hero",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_1",
+      "file": "cover/inline-01.png",
+      "alt": "Схема: ультиматум выглядит силой, внутри — страх контроля",
+      "h2_anchor": "Почему ультиматум — это не сила, а бессилие и страх контроля",
+      "visual_type": "comparison_table_ui",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_2",
+      "file": "cover/inline-02.png",
+      "alt": "Чеклист: почему первая уступка запускает снежный ком запретов",
+      "h2_anchor": "Ловушка первого согласия: почему уступка ради мира запускает снежный ком",
+      "visual_type": "checklist_board",
+      "aspect_ratio": "16:9"
+    },
+    {
+      "role": "inline",
+      "slot": "inline_3",
+      "file": "cover/inline-03.png",
+      "alt": "Схема шагов: как остановить ультиматум и защитить границы",
+      "h2_anchor": "Практика: чеклист шагов, как остановить ультиматум и защитить свои границы",
+      "visual_type": "workflow_diagram",
+      "aspect_ratio": "16:9"
+    }
+  ]
+}

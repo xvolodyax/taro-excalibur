@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "cover_mode": "host_reference",
+  "required_hair_phrase": "hair color copied exactly from reference photo, same root depth, do not lighten, no platinum",
+  "errors": [],
+  "blocker": null,
+  "rebuild": "Platinum / strongly lighter than reference hair → rebuild the 2K canvas. Do not fix hair outside the canvas."
+}

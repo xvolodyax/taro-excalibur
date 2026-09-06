@@ -1,0 +1,64 @@
+{
+  "topic_id": "B42",
+  "canvas_file": "cover/canvas-quad.png",
+  "layout": "2x2",
+  "pipeline": "quad_canvas_1x_image_api",
+  "style_preset": "victoria-studio",
+  "style_file": "memory/cover/quad-style-victoria-studio.json",
+  "blog_hero": "memory/cover/blog-hero.json",
+  "inline_types_catalog": "memory/cover/inline-visual-types.json",
+  "cover_hook": "Ставит ультиматум и угрожает уйти",
+  "cover_hook_highlight": "ультиматум",
+  "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
+  "mcp_note": "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt before --write-batch. White hoodie lock = blog-hero.json only.",
+  "slots": {
+    "cover": {
+      "quadrant": "top_left",
+      "role": "cover_editorial_hero",
+      "alt": "Иллюстрация: ставит ультиматум и угрожает уйти",
+      "scene_hint": "Host LARGE left half, new charcoal blazer not white cami; tiny ultimatum note right; sticky «а любовь где?»; #FFF",
+      "meme_caption_ru": "",
+      "sticky": "а любовь где?"
+    },
+    "inline_1": {
+      "quadrant": "top_right",
+      "h2_anchor": "Почему ультиматум — это не сила, а бессилие и страх контроля",
+      "visual_type": "comparison_table_ui",
+      "scene_hint": "Two-col L→R: BAD «маска уверенности»+«тень Императора» red X; TRUTH «страх потери контроля»+«перекладывание вины»; outcome: не сила. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема: ультиматум выглядит силой, внутри — страх контроля",
+      "labels": [
+        "страх потери контроля",
+        "маска уверенности",
+        "тень Императора",
+        "перекладывание вины"
+      ]
+    },
+    "inline_2": {
+      "quadrant": "bottom_left",
+      "h2_anchor": "Ловушка первого согласия: почему уступка ради мира запускает снежный ком",
+      "visual_type": "checklist_board",
+      "scene_hint": "Checklist L→R: «иллюзия мира» → «ловушка аркана Дьявол» → «снежный ком запретов» → «точка выбора»; outcome: уступка кормит шантаж. NO people/faces/emoji/silhouettes.",
+      "alt": "Чеклист: почему первая уступка запускает снежный ком запретов",
+      "labels": [
+        "иллюзия мира",
+        "снежный ком запретов",
+        "ловушка аркана Дьявол",
+        "точка выбора"
+      ]
+    },
+    "inline_3": {
+      "quadrant": "bottom_right",
+      "h2_anchor": "Практика: чеклист шагов, как остановить ультиматум и защитить свои границы",
+      "visual_type": "workflow_diagram",
+      "scene_hint": "Workflow 1–4 L→R: «пауза без спешки» → «возврат ответственности» → «ясность Королевы Мечей» → «защита личных границ»; outcome: граница своя. NO people/faces/emoji/silhouettes.",
+      "alt": "Схема шагов: как остановить ультиматум и защитить границы",
+      "labels": [
+        "пауза без спешки",
+        "возврат ответственности",
+        "ясность Королевы Мечей",
+        "защита личных границ"
+      ]
+    }
+  },
+  "cover_keys_ru": []
+}
