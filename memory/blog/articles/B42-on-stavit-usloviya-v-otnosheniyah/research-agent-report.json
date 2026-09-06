@@ -1,0 +1,69 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B42",
+  "slug": "on-stavit-usloviya-v-otnosheniyah",
+  "research_date": "2026-09-06",
+  "status": "PASS",
+  "verdict": "PASS",
+  "fresh_signal": true,
+  "fresh_signal_week": "2026-09-01/2026-09-06",
+  "block_reason": null,
+  "external_signal": "Сентябрь 2026: на профессиональных психологических ресурсах (b17.ru) и форумах отношений (Woman.ru) зафиксирован острый интерес к теме манипуляций, ультиматумов и диктата в отношениях («будет по-моему или никак», требования изменить образ жизни / отказаться от подруг или работы под угрозой разрыва). В канале dzen.ru/todaytaro_bot и блоге «ТАРО СЕЙЧАС» сцена жестких условий и ультиматумов со стороны мужчины свободна.",
+  "fresh_signal_urls": [
+    "https://www.b17.ru/article/esli_muzhchina_lyubit_on_nikogda_ne_budet_stavit_usloviy/",
+    "https://www.b17.ru/article/525858/",
+    "https://www.b17.ru/forum/topic.php?id=622730",
+    "https://www.woman.ru/relations/men/thread/6206252/",
+    "https://dzen.ru/todaytaro_bot"
+  ],
+  "wordstat": {
+    "status": "OK",
+    "provider": "scout_handoff",
+    "accessed_at": "2026-09-06",
+    "phrases": [
+      {
+        "phrase": "он ставит мне условия",
+        "totalCount": 310,
+        "notable": [
+          "он ставит мне условия что делать",
+          "парень ставит мне условия"
+        ]
+      },
+      {
+        "phrase": "мужчина ставит условия в отношениях",
+        "totalCount": 22,
+        "notable": [
+          "почему мужчина ставит условия в отношениях"
+        ]
+      },
+      {
+        "phrase": "ультиматум в отношениях",
+        "totalCount": 50,
+        "notable": [
+          "мужчина ставит ультиматум в отношениях"
+        ]
+      },
+      {
+        "phrase": "он ставит условия в отношениях",
+        "totalCount": 15,
+        "notable": [
+          "primary query"
+        ]
+      }
+    ],
+    "note": "Жир Wordstat не выносится в H1. H1 — точная бытовая сцена из Scout."
+  },
+  "overlap": {
+    "source": "published-titles-only.md (updated with 49 titles); anti-dup check passed",
+    "avoid": [
+      "Он написал «еду» и не приехал",
+      "Он написал «нам надо поговорить» и пропал",
+      "Карта дня возвращает твой вечер, если он отменил свидание без новой даты",
+      "Он зовёт в последний момент и карта дня объясняет твои сомнения",
+      "Он делает тебя виноватой в своём молчании"
+    ]
+  },
+  "rf_deny_heroes": false,
+  "notes_path": "memory/blog/articles/B42-on-stavit-usloviya-v-otnosheniyah/research-notes.md",
+  "incident_report": "none"
+}
