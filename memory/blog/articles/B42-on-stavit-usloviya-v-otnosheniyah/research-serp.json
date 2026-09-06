@@ -1,0 +1,187 @@
+{
+  "agent": "excalibur-blog",
+  "date_context": {
+    "timezone": "Europe/Moscow",
+    "today_iso": "2026-09-06",
+    "today_ru": "06.09.2026",
+    "year": 2026,
+    "month": 9,
+    "month_name_ru": "сентябрь",
+    "weekday_ru": "воскресенье"
+  },
+  "topic": {
+    "topic_id": "B42",
+    "title": "Он ставит условия в отношениях",
+    "h1": "Он ставит условия в отношениях",
+    "slug": "on-stavit-usloviya-v-otnosheniyah",
+    "primary_query": "Он ставит условия в отношениях",
+    "priority": "P0"
+  },
+  "searches": [
+    {
+      "query_id": "primary_fresh",
+      "query": "Он ставит условия в отношениях 2026",
+      "purpose": "актуальный SERP",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Что означает, когда мужчина ставит условия в отношениях: советы и ...",
+          "url": "https://pozdrav-kollega.ru/chto-oznachaet-ustanovka-uslovij-muzhchin-v-otnosheniyah-i-kak-ponimat-ih-prichiny/",
+          "snippet": ""
+        },
+        {
+          "title": "Психология отношений в 2026: почему близость стала сложнее",
+          "url": "https://niidpo.ru/blog/psihologiya-otnoshenij-v-2026-godu",
+          "snippet": "Разбор ситуаций и советы по пониманию причин и значений условий, которые мужчина ставит в отношениях. Полезные рекомендации для ясности и доверия."
+        },
+        {
+          "title": "Мужчина ставит условия какой быть, иначе не будет встречаться",
+          "url": "https://www.b17.ru/forum/topic.php?id=622730",
+          "snippet": "Почему в 2026 году людям всё сложнее строить настоящую близость — и что с этим делать. Обзор трендов, страхов и новых правил отношений в эпоху цифры и нестабильности"
+        },
+        {
+          "title": "Что делать, если мужчина ставит свои условия в отношениях?",
+          "url": "https://www.all-psy.com/konsultacii/otvet/364923/",
+          "snippet": "Как вы для себя считаете, приемлимо ли для вас что мужчина ставит условия, какой быть, иначе не будет встречаться? Кому-то нравится подчиняться. По чужим мнениям свою жизнь не построить. Вот вам приятно, что он этого требует? Такие условия , это снежный ком, который нарастает и превращается в бесконечность, если поддаться. Ответ, конечно нет."
+        },
+        {
+          "title": "если мужчина ставит условия в отношениях что делать",
+          "url": "https://info.soksok.ru/esli-muzhchina-stavit-usloviya-v-otnosheniyah-chto-delat",
+          "snippet": "Уже сейчас начали к этому готовиться. Проблема в том, что он мне говорит сменить место работы на более перспективную, с «белой» зп, и всеми «плюшками» причитающимися при уходе в декрет."
+        },
+        {
+          "title": "Условия в отношениях - 6 ответов на форуме Woman.ru (6206252)",
+          "url": "https://www.woman.ru/relations/men/thread/6206252/",
+          "snippet": "Поскольку он ставит такой ультиматум, то скорее всего это говорит о том, что ему не хватает вашего внимания, которое, по его мнению вы расходуете на общение в социальной сети."
+        }
+      ],
+      "searched_at": "2026-09-06"
+    },
+    {
+      "query_id": "title_fresh",
+      "query": "Он ставит условия в отношениях 2026",
+      "purpose": "SERP по человеческому title",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Что означает, когда мужчина ставит условия в отношениях: советы и ...",
+          "url": "https://pozdrav-kollega.ru/chto-oznachaet-ustanovka-uslovij-muzhchin-v-otnosheniyah-i-kak-ponimat-ih-prichiny/",
+          "snippet": ""
+        },
+        {
+          "title": "Мужчина ставит условия какой быть, иначе не будет встречаться",
+          "url": "https://www.b17.ru/forum/topic.php?id=622730",
+          "snippet": "Разбор ситуаций и советы по пониманию причин и значений условий, которые мужчина ставит в отношениях. Полезные рекомендации для ясности и доверия."
+        },
+        {
+          "title": "Что делать, если мужчина ставит свои условия в отношениях?",
+          "url": "https://www.all-psy.com/konsultacii/otvet/364923/",
+          "snippet": "Как вы для себя считаете, приемлимо ли для вас что мужчина ставит условия, какой быть, иначе не будет встречаться? Кому-то нравится подчиняться. По чужим мнениям свою жизнь не построить. Вот вам приятно, что он этого требует? Такие условия , это снежный ком, который нарастает и превращается в бесконечность, если поддаться. Ответ, конечно нет."
+        },
+        {
+          "title": "если мужчина ставит условия в отношениях что делать",
+          "url": "https://polza.atvlog.ru/articles/esli-muzhchina-stavit-usloviya-v-otnosheniyah-chto-delat.html",
+          "snippet": "Уже сейчас начали к этому готовиться. Проблема в том, что он мне говорит сменить место работы на более перспективную, с «белой» зп, и всеми «плюшками» причитающимися при уходе в декрет."
+        },
+        {
+          "title": "Мужчина ставит условия - советы психологов и консультации онлайн (3 ответа)",
+          "url": "https://www.all-psy.com/konsultacii/otvet/356805/",
+          "snippet": "Поскольку он ставит такой ультиматум, то скорее всего это говорит о том, что ему не хватает вашего внимания, которое, по его мнению вы расходуете на общение в социальной сети."
+        },
+        {
+          "title": "Что значит если парень ставит условия",
+          "url": "https://slova.donshar.ru/chto-znachit-esli-paren-stavit-usloviya/",
+          "snippet": "Ставит условия бросай курить или дальнейших отношений не будет. У вас есть выбор - демонстрировать свои чувства по этому поводу, отстаивать право на свои решения, либо быть послушной и делать то, что ждет партнер, получая от него некую заботу."
+        }
+      ],
+      "searched_at": "2026-09-06"
+    },
+    {
+      "query_id": "official_docs",
+      "query": "Он ставит условия в отношениях official docs 2026",
+      "purpose": "официальные docs",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Google Docs",
+          "url": "https://www.docs.google.com/",
+          "snippet": ""
+        },
+        {
+          "title": "Что означает, когда мужчина ставит условия в отношениях: советы и ...",
+          "url": "https://pozdrav-kollega.ru/chto-oznachaet-ustanovka-uslovij-muzhchin-v-otnosheniyah-i-kak-ponimat-ih-prichiny/",
+          "snippet": "Create and edit web-based documents, spreadsheets, and presentations. Store documents online and access them from any computer."
+        },
+        {
+          "title": "Вход - Google Аккаунты",
+          "url": "https://docs.google.com/?hl=ru",
+          "snippet": "Разбор ситуаций и советы по пониманию причин и значений условий, которые мужчина ставит в отношениях. Полезные рекомендации для ясности и доверия."
+        },
+        {
+          "title": "Security Council | UN Meetings Coverage and Press Releases",
+          "url": "https://press.un.org/en/security-council",
+          "snippet": "Используйте аккаунт Google. Телефон или адрес эл. почты. Забыли адрес электронной почты? Введите текст, который вы видите или слышите. Работаете на чужом компьютере? Используйте режим инкогнито...."
+        },
+        {
+          "title": "Мужчина ставит условия какой быть, иначе не будет встречаться",
+          "url": "https://www.b17.ru/forum/topic.php?id=622730",
+          "snippet": "28 August 2026 Blog Security Council, 10216th Meeting (PM) Haiti The Security Council will meet today on Haiti following a deadly gang attack on 23-24 August in Kenscoff, a mountainous commune south-east of Port-au-Prince. The meeting was requested by Panama, United States and Colombia."
+        },
+        {
+          "title": "Google",
+          "url": "https://www.google.com/?hl=ru",
+          "snippet": "Обсуждение на тему: Мужчина ставит условия какой быть, иначе не будет встречаться"
+        }
+      ],
+      "searched_at": "2026-09-06"
+    },
+    {
+      "query_id": "github_evidence",
+      "query": "site:github.com Он ставит условия в отношениях 2026",
+      "purpose": "GitHub evidence",
+      "result_count": 0,
+      "results": [],
+      "searched_at": "2026-09-06"
+    },
+    {
+      "query_id": "community_experience",
+      "query": "Он ставит условия в отношениях forum problems опыт 2026",
+      "purpose": "форумы и живые проблемы",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Мужчина ставит условия какой быть, иначе не будет встречаться",
+          "url": "https://www.b17.ru/forum/topic.php?id=622730",
+          "snippet": ""
+        },
+        {
+          "title": "Условия в отношениях - 6 ответов на форуме Woman.ru (6206252)",
+          "url": "https://www.woman.ru/relations/men/thread/6206252/",
+          "snippet": "Обсуждение на тему: Мужчина ставит условия какой быть, иначе не будет встречаться"
+        },
+        {
+          "title": "Мужчина ставит условия какой быть, иначе не будет встречаться",
+          "url": "https://www.b17.ru/forum/topic.php?id=622730&p=2",
+          "snippet": "Смотря что за условия. Условия или личные границы? Нет, не норм. При чём здесь живёте вы вместе или нет? Он вам не муж, а просто парень. Парень - это как прохожий, сегодня один, а завтра может..."
+        },
+        {
+          "title": "Нормально ли когда мужчина ставит условия ?",
+          "url": "https://www.woman.ru/relations/men/thread/6046489/",
+          "snippet": "Как вы для себя считаете, приемлимо ли для вас что мужчина ставит условия, какой быть, иначе не будет встречаться?"
+        },
+        {
+          "title": "Что означает, когда мужчина ставит условия в отношениях: советы и ...",
+          "url": "https://pozdrav-kollega.ru/chto-oznachaet-ustanovka-uslovij-muzhchin-v-otnosheniyah-i-kak-ponimat-ih-prichiny/",
+          "snippet": "Как вы считаете , почему одна девушка на это согласилась , а другая - ставит условия ?"
+        },
+        {
+          "title": "Мужчина ставит условия - советы психологов и консультации (5 ответов)",
+          "url": "https://www.all-psy.com/konsultacii/otvet/195318/",
+          "snippet": "Разбор ситуаций и советы по пониманию причин и значений условий, которые мужчина ставит в отношениях. Полезные рекомендации для ясности и доверия."
+        }
+      ],
+      "searched_at": "2026-09-06"
+    }
+  ],
+  "errors": []
+}
