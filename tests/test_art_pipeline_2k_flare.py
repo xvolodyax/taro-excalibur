@@ -216,7 +216,7 @@ class TenantJsonCanonTest(unittest.TestCase):
         self.assertIn("четыре отдельные 1K", canvas)
         self.assertIn("не перерисовывать", canvas)
         self.assertIn("16:9", canvas)
-        self.assertIn("не 1:1", canvas)
+        self.assertIn("не `1:1`", canvas)
         self.assertIn("16:9", kie)
         self.assertIn("1:1", kie)
 
