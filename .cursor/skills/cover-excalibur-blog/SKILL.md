@@ -27,6 +27,15 @@ cover/inline (тогда ровно **один** новый billed gen с обн
 
 ---
 
+## Правило Владимира 2026-09-09 (HARD)
+
+- **ONE** Kie image: `gpt-image-2-5-flare-image-to-image`, **resolution 2K**.
+- Холст **2×2** с белыми gutters → slice `cover.png` + `inline-01..03`.
+- **Не** четыре отдельные 1K-генерации.
+- Cover cell: Виктория **age 33**; B14 кириллический cover-text **НА картинке**; brand line; **без красной рамки**.
+- Inline: **без лица Виктории**.
+- Живые статьи **не перерисовывать**.
+
 ## Single Kie generation (HARD)
 
 Цель: **одна** billed генерация. Деньги не жжём на 3–4 попытки «на красоту».
@@ -76,7 +85,7 @@ quad-manifest.json (agent fills hooks + scene_hint)
        ↓
 quad-mcp-batch.json (1 job, input_urls, api_args)
        ↓
-ONE Kie GPT Image 2 i2i API task → canvas-quad.png 2048×1152
+ONE Kie gpt-image-2-5-flare-* i2i API task (2K) → canvas-quad.png 2048×1152
        ↓
 split → cover.png + inline-01..03.png (1200×675)
        ↓
@@ -243,7 +252,9 @@ Hard checks перед MCP/Kie:
 - `reference_url_hosted` / `input_urls` в **batch** = `{{SITE_BASE}}/wp-content/...` (git-safe); live host пишет только runtime expand в `kie_gpt_image2_api.py`
 - `validation.required_reference_host` = **`{{SITE_HOST}}`** (не live host из `PUBLIC_SITE_URL`, не `[REDACTED]`). Pre-write check рядом с `reference_url_hosted`.
 - не `files.catbox.moe` для production hero; не литерал `[REDACTED]`
-- `jobs[0].mcp_args.resolution === "2K"`
+- `jobs[0].mcp_args.resolution === "2K"` (не `1K`)
+- `jobs.length === 1`
+- `jobs[0].api_args.model` starts with `gpt-image-2-5-flare`
 
 ### Шаг 4 — Kie image API (PRIMARY)
 

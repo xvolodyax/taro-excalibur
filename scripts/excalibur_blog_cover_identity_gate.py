@@ -146,6 +146,10 @@ def run_gate(*, root: Path, article_dir: Path | None) -> dict:
     tenant = load_json(tenant_path) if tenant_path.is_file() else {}
     cover_mode = str(hero.get("cover_mode") or tenant.get("cover_mode") or "").strip()
     errors.extend(validate_tenant(hero, cover_mode=cover_mode))
+    if cover_mode == "host_reference":
+        age = (hero.get("visual_lock") or {}).get("age")
+        if age != 33:
+            errors.append("visual_lock.age must be 33 (Vladimir 2026-09-09 cover cell)")
     prompt = ""
     if article_dir is not None:
         prompt = collect_article_prompt(article_dir)

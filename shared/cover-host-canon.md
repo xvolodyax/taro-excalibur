@@ -23,9 +23,13 @@ HARD. Единственный файл рефа лица:
 - `scripts/excalibur_blog_kie_gpt_image2_api.py`
 - `scripts/excalibur_blog_hero_reference_url.py`
 
-First-try cover (INC-20260831-0636): i2i **Виктория.png**,
-`Host LARGE left half`, face fills left. Type / calendar / mug — **RIGHT only**.
-Type+props cannot replace the host. Cover **не** invent второй createTask
+First-try cover (INC-20260831-0636 + правило 2026-09-09): **ONE** i2i
+`gpt-image-2-5-flare-image-to-image` at **2K** from **Виктория.png**,
+`Host LARGE left half`, **Victoria age 33**, face fills left.
+B14 Cyrillic cover-text **ON** the cover cell + brand line; **no red frame**.
+Type / calendar / mug — **RIGHT only**. Type+props cannot replace the host.
+Inline: **no Victoria face**. Cover **не** invent второй createTask
 из‑за host miss (один owner redo — только по явному запросу).
+**Запрещены** четыре отдельные 1K-генерации.
 
-Живые статьи не переписывать. Новые обложки — только с этого файла.
+Живые статьи не переписывать и не перерисовывать. Новые обложки — только с этого файла.

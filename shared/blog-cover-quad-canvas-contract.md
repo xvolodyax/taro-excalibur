@@ -6,9 +6,18 @@
 
 Cover-агент работает **после** `article.html` + Writer finalize PASS.
 
+## Правило Владимира 2026-09-09 (HARD)
+
+- **ONE** Kie job: `gpt-image-2-5-flare-image-to-image`, **resolution `2K`**.
+- Холст **2×2** `2048×1152` с **белыми gutters**; split → `cover.png` + `inline-01..03.png`.
+- **Запрещено** четыре отдельные 1K-генерации (cover + 3 inline как отдельные jobs).
+- Cover cell: Виктория **age 33**; **B14** кириллический cover-text **НА картинке**; brand line; **без красной рамки**.
+- Inline: **без лица Виктории**.
+- Живые статьи **не перерисовывать**.
+
 ## Главное правило
 
-**Одна** генерация Kie GPT Image 2 Image-to-Image API → один холст `2048×1152` (2×2, каждая панель 16:9) → split в `cover.png` + **ровно три** `inline-01..03.png`. Три inline обязательны: это вторая, третья и четвёртая картинки по явному запросу пользователя.
+**Одна** генерация Kie `gpt-image-2-5-flare-*` Image-to-Image API → один холст `2048×1152` (2×2, каждая панель 16:9) → split в `cover.png` + **ровно три** `inline-01..03.png`. Три inline обязательны: это вторая, третья и четвёртая картинки по явному запросу пользователя.
 
 Prompt должен быть коротким: один общий style-lock + 4 коротких описания квадрантов. Не дублировать длинные style/negative blocks на каждую панель.
 
@@ -17,7 +26,9 @@ Hard gate перед image API:
 - `quad-mcp-batch.json` пересобран текущим run, а не взят из старого article artifact
 - `validation.prompt_chars <= 3500`
 - `reference_url_hosted` — URL тенанта или локальный asset; сторонние временные хосты (catbox и т.п.) запрещены для reference
-- `jobs[0].mcp_args.resolution == "2K"`
+- `jobs[0].mcp_args.resolution == "2K"` (не `1K`)
+- `jobs.length === 1`
+- `preferred_image_flow.model` / `jobs[0].api_args.model` = `gpt-image-2-5-flare-image-to-image`
 
 | Панель | Роль | Герой |
 |--------|------|-------|
@@ -143,7 +154,11 @@ legacy example name — use tenant preset):
 - `❌ KIE API BLOCKER` — нет `KIE_API_KEY`; non-retryable createTask/recordInfo fail; retryable 500 exhausted; image-fetch File Upload exhausted; sensitive 422 после одного agent soften+recreate; или polling без URL. Первый `failCode=422` sensitive ≠ permanent blocker, пока доступен controlled rewrite. При живом `KIE_API_KEY` не уходить в MCP после 422. После 500×2 / `--max-create-retries` exhausted: Director same-batch re-run Kie script на неизменённом `quad-mcp-batch.json` + Cover apply-only (не quality-redo; B102/B104).
 - `❌ COVER MCP TIMEOUT BLOCKER` — image tool вернул повторный timeout, а status/result tool подтверждает failed/no result
 - `❌ COVER MCP ASYNC BLOCKER` — sync `gpt-image-2` обрывается по client timeout, а MCP server не даёт `task_id` и отдельный status/result tool для получения позднего URL
-- **4 отдельных image jobs** на cover+inline — запрещено
+- **4 отдельных image jobs** / четыре 1K-генерации на cover+inline — запрещено
+- model не из семейства `gpt-image-2-5-flare-*` или resolution ≠ `2K` — запрещено
+- красная рамка на cover — запрещено
+- лицо Виктории на inline — запрещено
+- перерисовка уже опубликованных live-статей — запрещена
 - **quality multi-gen** (host/sticky/style redo после PNG без ошибки Kie API) — запрещено (INC-20260724-2120), **кроме явного запроса владельца/блогера** переделать cover/inline (user-directed quality redo = 1 новый billed gen)
 - отсутствует любой из `inline-01.png`, `inline-02.png`, `inline-03.png`
 - у inline отсутствует существующий `h2_anchor` или `<figure>` не injected после нужного H2

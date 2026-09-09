@@ -34,6 +34,40 @@ DEFAULT_SLOT_MAP = {
 }
 
 
+def tenant_cover_style(root: Path, preserve: dict | None) -> tuple[str, str]:
+    """Return (style_file, style_preset) from tenant-config, or preserved manifest."""
+    if preserve:
+        old_file = str(preserve.get("style_file") or "").strip()
+        if old_file:
+            old_preset = str(preserve.get("style_preset") or "").strip()
+            if old_preset and old_preset != "tenant_unset":
+                return old_file, old_preset
+            if (root / old_file).is_file():
+                try:
+                    style = load_json(root / old_file)
+                    return old_file, str(style.get("style_id") or old_preset or "tenant")
+                except (OSError, json.JSONDecodeError):
+                    pass
+    tenant_path = root / "shared" / "tenant-config.json"
+    style_file = "memory/cover/quad-style-victoria-studio.json"
+    if tenant_path.is_file():
+        try:
+            tenant = load_json(tenant_path)
+        except (OSError, json.JSONDecodeError):
+            tenant = {}
+        preset = str((tenant.get("cover_files") or {}).get("style_preset") or "").strip()
+        if preset:
+            style_file = preset
+    style_preset = "tenant"
+    if (root / style_file).is_file():
+        try:
+            style = load_json(root / style_file)
+            style_preset = str(style.get("style_id") or "tenant")
+        except (OSError, json.JSONDecodeError):
+            pass
+    return style_file, style_preset
+
+
 def project_root() -> Path:
     env_root = os.environ.get("EXCALIBUR_PROJECT_ROOT", "").strip()
     if env_root:
@@ -143,22 +177,26 @@ def build_manifest(article_dir: Path, root: Path, preserve: dict | None) -> dict
         or str((preserve or {}).get("cover_hook_highlight") or "").strip()
     )
 
+    style_file, style_preset = tenant_cover_style(root, preserve)
+
     return {
         "topic_id": topic_id,
         "canvas_file": "cover/canvas-quad.png",
         "layout": "2x2",
         "pipeline": "quad_canvas_1x_image_api",
-        "style_preset": "tenant_unset",
-        "style_file": "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
+        "style_preset": style_preset,
+        "style_file": style_file,
         "blog_hero": "memory/cover/blog-hero.json",
         "inline_types_catalog": "memory/cover/inline-visual-types.json",
         "cover_hook": hook,
         "cover_hook_highlight": highlight,
         "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
         "mcp_note": (
-            "PRIMARY: ONE Kie API job via excalibur_blog_kie_gpt_image2_api.py "
-            "(KIE_API_KEY). Cover agent must invent cover_hook + all scene_hint/alt "
-            "before --write-batch. White hoodie lock = blog-hero.json only."
+            "PRIMARY: ONE Kie gpt-image-2-5-flare-* job at 2K via "
+            "excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). "
+            "2x2 white-gutter canvas → cover.png + inline-01..03. "
+            "Forbidden: four separate 1K gens. Do not redraw live articles. "
+            "Cover agent invents scene_hint/alt before --write-batch."
         ),
         "slots": slots,
         "cover_keys_ru": list((preserve or {}).get("cover_keys_ru") or []),

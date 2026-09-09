@@ -2,7 +2,7 @@
   "style_id": "victoria-studio",
   "status": "ok",
   "label_ru": "Виктория / светлая студия ТАРО СЕЙЧАС / editorial type",
-  "updated": "2026-08-27",
+  "updated": "2026-09-09",
   "cover_mode": "host_reference",
   "cover_hero_mode": "host",
   "skip_human_host": false,
@@ -14,6 +14,13 @@
   "prefer_local_reference": true,
   "canvas": "2048x1152",
   "resolution": "2K",
+  "brand_line": "ТАРО СЕЙЧАС",
+  "host_age": 33,
+  "image_provider": {
+    "vendor": "kie.ai",
+    "model": "gpt-image-2-5-flare-image-to-image",
+    "jobs": 1
+  },
   "meme_caption_ru": "",
   "color_palette": {
     "background": "#FFFFFF",
@@ -26,8 +33,8 @@
     "secondary": "lighter designer humanist sans",
     "forbidden": "Arial Roboto Inter Impact Times bold condensed squish-bold all-caps plaque"
   },
-  "global_prompt_prefix": "FIRST-TRY COVER: i2i Виктория.png — Host LARGE left half, face fills left; type+props NEVER replace host. High-key WHITE #FFFFFF, ink #141821, gold #C4A574. Hair from ref, no platinum, new outfit+emotion, NEVER cat/faceless/white hoodie. Hook type in-frame (not sticker). Tiny prop RIGHT only.",
-  "inline_prompt_suffix": "Inline all: white #FFFFFF, lighter designer humanist sans Cyrillic labels (3–6), medallion gold accent only; NO people/faces/host/Alyona/cat; no cover-hook duplicate; no bold condensed; no all-caps sticker plaque. Neg: candles, gothic, pink-cat, #FF1493, Arial, Roboto, Inter, Impact, beige full-panel, unfinished gray boxes, watermark, 9:16.",
+  "global_prompt_prefix": "FIRST-TRY COVER: ONE 2K gpt-image-2-5-flare i2i Виктория.png — Host Victoria age 33 LARGE left half, face fills left; type+props NEVER replace host. High-key WHITE #FFFFFF, ink #141821, gold #C4A574. Hair from ref, no platinum, new outfit+emotion, NEVER cat/faceless/white hoodie. B14 Cyrillic cover-text ON image + brand line «ТАРО СЕЙЧАС». No red frame. Hook type in-frame (not sticker). Tiny prop RIGHT only.",
+  "inline_prompt_suffix": "Inline all: white #FFFFFF, lighter designer humanist sans Cyrillic labels (3–6), medallion gold accent only; NO people/faces/host/Victoria face/Alyona/cat; no cover-hook duplicate; no bold condensed; no all-caps sticker plaque; no red frame. Neg: candles, gothic, pink-cat, #FF1493, Arial, Roboto, Inter, Impact, beige full-panel, unfinished gray boxes, watermark, 9:16, Victoria face.",
   "cover_credit_html": {
     "text": "Виктория - таролог команды «ТАРО СЕЙЧАС»",
     "placement": "above_image",
