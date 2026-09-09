@@ -7,10 +7,11 @@ the placeholder with PUBLIC_SITE_URL when calling live APIs.
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 from typing import Any
-from urllib.parse import urlparse
+from urllib.parse import quote, unquote, urlparse, urlsplit, urlunsplit
 
 
 SITE_BASE_PLACEHOLDER = "{{SITE_BASE}}"
@@ -30,12 +31,41 @@ def normalize_public_base(base: str | None) -> str:
     return (base or "").strip().rstrip("/")
 
 
+def resolve_public_base_from_tenant_config() -> str:
+    """Runtime fallback when Cloud Secrets omit PUBLIC_SITE_URL (INC-20260905)."""
+    here = os.path.dirname(os.path.abspath(__file__))
+    tenant_path = os.path.join(os.path.dirname(here), "shared", "tenant-config.json")
+    try:
+        with open(tenant_path, encoding="utf-8") as fh:
+            tenant = json.loads(fh.read())
+    except (OSError, json.JSONDecodeError, TypeError):
+        return ""
+    if not isinstance(tenant, dict):
+        return ""
+    return normalize_public_base(str(tenant.get("public_site_url") or ""))
+
+
 def resolve_public_base_from_env() -> str:
-    return normalize_public_base(
+    from_env = normalize_public_base(
         os.environ.get("PUBLIC_SITE_URL")
         or os.environ.get("WP_HOME")
         or os.environ.get("WP_SITE_URL")
     )
+    if from_env:
+        return from_env
+    return resolve_public_base_from_tenant_config()
+
+
+def encode_expanded_media_url(url: str) -> str:
+    """Percent-encode path so Cyrillic filenames survive HEAD/GET (Виктория.png)."""
+    value = (url or "").strip()
+    if not value or "://" not in value:
+        return value
+    parsed = urlsplit(value)
+    if not parsed.scheme or not parsed.netloc:
+        return value
+    path = quote(unquote(parsed.path), safe="/")
+    return urlunsplit((parsed.scheme, parsed.netloc, path, parsed.query, parsed.fragment))
 
 
 def expand_site_base(text: str, public_base: str) -> str:

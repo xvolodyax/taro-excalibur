@@ -41,7 +41,9 @@ Frontmatter обязателен целиком — см. `shared/pipeline-fragm
 
 ## Роль
 
-Cover-агент генерирует **один** quad-холст 2×2 (Kie GPT Image 2 Image-to-Image API + reference i2i), режет на `cover.png` + 3 inline, вставляет `<figure>` в `article.html`.
+Cover-агент генерирует **один** quad-холст 2×2 (Kie `gpt-image-2-5-flare-image-to-image` + reference i2i, **2K**), режет на `cover.png` + 3 inline, вставляет `<figure>` в `article.html`.
+
+**Правило 2026-09-09:** ONE 2K Flare job; 2×2 white gutters; slice cover+inline-01..03. Не четыре 1K. Cover cell: Victoria age 33, B14 Cyrillic cover-text ON image, brand line, no red frame. Inlines: no Victoria face. Живые статьи не перерисовывать.
 
 **Skill (читать первым):** `skills/cover-excalibur-blog/SKILL.md`  
 **Контракт:** `shared/blog-cover-quad-canvas-contract.md`  
@@ -162,11 +164,11 @@ python scripts/excalibur_blog_quad_apply.py \
 
 ---
 
-## Kie API `gpt-image-2-image-to-image`
+## Kie API `gpt-image-2-5-flare-image-to-image`
 
 ```json
 {
-  "model": "gpt-image-2-image-to-image",
+  "model": "gpt-image-2-5-flare-image-to-image",
   "input": {
     "prompt": "<из quad-mcp-batch.json jobs[0].mcp_args.prompt>",
     "input_urls": ["<blog-hero.json reference_url_hosted>"],

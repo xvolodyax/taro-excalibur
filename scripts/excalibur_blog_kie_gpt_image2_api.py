@@ -33,8 +33,15 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
+from excalibur_blog_art_canon import (
+    KIE_IMAGE_MODEL,
+    MCP_RESOLUTION,
+    require_2k_resolution,
+    require_kie_model,
+)
 from excalibur_blog_site_base import (
     SITE_BASE_PLACEHOLDER,
+    encode_expanded_media_url,
     expand_site_base,
     resolve_public_base_from_env,
 )
@@ -45,7 +52,8 @@ DEFAULT_RECORD_URL = "https://api.kie.ai/api/v1/jobs/recordInfo"
 DEFAULT_FILE_UPLOAD_URL = "https://kieai.redpandaai.co/api/file-stream-upload"
 DEFAULT_FILE_UPLOAD_PATH = "excalibur-blog/hero"
 DEFAULT_FILE_UPLOAD_USER_AGENT = "ExcaliburBlogKieFallback/1.0"
-DEFAULT_MODEL = "gpt-image-2-image-to-image"
+DEFAULT_MODEL = KIE_IMAGE_MODEL
+DEFAULT_LOCAL_REFERENCE = "memory/cover/assets/Виктория.png"
 DEFAULT_API_KEY_ENV = "KIE_API_KEY"
 DEFAULT_POLL_INTERVAL_SECONDS = 15
 DEFAULT_MAX_WAIT_SECONDS = 900
@@ -216,7 +224,7 @@ def expand_input_urls(input_urls: list[Any]) -> list[str]:
                     f"batch input_urls contain {SITE_BASE_PLACEHOLDER} but PUBLIC_SITE_URL/WP_SITE_URL is unset"
                 )
             url = expand_site_base(url, live)
-        out.append(url)
+        out.append(encode_expanded_media_url(url))
     return out
 
 
@@ -241,12 +249,31 @@ def batch_mcp_args(batch_path: Path) -> dict[str, Any]:
     expanded_urls = expand_input_urls(input_urls)
     if not expanded_urls:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args after expand")
+    try:
+        resolution = require_2k_resolution(str(args.get("resolution") or MCP_RESOLUTION))
+    except ValueError as exc:
+        raise KieApiError(str(exc)) from exc
     return {
         "prompt": prompt,
         "input_urls": expanded_urls,
-        "aspect_ratio": args.get("aspect_ratio") or "auto",
-        "resolution": args.get("resolution") or "1K",
+        "aspect_ratio": args.get("aspect_ratio") or "16:9",
+        "resolution": resolution,
     }
+
+
+def resolve_batch_model(batch: dict[str, Any], cli_model: str) -> str:
+    """Prefer batch model (write-batch), then CLI, then Flare canon."""
+    job = {}
+    jobs = batch.get("jobs")
+    if isinstance(jobs, list) and jobs and isinstance(jobs[0], dict):
+        job = jobs[0]
+    api_model = str((job.get("api_args") or {}).get("model") or "").strip()
+    flow_model = str((batch.get("preferred_image_flow") or {}).get("model") or "").strip()
+    candidate = api_model or flow_model or str(cli_model or "").strip() or DEFAULT_MODEL
+    try:
+        return require_kie_model(candidate)
+    except ValueError as exc:
+        raise KieApiError(str(exc)) from exc
 
 
 def _guess_mime(path: Path) -> str:
@@ -442,7 +469,11 @@ def maybe_prefer_local_reference_upload(
     upload_url: str,
     upload_path: str,
 ) -> tuple[dict[str, Any], dict[str, Any] | None]:
-    """If batch asks for local style plate, upload it before first createTask."""
+    """If batch asks for local reference, upload it before first createTask.
+
+    host_reference: local Виктория.png is the face i2i (INC-20260905).
+    situational_cat: local file is a style plate, not a host face.
+    """
     batch = load_json(batch_path)
     if not batch.get("prefer_local_reference"):
         return image_input, None
@@ -470,9 +501,15 @@ def maybe_prefer_local_reference_upload(
     }
     updated = dict(image_input)
     updated["input_urls"] = [download_url]
+    mode = str(batch.get("cover_hero_mode") or "host").strip()
+    note = (
+        "host-face i2i from local file"
+        if mode not in {"situational_cat", "cat_hero", "situational_cat_hero"}
+        else "style plate"
+    )
     print(
         f"Kie prefer_local_reference: uploaded {local_path.name} "
-        f"host={meta['download_host']} (skip host-face i2i)",
+        f"host={meta['download_host']} ({note})",
         flush=True,
     )
     return updated, meta
@@ -617,7 +654,7 @@ def result_record(task_data: dict[str, Any], task_id: str) -> dict[str, Any]:
 
 def main() -> int:
     ap = argparse.ArgumentParser(
-        description="Create/poll a Kie GPT Image 2 i2i job from cover/quad-mcp-batch.json"
+        description="Create/poll ONE Kie gpt-image-2-5-flare-* 2K i2i job from cover/quad-mcp-batch.json"
     )
     ap.add_argument("--article-dir", required=True)
     ap.add_argument("--batch", default="cover/quad-mcp-batch.json")
@@ -675,8 +712,9 @@ def main() -> int:
 
     try:
         image_input = batch_mcp_args(batch_path)
+        model = resolve_batch_model(load_json(batch_path), args.model)
         create_payload = {
-            "model": args.model,
+            "model": model,
             "input": image_input,
         }
         if args.callback_url:
@@ -719,7 +757,7 @@ def main() -> int:
                     task_id, create_response = create_task(
                         create_url=args.create_url,
                         api_key=api_key,
-                        model=args.model,
+                        model=model,
                         image_input=image_input,
                         callback_url=args.callback_url,
                     )
@@ -752,7 +790,7 @@ def main() -> int:
                 task_meta: dict[str, Any] = {
                     "task_id": task_id,
                     "source": "kie-api",
-                    "model": args.model,
+                    "model": model,
                     "state": "created",
                     "create_response": create_response,
                     "create_attempt": create_attempts,
@@ -797,7 +835,7 @@ def main() -> int:
                     {
                         "task_id": exc.task_id,
                         "source": "kie-api",
-                        "model": args.model,
+                        "model": model,
                         "state": "fail",
                         "failCode": exc.fail_code,
                         "failMsg": exc.fail_msg,
@@ -857,7 +895,7 @@ def main() -> int:
                     {
                         "task_id": exc.task_id,
                         "source": "kie-api",
-                        "model": args.model,
+                        "model": model,
                         "state": "fail",
                         "failCode": exc.fail_code,
                         "failMsg": exc.fail_msg,
@@ -885,7 +923,7 @@ def main() -> int:
         final_task: dict[str, Any] = {
             "task_id": task_id,
             "source": "kie-api",
-            "model": task_data.get("model") or args.model,
+            "model": task_data.get("model") or model,
             "state": task_data.get("state"),
             "create_attempts": create_attempts,
             "result_path": str(result_path.relative_to(root) if result_path.is_relative_to(root) else result_path),

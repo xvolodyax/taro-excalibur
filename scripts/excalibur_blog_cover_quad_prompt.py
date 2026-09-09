@@ -11,6 +11,13 @@ import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
+from excalibur_blog_art_canon import (
+    HOST_AGE,
+    KIE_IMAGE_MODEL,
+    MCP_RESOLUTION,
+    require_2k_resolution,
+    require_kie_model,
+)
 from excalibur_blog_site_base import (
     REDACTED_LITERAL,
     SITE_BASE_PLACEHOLDER,
@@ -68,13 +75,26 @@ _COVER_FACE_ESSAY = re.compile(
 # Live host for runtime URL checks only — never write this into git batch JSON.
 # Prefer PUBLIC_SITE_URL hostname; fallback for offline validate when env empty.
 _LEGACY_REFERENCE_HOST_FALLBACK = ""  # no personal default host
-MCP_RESOLUTION = "2K"
-KIE_IMAGE_MODEL = "gpt-image-2-image-to-image"
+# Resolution / model: Vladimir 2026-09-09 — ONE gpt-image-2-5-flare-* at 2K.
 
 
 def required_reference_host_runtime() -> str:
     """Hostname accepted in live reference URLs (env or legacy fallback)."""
     return host_from_public_base() or _LEGACY_REFERENCE_HOST_FALLBACK
+
+
+def tenant_style_file(root: Path) -> str:
+    """Style preset from tenant-config; never fall back to a foreign pink-cat plate."""
+    tenant_path = root / "shared" / "tenant-config.json"
+    if tenant_path.is_file():
+        try:
+            tenant = load_json(tenant_path)
+        except (OSError, json.JSONDecodeError):
+            tenant = {}
+        preset = str((tenant.get("cover_files") or {}).get("style_preset") or "").strip()
+        if preset:
+            return preset
+    return "memory/cover/quad-style-victoria-studio.json"
 
 
 def project_root() -> Path:
@@ -318,19 +338,51 @@ def build_prompt(
     cat_hero = style_is_situational_cat_hero(style)
 
     highlight = compact(manifest.get("cover_hook_highlight", ""), 24)
+    palette = design_code.get("color_palette") or style.get("color_palette") or {}
+    if cat_ok or cat_hero:
+        default_accent = "#FF1493"
+        accent_label = "hot-pink"
+    else:
+        default_accent = str(palette.get("accent_primary") or "#C4A574")
+        accent_label = (
+            "medallion gold"
+            if default_accent.upper() == "#C4A574"
+            else "accent"
+        )
+    highlight_hex = compact(palette.get("accent_primary") or default_accent, 9)
     highlight_rule = (
-        f'paint ONLY the highlight word "{highlight}" in hot-pink #FF1493; '
+        f'paint ONLY the highlight word "{highlight}" in {accent_label} {highlight_hex}; '
         f'hook text must match exactly — do not substitute «время»/traffic markers'
         if highlight
-        else "paint at most ONE punch word in hot-pink #FF1493"
+        else f"paint at most ONE punch word in {accent_label} {highlight_hex}"
+    )
+    brand_line = compact(
+        style.get("brand_line")
+        or design_code.get("brand_line")
+        or hero.get("brand_line")
+        or "",
+        40,
+    )
+    brand_lock = (
+        f" COVER BRAND LINE ON IMAGE: small Cyrillic «{brand_line}» on the cover cell only; "
+        "not a logo plaque, not a red/gold frame."
+        if brand_line
+        else ""
+    )
+    host_age = (hero.get("visual_lock") or {}).get("age")
+    age_lock = (
+        f" Victoria age {host_age},"
+        if host_age
+        else (f" Victoria age {HOST_AGE}," if not cat_hero else "")
     )
     cover_scene = sanitize_cover_scene_hint(
         str(cover.get("scene_hint") or ""), highlight
     )
     cover_hook_text = compact(manifest.get("cover_hook", ""), 120)
     cover_sticky = compact(str(cover.get("sticky") or ""), 48)
+    sticky_color = "pink" if (cat_ok or cat_hero) else "gold"
     sticky_lock = (
-        f" Small pink sticky with EXACTLY «{cover_sticky}» in Cyrillic."
+        f" Small {sticky_color} sticky with EXACTLY «{cover_sticky}» in Cyrillic."
         if cover_sticky
         else ""
     )
@@ -366,8 +418,8 @@ def build_prompt(
         )
         inline_suffix = (
             "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
-            "NO people/faces/host/Drake/EXCALIBUR badge; no cover-hook duplicate; "
-            "cats optional tiny accent only. Neg: sterile white, human faces, watermark, 9:16."
+            "NO people/faces/host/Victoria face/Drake/EXCALIBUR badge; no cover-hook duplicate; "
+            "cats optional tiny accent only. Neg: sterile white, human faces, Victoria face, watermark, 9:16."
         )
     elif cat_ok:
         ban_line = (
@@ -386,42 +438,46 @@ def build_prompt(
         )
         inline_suffix = (
             "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
-            "optional ONE tiny cat sticker; NO people/faces/host/Drake/EXCALIBUR badge; "
+            "optional ONE tiny cat sticker; NO people/faces/host/Victoria face/Drake/EXCALIBUR badge; "
             "no cover-hook duplicate. Neg: sterile white, all-pink headline, keyword spam, "
-            "watermark, logo, 9:16, unreadable text, extra faces."
+            "watermark, logo, 9:16, unreadable text, extra faces, Victoria face."
         )
     else:
         ban_line = (
             "Ban: memes/reaction emoji/facepalm/animals/joke captions/silhouettes/"
             "keyword spam/«Ключевые темы»/Latin lookalike Cyrillic/pipeline stamps/"
-            "EXCALIBUR badge or sword."
+            "EXCALIBUR badge or sword/red frame/red border around panels or cover."
         )
         cover_scene_tail = (
-            "host+face; dense collage + topic object; no sterile/meme/canned EN chat filler."
+            "host+face; dense collage + topic object; no sterile/meme/canned EN chat filler; "
+            "no red frame."
         )
         reference_line = (
-            "REFERENCE FACE only top-left when cover_mode=host_reference: use blog-hero visual_lock; "
-            "expressive editorial pose; no headphones; no meme reaction."
+            f"REFERENCE FACE only top-left when cover_mode=host_reference:{age_lock} "
+            "same woman as Виктория.png; use blog-hero visual_lock; "
+            "expressive editorial pose; no headphones; no meme reaction; no red frame."
         )
         inline_suffix = (
             "Inline all: dense collage — BLACK heading, UI card, ≥2 stickers+tape/sticky; "
-            "NO people/faces/host/meme/EXCALIBUR badge; no cover-hook duplicate. "
+            "NO people/faces/host/Victoria face/meme/EXCALIBUR badge; no cover-hook duplicate. "
             "Neg: sterile white, all-pink headline, keyword spam, watermark, logo, 9:16, "
-            "unreadable text, extra faces."
+            "unreadable text, extra faces, Victoria face."
         )
     lines = [
         # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
         # badge on every panel (INC-20260723-1223 / user correction).
         style_prefix,
-        "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed.",
+        "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed; no red frame.",
         "",
         ban_line,
         "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
         "",
         reference_line,
         "",
-        f'Top-left COVER TEXT LOCK: the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — big bold condensed Cyrillic, black #141821, '
-        f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock} '
+        f'Top-left COVER TEXT LOCK (B14 ON IMAGE): the ONLY large headline is EXACTLY this Russian sentence: «{cover_hook_text}» — '
+        f"paint ON the cover cell (network draws Cyrillic; no HTML overlay, no Pillow banner), "
+        f"editorial display, black #141821, "
+        f'{highlight_rule}; any other large/headline text (especially English like "TOKEN BURN RATE") is FORBIDDEN.{sticky_lock}{brand_lock} '
         "no keyword list card; "
         f"scene: {compact(cover_scene, COVER_SCENE_HINT_COMPACT)}; {cover_scene_tail}",
         "",
@@ -461,7 +517,7 @@ def main() -> int:
         root
         / manifest.get(
             "style_file",
-            "memory/cover/quad-style-pink-cat-digital-collage-ru.json",
+            tenant_style_file(root),
         )
     )
     types_path = root / manifest.get("inline_types_catalog", "memory/cover/inline-visual-types.json")
@@ -470,8 +526,10 @@ def main() -> int:
     design_code = load_json(design_code_path) if design_code_path.is_file() else {}
 
     cat_hero = style_is_situational_cat_hero(style)
-    local_reference = str(style.get("local_reference") or "").strip()
-    prefer_local_reference = False
+    local_reference = str(
+        style.get("local_reference") or hero.get("reference_image") or ""
+    ).strip()
+    prefer_local_reference = bool(style.get("prefer_local_reference")) or cat_hero
     if cat_hero and local_reference:
         local_path = root / local_reference
         if not local_path.is_file():
@@ -486,6 +544,28 @@ def main() -> int:
             f"{Path(local_reference).name}"
         )
         prefer_local_reference = True
+    elif prefer_local_reference and local_reference:
+        # host_reference: first billed create uploads Виктория.png (INC-20260905).
+        batch_ref_url = ""
+        # Fall through to hosted URL for git-safe batch; prefer_local stays True.
+        prefer_local_reference = True
+        ref_url = (hero.get("reference_url_hosted") or "").strip()
+        if not ref_url:
+            print(
+                "❌ COVER HERO BLOCKER: reference_url_hosted missing. Run excalibur_blog_hero_reference_url.py",
+                file=sys.stderr,
+            )
+            return 1
+        if not validate_reference_url(ref_url):
+            return 1
+        batch_ref_url = git_safe_reference_url(ref_url)
+        if REDACTED_LITERAL in batch_ref_url:
+            print(
+                "❌ COVER HERO BLOCKER: cannot derive git-safe reference_url_hosted; "
+                f"set blog-hero.json to {SITE_BASE_PLACEHOLDER}/wp-content/.../ava.jpg",
+                file=sys.stderr,
+            )
+            return 1
     else:
         ref_url = (hero.get("reference_url_hosted") or "").strip()
         if not ref_url:
@@ -547,6 +627,12 @@ def main() -> int:
             for err in required_errors:
                 print(f"  - {err}", file=sys.stderr)
             return 1
+        try:
+            require_kie_model(KIE_IMAGE_MODEL)
+            require_2k_resolution(MCP_RESOLUTION)
+        except ValueError as exc:
+            print(f"❌ COVER PROMPT BLOCKER: {exc}", file=sys.stderr)
+            return 1
         api_input = {
             "prompt": prompt,
             "input_urls": [batch_ref_url],
@@ -595,7 +681,7 @@ def main() -> int:
                 {
                     "slot": "canvas_quad",
                     "tool": "gpt-image-2",
-                    "note": "ONE successful image only — 4 panels inside, then excalibur_blog_cover_quad_split.py. Prefer Kie API script when KIE_API_KEY set. MCP is fallback only if key missing. HTTP -32001 from sync gpt-image-2 means client timeout; do not blindly retry sync create.",
+                    "note": "ONE gpt-image-2-5-flare-* job at 2K — 2x2 white-gutter canvas, then split to cover.png + inline-01..03. Forbidden: four separate 1K gens. Prefer Kie API script when KIE_API_KEY set. MCP is fallback only if key missing.",
                     "api_args": {
                         "model": KIE_IMAGE_MODEL,
                         "input": api_input,

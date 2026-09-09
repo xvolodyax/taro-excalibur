@@ -33,4 +33,41 @@ category: env
 - none recorded
 
 ### Fixer resolution
-- pending
+status: fixed
+fixed_at: 2026-09-09
+fix_summary:
+- `cover_quad_prompt.py` sets `prefer_local_reference` for host_reference (Виктория.png), not only cat-hero.
+- `kie_gpt_image2_api.py` + `site_base.py`: PUBLIC_SITE_URL fallback from tenant-config; percent-encode Cyrillic media paths.
+- Art canon 2026-09-09 landed in the same pass (Flare 2K, one job). Live articles not redrawn.
+files_changed:
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `scripts/excalibur_blog_site_base.py`
+- `scripts/excalibur_blog_art_canon.py`
+checks_run:
+- `python3 -m unittest tests/test_art_pipeline_2k_flare.py tests/test_cover_text.py`
+commit: pending
+
+## INC-20260909-art-one-2k-flare
+status: fixed
+run_date: 2026-09-09
+role: fixer / art-canon
+severity: high
+category: prompt-contract
+### What went wrong
+- Risk of four separate 1K gens and stale `gpt-image-2-image-to-image`.
+- Kie resolution fallback was `1K` if batch omitted resolution.
+### Durable fix
+- ONE `gpt-image-2-5-flare-image-to-image` at 2K; 2×2 white-gutter canvas; slice cover+inline-01..03.
+- Cover cell: Victoria age 33, B14 Cyrillic cover-text ON image, brand line, no red frame.
+- Inlines: no Victoria face. Do not redraw live articles.
+files_changed:
+- `scripts/excalibur_blog_art_canon.py`
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `shared/blog-cover-quad-canvas-contract.md`
+- `shared/kie-gpt-image-api-contract.md`
+- cover skills/agents + tenant cover JSON
+checks_run:
+- `python3 -m unittest tests/test_art_pipeline_2k_flare.py`
+commit: pending

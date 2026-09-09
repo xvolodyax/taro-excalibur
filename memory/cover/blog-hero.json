@@ -13,6 +13,7 @@
   "png_required_action": "memory/cover/assets/Виктория.png must exist (owner bytes, ~2.1MB). Cover stops if missing or if a latin/lowercase alias is present.",
   "visual_lock": {
     "identity": "Виктория — та же женщина, что на Виктория.png",
+    "age": 33,
     "face_source": "ONLY memory/cover/assets/Виктория.png — i2i lock.",
     "studio": "high-key studio portrait, clean white #FFFFFF, no beige/cream",
     "hair": "straight shoulder-length blonde balayage with middle part; dark ashy-brown / darker roots; warm honey-blonde mid-lengths and ends; not platinum, not ice-blonde",
@@ -70,11 +71,14 @@
       "cat as cover hero",
       "faceless cover",
       "pipeline EXCALIBUR stamp",
+      "red frame",
+      "four separate 1K gens",
       "i2i from any file except Виктория.png"
     ]
   },
   "outfit_rule": "Одежда и поза каждый раз новые. Не белая камисоль с рефа. Не белое худи. Не кот.",
-  "prompt_fragment": "same woman as Виктория.png, eyes green with a slight hazel / light-brown tint (зелёные с лёгким карим), warm honey-wheat blonde darker roots not platinum, new clothes not the white cami. Host LARGE left; tiny topic prop right; #FFF",
+  "prompt_fragment": "same woman as Виктория.png, Victoria age 33, eyes green with a slight hazel / light-brown tint (зелёные с лёгким карим), warm honey-wheat blonde darker roots not platinum, new clothes not the white cami. Host LARGE left; tiny topic prop right; #FFF; no red frame",
+  "brand_line": "ТАРО СЕЙЧАС",
   "cover_hook_rules": [
     "cover_hook — 2–6 слов на кадре, не заголовок статьи; Cover-text invents from reader_pain",
     "hook type = editorial display (didone or refined grotesque), letters part of the frame, not a sticker",
@@ -91,9 +95,11 @@
   "meme_caption_ru": "",
   "image_provider": {
     "vendor": "kie.ai",
-    "model": "gpt-image-2-image-to-image",
+    "model": "gpt-image-2-5-flare-image-to-image",
     "mode": "i2i",
-    "resolution": "2K"
+    "resolution": "2K",
+    "jobs": 1,
+    "note": "ONE 2K quad. Forbidden: four separate 1K gens. Do not redraw live articles."
   },
   "rebuild_rule": "Лицо не с Виктория.png, глаза brown-only/grey/blue — пересобрать весь холст. Hall публикует.",
   "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/Виктория.png",
