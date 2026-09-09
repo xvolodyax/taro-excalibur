@@ -12,9 +12,11 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from excalibur_blog_art_canon import (
+    ASPECT_RATIO,
     HOST_AGE,
     KIE_IMAGE_MODEL,
     MCP_RESOLUTION,
+    require_16_9_aspect,
     require_2k_resolution,
     require_kie_model,
 )
@@ -467,7 +469,7 @@ def build_prompt(
         # NEVER open with "Excalibur BLOG" — models stamp that phrase as a logo
         # badge on every panel (INC-20260723-1223 / user correction).
         style_prefix,
-        "Canvas 2048x1152 exact 2x2; four 16:9 panels (1024x576); thin white gutters; no bleed; no red frame.",
+        "Canvas 2048x1152 exact 2x2; Kie aspect_ratio 16:9 at 2K (not 1:1); four 16:9 panels (1024x576); thin white gutters; no bleed; no red frame.",
         "",
         ban_line,
         "TEXT LANGUAGE LOCK: all visible text is RUSSIAN Cyrillic only. Renderable strings are given per panel in TEXT LOCK lines — render them exactly. No English headline, no Latin slogan, no pseudo-Cyrillic squiggles, no invented words.",
@@ -630,13 +632,14 @@ def main() -> int:
         try:
             require_kie_model(KIE_IMAGE_MODEL)
             require_2k_resolution(MCP_RESOLUTION)
+            require_16_9_aspect(ASPECT_RATIO)
         except ValueError as exc:
             print(f"❌ COVER PROMPT BLOCKER: {exc}", file=sys.stderr)
             return 1
         api_input = {
             "prompt": prompt,
             "input_urls": [batch_ref_url],
-            "aspect_ratio": "16:9",
+            "aspect_ratio": ASPECT_RATIO,
             "resolution": MCP_RESOLUTION,
         }
         batch = {
@@ -681,7 +684,7 @@ def main() -> int:
                 {
                     "slot": "canvas_quad",
                     "tool": "gpt-image-2",
-                    "note": "ONE gpt-image-2-5-flare-* job at 2K — 2x2 white-gutter canvas, then split to cover.png + inline-01..03. Forbidden: four separate 1K gens. Prefer Kie API script when KIE_API_KEY set. MCP is fallback only if key missing.",
+                    "note": "ONE gpt-image-2-5-flare-* job at 2K aspect_ratio 16:9 (not 1:1) — 2x2 white-gutter canvas, then split to cover.png + inline-01..03. Forbidden: 1:1 canvas or four separate 1K gens. Prefer Kie API script when KIE_API_KEY set. MCP is fallback only if key missing.",
                     "api_args": {
                         "model": KIE_IMAGE_MODEL,
                         "input": api_input,
@@ -697,6 +700,7 @@ def main() -> int:
                 # Git-safe placeholder only — never live PUBLIC_SITE_URL host / [REDACTED].
                 "required_reference_host": SITE_HOST_PLACEHOLDER,
                 "resolution": MCP_RESOLUTION,
+                "aspect_ratio": ASPECT_RATIO,
             },
         }
         batch_path = article_dir / "cover" / "quad-mcp-batch.json"

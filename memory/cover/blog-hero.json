@@ -73,6 +73,7 @@
       "pipeline EXCALIBUR stamp",
       "red frame",
       "four separate 1K gens",
+      "1:1 canvas",
       "i2i from any file except Виктория.png"
     ]
   },
@@ -98,8 +99,9 @@
     "model": "gpt-image-2-5-flare-image-to-image",
     "mode": "i2i",
     "resolution": "2K",
+    "aspect_ratio": "16:9",
     "jobs": 1,
-    "note": "ONE 2K quad. Forbidden: four separate 1K gens. Do not redraw live articles."
+    "note": "ONE 2K 16:9 quad (not 1:1). Forbidden: four separate 1K gens. Do not redraw live articles."
   },
   "rebuild_rule": "Лицо не с Виктория.png, глаза brown-only/grey/blue — пересобрать весь холст. Hall публикует.",
   "reference_url_hosted": "{{SITE_BASE}}/wp-content/uploads/excalibur/Виктория.png",

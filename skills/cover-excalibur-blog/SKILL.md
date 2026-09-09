@@ -29,9 +29,9 @@ cover/inline (тогда ровно **один** новый billed gen с обн
 
 ## Правило Владимира 2026-09-09 (HARD)
 
-- **ONE** Kie image: `gpt-image-2-5-flare-image-to-image`, **resolution 2K**.
-- Холст **2×2** с белыми gutters → slice `cover.png` + `inline-01..03`.
-- **Не** четыре отдельные 1K-генерации.
+- **ONE** Kie image: `gpt-image-2-5-flare-image-to-image`, **resolution 2K**, **`aspect_ratio` `16:9`** (**не `1:1`**).
+- Холст **2×2** с белыми gutters → slice `cover.png` + `inline-01..03` (все **16:9**).
+- **Не** квадратный холст `1:1` и **не** четыре отдельные 1K-генерации.
 - Cover cell: Виктория **age 33**; B14 кириллический cover-text **НА картинке**; brand line; **без красной рамки**.
 - Inline: **без лица Виктории**.
 - Живые статьи **не перерисовывать**.
@@ -69,7 +69,7 @@ Self-check **до** первого Kie (обязателен):
 2. ровно один topic prop с `tiny`/`small` (не equal-weight list);
 3. sticky (если есть) — полная кириллическая фраза агента, не «не»+Latin;
 4. `meme_caption_ru == ""`; `jobs.length === 1`; `input_urls` не пуст;
-5. `validation.prompt_chars <= 3500`; resolution `2K`.
+5. `validation.prompt_chars <= 3500`; resolution `2K`; `aspect_ratio` `16:9` (не `1:1`).
 
 После apply: split PASS достаточно, чтобы отдать fragment. **Не** стартуй
 новый Kie для «починить» host/sticky/labels.
@@ -85,9 +85,9 @@ quad-manifest.json (agent fills hooks + scene_hint)
        ↓
 quad-mcp-batch.json (1 job, input_urls, api_args)
        ↓
-ONE Kie gpt-image-2-5-flare-* i2i API task (2K) → canvas-quad.png 2048×1152
+ONE Kie gpt-image-2-5-flare-* i2i API task (2K, aspect_ratio 16:9 not 1:1) → canvas-quad.png 2048×1152
        ↓
-split → cover.png + inline-01..03.png (1200×675)
+split → cover.png + inline-01..03.png (16:9, 1200×675)
        ↓
 inject <figure> after H2 in article.html
 ```
@@ -177,7 +177,7 @@ Inline `scene_hint` остаются ≈**100–220** (H2 facts + 3–6 labels).
 6. Inline: 3–6 коротких labels, ясный reading order и outcome; без людей,
    лиц и мемов (если tenant запретил); заголовки/accent/layers — по design-code.
 7. Generated UI называется «схема интерфейса»/«иллюстрация», не реальный screenshot.
-8. Формат **16:9**, не Instagram carousel 9:16.
+8. Формат **16:9**, не Instagram carousel 9:16, **не квадрат 1:1**.
 
 ---
 
@@ -253,6 +253,7 @@ Hard checks перед MCP/Kie:
 - `validation.required_reference_host` = **`{{SITE_HOST}}`** (не live host из `PUBLIC_SITE_URL`, не `[REDACTED]`). Pre-write check рядом с `reference_url_hosted`.
 - не `files.catbox.moe` для production hero; не литерал `[REDACTED]`
 - `jobs[0].mcp_args.resolution === "2K"` (не `1K`)
+- `jobs[0].mcp_args.aspect_ratio === "16:9"` (не `1:1`)
 - `jobs.length === 1`
 - `jobs[0].api_args.model` starts with `gpt-image-2-5-flare`
 
@@ -290,7 +291,7 @@ python3 scripts/excalibur_blog_kie_gpt_image2_api.py \
 - **Proactive soft stake (B90 / payment·BIN·card):** на темах оплата Cursor / BIN / карта / МИР / «оплатить из России» **до первого** Kie — soft stake `аккаунт` / `Active Pro` / `на своём аккаунте`; cover prop = tiny Active Pro badge (не declined / «мёртвая карта»); inline labels без decline / ban / МИР-shock. «мёртв* карт*», declined-card props, ban wording — только как soften после 422, не first attempt (INC-20260726-0814).
 - **Cursor SDK / local agent (B72):** до первого Kie — scene_hint lock «SDK needs internet»; cover без keyword checklist / «Ключевые темы»; comparison Chat YES / Ollama NO / SDK YES (INC-20260721-2050).
 
-Ожидание: Image to Image, 1 входное фото, aspect 16:9, resolution 2K.
+Ожидание: Image to Image, 1 входное фото, **aspect_ratio `16:9`** (**не `1:1`**), resolution 2K.
 
 Prompt budget: короткий compact prompt (`validation.prompt_chars <= 3500`). Не дублировать полный brand-lock, suffix и negative на каждую панель; скрипт пишет **один** shared `Inline all:` lock на все три inline (не ×3) + короткое описание 4 квадрантов (INC-20260723-1626 / B79). **До** `--write-batch`: cover `scene_hint` ≈**80–140** (`Host … LARGE left half` + `tiny` topic prop, без MUST/face essay / equal-weight props); inline ≈**100–220**. Bilingual essays → 3670+ chars FAIL (INC-20260721-0837); длинный cover face-essay или equal-weight props → host missing (INC-20260724-0837 / INC-20260724-1239). Скрипт compact caps: cover≤200, inline≤180; при BLOCKER сначала укороти hints. Если hints уже короткие, а budget всё равно FAIL — это рост shared ban/style text: reclaim в `cover_quad_prompt.py`, **не** опустошай `scene_hint`.
 

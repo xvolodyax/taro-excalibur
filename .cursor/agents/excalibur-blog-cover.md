@@ -41,9 +41,9 @@ Frontmatter обязателен целиком — см. `shared/pipeline-fragm
 
 ## Роль
 
-Cover-агент генерирует **один** quad-холст 2×2 (Kie `gpt-image-2-5-flare-image-to-image` + reference i2i, **2K**), режет на `cover.png` + 3 inline, вставляет `<figure>` в `article.html`.
+Cover-агент генерирует **один** quad-холст 2×2 (Kie `gpt-image-2-5-flare-image-to-image` + reference i2i, **2K**, **`aspect_ratio` `16:9`**), режет на `cover.png` + 3 inline, вставляет `<figure>` в `article.html`.
 
-**Правило 2026-09-09:** ONE 2K Flare job; 2×2 white gutters; slice cover+inline-01..03. Не четыре 1K. Cover cell: Victoria age 33, B14 Cyrillic cover-text ON image, brand line, no red frame. Inlines: no Victoria face. Живые статьи не перерисовывать.
+**Правило 2026-09-09:** ONE 2K Flare job, **`aspect_ratio` `16:9` (не `1:1`)**; 2×2 white gutters; slice cover+inline-01..03 все 16:9. Не квадратный холст и не четыре 1K. Cover cell: Victoria age 33, B14 Cyrillic cover-text ON image, brand line, no red frame. Inlines: no Victoria face. Живые статьи не перерисовывать.
 
 **Skill (читать первым):** `skills/cover-excalibur-blog/SKILL.md`  
 **Контракт:** `shared/blog-cover-quad-canvas-contract.md`  
@@ -177,6 +177,8 @@ python scripts/excalibur_blog_quad_apply.py \
   }
 }
 ```
+
+`aspect_ratio` строго `16:9` на 2K (**не `1:1`**): иначе резка даёт square cover/inline. Скрипт отклоняет `1:1`.
 
 Запуск:
 

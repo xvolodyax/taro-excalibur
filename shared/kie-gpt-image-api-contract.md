@@ -2,9 +2,10 @@
 
 Primary Cloud path for Excalibur BLOG cover generation.
 
-**Vladimir 2026-09-09:** ONE `gpt-image-2-5-flare-image-to-image` task at **2K**.
-2×2 white-gutter canvas, then slice to `cover.png` + `inline-01..03`.
-Do **not** use four separate 1K generations. Do not redraw live articles.
+**Vladimir 2026-09-09:** ONE `gpt-image-2-5-flare-image-to-image` task at **2K**
+with **`aspect_ratio` `16:9`** (**not `1:1`**).
+2×2 white-gutter canvas, then slice to `cover.png` + `inline-01..03` (all 16:9).
+Do **not** use a 1:1 canvas or four separate 1K generations. Do not redraw live articles.
 
 ## Order of preference (mandatory)
 
@@ -260,7 +261,7 @@ Do **not**:
 ## Guardrails
 
 - One API task per article cover run (plus at most one pre-taskId connection-reset retry and/or one 500-recreate and/or one File Upload recreate and/or one agent 422 soften+recreate), not four separate images and **never four 1K gens**.
-- Model must be `gpt-image-2-5-flare-*`. Resolution must be `2K` (script rejects `1K`).
+- Model must be `gpt-image-2-5-flare-*`. Resolution must be `2K` (script rejects `1K`). `aspect_ratio` must be `16:9` (script rejects `1:1`).
 - **Forbidden quality multi-gen (INC-20260724-2120):** after a successful URL, do **not** createTask again because host/sticky/style looks wrong. Visual QA is skip-default and must not trigger Cover redo. Only Kie API terminal fails / pre-taskId transport reset above allow another billed gen.
 - `input_urls` is required; text-only generation is a cover blocker.
 - Do not retry createTask blindly after a network ambiguity if a `taskId` is known; poll the known task. Exception: after explicit terminal `fail` with 500 / «try again later» (including late terminal 500 discovered by the final `recordInfo` after `--max-wait`), or 400 image-fetch → File Upload, or agent 422 soften+recreate, or pre-`taskId` Connection reset (no task record), create a **new** task once.
