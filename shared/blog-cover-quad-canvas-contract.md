@@ -8,8 +8,9 @@ Cover-агент работает **после** `article.html` + Writer finaliz
 
 ## Правило Владимира 2026-09-09 (HARD)
 
-- **ONE** Kie job: `gpt-image-2-5-flare-image-to-image`, **resolution `2K`**.
-- Холст **2×2** `2048×1152` с **белыми gutters**; split → `cover.png` + `inline-01..03.png`.
+- **ONE** Kie job: `gpt-image-2-5-flare-image-to-image`, **resolution `2K`**, **`aspect_ratio` `16:9`** (**не `1:1`**).
+- Холст **2×2** `2048×1152` с **белыми gutters**; split → `cover.png` + `inline-01..03.png` — все панели **16:9**.
+- **Запрещено** `aspect_ratio` `1:1` (квадратный 2K даёт square-панели после реза).
 - **Запрещено** четыре отдельные 1K-генерации (cover + 3 inline как отдельные jobs).
 - Cover cell: Виктория **age 33**; **B14** кириллический cover-text **НА картинке**; brand line; **без красной рамки**.
 - Inline: **без лица Виктории**.
@@ -17,7 +18,7 @@ Cover-агент работает **после** `article.html` + Writer finaliz
 
 ## Главное правило
 
-**Одна** генерация Kie `gpt-image-2-5-flare-*` Image-to-Image API → один холст `2048×1152` (2×2, каждая панель 16:9) → split в `cover.png` + **ровно три** `inline-01..03.png`. Три inline обязательны: это вторая, третья и четвёртая картинки по явному запросу пользователя.
+**Одна** генерация Kie `gpt-image-2-5-flare-*` Image-to-Image API, **`aspect_ratio` `16:9` at 2K (не `1:1`)** → один холст `2048×1152` (2×2, каждая панель 16:9) → split в `cover.png` + **ровно три** `inline-01..03.png`. Три inline обязательны: это вторая, третья и четвёртая картинки по явному запросу пользователя.
 
 Prompt должен быть коротким: один общий style-lock + 4 коротких описания квадрантов. Не дублировать длинные style/negative blocks на каждую панель.
 
@@ -27,6 +28,7 @@ Hard gate перед image API:
 - `validation.prompt_chars <= 3500`
 - `reference_url_hosted` — URL тенанта или локальный asset; сторонние временные хосты (catbox и т.п.) запрещены для reference
 - `jobs[0].mcp_args.resolution == "2K"` (не `1K`)
+- `jobs[0].mcp_args.aspect_ratio == "16:9"` (не `1:1`)
 - `jobs.length === 1`
 - `preferred_image_flow.model` / `jobs[0].api_args.model` = `gpt-image-2-5-flare-image-to-image`
 
@@ -155,7 +157,7 @@ legacy example name — use tenant preset):
 - `❌ COVER MCP TIMEOUT BLOCKER` — image tool вернул повторный timeout, а status/result tool подтверждает failed/no result
 - `❌ COVER MCP ASYNC BLOCKER` — sync `gpt-image-2` обрывается по client timeout, а MCP server не даёт `task_id` и отдельный status/result tool для получения позднего URL
 - **4 отдельных image jobs** / четыре 1K-генерации на cover+inline — запрещено
-- model не из семейства `gpt-image-2-5-flare-*` или resolution ≠ `2K` — запрещено
+- model не из семейства `gpt-image-2-5-flare-*`, resolution ≠ `2K` или `aspect_ratio` ≠ `16:9` (в т.ч. `1:1`) — запрещено
 - красная рамка на cover — запрещено
 - лицо Виктории на inline — запрещено
 - перерисовка уже опубликованных live-статей — запрещена

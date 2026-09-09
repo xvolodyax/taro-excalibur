@@ -192,10 +192,12 @@ def build_manifest(article_dir: Path, root: Path, preserve: dict | None) -> dict
         "cover_hook_highlight": highlight,
         "cover_hook_contract": "shared/blog-cover-quad-canvas-contract.md",
         "mcp_note": (
-            "PRIMARY: ONE Kie gpt-image-2-5-flare-* job at 2K via "
+            "PRIMARY: ONE Kie gpt-image-2-5-flare-* job at 2K "
+            "aspect_ratio 16:9 (not 1:1) via "
             "excalibur_blog_kie_gpt_image2_api.py (KIE_API_KEY). "
-            "2x2 white-gutter canvas → cover.png + inline-01..03. "
-            "Forbidden: four separate 1K gens. Do not redraw live articles. "
+            "2x2 white-gutter canvas → cover.png + inline-01..03 all 16:9. "
+            "Forbidden: 1:1 canvas or four separate 1K gens. "
+            "Do not redraw live articles. "
             "Cover agent invents scene_hint/alt before --write-batch."
         ),
         "slots": slots,

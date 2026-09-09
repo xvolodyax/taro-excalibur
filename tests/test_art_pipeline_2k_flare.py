@@ -1,4 +1,4 @@
-"""Vladimir 2026-09-09 Art canon: ONE Flare 2K quad, never four 1K gens."""
+"""Vladimir 2026-09-09 Art canon: ONE Flare 2K 16:9 quad, never 1:1 / four 1K."""
 
 from __future__ import annotations
 
@@ -12,10 +12,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from excalibur_blog_art_canon import (  # noqa: E402
+    ASPECT_RATIO,
     HOST_AGE,
     KIE_IMAGE_MODEL,
     KIE_MODEL_PREFIX,
     MCP_RESOLUTION,
+    require_16_9_aspect,
     require_2k_resolution,
     require_kie_model,
 )
@@ -39,15 +41,19 @@ class ArtCanonConstantsTest(unittest.TestCase):
         self.assertEqual(KIE_IMAGE_MODEL, "gpt-image-2-5-flare-image-to-image")
         self.assertEqual(DEFAULT_MODEL, KIE_IMAGE_MODEL)
         self.assertEqual(MCP_RESOLUTION, "2K")
+        self.assertEqual(ASPECT_RATIO, "16:9")
         self.assertEqual(HOST_AGE, 33)
 
     def test_require_helpers(self) -> None:
         self.assertEqual(require_kie_model(KIE_IMAGE_MODEL), KIE_IMAGE_MODEL)
         self.assertEqual(require_2k_resolution("2K"), "2K")
+        self.assertEqual(require_16_9_aspect("16:9"), "16:9")
         with self.assertRaises(ValueError):
             require_kie_model("gpt-image-2-image-to-image")
         with self.assertRaises(ValueError):
             require_2k_resolution("1K")
+        with self.assertRaises(ValueError):
+            require_16_9_aspect("1:1")
 
 
 class KieBatchGuardTest(unittest.TestCase):
@@ -80,6 +86,18 @@ class KieBatchGuardTest(unittest.TestCase):
             with self.assertRaises(KieApiError) as ctx:
                 batch_mcp_args(path)
             self.assertIn("2K", str(ctx.exception))
+
+    def test_rejects_1_1_aspect(self) -> None:
+        with tempfile.TemporaryDirectory() as raw:
+            tmp = Path(raw)
+            path = self._write_batch(tmp)
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["jobs"][0]["mcp_args"]["aspect_ratio"] = "1:1"
+            path.write_text(json.dumps(data), encoding="utf-8")
+            with self.assertRaises(KieApiError) as ctx:
+                batch_mcp_args(path)
+            self.assertIn("16:9", str(ctx.exception))
+            self.assertIn("1:1", str(ctx.exception))
 
     def test_rejects_legacy_model(self) -> None:
         with self.assertRaises(KieApiError):
@@ -146,6 +164,8 @@ class PromptLockTest(unittest.TestCase):
         self.assertIn("Victoria face", prompt)
         self.assertIn("NO people/faces/host", prompt)
         self.assertIn("thin white gutters", prompt)
+        self.assertIn("aspect_ratio 16:9", prompt)
+        self.assertIn("not 1:1", prompt)
         self.assertIn("«Он написал еду и пропал»", prompt)
         self.assertNotIn("four separate 1K", prompt)
 
@@ -157,6 +177,7 @@ class PromptLockTest(unittest.TestCase):
         style_file, preset = tenant_cover_style(ROOT, None)
         self.assertEqual(style_file, "memory/cover/quad-style-victoria-studio.json")
         self.assertEqual(preset, "victoria-studio")
+        self.assertEqual(json.loads((ROOT / style_file).read_text(encoding="utf-8"))["aspect_ratio"], "16:9")
         self.assertNotIn("pink-cat", style_file)
 
 
@@ -178,7 +199,10 @@ class TenantJsonCanonTest(unittest.TestCase):
         self.assertEqual(hero["visual_lock"]["age"], 33)
         self.assertEqual(hero["image_provider"]["model"], KIE_IMAGE_MODEL)
         self.assertEqual(hero["image_provider"]["resolution"], "2K")
+        self.assertEqual(hero["image_provider"]["aspect_ratio"], "16:9")
         self.assertEqual(design["image_provider"]["model"], KIE_IMAGE_MODEL)
+        self.assertEqual(design["image_provider"]["aspect_ratio"], "16:9")
+        self.assertEqual(design["canvas"]["aspect_ratio"], "16:9")
         self.assertEqual(design["brand_line"], "ТАРО СЕЙЧАС")
 
     def test_contracts_ban_four_1k(self) -> None:
@@ -191,6 +215,10 @@ class TenantJsonCanonTest(unittest.TestCase):
             self.assertIn("2K", blob)
         self.assertIn("четыре отдельные 1K", canvas)
         self.assertIn("не перерисовывать", canvas)
+        self.assertIn("16:9", canvas)
+        self.assertIn("не `1:1`", canvas)
+        self.assertIn("16:9", kie)
+        self.assertIn("1:1", kie)
 
 
 if __name__ == "__main__":

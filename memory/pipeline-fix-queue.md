@@ -1,5 +1,27 @@
 # Pipeline fix queue
 
+## INC-20260909-art-canvas-16-9
+status: fixed
+run_date: 2026-09-09
+role: fixer / art-canon
+severity: high
+category: prompt-contract
+### What went wrong
+- After PR #59 (2K Flare + one gen), Kie `aspect_ratio` was written as 16:9 but not hard-rejected. A `1:1` 2K canvas would slice into square cover/inlines.
+### Durable fix
+- Kie Art canvas is **`aspect_ratio` `16:9` at resolution `2K`** (not `1:1`).
+- One gen + white-seam 2×2 slice remains; sliced cover+inlines stay 16:9.
+- Scripts reject `1:1`. Live articles are not redrawn.
+files_changed:
+- `scripts/excalibur_blog_art_canon.py`
+- `scripts/excalibur_blog_kie_gpt_image2_api.py`
+- `scripts/excalibur_blog_cover_quad_prompt.py`
+- `scripts/excalibur_blog_quad_manifest.py`
+- Art prompts / cover skills / agents / contracts / tenant cover JSON
+checks_run:
+- `python3 -m unittest tests/test_art_pipeline_2k_flare.py`
+commit: pending
+
 ## INC-20260905-1935-cover-public-site-url-unset
 status: open
 run_date: 2026-09-05

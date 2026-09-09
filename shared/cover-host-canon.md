@@ -24,12 +24,13 @@ HARD. Единственный файл рефа лица:
 - `scripts/excalibur_blog_hero_reference_url.py`
 
 First-try cover (INC-20260831-0636 + правило 2026-09-09): **ONE** i2i
-`gpt-image-2-5-flare-image-to-image` at **2K** from **Виктория.png**,
+`gpt-image-2-5-flare-image-to-image` at **2K** **`aspect_ratio` `16:9`**
+(**не `1:1`**) from **Виктория.png**,
 `Host LARGE left half`, **Victoria age 33**, face fills left.
 B14 Cyrillic cover-text **ON** the cover cell + brand line; **no red frame**.
 Type / calendar / mug — **RIGHT only**. Type+props cannot replace the host.
 Inline: **no Victoria face**. Cover **не** invent второй createTask
 из‑за host miss (один owner redo — только по явному запросу).
-**Запрещены** четыре отдельные 1K-генерации.
+**Запрещены** квадратный холст `1:1` и четыре отдельные 1K-генерации.
 
 Живые статьи не переписывать и не перерисовывать. Новые обложки — только с этого файла.

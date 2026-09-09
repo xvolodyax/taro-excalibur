@@ -34,8 +34,10 @@ from pathlib import Path
 from typing import Any
 
 from excalibur_blog_art_canon import (
+    ASPECT_RATIO,
     KIE_IMAGE_MODEL,
     MCP_RESOLUTION,
+    require_16_9_aspect,
     require_2k_resolution,
     require_kie_model,
 )
@@ -251,12 +253,13 @@ def batch_mcp_args(batch_path: Path) -> dict[str, Any]:
         raise KieApiError("Missing non-empty input_urls in jobs[0].mcp_args after expand")
     try:
         resolution = require_2k_resolution(str(args.get("resolution") or MCP_RESOLUTION))
+        aspect_ratio = require_16_9_aspect(str(args.get("aspect_ratio") or ASPECT_RATIO))
     except ValueError as exc:
         raise KieApiError(str(exc)) from exc
     return {
         "prompt": prompt,
         "input_urls": expanded_urls,
-        "aspect_ratio": args.get("aspect_ratio") or "16:9",
+        "aspect_ratio": aspect_ratio,
         "resolution": resolution,
     }
 
