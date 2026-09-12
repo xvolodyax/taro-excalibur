@@ -1,0 +1,21 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "день",
+  "date": "2026-09-12",
+  "verdict": "FAIL",
+  "reason": "openai_401_ip_not_authorized",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "openai_probe": {
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized"
+  },
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260912-1610-director-openai-ip-not-authorized"
+}
