@@ -1,5 +1,38 @@
 # Pipeline fix queue
 
+## INC-20260912-2200-openai-ip-not-authorized
+status: open
+run_date: 2026-09-12
+role: excalibur-blog-director
+slot: evening-2000-relations
+topic_id: (not started — blocked at preflight text API)
+severity: blocker
+category: env
+
+### What went wrong
+- Slot **вечер 20:00 MSK / базовые отношения / сайт upload→approve→publish** for 2026-09-12. Дзен руками не публиковать (RSS). vc.ru не трогать.
+- `OPENAI_API_KEY` present in Cloud Secrets (164 chars, `sk-proj…`).
+- `chat_completions.py` is **not** in this repo (local box caller). Director probed official Chat Completions: `POST https://api.openai.com/v1/chat/completions` `model=gpt-5.5` → **401** `ip_not_authorized`: «Your IP is not authorized to make this request.»
+- Same 401 on `GET /v1/models`.
+- Cloud egress IPs seen this run: `54.86.224.244`, `18.210.138.74`. Cursor environment egress is **unrestricted**; block is OpenAI project IP whitelist, not Cursor allow-list.
+- TEXT CANON (hard): body/H1/description/cover-text **only** via Vladimir OpenAI API gpt-5.5; stamp `written_by: openai-api-gpt-5.5`. Gemini / Cursor catalog / Director self-write forbidden. **401 → FAIL + EXIT.**
+
+### How the agent recovered this run
+- Did **not** fall back to Gemini, inherit, or Director-written prose.
+- Did **not** start Scout / Research / Title / Writer / Sol / Cover / Publish.
+- Did **not** publish Dzen by hand; did **not** touch vc.ru.
+- Hall catch-up on the local box is expected (Владимир).
+
+### Durable fix needed before next Cloud run
+- Whitelist Cursor Cloud Agent egress IP(s) on Vladimir OpenAI project **or** provide an approved relay/`OPENAI_BASE_URL` that Cloud Agents may use.
+- Re-run Director evening slot only after probe returns 200 for `gpt-5.5`.
+
+### Secrets
+- `OPENAI_API_KEY` configured; IP whitelist missing
+
+### Fixer resolution
+- pending
+
 ## INC-20260905-1935-cover-public-site-url-unset
 status: open
 run_date: 2026-09-05
