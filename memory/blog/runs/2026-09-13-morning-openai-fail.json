@@ -1,0 +1,36 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "утро",
+  "date": "2026-09-13",
+  "slot_local": "2026-09-13 09:00 Europe/Moscow",
+  "verdict": "FAIL",
+  "reason": "openai_401_ip_not_authorized",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "live_url": null,
+  "article_id": null,
+  "slug": null,
+  "cover_md5": null,
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized",
+    "message": "Your IP is not authorized to make this request.",
+    "key_present": true,
+    "key_prefix": "sk-proj",
+    "key_len": 164,
+    "openai_base_url": null
+  },
+  "egress_ips_seen": [
+    "18.219.105.205",
+    "3.147.102.16"
+  ],
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260913-0916-director-openai-ip-not-authorized"
+}
