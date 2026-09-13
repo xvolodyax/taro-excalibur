@@ -1,5 +1,38 @@
 # Pipeline fix queue
 
+## INC-20260913-1614-director-openai-ip-not-authorized
+status: open
+run_date: 2026-09-13
+role: excalibur-blog-director
+slot: day-1600-relations
+topic_id: (not started — blocked at preflight text API)
+severity: blocker
+category: env
+
+### What went wrong
+- Slot **день 16:00 MSK / базовые отношения (не нумерология) / сайт upload→approve→publish** for 2026-09-13. Холл — только будильник. Дзен руками не публиковать (RSS).
+- `OPENAI_API_KEY` present in Cloud Secrets (164 chars, `sk-proj…`). `OPENAI_BASE_URL` unset.
+- Director restored `scripts/chat_completions.py` and probed official Chat Completions: `POST https://api.openai.com/v1/chat/completions` `model=gpt-5.5` → **401** `ip_not_authorized`: «Your IP is not authorized to make this request.»
+- Cloud egress IPs seen this run: `34.225.11.185`, `44.221.103.31`. Block is OpenAI project IP whitelist, not a missing key.
+- Same blocker as morning 13.09 (`INC-20260913-0916`) and day/evening 12.09. Morning egress IPs were different (`18.219.105.205`, `3.147.102.16`).
+- TEXT CANON (hard, this slot): body/H1/description/cover-text **only** via OpenAI API gpt-5.5; stamp `written_by: openai-api-gpt-5.5`. Gemini / Cursor catalog / Director self-write forbidden. **401 → FAIL + EXIT.**
+
+### How the agent recovered this run
+- Did **not** fall back to Gemini, inherit, or Director-written prose.
+- Did **not** start Scout / Research / Title / Writer / Sol / Cover / Publish.
+- Did **not** publish Dzen by hand.
+- Hall catch-up on the local box is expected (Владимир).
+
+### Durable fix needed before next Cloud run
+- Whitelist Cursor Cloud Agent egress IP(s) on Vladimir OpenAI project **or** provide an approved relay/`OPENAI_BASE_URL` that Cloud Agents may use.
+- Re-run Director day slot only after `python3 scripts/chat_completions.py --user ping` returns 200 for `gpt-5.5`.
+
+### Secrets
+- `OPENAI_API_KEY` configured; IP whitelist missing
+
+### Fixer resolution
+- pending — env/API blocker, cannot fix in repo code
+
 ## INC-20260905-1935-cover-public-site-url-unset
 status: open
 run_date: 2026-09-05
