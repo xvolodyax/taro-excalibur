@@ -1,0 +1,49 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "вечер",
+  "date": "2026-09-13",
+  "slot_local": "2026-09-13 20:00 Europe/Moscow",
+  "verdict": "FAIL",
+  "reason": "openai_401_ip_not_authorized",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "live_url": null,
+  "article_id": null,
+  "slug": null,
+  "cover_md5": null,
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized",
+    "message": "Your IP is not authorized to make this request.",
+    "key_present": true,
+    "key_prefix": "sk-proj",
+    "key_len": 164,
+    "openai_base_url": null
+  },
+  "egress_ips_seen": [
+    "3.149.176.143",
+    "3.23.245.187",
+    "3.151.214.110"
+  ],
+  "live_untouched": {
+    "morning_id": 97,
+    "morning_slug": "on-ster-moy-kommentariy-pod-svoey-fotografiey",
+    "morning_status": "published",
+    "morning_updated_at": "2026-09-13T06:21:04.502Z",
+    "day_id": 99,
+    "day_slug": "on-ubral-menya-iz-blizkih-druzey",
+    "day_status": "published",
+    "day_updated_at": "2026-09-13T13:25:56.643Z",
+    "stories_13_09": "not_touched",
+    "access": "GET only"
+  },
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260913-2206-director-openai-ip-not-authorized"
+}
