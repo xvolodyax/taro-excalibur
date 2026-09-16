@@ -1,0 +1,58 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "вечер",
+  "date": "2026-09-16",
+  "slot_local": "2026-09-16 20:00 Europe/Moscow",
+  "run_local": "2026-09-16 23:45 Europe/Moscow",
+  "verdict": "FAIL",
+  "reason": "openai_401_ip_not_authorized",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "live_url": null,
+  "article_id": null,
+  "h1": null,
+  "slug": null,
+  "cover_md5": null,
+  "cover_hook": null,
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized",
+    "message": "Your IP is not authorized to make this request.",
+    "retries": 0,
+    "key_present": true,
+    "key_prefix": "sk-proj",
+    "key_len": 164,
+    "openai_base_url": null
+  },
+  "egress_ips_seen": [
+    "3.23.186.103",
+    "13.59.103.110"
+  ],
+  "live_untouched": {
+    "access": "GET only",
+    "www_host": "ssl_handshake_timeout",
+    "apex_host": "spa_html_200_not_json",
+    "anti_dup_from_slot_brief": {
+      "morning_id": 112,
+      "morning_note": "папа/ребёнок — already live",
+      "day_id": 113,
+      "day_note": "дети/второй брак — already live",
+      "evening_yesterday_id": 111,
+      "evening_yesterday_note": "родные/свадьба — already live",
+      "stories": [
+        "посыпались силы",
+        "отношения резко испортились"
+      ]
+    },
+    "evening_16_09": "not_started"
+  },
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260916-2345-director-openai-ip-not-authorized"
+}
