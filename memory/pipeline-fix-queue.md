@@ -1,5 +1,37 @@
 # Pipeline fix queue
 
+## INC-20260916-0918-director-openai-ip-not-authorized
+status: open
+run_date: 2026-09-16
+role: excalibur-blog-director
+slot: morning-0900-relations
+topic_id: (not started — blocked at preflight text API)
+severity: blocker
+category: env
+
+### What went wrong
+- Slot **утро 09:00 MSK / острый запрос / сайт upload→approve→publish** for 2026-09-16. Дзен по RSS сам. Hall только будильник — H1 не задан.
+- `OPENAI_API_KEY` present in Cloud Secrets (164 chars, `sk-proj…`). `OPENAI_BASE_URL` unset.
+- Director restored `scripts/chat_completions.py` and probed once: `POST https://api.openai.com/v1/chat/completions` `model=gpt-5.5` → **401** `ip_not_authorized`.
+- Cloud egress IP this run: `3.18.66.46`. Same blocker as evening slots 11–15.09.
+- TEXT CANON (hard): body/H1/description/cover-text **only** via OpenAI API gpt-5.5; stamp `written_by: openai-api-gpt-5.5`. Gemini / Cursor catalog forbidden. **401 → FAIL + EXIT.**
+
+### How the agent recovered this run
+- Did **not** fall back to Gemini, inherit, or Director-written prose.
+- Did **not** start Scout / Research / Title / Writer / Sol / Cover / Kie / Publish.
+- Did **not** touch live anti-dup GET: id107 свекровь, id109 развод, id111 давление родных на свадьбу (blog index), stories приворот/сглаз — all HTTP 200 where checked.
+- Box draft pack `/workspace/openai-fallback/packs/2026-09-16-morning/` not present in Cloud workspace.
+
+### Durable fix needed before next Cloud run
+- Whitelist Cursor Cloud Agent egress IP(s) on OpenAI project **or** approved relay/`OPENAI_BASE_URL` for Cloud Agents.
+- Re-run morning slot only after `python3 scripts/chat_completions.py --user ping` returns 200 for `gpt-5.5`.
+
+### Secrets
+- `OPENAI_API_KEY` configured; IP whitelist missing
+
+### Fixer resolution
+- pending — env/API blocker, cannot fix in repo code
+
 ## INC-20260905-1935-cover-public-site-url-unset
 status: open
 run_date: 2026-09-05
