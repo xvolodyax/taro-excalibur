@@ -1,0 +1,44 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "утро",
+  "date": "2026-09-17",
+  "slot_local": "2026-09-17 09:00 Europe/Moscow",
+  "run_local": "2026-09-17 09:11 Europe/Moscow",
+  "verdict": "EXIT",
+  "reason": "morning_slot_already_live_anti_dup",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "scout_started": false,
+  "pipeline_started": false,
+  "publish_started": false,
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized",
+    "message": "Your IP is not authorized to make this request.",
+    "key_present": true,
+    "egress_ip": "34.225.11.185"
+  },
+  "live_check": {
+    "rss": {
+      "url": "https://www.xn--80aaoqxlidb0d.xn--p1ai/rss.xml",
+      "status": "404",
+      "note": "anti-dup via sitemap + blog listing + live GET"
+    },
+    "sitemap_lastmod": "2026-09-17",
+    "blog_listing_top_slug": "spor-iz-za-rebenka-taro-s-partnerom"
+  },
+  "live_url": "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/spor-iz-za-rebenka-taro-s-partnerom/",
+  "slug": "spor-iz-za-rebenka-taro-s-partnerom",
+  "h1": "Вы снова спорите из-за ребёнка: что Таро советует согласовать с партнёром сегодня вечером",
+  "datePublished": "2026-09-17T04:23:48.817Z",
+  "article_id": null,
+  "article_id_note": "SITE token GET by slug → 403; id not exposed on public page",
+  "cover_md5": "a2cb0432346302871df592e9902a6607",
+  "cover_hook": "Правила для ребёнка: где вы заодно?",
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260917-0911-openai-ip-not-authorized"
+}
