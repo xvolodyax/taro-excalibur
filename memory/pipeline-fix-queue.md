@@ -71,3 +71,25 @@ files_changed:
 checks_run:
 - `python3 -m unittest tests/test_art_pipeline_2k_flare.py`
 commit: pending
+
+## INC-20260917-0911-openai-ip-not-authorized
+status: open
+run_date: 2026-09-17
+role: excalibur-blog-director
+slot: утро
+severity: blocker
+category: openai-egress
+
+### What went wrong
+- `scripts/chat_completions.py` probe to `gpt-5.5` returns HTTP 401 `ip_not_authorized` from Cloud Agent egress (34.225.11.185).
+- Text roles cannot run; Gemini/Cursor fallback forbidden for this slot.
+
+### How the agent recovered this run
+- Live anti-dup: утренний слот 2026-09-17 уже LIVE (`spor-iz-za-rebenka-taro-s-partnerom`, `datePublished` 2026-09-17T04:23:48Z) → EXIT без второго publish.
+- Restored missing `scripts/chat_completions.py` + `tests/test_chat_completions.py` on main snapshot.
+
+### Durable fix needed
+- Allowlist Cloud Agent egress IPs on Vladimir OpenAI project **or** route `chat_completions.py` via approved proxy/base URL in Secrets.
+
+### Run artifact
+- `memory/blog/runs/2026-09-17-morning-exit-live-dedupe.json`
