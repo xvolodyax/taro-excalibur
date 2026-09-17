@@ -1,0 +1,20 @@
+{
+  "gate": "openai-api-gpt-5.5",
+  "status": "FAIL",
+  "written_by": null,
+  "model": "gpt-5.5",
+  "script": "scripts/chat_completions.py",
+  "http_status": 401,
+  "key_present": true,
+  "key_prefix": "sk-proj",
+  "action": "EXIT",
+  "self_write": false,
+  "gemini_fallback": false,
+  "publish": false,
+  "live_url": null,
+  "slot": "day-2026-09-17",
+  "topic_id": "B42",
+  "slug": "paren-skazal-pozhenimsya-i-tyanet",
+  "scout_title": "Парень сказал поженимся и тянет",
+  "reason": "OPENAI_API_KEY present but Chat Completions returned 401. Slot rule: no key/401 → FAIL and EXIT. Director did not write H1/body/Sol/description/cover-text."
+}

@@ -1,0 +1,218 @@
+{
+  "agent": "excalibur-blog",
+  "date_context": {
+    "timezone": "Europe/Moscow",
+    "today_iso": "2026-09-17",
+    "today_ru": "17.09.2026",
+    "year": 2026,
+    "month": 9,
+    "month_name_ru": "сентябрь",
+    "weekday_ru": "четверг"
+  },
+  "topic": {
+    "topic_id": "B42",
+    "title": "Парень сказал поженимся и тянет",
+    "h1": "Парень сказал поженимся и тянет",
+    "slug": "paren-skazal-pozhenimsya-i-tyanet",
+    "primary_query": "Парень сказал поженимся и тянет",
+    "priority": "P0"
+  },
+  "searches": [
+    {
+      "query_id": "primary_fresh",
+      "query": "Парень сказал поженимся и тянет 2026",
+      "purpose": "актуальный SERP",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "первый канал онлайн прямой эфир давай поженимся сегодня",
+          "url": "https://tv.yandex.com/search?lr=21414&rq=1&text=%D0%BF%D0%B5%D1%80%D0%B2%D1%8B%D0%B9+%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD+%D0%BF%D1%80%D1%8F%D0%BC%D0%BE%D0%B9+%D1%8D%D1%84%D0%B8%D1%80+%D0%B4%D0%B0%D0%B2%D0%B0%D0%B9+%D0%BF%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%BC%D1%81%D1%8F+%D1%81%D0%B5%D0%B3%D0%BE%D0%B4%D0%BD%D1%8F&src=rec&serp-reload-from=rec_bottom",
+          "snippet": ""
+        },
+        {
+          "title": "Давай поженимся 2026 - все выпуски программы",
+          "url": "https://dav-tv.com/",
+          "snippet": "Давай поженимся 2026 - все выпуски программы Смотреть онлайн вчерашний выпуск, сегодняшний выпуск, а также все последние выпуски программы Давай поженимся с Ларисой Гузеевой."
+        },
+        {
+          "title": "Давай Поженимся! - YouTube",
+          "url": "https://www.youtube.com/@davaipojenimsa",
+          "snippet": "Смотреть онлайн вчерашний выпуск, сегодняшний выпуск, а также все последние выпуски программы Давай поженимся с Ларисой Гузеевой."
+        },
+        {
+          "title": "Давай поженимся!. Первый канал",
+          "url": "https://www.1tv.ru/shows/davay-pozhenimsya",
+          "snippet": "Красавица после неудачных отношений Давай поженимся! Выпуск от 10 01 2024 2.8K views • 3 days ago"
+        },
+        {
+          "title": "Давай поженимся!: смотреть все выпуски без регистрации на Первом канале ...",
+          "url": "https://moltv.ru/playlist/880289/",
+          "snippet": "26-летняя Жанна с радостью пойдет под венец со смуглым спортивным брюнетом, который сам поставил себя на ноги. Многодетный отец и судовладелец. Давай поженимся!"
+        },
+        {
+          "title": "Давай поженимся сегодняшний выпуск от 16 09 2026. Нежный мужчина ищет ...",
+          "url": "https://dav-tv.com/davay-pozhenimsya-vypusk-ot-16-09-2026-nezhnyy-muzhchina-ischet-svoyu-zainku.html",
+          "snippet": "На этой странице можно смотреть все выпуски телешоу «Давай поженимся!» канала «Первый» в HD-качестве. Смотреть новые выпуски телешоу Давай поженимся! на Первом канале."
+        }
+      ],
+      "searched_at": "2026-09-17"
+    },
+    {
+      "query_id": "title_fresh",
+      "query": "Парень сказал поженимся и тянет 2026",
+      "purpose": "SERP по человеческому title",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Давай поженимся 2026 - все выпуски программы",
+          "url": "https://dav-tv.com/",
+          "snippet": ""
+        },
+        {
+          "title": "Давай Поженимся! - YouTube",
+          "url": "https://www.youtube.com/@davaipojenimsa",
+          "snippet": "Смотреть онлайн вчерашний выпуск, сегодняшний выпуск, а также все последние выпуски программы Давай поженимся с Ларисой Гузеевой."
+        },
+        {
+          "title": "Давай поженимся!: смотреть все выпуски без регистрации на Первом канале ...",
+          "url": "https://moltv.ru/playlist/880289/",
+          "snippet": "Красавица после неудачных отношений Давай поженимся! Выпуск от 10 01 2024 2.8K views • 3 days ago"
+        },
+        {
+          "title": "Давай поженимся!. Первый канал",
+          "url": "https://www.1tv.ru/shows/davay-pozhenimsya",
+          "snippet": "На этой странице можно смотреть все выпуски телешоу «Давай поженимся!» канала «Первый» в HD-качестве. Смотреть новые выпуски телешоу Давай поженимся! на Первом канале."
+        },
+        {
+          "title": "первый канал онлайн прямой эфир давай поженимся сегодня",
+          "url": "https://tv.yandex.com/search?lr=21414&rq=1&text=%D0%BF%D0%B5%D1%80%D0%B2%D1%8B%D0%B9+%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD+%D0%BF%D1%80%D1%8F%D0%BC%D0%BE%D0%B9+%D1%8D%D1%84%D0%B8%D1%80+%D0%B4%D0%B0%D0%B2%D0%B0%D0%B9+%D0%BF%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%BC%D1%81%D1%8F+%D1%81%D0%B5%D0%B3%D0%BE%D0%B4%D0%BD%D1%8F&src=rec&serp-reload-from=rec_bottom",
+          "snippet": "26-летняя Жанна с радостью пойдет под венец со смуглым спортивным брюнетом, который сам поставил себя на ноги. Многодетный отец и судовладелец. Давай поженимся!"
+        },
+        {
+          "title": "Выпуски. Давай поженимся!. Первый канал",
+          "url": "https://www.1tv.ru/shows/davay-pozhenimsya/vypuski-i-luchshie-momenty",
+          "snippet": "Давай поженимся 2026 - все выпуски программы Смотреть онлайн вчерашний выпуск, сегодняшний выпуск, а также все последние выпуски программы Давай поженимся с Ларисой Гузеевой."
+        }
+      ],
+      "searched_at": "2026-09-17"
+    },
+    {
+      "query_id": "official_docs",
+      "query": "Парень сказал поженимся и тянет official docs 2026",
+      "purpose": "официальные docs",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Давай поженимся 2026 - все выпуски программы",
+          "url": "https://dav-tv.com/",
+          "snippet": ""
+        },
+        {
+          "title": "Выпуски. Давай поженимся!. Первый канал",
+          "url": "https://www.1tv.ru/shows/davay-pozhenimsya/vypuski-i-luchshie-momenty",
+          "snippet": "Смотреть онлайн вчерашний выпуск, сегодняшний выпуск, а также все последние выпуски программы Давай поженимся с Ларисой Гузеевой."
+        },
+        {
+          "title": "Давай Поженимся! - YouTube",
+          "url": "https://www.youtube.com/@davaipojenimsa",
+          "snippet": "41-летний Кирилл женится на озорной, непосредственной девушке, которая будет ходить по дому в его рубашках, без стеснения плохо петь в душе и накручивать локон на палец, когда думает о нем."
+        },
+        {
+          "title": "Давай поженимся сегодняшний выпуск от 14 09 2026. Многодетный отец и ...",
+          "url": "https://dav-tv.com/davay-pozhenimsya-vypusk-ot-14-09-2026.html",
+          "snippet": "Официальная страница программы «Давай поженимся!» Сыровар в поисках дамы сердца Часть 1 Давай поженимся! Выпуск от 11 01 2024. Красавица после неудачных отношений Давай поженимся! Выпуск от..."
+        },
+        {
+          "title": "Давай поженимся!. Первый канал",
+          "url": "https://www.1tv.ru/shows/davay-pozhenimsya",
+          "snippet": "Давай поженимся. Выпуск от 14.09.2026. Многодетный отец и судовладелец. Максим, 36 лет, соучредитель судоходной компании, проживает в Санкт-Петербурге."
+        },
+        {
+          "title": "Давай поженимся!: смотреть все выпуски без регистрации на Первом канале ...",
+          "url": "https://moltv.ru/playlist/880289/",
+          "snippet": "Давай поженимся! Фрагмент Екатерина рассказала ведущим, почему так и не сумела завести в браке детей."
+        }
+      ],
+      "searched_at": "2026-09-17"
+    },
+    {
+      "query_id": "github_evidence",
+      "query": "site:github.com Парень сказал поженимся и тянет 2026",
+      "purpose": "GitHub evidence",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "coursera-ddp-shiny/corpora/ru_50k.txt at master - GitHub",
+          "url": "https://github.com/spujadas/coursera-ddp-shiny/blob/master/corpora/ru_50k.txt",
+          "snippet": ""
+        },
+        {
+          "title": "GitHub - Evgeniy64Bits/demo-exam-2026-realize: Создание стенда и пример ...",
+          "url": "https://github.com/Evgeniy64Bits/demo-exam-2026-realize",
+          "snippet": "Coursera Developing Data Products Week 4 Peer-graded Assignment: Shiny - spujadas/coursera-ddp-shiny"
+        },
+        {
+          "title": "test-cv/favicon.svg at main · AVor0n/test-cv · GitHub",
+          "url": "https://github.com/AVor0n/test-cv/blob/main/favicon.svg",
+          "snippet": "Данный репозиторий посвящён созданию домашнего стенда и полной реализации демонстрационного экзамена 2026 года. Если не грядут большие изменения в заданиях и используемых роутерах - подойдёт для последующих годов (2027, 2028 и т.д.). Проект включает:"
+        },
+        {
+          "title": "pi-intercom/banner.png at main · nicobailon/pi-intercom · GitHub",
+          "url": "https://github.com/nicobailon/pi-intercom/blob/main/banner.png",
+          "snippet": "Тестовое для курса по Angular от codemasters. Contribute to AVor0n/test-cv development by creating an account on GitHub."
+        },
+        {
+          "title": "ProcDoc/img/Install2.png at main · npfs666/ProcDoc · GitHub",
+          "url": "https://github.com/npfs666/ProcDoc/blob/main/img/Install2.png",
+          "snippet": "Inter-session communication extension for pi coding agent - nicobailon/pi-intercom"
+        },
+        {
+          "title": "DDUNet/results/test_pred.svg at main · Att100/DDUNet · GitHub",
+          "url": "https://github.com/Att100/DDUNet/blob/main/results/test_pred.svg",
+          "snippet": "Contribute to npfs666/ProcDoc development by creating an account on GitHub."
+        }
+      ],
+      "searched_at": "2026-09-17"
+    },
+    {
+      "query_id": "community_experience",
+      "query": "Парень сказал поженимся и тянет forum problems опыт 2026",
+      "purpose": "форумы и живые проблемы",
+      "result_count": 6,
+      "results": [
+        {
+          "title": "Проблемы в отношениях, парень тянет с женитьбой",
+          "url": "https://www.b17.ru/forum/topic.php?id=561649&p=3",
+          "snippet": ""
+        },
+        {
+          "title": "Проблемы в отношениях, парень тянет с женитьбой",
+          "url": "https://www.b17.ru/forum/topic.php?id=561649",
+          "snippet": "Да я с ним на диалог не могу выйти. Просто пустые слова, тебе со мной плохо что ли? Я говорю нет, так и в чем проблема. Так проблемы то и нет, просто я как будто со стенкой разговариваю."
+        },
+        {
+          "title": "Парень тянет с предложением - 56 ... - Woman.ru",
+          "url": "https://www.woman.ru/relations/wedding/thread/5029538/",
+          "snippet": "Что терпите это всё, говорит о том, что склонны к абьюзивным и созависимым отношениям. Скорее всего, с родителями у вас не очень хорошие и теплые отношения, вы недолюблены, недопоняты, недоприняты и пр.пр."
+        },
+        {
+          "title": "Парень тянет с женитьбой - 8 ответов на форуме Woman.ru (6075945)",
+          "url": "https://www.woman.ru/relations/men/thread/6075945/",
+          "snippet": "Однако уже множество раз была подходящая ситуация, и деньги имеются, но он почему-то тянет."
+        },
+        {
+          "title": "Парень тянет с предложением - 45 ответов - Форум Леди Mail",
+          "url": "https://lady.mail.ru/forum/topic/paren_tjanet_s_predlozheniem/",
+          "snippet": "8 ответов - Вместе живем второй год, когда завожу разговоры о свадьбе сразу психует, говорит, что не очень, когда выпрашивают ... (6075945) - Женский форум Woman.ru"
+        },
+        {
+          "title": "Flirt-Style.Ru — мужской форум №1 в Рунете про отношения и психологию",
+          "url": "https://www.flirt-style.ru/forum/",
+          "snippet": "Дорогие пользователи! С 15 декабря Форум Леди закрыт для общения. Выражаем благодарность всем нашим пользователям, принимавшим участие в дискуссиях и горячих спорах."
+        }
+      ],
+      "searched_at": "2026-09-17"
+    }
+  ],
+  "errors": []
+}
