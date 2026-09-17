@@ -1,0 +1,83 @@
+{
+  "agent": "excalibur-blog-research",
+  "topic_id": "B42",
+  "slug": "paren-skazal-pozhenimsya-i-tyanet",
+  "research_date": "2026-09-17",
+  "status": "PASS",
+  "verdict": "PASS",
+  "fresh_signal": true,
+  "fresh_signal_week": "2026-09-15/2026-09-17",
+  "block_reason": null,
+  "external_signal": "Четверг 17.09.2026: Rozali.com в 04:27 ставит дню Семёрку Пентаклей (ждать ли следующий шаг / не путать терпение с бесконечным «дай ещё время»). Kleo и Mirkosmosa красят 17 сентября как свадебный/лунно-удачный день при растущей Луне в Стрельце. Чужие таро (Asterа) держат запрос «дойдёт ли до брака», если слов много, а шага нет. Бытовой конфликт — он уже сказал «поженимся», даты и загса нет.",
+  "fresh_signal_urls": [
+    "https://rozali.com/novini/a/taro-predskazanie-za-17-septemvri-2026-karta-na-denya-sedmica-pentakli",
+    "https://www.kleo.ru/items/goroskop/blagopriyatnye-dni-dlya-svadby-sentyabr-2026/",
+    "https://mirkosmosa.ru/lunar-calendar/wedding/2026/september/17",
+    "https://newsukraine.rbc.ua/news/tarot-horoscope-for-september-17-one-zodiac-1789625396.html",
+    "https://www.iforher.com/horoscope/tarot-horoscope-for-today-september-17-2026-what-cards-say-for-your-sun-sign/",
+    "https://dzen.ru/todaytaro_bot"
+  ],
+  "wordstat": {
+    "status": "OK_WITH_PARTIAL",
+    "provider": "yandex_cloud_search_api_v2",
+    "endpoint": "/v2/wordstat/topRequests",
+    "accessed_at": "2026-09-17",
+    "phrases": [
+      {
+        "phrase": "он не женится",
+        "totalCount": 13992,
+        "notable": [
+          "почему он не женится 1208",
+          "он не хочет на мне жениться 611",
+          "он не предлагает жениться 266"
+        ]
+      },
+      {
+        "phrase": "он не хочет жениться",
+        "totalCount": 2836,
+        "notable": [
+          "он сказал что не хочет жениться 137",
+          "он любит но не хочет жениться 120"
+        ]
+      },
+      {
+        "phrase": "не зовет замуж",
+        "totalCount": 3801,
+        "notable": [
+          "шум песен/фильмов",
+          "живой хвост мужчина не зовет замуж 554"
+        ]
+      },
+      {
+        "phrase": "штамп в паспорте о браке",
+        "totalCount": 5363,
+        "notable": [
+          "ставят ли штамп в паспорте о браке 1099",
+          "шум документов/перевыпуска"
+        ]
+      },
+      {
+        "phrase": "парень тянет с женитьбой",
+        "totalCount": null,
+        "notable": [
+          "WORDSTAT PARTIAL; синоним «тянет с женитьбой» 10, results пустые"
+        ]
+      }
+    ],
+    "note": "Жир не в H1. «давай поженимся» / «не зовет замуж» — шоу и песни. Длинный хвост сцены PARTIAL — не стоп."
+  },
+  "overlap": {
+    "source": "published-titles-only.md empty; live blog titles only 15–17.09.2026",
+    "avoid": [
+      "Что делать, если дома обнаружился чужой свёрток",
+      "Вы сомневаетесь, любит ли он вас: какие поступки Таро советует оценить без самообмана",
+      "Вы снова спорите из-за ребёнка: что Таро советует согласовать с партнёром сегодня вечером",
+      "Дети против вашего второго брака: что Таро советует проговорить с партнёром прямо сегодня",
+      "Папа исчез из жизни ребёнка: что Таро советует решить до серьёзного разговора",
+      "Родные давят на вашу свадьбу: что Таро советует обсудить с партнёром сегодня вечером"
+    ]
+  },
+  "rf_deny_heroes": false,
+  "notes_path": "memory/blog/articles/B42-paren-skazal-pozhenimsya-i-tyanet/research-notes.md",
+  "incident_report": "none"
+}
