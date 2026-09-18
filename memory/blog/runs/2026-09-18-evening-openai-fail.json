@@ -1,0 +1,73 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "вечер",
+  "date": "2026-09-18",
+  "slot_local": "2026-09-18 22:00 Europe/Moscow",
+  "run_local": "2026-09-18 22:19 Europe/Moscow",
+  "verdict": "FAIL",
+  "reason": "openai_401_ip_not_authorized",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "gemini_used": false,
+  "cursor_model_wrote_text": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "live_url": null,
+  "article_id": null,
+  "h1": null,
+  "slug": null,
+  "cover_md5": null,
+  "cover_hook": null,
+  "stale_pack_not_used": "2026-09-18-prod-03-вечер",
+  "box_catchup": "required",
+  "box_note": "Cloud 401 ip_not_authorized. Бокс должен дожать слот вечер 18.09 сам. Не ждать Cloud. Не брать stale pack 2026-09-18-prod-03-вечер (REWORK, не publish_ready).",
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized",
+    "message": "Your IP is not authorized to make this request.",
+    "retries": 0,
+    "key_present": true,
+    "key_prefix": "sk-proj",
+    "key_len": 164,
+    "openai_base_url": null
+  },
+  "egress_ips_seen": [
+    "3.23.193.225",
+    "3.147.102.16",
+    "13.59.103.110"
+  ],
+  "live_untouched": {
+    "access": "GET only",
+    "wp_json": "404",
+    "rss_blog_feed": "404",
+    "blog_listing": "200",
+    "anti_dup_from_live_blog_and_slot_brief": {
+      "morning_id": 123,
+      "morning_h1": "Расклад таро на ситуацию: как понять, есть ли будущее у отношений с мужчиной",
+      "day_id": 125,
+      "day_h1": "Ребёнок пытается манипулировать родителями: о чём поговорить спокойно",
+      "also_live": [
+        "Он не хочет жениться: что стоит за отказом и стоит ли ждать",
+        "Жена просит развода: стоит ли бороться за брак или отпустить"
+      ],
+      "stories_porcha": [
+        "Как защититься от порчи в быту: что укрепить и чего не делать",
+        "Как снять порчу с себя: что проверить, что сделать и чего не делать"
+      ],
+      "listing_top": [
+        "Он не хочет жениться: что стоит за отказом и стоит ли ждать",
+        "Жена просит развода: стоит ли бороться за брак или отпустить",
+        "Как помириться после ссоры и не сделать хуже — расклад Таро"
+      ]
+    },
+    "evening_18_09": "not_started_on_cloud"
+  },
+  "checkout_note": "Cloud main still at ce9902d (2026-09-09). SITE_FUNNEL.md / ARTICLE_SCOUT_MAP / SCOUT_CANON / article_review_v1 not in this checkout.",
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260918-2219-director-openai-ip-not-authorized"
+}
