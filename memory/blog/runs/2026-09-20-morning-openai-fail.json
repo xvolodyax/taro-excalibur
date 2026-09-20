@@ -1,0 +1,84 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "утро",
+  "date": "2026-09-20",
+  "slot_local": "2026-09-20 09:00 Europe/Moscow",
+  "run_local": "2026-09-20 09:17 Europe/Moscow",
+  "verdict": "FAIL",
+  "reason": "openai_401_ip_not_authorized",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "gemini_used": false,
+  "cursor_model_wrote_text": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "live_url": null,
+  "article_id": null,
+  "h1": null,
+  "slug": null,
+  "cover_md5": null,
+  "cover_hook": null,
+  "openai_fallback_pack": "/workspace/openai-fallback/packs/2026-09-20-morning/",
+  "openai_fallback_available": false,
+  "box_catchup": "required",
+  "box_note": "Cloud 401 ip_not_authorized. Бокс должен дожать слот утро 20.09 сам. Не ждать Cloud. Утренней 20.09 на сайте ещё нет. Не клонировать live 19.09.",
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized",
+    "message": "Your IP is not authorized to make this request.",
+    "retries": 0,
+    "key_present": true,
+    "key_prefix": "sk-proj",
+    "key_len": 164,
+    "openai_base_url": null
+  },
+  "egress_ips_seen": [
+    "3.23.186.103",
+    "18.223.85.25"
+  ],
+  "self_hosted_workers": 0,
+  "live_untouched": {
+    "access": "GET only",
+    "wp_json": "404",
+    "rss_blog": "500",
+    "blog_listing": "200",
+    "morning_20_09_already_live": false,
+    "newest_live": {
+      "h1": "Расклад таро на отношения: признаки, что между вами на самом деле",
+      "slug": "rasklad-taro-na-otnosheniya-priznaki-chto-mezhdu-vami",
+      "url": "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/rasklad-taro-na-otnosheniya-priznaki-chto-mezhdu-vami/",
+      "datePublished": "2026-09-19T19:09:57.229Z",
+      "slot_guess": "вечер 19.09"
+    },
+    "morning_19_09": {
+      "h1": "Таро что он чувствует: признаки, по которым понять его отношение без самообмана",
+      "slug": "taro-chto-on-chuvstvuet-priznaki-ego-otnosheniya",
+      "url": "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/taro-chto-on-chuvstvuet-priznaki-ego-otnosheniya/",
+      "datePublished": "2026-09-19T06:11:25.141Z"
+    }
+  },
+  "site_funnel_brief": {
+    "bots_3_free": [
+      "https://t.me/TodayTaro_bot?start=id8293683394",
+      "https://max.ru/id531102974575_bot"
+    ],
+    "vk_audio": "персональный аудиоразбор",
+    "forbidden": [
+      "Расклад Таро онлайн",
+      "/rasklad-taro-online/"
+    ],
+    "cover_credit_and_final_cta": {
+      "text": "Заказать личный разбор у Виктории",
+      "url": "https://www.таросейчас.рф/eksperty/viktoriya/"
+    }
+  },
+  "journal": "memory/blog/journal/site_live_titles.jsonl",
+  "checkout_note": "Cloud main still at ce9902d (2026-09-09). chat_completions.py restored from origin/cursor/evening-1809-openai-3a53. SITE_FUNNEL.md / cover-scene writer not in this checkout.",
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260920-0917-director-openai-ip-not-authorized"
+}
