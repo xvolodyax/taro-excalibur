@@ -1,0 +1,52 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "день",
+  "date": "2026-09-20",
+  "pack": "2026-09-20-day",
+  "slot_local": "2026-09-20 16:00 Europe/Moscow",
+  "run_local": "2026-09-20 16:22 Europe/Moscow",
+  "verdict": "EXIT",
+  "reason": "day_slot_already_live_anti_dup",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "gemini_used": false,
+  "cursor_model_wrote_text": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "upload_approve_publish": false,
+  "rewrite": false,
+  "box_pack": "/workspace/openai-fallback/packs/2026-09-20-day/",
+  "box_pack_present": false,
+  "live_url": "https://www.таросейчас.рф/blog/kak-ponyat-namereniya-muzhchiny-serezno-igraet-ili-tyanet-vremya/",
+  "h1": "Как понять намерения мужчины: серьёзно, играет или тянет время",
+  "slug": "kak-ponyat-namereniya-muzhchiny-serezno-igraet-ili-tyanet-vremya",
+  "cover_md5": "65cd12a9c472ff302e1e060f8d6db3c6",
+  "cover_bytes": 2145983,
+  "datePublished": "2026-09-20T12:09:32.993Z",
+  "morning_live": {
+    "article_id": 141,
+    "h1": "Стоит ли ограничивать общение ребёнка с отцом: как решить спокойно",
+    "slug": "stoit-li-ogranichivat-obschenie-rebenka-s-ottsom-kak-reshit-spokoyno",
+    "datePublished": "2026-09-20T06:23:08.367Z"
+  },
+  "funnel_live": {
+    "telegram_bot": true,
+    "max_bot": true,
+    "vk_audio_app": true,
+    "expert_victoria_cta": true,
+    "final_cta_phrase": "Заказать личный разбор у Виктории",
+    "forbidden_rasklad_path": false
+  },
+  "box_catchup": "done_by_box",
+  "box_note": "День 20.09 уже LIVE на сайте (15:09 МСК). Cloud STOP: не Scout/Writer/Sol, не upload/approve/publish, не переписывать.",
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_code": "ip_not_authorized"
+  },
+  "journal": "memory/blog/journal/site_live_titles.jsonl",
+  "journal_appended": true
+}
