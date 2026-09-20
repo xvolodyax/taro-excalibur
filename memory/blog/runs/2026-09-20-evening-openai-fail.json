@@ -1,0 +1,97 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "вечер",
+  "date": "2026-09-20",
+  "pack": "2026-09-20-evening",
+  "slot_local": "2026-09-20 22:00 Europe/Moscow",
+  "run_local": "2026-09-20 22:18 Europe/Moscow",
+  "verdict": "FAIL",
+  "reason": "openai_401_ip_not_authorized",
+  "one_line_report": "Cloud 401, box catch-up",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "gemini_used": false,
+  "cursor_model_wrote_text": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "upload_approve_publish": false,
+  "rewrite": false,
+  "live_url": null,
+  "article_id": null,
+  "h1": null,
+  "slug": null,
+  "cluster_intent": null,
+  "cover_md5": null,
+  "cover_hook": null,
+  "box_catchup": "required",
+  "box_note": "Cloud 401 ip_not_authorized. Бокс должен дожать слот вечер 20.09 сам. Не ждать Cloud. Вечер 22:00 ещё не LIVE (последняя id149 в 19:16 МСК).",
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized",
+    "message": "Your IP is not authorized to make this request.",
+    "retries": 0,
+    "key_present": true,
+    "key_prefix": "sk-proj",
+    "key_len": 164,
+    "openai_base_url": null
+  },
+  "egress_ips_seen": [
+    "18.219.105.205",
+    "3.23.186.103",
+    "18.223.85.25"
+  ],
+  "live_untouched": {
+    "access": "GET only",
+    "wp_json": "404",
+    "blog_listing": "200",
+    "admin_get_articles": "141-155",
+    "evening_20_09": "not_live",
+    "morning_live": {
+      "article_id": 141,
+      "h1": "Стоит ли ограничивать общение ребёнка с отцом: как решить спокойно",
+      "slug": "stoit-li-ogranichivat-obschenie-rebenka-s-ottsom-kak-reshit-spokoyno",
+      "datePublished": "2026-09-20T06:23:08.367Z"
+    },
+    "day_live_user_canon": {
+      "article_id": 147,
+      "h1": "Муж удерживает деньги семьи: где ваша граница и как не отдать бюджет чужим",
+      "slug": "muzh-uderzhivaet-dengi-semi-gde-vasha-granitsa-i-kak-ne-otdat-byudzhet-chuzhim",
+      "datePublished": "2026-09-20T13:26:57.099Z",
+      "cover_md5": "263837dab05ac8f9cd3a8a22037e208a"
+    },
+    "also_live_20": [
+      {
+        "article_id": 146,
+        "h1": "Как понять намерения мужчины: серьёзно, играет или тянет время",
+        "datePublished": "2026-09-20T12:09:32.993Z",
+        "note": "day-agent anti-dup target; not id147"
+      },
+      {
+        "article_id": 148,
+        "h1": "Брак на грани развода: спасать, менять правила или отпускать",
+        "datePublished": "2026-09-20T14:12:09.422Z"
+      },
+      {
+        "article_id": 149,
+        "h1": "Как снять отворот: что проверить в отношениях и как не сделать хуже",
+        "datePublished": "2026-09-20T16:16:59.347Z",
+        "msk": "2026-09-20 19:16",
+        "note": "early extra, not 22:00 evening slot"
+      }
+    ],
+    "next_article_id": 150,
+    "id150_plus": "null — evening slot empty"
+  },
+  "protected_not_touched": [141, 147],
+  "stories_spreads_not_touched": true,
+  "checkout_note": "Cloud main still at ce9902d (2026-09-09). SITE_FUNNEL.md / ARTICLE_SCOUT_MAP / SCOUT_CANON / article_review_v1.1.2 not in this checkout. chat_completions.py restored from day-2009 branch.",
+  "journal": "memory/blog/journal/site_live_titles.jsonl",
+  "journal_appended": true,
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260920-2218-director-openai-ip-not-authorized"
+}
