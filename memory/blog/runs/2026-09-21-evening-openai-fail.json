@@ -1,0 +1,100 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "вечер",
+  "date": "2026-09-21",
+  "pack": "2026-09-21-evening",
+  "slot_local": "2026-09-21 20:00 Europe/Moscow",
+  "run_local": "2026-09-21 22:30 Europe/Moscow",
+  "verdict": "FAIL",
+  "reason": "openai_401_ip_not_authorized",
+  "one_line_report": "Cloud 401, box catch-up",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "gemini_used": false,
+  "cursor_model_wrote_text": false,
+  "hall_wrote_text": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "upload_approve_publish": false,
+  "rewrite": false,
+  "live_url": null,
+  "article_id": null,
+  "h1": null,
+  "slug": null,
+  "cluster_intent": null,
+  "cover_md5": null,
+  "cover_hook": null,
+  "box_catchup": "required",
+  "box_note": "Cloud 401 ip_not_authorized. Бокс дожимает слот вечер 21.09 сам. Не ждать Cloud. Не retry. Вечер 21.09 ещё не LIVE: id160+ пусто. Утро id151, день id157, истории id153 и id159, вчерашний вечер id150 и расклад id158 уже LIVE — не трогали.",
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized",
+    "message": "Your IP is not authorized to make this request.",
+    "retries": 0,
+    "key_present": true,
+    "key_prefix": "sk-proj",
+    "key_len": 164,
+    "openai_base_url": null
+  },
+  "egress_ips_seen": [
+    "44.214.222.150"
+  ],
+  "live_untouched": {
+    "access": "GET only",
+    "wp_json": "not used",
+    "admin_get_articles": "148-159 published; 160-175 article null",
+    "evening_21_09": "not_live",
+    "morning_live": {
+      "article_id": 151,
+      "h1": "Почему он держит дистанцию в браке: какие мотивы за этим стоят",
+      "slug": "pochemu-on-derzhit-distantsiyu-v-brake-kakie-motivy-za-etim-stoyat",
+      "published_at": "2026-09-21T06:16:01.586Z"
+    },
+    "day_live": {
+      "article_id": 157,
+      "h1": "Свекровь вмешивается в ваш брак: где граница и как ответить спокойно",
+      "slug": "svekrov-vmeshivaetsya-v-vash-brak-gde-granica-i-kak-otvetit-spokojno",
+      "published_at": "2026-09-21T14:03:17.304Z"
+    },
+    "yesterday_evening_live": {
+      "article_id": 150,
+      "h1": "Бывший пишет: что делать и где поставить границу",
+      "slug": "byvshiy-pishet-chto-delat-granitsa",
+      "published_at": "2026-09-20T19:22:08.490Z"
+    },
+    "history_not_touched": [
+      {
+        "article_id": 153,
+        "h1": "Как понять примету, если разбилось зеркало дома",
+        "slug": "kak-ponyat-primetu-esli-razbilos-zerkalo-doma",
+        "published_at": "2026-09-21T07:24:13.030Z"
+      },
+      {
+        "article_id": 159,
+        "h1": "Как снять порчу самостоятельно: что проверить в доме, делах и самочувствии",
+        "slug": "kak-snyat-porchu-samostoyatelno-dom-dela-samochuvstvie",
+        "published_at": "2026-09-21T16:57:51.457Z"
+      }
+    ],
+    "spread_not_touched": {
+      "article_id": 158,
+      "h1": "Муж пишет бывшей: что стоит за перепиской и что делать вам",
+      "slug": "muzh-pishet-byvshey-chto-stoit-za-perepiskoy-i-chto-delat-vam",
+      "published_at": "2026-09-21T14:40:24.292Z"
+    },
+    "id160_plus": "article null — evening 21.09 slot empty"
+  },
+  "protected_not_touched": [150, 151, 153, 157, 158, 159],
+  "stories_spreads_not_touched": true,
+  "dzen_used": false,
+  "checkout_note": "Cloud main at ce9902d. chat_completions.py restored from cursor/day-2109-openai-266b. SITE_FUNNEL / review v1.1.2 not reached: EXIT on 401 before Scout.",
+  "journal": "memory/blog/journal/site_live_titles.jsonl",
+  "journal_appended": true,
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260921-2230-director-openai-ip-not-authorized"
+}
