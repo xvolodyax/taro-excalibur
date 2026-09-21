@@ -1,5 +1,35 @@
 # Pipeline fix queue
 
+## INC-20260921-2230-director-openai-ip-not-authorized
+status: open
+run_date: 2026-09-21
+role: excalibur-blog-director
+slot: вечер
+severity: blocker
+category: env
+
+### What went wrong
+- Cloud probe `scripts/chat_completions.py --model gpt-5.5` → HTTP 401 `ip_not_authorized` («Your IP is not authorized to make this request.»).
+- Ключ Владимира на месте (`OPENAI_API_KEY` sk-proj, len 164). Egress: `44.214.222.150`. Retries: 0.
+- Текст статьи / H1 / Sol / description / cover-text с Cloud писать нельзя: канон `written_by: openai-api-gpt-5.5`. Gemini / inherit / модель каталога Cursor как автор не использовались. Холл текст не писал.
+- Scout / research / cover / review / publish не стартовали (явный EXIT на 401).
+- Вечер 21.09 ещё не LIVE: id160+ `article: null`. Уже в эфире и не трогали: утро id151, день id157, истории id153 / id159, вчерашний вечер id150, расклад id158.
+
+### How the agent recovered this run
+- FAIL ONLY + EXIT. Статья не начата. LIVE только GET admin articles.
+- Пометка: бокс-catch-up дожимает слот вечер 21.09 сам. Не ждать Cloud. Не retry.
+
+### Durable fix needed before next run
+- Разрешить egress IP Cloud в OpenAI project / IP allowlist ключа Владимира, либо писать текст только с бокса, где IP уже в allowlist.
+- Не крутить Cloud Scout/Writer при повторном 401: сразу EXIT.
+
+### Suggested files to inspect/change
+- `scripts/chat_completions.py`
+- OpenAI project IP allowlist (вне репо)
+
+### Secrets
+- none recorded
+
 ## INC-20260905-1935-cover-public-site-url-unset
 status: open
 run_date: 2026-09-05
