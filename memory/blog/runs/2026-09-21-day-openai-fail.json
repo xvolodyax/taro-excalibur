@@ -1,0 +1,103 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "день",
+  "date": "2026-09-21",
+  "pack": "2026-09-21-day",
+  "slot_local": "2026-09-21 16:00 Europe/Moscow",
+  "run_local": "2026-09-21 16:54 Europe/Moscow",
+  "verdict": "FAIL",
+  "reason": "openai_401_ip_not_authorized",
+  "one_line_report": "Cloud 401, box catch-up",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "gemini_used": false,
+  "cursor_model_wrote_text": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "upload_approve_publish": false,
+  "rewrite": false,
+  "live_url": null,
+  "article_id": null,
+  "h1": null,
+  "slug": null,
+  "cluster_intent": null,
+  "cover_md5": null,
+  "cover_hook": null,
+  "box_catchup": "required",
+  "box_note": "Cloud 401 ip_not_authorized. Бокс дожимает слот день 21.09 сам. Не ждать Cloud. Не retry. Дневная 21.09 ещё не LIVE: id157+ пусто. Утро id151 уже LIVE. Историю 10:00 (id153) и расклад-статьи (id152/154/155/156) не трогали.",
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized",
+    "message": "Your IP is not authorized to make this request.",
+    "retries": 0,
+    "key_present": true,
+    "key_prefix": "sk-proj",
+    "key_len": 164,
+    "openai_base_url": null
+  },
+  "egress_ips_seen": [
+    "54.86.224.244"
+  ],
+  "live_untouched": {
+    "access": "GET only",
+    "wp_json": "not used",
+    "blog_listing": "200",
+    "admin_get_articles": "141-156 published; 157-165 empty",
+    "day_21_09": "not_live",
+    "morning_live": {
+      "article_id": 151,
+      "h1": "Почему он держит дистанцию в браке: какие мотивы за этим стоят",
+      "slug": "pochemu-on-derzhit-distantsiyu-v-brake-kakie-motivy-za-etim-stoyat",
+      "datePublished": "2026-09-21T06:16:01.586Z",
+      "cover_md5": "0f9985b7e912e2791234990d5d9851db",
+      "cluster": "дистанция×motive"
+    },
+    "history_10_00_not_touched": {
+      "article_id": 153,
+      "h1": "Разбилось зеркало дома: как понять примету и не накрутить себя",
+      "slug": "kak-ponyat-primetu-esli-razbilos-zerkalo-doma",
+      "datePublished": "2026-09-21T07:24:13.030Z"
+    },
+    "spread_articles_not_touched": [
+      {
+        "article_id": 152,
+        "h1": "Подросток не ночует дома: что делать и где ваша граница",
+        "datePublished": "2026-09-21T06:47:05.782Z"
+      },
+      {
+        "article_id": 154,
+        "h1": "Ревность к ребёнку мужа: как понять себя и не разрушить семью",
+        "datePublished": "2026-09-21T08:22:32.687Z"
+      },
+      {
+        "article_id": 155,
+        "h1": "Родители против моего парня: чья граница и что делать дальше",
+        "datePublished": "2026-09-21T10:14:27.963Z"
+      },
+      {
+        "article_id": 156,
+        "h1": "Он избегает близости: страх, охлаждение или отказ",
+        "datePublished": "2026-09-21T12:21:27.959Z",
+        "note": "RSS description starts with «Расклад Таро на вопрос»; not day slot"
+      }
+    ],
+    "latest_regular_blog": {
+      "article_id": 151,
+      "slot_guess": "morning-21"
+    },
+    "id157_plus": "empty — day 21.09 slot empty"
+  },
+  "protected_not_touched": [152, 153, 154, 155, 156],
+  "stories_spreads_not_touched": true,
+  "dzen_used": false,
+  "checkout_note": "Cloud main still at ce9902d (2026-09-09). SITE_FUNNEL.md / ARTICLE_SCOUT_MAP / SCOUT_CANON / article_review_v1 not in this checkout. chat_completions.py restored from morning-2109 branch.",
+  "journal": "memory/blog/journal/site_live_titles.jsonl",
+  "journal_appended": true,
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260921-1654-director-openai-ip-not-authorized"
+}
