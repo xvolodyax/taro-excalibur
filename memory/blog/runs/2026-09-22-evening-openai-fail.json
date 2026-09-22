@@ -1,0 +1,101 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "вечер",
+  "date": "2026-09-22",
+  "pack": "2026-09-22-evening",
+  "slot_local": "2026-09-22 22:00 Europe/Moscow",
+  "run_local": "2026-09-22 22:25 Europe/Moscow",
+  "verdict": "FAIL",
+  "reason": "openai_401_ip_not_authorized",
+  "one_line_report": "Cloud 401, box catch-up",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "gemini_used": false,
+  "cursor_model_wrote_text": false,
+  "hall_wrote_text": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "upload_approve_publish": false,
+  "rewrite": false,
+  "live_url": null,
+  "article_id": null,
+  "h1": null,
+  "slug": null,
+  "cluster_intent": null,
+  "cover_md5": null,
+  "cover_hook": null,
+  "box_catchup": "required",
+  "box_note": "Cloud 401 ip_not_authorized. Бокс дожимает слот вечер 22.09 сам. Не ждать Cloud. Не retry. Вечер 22.09 ещё не LIVE: id170+ пусто. Утро id161, день id167, истории id163 и id169, расклады id162/164/165/166/168 и вчерашний вечер id160 уже LIVE — не трогали.",
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized",
+    "message": "Your IP is not authorized to make this request.",
+    "retries": 0,
+    "key_present": true,
+    "key_prefix": "sk-proj",
+    "key_len": 164,
+    "openai_base_url": null
+  },
+  "egress_ips_seen": [
+    "3.147.110.147"
+  ],
+  "live_untouched": {
+    "access": "GET only",
+    "wp_json": "not used",
+    "admin_get_articles": "155-169 published; 170-189 article null",
+    "evening_22_09": "not_live",
+    "morning_live": {
+      "article_id": 161,
+      "h1": "Стоит ли ребёнку прекращать общение с отцом, если отец не выходит на связь",
+      "slug": "stoit-li-rebenku-prekrashchat-obshchenie-s-ottsom",
+      "published_at": "2026-09-22T06:16:34.699Z"
+    },
+    "day_live": {
+      "article_id": 167,
+      "h1": "Муж молчит после ссоры: как ответить и начать разговор",
+      "slug": "muzh-molchit-posle-ssory-kak-otvetit-i-nachat-razgovor",
+      "published_at": "2026-09-22T13:38:49.907Z"
+    },
+    "yesterday_evening_live": {
+      "article_id": 160,
+      "h1": "Если жена заговорила о разводе: где пауза и где решение",
+      "slug": "esli-zhena-zagovorila-o-razvode-gde-pauza-i-gde-reshenie",
+      "published_at": "2026-09-21T19:32:38.450Z"
+    },
+    "history_not_touched": [
+      {
+        "article_id": 163,
+        "h1": "Симптомы и признаки сглаза: как отличить от усталости и стресса",
+        "slug": "simptomy-i-priznaki-sglaza-otlichit-ot-ustalosti",
+        "published_at": "2026-09-22T07:33:06.013Z"
+      },
+      {
+        "article_id": 169,
+        "h1": "Как снять сглаз в домашних условиях: спокойные шаги без сложных обрядов",
+        "slug": "kak-snyat-sglaz-v-domashnih-usloviyah",
+        "published_at": "2026-09-22T16:51:28.804Z"
+      }
+    ],
+    "spreads_not_touched": [
+      162,
+      164,
+      165,
+      166,
+      168
+    ],
+    "id170_plus": "article null — evening 22.09 slot empty"
+  },
+  "protected_not_touched": [160, 161, 162, 163, 164, 165, 166, 167, 168, 169],
+  "stories_spreads_not_touched": true,
+  "dzen_used": false,
+  "checkout_note": "Cloud main at ce9902d. chat_completions.py restored from cursor/evening-2109-openai-367f. SITE_FUNNEL / review v1.1.2 not reached: EXIT on 401 before Scout.",
+  "journal": "memory/blog/journal/site_live_titles.jsonl",
+  "journal_appended": true,
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260922-2225-director-openai-ip-not-authorized"
+}
