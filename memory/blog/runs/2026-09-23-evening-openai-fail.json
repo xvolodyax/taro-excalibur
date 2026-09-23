@@ -1,0 +1,96 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "вечер",
+  "date": "2026-09-23",
+  "pack": "2026-09-23-evening",
+  "slot_local": "2026-09-23 22:00 Europe/Moscow",
+  "run_local": "2026-09-23 22:10 Europe/Moscow",
+  "verdict": "FAIL",
+  "reason": "openai_401_ip_not_authorized",
+  "one_line_report": "Cloud 401, box catch-up",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "gemini_used": false,
+  "cursor_model_wrote_text": false,
+  "hall_wrote_text": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "upload_approve_publish": false,
+  "rewrite": false,
+  "live_url": null,
+  "article_id": null,
+  "h1": null,
+  "slug": null,
+  "cluster_intent": null,
+  "cover_md5": null,
+  "cover_hook": null,
+  "box_catchup": "required",
+  "box_note": "Cloud 401 ip_not_authorized. Бокс дожимает слот вечер 23.09 сам. Не ждать Cloud. Не retry. Вечер 23.09 ещё не LIVE: id180+ пусто. Утро id171, день id177, истории id173 и id179, расклады id172/174/175/176/178 и вчерашний вечер id170 уже LIVE — не трогали.",
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized",
+    "message": "Your IP is not authorized to make this request.",
+    "retries": 0,
+    "key_present": true,
+    "key_prefix": "sk-proj",
+    "key_len": 164,
+    "openai_base_url": null
+  },
+  "egress_ips_seen": [
+    "3.147.102.16"
+  ],
+  "live_untouched": {
+    "access": "GET only",
+    "wp_json": "not used",
+    "admin_get_articles": "165-179 published; 180-194 article null",
+    "evening_23_09": "not_live",
+    "morning_live": {
+      "article_id": 171,
+      "h1": "Когда отец сам ушёл из связи: нужен ли ребёнку этот контакт",
+      "slug": "kogda-otets-sam-ushel-iz-svyazi-nuzhen-li-rebenku-etot-kontakt",
+      "published_at": "2026-09-23T06:30:46.780Z"
+    },
+    "day_live": {
+      "article_id": 177,
+      "h1": "Муж не хочет жену: стоит ли выбирать развод",
+      "slug": "muzh-ne-hochet-zhenu-stoit-li-vybirat-razvod",
+      "published_at": "2026-09-23T13:31:29.489Z"
+    },
+    "yesterday_evening_live": {
+      "article_id": 170,
+      "h1": "Когда семья против свадьбы: где ваша граница и как ответить спокойно",
+      "slug": "kogda-semya-protiv-svadby-gde-vasha-granica-i-kak-otvetit-spokojno",
+      "published_at": "2026-09-22T19:34:06.774Z"
+    },
+    "history_not_touched": [
+      {
+        "article_id": 173,
+        "h1": "Признаки приворота: как отличить навязчивую тягу от живых чувств",
+        "slug": "priznaki-privorota-navyazchivaya-tyaga-granitsy",
+        "published_at": "2026-09-23T07:33:11.104Z"
+      },
+      {
+        "article_id": 179,
+        "h1": "Навели на человека порчу: как меняются поведение, дела и самочувствие",
+        "slug": "naveli-na-cheloveka-porchu-kak-menyaetsya-povedenie",
+        "published_at": "2026-09-23T16:48:46.367Z"
+      }
+    ],
+    "spreads_not_touched": [172, 174, 175, 176, 178],
+    "id180_plus": "article null — evening 23.09 slot empty"
+  },
+  "protected_not_touched": [170, 171, 172, 173, 174, 175, 176, 177, 178, 179],
+  "stories_spreads_not_touched": true,
+  "dzen_used": false,
+  "vk_used": false,
+  "checkout_note": "Cloud main at ce9902d. chat_completions.py restored from cursor/evening-2209-openai-2407. SITE_FUNNEL / review v1.1.2 not reached: EXIT on 401 before Scout.",
+  "journal": "memory/blog/journal/site_live_titles.jsonl",
+  "journal_appended": true,
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260923-2210-director-openai-ip-not-authorized"
+}
