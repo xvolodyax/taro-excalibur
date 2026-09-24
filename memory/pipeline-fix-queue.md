@@ -1,5 +1,32 @@
 # Pipeline fix queue
 
+## INC-20260924-morning-director-openai-ip-not-authorized
+status: open
+run_date: 2026-09-24
+role: excalibur-blog-director
+slot: утро
+severity: high
+category: env
+
+### What went wrong
+- `scripts/chat_completions.py` model `gpt-5.5` → HTTP 401 `ip_not_authorized` («Your IP is not authorized to make this request.»).
+- Egress seen: `3.149.100.186`. Key present (`sk-proj`, len 164). Retries: 0.
+- Scout, body, cover, upload/approve/publish не стартовали. Gemini и Cursor catalog текст не писали.
+
+### How the agent recovered this run
+- Не восстанавливал. EXIT. Бокс-catch-up дожимает слот утро 24.09 сам.
+- Публичная главная блога: верхняя живая всё ещё вечер 23.09 (`zhivem-vmeste-bez-predlozheniya-stoit-li-zhdat-rospisi`, `2026-09-23T19:10:21.921Z`). Утро 24.09 не LIVE.
+
+### Durable fix needed before next run
+- Разрешить egress Cloud Agent в OpenAI project allowlist, либо не слать утренний слот в Cloud, пока 401 `ip_not_authorized`.
+
+### Suggested files to inspect/change
+- `scripts/chat_completions.py`
+- `memory/blog/runs/2026-09-24-morning-openai-fail.json`
+
+### Secrets
+- none recorded
+
 ## INC-20260905-1935-cover-public-site-url-unset
 status: open
 run_date: 2026-09-05
