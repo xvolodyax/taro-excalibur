@@ -1,0 +1,62 @@
+{
+  "role": "excalibur-blog-director",
+  "slot": "утро",
+  "date": "2026-09-24",
+  "pack": "2026-09-24-morning",
+  "slot_local": "2026-09-24 09:00 Europe/Moscow",
+  "verdict": "FAIL",
+  "reason": "openai_401_ip_not_authorized",
+  "one_line_report": "Cloud 401, box catch-up",
+  "text_author_required": "openai-api-gpt-5.5",
+  "written_by": null,
+  "fallback_used": false,
+  "gemini_used": false,
+  "cursor_model_wrote_text": false,
+  "hall_wrote_text": false,
+  "article_started": false,
+  "scout_started": false,
+  "publish_started": false,
+  "upload_approve_publish": false,
+  "rewrite": false,
+  "live_url": null,
+  "article_id": null,
+  "h1": null,
+  "slug": null,
+  "box_catchup": "required",
+  "box_note": "Cloud 401 ip_not_authorized. Бокс дожимает слот утро 24.09 сам. Не ждать Cloud. Не retry. Утро 24.09 на главной блога нет: верхняя живая — вечер 23.09.",
+  "openai_probe": {
+    "script": "scripts/chat_completions.py",
+    "endpoint": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-5.5",
+    "http": 401,
+    "error_type": "invalid_request_error",
+    "error_code": "ip_not_authorized",
+    "message": "Your IP is not authorized to make this request.",
+    "retries": 0,
+    "key_present": true,
+    "key_prefix": "sk-proj",
+    "key_len": 164,
+    "openai_base_url": null
+  },
+  "egress_ips_seen": [
+    "3.149.100.186"
+  ],
+  "live_untouched": {
+    "access": "GET public blog + newest article only",
+    "wp_json": "not used",
+    "admin_list": "403 Hall token has no list action",
+    "morning_24_09": "not_live",
+    "newest_public": {
+      "h1": "Живем вместе, но без предложения: стоит ли ждать росписи, если он не делает предложение",
+      "slug": "zhivem-vmeste-bez-predlozheniya-stoit-li-zhdat-rospisi",
+      "datePublished": "2026-09-23T19:10:21.921Z",
+      "url": "https://www.xn--80aaoqxlidb0d.xn--p1ai/blog/zhivem-vmeste-bez-predlozheniya-stoit-li-zhdat-rospisi/"
+    }
+  },
+  "dzen_used": false,
+  "vk_used": false,
+  "checkout_note": "Cloud main at ce9902d. chat_completions.py restored from cursor/evening-2309-openai-21da. SITE_FUNNEL / Scout not reached: EXIT on 401 before Scout.",
+  "journal": "memory/blog/journal/site_live_titles.jsonl",
+  "journal_appended": false,
+  "incident_report": "memory/pipeline-fix-queue.md#INC-20260924-morning-director-openai-ip-not-authorized"
+}
